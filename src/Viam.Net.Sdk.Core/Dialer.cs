@@ -2,9 +2,9 @@ namespace Viam.Net.Sdk.Core;
 
 using Grpc.Net.Client;
 using Grpc.Core;
-using Microsoft.MixedReality.WebRTC;
 using Proto.Rpc.V1;
 using Proto.Rpc.Webrtc.V1;
+using SIPSorcery.Net;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -17,9 +17,9 @@ public class Dialer : IDisposable {
         _logger = logger;
     }
 
-    static PeerConnectionConfiguration DefaultWebPeerConnectionConfiguration = new PeerConnectionConfiguration {
-        IceServers = new List<IceServer> {
-            new IceServer { Urls = new List<String> { "stun:global.stun.twilio.com:3478?transport=udp" } }
+    static RTCConfiguration DefaultWebRTCConfiguration = new RTCConfiguration {
+        iceServers = new List<RTCIceServer> {
+            new RTCIceServer { urls = "stun:global.stun.twilio.com:3478?transport=udp" }
         }
     };
 
@@ -102,7 +102,7 @@ public class Dialer : IDisposable {
         
         var signalingClient = new SignalingService.SignalingServiceClient(signalChannel);
 
-        var config = optsCopy.WebRTCOptions.RTCConfig == null ? DefaultWebPeerConnectionConfiguration : optsCopy.WebRTCOptions.RTCConfig;
+        var config = optsCopy.WebRTCOptions.RTCConfig == null ? DefaultWebRTCConfiguration : optsCopy.WebRTCOptions.RTCConfig;
 
         try {
             var configResp = await signalingClient.OptionalWebRTCConfigAsync(new OptionalWebRTCConfigRequest {}, headers: md);
@@ -111,11 +111,7 @@ public class Dialer : IDisposable {
             // do notihing
         }
 
-        Console.WriteLine("here");
-
         var (pc, dc) = await NewPeerConnectionForClient(config, optsCopy.WebRTCOptions.DisableTrickleICE);
-
-        Console.WriteLine("here1");
 
         var successful = false;
 
@@ -133,42 +129,38 @@ public class Dialer : IDisposable {
             // TODO(erd): sendErr on failures...
 
             var remoteDescSet = new TaskCompletionSource<bool>();
-
-            // TODO(erd): if trickle is disabled this will never complete. need to have sdp come from new peer client result
-            var sdpReady = new TaskCompletionSource<SdpMessage>();
-
             if (!optsCopy.WebRTCOptions.DisableTrickleICE) {
-                pc.LocalSdpReadytoSend += sdpMessage => sdpReady.SetResult(sdpMessage);
-                pc.CreateOffer();
+                var offer = pc.createOffer();
 
-                pc.IceCandidateReadytoSend += i => {
+                pc.onicegatheringstatechange += async state => {
+                    switch (state) {
+                        case RTCIceGatheringState.complete:
+                            await remoteDescSet.Task; // TODO(erd): and cancelation
+                            // callFlowWG.Wait()
+                            await sendDone();
+                            break;
+                    }
+                };
+                pc.onicecandidate += i => {
                     // TOOD(erd): check cancelation
                     // if i != nil {
                     //     callFlowWG.Add(1)
                     // }
                     Task.Run(async () => {
                         await remoteDescSet.Task; // TODO(erd): and cancelation
-                        if (i == null) {
-                            // callFlowWG.Wait()
-                            await sendDone();
-                            Console.WriteLine("done sending cand");
-                            return;
-                        }
                         // defer callFlowWG.Done()
                         var iProto = IceCandidateToProto(i);
-                        Console.WriteLine("sending cand");
                         await signalingClient.CallUpdateAsync(new CallUpdateRequest { Uuid = uuid, Candidate = iProto }, headers: md);
                     });
                 };
+
+                await pc.setLocalDescription(offer);
             }
 
-            var sdp = await sdpReady.Task;
-            var encodedSDP = EncodeSDP(sdp);
+            var encodedSDP = EncodeSDP(pc.localDescription);
 
             // TODO(erd): cancelation token...
-            Console.WriteLine("here2...." + sdp.Content);
             var callClient = signalingClient.Call(new CallRequest{ Sdp = encodedSDP }, headers: md);
-            Console.WriteLine("here3");
 
             // TODO(GOUT-11): do separate auth here
             if (opts.ExternalAuthAddress != "") {
@@ -196,7 +188,7 @@ public class Dialer : IDisposable {
                             uuid = resp.Uuid;
                             var answer = DecodeSDP(resp.Init.Sdp);
 
-                            await pc.SetRemoteDescriptionAsync(answer);
+                            pc.setRemoteDescription(new RTCSessionDescriptionInit { type = answer.type, sdp = answer.sdp.ToString() });
                             remoteDescSet.SetResult(true);
 
                             if (optsCopy.WebRTCOptions.DisableTrickleICE) {
@@ -212,86 +204,96 @@ public class Dialer : IDisposable {
                                 throw new Exception(String.Format("uuid mismatch; have=%s want=%s", resp.Uuid, uuid));
                             }
                             var cand = IceCandidateFromProto(resp.Update.Candidate);
-                            pc.AddIceCandidate(cand);
+                            pc.addIceCandidate(cand);
                             break;
                         default:
                             throw new Exception("unexpected stage " + resp.StageCase.ToString());
                     }
-                    Console.WriteLine("!!" + resp);
                 }
-                Console.WriteLine("done...");
                 return;
             };
 
             await Task.Run(exchangeCandidates); // TODO(erd): await first? like a select
 
             successful = true;
-            Console.WriteLine("here4");
             await clientCh.Ready();
-            Console.WriteLine("here5");
             return clientCh;
         } finally {
             if (!successful) {
-                pc.Dispose();
+                pc.Close("failed to dial");
             }
         }
     }
 
-    private static IceCandidate IceCandidateFromProto(ICECandidate i) {
-        return new IceCandidate() {
-            // TODO(erd): missing uname frag
-            Content = i.Candidate,
-            SdpMid = i.SdpMid,
-            SdpMlineIndex = (ushort) i.SdpmLineIndex,
+    private static RTCIceCandidateInit IceCandidateFromProto(ICECandidate i) {
+        return new RTCIceCandidateInit() {
+            candidate = i.Candidate,
+            sdpMid = i.SdpMid,
+            sdpMLineIndex = (ushort) i.SdpmLineIndex,
+            usernameFragment = i.UsernameFragment,
         };
     }
 
-    private static ICECandidate IceCandidateInitToProto(IceCandidate ij) {
+    private static ICECandidate IceCandidateInitToProto(RTCIceCandidateInit ij) {
         return new ICECandidate() {
-            Candidate = ij.Content,
-            SdpMid = ij.SdpMid,
-            SdpmLineIndex = (uint) ij.SdpMlineIndex,
+            Candidate = ij.candidate,
+            SdpMid = ij.sdpMid,
+            SdpmLineIndex = ij.sdpMLineIndex,
+            UsernameFragment = ij.usernameFragment,
         };
     }
 
-    private static ICECandidate IceCandidateToProto(IceCandidate ij) {
+    private static ICECandidate IceCandidateToProto(RTCIceCandidate ij) {
         return new ICECandidate() {
-            Candidate = ij.Content,
-            SdpMid = ij.SdpMid,
-            SdpmLineIndex = (uint) ij.SdpMlineIndex,
+            Candidate = ij.candidate,
+            SdpMid = ij.sdpMid,
+            SdpmLineIndex = ij.sdpMLineIndex,
+            UsernameFragment = ij.usernameFragment,
         };
     }
 
-    private static string EncodeSDP(SdpMessage localDescription) {
+    private static string EncodeSDP(RTCSessionDescription localDescription) {
         using var stream = new MemoryStream();
         using var writer = new Utf8JsonWriter(stream);
         new JsonObject {
-            ["type"] = SdpMessage.TypeToString(localDescription.Type),
-            ["sdp"] = localDescription.Content
+            ["type"] = localDescription.type.ToString(),
+            ["sdp"] = localDescription.sdp.ToString(),
         }.WriteTo(writer);
         writer.Flush();
         return System.Convert.ToBase64String(stream.ToArray());
     }
 
-    private static SdpMessage DecodeSDP(string encodedSDP) {
+    private static RTCSessionDescription DecodeSDP(string encodedSDP) {
         var sdpJSON = System.Convert.FromBase64String(encodedSDP);
         var sdpDoc = JsonDocument.Parse(sdpJSON).RootElement;
 
-        return new SdpMessage {
-            Type = SdpMessage.StringToType(sdpDoc.GetProperty("type").GetString()!),
-            Content = sdpDoc.GetProperty("sdp").GetString()!
+        return new RTCSessionDescription {
+            type = Enum.Parse<RTCSdpType>(sdpDoc.GetProperty("type").GetString()!),
+            sdp = SDP.ParseSDPDescription(sdpDoc.GetProperty("sdp").GetString()!)
         };
     }
 
-    private static async Task<(PeerConnection, DataChannel)> NewPeerConnectionForClient(PeerConnectionConfiguration config, bool disableTrickleICE) {
-        var pc = new PeerConnection();
-        await pc.InitializeAsync(config); // TODO(erd): cancelation token
+    private static async Task<(RTCPeerConnection, RTCDataChannel)> NewPeerConnectionForClient(RTCConfiguration config, bool disableTrickleICE) {
+        var pc = new RTCPeerConnection(config);
 
         var successful = false;
         try {
-            var dataChannel = await pc.AddDataChannelAsync(0, "data", true, true);
+            var dataChannel = await pc.createDataChannel("data", new RTCDataChannelInit {
+                id = 0,
+                negotiated = true,
+                ordered = true,
+            });
             // TODO(erd): even necessary?
-            await pc.AddDataChannelAsync(1, "negotiation", true, true);
+            await pc.createDataChannel("negotiation", new RTCDataChannelInit {
+                id = 1,
+                negotiated = true,
+                ordered = true,
+            });
+            var initialDataChannelOnError = (string err) => {
+                pc.Close($"premature data channel error before WebRTC channel association: {err}");
+            };
+            // TODO(erd): remember to remove
+            dataChannel.onerror += initialDataChannelOnError;
 
             if (disableTrickleICE) {
                 // TODO(erd): implement
@@ -302,27 +304,34 @@ public class Dialer : IDisposable {
             return (pc, dataChannel);
         } finally {
             if (!successful) {
-                pc.Dispose();
+                pc.Close("failed to prepare peer connection");
             }
         }
     }
 
-    private static PeerConnectionConfiguration ExtendWebRTCConfig(PeerConnectionConfiguration original, WebRTCConfig optional) {
+    private static RTCConfiguration ExtendWebRTCConfig(RTCConfiguration original, WebRTCConfig optional) {
         if (optional == null) {
             return original;
         }
 
-        var extended = new PeerConnectionConfiguration();
-        extended.IceServers = new List<IceServer>(original.IceServers);
-        extended.IceTransportType = original.IceTransportType;
-        extended.BundlePolicy = original.BundlePolicy;
-        extended.SdpSemantic = original.SdpSemantic;
+        var extended = new RTCConfiguration();
+        extended.iceServers = new List<RTCIceServer>(original.iceServers);
+        extended.iceTransportPolicy = original.iceTransportPolicy;
+        extended.bundlePolicy = original.bundlePolicy;
+        extended.rtcpMuxPolicy = original.rtcpMuxPolicy;
+        extended.certificates = original.certificates;
+        extended.certificates2 = original.certificates2;
+        extended.X_DisableExtendedMasterSecretKey = original.X_DisableExtendedMasterSecretKey;
+        extended.iceCandidatePoolSize = original.iceCandidatePoolSize;
+        extended.X_BindAddress = original.X_BindAddress;
+        extended.X_UseRtpFeedbackProfile = original.X_UseRtpFeedbackProfile;
+        extended.X_ICEIncludeAllInterfaceAddresses = original.X_ICEIncludeAllInterfaceAddresses;
 
         foreach (ICEServer server in optional.AdditionalIceServers) {
-            extended.IceServers.Add(new IceServer {
-                Urls = server.Urls.ToList(),
-                TurnUserName = server.Username,
-                TurnPassword = server.Credential
+            extended.iceServers.Add(new RTCIceServer {
+                urls = string.Join(",", server.Urls),
+                username = server.Username,
+                credential = server.Credential
             });
         }
 

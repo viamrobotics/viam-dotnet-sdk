@@ -2,7 +2,7 @@ namespace Viam.Net.Sdk.Core;
 
 using Grpc.Core;
 using Proto.Rpc.Webrtc.V1;
-using Microsoft.MixedReality.WebRTC;
+using SIPSorcery.Net;
 
 class WebRTCClientChannel : GrpcChannel, IDisposable{
 
@@ -15,9 +15,9 @@ class WebRTCClientChannel : GrpcChannel, IDisposable{
 
     public readonly Dictionary<ulong, WebRTCClientStreamContainer> Streams = new Dictionary<ulong, WebRTCClientStreamContainer>();
 
-    public WebRTCClientChannel(PeerConnection peerConn, DataChannel dataChannel, NLog.Logger logger) : base("doesnotmatter") {
+    public WebRTCClientChannel(RTCPeerConnection peerConn, RTCDataChannel dataChannel, NLog.Logger logger) : base("doesnotmatter") {
         _baseChannel = new WebRTCBaseChannel(peerConn, dataChannel);
-        dataChannel.MessageReceived += OnChannelMessage;
+        dataChannel.onmessage += OnChannelMessage;
         _logger = logger;
     }
 
@@ -62,7 +62,8 @@ class WebRTCClientChannel : GrpcChannel, IDisposable{
         return new Stream { Id = streamIDCounter++ };
     }
 
-    private void OnChannelMessage(byte[] data) {
+    private void OnChannelMessage(RTCDataChannel dc, DataChannelPayloadProtocols protocols, byte[] data) {
+
         var resp = Response.Parser.ParseFrom(data);
         // TODO(erd): probably ned a catch on parse
 
@@ -70,6 +71,7 @@ class WebRTCClientChannel : GrpcChannel, IDisposable{
             _logger.Warn("no stream id; discarding");
             return;
         }
+
 
         var stream = resp.Stream;
         var id = stream.Id;

@@ -1,12 +1,12 @@
 namespace Viam.Net.Sdk.Core;
 
 using Google.Protobuf;
-using Microsoft.MixedReality.WebRTC;
+using SIPSorcery.Net;
 
 class WebRTCBaseChannel : IDisposable {
 
-    private readonly PeerConnection PeerConn;
-    private readonly DataChannel DataChannel;
+    private readonly RTCPeerConnection PeerConn;
+    private readonly RTCDataChannel DataChannel;
 
     public readonly TaskCompletionSource<bool> Ready;
 
@@ -15,15 +15,17 @@ class WebRTCBaseChannel : IDisposable {
     private string _closedReason = "";
 
     public WebRTCBaseChannel(
-        PeerConnection peerConn,
-        DataChannel dataChannel,
+        RTCPeerConnection peerConn,
+        RTCDataChannel dataChannel,
         Action? onPeerDone = null
     ) {
         PeerConn = peerConn;
         DataChannel = dataChannel;
         Ready = new TaskCompletionSource<bool>();
 
-        dataChannel.StateChanged += OnChannelStateChanged;
+        dataChannel.onopen += OnChannelOpen;
+        dataChannel.onclose += OnChannelClose;
+        dataChannel.onerror += OnChannelError;
 
         var peerDoneOnce = false;
         var doPeerDone = () => {
@@ -32,7 +34,7 @@ class WebRTCBaseChannel : IDisposable {
                 onPeerDone();
             }
         };
-        var connStateChanged = (IceConnectionState connectionState) => {
+        var connStateChanged = (RTCIceConnectionState connectionState) => {
             lock(_closedMu) {
                 if (_closed) {
                     doPeerDone();
@@ -49,28 +51,29 @@ class WebRTCBaseChannel : IDisposable {
                 }
 
                 switch (connectionState) {
-                    case IceConnectionState.Disconnected:
-                    case IceConnectionState.Failed:
-                    case IceConnectionState.Closed:
+                    case RTCIceConnectionState.disconnected:
+                    case RTCIceConnectionState.failed:
+                    case RTCIceConnectionState.closed:
                         doPeerDone();
                         break;
                 };
             });
         };
 
-        peerConn.IceStateChanged += new PeerConnection.IceStateChangedDelegate(connStateChanged);
+        peerConn.oniceconnectionstatechange += connStateChanged;
+        connStateChanged(peerConn.iceConnectionState);
     }
 
-    private void OnChannelStateChanged() {
-        switch (DataChannel.State) {
-            case DataChannel.ChannelState.Open:
-                Ready.SetResult(true);
-                break;
-            case DataChannel.ChannelState.Closing:
-            case DataChannel.ChannelState.Closed:
-                CloseWithReason("data channel closed");
-                break;
-        }
+    private void OnChannelOpen() {
+        Ready.SetResult(true);
+    }
+
+    private void OnChannelClose() {
+        CloseWithReason("data channel closed");
+    }
+
+    private void OnChannelError(string err) {
+        CloseWithReason(err);
     }
 
     private void CloseWithReason(string reason) {
@@ -81,7 +84,7 @@ class WebRTCBaseChannel : IDisposable {
             _closed = true;
             _closedReason = reason;
             // TODO(erd): cancelFunc
-            PeerConn.Dispose();
+            PeerConn.Close(reason);
         }
     }
 
@@ -99,7 +102,8 @@ class WebRTCBaseChannel : IDisposable {
 
     public void Write(IMessage msg) {
         using var stream = new MemoryStream();
-        Console.WriteLine("sending stuff");
-        DataChannel.SendMessage(stream.ToArray());
+        msg.WriteTo(stream);
+        stream.Flush();
+        DataChannel.send(stream.ToArray());
     }
 }

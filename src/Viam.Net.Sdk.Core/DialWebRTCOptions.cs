@@ -1,13 +1,13 @@
 namespace Viam.Net.Sdk.Core;
 
 using Proto.Rpc.V1;
-using Microsoft.MixedReality.WebRTC;
+using SIPSorcery.Net;
 
 public record class DialWebRTCOptions(
     bool SignalingInsecure = false,
     bool DisableTrickleICE = false,
 
-    PeerConnectionConfiguration RTCConfig = null!,
+    RTCConfiguration RTCConfig = null!,
 
     // SignalingAuthEntity is the entity to authenticate as to the signaler.
     string SignalingAuthEntity = null!,

@@ -12,7 +12,10 @@
     <PackageReference Include="Google.Protobuf" Version="3.21.2" />
     <PackageReference Include="Grpc.Net.Client" Version="2.47.0" />
     <PackageReference Include="NLog" Version="5.0.1" />
-    <PackageReference Include="Microsoft.MixedReality.WebRTC" Version="2.0.2" />
+    <!-- TODO(erd): uncomment below after https://github.com/sipsorcery-org/sipsorcery/pull/783-->
+    <!-- <PackageReference Include="SIPSorcery" Version="6.0.8" /> -->
+    <!-- TODO(erd): remove below after https://github.com/sipsorcery-org/sipsorcery/pull/783-->
+    <ProjectReference Include = "/Users/eric/sipsorcery/src/SIPSorcery.csproj" />
   </ItemGroup>
 
 </Project>

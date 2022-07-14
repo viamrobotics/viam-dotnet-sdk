@@ -2,6 +2,7 @@ namespace Viam.Net.Sdk.Core;
 
 using Grpc.Core;
 using Proto.Rpc.Webrtc.V1;
+using System.Buffers;
 
 class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer {
     // see golang/client_stream.go
@@ -14,7 +15,6 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer {
 
     private bool _headersReceived = false;
     private bool _trailersReceived = false;
-    private int _numRequests = 0;
     private readonly NLog.Logger _logger;
     
 
@@ -125,9 +125,8 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer {
 
     public void Start(ResponseListener<TResponse> responseListener, Grpc.Core.Metadata? headers) {
         _responseListener = responseListener;
-        var method = "/" + _method.FullName;
         var requestHeaders = new RequestHeaders {
-                Method = method,
+                Method = _method.FullName,
                 Metadata = WebRTCClientChannel.FromGRPCMetadata(headers)
         };
         try {
@@ -140,17 +139,33 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer {
         _responseListener.OnReady();
     }
 
-    // TODO(erd): synchronized
-    public void Request(int numMessages) {
-        _numRequests += numMessages;
-    }
-
     public void Cancel(string message, Exception cause) {
         _baseStream.CloseWithRecvError(new Exception(message, cause));
     }
 
     public void HalfClose() {
         WriteMessage(true, null);
+    }
+
+    class SimpleSerializationContext : SerializationContext {
+
+        public byte[] Data { get; set; } = new byte[] {};
+        private readonly ArrayBufferWriter<byte> bufferWriter = new ArrayBufferWriter<byte>();
+
+        public override void Complete(byte[] payload)
+        {
+            Data = payload;
+        }
+
+        public override IBufferWriter<byte> GetBufferWriter()
+        {
+            return bufferWriter;
+        }
+
+        public override void Complete()
+        {
+            Data = bufferWriter.WrittenSpan.ToArray();
+        }
     }
 
     private void SendMessage(TRequest message) {
@@ -162,9 +177,12 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer {
             }
 
             using var stream = new MemoryStream();
-            var serialized = _method.RequestMarshaller.Serializer(message);
-            WriteMessage(false, serialized.ToList());
+            var ctx = new SimpleSerializationContext();
+            _method.RequestMarshaller.ContextualSerializer.Invoke(message, ctx);
+            WriteMessage(false, ctx.Data.ToList());
         } catch (Exception ex) {
+            // TODO(erd): make sure another send can't happen after close...
+            // TODO(erd): why does this not propagate to user when this happens? need to set right fut?
             _baseStream.CloseWithRecvError(ex);
         }
     }
@@ -241,17 +259,35 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer {
         // close(s.headersReceived)
     }
 
+    class SimpleDeserializationContext : DeserializationContext {
+
+        private readonly byte[] _data;
+
+        public SimpleDeserializationContext(byte[] data) {
+            _data = data;
+        }
+
+        public override int PayloadLength { get { return _data.Length; } }
+
+        public override byte[] PayloadAsNewBuffer()
+        {
+            return _data.ToArray();
+        }
+
+        public override System.Buffers.ReadOnlySequence<byte> PayloadAsReadOnlySequence()
+        {
+            return new ReadOnlySequence<byte>(_data);
+        }
+    }
+
     // TODO(erd): synchronized
     private void ProcessMessage(ResponseMessage msg) {
         var result = _baseStream.ProcessPacketMessage(msg.PacketMessage);
         if (result == null) {
             return;
         }
-        if (_numRequests == 0) {
-            throw new Exception("no requested messages remaining");
-        }
-        _numRequests--;
-        var resp = _method.ResponseMarshaller.Deserializer(result.ToArray());
+        var ctx = new SimpleDeserializationContext(result.ToArray());
+        var resp = _method.ResponseMarshaller.ContextualDeserializer(ctx);
         _responseListener.OnMessage(resp);
     }
 
