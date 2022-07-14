@@ -99,7 +99,7 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer {
         Task.Run(async () => {
             try {
                 this.Start(listener, options.Headers);
-                await ready.Task;
+                await ready.Task.ConfigureAwait(false);
                 this.SendMessage(request);
                 this.HalfClose();
             } catch (Exception ex) {
@@ -112,10 +112,10 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer {
             responseAsync: result.Task,
             responseHeadersAsync: respHeaders.Task,
             getStatusFunc: () => {
-                return statusFut.Task.GetAwaiter().GetResult();
+                return statusFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
             },
             getTrailersFunc: () => {
-                return trailersFut.Task.GetAwaiter().GetResult();
+                return trailersFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
             },
             disposeAction: () => {
                 Console.WriteLine("I HAVE BEEN DISPOSED ACTION!!!");
@@ -293,15 +293,20 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer {
 
     private void ProcessTrailers(ResponseTrailers trailers) {
         _trailersReceived = true;
-        var status = (StatusCode) trailers.Status.Code;
+        var status = StatusCode.OK;
+        var msg = "";
+        if (trailers.Status != null) {
+            status = (StatusCode) trailers.Status.Code;
+            msg = trailers.Status.Message;
+        }
 
         var metadata = WebRTCClientChannel.ToGRPCMetadata(trailers.Metadata);
-        _responseListener.OnClose(new Status(status, trailers.Status.Message), metadata);
+        _responseListener.OnClose(new Status(status, msg), metadata);
 
         if (status == StatusCode.OK) {
             _baseStream.CloseWithRecvError(null!);
             return;
         }
-        _baseStream.CloseWithRecvError(new Exception(String.Format("Code=%d Message=%s", trailers.Status.Code, trailers.Status.Message)));
+        _baseStream.CloseWithRecvError(new Exception(String.Format("Code=%d Message=%s", status, msg)));
     }
 }

@@ -8,32 +8,27 @@ class TempCallInvoker : CallInvoker {
     private const int MAX_REQUEST_MESSAGE_PACKET_DATA_SIZE = 16373;
 
     private readonly WebRTCClientChannel _channel;
-    private readonly Stream _stream;
-    private readonly Action<ulong> _onDone;
     private readonly NLog.Logger _logger;
 
     public TempCallInvoker(
-        Stream stream,
         WebRTCClientChannel channel,
-        Action<ulong> onDone,
         NLog.Logger logger
     ) {
-        _stream = stream;
         _channel = channel;
-        _onDone = onDone;
         _logger = logger;
     }
 
     // TODO(erd): synchronized on client chan
     private WebRTCClientStream<TRequest, TResponse> makeStream<TRequest, TResponse>(Method<TRequest, TResponse> method) {
-        if (_channel.Streams.ContainsKey(_stream.Id)) {
+        var stream = _channel.NextStreamID();
+        if (_channel.Streams.ContainsKey(stream.Id)) {
             throw new Exception("channel already exists with id");
         }
         if (_channel.Streams.Count > WebRTCClientChannel.MaxStreamCount) {
             throw new Exception("stream limit hit");
         }
-        var activeStream = new WebRTCClientStream<TRequest, TResponse>(method, _stream, _channel, _onDone, _logger);
-        _channel.Streams.Add(_stream.Id, activeStream);
+        var activeStream = new WebRTCClientStream<TRequest, TResponse>(method, stream, _channel, (id) => _channel.RemoveStreamByID(stream.Id), _logger);
+        _channel.Streams.Add(stream.Id, activeStream);
         return activeStream;
     }
 
@@ -65,7 +60,6 @@ class TempCallInvoker : CallInvoker {
     public override TResponse BlockingUnaryCall<TRequest, TResponse>(Method<TRequest, TResponse> method, string? host, CallOptions options, TRequest request)
         where TRequest : class
         where TResponse : class {
-            var clientStream = makeStream(method);
-            return clientStream.UnaryCall(options, request).GetAwaiter().GetResult();
+            return AsyncUnaryCall(method, host, options, request).ConfigureAwait(false).GetAwaiter().GetResult();
     }
 }

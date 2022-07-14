@@ -14,5 +14,9 @@ using (var dialer = new Dialer(logger)) {
     using (var chan = await dialer.DialWebRTCAsync("http://localhost:8080", "something-unique", dialOpts)) {
         var robotClient = new RobotService.RobotServiceClient(chan);
         logger.Info(await robotClient.ResourceNamesAsync(new ResourceNamesRequest()));
+
+        await Task.Run(() => {
+            logger.Info(robotClient.ResourceNames(new ResourceNamesRequest()));
+        });
     }
 }

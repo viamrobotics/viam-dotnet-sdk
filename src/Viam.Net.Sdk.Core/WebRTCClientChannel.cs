@@ -23,12 +23,11 @@ class WebRTCClientChannel : GrpcChannel, IDisposable{
 
 // TODO(erd): synchronized
     public override CallInvoker CreateCallInvoker() {
-        var stream = nextStreamID();
-        return new TempCallInvoker(stream, this, (id) => RemoveStreamByID(id), _logger);
+        return new TempCallInvoker(this, _logger);
     }
 
 // TODO(erd): synchronized
-    private void RemoveStreamByID(ulong id) {
+    public void RemoveStreamByID(ulong id) {
         Streams.Remove(id);
     }
 
@@ -58,12 +57,11 @@ class WebRTCClientChannel : GrpcChannel, IDisposable{
         return result;
     }
 
-    private Stream nextStreamID() {
+    public Stream NextStreamID() {
         return new Stream { Id = streamIDCounter++ };
     }
 
     private void OnChannelMessage(RTCDataChannel dc, DataChannelPayloadProtocols protocols, byte[] data) {
-
         var resp = Response.Parser.ParseFrom(data);
         // TODO(erd): probably ned a catch on parse
 

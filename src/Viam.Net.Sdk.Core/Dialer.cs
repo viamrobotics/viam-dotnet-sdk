@@ -43,7 +43,7 @@ public class Dialer : IDisposable {
                             var authResp = await authClient.AuthenticateAsync(new AuthenticateRequest { 
                                 Entity = string.IsNullOrEmpty(opts.AuthEntity) ? address : opts.AuthEntity,
                                 Credentials = opts.Credentials
-                            });
+                            }).ConfigureAwait(false);
                             accessToken = authResp.AccessToken;
                         }
                     }
@@ -55,7 +55,7 @@ public class Dialer : IDisposable {
         }
 
         var chan = Grpc.Net.Client.GrpcChannel.ForAddress(address, chanOpts);
-        await chan.ConnectAsync();
+        await chan.ConnectAsync().ConfigureAwait(false);
 
         return new GrpcChannel.Wrapped(chan);
     }
@@ -96,7 +96,7 @@ public class Dialer : IDisposable {
             }
         }
 
-        var signalChannel = await DialDirectGRPCAsync(signalingAddress, optsCopy);
+        var signalChannel = await DialDirectGRPCAsync(signalingAddress, optsCopy).ConfigureAwait(false);
 
         _logger.Debug("connected");
         
@@ -105,13 +105,13 @@ public class Dialer : IDisposable {
         var config = optsCopy.WebRTCOptions.RTCConfig == null ? DefaultWebRTCConfiguration : optsCopy.WebRTCOptions.RTCConfig;
 
         try {
-            var configResp = await signalingClient.OptionalWebRTCConfigAsync(new OptionalWebRTCConfigRequest {}, headers: md);
+            var configResp = await signalingClient.OptionalWebRTCConfigAsync(new OptionalWebRTCConfigRequest {}, headers: md).ConfigureAwait(false);
             config = ExtendWebRTCConfig(config, configResp.Config);
         } catch (Grpc.Core.RpcException e) when (e.StatusCode == StatusCode.Unimplemented) {
             // do notihing
         }
 
-        var (pc, dc) = await NewPeerConnectionForClient(config, optsCopy.WebRTCOptions.DisableTrickleICE);
+        var (pc, dc) = await NewPeerConnectionForClient(config, optsCopy.WebRTCOptions.DisableTrickleICE).ConfigureAwait(false);
 
         var successful = false;
 
@@ -120,7 +120,7 @@ public class Dialer : IDisposable {
         // only send once since exchange may end or ICE may end
         var sendDone = async () => {
             // TODO(erd): make sure only sending once
-            await signalingClient.CallUpdateAsync(new CallUpdateRequest { Uuid = uuid, Done = true }, headers: md);
+            await signalingClient.CallUpdateAsync(new CallUpdateRequest { Uuid = uuid, Done = true }, headers: md).ConfigureAwait(false);
         };
 
         try {
@@ -147,14 +147,14 @@ public class Dialer : IDisposable {
                     //     callFlowWG.Add(1)
                     // }
                     Task.Run(async () => {
-                        await remoteDescSet.Task; // TODO(erd): and cancelation
+                        await remoteDescSet.Task.ConfigureAwait(false); // TODO(erd): and cancelation
                         // defer callFlowWG.Done()
                         var iProto = IceCandidateToProto(i);
-                        await signalingClient.CallUpdateAsync(new CallUpdateRequest { Uuid = uuid, Candidate = iProto }, headers: md);
+                        await signalingClient.CallUpdateAsync(new CallUpdateRequest { Uuid = uuid, Candidate = iProto }, headers: md).ConfigureAwait(false);
                     });
                 };
 
-                await pc.setLocalDescription(offer);
+                await pc.setLocalDescription(offer).ConfigureAwait(false);
             }
 
             var encodedSDP = EncodeSDP(pc.localDescription);
@@ -176,7 +176,7 @@ public class Dialer : IDisposable {
             // TODO(erd): task.run this
             var exchangeCandidates = async () => {
                 var haveInit = false;
-                await foreach (var resp in callClient.ResponseStream.ReadAllAsync()) {
+                await foreach (var resp in callClient.ResponseStream.ReadAllAsync().ConfigureAwait(false)) {
                     // TODO(erd): check cancelled
 
                     switch (resp.StageCase) {
@@ -192,7 +192,7 @@ public class Dialer : IDisposable {
                             remoteDescSet.SetResult(true);
 
                             if (optsCopy.WebRTCOptions.DisableTrickleICE) {
-                                await sendDone();
+                                await sendDone().ConfigureAwait(false);
                                 return;
                             }
                             break;
@@ -213,10 +213,10 @@ public class Dialer : IDisposable {
                 return;
             };
 
-            await Task.Run(exchangeCandidates); // TODO(erd): await first? like a select
+            await Task.Run(exchangeCandidates).ConfigureAwait(false); // TODO(erd): await first? like a select
 
             successful = true;
-            await clientCh.Ready();
+            await clientCh.Ready().ConfigureAwait(false);
             return clientCh;
         } finally {
             if (!successful) {
@@ -235,21 +235,31 @@ public class Dialer : IDisposable {
     }
 
     private static ICECandidate IceCandidateInitToProto(RTCIceCandidateInit ij) {
-        return new ICECandidate() {
+        var cand = new ICECandidate() {
             Candidate = ij.candidate,
-            SdpMid = ij.sdpMid,
             SdpmLineIndex = ij.sdpMLineIndex,
-            UsernameFragment = ij.usernameFragment,
         };
+        if (ij.sdpMid != null) {
+            cand.SdpMid = ij.sdpMid;
+        }
+        if (ij.usernameFragment != null) {
+            cand.UsernameFragment = ij.usernameFragment;
+        }
+        return cand;
     }
 
     private static ICECandidate IceCandidateToProto(RTCIceCandidate ij) {
-        return new ICECandidate() {
+        var cand = new ICECandidate() {
             Candidate = ij.candidate,
-            SdpMid = ij.sdpMid,
             SdpmLineIndex = ij.sdpMLineIndex,
-            UsernameFragment = ij.usernameFragment,
         };
+        if (ij.sdpMid != null) {
+            cand.SdpMid = ij.sdpMid;
+        }
+        if (ij.usernameFragment != null) {
+            cand.UsernameFragment = ij.usernameFragment;
+        }
+        return cand;
     }
 
     private static string EncodeSDP(RTCSessionDescription localDescription) {
@@ -282,13 +292,13 @@ public class Dialer : IDisposable {
                 id = 0,
                 negotiated = true,
                 ordered = true,
-            });
+            }).ConfigureAwait(false);
             // TODO(erd): even necessary?
             await pc.createDataChannel("negotiation", new RTCDataChannelInit {
                 id = 1,
                 negotiated = true,
                 ordered = true,
-            });
+            }).ConfigureAwait(false);
             var initialDataChannelOnError = (string err) => {
                 pc.Close($"premature data channel error before WebRTC channel association: {err}");
             };
