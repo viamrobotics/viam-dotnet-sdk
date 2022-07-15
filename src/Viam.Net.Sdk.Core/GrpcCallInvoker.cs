@@ -47,7 +47,8 @@ class TempCallInvoker : CallInvoker {
     public override AsyncServerStreamingCall<TResponse> AsyncServerStreamingCall<TRequest, TResponse>(Method<TRequest, TResponse> method, string? host, CallOptions options, TRequest request)
         where TRequest : class
         where TResponse : class {   
-            throw new NotImplementedException("not yet");
+            var clientStream = makeStream(method);
+            return clientStream.ServerStreamingCall(options, request);
     }
 
     public override AsyncUnaryCall<TResponse> AsyncUnaryCall<TRequest, TResponse>(Method<TRequest, TResponse> method, string? host, CallOptions options, TRequest request)

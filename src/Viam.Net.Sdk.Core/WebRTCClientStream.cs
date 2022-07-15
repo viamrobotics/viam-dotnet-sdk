@@ -73,6 +73,7 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer {
         var statusFut = new TaskCompletionSource<Status>();
         var trailersFut = new TaskCompletionSource<Grpc.Core.Metadata>();
 
+        // TODO(erd): need an async version?
         var listener = new FuncCallListener(
             (status, md) => {
                 if (status.StatusCode != StatusCode.OK) {
@@ -110,6 +111,100 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer {
 
         return new AsyncUnaryCall<TResponse>(
             responseAsync: result.Task,
+            responseHeadersAsync: respHeaders.Task,
+            getStatusFunc: () => {
+                return statusFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
+            },
+            getTrailersFunc: () => {
+                return trailersFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
+            },
+            disposeAction: () => {
+                Console.WriteLine("I HAVE BEEN DISPOSED ACTION!!!");
+            }
+        );
+    }
+
+    class AsyncStreamReader : IAsyncStreamReader<TResponse> {
+        
+        private bool _complete = false;
+        private TResponse? _current;
+        private TaskCompletionSource<TResponse> _next = new TaskCompletionSource<TResponse>();
+        private readonly SemaphoreSlim _currentSema = new SemaphoreSlim(1, 1);
+        
+        public TResponse Current {  get { return _current!; } }
+
+        public async Task<bool> MoveNext(CancellationToken cancellationToken) {
+            if (_complete) { // otherwise _next may throw forever as well
+                return false;
+            }
+            _current = await _next.Task;
+            if (_current == null) {
+                _complete = true;
+            }
+            _next = new TaskCompletionSource<TResponse>();
+            _currentSema.Release();
+            return _current != null;
+        }
+
+        public async Task<bool> SetNext(TResponse resp) {
+            await _currentSema;
+            _next.SetResult(resp);
+            return true;
+        }
+
+        public async Task<bool> SetException(Exception ex) {
+            await _currentSema;
+            _next.SetException(ex);
+            return true;
+        }
+    }
+
+    public AsyncServerStreamingCall<TResponse> ServerStreamingCall(CallOptions options, TRequest request) {
+        var ready = new TaskCompletionSource<bool>();
+        var respHeaders = new TaskCompletionSource<Grpc.Core.Metadata>();
+        var result = new TaskCompletionSource<TResponse>();
+        var statusFut = new TaskCompletionSource<Status>();
+        var trailersFut = new TaskCompletionSource<Grpc.Core.Metadata>();
+
+        var streamReader = new AsyncStreamReader();
+        var listener = new FuncCallListener(
+            async (status, md) => {
+                if (status.StatusCode != StatusCode.OK) {
+                    var ex = new Exception(String.Format("Code=%d Message=%s", status.StatusCode, status.Detail));
+                    ready.SetException(ex);
+                    result.SetException(ex);
+                    respHeaders.SetException(ex);
+                    await streamReader.SetException(ex);
+                }
+                statusFut.SetResult(status);
+                trailersFut.SetResult(md);
+            },
+            (md) => {
+                respHeaders.SetResult(md);
+            },
+            async (msg) => {
+                await streamReader.SetNext(msg);
+            },
+            () => {
+                ready.SetResult(true);
+            }
+        );
+
+        // TODO(erd): asyncify
+        Task.Run(async () => {
+            try {
+                this.Start(listener, options.Headers);
+                await ready.Task.ConfigureAwait(false);
+                this.SendMessage(request);
+                this.HalfClose();
+            } catch (Exception ex) {
+                _logger.Error(ex);
+                _baseStream.CloseWithRecvError(ex);
+            }
+        });
+
+        return new AsyncServerStreamingCall<TResponse>(
+            responseStream: streamReader,
             responseHeadersAsync: respHeaders.Task,
             getStatusFunc: () => {
                 return statusFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
