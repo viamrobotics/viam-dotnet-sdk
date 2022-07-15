@@ -3,7 +3,8 @@ namespace Viam.Net.Sdk.Core;
 using Google.Protobuf;
 using SIPSorcery.Net;
 
-class WebRTCBaseChannel : IDisposable {
+class WebRTCBaseChannel : IDisposable
+{
 
     private readonly RTCPeerConnection PeerConn;
     private readonly RTCDataChannel DataChannel;
@@ -18,7 +19,8 @@ class WebRTCBaseChannel : IDisposable {
         RTCPeerConnection peerConn,
         RTCDataChannel dataChannel,
         Action? onPeerDone = null
-    ) {
+    )
+    {
         PeerConn = peerConn;
         DataChannel = dataChannel;
         Ready = new TaskCompletionSource<bool>();
@@ -28,29 +30,38 @@ class WebRTCBaseChannel : IDisposable {
         dataChannel.onerror += OnChannelError;
 
         var peerDoneOnce = false;
-        var doPeerDone = () => {
-            if (!peerDoneOnce && onPeerDone != null) {
+        var doPeerDone = () =>
+        {
+            if (!peerDoneOnce && onPeerDone != null)
+            {
                 peerDoneOnce = true;
                 onPeerDone();
             }
         };
-        var connStateChanged = (RTCIceConnectionState connectionState) => {
-            lock(_closedMu) {
-                if (_closed) {
+        var connStateChanged = (RTCIceConnectionState connectionState) =>
+        {
+            lock (_closedMu)
+            {
+                if (_closed)
+                {
                     doPeerDone();
                     return;
                 }
             }
 
-            Task.Run(() => {
-                lock(_closedMu) {
-                    if (_closed) {
+            Task.Run(() =>
+            {
+                lock (_closedMu)
+                {
+                    if (_closed)
+                    {
                         doPeerDone();
                         return;
                     }
                 }
 
-                switch (connectionState) {
+                switch (connectionState)
+                {
                     case RTCIceConnectionState.disconnected:
                     case RTCIceConnectionState.failed:
                     case RTCIceConnectionState.closed:
@@ -64,21 +75,27 @@ class WebRTCBaseChannel : IDisposable {
         connStateChanged(peerConn.iceConnectionState);
     }
 
-    private void OnChannelOpen() {
+    private void OnChannelOpen()
+    {
         Ready.SetResult(true);
     }
 
-    private void OnChannelClose() {
+    private void OnChannelClose()
+    {
         CloseWithReason("data channel closed");
     }
 
-    private void OnChannelError(string err) {
+    private void OnChannelError(string err)
+    {
         CloseWithReason(err);
     }
 
-    private void CloseWithReason(string reason) {
-        lock(_closedMu) {
-            if (_closed) {
+    private void CloseWithReason(string reason)
+    {
+        lock (_closedMu)
+        {
+            if (_closed)
+            {
                 return;
             }
             _closed = true;
@@ -88,19 +105,23 @@ class WebRTCBaseChannel : IDisposable {
         }
     }
 
-    public void Dispose() {
+    public void Dispose()
+    {
         CloseWithReason("");
     }
 
-    public (bool, string) Closed() {
-        lock (_closedMu) {
+    public (bool, string) Closed()
+    {
+        lock (_closedMu)
+        {
             return (_closed, _closedReason);
         }
     }
 
     const int maxDataChannelSize = 16384;
 
-    public void Write(IMessage msg) {
+    public void Write(IMessage msg)
+    {
         using var stream = new MemoryStream();
         msg.WriteTo(stream);
         stream.Flush();

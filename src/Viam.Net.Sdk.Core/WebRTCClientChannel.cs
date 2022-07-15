@@ -4,7 +4,8 @@ using Grpc.Core;
 using Proto.Rpc.Webrtc.V1;
 using SIPSorcery.Net;
 
-class WebRTCClientChannel : GrpcChannel, IDisposable{
+class WebRTCClientChannel : GrpcChannel, IDisposable
+{
 
     // MaxStreamCount is the max number of streams a channel can have.
     public static int MaxStreamCount = 256;
@@ -15,28 +16,34 @@ class WebRTCClientChannel : GrpcChannel, IDisposable{
 
     public readonly Dictionary<ulong, WebRTCClientStreamContainer> Streams = new Dictionary<ulong, WebRTCClientStreamContainer>();
 
-    public WebRTCClientChannel(RTCPeerConnection peerConn, RTCDataChannel dataChannel, NLog.Logger logger) : base("doesnotmatter") {
+    public WebRTCClientChannel(RTCPeerConnection peerConn, RTCDataChannel dataChannel, NLog.Logger logger) : base("doesnotmatter")
+    {
         _baseChannel = new WebRTCBaseChannel(peerConn, dataChannel);
         dataChannel.onmessage += OnChannelMessage;
         _logger = logger;
     }
 
-// TODO(erd): synchronized
-    public override CallInvoker CreateCallInvoker() {
+    // TODO(erd): synchronized
+    public override CallInvoker CreateCallInvoker()
+    {
         return new TempCallInvoker(this, _logger);
     }
 
-// TODO(erd): synchronized
-    public void RemoveStreamByID(ulong id) {
+    // TODO(erd): synchronized
+    public void RemoveStreamByID(ulong id)
+    {
         Streams.Remove(id);
     }
 
-    public static Proto.Rpc.Webrtc.V1.Metadata FromGRPCMetadata(Grpc.Core.Metadata? metadata) {
+    public static Proto.Rpc.Webrtc.V1.Metadata FromGRPCMetadata(Grpc.Core.Metadata? metadata)
+    {
         var protoMd = new Proto.Rpc.Webrtc.V1.Metadata();
-        if (metadata == null) {
+        if (metadata == null)
+        {
             return protoMd;
         }
-        foreach (Grpc.Core.Metadata.Entry entry in metadata) {
+        foreach (Grpc.Core.Metadata.Entry entry in metadata)
+        {
             var strings = new Strings();
             strings.Values.Add(entry.Value);
             protoMd.Md.Add(entry.Key, strings);
@@ -44,28 +51,35 @@ class WebRTCClientChannel : GrpcChannel, IDisposable{
         return protoMd;
     }
 
-    public static Grpc.Core.Metadata ToGRPCMetadata(Proto.Rpc.Webrtc.V1.Metadata metadata) {
+    public static Grpc.Core.Metadata ToGRPCMetadata(Proto.Rpc.Webrtc.V1.Metadata metadata)
+    {
         var result = new Grpc.Core.Metadata();
-        if (metadata == null) {
+        if (metadata == null)
+        {
             return result;
         }
-        foreach (KeyValuePair<string, Strings> entry in metadata.Md) {
-            foreach (string value in entry.Value.Values) {
+        foreach (KeyValuePair<string, Strings> entry in metadata.Md)
+        {
+            foreach (string value in entry.Value.Values)
+            {
                 result.Add(entry.Key, value);
             }
         }
         return result;
     }
 
-    public Stream NextStreamID() {
+    public Stream NextStreamID()
+    {
         return new Stream { Id = streamIDCounter++ };
     }
 
-    private void OnChannelMessage(RTCDataChannel dc, DataChannelPayloadProtocols protocols, byte[] data) {
+    private void OnChannelMessage(RTCDataChannel dc, DataChannelPayloadProtocols protocols, byte[] data)
+    {
         var resp = Response.Parser.ParseFrom(data);
         // TODO(erd): probably ned a catch on parse
 
-        if (resp.Stream == null) {
+        if (resp.Stream == null)
+        {
             _logger.Warn("no stream id; discarding");
             return;
         }
@@ -74,7 +88,8 @@ class WebRTCClientChannel : GrpcChannel, IDisposable{
         var stream = resp.Stream;
         var id = stream.Id;
         var activeStream = Streams[id];
-        if (activeStream == null) {
+        if (activeStream == null)
+        {
             _logger.Warn("no stream for id; discarding: id=" + id);
             return;
         }
@@ -82,25 +97,31 @@ class WebRTCClientChannel : GrpcChannel, IDisposable{
         activeStream.OnResponse(resp);
     }
 
-    public Task<bool> Ready() {
+    public Task<bool> Ready()
+    {
         return _baseChannel.Ready.Task;
     }
 
-    public void WriteHeaders(Stream stream, RequestHeaders headers) {
-        _baseChannel.Write(new Request {
+    public void WriteHeaders(Stream stream, RequestHeaders headers)
+    {
+        _baseChannel.Write(new Request
+        {
             Stream = stream,
             Headers = headers,
         });
-    } 
+    }
 
-    public void WriteMessage(Stream stream, RequestMessage msg) {
-        _baseChannel.Write(new Request {
+    public void WriteMessage(Stream stream, RequestMessage msg)
+    {
+        _baseChannel.Write(new Request
+        {
             Stream = stream,
             Message = msg,
         });
-    } 
+    }
 
-    public override void Dispose() {
+    public override void Dispose()
+    {
         // TODO(erd): dispose streams
         _baseChannel.Dispose();
     }

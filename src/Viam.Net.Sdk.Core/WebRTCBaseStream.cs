@@ -2,7 +2,8 @@ namespace Viam.Net.Sdk.Core;
 
 using Proto.Rpc.Webrtc.V1;
 
-class WebRTCBaseStream {
+class WebRTCBaseStream
+{
     // MaxMessageSize is the maximum size a gRPC message can be.
     public static long MaxMessageSize = 1 << 25;
 
@@ -15,14 +16,17 @@ class WebRTCBaseStream {
     private Exception _ex = null!;
     private readonly NLog.Logger _logger;
 
-    public WebRTCBaseStream(Stream stream, Action<ulong> onDone, NLog.Logger logger) {
+    public WebRTCBaseStream(Stream stream, Action<ulong> onDone, NLog.Logger logger)
+    {
         _stream = stream;
         _onDone = onDone;
         _logger = logger;
     }
 
-    public void CloseWithRecvError(Exception ex) {
-        if (_closed) {
+    public void CloseWithRecvError(Exception ex)
+    {
+        if (_closed)
+        {
             return;
         }
         _closed = true;
@@ -30,9 +34,11 @@ class WebRTCBaseStream {
         _onDone(_stream.Id);
     }
 
-    public List<Byte>? ProcessPacketMessage(PacketMessage msg) {
+    public List<Byte>? ProcessPacketMessage(PacketMessage msg)
+    {
         var data = msg.Data;
-        if (data.Length + this.packetBufSize > MaxMessageSize) {
+        if (data.Length + this.packetBufSize > MaxMessageSize)
+        {
             this.packetBuf.Clear();
             this.packetBufSize = 0;
             _logger.Warn("message size larger than max " + MaxMessageSize + "; discarding");
@@ -40,10 +46,12 @@ class WebRTCBaseStream {
         }
         this.packetBuf.Add(data.ToList());
         this.packetBufSize += data.Length;
-        if (msg.Eom) {
+        if (msg.Eom)
+        {
             var allData = new List<Byte>(this.packetBufSize);
             int position = 0;
-            foreach (var partialData in this.packetBuf) {
+            foreach (var partialData in this.packetBuf)
+            {
                 allData.InsertRange(position, partialData);
                 position += partialData.Count;
             }
