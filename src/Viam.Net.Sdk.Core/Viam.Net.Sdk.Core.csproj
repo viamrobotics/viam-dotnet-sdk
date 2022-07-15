@@ -16,6 +16,13 @@
     <!-- <PackageReference Include="SIPSorcery" Version="6.0.8" /> -->
     <!-- TODO(erd): remove below after https://github.com/sipsorcery-org/sipsorcery/pull/783-->
     <ProjectReference Include = "/Users/eric/sipsorcery/src/SIPSorcery.csproj" />
+
+    <PackageReference 
+      Include="StyleCop.Analyzers" 
+      Version="1.2.0-beta.354"
+      PrivateAssets="all" 
+      Condition="$(MSBuildProjectExtension) == '.csproj'" 
+    />
   </ItemGroup>
 
 </Project>

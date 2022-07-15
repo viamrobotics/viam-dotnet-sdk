@@ -340,7 +340,7 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer
         );
 
         // TODO(erd): asyncify
-        Task.Run(async () =>
+        Task.Run(() =>
         {
             try
             {
@@ -412,7 +412,7 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer
         );
 
         // TODO(erd): asyncify
-        Task.Run(async () =>
+        Task.Run(() =>
         {
             try
             {
