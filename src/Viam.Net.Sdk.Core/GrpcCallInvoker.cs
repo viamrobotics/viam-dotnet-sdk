@@ -35,13 +35,15 @@ class TempCallInvoker : CallInvoker {
     public override AsyncClientStreamingCall<TRequest, TResponse> AsyncClientStreamingCall<TRequest, TResponse>(Method<TRequest, TResponse> method, string? host, CallOptions options)
         where TRequest : class
         where TResponse : class {
-            throw new NotImplementedException("not yet");
+            var clientStream = makeStream(method);
+            return clientStream.AsyncClientStreamingCall(options);
     }
 
     public override AsyncDuplexStreamingCall<TRequest, TResponse> AsyncDuplexStreamingCall<TRequest, TResponse>(Method<TRequest, TResponse> method, string? host, CallOptions options)
         where TRequest : class
         where TResponse : class {
-            throw new NotImplementedException("not yet");
+            var clientStream = makeStream(method);
+            return clientStream.DuplexStreamingCall(options);
     }
 
     public override AsyncServerStreamingCall<TResponse> AsyncServerStreamingCall<TRequest, TResponse>(Method<TRequest, TResponse> method, string? host, CallOptions options, TRequest request)

@@ -73,7 +73,6 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer {
         var statusFut = new TaskCompletionSource<Status>();
         var trailersFut = new TaskCompletionSource<Grpc.Core.Metadata>();
 
-        // TODO(erd): need an async version?
         var listener = new FuncCallListener(
             (status, md) => {
                 if (status.StatusCode != StatusCode.OK) {
@@ -167,6 +166,7 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer {
         var trailersFut = new TaskCompletionSource<Grpc.Core.Metadata>();
 
         var streamReader = new AsyncStreamReader();
+        // TODO(erd): need an async version?
         var listener = new FuncCallListener(
             async (status, md) => {
                 if (status.StatusCode != StatusCode.OK) {
@@ -204,6 +204,159 @@ class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer {
         });
 
         return new AsyncServerStreamingCall<TResponse>(
+            responseStream: streamReader,
+            responseHeadersAsync: respHeaders.Task,
+            getStatusFunc: () => {
+                return statusFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
+            },
+            getTrailersFunc: () => {
+                return trailersFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
+            },
+            disposeAction: () => {
+                Console.WriteLine("I HAVE BEEN DISPOSED ACTION!!!");
+            }
+        );
+    }
+
+    class ClientStreamWriter : IClientStreamWriter<TRequest> {
+
+        private readonly WebRTCClientStream<TRequest, TResponse> _clientStream;
+        private readonly SemaphoreSlim _currentSema = new SemaphoreSlim(1, 1);
+        private readonly Task<bool> _ready;
+
+        public ClientStreamWriter(WebRTCClientStream<TRequest, TResponse> clientStream, Task<bool> ready) {
+            _clientStream = clientStream;
+            _ready = ready;
+        }
+
+        public WriteOptions? WriteOptions { get; set; }
+
+        public async Task WriteAsync(TRequest message) {
+            await WriteAsync(message, null);
+        }
+
+        // TODO(erd): use cancellationToken
+        public async Task WriteAsync(TRequest message, CancellationToken? cancellationToken) {
+            await _ready.ConfigureAwait(false);
+            using (await _currentSema) {
+                _clientStream.SendMessage(message);
+                return;
+            }
+        }
+
+        public async Task CompleteAsync() {
+            await _ready.ConfigureAwait(false);
+            using (await _currentSema) {
+                _clientStream.HalfClose();
+                return;
+            }
+        }
+    }
+
+    public AsyncClientStreamingCall<TRequest, TResponse> AsyncClientStreamingCall(CallOptions options) {
+        var ready = new TaskCompletionSource<bool>();
+        var respHeaders = new TaskCompletionSource<Grpc.Core.Metadata>();
+        var result = new TaskCompletionSource<TResponse>();
+        var statusFut = new TaskCompletionSource<Status>();
+        var trailersFut = new TaskCompletionSource<Grpc.Core.Metadata>();
+
+        var streamReader = new AsyncStreamReader();
+        var streamWriter = new ClientStreamWriter(this, ready.Task);
+        var listener = new FuncCallListener(
+            async (status, md) => {
+                if (status.StatusCode != StatusCode.OK) {
+                    var ex = new Exception(String.Format("Code=%d Message=%s", status.StatusCode, status.Detail));
+                    ready.SetException(ex);
+                    result.SetException(ex);
+                    respHeaders.SetException(ex);
+                    await streamReader.SetException(ex);
+                }
+                statusFut.SetResult(status);
+                trailersFut.SetResult(md);
+            },
+            (md) => {
+                respHeaders.SetResult(md);
+            },
+            async (msg) => {
+                await ready.Task.ConfigureAwait(false);
+                result.SetResult(msg);
+            },
+            () => {
+                ready.SetResult(true);
+            }
+        );
+
+        // TODO(erd): asyncify
+        Task.Run(async () => {
+            try {
+                this.Start(listener, options.Headers);
+            } catch (Exception ex) {
+                _logger.Error(ex);
+                _baseStream.CloseWithRecvError(ex);
+            }
+        });
+
+        return new AsyncClientStreamingCall<TRequest, TResponse>(
+            requestStream: streamWriter,
+            responseAsync: result.Task,
+            responseHeadersAsync: respHeaders.Task,
+            getStatusFunc: () => {
+                return statusFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
+            },
+            getTrailersFunc: () => {
+                return trailersFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
+            },
+            disposeAction: () => {
+                Console.WriteLine("I HAVE BEEN DISPOSED ACTION!!!");
+            }
+        );
+    }
+
+    public AsyncDuplexStreamingCall<TRequest, TResponse> DuplexStreamingCall(CallOptions options) {
+        var ready = new TaskCompletionSource<bool>();
+        var respHeaders = new TaskCompletionSource<Grpc.Core.Metadata>();
+        var result = new TaskCompletionSource<TResponse>();
+        var statusFut = new TaskCompletionSource<Status>();
+        var trailersFut = new TaskCompletionSource<Grpc.Core.Metadata>();
+
+        var streamReader = new AsyncStreamReader();
+        var streamWriter = new ClientStreamWriter(this, ready.Task);
+        var listener = new FuncCallListener(
+            async (status, md) => {
+                if (status.StatusCode != StatusCode.OK) {
+                    var ex = new Exception(String.Format("Code=%d Message=%s", status.StatusCode, status.Detail));
+                    ready.SetException(ex);
+                    result.SetException(ex);
+                    respHeaders.SetException(ex);
+                    await streamReader.SetException(ex);
+                }
+                statusFut.SetResult(status);
+                trailersFut.SetResult(md);
+            },
+            (md) => {
+                respHeaders.SetResult(md);
+            },
+            async (msg) => {
+                await ready.Task.ConfigureAwait(false);
+                await streamReader.SetNext(msg);
+            },
+            () => {
+                ready.SetResult(true);
+            }
+        );
+
+        // TODO(erd): asyncify
+        Task.Run(async () => {
+            try {
+                this.Start(listener, options.Headers);
+            } catch (Exception ex) {
+                _logger.Error(ex);
+                _baseStream.CloseWithRecvError(ex);
+            }
+        });
+
+        return new AsyncDuplexStreamingCall<TRequest, TResponse>(
+            requestStream: streamWriter,
             responseStream: streamReader,
             responseHeadersAsync: respHeaders.Task,
             getStatusFunc: () => {
