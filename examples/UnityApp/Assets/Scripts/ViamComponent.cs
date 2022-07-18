@@ -1,16 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Google.Protobuf;
 using Grpc.Net.Client;
 using Grpc.Net.Client.Web;
 using System.Net.Http;
 using Proto.Api.Robot.V1;
 using Viam.Net.Sdk.Core;
 using Proto.Rpc.V1;
-using Proto.Rpc.Webrtc.V1;
-using Proto.Rpc.Examples.Echo.V1;
 using Grpc.Core;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System;
 using System.IO;
@@ -18,8 +14,23 @@ using System.Text;
 
 public class ViamComponent : MonoBehaviour
 {
+    List<GameObject> joints = new List<GameObject>();
+    List<double> jointVals = new List<double>();
+
     async void Start()
     {
+        GameObject last = null;
+        for (int i = 0; i < 6; i++)
+        {
+            GameObject cylinder = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            cylinder.transform.parent = last?.transform;
+            cylinder.transform.localPosition = new Vector3(0, 2, 0);
+
+            joints.Add(cylinder);
+            jointVals.Add(0);
+            last = cylinder;
+        }
+
         UnitySystemConsoleRedirector.Redirect();
         var logger = NLog.LogManager.GetCurrentClassLogger();
 
@@ -29,20 +40,18 @@ public class ViamComponent : MonoBehaviour
             {
                 var dialOpts = new DialOptions
                 {
-                    Insecure = true,
                     ChannelOptions = new GrpcChannelOptions
                     {
                         HttpHandler = new GrpcWebHandler(new HttpClientHandler())
                     },
                     WebRTCOptions = new DialWebRTCOptions
                     {
-                        SignalingInsecure = true,
-                        SignalingCredentials = new Credentials { Type = "api-key", Payload = "sosecret" }
+                        SignalingCredentials = new Credentials { Type = "robot-location-secret", Payload = "<SECRET>" }
                     }
                 };
 
 
-                using (var chan = await dialer.DialWebRTCAsync("http://localhost:8080", "something-unique", dialOpts))
+                using (var chan = await dialer.DialWebRTCAsync("https://app.viam.com", "<HOST>.viam.cloud", dialOpts))
                 {
                     var robotClient = new RobotService.RobotServiceClient(chan);
 
@@ -60,7 +69,13 @@ public class ViamComponent : MonoBehaviour
                         {
                             break;
                         }
-                        Debug.Log(statusRespStream.ResponseStream.Current);
+                        var cur = statusRespStream.ResponseStream.Current;
+                        var jointVals = cur.Status[0].Status_.Fields["joint_positions"].StructValue.Fields["values"].ListValue.Values.Clone();
+                        for (int i = 0; i < joints.Count; i++)
+                        {
+                            // TODO(erd): make thread safe
+                            this.jointVals[i] = jointVals[i].NumberValue;
+                        }
                     }
                 }
             }
@@ -69,9 +84,15 @@ public class ViamComponent : MonoBehaviour
 
     void Update()
     {
+        for (int i = 0; i < joints.Count; i++)
+        {
+            // TODO(erd): make thread safe
+            joints[i].transform.rotation = Quaternion.Euler((float)jointVals[i], 0, 0);
+        }
     }
 }
 
+// from https://www.jacksondunstan.com/articles/2986
 public static class UnitySystemConsoleRedirector
 {
     private class UnityTextWriter : TextWriter
