@@ -1,137 +1,141 @@
-namespace Viam.Net.Sdk.Core;
-
 using Grpc.Core;
 using Proto.Rpc.Webrtc.V1;
 using SIPSorcery.Net;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-class WebRTCClientChannel : GrpcChannel, IDisposable
+namespace Viam.Net.Sdk.Core
 {
-
-    // MaxStreamCount is the max number of streams a channel can have.
-    public static int MaxStreamCount = 256;
-
-    private readonly WebRTCBaseChannel _baseChannel;
-    private readonly NLog.Logger _logger;
-    private ulong streamIDCounter = 0; // TODO(erd): lock
-
-    public readonly Dictionary<ulong, WebRTCClientStreamContainer> Streams = new Dictionary<ulong, WebRTCClientStreamContainer>();
-
-    public WebRTCClientChannel(RTCPeerConnection peerConn, RTCDataChannel dataChannel, NLog.Logger logger) : base("doesnotmatter")
+    class WebRTCClientChannel : Channel, IDisposable
     {
-        _baseChannel = new WebRTCBaseChannel(peerConn, dataChannel);
-        dataChannel.onmessage += OnChannelMessage;
-        _logger = logger;
-    }
 
-    // TODO(erd): synchronized
-    public override CallInvoker CreateCallInvoker()
-    {
-        return new TempCallInvoker(this, _logger);
-    }
+        // MaxStreamCount is the max number of streams a channel can have.
+        public static int MaxStreamCount = 256;
 
-    // TODO(erd): synchronized
-    public void RemoveStreamByID(ulong id)
-    {
-        Streams.Remove(id);
-    }
+        private readonly WebRTCBaseChannel _baseChannel;
+        private readonly NLog.Logger _logger;
+        private ulong streamIDCounter = 0; // TODO(erd): lock
 
-    public static Proto.Rpc.Webrtc.V1.Metadata FromGRPCMetadata(Grpc.Core.Metadata? metadata)
-    {
-        var protoMd = new Proto.Rpc.Webrtc.V1.Metadata();
-        if (metadata == null)
+        public readonly Dictionary<ulong, WebRTCClientStreamContainer> Streams = new Dictionary<ulong, WebRTCClientStreamContainer>();
+
+        public WebRTCClientChannel(RTCPeerConnection peerConn, RTCDataChannel dataChannel, NLog.Logger logger) : base("doesnotmatter")
         {
+            _baseChannel = new WebRTCBaseChannel(peerConn, dataChannel);
+            dataChannel.onmessage += OnChannelMessage;
+            _logger = logger;
+        }
+
+        // TODO(erd): synchronized
+        public override CallInvoker CreateCallInvoker()
+        {
+            return new TempCallInvoker(this, _logger);
+        }
+
+        // TODO(erd): synchronized
+        public void RemoveStreamByID(ulong id)
+        {
+            Streams.Remove(id);
+        }
+
+        public static Proto.Rpc.Webrtc.V1.Metadata FromGRPCMetadata(Grpc.Core.Metadata? metadata)
+        {
+            var protoMd = new Proto.Rpc.Webrtc.V1.Metadata();
+            if (metadata == null)
+            {
+                return protoMd;
+            }
+            foreach (Grpc.Core.Metadata.Entry entry in metadata)
+            {
+                var strings = new Strings();
+                strings.Values.Add(entry.Value);
+                protoMd.Md.Add(entry.Key, strings);
+            }
             return protoMd;
         }
-        foreach (Grpc.Core.Metadata.Entry entry in metadata)
-        {
-            var strings = new Strings();
-            strings.Values.Add(entry.Value);
-            protoMd.Md.Add(entry.Key, strings);
-        }
-        return protoMd;
-    }
 
-    public static Grpc.Core.Metadata ToGRPCMetadata(Proto.Rpc.Webrtc.V1.Metadata metadata)
-    {
-        var result = new Grpc.Core.Metadata();
-        if (metadata == null)
+        public static Grpc.Core.Metadata ToGRPCMetadata(Proto.Rpc.Webrtc.V1.Metadata metadata)
         {
+            var result = new Grpc.Core.Metadata();
+            if (metadata == null)
+            {
+                return result;
+            }
+            foreach (KeyValuePair<string, Strings> entry in metadata.Md)
+            {
+                foreach (string value in entry.Value.Values)
+                {
+                    result.Add(entry.Key, value);
+                }
+            }
             return result;
         }
-        foreach (KeyValuePair<string, Strings> entry in metadata.Md)
+
+        public Stream NextStreamID()
         {
-            foreach (string value in entry.Value.Values)
+            return new Stream { Id = streamIDCounter++ };
+        }
+
+        private void OnChannelMessage(RTCDataChannel dc, DataChannelPayloadProtocols protocols, byte[] data)
+        {
+            var resp = Response.Parser.ParseFrom(data);
+            // TODO(erd): probably ned a catch on parse
+
+            if (resp.Stream == null)
             {
-                result.Add(entry.Key, value);
+                _logger.Warn("no stream id; discarding");
+                return;
             }
-        }
-        return result;
-    }
 
-    public Stream NextStreamID()
-    {
-        return new Stream { Id = streamIDCounter++ };
-    }
 
-    private void OnChannelMessage(RTCDataChannel dc, DataChannelPayloadProtocols protocols, byte[] data)
-    {
-        var resp = Response.Parser.ParseFrom(data);
-        // TODO(erd): probably ned a catch on parse
+            var stream = resp.Stream;
+            var id = stream.Id;
+            var activeStream = Streams[id];
+            if (activeStream == null)
+            {
+                _logger.Warn("no stream for id; discarding: id=" + id);
+                return;
+            }
 
-        if (resp.Stream == null)
-        {
-            _logger.Warn("no stream id; discarding");
-            return;
+            activeStream.OnResponse(resp);
         }
 
-
-        var stream = resp.Stream;
-        var id = stream.Id;
-        var activeStream = Streams[id];
-        if (activeStream == null)
+        public Task<bool> Ready()
         {
-            _logger.Warn("no stream for id; discarding: id=" + id);
-            return;
+            return _baseChannel.Ready.Task;
         }
 
-        activeStream.OnResponse(resp);
-    }
-
-    public Task<bool> Ready()
-    {
-        return _baseChannel.Ready.Task;
-    }
-
-    public void WriteHeaders(Stream stream, RequestHeaders headers)
-    {
-        _baseChannel.Write(new Request
+        public void WriteHeaders(Stream stream, RequestHeaders headers)
         {
-            Stream = stream,
-            Headers = headers,
-        });
-    }
+            _baseChannel.Write(new Request
+            {
+                Stream = stream,
+                Headers = headers,
+            });
+        }
 
-    public void WriteMessage(Stream stream, RequestMessage msg)
-    {
-        _baseChannel.Write(new Request
+        public void WriteMessage(Stream stream, RequestMessage msg)
         {
-            Stream = stream,
-            Message = msg,
-        });
+            _baseChannel.Write(new Request
+            {
+                Stream = stream,
+                Message = msg,
+            });
+        }
+
+        public override void Dispose()
+        {
+            // TODO(erd): dispose streams
+            _baseChannel.Dispose();
+        }
     }
 
-    public override void Dispose()
+    public static class ListExtensions
     {
-        // TODO(erd): dispose streams
-        _baseChannel.Dispose();
-    }
-}
-
-public static class ListExtensions
-{
-    public static List<T> GetRange<T>(this List<T> list, Range range)
-    {
-        var (start, length) = range.GetOffsetAndLength(list.Count);
-        return list.GetRange(start, length);
+        public static List<T> GetRange<T>(this List<T> list, Range range)
+        {
+            var (start, length) = range.GetOffsetAndLength(list.Count);
+            return list.GetRange(start, length);
+        }
     }
 }

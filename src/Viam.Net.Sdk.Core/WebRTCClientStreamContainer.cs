@@ -1,8 +1,9 @@
-namespace Viam.Net.Sdk.Core;
-
 using Proto.Rpc.Webrtc.V1;
 
-public interface WebRTCClientStreamContainer
+namespace Viam.Net.Sdk.Core
 {
-    void OnResponse(Response response);
+    public interface WebRTCClientStreamContainer
+    {
+        void OnResponse(Response response);
+    }
 }

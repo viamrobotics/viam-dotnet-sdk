@@ -1,55 +1,47 @@
-namespace Viam.Net.Sdk.Core;
-
 using Google.Protobuf;
 using SIPSorcery.Net;
+using System;
+using System.IO;
+using System.Threading.Tasks;
 
-class WebRTCBaseChannel : IDisposable
+namespace Viam.Net.Sdk.Core
 {
-
-    private readonly RTCPeerConnection PeerConn;
-    private readonly RTCDataChannel DataChannel;
-
-    public readonly TaskCompletionSource<bool> Ready;
-
-    private object _closedMu = new Object();
-    private bool _closed = false;
-    private string _closedReason = "";
-
-    public WebRTCBaseChannel(
-        RTCPeerConnection peerConn,
-        RTCDataChannel dataChannel,
-        Action? onPeerDone = null
-    )
+    class WebRTCBaseChannel : IDisposable
     {
-        PeerConn = peerConn;
-        DataChannel = dataChannel;
-        Ready = new TaskCompletionSource<bool>();
 
-        dataChannel.onopen += OnChannelOpen;
-        dataChannel.onclose += OnChannelClose;
-        dataChannel.onerror += OnChannelError;
+        private readonly RTCPeerConnection PeerConn;
+        private readonly RTCDataChannel DataChannel;
 
-        var peerDoneOnce = false;
-        var doPeerDone = () =>
+        public readonly TaskCompletionSource<bool> Ready;
+
+        private object _closedMu = new Object();
+        private bool _closed = false;
+        private string _closedReason = "";
+
+        public WebRTCBaseChannel(
+            RTCPeerConnection peerConn,
+            RTCDataChannel dataChannel,
+            Action? onPeerDone = null
+        )
         {
-            if (!peerDoneOnce && onPeerDone != null)
+            PeerConn = peerConn;
+            DataChannel = dataChannel;
+            Ready = new TaskCompletionSource<bool>();
+
+            dataChannel.onopen += OnChannelOpen;
+            dataChannel.onclose += OnChannelClose;
+            dataChannel.onerror += OnChannelError;
+
+            var peerDoneOnce = false;
+            Action doPeerDone = () =>
             {
-                peerDoneOnce = true;
-                onPeerDone();
-            }
-        };
-        var connStateChanged = (RTCIceConnectionState connectionState) =>
-        {
-            lock (_closedMu)
-            {
-                if (_closed)
+                if (!peerDoneOnce && onPeerDone != null)
                 {
-                    doPeerDone();
-                    return;
+                    peerDoneOnce = true;
+                    onPeerDone();
                 }
-            }
-
-            Task.Run(() =>
+            };
+            Action<RTCIceConnectionState> connStateChanged = (RTCIceConnectionState connectionState) =>
             {
                 lock (_closedMu)
                 {
@@ -60,71 +52,83 @@ class WebRTCBaseChannel : IDisposable
                     }
                 }
 
-                switch (connectionState)
+                Task.Run(() =>
                 {
-                    case RTCIceConnectionState.disconnected:
-                    case RTCIceConnectionState.failed:
-                    case RTCIceConnectionState.closed:
-                        doPeerDone();
-                        break;
-                };
-            });
-        };
+                    lock (_closedMu)
+                    {
+                        if (_closed)
+                        {
+                            doPeerDone();
+                            return;
+                        }
+                    }
 
-        peerConn.oniceconnectionstatechange += connStateChanged;
-        connStateChanged(peerConn.iceConnectionState);
-    }
+                    switch (connectionState)
+                    {
+                        case RTCIceConnectionState.disconnected:
+                        case RTCIceConnectionState.failed:
+                        case RTCIceConnectionState.closed:
+                            doPeerDone();
+                            break;
+                    };
+                });
+            };
 
-    private void OnChannelOpen()
-    {
-        Ready.SetResult(true);
-    }
+            peerConn.oniceconnectionstatechange += connStateChanged;
+            connStateChanged(peerConn.iceConnectionState);
+        }
 
-    private void OnChannelClose()
-    {
-        CloseWithReason("data channel closed");
-    }
-
-    private void OnChannelError(string err)
-    {
-        CloseWithReason(err);
-    }
-
-    private void CloseWithReason(string reason)
-    {
-        lock (_closedMu)
+        private void OnChannelOpen()
         {
-            if (_closed)
+            Ready.SetResult(true);
+        }
+
+        private void OnChannelClose()
+        {
+            CloseWithReason("data channel closed");
+        }
+
+        private void OnChannelError(string err)
+        {
+            CloseWithReason(err);
+        }
+
+        private void CloseWithReason(string reason)
+        {
+            lock (_closedMu)
             {
-                return;
+                if (_closed)
+                {
+                    return;
+                }
+                _closed = true;
+                _closedReason = reason;
+                // TODO(erd): cancelFunc
+                PeerConn.Close(reason);
             }
-            _closed = true;
-            _closedReason = reason;
-            // TODO(erd): cancelFunc
-            PeerConn.Close(reason);
         }
-    }
 
-    public void Dispose()
-    {
-        CloseWithReason("");
-    }
-
-    public (bool, string) Closed()
-    {
-        lock (_closedMu)
+        public void Dispose()
         {
-            return (_closed, _closedReason);
+            CloseWithReason("");
         }
-    }
 
-    const int maxDataChannelSize = 16384;
+        public (bool, string) Closed()
+        {
+            lock (_closedMu)
+            {
+                return (_closed, _closedReason);
+            }
+        }
 
-    public void Write(IMessage msg)
-    {
-        using var stream = new MemoryStream();
-        msg.WriteTo(stream);
-        stream.Flush();
-        DataChannel.send(stream.ToArray());
+        const int maxDataChannelSize = 16384;
+
+        public void Write(IMessage msg)
+        {
+            using var stream = new MemoryStream();
+            msg.WriteTo(stream);
+            stream.Flush();
+            DataChannel.send(stream.ToArray());
+        }
     }
 }
