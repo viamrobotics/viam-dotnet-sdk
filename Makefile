@@ -15,7 +15,3 @@ run_core_client_auth:
 
 run_core_client_webrtc_auth:
 	dotnet run --project examples/SimpleWebRTCAuth/Client http://localhost:8080
-
-prepare_unity_app:
-	dotnet build src/Viam.Net.Sdk.Core
-	cp src/Viam.Net.Sdk.Core/bin/Debug/netstandard2.1/Viam.Net.Sdk.Core.dll examples/UnityApp/Assets/
