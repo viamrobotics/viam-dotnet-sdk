@@ -17,14 +17,14 @@ using System.Linq;
 
 public class ViamComponent : MonoBehaviour
 {
-    List<GameObject> leftJoints = new List<GameObject>();
-    List<double> leftJointVals = new List<double>();
-    List<GameObject> rightJoints = new List<GameObject>();
-    List<double> rightJointVals = new List<double>();
-
+    GameObject leftArm;
+    GameObject leftLine;
+    GameObject rightArm;
+    GameObject rightLine;
+    Proto.Api.Common.V1.Pose leftPose;
+    Proto.Api.Common.V1.Pose rightPose;
     bool ready = false;
     bool initialSet = false;
-
 
     private readonly Proto.Api.Common.V1.ResourceName leftArmResourceName = new Proto.Api.Common.V1.ResourceName() { Namespace = "rdk", Type = "component", Subtype = "arm", Name = "left_arm" };
     private readonly Proto.Api.Common.V1.ResourceName rightArmResourceName = new Proto.Api.Common.V1.ResourceName() { Namespace = "rdk", Type = "component", Subtype = "arm", Name = "right_arm" };
@@ -53,106 +53,61 @@ public class ViamComponent : MonoBehaviour
 
                 using (var chan = await dialer.DialWebRTCAsync("https://app.viam.com", "<HOST>.viam.cloud", dialOpts))
                 {
-                    var robotClient = new RobotService.RobotServiceClient(chan);
-
-                    Debug.Log(await robotClient.ResourceNamesAsync(new ResourceNamesRequest()));
-
-
-                    var initialStatus = await robotClient.GetStatusAsync(new GetStatusRequest
-                    {
-                        ResourceNames = {
-                            leftArmResourceName,
-                            rightArmResourceName
-                        }
-                    });
-
-                    leftJointVals = initialStatus.Status[0].Status_.Fields["joint_positions"].StructValue.Fields["values"].ListValue.Values.Clone().Select(obj => obj.NumberValue).ToList();
-                    rightJointVals = initialStatus.Status[1].Status_.Fields["joint_positions"].StructValue.Fields["values"].ListValue.Values.Clone().Select(obj => obj.NumberValue).ToList();
-
-                    this.ready = true;
-
-                    var statusRespStream = robotClient.StreamStatus(new StreamStatusRequest
-                    {
-                        ResourceNames = {
-                            leftArmResourceName,
-                            rightArmResourceName
-                        },
-                        Every = Duration.FromTimeSpan(TimeSpan.FromSeconds(1.0 / 60))
-                    });
+                    var motionClient = new MotionService.MotionServiceClient(chan);
+                    await setArmPoses(motionClient);
+                    ready = true;
 
                     while (true)
                     {
-                        if (!(await statusRespStream.ResponseStream.MoveNext()))
-                        {
-                            break;
-                        }
-                        var cur = statusRespStream.ResponseStream.Current;
+                        await setArmPoses(motionClient);
+                        await Task.Delay(TimeSpan.FromSeconds(1.0 / 60));
 
-                        for (int i = 0; i < cur.Status.Count; i++)
-                        {
-                            var status = cur.Status[i];
-                            if (status.Name.Equals(leftArmResourceName))
-                            {
-                                leftJointVals = status.Status_.Fields["joint_positions"].StructValue.Fields["values"].ListValue.Values.Clone().Select(obj => obj.NumberValue).ToList();
-                            }
-                            else
-                            {
-                                rightJointVals = status.Status_.Fields["joint_positions"].StructValue.Fields["values"].ListValue.Values.Clone().Select(obj => obj.NumberValue).ToList();
-                            }
-                        }
                     }
                 }
             }
         });
     }
 
-    void setArmStartingPositions(List<GameObject> joints, int len, bool isLeft)
+    async Task setArmPoses(MotionService.MotionServiceClient motionClient)
     {
+        var resp = await motionClient.GetPoseAsync(new GetPoseRequest { ComponentName = leftArmResourceName });
+        leftPose = resp.Pose.Pose;
 
-        GameObject last = null;
-        for (int i = 0; i < len; i++)
-        {
-            GameObject cylinder = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
-            cylinder.transform.parent = last?.transform;
-            cylinder.transform.localPosition = new Vector3(0, 2, 0);
-            if (i == 0)
-            {
-                cylinder.transform.localPosition = new Vector3(isLeft ? 10 : 0, 2, 0);
-            }
-
-            joints.Add(cylinder);
-            last = cylinder;
-        }
+        resp = await motionClient.GetPoseAsync(new GetPoseRequest { ComponentName = rightArmResourceName });
+        rightPose = resp.Pose.Pose;
     }
 
     void Update()
     {
 
-        if (!ready)
-        {
-            return;
-        }
+        if (!ready) { return; }
 
         if (!initialSet)
         {
-            setArmStartingPositions(leftJoints, leftJointVals.Count, true);
-            setArmStartingPositions(rightJoints, rightJointVals.Count, false);
+            leftArm = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            leftLine = new GameObject("ov");
+            leftLine.transform.parent = leftArm.transform;
+            var lineRenderer = leftLine.AddComponent(typeof(LineRenderer)) as LineRenderer;
+            lineRenderer.startWidth = .1F;
+            lineRenderer.endWidth = .1F;
+            lineRenderer.useWorldSpace = false;
 
+            rightArm = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            rightLine = new GameObject("ov");
+            rightLine.transform.parent = rightArm.transform;
+            lineRenderer = rightLine.AddComponent(typeof(LineRenderer)) as LineRenderer;
+            lineRenderer.startWidth = .1F;
+            lineRenderer.endWidth = .1F;
+            lineRenderer.useWorldSpace = false;
 
             initialSet = true;
         }
 
-        for (int i = 0; i < leftJoints.Count; i++)
-        {
-            // TODO(erd): make thread safe
-            leftJoints[i].transform.rotation = Quaternion.Euler((float)leftJointVals[i], 0, 0);
-        }
+        leftArm.transform.localPosition = new Vector3((float)leftPose.X, (float)leftPose.Y, (float)leftPose.Z);
+        leftLine.transform.rotation = Quaternion.Euler((float)leftPose.OX, (float)leftPose.OY, (float)leftPose.OZ);
 
-        for (int i = 0; i < rightJoints.Count; i++)
-        {
-            // TODO(erd): make thread safe
-            rightJoints[i].transform.rotation = Quaternion.Euler((float)rightJointVals[i], 0, 0);
-        }
+        rightArm.transform.localPosition = new Vector3((float)rightPose.X, (float)rightPose.Y, (float)rightPose.Z);
+        rightLine.transform.rotation = Quaternion.Euler((float)rightPose.OX, (float)rightPose.OY, (float)rightPose.OZ);
     }
 }
 
