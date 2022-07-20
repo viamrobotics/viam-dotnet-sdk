@@ -1,3 +1,14 @@
+# TODOs
+* figure out linting
+* stylecop in vscode
+* how to invoke from command line?
+* view all warnings
+* cleaning up channel with shutdownasync properly?
+* need to time out properly on everything?? cancellation tokens
+* catch exceptions in On* delegate/actions/events
+* resolve TODOs
+* rename Viam.net.Sdk.Core to Viam.Net.Sdk?
+
 # Sample Unity App
 
 This sample app demonstrates visualizing an arm using Unity forward kinematics and joint angles coming from status updates.
