@@ -73,17 +73,13 @@ public class ViamComponent : MonoBehaviour
 
                         while (true)
                         {
-                            Debug.Log("get");
                             await setArmPosesMotion(motionClient);
-                            Debug.Log("got");
                             if (!ready)
                             {
                                 ready = true;
                             }
 
-                            Debug.Log("wait");
                             await Task.Delay(TimeSpan.FromSeconds(1.0 / 60));
-                            Debug.Log("waited");
                         }
                     }
                 }
@@ -99,11 +95,10 @@ public class ViamComponent : MonoBehaviour
     {
         var resp = await motionClient.GetPoseAsync(new GetPoseRequest { ComponentName = leftArmResourceName });
         leftPose = resp.Pose.Pose;
-        Debug.Log(leftPose);
+        Debug.Log(resp.Pose);
 
         resp = await motionClient.GetPoseAsync(new GetPoseRequest { ComponentName = rightArmResourceName });
         rightPose = resp.Pose.Pose;
-        Debug.Log(rightPose);
     }
 
     void Update()
@@ -118,6 +113,7 @@ public class ViamComponent : MonoBehaviour
         {
             leftArm = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             leftArm.name = "Left Arm";
+            leftArm.transform.localScale = new Vector3(.1F, .1F, .1F);
             leftLine = new GameObject("Pointer");
             leftLine.transform.parent = leftArm.transform;
             var lineRenderer = leftLine.AddComponent(typeof(LineRenderer)) as LineRenderer;
@@ -127,6 +123,7 @@ public class ViamComponent : MonoBehaviour
 
             rightArm = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             rightArm.name = "Right Arm";
+            rightArm.transform.localScale = new Vector3(.1F, .1F, .1F);
             rightLine = new GameObject("Pointer");
             rightLine.transform.parent = rightArm.transform;
             lineRenderer = rightLine.AddComponent(typeof(LineRenderer)) as LineRenderer;
@@ -137,10 +134,10 @@ public class ViamComponent : MonoBehaviour
             initialSet = true;
         }
 
-        leftArm.transform.localPosition = new Vector3((float)leftPose.X, (float)leftPose.Y, (float)leftPose.Z);
+        leftArm.transform.localPosition = new Vector3((float)leftPose.X/1e3F, (float)leftPose.Y/1e3F, (float)leftPose.Z/1e3F);
         leftLine.transform.rotation = ovToQuat(leftPose);
 
-        rightArm.transform.localPosition = new Vector3((float)rightPose.X, (float)rightPose.Y, (float)rightPose.Z);
+        rightArm.transform.localPosition = new Vector3((float)rightPose.X/1e3F, (float)rightPose.Y/1e3F, (float)rightPose.Z/1e3F);
         rightLine.transform.rotation = ovToQuat(rightPose);
     }
 
