@@ -4,6 +4,7 @@ using Grpc.Net.Client.Web;
 using System.Net.Http;
 using Proto.Api.Robot.V1;
 using Proto.Api.Service.Motion.V1;
+using Proto.Api.Component.Arm.V1;
 using Viam.Net.Sdk.Core;
 using Proto.Rpc.V1;
 using Grpc.Core;
@@ -53,13 +54,16 @@ public class ViamComponent : MonoBehaviour
 
                 using (var chan = await dialer.DialWebRTCAsync("https://app.viam.com", "<HOST>.viam.cloud", dialOpts))
                 {
-                    var motionClient = new MotionService.MotionServiceClient(chan);
-                    await setArmPoses(motionClient);
+                    // var motionClient = new MotionService.MotionServiceClient(chan);
+                    // await setArmPosesMotion(motionClient);
+                    var armClient = new ArmService.ArmServiceClient(chan);
+                    await setArmPoses(armClient);
                     ready = true;
 
                     while (true)
                     {
-                        await setArmPoses(motionClient);
+                        // await setArmPosesMotion(motionClient);
+                        await setArmPoses(armClient);
                         await Task.Delay(TimeSpan.FromSeconds(1.0 / 60));
 
                     }
@@ -68,7 +72,16 @@ public class ViamComponent : MonoBehaviour
         });
     }
 
-    async Task setArmPoses(MotionService.MotionServiceClient motionClient)
+    async Task setArmPoses(ArmService.ArmServiceClient armClient)
+    {
+        var resp = await armClient.GetEndPositionAsync(new GetEndPositionRequest { Name = leftArmResourceName.Name });
+        leftPose = resp.Pose;
+
+        resp = await armClient.GetEndPositionAsync(new GetEndPositionRequest { Name = rightArmResourceName.Name });
+        rightPose = resp.Pose;
+    }
+
+    async Task setArmPosesMotion(MotionService.MotionServiceClient motionClient)
     {
         var resp = await motionClient.GetPoseAsync(new GetPoseRequest { ComponentName = leftArmResourceName });
         leftPose = resp.Pose.Pose;
