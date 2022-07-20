@@ -5,7 +5,22 @@ This sample app demonstrates visualizing an arm using Unity forward kinematics a
 ## Setup
 
 * `make setup`
-* Edit ./Assets/Scripts/ViamComponent.cs and update `<HOST>` and `<SECRET>` with values from your robot on https://app.viam.com.
+* Create ./Assets/Scripts/Parameters.cs and update `<HOST>` and `<SECRET>` with values from your robot on https://app.viam.com:
+
+```golang
+using Proto.Rpc.V1;
+public class Parameters
+{
+    public static readonly string SignalingServer = "https://app.viam.com";
+    public static readonly Credentials SignalingCredentials = new Credentials
+    {
+        Type = "robot-location-secret",
+        Payload = "<SECRET>"
+    };
+    public static readonly string Host = "<HOST>";
+}
+
+```
 
 ## Running
 
