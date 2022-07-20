@@ -73,13 +73,17 @@ public class ViamComponent : MonoBehaviour
 
                         while (true)
                         {
+                            Debug.Log("get");
                             await setArmPosesMotion(motionClient);
+                            Debug.Log("got");
                             if (!ready)
                             {
                                 ready = true;
                             }
 
+                            Debug.Log("wait");
                             await Task.Delay(TimeSpan.FromSeconds(1.0 / 60));
+                            Debug.Log("waited");
                         }
                     }
                 }
@@ -95,9 +99,11 @@ public class ViamComponent : MonoBehaviour
     {
         var resp = await motionClient.GetPoseAsync(new GetPoseRequest { ComponentName = leftArmResourceName });
         leftPose = resp.Pose.Pose;
+        Debug.Log(leftPose);
 
         resp = await motionClient.GetPoseAsync(new GetPoseRequest { ComponentName = rightArmResourceName });
         rightPose = resp.Pose.Pose;
+        Debug.Log(rightPose);
     }
 
     void Update()
@@ -111,7 +117,8 @@ public class ViamComponent : MonoBehaviour
         if (!initialSet)
         {
             leftArm = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            leftLine = new GameObject("ov");
+            leftArm.name = "Left Arm";
+            leftLine = new GameObject("Pointer");
             leftLine.transform.parent = leftArm.transform;
             var lineRenderer = leftLine.AddComponent(typeof(LineRenderer)) as LineRenderer;
             lineRenderer.startWidth = .1F;
@@ -119,7 +126,8 @@ public class ViamComponent : MonoBehaviour
             lineRenderer.useWorldSpace = false;
 
             rightArm = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            rightLine = new GameObject("ov");
+            rightArm.name = "Right Arm";
+            rightLine = new GameObject("Pointer");
             rightLine.transform.parent = rightArm.transform;
             lineRenderer = rightLine.AddComponent(typeof(LineRenderer)) as LineRenderer;
             lineRenderer.startWidth = .1F;
@@ -130,10 +138,36 @@ public class ViamComponent : MonoBehaviour
         }
 
         leftArm.transform.localPosition = new Vector3((float)leftPose.X, (float)leftPose.Y, (float)leftPose.Z);
-        leftLine.transform.rotation = Quaternion.Euler((float)leftPose.OX, (float)leftPose.OY, (float)leftPose.OZ);
+        leftLine.transform.rotation = ovToQuat(leftPose);
 
         rightArm.transform.localPosition = new Vector3((float)rightPose.X, (float)rightPose.Y, (float)rightPose.Z);
-        rightLine.transform.rotation = Quaternion.Euler((float)rightPose.OX, (float)rightPose.OY, (float)rightPose.OZ);
+        rightLine.transform.rotation = ovToQuat(rightPose);
+    }
+
+    private Quaternion ovToQuat(Proto.Api.Common.V1.Pose pose)
+    {
+        var lat = Math.Acos(pose.OZ);
+        var lon = 0F;
+        if (1 - Math.Abs(pose.OZ) > 0.0001)
+        {
+            lon = (float)Math.Atan2(pose.OY, pose.OX);
+        }
+        var theta = pose.Theta;
+
+        var cosLon = Math.Cos(lon);
+        var cosLat = Math.Cos(lat);
+        var cosThe = Math.Cos(theta);
+
+        var sinLon = Math.Sin(lon);
+        var sinLat = Math.Sin(lat);
+        var sinThe = Math.Sin(theta);
+
+        var quat = new Quaternion();
+        quat.w = (float)((cosLon * cosLat * cosThe) - (sinLon * cosLat * sinThe));
+        quat.x = (float)((cosLon * sinLat * sinThe) - (sinLon * sinLat * cosThe));
+        quat.y = (float)((cosLon * sinLat * cosThe) + (sinLon * sinLat * sinThe));
+        quat.z = (float)((sinLon * cosLat * cosThe) + (cosLon * cosLat * sinThe));
+        return quat.normalized;
     }
 }
 
