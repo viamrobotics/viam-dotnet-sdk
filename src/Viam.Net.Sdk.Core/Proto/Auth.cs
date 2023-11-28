@@ -55,6 +55,7 @@ namespace Proto.Rpc.V1 {
 
   }
   #region Messages
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class Credentials : pb::IMessage<Credentials>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -290,6 +291,7 @@ namespace Proto.Rpc.V1 {
   /// <summary>
   /// An AuthenticateRequest contains the credentials used to authenticate.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class AuthenticateRequest : pb::IMessage<AuthenticateRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -528,6 +530,7 @@ namespace Proto.Rpc.V1 {
   /// <summary>
   /// An AuthenticateResponse is returned after successful authentication.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class AuthenticateResponse : pb::IMessage<AuthenticateResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -724,6 +727,7 @@ namespace Proto.Rpc.V1 {
   /// <summary>
   /// An AuthenticateToRequest contains the entity to authenticate to.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class AuthenticateToRequest : pb::IMessage<AuthenticateToRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -916,6 +920,7 @@ namespace Proto.Rpc.V1 {
   /// <summary>
   /// An AuthenticateResponse is returned after successful authentication.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class AuthenticateToResponse : pb::IMessage<AuthenticateToResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage

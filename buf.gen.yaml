@@ -1,6 +1,6 @@
 version: v1
 plugins:
-  - remote: buf.build/protocolbuffers/plugins/csharp:v21.2.0-1
+  - plugin: buf.build/protocolbuffers/csharp
     out: src/Viam.Net.Sdk.Core/Proto
-  - remote: buf.build/grpc/plugins/csharp:v1.47.0-1
+  - plugin: buf.build/grpc/csharp:v1.59.3
     out: src/Viam.Net.Sdk.Core/Proto

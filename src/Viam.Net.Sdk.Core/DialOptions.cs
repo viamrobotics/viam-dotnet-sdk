@@ -19,7 +19,7 @@ namespace Viam.Net.Sdk.Core
         {
             var dialOpts = (DialOptions)MemberwiseClone();
             dialOpts.Credentials = Credentials?.Clone();
-            dialOpts.WebRTCOptions = (DialWebRTCOptions)WebRTCOptions.Clone();
+            dialOpts.WebRTCOptions = WebRTCOptions?.Clone();
             return dialOpts;
         }
     }

@@ -45,6 +45,7 @@ namespace Proto.Rpc.Examples.Fileupload.V1 {
 
   }
   #region Messages
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class UploadFileRequest : pb::IMessage<UploadFileRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -102,10 +103,24 @@ namespace Proto.Rpc.Examples.Fileupload.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string Name {
-      get { return dataCase_ == DataOneofCase.Name ? (string) data_ : ""; }
+      get { return HasName ? (string) data_ : ""; }
       set {
         data_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
         dataCase_ = DataOneofCase.Name;
+      }
+    }
+    /// <summary>Gets whether the "name" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasName {
+      get { return dataCase_ == DataOneofCase.Name; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "name" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearName() {
+      if (HasName) {
+        ClearData();
       }
     }
 
@@ -114,10 +129,24 @@ namespace Proto.Rpc.Examples.Fileupload.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pb::ByteString ChunkData {
-      get { return dataCase_ == DataOneofCase.ChunkData ? (pb::ByteString) data_ : pb::ByteString.Empty; }
+      get { return HasChunkData ? (pb::ByteString) data_ : pb::ByteString.Empty; }
       set {
         data_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
         dataCase_ = DataOneofCase.ChunkData;
+      }
+    }
+    /// <summary>Gets whether the "chunk_data" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasChunkData {
+      get { return dataCase_ == DataOneofCase.ChunkData; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "chunk_data" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearChunkData() {
+      if (HasChunkData) {
+        ClearData();
       }
     }
 
@@ -167,8 +196,8 @@ namespace Proto.Rpc.Examples.Fileupload.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (dataCase_ == DataOneofCase.Name) hash ^= Name.GetHashCode();
-      if (dataCase_ == DataOneofCase.ChunkData) hash ^= ChunkData.GetHashCode();
+      if (HasName) hash ^= Name.GetHashCode();
+      if (HasChunkData) hash ^= ChunkData.GetHashCode();
       hash ^= (int) dataCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -188,11 +217,11 @@ namespace Proto.Rpc.Examples.Fileupload.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (dataCase_ == DataOneofCase.Name) {
+      if (HasName) {
         output.WriteRawTag(10);
         output.WriteString(Name);
       }
-      if (dataCase_ == DataOneofCase.ChunkData) {
+      if (HasChunkData) {
         output.WriteRawTag(18);
         output.WriteBytes(ChunkData);
       }
@@ -206,11 +235,11 @@ namespace Proto.Rpc.Examples.Fileupload.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (dataCase_ == DataOneofCase.Name) {
+      if (HasName) {
         output.WriteRawTag(10);
         output.WriteString(Name);
       }
-      if (dataCase_ == DataOneofCase.ChunkData) {
+      if (HasChunkData) {
         output.WriteRawTag(18);
         output.WriteBytes(ChunkData);
       }
@@ -224,10 +253,10 @@ namespace Proto.Rpc.Examples.Fileupload.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (dataCase_ == DataOneofCase.Name) {
+      if (HasName) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
-      if (dataCase_ == DataOneofCase.ChunkData) {
+      if (HasChunkData) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(ChunkData);
       }
       if (_unknownFields != null) {
@@ -304,6 +333,7 @@ namespace Proto.Rpc.Examples.Fileupload.V1 {
 
   }
 
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class UploadFileResponse : pb::IMessage<UploadFileResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage

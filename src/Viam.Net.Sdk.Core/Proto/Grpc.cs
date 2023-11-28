@@ -28,42 +28,43 @@ namespace Proto.Rpc.Webrtc.V1 {
             "ZWJydGMudjEaHmdvb2dsZS9wcm90b2J1Zi9kdXJhdGlvbi5wcm90bxoXZ29v",
             "Z2xlL3JwYy9zdGF0dXMucHJvdG8iNQoNUGFja2V0TWVzc2FnZRISCgRkYXRh",
             "GAEgASgMUgRkYXRhEhAKA2VvbRgCIAEoCFIDZW9tIhgKBlN0cmVhbRIOCgJp",
-            "ZBgBIAEoBFICaWQiyAEKB1JlcXVlc3QSMwoGc3RyZWFtGAEgASgLMhsucHJv",
+            "ZBgBIAEoBFICaWQi6QEKB1JlcXVlc3QSMwoGc3RyZWFtGAEgASgLMhsucHJv",
             "dG8ucnBjLndlYnJ0Yy52MS5TdHJlYW1SBnN0cmVhbRI/CgdoZWFkZXJzGAIg",
             "ASgLMiMucHJvdG8ucnBjLndlYnJ0Yy52MS5SZXF1ZXN0SGVhZGVyc0gAUgdo",
             "ZWFkZXJzEj8KB21lc3NhZ2UYAyABKAsyIy5wcm90by5ycGMud2VicnRjLnYx",
-            "LlJlcXVlc3RNZXNzYWdlSABSB21lc3NhZ2VCBgoEdHlwZSKYAQoOUmVxdWVz",
-            "dEhlYWRlcnMSFgoGbWV0aG9kGAEgASgJUgZtZXRob2QSOQoIbWV0YWRhdGEY",
-            "AiABKAsyHS5wcm90by5ycGMud2VicnRjLnYxLk1ldGFkYXRhUghtZXRhZGF0",
-            "YRIzCgd0aW1lb3V0GAMgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9u",
-            "Ugd0aW1lb3V0Io4BCg5SZXF1ZXN0TWVzc2FnZRIfCgtoYXNfbWVzc2FnZRgB",
-            "IAEoCFIKaGFzTWVzc2FnZRJJCg5wYWNrZXRfbWVzc2FnZRgCIAEoCzIiLnBy",
-            "b3RvLnJwYy53ZWJydGMudjEuUGFja2V0TWVzc2FnZVINcGFja2V0TWVzc2Fn",
-            "ZRIQCgNlb3MYAyABKAhSA2VvcyKQAgoIUmVzcG9uc2USMwoGc3RyZWFtGAEg",
-            "ASgLMhsucHJvdG8ucnBjLndlYnJ0Yy52MS5TdHJlYW1SBnN0cmVhbRJACgdo",
-            "ZWFkZXJzGAIgASgLMiQucHJvdG8ucnBjLndlYnJ0Yy52MS5SZXNwb25zZUhl",
-            "YWRlcnNIAFIHaGVhZGVycxJACgdtZXNzYWdlGAMgASgLMiQucHJvdG8ucnBj",
-            "LndlYnJ0Yy52MS5SZXNwb25zZU1lc3NhZ2VIAFIHbWVzc2FnZRJDCgh0cmFp",
-            "bGVycxgEIAEoCzIlLnByb3RvLnJwYy53ZWJydGMudjEuUmVzcG9uc2VUcmFp",
-            "bGVyc0gAUgh0cmFpbGVyc0IGCgR0eXBlIkwKD1Jlc3BvbnNlSGVhZGVycxI5",
-            "CghtZXRhZGF0YRgBIAEoCzIdLnByb3RvLnJwYy53ZWJydGMudjEuTWV0YWRh",
-            "dGFSCG1ldGFkYXRhIlwKD1Jlc3BvbnNlTWVzc2FnZRJJCg5wYWNrZXRfbWVz",
-            "c2FnZRgBIAEoCzIiLnByb3RvLnJwYy53ZWJydGMudjEuUGFja2V0TWVzc2Fn",
-            "ZVINcGFja2V0TWVzc2FnZSJ5ChBSZXNwb25zZVRyYWlsZXJzEioKBnN0YXR1",
-            "cxgBIAEoCzISLmdvb2dsZS5ycGMuU3RhdHVzUgZzdGF0dXMSOQoIbWV0YWRh",
-            "dGEYAiABKAsyHS5wcm90by5ycGMud2VicnRjLnYxLk1ldGFkYXRhUghtZXRh",
-            "ZGF0YSIhCgdTdHJpbmdzEhYKBnZhbHVlcxgBIAMoCVIGdmFsdWVzIpYBCghN",
-            "ZXRhZGF0YRI1CgJtZBgBIAMoCzIlLnByb3RvLnJwYy53ZWJydGMudjEuTWV0",
-            "YWRhdGEuTWRFbnRyeVICbWQaUwoHTWRFbnRyeRIQCgNrZXkYASABKAlSA2tl",
-            "eRIyCgV2YWx1ZRgCIAEoCzIcLnByb3RvLnJwYy53ZWJydGMudjEuU3RyaW5n",
-            "c1IFdmFsdWU6AjgBQidaJWdvLnZpYW0uY29tL3V0aWxzL3Byb3RvL3JwYy93",
-            "ZWJydGMvdjFiBnByb3RvMw=="));
+            "LlJlcXVlc3RNZXNzYWdlSABSB21lc3NhZ2USHwoKcnN0X3N0cmVhbRgEIAEo",
+            "CEgAUglyc3RTdHJlYW1CBgoEdHlwZSKYAQoOUmVxdWVzdEhlYWRlcnMSFgoG",
+            "bWV0aG9kGAEgASgJUgZtZXRob2QSOQoIbWV0YWRhdGEYAiABKAsyHS5wcm90",
+            "by5ycGMud2VicnRjLnYxLk1ldGFkYXRhUghtZXRhZGF0YRIzCgd0aW1lb3V0",
+            "GAMgASgLMhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uUgd0aW1lb3V0Io4B",
+            "Cg5SZXF1ZXN0TWVzc2FnZRIfCgtoYXNfbWVzc2FnZRgBIAEoCFIKaGFzTWVz",
+            "c2FnZRJJCg5wYWNrZXRfbWVzc2FnZRgCIAEoCzIiLnByb3RvLnJwYy53ZWJy",
+            "dGMudjEuUGFja2V0TWVzc2FnZVINcGFja2V0TWVzc2FnZRIQCgNlb3MYAyAB",
+            "KAhSA2VvcyKQAgoIUmVzcG9uc2USMwoGc3RyZWFtGAEgASgLMhsucHJvdG8u",
+            "cnBjLndlYnJ0Yy52MS5TdHJlYW1SBnN0cmVhbRJACgdoZWFkZXJzGAIgASgL",
+            "MiQucHJvdG8ucnBjLndlYnJ0Yy52MS5SZXNwb25zZUhlYWRlcnNIAFIHaGVh",
+            "ZGVycxJACgdtZXNzYWdlGAMgASgLMiQucHJvdG8ucnBjLndlYnJ0Yy52MS5S",
+            "ZXNwb25zZU1lc3NhZ2VIAFIHbWVzc2FnZRJDCgh0cmFpbGVycxgEIAEoCzIl",
+            "LnByb3RvLnJwYy53ZWJydGMudjEuUmVzcG9uc2VUcmFpbGVyc0gAUgh0cmFp",
+            "bGVyc0IGCgR0eXBlIkwKD1Jlc3BvbnNlSGVhZGVycxI5CghtZXRhZGF0YRgB",
+            "IAEoCzIdLnByb3RvLnJwYy53ZWJydGMudjEuTWV0YWRhdGFSCG1ldGFkYXRh",
+            "IlwKD1Jlc3BvbnNlTWVzc2FnZRJJCg5wYWNrZXRfbWVzc2FnZRgBIAEoCzIi",
+            "LnByb3RvLnJwYy53ZWJydGMudjEuUGFja2V0TWVzc2FnZVINcGFja2V0TWVz",
+            "c2FnZSJ5ChBSZXNwb25zZVRyYWlsZXJzEioKBnN0YXR1cxgBIAEoCzISLmdv",
+            "b2dsZS5ycGMuU3RhdHVzUgZzdGF0dXMSOQoIbWV0YWRhdGEYAiABKAsyHS5w",
+            "cm90by5ycGMud2VicnRjLnYxLk1ldGFkYXRhUghtZXRhZGF0YSIhCgdTdHJp",
+            "bmdzEhYKBnZhbHVlcxgBIAMoCVIGdmFsdWVzIpYBCghNZXRhZGF0YRI1CgJt",
+            "ZBgBIAMoCzIlLnByb3RvLnJwYy53ZWJydGMudjEuTWV0YWRhdGEuTWRFbnRy",
+            "eVICbWQaUwoHTWRFbnRyeRIQCgNrZXkYASABKAlSA2tleRIyCgV2YWx1ZRgC",
+            "IAEoCzIcLnByb3RvLnJwYy53ZWJydGMudjEuU3RyaW5nc1IFdmFsdWU6AjgB",
+            "QidaJWdvLnZpYW0uY29tL3V0aWxzL3Byb3RvL3JwYy93ZWJydGMvdjFiBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Rpc.StatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.PacketMessage), global::Proto.Rpc.Webrtc.V1.PacketMessage.Parser, new[]{ "Data", "Eom" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.Stream), global::Proto.Rpc.Webrtc.V1.Stream.Parser, new[]{ "Id" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.Request), global::Proto.Rpc.Webrtc.V1.Request.Parser, new[]{ "Stream", "Headers", "Message" }, new[]{ "Type" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.Request), global::Proto.Rpc.Webrtc.V1.Request.Parser, new[]{ "Stream", "Headers", "Message", "RstStream" }, new[]{ "Type" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.RequestHeaders), global::Proto.Rpc.Webrtc.V1.RequestHeaders.Parser, new[]{ "Method", "Metadata", "Timeout" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.RequestMessage), global::Proto.Rpc.Webrtc.V1.RequestMessage.Parser, new[]{ "HasMessage", "PacketMessage", "Eos" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.Response), global::Proto.Rpc.Webrtc.V1.Response.Parser, new[]{ "Stream", "Headers", "Message", "Trailers" }, new[]{ "Type" }, null, null, null),
@@ -82,6 +83,7 @@ namespace Proto.Rpc.Webrtc.V1 {
   /// A PacketMessage is used to packetize large messages (> 64KiB) to be able to safely
   /// transmit over WebRTC data channels.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class PacketMessage : pb::IMessage<PacketMessage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -312,6 +314,7 @@ namespace Proto.Rpc.Webrtc.V1 {
   /// A Stream represents an instance of a gRPC stream between
   /// a client and a server.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class Stream : pb::IMessage<Stream>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -507,6 +510,7 @@ namespace Proto.Rpc.Webrtc.V1 {
   /// identifier. Servers will drop frames where the stream identifier
   /// has no association (if a non-header frames are sent).
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class Request : pb::IMessage<Request>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -548,6 +552,9 @@ namespace Proto.Rpc.Webrtc.V1 {
           break;
         case TypeOneofCase.Message:
           Message = other.Message.Clone();
+          break;
+        case TypeOneofCase.RstStream:
+          RstStream = other.RstStream;
           break;
       }
 
@@ -596,12 +603,39 @@ namespace Proto.Rpc.Webrtc.V1 {
       }
     }
 
+    /// <summary>Field number for the "rst_stream" field.</summary>
+    public const int RstStreamFieldNumber = 4;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool RstStream {
+      get { return HasRstStream ? (bool) type_ : false; }
+      set {
+        type_ = value;
+        typeCase_ = TypeOneofCase.RstStream;
+      }
+    }
+    /// <summary>Gets whether the "rst_stream" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasRstStream {
+      get { return typeCase_ == TypeOneofCase.RstStream; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "rst_stream" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearRstStream() {
+      if (HasRstStream) {
+        ClearType();
+      }
+    }
+
     private object type_;
     /// <summary>Enum of possible cases for the "type" oneof.</summary>
     public enum TypeOneofCase {
       None = 0,
       Headers = 2,
       Message = 3,
+      RstStream = 4,
     }
     private TypeOneofCase typeCase_ = TypeOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -635,6 +669,7 @@ namespace Proto.Rpc.Webrtc.V1 {
       if (!object.Equals(Stream, other.Stream)) return false;
       if (!object.Equals(Headers, other.Headers)) return false;
       if (!object.Equals(Message, other.Message)) return false;
+      if (RstStream != other.RstStream) return false;
       if (TypeCase != other.TypeCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -646,6 +681,7 @@ namespace Proto.Rpc.Webrtc.V1 {
       if (stream_ != null) hash ^= Stream.GetHashCode();
       if (typeCase_ == TypeOneofCase.Headers) hash ^= Headers.GetHashCode();
       if (typeCase_ == TypeOneofCase.Message) hash ^= Message.GetHashCode();
+      if (HasRstStream) hash ^= RstStream.GetHashCode();
       hash ^= (int) typeCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -677,6 +713,10 @@ namespace Proto.Rpc.Webrtc.V1 {
         output.WriteRawTag(26);
         output.WriteMessage(Message);
       }
+      if (HasRstStream) {
+        output.WriteRawTag(32);
+        output.WriteBool(RstStream);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -699,6 +739,10 @@ namespace Proto.Rpc.Webrtc.V1 {
         output.WriteRawTag(26);
         output.WriteMessage(Message);
       }
+      if (HasRstStream) {
+        output.WriteRawTag(32);
+        output.WriteBool(RstStream);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -717,6 +761,9 @@ namespace Proto.Rpc.Webrtc.V1 {
       }
       if (typeCase_ == TypeOneofCase.Message) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Message);
+      }
+      if (HasRstStream) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -748,6 +795,9 @@ namespace Proto.Rpc.Webrtc.V1 {
             Message = new global::Proto.Rpc.Webrtc.V1.RequestMessage();
           }
           Message.MergeFrom(other.Message);
+          break;
+        case TypeOneofCase.RstStream:
+          RstStream = other.RstStream;
           break;
       }
 
@@ -791,6 +841,10 @@ namespace Proto.Rpc.Webrtc.V1 {
             Message = subBuilder;
             break;
           }
+          case 32: {
+            RstStream = input.ReadBool();
+            break;
+          }
         }
       }
     #endif
@@ -831,6 +885,10 @@ namespace Proto.Rpc.Webrtc.V1 {
             Message = subBuilder;
             break;
           }
+          case 32: {
+            RstStream = input.ReadBool();
+            break;
+          }
         }
       }
     }
@@ -841,6 +899,7 @@ namespace Proto.Rpc.Webrtc.V1 {
   /// <summary>
   /// RequestHeaders describe the unary or streaming call to make.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class RequestHeaders : pb::IMessage<RequestHeaders>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1126,6 +1185,7 @@ namespace Proto.Rpc.Webrtc.V1 {
   /// A RequestMessage contains individual gRPC messages and a potential
   /// end-of-stream (EOS) marker.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class RequestMessage : pb::IMessage<RequestMessage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1404,6 +1464,7 @@ namespace Proto.Rpc.Webrtc.V1 {
   /// identifier. Clients will drop frames where the stream identifier
   /// has no association.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class Response : pb::IMessage<Response>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1792,6 +1853,7 @@ namespace Proto.Rpc.Webrtc.V1 {
   /// ResponseHeaders contain custom metadata that are sent to the client
   /// before any message or trailers (unless only trailers are sent).
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class ResponseHeaders : pb::IMessage<ResponseHeaders>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -1993,6 +2055,7 @@ namespace Proto.Rpc.Webrtc.V1 {
   /// <summary>
   /// ResponseMessage contains the data of a response to a call.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class ResponseMessage : pb::IMessage<ResponseMessage>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2194,6 +2257,7 @@ namespace Proto.Rpc.Webrtc.V1 {
   /// <summary>
   /// ResponseTrailers contain the status of a response and any custom metadata.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class ResponseTrailers : pb::IMessage<ResponseTrailers>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2441,6 +2505,7 @@ namespace Proto.Rpc.Webrtc.V1 {
   /// <summary>
   /// Strings are a series of values.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class Strings : pb::IMessage<Strings>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2623,6 +2688,7 @@ namespace Proto.Rpc.Webrtc.V1 {
   /// Metadata is for custom key values provided by a client or server
   /// during a stream.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class Metadata : pb::IMessage<Metadata>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2755,7 +2821,7 @@ namespace Proto.Rpc.Webrtc.V1 {
       if (other == null) {
         return;
       }
-      md_.Add(other.md_);
+      md_.MergeFrom(other.md_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
