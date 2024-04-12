@@ -101,6 +101,7 @@ namespace Viam.Net.Sdk.Core
             if (opts.WebRTCOptions != null)
             {
                 optsCopy.Credentials = opts.WebRTCOptions.SignalingCredentials;
+                optsCopy.AuthEntity = opts.WebRTCOptions.SignalingAuthEntity;
                 optsCopy.ExternalAuthAddress = opts.WebRTCOptions.SignalingExternalAuthAddress;
                 optsCopy.ExternalAuthToEntity = opts.WebRTCOptions.SignalingExternalAuthToEntity;
                 optsCopy.ExternalAuthInsecure = opts.WebRTCOptions.SignalingExternalAuthInsecure;
