@@ -1,4 +1,4 @@
-﻿using Proto.Api.Robot.V1;
+﻿using Viam.Robot.V1;
 using Viam.Net.Sdk.Core;
 using Proto.Rpc.V1;
 using Proto.Rpc.Examples.Echo.V1;
@@ -43,7 +43,7 @@ using (var dialer = new Dialer(logger))
         var statusRespStream = robotClient.StreamStatus(new StreamStatusRequest
         {
             ResourceNames = {
-            new Proto.Api.Common.V1.ResourceName() { Namespace = "rdk", Type = "component", Subtype = "arm", Name = "arm1" } }
+            new Viam.Common.V1.ResourceName() { Namespace = "rdk", Type = "component", Subtype = "arm", Name = "arm1" } }
         });
         await foreach (var resp in statusRespStream.ResponseStream.ReadAllAsync().ConfigureAwait(false))
         {
