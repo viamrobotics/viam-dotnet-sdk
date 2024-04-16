@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
+using Viam.Net.Sdk.Core.Dialing;
 
 namespace Viam.Net.Sdk.Core.Clients
 {
