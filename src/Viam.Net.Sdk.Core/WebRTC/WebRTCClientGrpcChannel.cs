@@ -1,80 +1,80 @@
-using Grpc.Core;
-using Proto.Rpc.Webrtc.V1;
-using SIPSorcery.Net;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
+using Grpc.Core;
+using Microsoft.Extensions.Logging;
+using Proto.Rpc.Webrtc.V1;
+using SIPSorcery.Net;
 
-namespace Viam.Net.Sdk.Core
+namespace Viam.Net.Sdk.Core.WebRTC
 {
-    class WebRTCClientChannel : Channel, IDisposable
+    public class WebRTCClientChannel : ViamChannel, IDisposable
     {
-
         // MaxStreamCount is the max number of streams a channel can have.
         public static int MaxStreamCount = 256;
 
         private readonly WebRTCBaseChannel _baseChannel;
-        private readonly NLog.Logger _logger;
-        private ulong streamIDCounter = 0; // TODO(erd): lock
+        private readonly ILogger _logger;
+        private long _streamIdCounter = 0; // TODO(erd): lock
+        private readonly WebRTCClientCallInvoker _callInvoker;
 
-        public readonly Dictionary<ulong, WebRTCClientStreamContainer> Streams = new Dictionary<ulong, WebRTCClientStreamContainer>();
+        public readonly Dictionary<ulong, IWebRTCClientStreamContainer> Streams = new();
 
-        public WebRTCClientChannel(RTCPeerConnection peerConn, RTCDataChannel dataChannel, NLog.Logger logger) : base("doesnotmatter")
+        public WebRTCClientChannel(RTCPeerConnection peerConn, RTCDataChannel dataChannel, ILogger logger)
         {
             _baseChannel = new WebRTCBaseChannel(peerConn, dataChannel);
             dataChannel.onmessage += OnChannelMessage;
             _logger = logger;
+            _callInvoker = new WebRTCClientCallInvoker(this, logger);
         }
 
-        // TODO(erd): synchronized
-        public override CallInvoker CreateCallInvoker()
-        {
-            return new TempCallInvoker(this, _logger);
-        }
+        protected override CallInvoker GetCallInvoker() => _callInvoker;
 
         // TODO(erd): synchronized
-        public void RemoveStreamByID(ulong id)
+        public void RemoveStreamById(ulong id)
         {
             Streams.Remove(id);
         }
 
-        public static Proto.Rpc.Webrtc.V1.Metadata FromGRPCMetadata(Grpc.Core.Metadata? metadata)
+        public static Proto.Rpc.Webrtc.V1.Metadata FromGRPCMetadata(global::Grpc.Core.Metadata? metadata)
         {
             var protoMd = new Proto.Rpc.Webrtc.V1.Metadata();
             if (metadata == null)
             {
                 return protoMd;
             }
-            foreach (Grpc.Core.Metadata.Entry entry in metadata)
+
+            foreach (var entry in metadata)
             {
                 var strings = new Strings();
                 strings.Values.Add(entry.Value);
                 protoMd.Md.Add(entry.Key, strings);
             }
+
             return protoMd;
         }
 
-        public static Grpc.Core.Metadata ToGRPCMetadata(Proto.Rpc.Webrtc.V1.Metadata metadata)
+        public static global::Grpc.Core.Metadata ToGRPCMetadata(Proto.Rpc.Webrtc.V1.Metadata? metadata)
         {
-            var result = new Grpc.Core.Metadata();
+            var result = new global::Grpc.Core.Metadata();
             if (metadata == null)
             {
                 return result;
             }
+
             foreach (KeyValuePair<string, Strings> entry in metadata.Md)
             {
-                foreach (string value in entry.Value.Values)
+                foreach (var value in entry.Value.Values)
                 {
                     result.Add(entry.Key, value);
                 }
             }
+
             return result;
         }
 
-        public Stream NextStreamID()
-        {
-            return new Stream { Id = streamIDCounter++ };
-        }
+        public Stream NextStreamId() => new() { Id = (ulong)Interlocked.Increment(ref _streamIdCounter) };
 
         private void OnChannelMessage(RTCDataChannel dc, DataChannelPayloadProtocols protocols, byte[] data)
         {
@@ -83,7 +83,7 @@ namespace Viam.Net.Sdk.Core
 
             if (resp.Stream == null)
             {
-                _logger.Warn("no stream id; discarding");
+                _logger.LogWarning("no stream id; discarding");
                 return;
             }
 
@@ -93,17 +93,14 @@ namespace Viam.Net.Sdk.Core
             var activeStream = Streams[id];
             if (activeStream == null)
             {
-                _logger.Warn("no stream for id; discarding: id=" + id);
+                _logger.LogWarning("no stream for id; discarding: {id}", id);
                 return;
             }
 
             activeStream.OnResponse(resp);
         }
 
-        public Task<bool> Ready()
-        {
-            return _baseChannel.Ready.Task;
-        }
+        public Task<bool> Ready() => _baseChannel.Ready.Task;
 
         public void WriteHeaders(Stream stream, RequestHeaders headers)
         {
@@ -127,15 +124,6 @@ namespace Viam.Net.Sdk.Core
         {
             // TODO(erd): dispose streams
             _baseChannel.Dispose();
-        }
-    }
-
-    public static class ListExtensions
-    {
-        public static List<T> GetRange<T>(this List<T> list, Range range)
-        {
-            var (start, length) = range.GetOffsetAndLength(list.Count);
-            return list.GetRange(start, length);
         }
     }
 }

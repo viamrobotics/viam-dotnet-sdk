@@ -1,104 +1,69 @@
-using Grpc.Core;
-using Proto.Rpc.Webrtc.V1;
-using System.Buffers;
 using System;
-using System.Collections.Generic;
+using System.Buffers;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Grpc.Core;
+using Microsoft.Extensions.Logging;
+using Proto.Rpc.Webrtc.V1;
 
-namespace Viam.Net.Sdk.Core
+namespace Viam.Net.Sdk.Core.WebRTC
 {
-    class WebRTCClientStream<TRequest, TResponse> : WebRTCClientStreamContainer where TResponse : class
+    internal class WebRTCClientStream<TRequest, TResponse>(
+        Method<TRequest, TResponse> method,
+        Stream stream,
+        WebRTCClientChannel grpcChannel,
+        Action<ulong> onDone,
+        ILogger logger)
+        : IWebRTCClientStreamContainer
+        where TResponse : class
     {
         // see golang/client_stream.go
-        private const int MAX_REQUEST_MESSAGE_PACKET_DATA_SIZE = 16373;
+        private const int MaxRequestMessagePacketDataSize = 16373;
 
-        private readonly Method<TRequest, TResponse> _method;
-        private readonly WebRTCClientChannel _channel;
-        private readonly WebRTCBaseStream _baseStream;
-        private ResponseListener<TResponse> _responseListener = null!;
+        private readonly WebRTCBaseStream _baseStream = new(stream, onDone, logger);
+        private IResponseListener<TResponse> _responseListener = null!;
 
         private bool _headersReceived = false;
         private bool _trailersReceived = false;
-        private readonly NLog.Logger _logger;
 
-
-        public WebRTCClientStream(
-            Method<TRequest, TResponse> method,
-            Stream stream,
-            WebRTCClientChannel channel,
-            Action<ulong> onDone,
-            NLog.Logger logger
-        )
+        private class FuncCallListener(
+            Func<Status, global::Grpc.Core.Metadata, Task> onClose,
+            Action<global::Grpc.Core.Metadata> onHeaders,
+            Func<TResponse, Task> onMessage,
+            Action onReady)
+            : IResponseListener<TResponse>
         {
-            _method = method;
-            _channel = channel;
-            _baseStream = new WebRTCBaseStream(stream, onDone, logger);
-            _logger = logger;
-        }
+            public Task OnClose(Status status, global::Grpc.Core.Metadata trailers) => onClose.Invoke(status, trailers);
 
-        class FuncCallListener : ResponseListener<TResponse>
-        {
+            public void OnHeaders(global::Grpc.Core.Metadata headers) => onHeaders.Invoke(headers);
 
-            private readonly Action<Status, Grpc.Core.Metadata> _onClose;
-            private readonly Action<Grpc.Core.Metadata> _onHeaders;
-            private readonly Action<TResponse> _onMessage;
-            private readonly Action _onReady;
+            public Task OnMessage(TResponse message) => onMessage.Invoke(message);
 
-            public FuncCallListener(
-                Action<Status, Grpc.Core.Metadata> onClose,
-                Action<Grpc.Core.Metadata> onHeaders,
-                Action<TResponse> onMessage,
-                Action onReady
-            )
-            {
-                _onClose = onClose;
-                _onHeaders = onHeaders;
-                _onMessage = onMessage;
-                _onReady = onReady;
-            }
-
-            public void OnClose(Status status, Grpc.Core.Metadata trailers)
-            {
-                _onClose.Invoke(status, trailers);
-            }
-            public void OnHeaders(Grpc.Core.Metadata headers)
-            {
-                _onHeaders.Invoke(headers);
-            }
-
-            public void OnMessage(TResponse message)
-            {
-                _onMessage.Invoke(message);
-            }
-
-            public void OnReady()
-            {
-                _onReady.Invoke();
-            }
+            public void OnReady() => onReady.Invoke();
         }
 
         public AsyncUnaryCall<TResponse> UnaryCall(CallOptions options, TRequest request)
         {
-            var ready = new TaskCompletionSource<bool>();
-            var respHeaders = new TaskCompletionSource<Grpc.Core.Metadata>();
+            var respHeaders = new TaskCompletionSource<global::Grpc.Core.Metadata>();
             var result = new TaskCompletionSource<TResponse>();
             var statusFut = new TaskCompletionSource<Status>();
-            var trailersFut = new TaskCompletionSource<Grpc.Core.Metadata>();
+            var trailersFut = new TaskCompletionSource<global::Grpc.Core.Metadata>();
 
             var listener = new FuncCallListener(
                 (status, md) =>
                 {
                     if (status.StatusCode != StatusCode.OK)
                     {
-                        var ex = new Exception(String.Format("Code=%d Message=%s", status.StatusCode, status.Detail));
-                        ready.SetException(ex);
+                        var ex = new Exception($"Code={status.StatusCode} Message={status.Detail}");
                         result.SetException(ex);
                         respHeaders.SetException(ex);
+                        throw ex;
                     }
+
                     statusFut.SetResult(status);
                     trailersFut.SetResult(md);
+                    return Task.CompletedTask;
                 },
                 (md) =>
                 {
@@ -107,96 +72,110 @@ namespace Viam.Net.Sdk.Core
                 (msg) =>
                 {
                     result.SetResult(msg);
+                    return Task.CompletedTask;
                 },
                 () =>
                 {
-                    ready.SetResult(true);
+                    logger.LogDebug("Ready!");
                 }
             );
 
-            // TODO(erd): asyncify
-            Task.Run(async () =>
+            try
             {
-                try
-                {
-                    this.Start(listener, options.Headers);
-                    await ready.Task.ConfigureAwait(false);
-                    this.SendMessage(request);
-                    this.HalfClose();
-                }
-                catch (Exception ex)
-                {
-                    _logger.Error(ex);
-                    _baseStream.CloseWithRecvError(ex);
-                }
-            });
+                Start(listener, options.Headers);
+                SendMessage(request);
+                HalfClose();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "An error occurred while sending a message");
+                _baseStream.CloseWithReceiveError(ex);
+                throw;
+            }
 
             return new AsyncUnaryCall<TResponse>(
                 responseAsync: result.Task,
                 responseHeadersAsync: respHeaders.Task,
-                getStatusFunc: () =>
-                {
-                    return statusFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
-                },
-                getTrailersFunc: () =>
-                {
-                    return trailersFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
-                },
-                disposeAction: () =>
-                {
-                    Console.WriteLine("I HAVE BEEN DISPOSED ACTION!!!");
-                }
+                getStatusFunc: () => statusFut.Task.ConfigureAwait(false).GetAwaiter().GetResult(),
+                getTrailersFunc: () => trailersFut.Task.ConfigureAwait(false).GetAwaiter().GetResult(),
+                disposeAction: () => Console.WriteLine("I HAVE BEEN DISPOSED ACTION!!!")
             );
         }
 
-        class AsyncStreamReader : IAsyncStreamReader<TResponse>
+        private class AsyncStreamReader : IAsyncStreamReader<TResponse>
         {
+            private readonly SemaphoreSlim _currentLock = new(1, 1);
 
             private bool _complete = false;
             private TResponse? _current;
-            private TaskCompletionSource<TResponse> _next = new TaskCompletionSource<TResponse>();
-            private readonly SemaphoreSlim _currentSema = new SemaphoreSlim(1, 1);
+            private TaskCompletionSource<TResponse> _next = new();
 
-            public TResponse Current { get { return _current!; } }
+            public TResponse Current => _current!;
 
             public async Task<bool> MoveNext(CancellationToken cancellationToken)
             {
-                if (_complete)
-                { // otherwise _next may throw forever as well
-                    return false;
-                }
-                _current = await _next.Task;
-                if (_current == null)
+                await _currentLock.WaitAsync(cancellationToken)
+                                  .ConfigureAwait(false);
+
+                try
                 {
-                    _complete = true;
+                    if (_complete)
+                    {
+                        // otherwise _next may throw forever as well
+                        return false;
+                    }
+
+                    _current = await _next.Task;
+                    if (_current == null)
+                    {
+                        _complete = true;
+                    }
+
+                    _next = new TaskCompletionSource<TResponse>();
+                    return _current != null;
                 }
-                _next = new TaskCompletionSource<TResponse>();
-                _currentSema.Release();
-                return _current != null;
+                finally
+                {
+                    _currentLock.Release();
+                }
             }
 
             public async Task<bool> SetNext(TResponse resp)
             {
-                await _currentSema;
-                _next.SetResult(resp);
-                return true;
+                await _currentLock.WaitAsync();
+                try
+                {
+                    _next.SetResult(resp);
+                    return true;
+                }
+                finally
+                {
+                    _currentLock.Release();
+                }
             }
 
             public async Task<bool> SetException(Exception ex)
             {
-                await _currentSema;
-                _next.SetException(ex);
-                return true;
+                await _currentLock.WaitAsync();
+                try
+                {
+                    _next.SetException(ex);
+                    return true;
+                }
+                finally
+                {
+                    _currentLock.Release();
+                }
             }
         }
 
         public AsyncServerStreamingCall<TResponse> ServerStreamingCall(CallOptions options, TRequest request)
         {
             var ready = new TaskCompletionSource<bool>();
-            var respHeaders = new TaskCompletionSource<Grpc.Core.Metadata>();
+            var respHeaders = new TaskCompletionSource<global::Grpc.Core.Metadata>();
             var result = new TaskCompletionSource<TResponse>();
             var statusFut = new TaskCompletionSource<Status>();
-            var trailersFut = new TaskCompletionSource<Grpc.Core.Metadata>();
+            var trailersFut = new TaskCompletionSource<global::Grpc.Core.Metadata>();
 
             var streamReader = new AsyncStreamReader();
             // TODO(erd): need an async version?
@@ -205,12 +184,13 @@ namespace Viam.Net.Sdk.Core
                 {
                     if (status.StatusCode != StatusCode.OK)
                     {
-                        var ex = new Exception(String.Format("Code=%d Message=%s", status.StatusCode, status.Detail));
+                        var ex = new Exception($"Code={status.StatusCode} Message={status.Detail}");
                         ready.SetException(ex);
                         result.SetException(ex);
                         respHeaders.SetException(ex);
                         await streamReader.SetException(ex);
                     }
+
                     statusFut.SetResult(status);
                     trailersFut.SetResult(md);
                 },
@@ -224,50 +204,35 @@ namespace Viam.Net.Sdk.Core
                 },
                 () =>
                 {
-                    ready.SetResult(true);
+                    logger.LogDebug("Ready!");
                 }
             );
 
-            // TODO(erd): asyncify
-            Task.Run(async () =>
+            try
             {
-                try
-                {
-                    this.Start(listener, options.Headers);
-                    await ready.Task.ConfigureAwait(false);
-                    this.SendMessage(request);
-                    this.HalfClose();
-                }
-                catch (Exception ex)
-                {
-                    _logger.Error(ex);
-                    _baseStream.CloseWithRecvError(ex);
-                }
-            });
+                Start(listener, options.Headers);
+                SendMessage(request);
+                HalfClose();
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "An error occurred while sending a message");
+                _baseStream.CloseWithReceiveError(ex);
+            }
 
             return new AsyncServerStreamingCall<TResponse>(
                 responseStream: streamReader,
                 responseHeadersAsync: respHeaders.Task,
-                getStatusFunc: () =>
-                {
-                    return statusFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
-                },
-                getTrailersFunc: () =>
-                {
-                    return trailersFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
-                },
-                disposeAction: () =>
-                {
-                    Console.WriteLine("I HAVE BEEN DISPOSED ACTION!!!");
-                }
+                getStatusFunc: () => statusFut.Task.ConfigureAwait(false).GetAwaiter().GetResult(),
+                getTrailersFunc: () => trailersFut.Task.ConfigureAwait(false).GetAwaiter().GetResult(),
+                disposeAction: () => Console.WriteLine("I HAVE BEEN DISPOSED ACTION!!!")
             );
         }
 
-        class ClientStreamWriter : IClientStreamWriter<TRequest>
+        private class ClientStreamWriter : IClientStreamWriter<TRequest>
         {
-
             private readonly WebRTCClientStream<TRequest, TResponse> _clientStream;
-            private readonly SemaphoreSlim _currentSema = new SemaphoreSlim(1, 1);
+            private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
             private readonly Task<bool> _ready;
 
             public ClientStreamWriter(WebRTCClientStream<TRequest, TResponse> clientStream, Task<bool> ready)
@@ -280,27 +245,31 @@ namespace Viam.Net.Sdk.Core
 
             public async Task WriteAsync(TRequest message)
             {
-                await WriteAsync(message, null);
-            }
-
-            // TODO(erd): use cancellationToken
-            public async Task WriteAsync(TRequest message, CancellationToken? cancellationToken)
-            {
                 await _ready.ConfigureAwait(false);
-                using (await _currentSema)
+                await _semaphore.WaitAsync();
+                try
                 {
                     _clientStream.SendMessage(message);
                     return;
+                }
+                finally
+                {
+                    _semaphore.Release();
                 }
             }
 
             public async Task CompleteAsync()
             {
                 await _ready.ConfigureAwait(false);
-                using (await _currentSema)
+                await _semaphore.WaitAsync();
+                try
                 {
                     _clientStream.HalfClose();
                     return;
+                }
+                finally
+                {
+                    _semaphore.Release();
                 }
             }
         }
@@ -308,10 +277,10 @@ namespace Viam.Net.Sdk.Core
         public AsyncClientStreamingCall<TRequest, TResponse> AsyncClientStreamingCall(CallOptions options)
         {
             var ready = new TaskCompletionSource<bool>();
-            var respHeaders = new TaskCompletionSource<Grpc.Core.Metadata>();
+            var respHeaders = new TaskCompletionSource<global::Grpc.Core.Metadata>();
             var result = new TaskCompletionSource<TResponse>();
             var statusFut = new TaskCompletionSource<Status>();
-            var trailersFut = new TaskCompletionSource<Grpc.Core.Metadata>();
+            var trailersFut = new TaskCompletionSource<global::Grpc.Core.Metadata>();
 
             var streamReader = new AsyncStreamReader();
             var streamWriter = new ClientStreamWriter(this, ready.Task);
@@ -326,6 +295,7 @@ namespace Viam.Net.Sdk.Core
                         respHeaders.SetException(ex);
                         await streamReader.SetException(ex);
                     }
+
                     statusFut.SetResult(status);
                     trailersFut.SetResult(md);
                 },
@@ -344,32 +314,23 @@ namespace Viam.Net.Sdk.Core
                 }
             );
 
-            // TODO(erd): asyncify
-            Task.Run(() =>
+            try
             {
-                try
-                {
-                    this.Start(listener, options.Headers);
-                }
-                catch (Exception ex)
-                {
-                    _logger.Error(ex);
-                    _baseStream.CloseWithRecvError(ex);
-                }
-            });
+                Start(listener, options.Headers);
+            }
+            catch (Exception ex)
+            {
+                // TODO: Clarify this error message
+                logger.LogError(ex, "An error occurred");
+                _baseStream.CloseWithReceiveError(ex);
+            }
 
             return new AsyncClientStreamingCall<TRequest, TResponse>(
                 requestStream: streamWriter,
                 responseAsync: result.Task,
                 responseHeadersAsync: respHeaders.Task,
-                getStatusFunc: () =>
-                {
-                    return statusFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
-                },
-                getTrailersFunc: () =>
-                {
-                    return trailersFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
-                },
+                getStatusFunc: () => statusFut.Task.ConfigureAwait(false).GetAwaiter().GetResult(),
+                getTrailersFunc: () => trailersFut.Task.ConfigureAwait(false).GetAwaiter().GetResult(),
                 disposeAction: () =>
                 {
                     Console.WriteLine("I HAVE BEEN DISPOSED ACTION!!!");
@@ -380,10 +341,10 @@ namespace Viam.Net.Sdk.Core
         public AsyncDuplexStreamingCall<TRequest, TResponse> DuplexStreamingCall(CallOptions options)
         {
             var ready = new TaskCompletionSource<bool>();
-            var respHeaders = new TaskCompletionSource<Grpc.Core.Metadata>();
+            var respHeaders = new TaskCompletionSource<global::Grpc.Core.Metadata>();
             var result = new TaskCompletionSource<TResponse>();
             var statusFut = new TaskCompletionSource<Status>();
-            var trailersFut = new TaskCompletionSource<Grpc.Core.Metadata>();
+            var trailersFut = new TaskCompletionSource<global::Grpc.Core.Metadata>();
 
             var streamReader = new AsyncStreamReader();
             var streamWriter = new ClientStreamWriter(this, ready.Task);
@@ -398,6 +359,7 @@ namespace Viam.Net.Sdk.Core
                         respHeaders.SetException(ex);
                         await streamReader.SetException(ex);
                     }
+
                     statusFut.SetResult(status);
                     trailersFut.SetResult(md);
                 },
@@ -416,32 +378,23 @@ namespace Viam.Net.Sdk.Core
                 }
             );
 
-            // TODO(erd): asyncify
-            Task.Run(() =>
+            try
             {
-                try
-                {
-                    this.Start(listener, options.Headers);
-                }
-                catch (Exception ex)
-                {
-                    _logger.Error(ex);
-                    _baseStream.CloseWithRecvError(ex);
-                }
-            });
+                Start(listener, options.Headers);
+            }
+            catch (Exception ex)
+            {
+                // TODO: Clarify this error message
+                logger.LogError(ex, "An error occurred");
+                _baseStream.CloseWithReceiveError(ex);
+            }
 
             return new AsyncDuplexStreamingCall<TRequest, TResponse>(
                 requestStream: streamWriter,
                 responseStream: streamReader,
                 responseHeadersAsync: respHeaders.Task,
-                getStatusFunc: () =>
-                {
-                    return statusFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
-                },
-                getTrailersFunc: () =>
-                {
-                    return trailersFut.Task.ConfigureAwait(false).GetAwaiter().GetResult();
-                },
+                getStatusFunc: () => statusFut.Task.ConfigureAwait(false).GetAwaiter().GetResult(),
+                getTrailersFunc: () => trailersFut.Task.ConfigureAwait(false).GetAwaiter().GetResult(),
                 disposeAction: () =>
                 {
                     Console.WriteLine("I HAVE BEEN DISPOSED ACTION!!!");
@@ -449,22 +402,22 @@ namespace Viam.Net.Sdk.Core
             );
         }
 
-        public void Start(ResponseListener<TResponse> responseListener, Grpc.Core.Metadata? headers)
+        public void Start(IResponseListener<TResponse> responseListener, global::Grpc.Core.Metadata? headers)
         {
             _responseListener = responseListener;
             var requestHeaders = new RequestHeaders
             {
-                Method = _method.FullName,
+                Method = method.FullName,
                 Metadata = WebRTCClientChannel.FromGRPCMetadata(headers)
             };
             try
             {
-                _channel.WriteHeaders(_baseStream._stream, requestHeaders);
+                grpcChannel.WriteHeaders(_baseStream.Stream, requestHeaders);
             }
             catch (Exception ex)
             {
-                _logger.Warn("error writing headers: " + ex);
-                _baseStream.CloseWithRecvError(ex);
+                logger.LogWarning(ex, "error writing headers");
+                _baseStream.CloseWithReceiveError(ex);
             }
 
             _responseListener.OnReady();
@@ -472,7 +425,7 @@ namespace Viam.Net.Sdk.Core
 
         public void Cancel(string message, Exception cause)
         {
-            _baseStream.CloseWithRecvError(new Exception(message, cause));
+            _baseStream.CloseWithReceiveError(new Exception(message, cause));
         }
 
         public void HalfClose()
@@ -480,10 +433,9 @@ namespace Viam.Net.Sdk.Core
             WriteMessage(true, null);
         }
 
-        class SimpleSerializationContext : SerializationContext
+        private class SimpleSerializationContext : SerializationContext
         {
-
-            public byte[] Data { get; set; } = new byte[] { };
+            public byte[] Data { get; private set; } = { };
             private readonly ArrayBufferWriter<byte> bufferWriter = new ArrayBufferWriter<byte>();
 
             public override void Complete(byte[] payload)
@@ -491,10 +443,7 @@ namespace Viam.Net.Sdk.Core
                 Data = payload;
             }
 
-            public override IBufferWriter<byte> GetBufferWriter()
-            {
-                return bufferWriter;
-            }
+            public override IBufferWriter<byte> GetBufferWriter() => bufferWriter;
 
             public override void Complete()
             {
@@ -513,22 +462,21 @@ namespace Viam.Net.Sdk.Core
                     return;
                 }
 
-                using var stream = new System.IO.MemoryStream();
                 var ctx = new SimpleSerializationContext();
-                _method.RequestMarshaller.ContextualSerializer.Invoke(message, ctx);
-                WriteMessage(false, ctx.Data.ToList());
+                method.RequestMarshaller.ContextualSerializer.Invoke(message, ctx);
+                WriteMessage(false, ctx.Data);
             }
             catch (Exception ex)
             {
                 // TODO(erd): make sure another send can't happen after close...
                 // TODO(erd): why does this not propagate to user when this happens? need to set right fut?
-                _baseStream.CloseWithRecvError(ex);
+                _baseStream.CloseWithReceiveError(ex);
             }
         }
 
-        private void WriteMessage(bool eos, List<Byte>? msgBytes)
+        private void WriteMessage(bool eos, byte[]? msgBytes)
         {
-            if (msgBytes == null || msgBytes.Count == 0)
+            if (msgBytes == null || msgBytes.Length == 0)
             {
                 var packet = new PacketMessage { Eom = true };
                 var requestMessage = new RequestMessage
@@ -537,31 +485,33 @@ namespace Viam.Net.Sdk.Core
                     PacketMessage = packet,
                     Eos = eos
                 };
-                _channel.WriteMessage(_baseStream._stream, requestMessage);
+                grpcChannel.WriteMessage(_baseStream.Stream, requestMessage);
                 return;
             }
 
-            while (msgBytes.Count != 0)
+            while (msgBytes.Length != 0)
             {
-                var amountToSend = Math.Min(msgBytes.Count, MAX_REQUEST_MESSAGE_PACKET_DATA_SIZE);
+                var amountToSend = Math.Min(msgBytes.Length, MaxRequestMessagePacketDataSize);
                 var packet = new PacketMessage
                 {
-                    Data = Google.Protobuf.ByteString.CopyFrom(msgBytes.GetRange(0, amountToSend).ToArray()),
+                    Data = Google.Protobuf.ByteString.CopyFrom(msgBytes[..amountToSend]),
                 };
-                msgBytes = msgBytes.GetRange(amountToSend..^0);
-                if (msgBytes.Count == 0)
+                msgBytes = msgBytes[amountToSend..];
+                if (msgBytes.Length == 0)
                 {
                     packet.Eom = true;
                 }
+
                 var requestMessage = new RequestMessage
                 {
                     HasMessage = true,
                     PacketMessage = packet,
                     Eos = eos
                 };
-                _channel.WriteMessage(_baseStream._stream, requestMessage);
+                grpcChannel.WriteMessage(_baseStream.Stream, requestMessage);
             }
         }
+
 
         public void OnResponse(Response resp)
         {
@@ -570,34 +520,38 @@ namespace Viam.Net.Sdk.Core
                 case Response.TypeOneofCase.Headers:
                     if (_headersReceived)
                     {
-                        _baseStream.CloseWithRecvError(new Exception("headers already received"));
+                        _baseStream.CloseWithReceiveError(new Exception("headers already received"));
                         return;
                     }
+
                     if (_trailersReceived)
                     {
-                        _baseStream.CloseWithRecvError(new Exception("headers received after trailers"));
+                        _baseStream.CloseWithReceiveError(new Exception("headers received after trailers"));
                         return;
                     }
+
                     ProcessHeaders(resp.Headers);
                     break;
                 case Response.TypeOneofCase.Message:
                     if (!_headersReceived)
                     {
-                        _baseStream.CloseWithRecvError(new Exception("headers not yet received"));
+                        _baseStream.CloseWithReceiveError(new Exception("headers not yet received"));
                         return;
                     }
+
                     if (_trailersReceived)
                     {
-                        _baseStream.CloseWithRecvError(new Exception("headers received after trailers"));
+                        _baseStream.CloseWithReceiveError(new Exception("headers received after trailers"));
                         return;
                     }
+
                     ProcessMessage(resp.Message);
                     break;
                 case Response.TypeOneofCase.Trailers:
                     ProcessTrailers(resp.Trailers);
                     break;
                 default:
-                    _logger.Warn("unknown response type: " + resp.TypeCase.ToString());
+                    logger.LogWarning("unknown response type: {responseType}", resp.TypeCase);
                     break;
             }
         }
@@ -608,13 +562,13 @@ namespace Viam.Net.Sdk.Core
             _headersReceived = true;
             var metadata = WebRTCClientChannel.ToGRPCMetadata(headers.Metadata);
             _responseListener.OnHeaders(metadata);
+
             // TODO(erd): need?
             // close(s.headersReceived)
         }
 
-        class SimpleDeserializationContext : DeserializationContext
+        private class SimpleDeserializationContext : DeserializationContext
         {
-
             private readonly byte[] _data;
 
             public SimpleDeserializationContext(byte[] data)
@@ -622,17 +576,11 @@ namespace Viam.Net.Sdk.Core
                 _data = data;
             }
 
-            public override int PayloadLength { get { return _data.Length; } }
+            public override int PayloadLength => _data.Length;
 
-            public override byte[] PayloadAsNewBuffer()
-            {
-                return _data.ToArray();
-            }
+            public override byte[] PayloadAsNewBuffer() => _data.ToArray();
 
-            public override System.Buffers.ReadOnlySequence<byte> PayloadAsReadOnlySequence()
-            {
-                return new ReadOnlySequence<byte>(_data);
-            }
+            public override ReadOnlySequence<byte> PayloadAsReadOnlySequence() => new ReadOnlySequence<byte>(_data);
         }
 
         // TODO(erd): synchronized
@@ -644,7 +592,7 @@ namespace Viam.Net.Sdk.Core
                 return;
             }
             var ctx = new SimpleDeserializationContext(result.ToArray());
-            var resp = _method.ResponseMarshaller.ContextualDeserializer(ctx);
+            var resp = method.ResponseMarshaller.ContextualDeserializer(ctx);
             _responseListener.OnMessage(resp);
         }
 
@@ -664,10 +612,11 @@ namespace Viam.Net.Sdk.Core
 
             if (status == StatusCode.OK)
             {
-                _baseStream.CloseWithRecvError(null!);
+                _baseStream.CloseWithReceiveError(null!);
                 return;
             }
-            _baseStream.CloseWithRecvError(new Exception(String.Format("Code=%d Message=%s", status, msg)));
+
+            _baseStream.CloseWithReceiveError(new Exception(string.Format("Code=%d Message=%s", status, msg)));
         }
     }
 }
