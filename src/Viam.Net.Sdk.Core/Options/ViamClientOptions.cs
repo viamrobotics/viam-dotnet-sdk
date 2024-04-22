@@ -2,14 +2,14 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using SIPSorcery.Net;
+using Viam.Net.Sdk.Core.Clients;
 using Viam.Net.Sdk.Core.Dialing;
-using Viam.Net.Sdk.Core.Options;
 
-namespace Viam.Net.Sdk.Core.Clients
+namespace Viam.Net.Sdk.Core.Options
 {
     public class ViamClientOptions
     {
-        internal ILogger Logger { get; private set; } = new NullLogger<ViamClient>();
+        internal ILogger Logger { get; private set; } = new NullLogger<RobotClient>();
         public string MachineAddress { get; init; }
         public Uri? SignalingAddress { get; private set; }
         public Credentials? Credentials { get; private set; }
@@ -39,7 +39,7 @@ namespace Viam.Net.Sdk.Core.Clients
         internal WebRtcDialOptions ToWebRtcDialOptions() =>
             new(SignalingAddress ?? new Uri("https://app.viam.com"),
                 MachineAddress,
-                ToGrpcDialOptions(),
+                new(SignalingAddress ?? new Uri("https://app.viam.com"), Insecure, Credentials, 443),
                 WebRtcOptions ?? WebRtcOptions.Default,
                 Insecure,
                 Credentials);

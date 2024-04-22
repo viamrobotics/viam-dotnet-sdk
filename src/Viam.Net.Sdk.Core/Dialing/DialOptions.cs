@@ -1,5 +1,4 @@
 ﻿using System;
-using Viam.Net.Sdk.Core.Clients;
 using Viam.Net.Sdk.Core.Options;
 
 namespace Viam.Net.Sdk.Core.Dialing

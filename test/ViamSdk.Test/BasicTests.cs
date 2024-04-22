@@ -1,12 +1,14 @@
 using Microsoft.Extensions.Logging;
 using Viam.Net.Sdk.Core.Clients;
+using Viam.Net.Sdk.Core.Options;
 
 namespace ViamSdk.Test
 {
-    public class Tests
+    public class ClientTests
     {
         private ViamClientOptions? _robotClientOptions;
         private ViamClientOptions? _cloudClientOptions;
+
         [SetUp]
         public void Setup()
         {
@@ -17,19 +19,19 @@ namespace ViamSdk.Test
             });
 
             var machineAddress = Environment.GetEnvironmentVariable("ROBOT_ADDRESS")
-                              ?? throw new InvalidOperationException();
-            var apiKey = Environment.GetEnvironmentVariable("VIAM_API_KEY") ?? throw new InvalidOperationException();
+                              ?? throw new InvalidOperationException("Missing Environment Variable");
+            var apiKey = Environment.GetEnvironmentVariable("VIAM_API_KEY")?? throw new InvalidOperationException("Missing Environment Variable");
             var apiKeyId = Environment.GetEnvironmentVariable("VIAM_API_KEY_ID")
-                        ?? throw new InvalidOperationException();
+                        ?? throw new InvalidOperationException("Missing Environment Variable");
 
             _robotClientOptions = ViamClientOptions
                                 .FromAddress(machineAddress)
-                                .WithLogger(loggerFactory.CreateLogger<ViamClient>())
+                                .WithLogger(loggerFactory.CreateLogger<RobotClient>())
                                 .WithApiCredentials(apiKey, apiKeyId)
                                 .WithDisableWebRtc();
 
             _cloudClientOptions = ViamClientOptions.FromCloud()
-                                                   .WithLogger(loggerFactory.CreateLogger<ViamClient>())
+                                                   .WithLogger(loggerFactory.CreateLogger<AppClient>())
                                                    .WithApiCredentials(apiKey,
                                                                        apiKeyId);
         }
@@ -37,9 +39,7 @@ namespace ViamSdk.Test
         [Test]
         public async Task TestTalkGrpcToARobot()
         {
-            
-            var viamClient = await ViamClient.AtAddressAsync(_robotClientOptions!);
-            var client = viamClient.RobotClient;
+            var client = await RobotClient.AtAddressAsync(_robotClientOptions!);
             var resourceNames = await client.ResourceNamesAsync();
             Assert.That(resourceNames, Is.Not.Null);
             var status = await client.GetStatusAsync();
@@ -51,8 +51,7 @@ namespace ViamSdk.Test
         [Test]
         public async Task TestTalkWebRtcToARobot()
         {
-            var viamClient = await ViamClient.AtAddressAsync(_robotClientOptions!);
-            var client = viamClient.RobotClient;
+            var client = await RobotClient.AtAddressAsync(_robotClientOptions!);
 
             var resources = await client.ResourceNamesAsync();
             Assert.That(resources, Is.Not.Null);
@@ -68,9 +67,8 @@ namespace ViamSdk.Test
                 builder.SetMinimumLevel(LogLevel.Trace);
             });
             
-            var viamClient = await ViamClient.AtAddressAsync(_cloudClientOptions!);
-            var appClient = viamClient.AppClient;
-            var parts = await appClient.GetRobotPartsAsync("659c14cd-a8f5-4d16-93be-7ab7e9ad3a7a");
+            var client = await AppClient.AtAddressAsync(_cloudClientOptions!);
+            var parts = await client.GetRobotPartsAsync("659c14cd-a8f5-4d16-93be-7ab7e9ad3a7a");
 
             Assert.That(parts, Is.Not.Null);
             Console.WriteLine(parts);

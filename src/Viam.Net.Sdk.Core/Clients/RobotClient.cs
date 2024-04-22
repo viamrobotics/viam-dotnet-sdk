@@ -1,24 +1,55 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Google.Protobuf;
 using Google.Protobuf.Collections;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
+
 using Viam.Common.V1;
+using Viam.Net.Sdk.Core.Dialing;
+using Viam.Net.Sdk.Core.Options;
+using Viam.Net.Sdk.Core.Resources;
 using Viam.Robot.V1;
 using Status = Viam.Robot.V1.Status;
 
 namespace Viam.Net.Sdk.Core.Clients
 {
-    public class RobotClient : ViamClient
+    public class RobotClient
     {
+        internal readonly ViamChannel Channel;
         private readonly RobotService.RobotServiceClient _robotServiceClient;
+        private readonly ResourceManager _resourceManager;
 
-        protected internal RobotClient(ILogger logger, ViamChannel channel) : base(logger, channel)
+        protected internal RobotClient(ILogger logger, ViamChannel channel)
         {
+            Channel = channel;
             _robotServiceClient = new RobotService.RobotServiceClient(channel);
+            _resourceManager = new ResourceManager(logger);
         }
+
+        public static async ValueTask<RobotClient> AtAddressAsync(ViamClientOptions options)
+        {
+            var dialer = new Dialer(options.Logger);
+            var channel = options.DisableWebRtc
+                              ? await dialer.DialGrpcDirectAsync(options.ToGrpcDialOptions())
+                              : await dialer.DialWebRtcDirectAsync(options.ToWebRtcDialOptions());
+            var client = new RobotClient(options.Logger, channel);
+            await client.RefreshAsync().ConfigureAwait(false);
+            return client;
+        }
+
+        public static async ValueTask<RobotClient> WithChannel(ILogger logger, ViamChannel channel)
+        {
+            var client = new RobotClient(logger, channel);
+            await client.RefreshAsync().ConfigureAwait(false);
+            return client;
+        }
+
+        internal Task RefreshAsync() => _resourceManager.RefreshAsync(this);
+
+        public T GetComponent<T>(ResourceName resourceName) where T : ResourceBase => (T)_resourceManager.GetResource(resourceName);
 
         public async Task<RepeatedField<Operation>> GetOperationsAsync()
         {
@@ -48,8 +79,7 @@ namespace Viam.Net.Sdk.Core.Clients
         public async Task<RepeatedField<ResourceName>> ResourceNamesAsync()
         {
             var result = await _robotServiceClient.ResourceNamesAsync(new ResourceNamesRequest()).ConfigureAwait(false);
-            return result
-                   .Resources;
+            return result.Resources;
         }
 
         public RepeatedField<ResourceName> ResourceNames()
