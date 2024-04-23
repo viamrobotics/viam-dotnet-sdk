@@ -1,7 +1,7 @@
 ﻿using System;
-using Viam.Net.Sdk.Core.Options;
+using Viam.Core.Options;
 
-namespace Viam.Net.Sdk.Core.Dialing
+namespace Viam.Core.Dialing
 {
     public record GrpcDialOptions(Uri MachineAddress, bool Insecure = false, Credentials? Credentials = null, int port = 8080);
 

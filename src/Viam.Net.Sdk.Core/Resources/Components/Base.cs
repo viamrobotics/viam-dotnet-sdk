@@ -6,23 +6,69 @@ using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Component.Base.V1;
-using Viam.Net.Sdk.Core.Clients;
-using Viam.Net.Sdk.Core.Utils;
+using Viam.Core.Clients;
+using Viam.Core.Utils;
 
-namespace Viam.Net.Sdk.Core.Resources.Components
+namespace Viam.Core.Resources.Components
 {
-    public class Base(ResourceName resourceName, ViamChannel channel) : ComponentBase<Base, BaseService.BaseServiceClient>(resourceName, new BaseService.BaseServiceClient(channel))
+    public interface IBase : IComponentBase
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Base(name, channel), () => null));
+        ValueTask MoveStraight(int distance,
+                               float velocity,
+                               Struct? extra = null,
+                               TimeSpan? timeout = null,
+                               CancellationToken cancellationToken = default);
+
+        ValueTask Spin(float angle,
+                       float velocity,
+                       Struct? extra = null,
+                       TimeSpan? timeout = null,
+                       CancellationToken cancellationToken = default);
+
+        ValueTask SetPower(Vector3 linear,
+                           Vector3 angular,
+                           Struct? extra = null,
+                           TimeSpan? timeout = null,
+                           CancellationToken cancellationToken = default);
+
+        ValueTask SetVelocity(Vector3 linear,
+                              Vector3 angular,
+                              Struct? extra = null,
+                              TimeSpan? timeout = null,
+                              CancellationToken cancellationToken = default);
+
+        ValueTask Stop(Struct? extra = null,
+                       TimeSpan? timeout = null,
+                       CancellationToken cancellationToken = default);
+
+        ValueTask<bool> IsMoving(TimeSpan? timeout = null,
+                                 CancellationToken cancellationToken = default);
+
+        ValueTask<Base.Properties> GetProperties(Struct? extra = null,
+                                            TimeSpan? timeout = null,
+                                            CancellationToken cancellationToken = default);
+
+        ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+                                            TimeSpan? timeout = null,
+                                            CancellationToken cancellationToken = default);
+    }
+
+    public class Base(ResourceName resourceName, ViamChannel channel) : ComponentBase<Base, BaseService.BaseServiceClient>(resourceName, new BaseService.BaseServiceClient(channel)), IBase
+    {
+        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Base(name, channel)));
         public static SubType SubType = SubType.FromRdkComponent("base");
 
         public static Board FromRobot(RobotClient client, string name)
         {
-            var resourceName = GetResourceName(SubType, name);
+            var resourceName = IResourceBase.GetResourceName(SubType, name);
             return client.GetComponent<Board>(resourceName);
         }
 
-        public override async ValueTask<IDictionary<string, object?>> DoCommandAsync(IDictionary<string, object> command,
+        public override DateTime? LastReconfigured => null;
+
+        internal override ValueTask StopResource() => Stop();
+
+        public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object> command,
             TimeSpan? timeout = null)
         {
             var res = await Client.DoCommandAsync(new DoCommandRequest()

@@ -6,22 +6,57 @@ using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Component.Gantry.V1;
-using Viam.Net.Sdk.Core.Clients;
-using Viam.Net.Sdk.Core.Utils;
+using Viam.Core.Clients;
+using Viam.Core.Utils;
 
-namespace Viam.Net.Sdk.Core.Resources.Components
+namespace Viam.Core.Resources.Components
 {
-    public class Gantry(ResourceName resourceName, ViamChannel channel) : ComponentBase<Gantry, GantryService.GantryServiceClient>(resourceName, new GantryService.GantryServiceClient(channel))
+    public interface IGantry : IComponentBase
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Gantry(name, channel), () => null));
+        ValueTask<double[]> GetPosition(Struct? extra = null,
+                                        TimeSpan? timeout = null,
+                                        CancellationToken cancellationToken = default);
+
+        ValueTask MoveToPosition(double[] positions,
+                                 double[] speeds,
+                                 Struct? extra = null,
+                                 TimeSpan? timeout = null,
+                                 CancellationToken cancellationToken = default);
+
+        ValueTask Home(Struct? extra = null,
+                       TimeSpan? timeout = null,
+                       CancellationToken cancellationToken = default);
+
+        ValueTask<double[]> GetLengths(Struct? extra = null,
+                                       TimeSpan? timeout = null,
+                                       CancellationToken cancellationToken = default);
+
+        ValueTask Stop(Struct? extra = null,
+                       TimeSpan? timeout = null,
+                       CancellationToken cancellationToken = default);
+
+        ValueTask<bool> IsMoving(TimeSpan? timeout = null,
+                                 CancellationToken cancellationToken = default);
+
+        ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+                                            TimeSpan? timeout = null,
+                                            CancellationToken cancellationToken = default);
+    }
+    public class Gantry(ResourceName resourceName, ViamChannel channel) : ComponentBase<Gantry, GantryService.GantryServiceClient>(resourceName, new GantryService.GantryServiceClient(channel)), IGantry
+    {
+        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Gantry(name, channel)));
         public static SubType SubType = SubType.FromRdkComponent("gantry");
         public static Gantry FromRobot(RobotClient client, string name)
         {
-            var resourceName = GetResourceName(SubType, name);
+            var resourceName = IResourceBase.GetResourceName(SubType, name);
             return client.GetComponent<Gantry>(resourceName);
         }
 
-        public override async ValueTask<IDictionary<string, object?>> DoCommandAsync(IDictionary<string, object> command,
+        public override DateTime? LastReconfigured => null;
+        
+        internal override ValueTask StopResource() => Stop();
+
+        public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object> command,
             TimeSpan? timeout = null)
         {
             var res = await Client.DoCommandAsync(new DoCommandRequest()

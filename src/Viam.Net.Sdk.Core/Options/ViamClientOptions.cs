@@ -2,10 +2,10 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using SIPSorcery.Net;
-using Viam.Net.Sdk.Core.Clients;
-using Viam.Net.Sdk.Core.Dialing;
+using Viam.Core.Clients;
+using Viam.Core.Dialing;
 
-namespace Viam.Net.Sdk.Core.Options
+namespace Viam.Core.Options
 {
     public class ViamClientOptions
     {

@@ -8,23 +8,56 @@ using Google.Protobuf.WellKnownTypes;
 
 using Viam.Common.V1;
 using Viam.Component.Board.V1;
-using Viam.Net.Sdk.Core.Clients;
-using Viam.Net.Sdk.Core.Utils;
+using Viam.Core.Clients;
+using Viam.Core.Utils;
 
-namespace Viam.Net.Sdk.Core.Resources.Components
+namespace Viam.Core.Resources.Components
 {
-    public class Board(ResourceName resourceName, ViamChannel channel) : ComponentBase<Board, BoardService.BoardServiceClient>(resourceName, new BoardService.BoardServiceClient(channel))
+    public interface IBoard : IComponentBase
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Board(name, channel), () => null));
+        ValueTask<AnalogReader> GetAnalogReaderByName(string name);
+        ValueTask<AnalogWriter> GetAnalogWriterByName(string name);
+        ValueTask<DigitalInterrupt> GetDigitalInterruptByName(string name);
+        ValueTask<GpioPin> GetGpioPinByName(string name);
+
+        ValueTask<string[]> GetAnalogReadersByNameAsync(TimeSpan? timeout = null,
+                                                        CancellationToken cancellationToken = default);
+
+        ValueTask<string[]> GetDigitalInterruptsByNameAsync(TimeSpan? timeout = null,
+                                                            CancellationToken cancellationToken = default);
+
+        ValueTask<BoardStatus> GetBoardStatusAsync(TimeSpan? timeout = null,
+                                                   CancellationToken cancellationToken = default);
+
+        ValueTask SetPowerModeAsync(PowerMode mode,
+                          TimeSpan duration,
+                          Struct? extra = null,
+                          TimeSpan? timeout = null,
+                          CancellationToken cancellationToken = default);
+
+        ValueTask WriteAnalogAsync(string pin,
+                                   int value,
+                                   Struct? extra = null,
+                                   TimeSpan? timeout = null,
+                                   CancellationToken cancellationToken = default);
+    }
+
+    public class Board(ResourceName resourceName, ViamChannel channel) : ComponentBase<Board, BoardService.BoardServiceClient>(resourceName, new BoardService.BoardServiceClient(channel)), IBoard
+    {
+        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Board(name, channel)));
         public static SubType SubType = SubType.FromRdkComponent("board");
 
         public static Board FromRobot(RobotClient client, string name)
         {
-            var resourceName = GetResourceName(SubType, name);
+            var resourceName = IResourceBase.GetResourceName(SubType, name);
             return client.GetComponent<Board>(resourceName);
         }
 
-        public override async ValueTask<IDictionary<string, object?>> DoCommandAsync(IDictionary<string, object> command,
+        public override DateTime? LastReconfigured => null;
+
+        internal override ValueTask StopResource() => ValueTask.CompletedTask;
+
+        public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object> command,
             TimeSpan? timeout = null)
         {
             var res = await Client.DoCommandAsync(new DoCommandRequest()

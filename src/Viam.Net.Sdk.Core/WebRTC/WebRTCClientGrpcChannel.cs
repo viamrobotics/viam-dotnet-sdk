@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using Proto.Rpc.Webrtc.V1;
 using SIPSorcery.Net;
 
-namespace Viam.Net.Sdk.Core.WebRTC
+namespace Viam.Core.WebRTC
 {
     public class WebRTCClientChannel : ViamChannel, IDisposable
     {

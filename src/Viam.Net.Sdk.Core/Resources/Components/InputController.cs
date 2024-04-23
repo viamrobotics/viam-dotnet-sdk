@@ -3,32 +3,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Google.Protobuf.WellKnownTypes;
+
 using Viam.Common.V1;
 using Viam.Component.Inputcontroller.V1;
-using Viam.Net.Sdk.Core.Clients;
-using Viam.Net.Sdk.Core.Utils;
+using Viam.Core.Clients;
+using Viam.Core.Utils;
 
-namespace Viam.Net.Sdk.Core.Resources.Components
+namespace Viam.Core.Resources.Components
 {
-    public class InputController(ResourceName resourceName, ViamChannel channel) : ComponentBase<InputController, InputControllerService.InputControllerServiceClient>(resourceName, new InputControllerService.InputControllerServiceClient(channel))
+    public interface IInputController : IComponentBase
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new InputController(name, channel), () => null));
+        ValueTask<InputController.Control[]> GetControls(Struct? extra = null,
+                                         TimeSpan? timeout = null,
+                                         CancellationToken cancellationToken = default);
+
+        ValueTask<IDictionary<InputController.Control, InputController.Event>> GetEvents(InputController.Control control,
+                                         Struct? extra = null,
+                                         TimeSpan? timeout = null,
+                                         CancellationToken cancellationToken = default);
+
+        ValueTask RegisterControlCallback(InputController.Control control,
+                                          Struct? extra = null,
+                                          TimeSpan? timeout = null,
+                                          CancellationToken cancellationToken = default);
+
+        ValueTask TriggerEvent(InputController.Event @event,
+                               Struct? extra = null,
+                               TimeSpan? timeout = null,
+                               CancellationToken cancellationToken = default);
+    }
+    public class InputController(ResourceName resourceName, ViamChannel channel) : ComponentBase<InputController, InputControllerService.InputControllerServiceClient>(resourceName, new InputControllerService.InputControllerServiceClient(channel)), IInputController
+    {
+        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new InputController(name, channel)));
         public static SubType SubType = SubType.FromRdkComponent("input_controller");
 
         public static InputController FromRobot(RobotClient client, string name)
         {
-            var resourceName = GetResourceName(SubType, name);
+            var resourceName = IResourceBase.GetResourceName(SubType, name);
             return client.GetComponent<InputController>(resourceName);
         }
 
-        public override async ValueTask<IDictionary<string, object?>> DoCommandAsync(IDictionary<string, object> command,
+        public override DateTime? LastReconfigured => null;
+
+        internal override ValueTask StopResource() => ValueTask.CompletedTask;
+
+        public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object> command,
             TimeSpan? timeout = null)
         {
             var res = await Client.DoCommandAsync(new DoCommandRequest()
-                                                         {
-                                                             Name = ResourceName.Name, Command = command.ToStruct()
-                                                         });
+            {
+                Name = ResourceName.Name,
+                Command = command.ToStruct()
+            });
 
             return res.Result.ToDictionary();
         }
@@ -79,98 +107,100 @@ namespace Viam.Net.Sdk.Core.Resources.Components
                     @event.Value);
         }
 
-        public abstract record EventType(string name)
+        public record EventType(string name)
         {
             public static EventType FromName(string name)
             {
                 return name switch
                        {
-                           nameof(AllEvents) => new AllEvents(),
-                           nameof(Connect) => new Connect(),
-                           nameof(Disconnect) => new Disconnect(),
-                           nameof(ButtonPress) => new ButtonPress(),
-                           nameof(ButtonRelease) => new ButtonRelease(),
-                           nameof(ButtonHold) => new ButtonHold(),
-                           nameof(ButtonChange) => new ButtonChange(),
-                           nameof(PositionChangeAbs) => new PositionChangeAbs(),
-                           nameof(PositionChangeRel) => new PositionChangeRel(),
+                           nameof(AllEvents) => AllEvents,
+                           nameof(Connect) => Connect,
+                           nameof(Disconnect) => Disconnect,
+                           nameof(ButtonPress) => ButtonPress,
+                           nameof(ButtonRelease) => ButtonRelease,
+                           nameof(ButtonHold) => ButtonHold,
+                           nameof(ButtonChange) => ButtonChange,
+                           nameof(PositionChangeAbs) => PositionChangeAbs,
+                           nameof(PositionChangeRel) => PositionChangeRel,
                            _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown event type")
                        };
             }
 
-            public record AllEvents() : EventType(nameof(AllEvents));
-            public record Connect() : EventType(nameof(Connect));
-            public record Disconnect() : EventType(nameof(Disconnect));
-            public record ButtonPress() : EventType(nameof(ButtonPress));
-            public record ButtonRelease() : EventType(nameof(ButtonRelease));
-            public record ButtonHold() : EventType(nameof(ButtonHold));
-            public record ButtonChange() : EventType(nameof(ButtonChange));
-            public record PositionChangeAbs() : EventType(nameof(PositionChangeAbs));
-            public record PositionChangeRel() : EventType(nameof(PositionChangeRel));
+            public static EventType AllEvents = new(nameof(AllEvents));
+            public static EventType Connect = new(nameof(Connect));
+            public static EventType Disconnect = new(nameof(Disconnect));
+            public static EventType ButtonPress = new(nameof(ButtonPress));
+            public static EventType ButtonRelease = new(nameof(ButtonRelease));
+            public static EventType ButtonHold = new(nameof(ButtonHold));
+            public static EventType ButtonChange = new(nameof(ButtonChange));
+            public static EventType PositionChangeAbs = new(nameof(PositionChangeAbs));
+            public static EventType PositionChangeRel = new(nameof(PositionChangeRel));
         }
 
-        public abstract record Control(string name)
+        public record Control(string name)
         {
             public static Control FromName(string name)
             {
                 return name switch
                        {
-                           nameof(AbsoluteX)                => new AbsoluteX(),
-                           nameof(AbsoluteY)                => new AbsoluteY(),
-                           nameof(AbsoluteZ)                => new AbsoluteZ(),
-                           nameof(AbsoluteRX)               => new AbsoluteRX(),
-                           nameof(AbsoluteRY)               => new AbsoluteRY(),
-                           nameof(AbsoluteRZ)               => new AbsoluteRZ(),
-                           nameof(AbsoluteHat0X)            => new AbsoluteHat0X(),
-                           nameof(AbsoluteHat0Y)            => new AbsoluteHat0Y(),
-                           nameof(ButtonSouth)              => new ButtonSouth(),
-                           nameof(ButtonEast)               => new ButtonEast(),
-                           nameof(ButtonWest)               => new ButtonWest(),
-                           nameof(ButtonNorth)              => new ButtonNorth(),
-                           nameof(ButtonLT)                 => new ButtonLT(),
-                           nameof(ButtonRT)                 => new ButtonRT(),
-                           nameof(ButtonLT2)                => new ButtonLT2(),
-                           nameof(ButtonRT2)                => new ButtonRT2(),
-                           nameof(ButtonLThumb)             => new ButtonLThumb(),
-                           nameof(ButtonRThumb)             => new ButtonRThumb(),
-                           nameof(ButtonSelect)             => new ButtonSelect(),
-                           nameof(ButtonStart)              => new ButtonStart(),
-                           nameof(ButtonMenu)               => new ButtonMenu(),
-                           nameof(ButtonRecord)             => new ButtonRecord(),
-                           nameof(ButtonEStop)              => new ButtonEStop(),
-                           nameof(AbsolutePedalAccelerator) => new AbsolutePedalAccelerator(),
-                           nameof(AbsolutePedalBrake)       => new AbsolutePedalBrake(),
-                           nameof(AbsolutePedalClutch)      => new AbsolutePedalClutch(),
-                           _                          => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown control type")
+                           nameof(AbsoluteX) => AbsoluteX,
+                           nameof(AbsoluteY) => AbsoluteY,
+                           nameof(AbsoluteZ) => AbsoluteZ,
+                           nameof(AbsoluteRX) => AbsoluteRX,
+                           nameof(AbsoluteRY) => AbsoluteRY,
+                           nameof(AbsoluteRZ) => AbsoluteRZ,
+                           nameof(AbsoluteHat0X) => AbsoluteHat0X,
+                           nameof(AbsoluteHat0Y) => AbsoluteHat0Y,
+                           nameof(ButtonSouth) => ButtonSouth,
+                           nameof(ButtonEast) => ButtonEast,
+                           nameof(ButtonWest) => ButtonWest,
+                           nameof(ButtonNorth) => ButtonNorth,
+                           nameof(ButtonLT) => ButtonLT,
+                           nameof(ButtonRT) => ButtonRT,
+                           nameof(ButtonLT2) => ButtonLT2,
+                           nameof(ButtonRT2) => ButtonRT2,
+                           nameof(ButtonLThumb) => ButtonLThumb,
+                           nameof(ButtonRThumb) => ButtonRThumb,
+                           nameof(ButtonSelect) => ButtonSelect,
+                           nameof(ButtonStart) => ButtonStart,
+                           nameof(ButtonMenu) => ButtonMenu,
+                           nameof(ButtonRecord) => ButtonRecord,
+                           nameof(ButtonEStop) => ButtonEStop,
+                           nameof(AbsolutePedalAccelerator) => AbsolutePedalAccelerator,
+                           nameof(AbsolutePedalBrake) => AbsolutePedalBrake,
+                           nameof(AbsolutePedalClutch) => AbsolutePedalClutch,
+                           _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown control type")
                        };
+
+                ;
             }
 
-            public record AbsoluteX() : Control(nameof(AbsoluteX));
-            public record AbsoluteY() : Control(nameof(AbsoluteY));
-            public record AbsoluteZ() : Control(nameof(AbsoluteZ));
-            public record AbsoluteRX() : Control(nameof(AbsoluteRX));
-            public record AbsoluteRY() : Control(nameof(AbsoluteRY));
-            public record AbsoluteRZ() : Control(nameof(AbsoluteRZ));
-            public record AbsoluteHat0X() : Control(nameof(AbsoluteHat0X));
-            public record AbsoluteHat0Y() : Control(nameof(AbsoluteHat0Y));
-            public record ButtonSouth() : Control(nameof(ButtonSouth));
-            public record ButtonEast() : Control(nameof(ButtonEast));
-            public record ButtonWest() : Control(nameof(ButtonWest));
-            public record ButtonNorth() : Control(nameof(ButtonNorth));
-            public record ButtonLT() : Control(nameof(ButtonLT));
-            public record ButtonRT() : Control(nameof(ButtonRT));
-            public record ButtonLT2() : Control(nameof(ButtonLT2));
-            public record ButtonRT2() : Control(nameof(ButtonRT2));
-            public record ButtonLThumb() : Control(nameof(ButtonLThumb));
-            public record ButtonRThumb() : Control(nameof(ButtonRThumb));
-            public record ButtonSelect() : Control(nameof(ButtonSelect));
-            public record ButtonStart() : Control(nameof(ButtonStart));
-            public record ButtonMenu() : Control(nameof(ButtonMenu));
-            public record ButtonRecord() : Control(nameof(ButtonRecord));
-            public record ButtonEStop() : Control(nameof(ButtonEStop));
-            public record AbsolutePedalAccelerator() : Control(nameof(AbsolutePedalAccelerator));
-            public record AbsolutePedalBrake() : Control(nameof(AbsolutePedalBrake));
-            public record AbsolutePedalClutch() : Control(nameof(AbsolutePedalClutch));
+            public static Control AbsoluteX = new(nameof(AbsoluteX));
+            public static Control AbsoluteY = new(nameof(AbsoluteY));
+            public static Control AbsoluteZ = new(nameof(AbsoluteZ));
+            public static Control AbsoluteRX = new(nameof(AbsoluteRX));
+            public static Control AbsoluteRY = new(nameof(AbsoluteRY));
+            public static Control AbsoluteRZ = new(nameof(AbsoluteRZ));
+            public static Control AbsoluteHat0X = new(nameof(AbsoluteHat0X));
+            public static Control AbsoluteHat0Y = new(nameof(AbsoluteHat0Y));
+            public static Control ButtonSouth = new(nameof(ButtonSouth));
+            public static Control ButtonEast = new(nameof(ButtonEast));
+            public static Control ButtonWest = new(nameof(ButtonWest));
+            public static Control ButtonNorth = new(nameof(ButtonNorth));
+            public static Control ButtonLT = new(nameof(ButtonLT));
+            public static Control ButtonRT = new(nameof(ButtonRT));
+            public static Control ButtonLT2 = new(nameof(ButtonLT2));
+            public static Control ButtonRT2 = new(nameof(ButtonRT2));
+            public static Control ButtonLThumb = new(nameof(ButtonLThumb));
+            public static Control ButtonRThumb = new(nameof(ButtonRThumb));
+            public static Control ButtonSelect = new(nameof(ButtonSelect));
+            public static Control ButtonStart = new(nameof(ButtonStart));
+            public static Control ButtonMenu = new(nameof(ButtonMenu));
+            public static Control ButtonRecord = new(nameof(ButtonRecord));
+            public static Control ButtonEStop = new(nameof(ButtonEStop));
+            public static Control AbsolutePedalAccelerator = new(nameof(AbsolutePedalAccelerator));
+            public static Control AbsolutePedalBrake = new(nameof(AbsolutePedalBrake));
+            public static Control AbsolutePedalClutch = new(nameof(AbsolutePedalClutch));
         }
     }
 }

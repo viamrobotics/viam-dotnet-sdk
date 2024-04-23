@@ -4,7 +4,7 @@ using System.Linq;
 using Google.Protobuf.Collections;
 using Google.Protobuf.WellKnownTypes;
 
-namespace Viam.Net.Sdk.Core.Utils
+namespace Viam.Core.Utils
 {
     internal static class GrpcExtensions
     {

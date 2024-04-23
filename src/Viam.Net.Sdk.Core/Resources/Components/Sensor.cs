@@ -7,25 +7,36 @@ using Google.Protobuf.WellKnownTypes;
 
 using Viam.Common.V1;
 using Viam.Component.Sensor.V1;
-using Viam.Net.Sdk.Core.Clients;
-using Viam.Net.Sdk.Core.Utils;
+using Viam.Core.Clients;
+using Viam.Core.Utils;
 
-namespace Viam.Net.Sdk.Core.Resources.Components
+namespace Viam.Core.Resources.Components
 {
-    public class Sensor(ResourceName resourceName, ViamChannel channel) : ComponentBase<Sensor, SensorService.SensorServiceClient>(resourceName, new SensorService.SensorServiceClient(channel))
+    public interface ISensor : IComponentBase
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Sensor(name, channel), () => null));
+        public ValueTask<IDictionary<string, object?>> GetReadings(Struct? extra = null,
+                                                                 TimeSpan? timeout = null,
+                                                                 CancellationToken cancellationToken = default);
+    }
+
+    public class Sensor(ResourceName resourceName, ViamChannel channel) : ComponentBase<Sensor, SensorService.SensorServiceClient>(resourceName, new SensorService.SensorServiceClient(channel)), ISensor
+    {
+        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Sensor(name, channel)));
 
         public static SubType SubType = SubType.FromRdkComponent("sensor");
 
         public static Sensor FromRobot(RobotClient client, string name)
         {
-            var resourceName = GetResourceName(SubType, name);
+            var resourceName = IResourceBase.GetResourceName(SubType, name);
             return client.GetComponent<Sensor>(resourceName);
         }
 
-        public override async ValueTask<IDictionary<string, object?>> DoCommandAsync(IDictionary<string, object> command,
-            TimeSpan? timeout = null)
+        public override DateTime? LastReconfigured => null;
+
+        internal override ValueTask StopResource() => ValueTask.CompletedTask;
+
+        public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object> command,
+                                                                                TimeSpan? timeout = null)
         {
             var res = await Client.DoCommandAsync(new DoCommandRequest()
                                                          {
@@ -35,7 +46,7 @@ namespace Viam.Net.Sdk.Core.Resources.Components
             return res.Result.ToDictionary();
         }
 
-        public async ValueTask<IDictionary<string, object?>> GetReadingsAsync(
+        public async ValueTask<IDictionary<string, object?>> GetReadings(
             Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)

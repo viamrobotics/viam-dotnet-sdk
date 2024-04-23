@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Google.Protobuf;
 using SIPSorcery.Net;
 
-namespace Viam.Net.Sdk.Core.WebRTC
+namespace Viam.Core.WebRTC
 {
     internal class WebRTCBaseChannel : IDisposable
     {

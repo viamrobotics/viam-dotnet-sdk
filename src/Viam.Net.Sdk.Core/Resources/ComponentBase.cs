@@ -2,16 +2,18 @@
 
 using Viam.Common.V1;
 
-namespace Viam.Net.Sdk.Core.Resources
+namespace Viam.Core.Resources
 {
-    public abstract class ComponentBase<T, TClient>(ResourceName resourceName, TClient client) : ComponentBase where T : ComponentBase where TClient : ClientBase<TClient>
+    public interface IComponentBase : IResourceBase
     {
-        public ResourceName ResourceName => resourceName;
-        public string Name => ResourceName.Name;
+    }
+
+    public abstract class ComponentBase<T, TClient>(ResourceName resourceName, TClient client) : ComponentBase(resourceName) where T : ComponentBase where TClient : ClientBase<TClient>
+    {
         public TClient Client => client;
     }
 
-    public abstract class ComponentBase : ResourceBase
+    public abstract class ComponentBase(ResourceName resourceName) : ResourceBase(resourceName)
     {
     }
 }

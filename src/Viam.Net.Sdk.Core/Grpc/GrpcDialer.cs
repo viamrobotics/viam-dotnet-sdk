@@ -3,9 +3,9 @@ using Grpc.Core;
 using Grpc.Net.Client;
 using Microsoft.Extensions.Logging;
 using Proto.Rpc.V1;
-using Viam.Net.Sdk.Core.Dialing;
+using Viam.Core.Dialing;
 
-namespace Viam.Net.Sdk.Core.Grpc
+namespace Viam.Core.Grpc
 {
     internal class GrpcDialer(ILogger logger)
     {

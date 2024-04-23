@@ -3,15 +3,21 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
+
 using Grpc.Core;
+
 using Microsoft.Extensions.Logging;
+
 using Proto.Rpc.Webrtc.V1;
+
 using SIPSorcery.Net;
-using Viam.Net.Sdk.Core.Dialing;
-using Viam.Net.Sdk.Core.Grpc;
+
+using Viam.Core.Dialing;
+using Viam.Core.Grpc;
+
 using Metadata = Grpc.Core.Metadata;
 
-namespace Viam.Net.Sdk.Core.WebRTC
+namespace Viam.Core.WebRTC
 {
     internal class WebRtcDialer(ILogger logger, GrpcDialer grpcDialer)
     {
@@ -142,11 +148,18 @@ namespace Viam.Net.Sdk.Core.WebRTC
             var sdpJSON = System.Convert.FromBase64String(encodedSdp);
             var sdpDoc = JsonDocument.Parse(sdpJSON).RootElement;
 
-            return new RTCSessionDescription
+            if (Enum.TryParse<RTCSdpType>(sdpDoc.GetProperty("type").GetString()!, out var type))
             {
-                type = Enum.Parse<RTCSdpType>(sdpDoc.GetProperty("type").GetString()!),
-                sdp = SDP.ParseSDPDescription(sdpDoc.GetProperty("sdp").GetString()!)
-            };
+                return new RTCSessionDescription
+                {
+                    type = type,
+                    sdp = SDP.ParseSDPDescription(sdpDoc.GetProperty("sdp").GetString()!)
+                };
+            }
+            else
+            {
+                throw new Exception("failed to parse sdp type");
+            }
         }
 
         private async Task ExchangeCandidates(SignalingService.SignalingServiceClient signalingClient,
@@ -159,7 +172,7 @@ namespace Viam.Net.Sdk.Core.WebRTC
                                               DialState state)
         {
             var haveInit = false;
-            while(true)
+            while (true)
             {
                 if (!(await callingClient.ResponseStream.MoveNext()))
                 {
@@ -175,13 +188,13 @@ namespace Viam.Net.Sdk.Core.WebRTC
                             throw new Exception("got init stage more than once");
                         }
 
-                        haveInit = true; 
+                        haveInit = true;
                         state.Uuid = resp.Uuid;
                         var answer = DecodeSdp(resp.Init.Sdp);
 
                         peerConnection.setRemoteDescription(
                             new RTCSessionDescriptionInit { type = answer.type, sdp = answer.sdp.ToString() });
-                        
+
                         remoteDescriptionSent.SetResult(true);
 
                         if (disableTrickleICE)

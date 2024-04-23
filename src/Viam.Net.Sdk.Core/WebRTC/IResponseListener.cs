@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using Grpc.Core;
 
-namespace Viam.Net.Sdk.Core.WebRTC
+namespace Viam.Core.WebRTC
 {
     internal interface IResponseListener<in TResponse>
     {

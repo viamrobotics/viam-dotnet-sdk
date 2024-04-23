@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
-using Viam.Net.Sdk.Core.Clients;
-using Viam.Net.Sdk.Core.Options;
-using Viam.Net.Sdk.Core.Resources.Components;
+using Viam.Core.Clients;
+using Viam.Core.Options;
+using Viam.Core.Resources.Components;
 
 namespace ViamSdk.Test.Components
 {

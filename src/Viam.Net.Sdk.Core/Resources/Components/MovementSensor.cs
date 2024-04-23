@@ -6,36 +6,81 @@ using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Component.Movementsensor.V1;
-using Viam.Net.Sdk.Core.Clients;
-using Viam.Net.Sdk.Core.Utils;
+using Viam.Core.Clients;
+using Viam.Core.Utils;
 
-namespace Viam.Net.Sdk.Core.Resources.Components
+namespace Viam.Core.Resources.Components
 {
-    public class MovementSensor(ResourceName resourceName, ViamChannel channel) : ComponentBase<MovementSensor, MovementSensorService.MovementSensorServiceClient>(resourceName, new MovementSensorService.MovementSensorServiceClient(channel))
+    public interface IMovementSensor : ISensor
+    {
+        ValueTask<(GeoPoint, float)> GetPosition(Struct? extra = null,
+                                                 TimeSpan? timeout = null,
+                                                 CancellationToken cancellationToken = default);
+
+        ValueTask<Vector3> GetLinearVelocity(Struct? extra = null,
+                                             TimeSpan? timeout = null,
+                                             CancellationToken cancellationToken = default);
+
+        ValueTask<Vector3> GetAngularVelocity(Struct? extra = null,
+                                              TimeSpan? timeout = null,
+                                              CancellationToken cancellationToken = default);
+
+        ValueTask<Vector3> GetLinearAcceleration(Struct? extra = null,
+                                                 TimeSpan? timeout = null,
+                                                 CancellationToken cancellationToken = default);
+
+        ValueTask<double> GetCompassHeading(Struct? extra = null,
+                                            TimeSpan? timeout = null,
+                                            CancellationToken cancellationToken = default);
+
+        ValueTask<Orientation> GetOrientation(Struct? extra = null,
+                                              TimeSpan? timeout = null,
+                                              CancellationToken cancellationToken = default);
+
+        ValueTask<MovementSensor.Properties> GetProperties(Struct? extra = null,
+                                            TimeSpan? timeout = null,
+                                            CancellationToken cancellationToken = default);
+
+        ValueTask<MovementSensor.Accuracy> GetAccuracy(Struct? extra = null,
+                                        TimeSpan? timeout = null,
+                                        CancellationToken cancellationToken = default);
+    }
+
+    public class MovementSensor(ResourceName resourceName, ViamChannel channel)
+        : ComponentBase<MovementSensor, MovementSensorService.MovementSensorServiceClient>(
+              resourceName,
+              new MovementSensorService.MovementSensorServiceClient(channel)), IMovementSensor
     {
         public static SubType SubType = SubType.FromRdkComponent("movement_sensor");
-        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new MovementSensor(name, channel), () => null));
+
+        internal static void RegisterType() => Registry.RegisterSubtype(
+            new ResourceRegistration(SubType, (name, channel) => new MovementSensor(name, channel)));
 
         public static MovementSensor FromRobot(RobotClient client, string name)
         {
-            var resourceName = GetResourceName(SubType, name);
+            var resourceName = IResourceBase.GetResourceName(SubType, name);
             return client.GetComponent<MovementSensor>(resourceName);
         }
 
-        public override async ValueTask<IDictionary<string, object?>> DoCommandAsync(IDictionary<string, object> command,
+        public override DateTime? LastReconfigured => null;
+
+        internal override ValueTask StopResource() => ValueTask.CompletedTask;
+
+        public override async ValueTask<IDictionary<string, object?>> DoCommand(
+            IDictionary<string, object> command,
             TimeSpan? timeout = null)
         {
             var res = await Client.DoCommandAsync(new DoCommandRequest()
-                                                         {
-                                                             Name = ResourceName.Name, Command = command.ToStruct()
-                                                         });
+                                                  {
+                                                      Name = ResourceName.Name, Command = command.ToStruct()
+                                                  });
 
             return res.Result.ToDictionary();
         }
 
         public async ValueTask<(GeoPoint, float)> GetPosition(Struct? extra = null,
-                                                             TimeSpan? timeout = null,
-                                                             CancellationToken cancellationToken = default)
+                                                              TimeSpan? timeout = null,
+                                                              CancellationToken cancellationToken = default)
         {
             var res = await Client.GetPositionAsync(new GetPositionRequest() { Name = Name, Extra = extra },
                                                     deadline: timeout.ToDeadline(),
@@ -66,6 +111,7 @@ namespace Viam.Net.Sdk.Core.Resources.Components
                                       deadline: timeout.ToDeadline(),
                                       cancellationToken: cancellationToken)
                                   .ConfigureAwait(false);
+
             return res.AngularVelocity;
         }
 
@@ -78,6 +124,7 @@ namespace Viam.Net.Sdk.Core.Resources.Components
                                       deadline: timeout.ToDeadline(),
                                       cancellationToken: cancellationToken)
                                   .ConfigureAwait(false);
+
             return res.LinearAcceleration;
         }
 
@@ -102,6 +149,7 @@ namespace Viam.Net.Sdk.Core.Resources.Components
                                                        deadline: timeout.ToDeadline(),
                                                        cancellationToken: cancellationToken)
                                   .ConfigureAwait(false);
+
             return res.Orientation;
         }
 
@@ -123,8 +171,8 @@ namespace Viam.Net.Sdk.Core.Resources.Components
         }
 
         public async ValueTask<Accuracy> GetAccuracy(Struct? extra = null,
-                                             TimeSpan? timeout = null,
-                                             CancellationToken cancellationToken = default)
+                                                     TimeSpan? timeout = null,
+                                                     CancellationToken cancellationToken = default)
         {
             var res = await Client.GetAccuracyAsync(new GetAccuracyRequest() { Name = Name, Extra = extra, },
                                                     deadline: timeout.ToDeadline(),
@@ -143,8 +191,8 @@ namespace Viam.Net.Sdk.Core.Resources.Components
         }
 
         public async ValueTask<IDictionary<string, object?>> GetReadings(Struct? extra = null,
-                                             TimeSpan? timeout = null,
-                                             CancellationToken cancellationToken = default)
+                                                                         TimeSpan? timeout = null,
+                                                                         CancellationToken cancellationToken = default)
         {
             var res = await Client.GetReadingsAsync(new GetReadingsRequest() { Name = Name, Extra = extra, },
                                                     deadline: timeout.ToDeadline(),
@@ -162,14 +210,15 @@ namespace Viam.Net.Sdk.Core.Resources.Components
             bool OrientationSupported,
             bool PositionSupported);
 
-        public record Accuracy(IDictionary<string, float> Accuracies,
-                               bool HasCompassDegreesError,
-                               float CompassDegreesError,
-                               bool HasPositionHdop,
-                               float PositionHdop,
-                               bool HasPositionNmeaGgaFix,
-                               int PositionNmeaGgaFix,
-                               bool HasPositionVdop,
-                               float PositionVdop);
+        public record Accuracy(
+            IDictionary<string, float> Accuracies,
+            bool HasCompassDegreesError,
+            float CompassDegreesError,
+            bool HasPositionHdop,
+            float PositionHdop,
+            bool HasPositionNmeaGgaFix,
+            int PositionNmeaGgaFix,
+            bool HasPositionVdop,
+            float PositionVdop);
     }
 }

@@ -2,10 +2,10 @@
 using Google.Protobuf.Collections;
 using Microsoft.Extensions.Logging;
 using Viam.App.V1;
-using Viam.Net.Sdk.Core.Dialing;
-using Viam.Net.Sdk.Core.Options;
+using Viam.Core.Dialing;
+using Viam.Core.Options;
 
-namespace Viam.Net.Sdk.Core.Clients
+namespace Viam.Core.Clients
 {
     public class AppClient
     {

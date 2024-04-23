@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Viam.Net.Sdk.Core.Grpc;
-using Viam.Net.Sdk.Core.WebRTC;
+using Viam.Core.Grpc;
+using Viam.Core.WebRTC;
 
-namespace Viam.Net.Sdk.Core.Dialing
+namespace Viam.Core.Dialing
 {
     public class Dialer
     {

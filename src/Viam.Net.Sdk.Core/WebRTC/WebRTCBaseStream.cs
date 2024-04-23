@@ -4,7 +4,7 @@ using System.Linq;
 using Microsoft.Extensions.Logging;
 using Proto.Rpc.Webrtc.V1;
 
-namespace Viam.Net.Sdk.Core.WebRTC
+namespace Viam.Core.WebRTC
 {
     internal class WebRTCBaseStream
     {

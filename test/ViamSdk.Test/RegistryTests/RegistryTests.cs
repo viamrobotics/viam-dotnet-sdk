@@ -1,5 +1,5 @@
-﻿using Viam.Net.Sdk.Core.Resources;
-using Viam.Net.Sdk.Core.Resources.Components;
+﻿using Viam.Core.Resources;
+using Viam.Core.Resources.Components;
 
 namespace ViamSdk.Test.RegistryTests
 {

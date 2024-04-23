@@ -5,22 +5,42 @@ using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Component.Encoder.V1;
-using Viam.Net.Sdk.Core.Clients;
-using Viam.Net.Sdk.Core.Utils;
+using Viam.Core.Clients;
+using Viam.Core.Utils;
 
-namespace Viam.Net.Sdk.Core.Resources.Components
+namespace Viam.Core.Resources.Components
 {
-    public class Encoder(ResourceName resourceName, ViamChannel channel) : ComponentBase<Encoder, EncoderService.EncoderServiceClient>(resourceName, new EncoderService.EncoderServiceClient(channel))
+    public interface IEncoder : IComponentBase
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Encoder(name, channel), () => null));
+        ValueTask ResetPosition(Struct? extra = null,
+                                TimeSpan? timeout = null,
+                                CancellationToken cancellationToken = default);
+
+        ValueTask<(float, PositionType)> GetPosition(PositionType? positionType = null,
+                                                     Struct? extra = null,
+                                                     TimeSpan? timeout = null,
+                                                     CancellationToken cancellationToken = default);
+
+        ValueTask<Encoder.Properties> GetProperties(Struct? extra = null,
+                                            TimeSpan? timeout = null,
+                                            CancellationToken cancellationToken = default);
+    }
+
+    public class Encoder(ResourceName resourceName, ViamChannel channel) : ComponentBase<Encoder, EncoderService.EncoderServiceClient>(resourceName, new EncoderService.EncoderServiceClient(channel)), IEncoder
+    {
+        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Encoder(name, channel)));
         public static SubType SubType = SubType.FromRdkComponent("encoder");
         public static Encoder FromRobot(RobotClient client, string name)
         {
-            var resourceName = GetResourceName(SubType, name);
+            var resourceName = IResourceBase.GetResourceName(SubType, name);
             return client.GetComponent<Encoder>(resourceName);
         }
 
-        public override async ValueTask<IDictionary<string, object?>> DoCommandAsync(IDictionary<string, object> command,
+        public override DateTime? LastReconfigured => null;
+
+        internal override ValueTask StopResource() => ValueTask.CompletedTask;
+
+        public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object> command,
             TimeSpan? timeout = null)
         {
             var res = await Client.DoCommandAsync(new DoCommandRequest()

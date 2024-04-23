@@ -1,20 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
 using Google.Protobuf;
 using Google.Protobuf.Collections;
 using Google.Protobuf.WellKnownTypes;
+
 using Grpc.Core;
+
 using Microsoft.Extensions.Logging;
 
 using Viam.Common.V1;
-using Viam.Net.Sdk.Core.Dialing;
-using Viam.Net.Sdk.Core.Options;
-using Viam.Net.Sdk.Core.Resources;
+using Viam.Core.Dialing;
+using Viam.Core.Options;
+using Viam.Core.Resources;
 using Viam.Robot.V1;
+
 using Status = Viam.Robot.V1.Status;
 
-namespace Viam.Net.Sdk.Core.Clients
+namespace Viam.Core.Clients
 {
     public class RobotClient
     {

@@ -1,6 +1,6 @@
 using Proto.Rpc.Webrtc.V1;
 
-namespace Viam.Net.Sdk.Core.WebRTC
+namespace Viam.Core.WebRTC
 {
     public interface IWebRTCClientStreamContainer
     {

@@ -6,23 +6,47 @@ using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Component.Servo.V1;
-using Viam.Net.Sdk.Core.Clients;
-using Viam.Net.Sdk.Core.Utils;
+using Viam.Core.Clients;
+using Viam.Core.Utils;
 
-namespace Viam.Net.Sdk.Core.Resources.Components
+namespace Viam.Core.Resources.Components
 {
-    public class Servo(ResourceName resourceName, ViamChannel channel) : ComponentBase<Servo, ServoService.ServoServiceClient>(resourceName, new ServoService.ServoServiceClient(channel))
+    public interface IServo : IComponentBase
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Servo(name, channel), () => null));
+        ValueTask Move(uint angle,
+                       Struct? extra = null,
+                       TimeSpan? timeout = null,
+                       CancellationToken cancellationToken = default);
+
+        ValueTask<uint> GetPosition(Struct? extra = null,
+                                    TimeSpan? timeout = null,
+                                    CancellationToken cancellationToken = default);
+
+        ValueTask Stop(Struct? extra = null,
+                       TimeSpan? timeout = null,
+                       CancellationToken cancellationToken = default);
+
+        ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+                                            TimeSpan? timeout = null,
+                                            CancellationToken cancellationToken = default);
+
+    }
+    public class Servo(ResourceName resourceName, ViamChannel channel) : ComponentBase<Servo, ServoService.ServoServiceClient>(resourceName, new ServoService.ServoServiceClient(channel)), IServo
+    {
+        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Servo(name, channel)));
         public static SubType SubType = SubType.FromRdkComponent("servo");
 
         public static Servo FromRobot(RobotClient client, string name)
         {
-            var resourceName = GetResourceName(SubType, name);
+            var resourceName = IResourceBase.GetResourceName(SubType, name);
             return client.GetComponent<Servo>(resourceName);
         }
 
-        public override async ValueTask<IDictionary<string, object?>> DoCommandAsync(IDictionary<string, object> command,
+        public override DateTime? LastReconfigured => null;
+
+        internal override ValueTask StopResource() => Stop();
+
+        public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object> command,
             TimeSpan? timeout = null)
         {
             var res = await Client.DoCommandAsync(new DoCommandRequest()

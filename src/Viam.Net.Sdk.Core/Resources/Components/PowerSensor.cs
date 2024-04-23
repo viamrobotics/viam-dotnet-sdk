@@ -5,23 +5,41 @@ using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Component.Powersensor.V1;
-using Viam.Net.Sdk.Core.Clients;
-using Viam.Net.Sdk.Core.Utils;
+using Viam.Core.Clients;
+using Viam.Core.Utils;
 
-namespace Viam.Net.Sdk.Core.Resources.Components
+namespace Viam.Core.Resources.Components
 {
-    public class PowerSensor(ResourceName resourceName, ViamChannel channel) : ComponentBase<PowerSensor, PowerSensorService.PowerSensorServiceClient>(resourceName, new PowerSensorService.PowerSensorServiceClient(channel))
+    public interface IPowerSensor : ISensor
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new PowerSensor(name, channel), () => null));
+        ValueTask<(double, bool)> GetVoltage(Struct? extra = null,
+                                             TimeSpan? timeout = null,
+                                             CancellationToken cancellationToken = default);
+
+        ValueTask<(double, bool)> GetCurrent(Struct? extra = null,
+                                             TimeSpan? timeout = null,
+                                             CancellationToken cancellationToken = default);
+
+        ValueTask<double> GetPower(Struct? extra = null,
+                                   TimeSpan? timeout = null,
+                                   CancellationToken cancellationToken = default);
+    }
+    public class PowerSensor(ResourceName resourceName, ViamChannel channel) : ComponentBase<PowerSensor, PowerSensorService.PowerSensorServiceClient>(resourceName, new PowerSensorService.PowerSensorServiceClient(channel)), IPowerSensor
+    {
+        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new PowerSensor(name, channel)));
         public static SubType SubType = SubType.FromRdkComponent("power_sensor");
 
         public static PowerSensor FromRobot(RobotClient client, string name)
         {
-            var resourceName = GetResourceName(SubType, name);
+            var resourceName = IResourceBase.GetResourceName(SubType, name);
             return client.GetComponent<PowerSensor>(resourceName);
         }
 
-        public override async ValueTask<IDictionary<string, object?>> DoCommandAsync(IDictionary<string, object> command,
+        public override DateTime? LastReconfigured => null;
+
+        internal override ValueTask StopResource() => ValueTask.CompletedTask;
+
+        public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object> command,
             TimeSpan? timeout = null)
         {
             var res = await Client.DoCommandAsync(new DoCommandRequest()

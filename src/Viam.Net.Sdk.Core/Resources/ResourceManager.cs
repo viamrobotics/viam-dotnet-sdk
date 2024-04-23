@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using Viam.Common.V1;
-using Viam.Net.Sdk.Core.Clients;
-using Viam.Net.Sdk.Core.Resources.Components;
 
-namespace Viam.Net.Sdk.Core.Resources
+using Microsoft.Extensions.Logging;
+
+using Viam.Common.V1;
+using Viam.Core.Clients;
+using Viam.Core.Resources.Components;
+
+namespace Viam.Core.Resources
 {
     public class ResourceManager(ILogger logger)
     {
@@ -61,12 +64,16 @@ namespace Viam.Net.Sdk.Core.Resources
             var foo = resourceNamesEnumerable.Where(x => x.Type == "component" || x.Type == "service")
                                              .Where(x => x.Subtype != "remote");
             // TODO: Filter out movement sensors
-                                             //.Where(x => x.Subtype != Sensor.SubType.ResourceSubType && !resourceNamesEnumerable.Contains(MovementSensor.GetResourceName(x.Name)));
+            //.Where(x => x.Subtype != Sensor.SubType.ResourceSubType && !resourceNamesEnumerable.Contains(MovementSensor.GetResourceName(x.Name)));
             foreach (var fo in foo)
             {
                 CreateOrResetClient(fo, client.Channel);
             }
         }
+
+        public ICollection<ResourceName> GetResourceNames() => _resources.Keys;
+
+        public ICollection<ResourceBase> GetResources() => _resources.Values;
 
         private void CreateOrResetClient(ResourceName resourceName, ViamChannel channel)
         {
@@ -82,7 +89,7 @@ namespace Viam.Net.Sdk.Core.Resources
                                      .CreateRpcClient(resourceName, channel);
                 Register(resourceName, client);
             }
-            catch(ResourceRegistrationNotFoundException)
+            catch (ResourceRegistrationNotFoundException)
             {
                 logger.LogWarning($"Resource {resourceName} not found in registry");
             }
@@ -90,4 +97,17 @@ namespace Viam.Net.Sdk.Core.Resources
     }
 
     public class ResourceNotFoundException : Exception;
+    public abstract class ResourceStatus(ResourceName resourceName)
+    {
+        public readonly ResourceName ResourceName = resourceName;
+        public abstract DateTime? LastReconfigured { get; protected set; }
+        public abstract IDictionary<string, object?> Details { get; }
+        public static Func<ResourceBase, ResourceStatus> DefaultCreator => @base => new DefaultResourceStatus(@base.ResourceName, @base.LastReconfigured);
+    }
+
+    internal sealed class DefaultResourceStatus(ResourceName resourceName, DateTime? lastReconfigured) : ResourceStatus(resourceName)
+    {
+        public override DateTime? LastReconfigured { get; protected set; } = lastReconfigured;
+        public override IDictionary<string, object?> Details { get; } = new Dictionary<string, object?>();
+    }
 }

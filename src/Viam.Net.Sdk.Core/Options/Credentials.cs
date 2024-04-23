@@ -1,4 +1,4 @@
-﻿namespace Viam.Net.Sdk.Core.Options
+﻿namespace Viam.Core.Options
 {
     public record Credentials(string Type, string Payload, string AuthEntity)
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Grpc.Core;
 
-namespace Viam.Net.Sdk.Core
+namespace Viam.Core
 {
     public abstract class ViamChannel() : ChannelBase("ignore"), IDisposable
     {

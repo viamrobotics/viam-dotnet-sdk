@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Viam.Net.Sdk.Core\Viam.Net.Sdk.Core.csproj" />
+    <ProjectReference Include="..\..\src\Viam.Net.Sdk.Core\Viam.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

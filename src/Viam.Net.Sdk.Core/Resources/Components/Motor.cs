@@ -7,23 +7,75 @@ using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Component.Motor.V1;
-using Viam.Net.Sdk.Core.Clients;
-using Viam.Net.Sdk.Core.Utils;
+using Viam.Core.Clients;
+using Viam.Core.Utils;
 
-namespace Viam.Net.Sdk.Core.Resources.Components
+namespace Viam.Core.Resources.Components
 {
-    public class Motor(ResourceName resourceName, ViamChannel channel) : ComponentBase<Motor, MotorService.MotorServiceClient>(resourceName, new MotorService.MotorServiceClient(channel))
+    public interface IMotor : IResourceBase
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Motor(name, channel), () => null));
+        ValueTask SetPower(double power,
+                           Struct? extra = null,
+                           TimeSpan? timeout = null,
+                           CancellationToken cancellationToken = default);
+
+        ValueTask GoFor(double rpm,
+                      double revolutions,
+                      Struct? extra = null,
+                      TimeSpan? timeout = null,
+                      CancellationToken cancellationToken = default);
+
+        ValueTask GoTo(double rpm,
+                       double positionRevolutions,
+                       Struct? extra = null,
+                       TimeSpan? timeout = null,
+                       CancellationToken cancellationToken = default);
+
+        ValueTask ResetZeroPosition(double offset,
+                                    Struct? extra = null,
+                                    TimeSpan? timeout = null,
+                                    CancellationToken cancellationToken = default);
+
+        ValueTask<double> GetPosition(Struct? extra = null,
+                                      TimeSpan? timeout = null,
+                                      CancellationToken cancellationToken = default);
+
+        ValueTask Stop(Struct? extra = null,
+                       TimeSpan? timeout = null,
+                       CancellationToken cancellationToken = default);
+
+        ValueTask<(bool, double)> IsPowered(Struct? extra = null,
+                                            TimeSpan? timeout = null,
+                                            CancellationToken cancellationToken = default);
+
+        ValueTask<bool> IsMoving(TimeSpan? timeout = null,
+                                 CancellationToken cancellationToken = default);
+
+        ValueTask<Motor.Properties> GetProperties(Struct? extra = null,
+                                            TimeSpan? timeout = null,
+                                            CancellationToken cancellationToken = default);
+
+        ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+                                            TimeSpan? timeout = null,
+                                            CancellationToken cancellationToken = default);
+    }
+
+    public class Motor(ResourceName resourceName, ViamChannel channel) : ComponentBase<Motor, MotorService.MotorServiceClient>(resourceName, new MotorService.MotorServiceClient(channel)), IMotor
+    {
+        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Motor(name, channel)));
         public static SubType SubType = SubType.FromRdkComponent("motor");
 
         public static Motor FromRobot(RobotClient client, string name)
         {
-            var resourceName = GetResourceName(SubType, name);
+            var resourceName = IResourceBase.GetResourceName(SubType, name);
             return client.GetComponent<Motor>(resourceName);
         }
 
-        public override async ValueTask<IDictionary<string, object?>> DoCommandAsync(IDictionary<string, object> command,
+        public override DateTime? LastReconfigured => null;
+
+        internal override ValueTask StopResource() => Stop();
+
+        public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object> command,
             TimeSpan? timeout = null)
         {
             var res = await Client.DoCommandAsync(new DoCommandRequest()

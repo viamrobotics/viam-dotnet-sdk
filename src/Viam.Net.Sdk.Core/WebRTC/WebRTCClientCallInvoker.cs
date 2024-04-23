@@ -2,7 +2,7 @@
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
 
-namespace Viam.Net.Sdk.Core.WebRTC
+namespace Viam.Core.WebRTC
 {
     public class WebRTCClientCallInvoker(WebRTCClientChannel channel, ILogger logger) : CallInvoker
     {
