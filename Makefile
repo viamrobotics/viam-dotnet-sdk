@@ -1,6 +1,6 @@
 buf:
-	rm -rf src/Viam.Net.Sdk.Core/Proto
-	buf generate buf.build/viamrobotics/api --path common,component,service,robot
+	rm -rf src/Viam.Core/Proto
+	buf generate buf.build/viamrobotics/api --path app,common,component,module,provisioning,robot,service
 	buf generate buf.build/viamrobotics/goutils --template buf.gen.rpc.yaml
 
 run_core_client:

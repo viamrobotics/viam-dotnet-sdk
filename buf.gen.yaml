@@ -1,8 +1,8 @@
 version: v1
 plugins:
   - plugin: buf.build/protocolbuffers/csharp
-    out: src/Viam.Net.Sdk.Core/Proto
+    out: src/Viam.Core/Proto
     opt: base_namespace=Viam
   - plugin: buf.build/grpc/csharp:v1.62.1
-    out: src/Viam.Net.Sdk.Core/Proto
+    out: src/Viam.Core/Proto
     opt: base_namespace=Viam

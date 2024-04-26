@@ -3,11 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34707.107
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viam.Core", "src\Viam.Net.Sdk.Core\Viam.Core.csproj", "{6EDC3E55-B9CE-487C-AEC1-C5B5B5D9D273}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viam.Core", "src\Viam.Core\Viam.Core.csproj", "{6EDC3E55-B9CE-487C-AEC1-C5B5B5D9D273}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViamSdk.Test", "test\ViamSdk.Test\ViamSdk.Test.csproj", "{E6130E89-6B7E-4829-AB0F-3DCAFB2103F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viam.Core.Test", "test\ViamSdk.Test\Viam.Core.Test.csproj", "{E6130E89-6B7E-4829-AB0F-3DCAFB2103F3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viam.ModularResources", "src\Viam.Net.Sdk.ModularResources\Viam.ModularResources.csproj", "{8308C8EE-388F-4C3A-8BCF-679D85BE0386}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viam.ModularResources", "src\Viam.ModularResources\Viam.ModularResources.csproj", "{8308C8EE-388F-4C3A-8BCF-679D85BE0386}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{B466695F-9DB2-4A3C-9FA6-6DF4197FC61E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{5B622FC1-136F-4C40-B653-9E9D478AAD34}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleModule", "examples\SimpleModule\SimpleModule.csproj", "{75F60DCC-E7F0-48D5-A462-727C72E138EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viam.Client", "src\Viam.Client\Viam.Client.csproj", "{B37B8115-9262-472E-A75E-1565A6C6E8CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7EE912FF-E147-4E69-9E0A-082A5EF3A995}"
+	ProjectSection(SolutionItems) = preProject
+		buf.gen.rpc.yaml = buf.gen.rpc.yaml
+		buf.gen.yaml = buf.gen.yaml
+		Makefile = Makefile
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +43,21 @@ Global
 		{8308C8EE-388F-4C3A-8BCF-679D85BE0386}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8308C8EE-388F-4C3A-8BCF-679D85BE0386}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8308C8EE-388F-4C3A-8BCF-679D85BE0386}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75F60DCC-E7F0-48D5-A462-727C72E138EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F60DCC-E7F0-48D5-A462-727C72E138EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F60DCC-E7F0-48D5-A462-727C72E138EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F60DCC-E7F0-48D5-A462-727C72E138EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B37B8115-9262-472E-A75E-1565A6C6E8CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B37B8115-9262-472E-A75E-1565A6C6E8CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B37B8115-9262-472E-A75E-1565A6C6E8CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B37B8115-9262-472E-A75E-1565A6C6E8CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E6130E89-6B7E-4829-AB0F-3DCAFB2103F3} = {B466695F-9DB2-4A3C-9FA6-6DF4197FC61E}
+		{75F60DCC-E7F0-48D5-A462-727C72E138EA} = {5B622FC1-136F-4C40-B653-9E9D478AAD34}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {835625CE-9D82-41F0-AFD1-17FDFABA1917}

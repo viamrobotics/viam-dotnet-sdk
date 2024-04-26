@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Logging;
-using Viam.Core.Clients;
-using Viam.Core.Options;
+
+using Viam.Client.Clients;
+using Viam.Client.Options;
 
 namespace ViamSdk.Test
 {
@@ -26,12 +27,12 @@ namespace ViamSdk.Test
 
             _robotClientOptions = ViamClientOptions
                                 .FromAddress(machineAddress)
-                                .WithLogger(loggerFactory.CreateLogger<RobotClient>())
+                                .WithLogger(loggerFactory)
                                 .WithApiCredentials(apiKey, apiKeyId)
                                 .WithDisableWebRtc();
 
             _cloudClientOptions = ViamClientOptions.FromCloud()
-                                                   .WithLogger(loggerFactory.CreateLogger<AppClient>())
+                                                   .WithLogger(loggerFactory)
                                                    .WithApiCredentials(apiKey,
                                                                        apiKeyId);
         }

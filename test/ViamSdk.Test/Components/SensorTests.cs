@@ -4,12 +4,12 @@ using Microsoft.Extensions.Logging;
 
 using Viam.App.V1;
 using Viam.Common.V1;
-using Viam.Core.Clients;
-using Viam.Core.Options;
+using Viam.Client.Options;
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components;
 
 using Model = Viam.Core.Resources.Model;
+using Viam.Client.Clients;
 
 namespace ViamSdk.Test.Components
 {
@@ -35,7 +35,7 @@ namespace ViamSdk.Test.Components
 
             var robotClientOptions = ViamClientOptions
                                   .FromAddress(machineAddress)
-                                  .WithLogger(loggerFactory.CreateLogger<RobotClient>())
+                                  .WithLogger(loggerFactory)
                                   .WithApiCredentials(apiKey, apiKeyId)
                                   .WithDisableWebRtc();
 
@@ -48,40 +48,6 @@ namespace ViamSdk.Test.Components
             var sensor = Sensor.FromRobot(_robotClient!, "temp");
             var readings = await sensor.GetReadings();
             Assert.That(readings, Is.Not.Null);
-        }
-
-        [Test]
-        public async Task Test_ModularSensor()
-        {
-            Registry.RegisterResourceCreator(Sensor.SubType,
-                                             new Model(new ModelFamily("viam", "sensor"), "mySensor"),
-                                             new ResourceCreatorRegistration((config, dependencies) => new ModularSensor(config, dependencies), ModularSensor.ValidateConfig));
-        }
-
-        public class ModularSensor(ComponentConfig config, IDictionary<ResourceName, ResourceBase> dependencies) : ISensor
-        {
-            public static string[] ValidateConfig(ComponentConfig config) => Array.Empty<string>();
-
-            public ValueTask<IDictionary<string, object?>> DoCommand(
-                IDictionary<string, object> command,
-                TimeSpan? timeout = null)
-            {
-                if (command.TryGetValue("command", out var cmd))
-                {
-                    Console.WriteLine(cmd);
-                }
-
-                return new ValueTask<IDictionary<string, object?>>(new Dictionary<string, object?>());
-            }
-
-            public ValueTask<IDictionary<string, object?>> GetReadings(Struct? extra = null,
-                                                                            TimeSpan? timeout = null,
-                                                                            CancellationToken cancellationToken =
-                                                                                default)
-            {
-                var dict = new Dictionary<string, object?>() { { "Hello", "World" } };
-                return new ValueTask<IDictionary<string, object?>>(dict);
-            }
         }
     }
 }
