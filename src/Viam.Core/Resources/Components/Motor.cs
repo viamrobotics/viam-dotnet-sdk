@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Google.Protobuf.WellKnownTypes;
+
 using Viam.Common.V1;
 using Viam.Component.Motor.V1;
 using Viam.Core.Clients;
@@ -44,7 +45,7 @@ namespace Viam.Core.Resources.Components
                        TimeSpan? timeout = null,
                        CancellationToken cancellationToken = default);
 
-        ValueTask<(bool, double)> IsPowered(Struct? extra = null,
+        ValueTask<(bool IsOn, double PowerPct)> IsPowered(Struct? extra = null,
                                             TimeSpan? timeout = null,
                                             CancellationToken cancellationToken = default);
 
@@ -80,9 +81,10 @@ namespace Viam.Core.Resources.Components
             CancellationToken cancellationToken = default)
         {
             var res = await Client.DoCommandAsync(new DoCommandRequest()
-                                                         {
-                                                             Name = ResourceName.Name, Command = command.ToStruct()
-                                                         });
+            {
+                Name = ResourceName.Name,
+                Command = command.ToStruct()
+            });
 
             return res.Result.ToDictionary();
         }
@@ -94,8 +96,7 @@ namespace Viam.Core.Resources.Components
         {
             await Client.SetPowerAsync(new SetPowerRequest() { Name = Name, PowerPct = power, Extra = extra },
                                        deadline: timeout.ToDeadline(),
-                                       cancellationToken: cancellationToken)
-                        ;
+                                       cancellationToken: cancellationToken);
         }
 
         public async ValueTask GoFor(double rpm,
@@ -105,10 +106,9 @@ namespace Viam.Core.Resources.Components
                                      CancellationToken cancellationToken = default)
         {
             await Client.GoForAsync(
-                            new GoForRequest() { Name = Name, Revolutions = revolutions, Rpm = rpm, Extra = extra },
-                            deadline: timeout.ToDeadline(),
-                            cancellationToken: cancellationToken)
-                        ;
+                new GoForRequest() { Name = Name, Revolutions = revolutions, Rpm = rpm, Extra = extra },
+                deadline: timeout.ToDeadline(),
+                cancellationToken: cancellationToken);
         }
 
         public async ValueTask GoTo(double rpm,
@@ -118,12 +118,14 @@ namespace Viam.Core.Resources.Components
                                     CancellationToken cancellationToken = default)
         {
             await Client.GoToAsync(new GoToRequest()
-                                   {
-                                       Name = Name, Rpm = rpm, PositionRevolutions = positionRevolutions, Extra = extra
-                                   },
+            {
+                Name = Name,
+                Rpm = rpm,
+                PositionRevolutions = positionRevolutions,
+                Extra = extra
+            },
                                    deadline: timeout.ToDeadline(),
-                                   cancellationToken: cancellationToken)
-                        ;
+                                   cancellationToken: cancellationToken);
         }
 
         public async ValueTask ResetZeroPosition(double offset,
@@ -134,8 +136,7 @@ namespace Viam.Core.Resources.Components
             await Client.ResetZeroPositionAsync(
                             new ResetZeroPositionRequest() { Name = Name, Offset = offset, Extra = extra },
                             deadline: timeout.ToDeadline(),
-                            cancellationToken: cancellationToken)
-                        ;
+                            cancellationToken: cancellationToken);
         }
 
         public async ValueTask<double> GetPosition(Struct? extra = null,
@@ -144,8 +145,7 @@ namespace Viam.Core.Resources.Components
         {
             var res = await Client.GetPositionAsync(new GetPositionRequest() { Name = Name, Extra = extra },
                                                     deadline: timeout.ToDeadline(),
-                                                    cancellationToken: cancellationToken)
-                                  ;
+                                                    cancellationToken: cancellationToken);
 
             return res.Position;
         }
@@ -156,8 +156,7 @@ namespace Viam.Core.Resources.Components
         {
             var res = await Client.GetPropertiesAsync(new GetPropertiesRequest() { Name = Name, Extra = extra },
                                                       deadline: timeout.ToDeadline(),
-                                                      cancellationToken: cancellationToken)
-                                  ;
+                                                      cancellationToken: cancellationToken);
 
             return new Properties(res.PositionReporting);
         }
@@ -168,18 +167,16 @@ namespace Viam.Core.Resources.Components
         {
             await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra },
                                    deadline: timeout.ToDeadline(),
-                                   cancellationToken: cancellationToken)
-                        ;
+                                   cancellationToken: cancellationToken);
         }
 
-        public async ValueTask<(bool, double)> IsPowered(Struct? extra = null,
+        public async ValueTask<(bool IsOn, double PowerPct)> IsPowered(Struct? extra = null,
                                                TimeSpan? timeout = null,
                                                CancellationToken cancellationToken = default)
         {
             var res = await Client.IsPoweredAsync(new IsPoweredRequest() { Name = Name, Extra = extra },
                                                   deadline: timeout.ToDeadline(),
-                                                  cancellationToken: cancellationToken)
-                                  ;
+                                                  cancellationToken: cancellationToken);
 
             return (res.IsOn, res.PowerPct);
         }
@@ -189,8 +186,7 @@ namespace Viam.Core.Resources.Components
         {
             var res = await Client.IsMovingAsync(new IsMovingRequest() { Name = Name },
                                                  deadline: timeout.ToDeadline(),
-                                                 cancellationToken: cancellationToken)
-                                  ;
+                                                 cancellationToken: cancellationToken);
             return res.IsMoving;
         }
 
@@ -200,8 +196,7 @@ namespace Viam.Core.Resources.Components
         {
             var res = await Client.GetGeometriesAsync(new GetGeometriesRequest() { Name = Name, Extra = extra },
                                                       deadline: timeout.ToDeadline(),
-                                                      cancellationToken: cancellationToken)
-                                  ;
+                                                      cancellationToken: cancellationToken);
 
             return res.Geometries.ToArray();
         }

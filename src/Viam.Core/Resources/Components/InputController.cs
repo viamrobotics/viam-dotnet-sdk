@@ -33,6 +33,10 @@ namespace Viam.Core.Resources.Components
                                Struct? extra = null,
                                TimeSpan? timeout = null,
                                CancellationToken cancellationToken = default);
+
+        ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+                                            TimeSpan? timeout = null,
+                                            CancellationToken cancellationToken = default);
     }
     public class InputController(ResourceName resourceName, ViamChannel channel) : ComponentBase<InputController, InputControllerService.InputControllerServiceClient>(resourceName, new InputControllerService.InputControllerServiceClient(channel)), IInputController
     {
@@ -60,6 +64,18 @@ namespace Viam.Core.Resources.Components
             });
 
             return res.Result.ToDictionary();
+        }
+
+        public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+                                                         TimeSpan? timeout = null,
+                                                         CancellationToken cancellationToken = default)
+        {
+            var res = await Client.GetGeometriesAsync(
+                          new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra },
+                          deadline: timeout.ToDeadline(),
+                          cancellationToken: cancellationToken);
+
+            return res.Geometries.ToArray();
         }
 
         public async ValueTask<Control[]> GetControls(Struct? extra = null,
@@ -108,7 +124,7 @@ namespace Viam.Core.Resources.Components
                     @event.Value);
         }
 
-        public record EventType(string name)
+        public record EventType(string Name)
         {
             public static EventType FromName(string name)
             {
@@ -138,7 +154,7 @@ namespace Viam.Core.Resources.Components
             public static EventType PositionChangeRel = new(nameof(PositionChangeRel));
         }
 
-        public record Control(string name)
+        public record Control(string Name)
         {
             public static Control FromName(string name)
             {
@@ -172,8 +188,6 @@ namespace Viam.Core.Resources.Components
                            nameof(AbsolutePedalClutch) => AbsolutePedalClutch,
                            _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown control type")
                        };
-
-                ;
             }
 
             public static Control AbsoluteX = new(nameof(AbsoluteX));

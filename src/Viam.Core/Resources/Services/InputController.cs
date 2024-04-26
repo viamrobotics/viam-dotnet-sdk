@@ -1,18 +1,93 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Viam.Common.V1;
 using Viam.Component.Inputcontroller.V1;
+using Viam.Core.Resources.Components;
+using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
     internal class InputController : InputControllerService.InputControllerServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.inputcontroller.v1.InputControllerService";
-        public override Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context) => base.DoCommand(request, context);
-        public override Task<GetGeometriesResponse> GetGeometries(GetGeometriesRequest request, ServerCallContext context) => base.GetGeometries(request, context);
-        public override Task<GetControlsResponse> GetControls(GetControlsRequest request, ServerCallContext context) => base.GetControls(request, context);
-        public override Task<GetEventsResponse> GetEvents(GetEventsRequest request, ServerCallContext context) => base.GetEvents(request, context);
-        public override Task StreamEvents(StreamEventsRequest request, IServerStreamWriter<StreamEventsResponse> responseStream, ServerCallContext context) => base.StreamEvents(request, responseStream, context);
-        public override Task<TriggerEventResponse> TriggerEvent(TriggerEventRequest request, ServerCallContext context) => base.TriggerEvent(request, context);
+
+        public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
+        {
+            var resource = (IInputController)context.UserState["resource"];
+            var res = await resource.DoCommand(request.Command.ToDictionary(),
+                                               context.Deadline.ToTimeout(),
+                                               context.CancellationToken);
+
+            return new DoCommandResponse() { Result = res.ToStruct() };
+        }
+
+        public override async Task<GetGeometriesResponse> GetGeometries(GetGeometriesRequest request,
+                                                                        ServerCallContext context)
+        {
+            var resource = (IInputController)context.UserState["resource"];
+            var res = await resource.GetGeometries(request.Extra,
+                                                   context.Deadline.ToTimeout(),
+                                                   context.CancellationToken);
+
+            return new GetGeometriesResponse() { Geometries = { res } };
+        }
+
+        public override async Task<GetControlsResponse> GetControls(GetControlsRequest request,
+                                                                    ServerCallContext context)
+        {
+            var resource = (IInputController)context.UserState["resource"];
+            var res = await resource.GetControls(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken);
+            return new GetControlsResponse() { Controls = { res.Select(x => x.Name) } };
+        }
+
+        public override async Task<GetEventsResponse> GetEvents(GetEventsRequest request, ServerCallContext context)
+        {
+            var resource = (IInputController)context.UserState["resource"];
+            var res = await resource.GetEvents(Components.InputController.Control.FromName(request.Controller),
+                                               request.Extra,
+                                               context.Deadline.ToTimeout(),
+                                               context.CancellationToken);
+
+            return new GetEventsResponse()
+                   {
+                       Events =
+                       {
+                           res.Select(kvp => new Event()
+                                             {
+                                                 Control = kvp.Key.Name,
+                                                 Event_ = kvp.Value.Type.Name,
+                                                 Value = kvp.Value.Value,
+                                                 Time = Timestamp.FromDateTime(kvp.Value.Timestamp)
+                                             })
+                       }
+                   };
+        }
+
+        public override Task StreamEvents(StreamEventsRequest request,
+                                                IServerStreamWriter<StreamEventsResponse> responseStream,
+                                                ServerCallContext context)
+        {
+            var resource = (IInputController)context.UserState["resource"];
+            throw new NotImplementedException();
+        }
+
+        public override async Task<TriggerEventResponse> TriggerEvent(TriggerEventRequest request,
+                                                                      ServerCallContext context)
+        {
+            var resource = (IInputController)context.UserState["resource"];
+            await resource.TriggerEvent(new Components.InputController.Event(
+                                            Components.InputController.Control.FromName(request.Controller),
+                                            Components.InputController.EventType.FromName(request.Event.Event_),
+                                            request.Event.Time.ToDateTime(),
+                                            request.Event.Value),
+                                        request.Extra,
+                                        context.Deadline.ToTimeout(),
+                                        context.CancellationToken);
+
+            return new TriggerEventResponse() { };
+        }
     }
 }

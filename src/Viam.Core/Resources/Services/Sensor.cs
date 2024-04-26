@@ -12,29 +12,20 @@ namespace Viam.Core.Resources.Services
     {
         public string ServiceName => "viam.component.sensor.v1.SensorService";
 
-        private ISensor GetResource(string name)
-        {
-            if (resourceManager.GetResourceByShortName(name) is not ISensor res)
-            {
-                throw new ResourceNotFoundException(name);
-            }
-            return res;
-        }
-
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {
-            var resource = GetResource(request.Name);
+            var resource = (ISensor)context.UserState["resource"];
             var res = await resource.DoCommand(request.Command.ToDictionary(), context.Deadline - DateTime.UtcNow, context.CancellationToken);
             return new DoCommandResponse() { Result = res.ToStruct() };
         }
 
         public override async Task<GetReadingsResponse> GetReadings(GetReadingsRequest request, ServerCallContext context)
         {
-            var resource = GetResource(request.Name);
+            var resource = (ISensor)context.UserState["resource"];
             var res = await resource.GetReadings(request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken);
 
             var r = new GetReadingsResponse();
-            r.Readings.AddRange(res);
+            r.Readings.Add(res);
             return r;
         }
     }

@@ -44,6 +44,10 @@ namespace Viam.Core.Resources.Components
         ValueTask<MovementSensor.Accuracy> GetAccuracy(Struct? extra = null,
                                         TimeSpan? timeout = null,
                                         CancellationToken cancellationToken = default);
+
+        ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+                                            TimeSpan? timeout = null,
+                                            CancellationToken cancellationToken = default);
     }
 
     public class MovementSensor(ResourceName resourceName, ViamChannel channel)
@@ -189,6 +193,18 @@ namespace Viam.Core.Resources.Components
                                 res.PositionNmeaGgaFix,
                                 res.HasPositionVdop,
                                 res.PositionVdop);
+        }
+
+        public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+                                                   TimeSpan? timeout = null,
+                                                   CancellationToken cancellationToken = default)
+        {
+            var res = await Client.GetGeometriesAsync(
+                          new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra },
+                          deadline: timeout.ToDeadline(),
+                          cancellationToken: cancellationToken);
+
+            return res.Geometries.ToArray();
         }
 
         public async ValueTask<IDictionary<string, object?>> GetReadings(Struct? extra = null,

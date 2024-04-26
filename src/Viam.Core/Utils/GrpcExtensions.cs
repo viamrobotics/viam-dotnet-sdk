@@ -75,7 +75,7 @@ namespace Viam.Core.Utils
             return map.ToDictionary(x => x.Key, x => ConvertFromValue(x.Value));
         }
 
-        public static void AddRange(this MapField<string, Value> map, IDictionary<string, object?> dict)
+        public static void Add(this MapField<string, Value> map, IDictionary<string, object?> dict)
         {
             foreach (var (key, value) in dict)
             {

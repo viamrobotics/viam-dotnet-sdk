@@ -2,22 +2,125 @@
 using Grpc.Core;
 using Viam.Common.V1;
 using Viam.Component.Motor.V1;
+using Viam.Core.Resources.Components;
+using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
     internal class Motor : MotorService.MotorServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.motor.v1.MotorService";
-        public override Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context) => base.DoCommand(request, context);
-        public override Task<StopResponse> Stop(StopRequest request, ServerCallContext context) => base.Stop(request, context);
-        public override Task<IsMovingResponse> IsMoving(IsMovingRequest request, ServerCallContext context) => base.IsMoving(request, context);
-        public override Task<GetGeometriesResponse> GetGeometries(GetGeometriesRequest request, ServerCallContext context) => base.GetGeometries(request, context);
-        public override Task<GetPropertiesResponse> GetProperties(GetPropertiesRequest request, ServerCallContext context) => base.GetProperties(request, context);
-        public override Task<GetPositionResponse> GetPosition(GetPositionRequest request, ServerCallContext context) => base.GetPosition(request, context);
-        public override Task<GoForResponse> GoFor(GoForRequest request, ServerCallContext context) => base.GoFor(request, context);
-        public override Task<GoToResponse> GoTo(GoToRequest request, ServerCallContext context) => base.GoTo(request, context);
-        public override Task<IsPoweredResponse> IsPowered(IsPoweredRequest request, ServerCallContext context) => base.IsPowered(request, context);
-        public override Task<ResetZeroPositionResponse> ResetZeroPosition(ResetZeroPositionRequest request, ServerCallContext context) => base.ResetZeroPosition(request, context);
-        public override Task<SetPowerResponse> SetPower(SetPowerRequest request, ServerCallContext context) => base.SetPower(request, context);
+
+        public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
+        {
+            var resource = (IMotor)context.UserState["resource"];
+            var res = await resource.DoCommand(request.Command.ToDictionary(),
+                                               context.Deadline.ToTimeout(),
+                                               context.CancellationToken);
+
+            return new DoCommandResponse() { Result = res.ToStruct() };
+        }
+
+        public override async Task<StopResponse> Stop(StopRequest request, ServerCallContext context)
+        {
+            var resource = (IMotor)context.UserState["resource"];
+            await resource.Stop(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken);
+            return new StopResponse();
+        }
+
+        public override async Task<IsMovingResponse> IsMoving(IsMovingRequest request, ServerCallContext context)
+        {
+            var resource = (IMotor)context.UserState["resource"];
+            var res = await resource.IsMoving(context.Deadline.ToTimeout(), context.CancellationToken);
+            return new IsMovingResponse() { IsMoving = res };
+        }
+
+        public override async Task<GetGeometriesResponse> GetGeometries(GetGeometriesRequest request,
+                                                                  ServerCallContext context)
+        {
+            var resource = (IMotor)context.UserState["resource"];
+            var res = await resource.GetGeometries(request.Extra,
+                                                   context.Deadline.ToTimeout(),
+                                                   context.CancellationToken);
+
+            return new GetGeometriesResponse() { Geometries = { res } };
+        }
+
+        public override async Task<GetPropertiesResponse> GetProperties(GetPropertiesRequest request,
+                                                                        ServerCallContext context)
+        {
+            var resource = (IMotor)context.UserState["resource"];
+            var res = await resource.GetProperties(request.Extra,
+                                                   context.Deadline.ToTimeout(),
+                                                   context.CancellationToken);
+
+            return new GetPropertiesResponse() { PositionReporting = res.PositionReporting };
+        }
+
+        public override async Task<GetPositionResponse> GetPosition(GetPositionRequest request,
+                                                                    ServerCallContext context)
+        {
+            var resource = (IMotor)context.UserState["resource"];
+            var res = await resource.GetPosition(request.Extra,
+                                                 context.Deadline.ToTimeout(),
+                                                 context.CancellationToken);
+
+            return new GetPositionResponse() { Position = res };
+        }
+
+        public override async Task<GoForResponse> GoFor(GoForRequest request, ServerCallContext context)
+        {
+            var resource = (IMotor)context.UserState["resource"];
+            await resource.GoFor(request.Rpm,
+                                 request.Revolutions,
+                                 request.Extra,
+                                 context.Deadline.ToTimeout(),
+                                 context.CancellationToken);
+
+            return new GoForResponse();
+        }
+
+        public override async Task<GoToResponse> GoTo(GoToRequest request, ServerCallContext context)
+        {
+            var resource = (IMotor)context.UserState["resource"];
+            await resource.GoTo(request.Rpm,
+                                request.PositionRevolutions,
+                                request.Extra,
+                                context.Deadline.ToTimeout(),
+                                context.CancellationToken);
+
+            return new GoToResponse();
+        }
+
+        public override async Task<IsPoweredResponse> IsPowered(IsPoweredRequest request, ServerCallContext context)
+        {
+            var resource = (IMotor)context.UserState["resource"];
+            var res = await resource.IsPowered(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken);
+            return new IsPoweredResponse() { IsOn = res.IsOn, PowerPct = res.PowerPct };
+        }
+
+        public override async Task<ResetZeroPositionResponse> ResetZeroPosition(
+            ResetZeroPositionRequest request,
+            ServerCallContext context)
+        {
+            var resource = (IMotor)context.UserState["resource"];
+            await resource.ResetZeroPosition(request.Offset,
+                                             request.Extra,
+                                             context.Deadline.ToTimeout(),
+                                             context.CancellationToken);
+
+            return new ResetZeroPositionResponse();
+        }
+
+        public override async Task<SetPowerResponse> SetPower(SetPowerRequest request, ServerCallContext context)
+        {
+            var resource = (IMotor)context.UserState["resource"];
+            await resource.SetPower(request.PowerPct,
+                                    request.Extra,
+                                    context.Deadline.ToTimeout(),
+                                    context.CancellationToken);
+
+            return new SetPowerResponse();
+        }
     }
 }

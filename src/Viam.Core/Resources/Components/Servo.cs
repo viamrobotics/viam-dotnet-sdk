@@ -22,6 +22,9 @@ namespace Viam.Core.Resources.Components
                                     TimeSpan? timeout = null,
                                     CancellationToken cancellationToken = default);
 
+        ValueTask<bool> IsMoving(TimeSpan? timeout = null,
+                                 CancellationToken cancellationToken = default);
+
         ValueTask Stop(Struct? extra = null,
                        TimeSpan? timeout = null,
                        CancellationToken cancellationToken = default);
@@ -65,8 +68,7 @@ namespace Viam.Core.Resources.Components
         {
             await Client.MoveAsync(new MoveRequest() { Name = Name, AngleDeg = angle, Extra = extra },
                                    deadline: timeout.ToDeadline(),
-                                   cancellationToken: cancellationToken)
-                        ;
+                                   cancellationToken: cancellationToken);
         }
 
         public async ValueTask<uint> GetPosition(Struct? extra = null,
@@ -75,10 +77,18 @@ namespace Viam.Core.Resources.Components
         {
             var res = await Client.GetPositionAsync(new GetPositionRequest() { Name = Name, Extra = extra },
                                                     deadline: timeout.ToDeadline(),
-                                                    cancellationToken: cancellationToken)
-                                  ;
+                                                    cancellationToken: cancellationToken);
 
             return res.PositionDeg;
+        }
+
+        public async ValueTask<bool> IsMoving(TimeSpan? timeout = null,
+                                              CancellationToken cancellationToken = default)
+        {
+            var res = await Client.IsMovingAsync(new IsMovingRequest() { Name = ResourceName.Name },
+                                                 deadline: timeout.ToDeadline(),
+                                                 cancellationToken: cancellationToken);
+            return res.IsMoving;
         }
 
         public async ValueTask Stop(Struct? extra = null,
@@ -87,8 +97,7 @@ namespace Viam.Core.Resources.Components
         {
             await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra },
                                    deadline: timeout.ToDeadline(),
-                                   cancellationToken: cancellationToken)
-                        ;
+                                   cancellationToken: cancellationToken);
         }
 
         public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
@@ -97,8 +106,7 @@ namespace Viam.Core.Resources.Components
         {
             var res = await Client.GetGeometriesAsync(new GetGeometriesRequest() { Name = Name, Extra = extra },
                                                       deadline: timeout.ToDeadline(),
-                                                      cancellationToken: cancellationToken)
-                                  ;
+                                                      cancellationToken: cancellationToken);
 
             return res.Geometries.ToArray();
         }
