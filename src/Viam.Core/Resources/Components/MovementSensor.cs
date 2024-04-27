@@ -50,7 +50,7 @@ namespace Viam.Core.Resources.Components
                                             CancellationToken cancellationToken = default);
     }
 
-    public class MovementSensor(ResourceName resourceName, ViamChannel channel)
+    public class MovementSensor(ViamResourceName resourceName, ViamChannel channel)
         : ComponentBase<MovementSensor, MovementSensorService.MovementSensorServiceClient>(
               resourceName,
               new MovementSensorService.MovementSensorServiceClient(channel)), IMovementSensor
@@ -62,7 +62,7 @@ namespace Viam.Core.Resources.Components
 
         public static MovementSensor FromRobot(RobotClientBase client, string name)
         {
-            var resourceName = IResourceBase.GetResourceName(SubType, name);
+            var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<MovementSensor>(resourceName);
         }
 

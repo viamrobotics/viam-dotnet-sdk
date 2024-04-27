@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Google.Protobuf;
-using Google.Protobuf.Collections;
 using Google.Protobuf.WellKnownTypes;
 
 using Grpc.Core;
 
 using Microsoft.Extensions.Logging;
-
 using Viam.Common.V1;
 using Viam.Core.Resources;
 using Viam.Robot.V1;
@@ -33,75 +32,51 @@ namespace Viam.Core.Clients
 
         protected Task RefreshAsync() => _resourceManager.RefreshAsync(this);
 
-        public T GetComponent<T>(ResourceName resourceName) where T : ResourceBase => (T)_resourceManager.GetResource(resourceName);
+        public T GetComponent<T>(ViamResourceName resourceName) where T : ResourceBase => (T)_resourceManager.GetResource(resourceName);
 
-        public async Task<RepeatedField<Operation>> GetOperationsAsync()
+        public async Task<Operation[]> GetOperationsAsync()
         {
             var result = await _robotServiceClient.GetOperationsAsync(new GetOperationsRequest())
                                                   ;
-            return result.Operations;
+            return result.Operations.ToArray();
         }
 
-        public RepeatedField<Operation> GetOperations()
-        {
-            return _robotServiceClient.GetOperations(new GetOperationsRequest()).Operations;
-        }
 
-        public async Task<RepeatedField<Session>> GetSessionsAsync()
+        public async Task<Session[]> GetSessionsAsync()
         {
             var result = await _robotServiceClient.GetSessionsAsync(new GetSessionsRequest())
                                                   ;
 
-            return result.Sessions;
+            return result.Sessions.ToArray();
         }
 
-        public RepeatedField<Session> GetSessions()
-        {
-            return _robotServiceClient.GetSessions(new GetSessionsRequest()).Sessions;
-        }
-
-        public async Task<RepeatedField<ResourceName>> ResourceNamesAsync()
+        public async Task<ViamResourceName[]> ResourceNamesAsync()
         {
             var result = await _robotServiceClient.ResourceNamesAsync(new ResourceNamesRequest());
-            return result.Resources;
+
+            // ReSharper disable once SuspiciousTypeConversion.Global
+            // There is an implicit conversion between these types
+            return result.Resources.Cast<ViamResourceName>()
+                         .ToArray();
         }
 
-        public RepeatedField<ResourceName> ResourceNames()
-        {
-            return _robotServiceClient.ResourceNames(new ResourceNamesRequest())
-                                      .Resources;
-        }
-
-        public async Task<RepeatedField<ResourceRPCSubtype>> GetResourceRPCSubtypesAsync()
+        public async Task<ResourceRPCSubtype[]> GetResourceRPCSubtypesAsync()
         {
             var result = await _robotServiceClient.ResourceRPCSubtypesAsync(new ResourceRPCSubtypesRequest())
                                                   ;
 
-            return result.ResourceRpcSubtypes;
-        }
-
-        public RepeatedField<ResourceRPCSubtype> GetResourceRPCSubtypes()
-        {
-            return _robotServiceClient.ResourceRPCSubtypes(new ResourceRPCSubtypesRequest())
-                                      .ResourceRpcSubtypes;
+            return result.ResourceRpcSubtypes.ToArray();
         }
 
         public async Task CancelOperationAsync(string operationId)
         {
-            await _robotServiceClient.CancelOperationAsync(new CancelOperationRequest() { Id = operationId })
-                                     ;
-        }
-
-        public void CancelOperation(string operationId)
-        {
-            _robotServiceClient.CancelOperation(new CancelOperationRequest() { Id = operationId });
+            await _robotServiceClient.CancelOperationAsync(new CancelOperationRequest() { Id = operationId });
         }
 
         public async Task BlockForOperationAsync(string operationId)
         {
             await _robotServiceClient
-                               .BlockForOperationAsync(new BlockForOperationRequest() { Id = operationId })
-                               ;
+                               .BlockForOperationAsync(new BlockForOperationRequest() { Id = operationId });
         }
 
         public void BlockForOperation(string operationId)
@@ -109,7 +84,7 @@ namespace Viam.Core.Clients
             _robotServiceClient.BlockForOperation(new BlockForOperationRequest() { Id = operationId });
         }
 
-        public async Task<RepeatedField<Discovery>> DiscoverComponentsAsync(IEnumerable<DiscoveryQuery>? queries = null)
+        public async Task<Discovery[]> DiscoverComponentsAsync(IEnumerable<DiscoveryQuery>? queries = null)
         {
             var query = new DiscoverComponentsRequest();
             if (queries != null)
@@ -117,42 +92,20 @@ namespace Viam.Core.Clients
                 query.Queries.AddRange(queries);
             }
             var result = await _robotServiceClient.DiscoverComponentsAsync(query);
-            return result.Discovery;
+            return result.Discovery.ToArray();
         }
 
-        public RepeatedField<Discovery> DiscoverComponents(IEnumerable<DiscoveryQuery>? queries = null)
-        {
-            var query = new DiscoverComponentsRequest();
-            if (queries != null)
-            {
-                query.Queries.AddRange(queries);
-            }
-            return _robotServiceClient.DiscoverComponents(query)
-                                      .Discovery;
-        }
 
-        public async Task<RepeatedField<FrameSystemConfig>> FrameSystemConfigAsync(IEnumerable<Transform>? supplementalTransforms = null)
+        public async Task<FrameSystemConfig[]> FrameSystemConfigAsync(IEnumerable<Transform>? supplementalTransforms = null)
         {
             var request = new FrameSystemConfigRequest();
             if (supplementalTransforms != null)
             {
                 request.SupplementalTransforms.AddRange(supplementalTransforms);
             }
-            var result = await _robotServiceClient.FrameSystemConfigAsync(request)
-                                                  ;
+            var result = await _robotServiceClient.FrameSystemConfigAsync(request);
 
-            return result.FrameSystemConfigs;
-        }
-
-        public RepeatedField<FrameSystemConfig> FrameSystemConfig(IEnumerable<Transform>? supplementalTransforms)
-        {
-            var request = new FrameSystemConfigRequest();
-            if (supplementalTransforms != null)
-            {
-                request.SupplementalTransforms.AddRange(supplementalTransforms);
-            }
-            return _robotServiceClient.FrameSystemConfig(request)
-                                      .FrameSystemConfigs;
+            return result.FrameSystemConfigs.ToArray();
         }
 
         public async Task<PoseInFrame> TransformPoseAsync(string destination, PoseInFrame source, IEnumerable<Transform> supplementalTransforms)
@@ -164,13 +117,6 @@ namespace Viam.Core.Clients
             return result.Pose;
         }
 
-        public PoseInFrame TransformPose(string destination, PoseInFrame source, IEnumerable<Transform> supplementalTransforms)
-        {
-            var request = new TransformPoseRequest() { Destination = destination, Source = source };
-            request.SupplementalTransforms.AddRange(supplementalTransforms);
-            return _robotServiceClient.TransformPose(request).Pose;
-        }
-
         public async Task<ByteString> TransformPCDAsync(string source, string destination, ByteString pointCloudPcd)
         {
             var request = new TransformPCDRequest() { Source = source, Destination = destination, PointCloudPcd = pointCloudPcd };
@@ -179,14 +125,7 @@ namespace Viam.Core.Clients
             return result.PointCloudPcd;
         }
 
-        public ByteString TransformPCD(string source, string destination, ByteString pointCloudPcd)
-        {
-            var request = new TransformPCDRequest() { Source = source, Destination = destination, PointCloudPcd = pointCloudPcd };
-            return _robotServiceClient.TransformPCD(request)
-                                      .PointCloudPcd;
-        }
-
-        public async Task<RepeatedField<Status>> GetStatusAsync(IEnumerable<ResourceName>? resourceNames = null)
+        public async Task<Status[]> GetStatusAsync(IEnumerable<ResourceName>? resourceNames = null)
         {
             var request = new GetStatusRequest();
             if (resourceNames != null)
@@ -196,17 +135,7 @@ namespace Viam.Core.Clients
             var result = await _robotServiceClient.GetStatusAsync(request)
                                                   ;
 
-            return result.Status;
-        }
-
-        public RepeatedField<Status> GetStatus(IEnumerable<ResourceName>? resourceNames = null)
-        {
-            var request = new GetStatusRequest();
-            if (resourceNames != null)
-            {
-                request.ResourceNames.AddRange(resourceNames);
-            }
-            return _robotServiceClient.GetStatus(request).Status;
+            return result.Status.ToArray();
         }
 
         public IAsyncStreamReader<StreamStatusResponse> StreamStatus(Duration every, IEnumerable<ResourceName>? resourceNames = null)
@@ -233,28 +162,9 @@ namespace Viam.Core.Clients
                                ;
         }
 
-        public void StopAll(IEnumerable<StopExtraParameters>? extraParameters = null)
-        {
-            var request = new StopAllRequest();
-            if (extraParameters != null)
-            {
-                request.Extra.AddRange(extraParameters);
-            }
-
-            _robotServiceClient.StopAll(request);
-        }
-
         public async Task<(string Id, Duration HeartbeatWindow)> StartSessionAsync(string? resumeToken = null)
         {
-            var result = await _robotServiceClient.StartSessionAsync(new StartSessionRequest() { Resume = resumeToken })
-                               ;
-
-            return (result.Id, result.HeartbeatWindow);
-        }
-
-        public (string Id, Duration HeartbeatWindow) StartSession(string? resumeToken = null)
-        {
-            var result = _robotServiceClient.StartSession(new StartSessionRequest() { Resume = resumeToken });
+            var result = await _robotServiceClient.StartSessionAsync(new StartSessionRequest() { Resume = resumeToken });
 
             return (result.Id, result.HeartbeatWindow);
         }
@@ -266,12 +176,6 @@ namespace Viam.Core.Clients
                                                   ;
         }
 
-        public void SendSessionHeartbeat(string sessionId)
-        {
-            var request = new SendSessionHeartbeatRequest() { Id = sessionId };
-            _robotServiceClient.SendSessionHeartbeat(request);
-        }
-
         public async Task LogAsync(IEnumerable<LogEntry> logs)
         {
             var request = new LogRequest();
@@ -279,12 +183,6 @@ namespace Viam.Core.Clients
             await _robotServiceClient.LogAsync(request);
         }
 
-        public void Log(IEnumerable<LogEntry> logs)
-        {
-            var request = new LogRequest();
-            request.Logs.AddRange(logs);
-            _robotServiceClient.Log(request);
-        }
 
         public async Task<CloudMetadata> GetCloudMetadataAsync()
         {
@@ -293,10 +191,5 @@ namespace Viam.Core.Clients
             return new CloudMetadata(result.PrimaryOrgId, result.LocationId, result.MachineId, result.MachinePartId, result.RobotPartId);
         }
 
-        public CloudMetadata GetCloudMetadata()
-        {
-            var result = _robotServiceClient.GetCloudMetadata(new GetCloudMetadataRequest());
-            return new CloudMetadata(result.PrimaryOrgId, result.LocationId, result.MachineId, result.MachinePartId, result.RobotPartId);
-        }
     }
 }

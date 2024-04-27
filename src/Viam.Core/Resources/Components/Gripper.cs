@@ -28,14 +28,14 @@ namespace Viam.Core.Resources.Components
                                  CancellationToken cancellationToken = default);
     }
 
-    public class Gripper(ResourceName resourceName, ViamChannel channel) : ComponentBase<Gripper, GripperService.GripperServiceClient>(resourceName, new GripperService.GripperServiceClient(channel)), IGripper
+    public class Gripper(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<Gripper, GripperService.GripperServiceClient>(resourceName, new GripperService.GripperServiceClient(channel)), IGripper
     {
         internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Gripper(name, channel), manager => new Services.Gripper()));
         public static SubType SubType = SubType.FromRdkComponent("gripper");
 
         public static Gripper FromRobot(RobotClientBase client, string name)
         {
-            var resourceName = IResourceBase.GetResourceName(SubType, name);
+            var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<Gripper>(resourceName);
         }
 

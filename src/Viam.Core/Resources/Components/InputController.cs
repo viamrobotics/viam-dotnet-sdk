@@ -38,14 +38,14 @@ namespace Viam.Core.Resources.Components
                                             TimeSpan? timeout = null,
                                             CancellationToken cancellationToken = default);
     }
-    public class InputController(ResourceName resourceName, ViamChannel channel) : ComponentBase<InputController, InputControllerService.InputControllerServiceClient>(resourceName, new InputControllerService.InputControllerServiceClient(channel)), IInputController
+    public class InputController(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<InputController, InputControllerService.InputControllerServiceClient>(resourceName, new InputControllerService.InputControllerServiceClient(channel)), IInputController
     {
         internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new InputController(name, channel), manager => new Services.InputController()));
         public static SubType SubType = SubType.FromRdkComponent("input_controller");
 
         public static InputController FromRobot(RobotClientBase client, string name)
         {
-            var resourceName = IResourceBase.GetResourceName(SubType, name);
+            var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<InputController>(resourceName);
         }
 

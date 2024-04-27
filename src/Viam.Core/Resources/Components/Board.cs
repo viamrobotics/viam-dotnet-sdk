@@ -32,14 +32,14 @@ namespace Viam.Core.Resources.Components
                                    CancellationToken cancellationToken = default);
     }
 
-    public class Board(ResourceName resourceName, ViamChannel channel) : ComponentBase<Board, BoardService.BoardServiceClient>(resourceName, new BoardService.BoardServiceClient(channel)), IBoard
+    public class Board(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<Board, BoardService.BoardServiceClient>(resourceName, new BoardService.BoardServiceClient(channel)), IBoard
     {
         internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Board(name, channel), manager => new Services.Board()));
         public static SubType SubType = SubType.FromRdkComponent("board");
 
         public static Board FromRobot(RobotClientBase client, string name)
         {
-            var resourceName = IResourceBase.GetResourceName(SubType, name);
+            var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<Board>(resourceName);
         }
 

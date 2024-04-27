@@ -1,7 +1,7 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 
 using Grpc.Core;
-
+using Viam.Common.V1;
 using Viam.Core.Resources;
 using Viam.Core.Utils;
 using Viam.Robot.V1;
@@ -18,7 +18,9 @@ namespace Viam.ModularResources.Services
         public override Task<ResourceNamesResponse> ResourceNames(ResourceNamesRequest request, ServerCallContext context)
         {
             var resp = new ResourceNamesResponse();
-            resp.Resources.AddRange(Manager.GetResourceNames());
+            // ReSharper disable once SuspiciousTypeConversion.Global
+            // There is an implicit conversion between these types
+            resp.Resources.AddRange(Manager.GetResourceNames().Cast<ResourceName>());
             return Task.FromResult(resp);
         }
 

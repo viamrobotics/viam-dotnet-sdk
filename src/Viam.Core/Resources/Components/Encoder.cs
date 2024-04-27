@@ -31,13 +31,13 @@ namespace Viam.Core.Resources.Components
                                             CancellationToken cancellationToken = default);
     }
 
-    public class Encoder(ResourceName resourceName, ViamChannel channel) : ComponentBase<Encoder, EncoderService.EncoderServiceClient>(resourceName, new EncoderService.EncoderServiceClient(channel)), IEncoder
+    public class Encoder(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<Encoder, EncoderService.EncoderServiceClient>(resourceName, new EncoderService.EncoderServiceClient(channel)), IEncoder
     {
         internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Encoder(name, channel), manager => new Services.Encoder()));
         public static SubType SubType = SubType.FromRdkComponent("encoder");
         public static Encoder FromRobot(RobotClientBase client, string name)
         {
-            var resourceName = IResourceBase.GetResourceName(SubType, name);
+            var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<Encoder>(resourceName);
         }
 

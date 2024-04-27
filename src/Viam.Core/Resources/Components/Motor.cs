@@ -61,14 +61,14 @@ namespace Viam.Core.Resources.Components
                                             CancellationToken cancellationToken = default);
     }
 
-    public class Motor(ResourceName resourceName, ViamChannel channel) : ComponentBase<Motor, MotorService.MotorServiceClient>(resourceName, new MotorService.MotorServiceClient(channel)), IMotor
+    public class Motor(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<Motor, MotorService.MotorServiceClient>(resourceName, new MotorService.MotorServiceClient(channel)), IMotor
     {
         internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Motor(name, channel), manager => new Services.Motor()));
         public static SubType SubType = SubType.FromRdkComponent("motor");
 
         public static Motor FromRobot(RobotClientBase client, string name)
         {
-            var resourceName = IResourceBase.GetResourceName(SubType, name);
+            var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<Motor>(resourceName);
         }
 

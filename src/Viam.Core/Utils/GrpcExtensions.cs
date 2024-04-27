@@ -96,7 +96,7 @@ namespace Viam.Core.Utils
         public static TimeSpan ToTimeout(this DateTime dateTime) =>
             dateTime - DateTime.UtcNow;
 
-        public static ResourceName ToResourceName(this string resourceName)
+        public static ViamResourceName ToResourceName(this string resourceName)
         {
             var parts = resourceName.Split("/");
             if (parts.Length != 2)
@@ -105,13 +105,7 @@ namespace Viam.Core.Utils
             }
 
             var subType = SubType.FromString(parts[0]);
-            return new ResourceName
-                   {
-                       Namespace = subType.Namespace,
-                       Type = subType.ResourceType,
-                       Subtype = subType.ResourceSubType,
-                       Name = parts[1]
-                   };
+            return new ViamResourceName(subType, parts[1]);
         }
     }
 }

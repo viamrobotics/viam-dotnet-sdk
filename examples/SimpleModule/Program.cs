@@ -1,7 +1,6 @@
 ﻿using Google.Protobuf.WellKnownTypes;
 
 using Viam.App.V1;
-using Viam.Common.V1;
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components;
 
@@ -18,14 +17,7 @@ public class ModularSensor(ComponentConfig config, string[] dependencies) : ISen
 {
     public static Model Model { get; } = new Model(new ModelFamily("viam", "sensor"), "mySensor");
 
-    public ResourceName ResourceName { get; } = new()
-                                                {
-                                                    Name = config.Name,
-                                                    Namespace = config.Namespace,
-                                                    // TODO: Figure this out
-                                                    Subtype = "",
-                                                    Type = config.Type
-                                                };
+    public ViamResourceName ResourceName { get; } = new ViamResourceName(SubType.FromString(config.Api), config.Name);
 
     public static string[] ValidateConfig(ComponentConfig config) => Array.Empty<string>();
 
@@ -42,6 +34,8 @@ public class ModularSensor(ComponentConfig config, string[] dependencies) : ISen
         return new ValueTask<IDictionary<string, object?>>(new Dictionary<string, object?>());
     }
 
+    public ValueTask DisposeAsync() => ValueTask.CompletedTask;
+
     public ValueTask StopResource() => throw new NotImplementedException();
 
     public ResourceStatus GetStatus() => throw new NotImplementedException();
@@ -51,9 +45,13 @@ public class ModularSensor(ComponentConfig config, string[] dependencies) : ISen
                                                                CancellationToken cancellationToken =
                                                                    default)
     {
-        var dict = new Dictionary<string, object?>() { { "Hello", "World" } };
+        var dict = new Dictionary<string, object?>() { { "Hello", "World" }, { "Now", DateTime.UtcNow.ToString("O") } };
         return new ValueTask<IDictionary<string, object?>>(dict);
     }
 
-    public ValueTask Reconfigure(ComponentConfig config, IDictionary<ResourceName, ResourceBase> dependencies) => throw new NotImplementedException();
+    public ValueTask Reconfigure(ComponentConfig config, IDictionary<ViamResourceName, IResourceBase> dependencies)
+    {
+        Console.WriteLine("Reconfiguring!");
+        return ValueTask.CompletedTask;
+    }
 }

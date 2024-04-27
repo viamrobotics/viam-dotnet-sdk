@@ -13,7 +13,11 @@ try
     var host = Host.CreateDefaultBuilder(args)
         .ConfigureLogging(c =>
         {
-            c.AddSimpleConsole(o => o.SingleLine = true);
+            c.AddSimpleConsole(o => {
+                        o.SingleLine = true;
+                        o.IncludeScopes = true;
+                        o.UseUtcTimestamp = true;
+                        });
         })
         .ConfigureServices(s =>
         {

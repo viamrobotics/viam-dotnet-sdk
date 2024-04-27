@@ -24,14 +24,14 @@ namespace Viam.Core.Resources.Components
                                    TimeSpan? timeout = null,
                                    CancellationToken cancellationToken = default);
     }
-    public class PowerSensor(ResourceName resourceName, ViamChannel channel) : ComponentBase<PowerSensor, PowerSensorService.PowerSensorServiceClient>(resourceName, new PowerSensorService.PowerSensorServiceClient(channel)), IPowerSensor
+    public class PowerSensor(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<PowerSensor, PowerSensorService.PowerSensorServiceClient>(resourceName, new PowerSensorService.PowerSensorServiceClient(channel)), IPowerSensor
     {
         internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new PowerSensor(name, channel), manager => new Services.PowerSensor()));
         public static SubType SubType = SubType.FromRdkComponent("power_sensor");
 
         public static PowerSensor FromRobot(RobotClientBase client, string name)
         {
-            var resourceName = IResourceBase.GetResourceName(SubType, name);
+            var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<PowerSensor>(resourceName);
         }
 

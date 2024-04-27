@@ -1,4 +1,5 @@
-﻿using Grpc.Core;
+﻿using System.Diagnostics;
+using Grpc.Core;
 
 using Viam.Common.V1;
 using Viam.Core.Grpc;
@@ -6,6 +7,8 @@ using Viam.Core.Resources;
 using Viam.Core.Utils;
 using Viam.Module.V1;
 using Viam.Robot.V1;
+
+using static Viam.Core.Utils.GrpcExtensions;
 
 using grpcRobotService = Viam.Module.V1.ModuleService;
 
@@ -25,6 +28,7 @@ namespace Viam.ModularResources.Services
             _logger.LogDebug("Adding resource {Name} {SubType} {Model}", config.Name, subType, model);
             var creator = Registry.LookupResourceCreatorRegistration(subType, model);
             var resource = creator.Creator(config, [.. request.Dependencies]);
+            _logger.LogDebug("Registering {ResourceName} with the ResourceManager", resource.ResourceName);
             Manager.Register(resource.ResourceName, resource);
             return Task.FromResult(new Viam.Module.V1.AddResourceResponse());
         }
@@ -60,7 +64,7 @@ namespace Viam.ModularResources.Services
             foreach (var ((serviceName, subType), models) in serviceNameToModels)
             {
                 _logger.LogTrace("Preparing handler for {Service}", serviceName);
-                var rpcSubtype = new ResourceRPCSubtype() { Subtype = new ResourceName() { Namespace = subType.Namespace, Type = subType.ResourceType, Subtype = subType.ResourceSubType, Name = "" }, ProtoService = serviceName };
+                var rpcSubtype = new ResourceRPCSubtype() { Subtype = new ViamResourceName(subType, string.Empty), ProtoService = serviceName };
                 var handler = new HandlerDefinition() { Subtype = rpcSubtype };
                 handler.Models.AddRange(models.Select(x => x.ToString()));
                 handlers.Handlers.Add(handler);
@@ -76,9 +80,50 @@ namespace Viam.ModularResources.Services
             return resp;
         }
 
-        public override Task<Viam.Module.V1.ReconfigureResourceResponse> ReconfigureResource(Viam.Module.V1.ReconfigureResourceRequest request, ServerCallContext context)
+        public override async Task<Viam.Module.V1.ReconfigureResourceResponse> ReconfigureResource(Viam.Module.V1.ReconfigureResourceRequest request, ServerCallContext context)
         {
-            return base.ReconfigureResource(request, context);
+            // TODO: Need to refresh the manager resources before doing this?
+            var dependencies = request.Dependencies.Select(GrpcExtensions.ToResourceName)
+                                      .ToDictionary(x => x, Manager.GetResource);
+            var subtype = SubType.FromString(request.Config.Api);
+            _logger.LogDebug("SubType {SubType}", subtype);
+            var resourceName = new ViamResourceName(subtype, request.Config.Name);
+            _logger.LogInformation("Reconfigure request received for {ResourceName}", resourceName.ToString());
+            IResourceBase resource;
+            try
+            {
+                resource = Manager.GetResource(resourceName);
+            }
+            catch (ResourceNotFoundException)
+            {
+                _logger.LogDebug("Available Resources: {AvailableResources}", manager.GetResourceNames());
+                throw;
+            }
+
+            // If the resource implements IAsyncReconfigurable, execute it, otherwise remove/add it
+            if (resource is IAsyncReconfigurable reconfigurable)
+            {
+                _logger.LogDebug("Resource {ResourceName} supports reconfiguration", resourceName);
+                await reconfigurable.Reconfigure(request.Config, dependencies);
+                _logger.LogDebug("Reconfigured");
+            }
+            else
+            {
+                _logger.LogDebug("Resource {ResourceName} does not support reconfiguration, removing", resourceName);
+                var model = Model.FromString(request.Config.Model);
+                Manager.RemoveResource(resourceName);
+                _logger.LogDebug("Disposing of resource {ResourceName}", resourceName);
+                await resource.DisposeAsync();
+                _logger.LogDebug("Looking up ResourceCreator in registry for {ResourceName}", resourceName);
+                var creator = Registry.LookupResourceCreatorRegistration(subtype, model);
+                _logger.LogDebug("Creator found, invoking creator for {ResourceName}", resourceName);
+                resource = creator.Creator(request.Config, request.Dependencies.ToArray());
+                Manager.Register(resourceName, resource);
+            }
+
+            _logger.LogDebug("Done reconfiguring {ResourceName}", resourceName);
+
+            return new ReconfigureResourceResponse();
         }
 
         public override Task<Viam.Module.V1.RemoveResourceResponse> RemoveResource(Viam.Module.V1.RemoveResourceRequest request, ServerCallContext context)

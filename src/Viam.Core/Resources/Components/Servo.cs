@@ -34,14 +34,14 @@ namespace Viam.Core.Resources.Components
                                             CancellationToken cancellationToken = default);
 
     }
-    public class Servo(ResourceName resourceName, ViamChannel channel) : ComponentBase<Servo, ServoService.ServoServiceClient>(resourceName, new ServoService.ServoServiceClient(channel)), IServo
+    public class Servo(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<Servo, ServoService.ServoServiceClient>(resourceName, new ServoService.ServoServiceClient(channel)), IServo
     {
         internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Servo(name, channel), manager => new Services.Servo()));
         public static SubType SubType = SubType.FromRdkComponent("servo");
 
         public static Servo FromRobot(RobotClientBase client, string name)
         {
-            var resourceName = IResourceBase.GetResourceName(SubType, name);
+            var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<Servo>(resourceName);
         }
 

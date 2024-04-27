@@ -9,10 +9,11 @@ using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Core.Clients;
 using Viam.Core.Resources.Components;
+using Viam.Core.Utils;
 
 namespace Viam.Core.Resources
 {
-    public class ResourceManager(ILogger<ResourceManager> logger)
+    public class ResourceManager(ILogger<ResourceManager> logger) : IAsyncDisposable
     {
         // This is needed to make sure all well-known types get registered at startup
         static ResourceManager()
@@ -32,14 +33,15 @@ namespace Viam.Core.Resources
             Servo.RegisterType();
         }
 
-        private readonly ConcurrentDictionary<ResourceName, IResourceBase> _resources = new();
+        private readonly ConcurrentDictionary<ViamResourceName, IResourceBase> _resources = new();
 
-        public void Register(ResourceName resourceName, IResourceBase resource)
+        public void Register(ViamResourceName resourceName, IResourceBase resource)
         {
+            logger.LogDebug("Registering resource {ResourceName}", resourceName);
             _resources.TryAdd(resourceName, resource);
         }
 
-        public IResourceBase GetResource(ResourceName resourceName)
+        public IResourceBase GetResource(ViamResourceName resourceName)
         {
             if (_resources.TryGetValue(resourceName, out var resource))
             {
@@ -63,7 +65,7 @@ namespace Viam.Core.Resources
             throw new ResourceNotFoundException(name);
         }
 
-        public void RemoveResource(ResourceName resourceName)
+        public void RemoveResource(ViamResourceName resourceName)
         {
             if (_resources.TryRemove(resourceName, out var _))
                 return;
@@ -85,11 +87,11 @@ namespace Viam.Core.Resources
             }
         }
 
-        public ICollection<ResourceName> GetResourceNames() => _resources.Keys;
+        public ICollection<ViamResourceName> GetResourceNames() => _resources.Keys;
 
         public ICollection<IResourceBase> GetResources() => _resources.Values;
 
-        private void CreateOrResetClient(ResourceName resourceName, ViamChannel channel)
+        private void CreateOrResetClient(ViamResourceName resourceName, ViamChannel channel)
         {
             if (_resources.TryGetValue(resourceName, out var resource))
             {
@@ -108,18 +110,24 @@ namespace Viam.Core.Resources
                 logger.LogWarning($"Resource {resourceName} not found in registry");
             }
         }
+
+        public async ValueTask DisposeAsync()
+        {
+            await _resources.Values.Select(x => x.DisposeAsync())
+                            .WhenAll();
+        }
     }
 
     public class ResourceNotFoundException(string name) : Exception($"No resource with name {name} found");
-    public abstract class ResourceStatus(ResourceName resourceName)
+    public abstract class ResourceStatus(ViamResourceName resourceName)
     {
-        public readonly ResourceName ResourceName = resourceName;
+        public readonly ViamResourceName ResourceName = resourceName;
         public abstract DateTime? LastReconfigured { get; protected set; }
         public abstract IDictionary<string, object?> Details { get; }
         public static Func<ResourceBase, ResourceStatus> DefaultCreator => @base => new DefaultResourceStatus(@base.ResourceName, @base.LastReconfigured);
     }
 
-    internal sealed class DefaultResourceStatus(ResourceName resourceName, DateTime? lastReconfigured) : ResourceStatus(resourceName)
+    internal sealed class DefaultResourceStatus(ViamResourceName resourceName, DateTime? lastReconfigured) : ResourceStatus(resourceName)
     {
         public override DateTime? LastReconfigured { get; protected set; } = lastReconfigured;
         public override IDictionary<string, object?> Details { get; } = new Dictionary<string, object?>();

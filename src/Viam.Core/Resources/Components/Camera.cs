@@ -35,13 +35,13 @@ namespace Viam.Core.Resources.Components
                                             TimeSpan? timeout = null,
                                             CancellationToken cancellationToken = default);
     }
-    public class Camera(ResourceName resourceName, ViamChannel channel) : ComponentBase<Camera, CameraService.CameraServiceClient>(resourceName, new CameraService.CameraServiceClient(channel)), ICamera
+    public class Camera(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<Camera, CameraService.CameraServiceClient>(resourceName, new CameraService.CameraServiceClient(channel)), ICamera
     {
         internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Camera(name, channel), manager => new Services.Camera()));
         public static SubType SubType = SubType.FromRdkComponent("camera");
         public static Camera FromRobot(RobotClientBase client, string name)
         {
-            var resourceName = IResourceBase.GetResourceName(SubType, name);
+            var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<Camera>(resourceName);
         }
 

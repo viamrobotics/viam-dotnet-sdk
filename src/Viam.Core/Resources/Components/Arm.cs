@@ -45,7 +45,8 @@ namespace Viam.Core.Resources.Components
 
         ValueTask<Geometry[]> GetGeometries(Struct? extra = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default);
     }
-    public class Arm(ResourceName resourceName, ViamChannel channel) : ComponentBase<Arm, ArmService.ArmServiceClient>(resourceName, new ArmService.ArmServiceClient(channel)), IArm
+
+    public class Arm(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<Arm, ArmService.ArmServiceClient>(resourceName, new ArmService.ArmServiceClient(channel)), IArm
     {
         internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Arm(name, channel), manager => new Services.Arm()));
 
@@ -53,7 +54,7 @@ namespace Viam.Core.Resources.Components
 
         public static Arm FromRobot(RobotClientBase client, string name)
         {
-            var resourceName = IResourceBase.GetResourceName(SubType, name);
+            var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<Arm>(resourceName);
         }
 

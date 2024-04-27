@@ -3,7 +3,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 using Viam.App.V1;
-using Viam.Common.V1;
 using Viam.Core.Resources.Services;
 
 namespace Viam.Core.Resources
@@ -48,12 +47,12 @@ namespace Viam.Core.Resources
 
     public class ResourceRegistration(
         SubType subType,
-        Func<ResourceName, ViamChannel, ResourceBase> clientCreator,
+        Func<ViamResourceName, ViamChannel, ResourceBase> clientCreator,
         Func<ResourceManager, IServiceBase> rpcCreator)
     {
         public SubType SubType => subType;
 
-        internal ResourceBase CreateRpcClient(ResourceName name, ViamChannel channel) => clientCreator(name, channel);
+        internal ResourceBase CreateRpcClient(ViamResourceName name, ViamChannel channel) => clientCreator(name, channel);
         internal IServiceBase CreateServiceBase(ResourceManager manager) => rpcCreator(manager);
     }
 
@@ -66,7 +65,7 @@ namespace Viam.Core.Resources
         public static SubType FromRdkService(string serviceType) => new("rdk", "service", serviceType);
         public static SubType Default = new("none", "none", "none");
 
-        public static SubType FromResourceName(ResourceName resourceName) =>
+        public static SubType FromResourceName(ViamResourceName resourceName) =>
             new SubType(resourceName.Namespace, resourceName.Type, resourceName.Subtype);
 
         public static SubType FromString(string str)

@@ -42,13 +42,13 @@ namespace Viam.Core.Resources.Components
                                             TimeSpan? timeout = null,
                                             CancellationToken cancellationToken = default);
     }
-    public class Gantry(ResourceName resourceName, ViamChannel channel) : ComponentBase<Gantry, GantryService.GantryServiceClient>(resourceName, new GantryService.GantryServiceClient(channel)), IGantry
+    public class Gantry(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<Gantry, GantryService.GantryServiceClient>(resourceName, new GantryService.GantryServiceClient(channel)), IGantry
     {
         internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Gantry(name, channel), manager => new Services.Gantry()));
         public static SubType SubType = SubType.FromRdkComponent("gantry");
         public static Gantry FromRobot(RobotClientBase client, string name)
         {
-            var resourceName = IResourceBase.GetResourceName(SubType, name);
+            var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<Gantry>(resourceName);
         }
 

@@ -19,7 +19,7 @@ namespace Viam.Core.Resources.Components
                                                                  CancellationToken cancellationToken = default);
     }
 
-    public class Sensor(ResourceName resourceName, ViamChannel channel) : ComponentBase<Sensor, SensorService.SensorServiceClient>(resourceName, new SensorService.SensorServiceClient(channel)), ISensor
+    public class Sensor(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<Sensor, SensorService.SensorServiceClient>(resourceName, new SensorService.SensorServiceClient(channel)), ISensor
     {
         internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Sensor(name, channel), manager => new Services.Sensor(manager)));
 
@@ -27,7 +27,7 @@ namespace Viam.Core.Resources.Components
 
         public static Sensor FromRobot(RobotClientBase client, string name)
         {
-            var resourceName = IResourceBase.GetResourceName(SubType, name);
+            var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<Sensor>(resourceName);
         }
 
