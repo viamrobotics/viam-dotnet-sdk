@@ -2,7 +2,7 @@
 
 namespace Viam.Core.Resources
 {
-    public record ViamResourceName(string Namespace, string Type, string Subtype, string Name)
+    public record ViamResourceName(string Namespace, string ResourceType, string ResourceSubtype, string Name)
     {
         public ViamResourceName(ResourceName resourceName)
             : this(resourceName.Namespace, resourceName.Type, resourceName.Subtype, resourceName.Name){}
@@ -20,14 +20,14 @@ namespace Viam.Core.Resources
             {
                 Name = viamResource.Name,
                 Namespace = viamResource.Namespace,
-                Type = viamResource.Type,
-                Subtype = viamResource.Subtype
+                Type = viamResource.ResourceType,
+                Subtype = viamResource.ResourceSubtype
             };
 
         // Implicit operator to convert from ResourceName to ViamResource
         public static implicit operator ViamResourceName(ResourceName resourceName) => new(resourceName);
 
         public override string ToString() =>
-            $"{Namespace}:{Type}:{Subtype}:{Name}";
+            $"{Namespace}:{ResourceType}:{ResourceSubtype}:{Name}";
     }
 }

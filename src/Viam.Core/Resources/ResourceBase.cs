@@ -1,20 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Viam.Core.Resources
 {
-    public interface IResourceBase : IAsyncDisposable
-    {
-        public ViamResourceName ResourceName { get; }
-
-        public ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
-                                                                 TimeSpan? timeout = null,
-                                                                 CancellationToken cancellationToken = default);
-        public ValueTask StopResource();
-        public ResourceStatus GetStatus();
-    }
     public abstract class ResourceBase(ViamResourceName resourceName) : IResourceBase
     {
         public ViamResourceName ResourceName => resourceName;
@@ -27,5 +18,16 @@ namespace Viam.Core.Resources
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
         public virtual ValueTask DisposeAsync() => ValueTask.CompletedTask;
+    }
+
+    public interface IResourceBase : IAsyncDisposable
+    {
+        public ViamResourceName ResourceName { get; }
+
+        public ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+                                                                 TimeSpan? timeout = null,
+                                                                 CancellationToken cancellationToken = default);
+        public ValueTask StopResource();
+        public ResourceStatus GetStatus();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 using Grpc.Core;
@@ -9,17 +10,24 @@ using Grpc.Net.Client;
 using Microsoft.Extensions.Logging;
 
 using Proto.Rpc.V1;
+using Viam.Core.Logging;
 
 namespace Viam.Core.Grpc
 {
-    public record GrpcDialOptions(Uri MachineAddress, bool Insecure = false, Viam.Core.Options.Credentials? Credentials = null, int port = 8080);
+    public record GrpcDialOptions(
+        Uri MachineAddress,
+        bool Insecure = false,
+        Options.Credentials? Credentials = null,
+        int Port = 8080)
+    {
+        public override string ToString() => $"{MachineAddress}, {Insecure}, {Credentials}, {Port}";
+    }
 
     public class GrpcDialer(ILogger<GrpcDialer> logger)
     {
-        public ValueTask<ViamChannel> DialDirectAsync(GrpcDialOptions dialOptions)
+        [LogCall]
+        public ValueTask<ViamChannel> DialDirectAsync(GrpcDialOptions dialOptions, [CallerMemberName] string? caller = null)
         {
-            logger.LogDebug("Dialing GRPC direct to {address}", dialOptions.MachineAddress);
-
             var channelCredentialSecurity = dialOptions.Insecure
                                                 ? ChannelCredentials.Insecure
                                                 : ChannelCredentials.SecureSsl;
@@ -66,7 +74,7 @@ namespace Viam.Core.Grpc
                                                    }
                                                });
 
-                        logger.LogDebug($"Got auth response.");
+                        logger.LogDebug("Got auth response.");
                         metadata.Add("Authorization", $"Bearer {authResponse.AccessToken}");
                     }
                 });
@@ -74,7 +82,7 @@ namespace Viam.Core.Grpc
                 channelOptions.Credentials = ChannelCredentials.Create(channelCredentialSecurity, callCredentials);
             }
 
-            var channel = new GrpcChannel(global::Grpc.Net.Client.GrpcChannel.ForAddress(address, channelOptions));
+            var channel = new GrpcChannel(global::Grpc.Net.Client.GrpcChannel.ForAddress(address, channelOptions), address.ToString());
             return new ValueTask<ViamChannel>(channel);
         }
     }

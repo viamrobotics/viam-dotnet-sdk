@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 
 using Google.Protobuf.Collections;
 using Google.Protobuf.WellKnownTypes;
-
+using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Camera.V1;
 using Viam.Core.Clients;
+using Viam.Core.Logging;
 using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components
@@ -35,10 +36,20 @@ namespace Viam.Core.Resources.Components
                                             TimeSpan? timeout = null,
                                             CancellationToken cancellationToken = default);
     }
-    public class Camera(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<Camera, CameraService.CameraServiceClient>(resourceName, new CameraService.CameraServiceClient(channel)), ICamera
+
+    public class Camera(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
+        : ComponentBase<Camera, CameraService.CameraServiceClient>(resourceName,
+                                                                   new CameraService.CameraServiceClient(channel)),
+          ICamera
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Camera(name, channel), manager => new Services.Camera()));
+        internal static void RegisterType() => Registry.RegisterSubtype(
+            new ResourceRegistration(SubType,
+                                             (name, channel, logger) => new Camera(name, channel, logger),
+                                             (logger) => new Services.Camera(logger)));
+
         public static SubType SubType = SubType.FromRdkComponent("camera");
+
+        [LogCall]
         public static Camera FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
@@ -49,39 +60,43 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => ValueTask.CompletedTask;
 
+        [LogCall]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
-            var res = await Client.DoCommandAsync(new DoCommandRequest()
-            {
-                Name = Name,
-                Command = command.ToStruct()
-            });
+            var res = await Client.DoCommandAsync(new DoCommandRequest() { Name = Name, Command = command.ToStruct() },
+                                                  deadline: timeout.ToDeadline(),
+                                                  cancellationToken: cancellationToken)
+                                  .ConfigureAwait(false);
 
             return res.Result.ToDictionary();
         }
 
+        [LogCall]
         public ValueTask<object> GetImage(MimeType mimeType,
-                                  Struct? extra = null,
-                                  TimeSpan? timeout = null,
-                                  CancellationToken cancellationToken = default) =>
+                                          Struct? extra = null,
+                                          TimeSpan? timeout = null,
+                                          CancellationToken cancellationToken = default) =>
             throw new NotImplementedException();
 
+        [LogCall]
         public ValueTask<object[]> GetImages(TimeSpan? timeout = null,
-                                   CancellationToken cancellationToken = default) =>
+                                             CancellationToken cancellationToken = default) =>
             throw new NotImplementedException();
 
-
+        [LogCall]
         public ValueTask<object> GetPointCloud(Struct? extra = null,
-                                       TimeSpan? timeout = null,
-                                       CancellationToken cancellationToken = default) =>
+                                               TimeSpan? timeout = null,
+                                               CancellationToken cancellationToken = default) =>
             throw new NotImplementedException();
 
+        [LogCall]
         public ValueTask<Properties> GetProperties(TimeSpan? timeout = null,
                                                    CancellationToken cancellationToken = default) =>
             throw new NotImplementedException();
 
+        [LogCall]
         public ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
                                                    TimeSpan? timeout = null,
                                                    CancellationToken cancellationToken = default) =>
@@ -116,7 +131,5 @@ namespace Viam.Core.Resources.Components
             public static MimeType Png = new("image/png");
             public static MimeType Pcd = new("pointcloud/pcd");
         }
-
-        
     }
 }

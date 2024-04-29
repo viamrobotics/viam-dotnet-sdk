@@ -4,8 +4,6 @@ using System.Linq;
 
 using Google.Protobuf.Collections;
 using Google.Protobuf.WellKnownTypes;
-
-using Viam.Common.V1;
 using Viam.Core.Resources;
 
 namespace Viam.Core.Utils

@@ -1,10 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
-
 using Viam.Client.Clients;
 using Viam.Client.Options;
 using Viam.Core.Resources.Components;
 
-namespace ViamSdk.Test.Components
+namespace Viam.Core.Test.Components
 {
     internal class BoardTests
     {

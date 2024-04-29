@@ -4,9 +4,11 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
+using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Base.V1;
 using Viam.Core.Clients;
+using Viam.Core.Logging;
 using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components
@@ -80,11 +82,16 @@ namespace Viam.Core.Resources.Components
                                             CancellationToken cancellationToken = default);
     }
 
-    public class Base(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<Base, BaseService.BaseServiceClient>(resourceName, new BaseService.BaseServiceClient(channel)), IBase
+    public class Base(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
+        : ComponentBase<Base, BaseService.BaseServiceClient>(resourceName, new BaseService.BaseServiceClient(channel)),
+          IBase
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Base(name, channel), manager => new Services.Base()));
+        internal static void RegisterType() => Registry.RegisterSubtype(
+            new ResourceRegistration(SubType, (name, channel, logger) => new Base(name, channel, logger), logger => new Services.Base(logger)));
+
         public static SubType SubType = SubType.FromRdkComponent("base");
 
+        [LogCall]
         public static Board FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
@@ -95,15 +102,20 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => Stop();
 
+        [LogCall]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
-            var res = await Client.DoCommandAsync(new DoCommandRequest() { Name = Name, Command = command.ToStruct() });
+            var res = await Client.DoCommandAsync(new DoCommandRequest() { Name = Name, Command = command.ToStruct() },
+                                                  deadline: timeout.ToDeadline(),
+                                                  cancellationToken: cancellationToken)
+                                  .ConfigureAwait(false);
 
             return res.Result.ToDictionary();
         }
 
+        [LogCall]
         public async ValueTask MoveStraight(long distance,
                                             double velocity,
                                             Struct? extra = null,
@@ -111,14 +123,16 @@ namespace Viam.Core.Resources.Components
                                             CancellationToken cancellationToken = default)
         {
             await Client.MoveStraightAsync(
-                new MoveStraightRequest()
-                {
-                    Name = Name, DistanceMm = distance, MmPerSec = velocity, Extra = extra
-                },
-                deadline: timeout.ToDeadline(),
-                cancellationToken: cancellationToken);
+                            new MoveStraightRequest()
+                            {
+                                Name = Name, DistanceMm = distance, MmPerSec = velocity, Extra = extra
+                            },
+                            deadline: timeout.ToDeadline(),
+                            cancellationToken: cancellationToken)
+                        .ConfigureAwait(false);
         }
 
+        [LogCall]
         public async ValueTask Spin(double angle,
                                     double velocity,
                                     Struct? extra = null,
@@ -131,9 +145,10 @@ namespace Viam.Core.Resources.Components
                                    },
                                    deadline: timeout.ToDeadline(),
                                    cancellationToken: cancellationToken)
-                        ;
+                        .ConfigureAwait(false);
         }
 
+        [LogCall]
         public async ValueTask SetPower(Vector3 linear,
                                         Vector3 angular,
                                         Struct? extra = null,
@@ -142,15 +157,13 @@ namespace Viam.Core.Resources.Components
         {
             await Client
                   .SetPowerAsync(
-                      new SetPowerRequest()
-                      {
-                          Name = Name, Linear = linear, Angular = angular, Extra = extra
-                      },
+                      new SetPowerRequest() { Name = Name, Linear = linear, Angular = angular, Extra = extra },
                       deadline: timeout.ToDeadline(),
                       cancellationToken: cancellationToken)
-                  ;
+                  .ConfigureAwait(false);
         }
 
+        [LogCall]
         public async ValueTask SetVelocity(Vector3 linear,
                                            Vector3 angular,
                                            Struct? extra = null,
@@ -159,16 +172,14 @@ namespace Viam.Core.Resources.Components
         {
             await Client.SetVelocityAsync(new SetVelocityRequest()
                                           {
-                                              Name = Name,
-                                              Linear = linear,
-                                              Angular = angular,
-                                              Extra = extra
+                                              Name = Name, Linear = linear, Angular = angular, Extra = extra
                                           },
                                           deadline: timeout.ToDeadline(),
                                           cancellationToken: cancellationToken)
-                        ;
+                        .ConfigureAwait(false);
         }
 
+        [LogCall]
         public async ValueTask Stop(Struct? extra = null,
                                     TimeSpan? timeout = null,
                                     CancellationToken cancellationToken = default)
@@ -176,37 +187,44 @@ namespace Viam.Core.Resources.Components
             await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra },
                                    deadline: timeout.ToDeadline(),
                                    cancellationToken: cancellationToken)
-                        ;
+                        .ConfigureAwait(false);
         }
 
+        [LogCall]
         public async ValueTask<bool> IsMoving(TimeSpan? timeout = null,
                                               CancellationToken cancellationToken = default)
         {
-            var res = await Client.IsMovingAsync(new IsMovingRequest() { Name = Name })
-                                  ;
+            var res = await Client.IsMovingAsync(new IsMovingRequest() { Name = Name },
+                                                 deadline: timeout.ToDeadline(),
+                                                 cancellationToken: cancellationToken)
+                                  .ConfigureAwait(false);
 
             return res.IsMoving;
         }
 
+        [LogCall]
         public async ValueTask<Properties> GetProperties(Struct? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
         {
-            var res = await Client.GetPropertiesAsync(new GetPropertiesRequest() { Name = Name, Extra = extra })
-                            ;
+            var res = await Client.GetPropertiesAsync(new GetPropertiesRequest() { Name = Name, Extra = extra },
+                                                      deadline: timeout.ToDeadline(),
+                                                      cancellationToken: cancellationToken)
+                                  .ConfigureAwait(false);
 
             return new Properties(res.TurningRadiusMeters, res.WheelCircumferenceMeters, res.WidthMeters);
         }
 
+        [LogCall]
         public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
-                                             TimeSpan? timeout = null,
-                                             CancellationToken cancellationToken = default)
+                                                         TimeSpan? timeout = null,
+                                                         CancellationToken cancellationToken = default)
         {
             var res = await Client
                             .GetGeometriesAsync(new GetGeometriesRequest() { Name = Name, Extra = extra },
                                                 deadline: timeout.ToDeadline(),
                                                 cancellationToken: cancellationToken)
-                            ;
+                            .ConfigureAwait(false);
 
             return res.Geometries.ToArray();
         }

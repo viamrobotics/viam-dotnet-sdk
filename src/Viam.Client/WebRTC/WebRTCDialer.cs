@@ -39,10 +39,9 @@ namespace Viam.Client.WebRTC
             try
             {
                 var configResponse =
-                    await signalingClient.OptionalWebRTCConfigAsync(new OptionalWebRTCConfigRequest(), headers: md)
-                                         ;
+                    await signalingClient.OptionalWebRTCConfigAsync(new OptionalWebRTCConfigRequest(), headers: md);
 
-                config = PopulateWithDefaultICEServers(config, configResponse.Config);
+                config = PopulateWithDefaultIceServers(config, configResponse.Config);
             }
             catch (RpcException e) when (e.StatusCode == StatusCode.Unimplemented)
             {
@@ -78,12 +77,10 @@ namespace Viam.Client.WebRTC
                         var iProto = IceCandidateToProto(i);
                         await signalingClient
                               .CallUpdateAsync(new CallUpdateRequest { Uuid = dialState.Uuid, Candidate = iProto },
-                                               headers: md)
-                              ;
+                                               headers: md);
                     };
 
-                    await peerConnection.setLocalDescription(offer)
-                                        ;
+                    await peerConnection.setLocalDescription(offer);
                 }
 
                 var encodedSdp = EncodeSdp(peerConnection.localDescription);
@@ -103,7 +100,7 @@ namespace Viam.Client.WebRTC
                 //    // for client channel
                 //}
 
-                var clientChannel = new WebRTCClientChannel(peerConnection, dataChannel, logger);
+                var clientChannel = new WebRtcClientChannel(peerConnection, dataChannel, logger);
 
                 await ExchangeCandidates(signalingClient,
                                          callingClient,
@@ -111,12 +108,10 @@ namespace Viam.Client.WebRTC
                                          remoteDescriptionSent,
                                          dialState.Uuid,
                                          md,
-                                         dialOptions.WebRtcOptions.DisableTrickleIce, dialState)
-                    ;
+                                         dialOptions.WebRtcOptions.DisableTrickleIce, dialState);
 
                 successful = true;
-                await clientChannel.Ready()
-                                   ;
+                await clientChannel.Ready();
 
                 return clientChannel;
             }
@@ -142,8 +137,8 @@ namespace Viam.Client.WebRTC
 
         private static RTCSessionDescription DecodeSdp(string encodedSdp)
         {
-            var sdpJSON = System.Convert.FromBase64String(encodedSdp);
-            var sdpDoc = JsonDocument.Parse(sdpJSON).RootElement;
+            var sdpJson = Convert.FromBase64String(encodedSdp);
+            var sdpDoc = JsonDocument.Parse(sdpJson).RootElement;
 
             if (Enum.TryParse<RTCSdpType>(sdpDoc.GetProperty("type").GetString()!, out var type))
             {
@@ -161,11 +156,11 @@ namespace Viam.Client.WebRTC
 
         private async Task ExchangeCandidates(SignalingService.SignalingServiceClient signalingClient,
                                               AsyncServerStreamingCall<CallResponse> callingClient,
-                                              RTCPeerConnection peerConnection,
+                                              IRTCPeerConnection peerConnection,
                                               TaskCompletionSource<bool> remoteDescriptionSent,
                                               string expectedUuid,
                                               Metadata md,
-                                              bool disableTrickleICE,
+                                              bool disableTrickleIce,
                                               DialState state)
         {
             var haveInit = false;
@@ -194,7 +189,7 @@ namespace Viam.Client.WebRTC
 
                         remoteDescriptionSent.SetResult(true);
 
-                        if (disableTrickleICE)
+                        if (disableTrickleIce)
                         {
                             await SendDone(signalingClient, state.Uuid, md)
                                 ;
@@ -240,7 +235,7 @@ namespace Viam.Client.WebRTC
         }
 
         private static RTCIceCandidateInit IceCandidateFromProto(ICECandidate i) =>
-            new RTCIceCandidateInit()
+            new()
             {
                 candidate = i.Candidate,
                 sdpMid = i.SdpMid,
@@ -250,13 +245,12 @@ namespace Viam.Client.WebRTC
 
         private static async Task SendDone(SignalingService.SignalingServiceClient signalingClient, string uuid, Metadata md)
         {
-            await signalingClient.CallUpdateAsync(new CallUpdateRequest { Uuid = uuid, Done = true }, headers: md)
-                                 ;
+            await signalingClient.CallUpdateAsync(new CallUpdateRequest { Uuid = uuid, Done = true }, headers: md);
         }
 
         private static async Task<(RTCPeerConnection Connection, RTCDataChannel Channel)> NewPeerConnectionForClient(
             RTCConfiguration config,
-            bool disableTrickleICE)
+            bool disableTrickleIce)
         {
             var pc = new RTCPeerConnection(config);
 
@@ -265,18 +259,16 @@ namespace Viam.Client.WebRTC
             {
                 var dataChannel =
                     await pc.createDataChannel("data",
-                                               new RTCDataChannelInit { id = 0, negotiated = true, ordered = true, })
-                            ;
+                                               new RTCDataChannelInit { id = 0, negotiated = true, ordered = true, });
 
                 // TODO(erd): even necessary?
                 await pc.createDataChannel("negotiation",
-                                           new RTCDataChannelInit { id = 1, negotiated = true, ordered = true, })
-                        ;
+                                           new RTCDataChannelInit { id = 1, negotiated = true, ordered = true, });
 
                 // TODO(erd): remember to remove
                 dataChannel.onerror += InitialDataChannelOnError;
 
-                if (disableTrickleICE)
+                if (disableTrickleIce)
                 {
                     throw new NotImplementedException("disabling trickle ICE not supported yet");
                 }
@@ -299,7 +291,7 @@ namespace Viam.Client.WebRTC
         }
 
         // TODO: This should probably move to a class where the config lives? Maybe an extension method?
-        private static RTCConfiguration PopulateWithDefaultICEServers(RTCConfiguration original, WebRTCConfig? optional)
+        private static RTCConfiguration PopulateWithDefaultIceServers(RTCConfiguration original, WebRTCConfig? optional)
         {
             if (optional == null)
             {

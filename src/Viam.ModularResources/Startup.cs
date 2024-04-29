@@ -1,10 +1,7 @@
-﻿using Google.Api;
-
-using Grpc.Core;
+﻿using Grpc.Core;
 using Grpc.Core.Interceptors;
 
 using Viam.Core.Resources;
-using Viam.Core.Resources.Components;
 using Viam.ModularResources.Services;
 
 using Arm = Viam.Core.Resources.Services.Arm;

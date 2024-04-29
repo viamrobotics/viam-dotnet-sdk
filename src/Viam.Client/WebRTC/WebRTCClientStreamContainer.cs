@@ -2,7 +2,7 @@ using Proto.Rpc.Webrtc.V1;
 
 namespace Viam.Client.WebRTC
 {
-    public interface IWebRTCClientStreamContainer
+    public interface IWebRtcClientStreamContainer
     {
         void OnResponse(Response response);
     }

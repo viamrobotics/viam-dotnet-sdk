@@ -18,7 +18,7 @@ namespace System.Runtime.CompilerServices
                 throw new ArgumentNullException();
             }
 
-            (int offset, int length) = range.GetOffsetAndLength(array.Length);
+            var (offset, length) = range.GetOffsetAndLength(array.Length);
 
             if (default(T)! != null || typeof(T[]) == array.GetType()) // TODO-NULLABLE: default(T) == null warning (https://github.com/dotnet/roslyn/issues/34757)
             {

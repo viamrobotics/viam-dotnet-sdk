@@ -1,17 +1,9 @@
-﻿using Google.Protobuf.WellKnownTypes;
-
-using Microsoft.Extensions.Logging;
-
-using Viam.App.V1;
-using Viam.Common.V1;
+﻿using Microsoft.Extensions.Logging;
+using Viam.Client.Clients;
 using Viam.Client.Options;
-using Viam.Core.Resources;
 using Viam.Core.Resources.Components;
 
-using Model = Viam.Core.Resources.Model;
-using Viam.Client.Clients;
-
-namespace ViamSdk.Test.Components
+namespace Viam.Core.Test.Components
 {
     internal class SensorTests
     {

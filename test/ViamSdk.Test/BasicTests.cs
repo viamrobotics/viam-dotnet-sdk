@@ -1,9 +1,8 @@
 using Microsoft.Extensions.Logging;
-
 using Viam.Client.Clients;
 using Viam.Client.Options;
 
-namespace ViamSdk.Test
+namespace Viam.Core.Test
 {
     public class ClientTests
     {

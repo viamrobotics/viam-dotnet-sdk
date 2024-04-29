@@ -1,17 +1,15 @@
 ﻿using Grpc.Core;
 
-using Viam.Core;
-
 namespace Viam.Core.Grpc
 {
-    public class GrpcChannel(global::Grpc.Net.Client.GrpcChannel channel)
-        : ViamChannel()
+    public class GrpcChannel(global::Grpc.Net.Client.GrpcChannel channel, string remote)
+        : ViamChannel(remote)
     {
         protected override CallInvoker GetCallInvoker() => channel.CreateCallInvoker();
 
         public override void Dispose()
         {
-            channel?.Dispose();
+            channel.Dispose();
         }
     }
 }

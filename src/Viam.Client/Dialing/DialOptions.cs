@@ -1,6 +1,4 @@
-﻿using System;
-
-using Viam.Client.Options;
+﻿using Viam.Client.Options;
 using Viam.Core.Grpc;
 using Viam.Core.Options;
 

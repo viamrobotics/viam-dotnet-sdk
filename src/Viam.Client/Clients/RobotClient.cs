@@ -14,10 +14,11 @@ namespace Viam.Client.Clients
         private readonly RobotService.RobotServiceClient _robotServiceClient;
         private readonly ResourceManager _resourceManager;
 
-        private RobotClient(ILoggerFactory loggerFactory, ViamChannel channel) : base(loggerFactory, channel)
+        private RobotClient(ILoggerFactory loggerFactory, ViamChannel channel)
+            : base(loggerFactory, channel)
         {
             _robotServiceClient = new RobotService.RobotServiceClient(channel);
-            _resourceManager = new ResourceManager(loggerFactory.CreateLogger<ResourceManager>());
+            _resourceManager = new ResourceManager(loggerFactory);
         }
 
         public static async ValueTask<RobotClient> AtAddressAsync(ViamClientOptions options)

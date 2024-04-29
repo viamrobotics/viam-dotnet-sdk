@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Google.Api;
 using Grpc.Core;
+using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Camera.V1;
 using Viam.Core.Resources.Components;
@@ -9,7 +10,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class Camera : CameraService.CameraServiceBase, IServiceBase
+    internal class Camera(ILogger logger) : CameraService.CameraServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.camera.v1.CameraService";
 
@@ -18,7 +19,7 @@ namespace Viam.Core.Resources.Services
             var resource = (ICamera)context.UserState["resource"];
             var resp = await resource.DoCommand(request.Command.ToDictionary(),
                                                 context.Deadline.ToTimeout(),
-                                                context.CancellationToken);
+                                                context.CancellationToken).ConfigureAwait(false);
 
             return new DoCommandResponse() { Result = resp.ToStruct() };
         }
@@ -29,7 +30,7 @@ namespace Viam.Core.Resources.Services
             var resource = (ICamera)context.UserState["resource"];
             var resp = await resource.GetGeometries(request.Extra,
                                                     context.Deadline.ToTimeout(),
-                                                    context.CancellationToken);
+                                                    context.CancellationToken).ConfigureAwait(false);
 
             return new GetGeometriesResponse() { Geometries = { resp } };
         }
@@ -38,7 +39,7 @@ namespace Viam.Core.Resources.Services
                                                                         ServerCallContext context)
         {
             var resource = (ICamera)context.UserState["resource"];
-            var resp = await resource.GetProperties(context.Deadline.ToTimeout(), context.CancellationToken);
+            var resp = await resource.GetProperties(context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
             return new GetPropertiesResponse()
                    {
                        DistortionParameters = resp.DistortionParameters,
@@ -55,7 +56,7 @@ namespace Viam.Core.Resources.Services
                            Viam.Core.Resources.Components.Camera.MimeType.FromName(request.MimeType),
                            request.Extra,
                            context.Deadline.ToTimeout(),
-                           context.CancellationToken);
+                           context.CancellationToken).ConfigureAwait(false);
 
             throw new NotImplementedException();
         }
@@ -63,7 +64,7 @@ namespace Viam.Core.Resources.Services
         public override async Task<GetImagesResponse> GetImages(GetImagesRequest request, ServerCallContext context)
         {
             var resource = (ICamera)context.UserState["resource"];
-            var resp = await resource.GetImages(context.Deadline.ToTimeout(), context.CancellationToken);
+            var resp = await resource.GetImages(context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
             throw new NotImplementedException();
         }
 
@@ -73,7 +74,7 @@ namespace Viam.Core.Resources.Services
             var resource = (ICamera)context.UserState["resource"];
             var resp = await resource.GetPointCloud(request.Extra,
                                                     context.Deadline.ToTimeout(),
-                                                    context.CancellationToken);
+                                                    context.CancellationToken).ConfigureAwait(false);
             throw new NotImplementedException();
         }
 

@@ -5,10 +5,11 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Google.Protobuf.WellKnownTypes;
-
+using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Inputcontroller.V1;
 using Viam.Core.Clients;
+using Viam.Core.Logging;
 using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components
@@ -38,11 +39,17 @@ namespace Viam.Core.Resources.Components
                                             TimeSpan? timeout = null,
                                             CancellationToken cancellationToken = default);
     }
-    public class InputController(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<InputController, InputControllerService.InputControllerServiceClient>(resourceName, new InputControllerService.InputControllerServiceClient(channel)), IInputController
+    public class InputController(ViamResourceName resourceName, ViamChannel channel, ILogger logger) : 
+        ComponentBase<InputController, InputControllerService.InputControllerServiceClient>(resourceName, new InputControllerService.InputControllerServiceClient(channel)), 
+        IInputController
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new InputController(name, channel), manager => new Services.InputController()));
+        internal static void RegisterType() => Registry.RegisterSubtype(
+            new ResourceRegistration(SubType,
+                                                      (name, channel, logger) => new InputController(name, channel, logger),
+                                                      (logger) => new Services.InputController(logger)));
         public static SubType SubType = SubType.FromRdkComponent("input_controller");
 
+        [LogCall]
         public static InputController FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
@@ -53,31 +60,36 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => ValueTask.CompletedTask;
 
+        [LogCall]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
-            var res = await Client.DoCommandAsync(new DoCommandRequest()
-            {
-                Name = ResourceName.Name,
-                Command = command.ToStruct()
-            });
+            var res = await Client
+                            .DoCommandAsync(
+                                new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
+                                deadline: timeout.ToDeadline(),
+                                cancellationToken: cancellationToken)
+                            .ConfigureAwait(false);
 
             return res.Result.ToDictionary();
         }
 
+        [LogCall]
         public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
         {
             var res = await Client.GetGeometriesAsync(
-                          new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra },
-                          deadline: timeout.ToDeadline(),
-                          cancellationToken: cancellationToken);
+                                      new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra },
+                                      deadline: timeout.ToDeadline(),
+                                      cancellationToken: cancellationToken)
+                                  .ConfigureAwait(false);
 
             return res.Geometries.ToArray();
         }
 
+        [LogCall]
         public async ValueTask<Control[]> GetControls(Struct? extra = null,
                                                       TimeSpan? timeout = null,
                                                       CancellationToken cancellationToken = default)
@@ -85,11 +97,12 @@ namespace Viam.Core.Resources.Components
             var res = await Client.GetControlsAsync(new GetControlsRequest() { Controller = Name, Extra = extra },
                                                     deadline: timeout.ToDeadline(),
                                                     cancellationToken: cancellationToken)
-                                  ;
+                                  .ConfigureAwait(false);
 
             return res.Controls.Select(Control.FromName).ToArray();
         }
 
+        [LogCall]
         public async ValueTask<IDictionary<Control, Event>> GetEvents(Control control,
                                          Struct? extra = null,
                                          TimeSpan? timeout = null,
@@ -98,17 +111,19 @@ namespace Viam.Core.Resources.Components
             var res = await Client.GetEventsAsync(new GetEventsRequest() { Controller = Name, Extra = extra },
                                                   deadline: timeout.ToDeadline(),
                                                   cancellationToken: cancellationToken)
-                                  ;
+                                  .ConfigureAwait(false);
 
             return res.Events.ToDictionary(x => Control.FromName(x.Control), Event.FromProto);
         }
 
+        [LogCall]
         public ValueTask RegisterControlCallback(Control control,
                                                        Struct? extra = null,
                                                        TimeSpan? timeout = null,
                                                        CancellationToken cancellationToken = default) =>
             throw new NotImplementedException();
 
+        [LogCall]
         public ValueTask TriggerEvent(Event @event,
                                       Struct? extra = null,
                                       TimeSpan? timeout = null,

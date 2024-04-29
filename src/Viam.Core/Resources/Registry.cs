@@ -1,14 +1,35 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-
+using System.Runtime.CompilerServices;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Viam.App.V1;
-using Viam.Core.Resources.Services;
+using Viam.Core.Logging;
+using Viam.Core.Resources.Components;
 
 namespace Viam.Core.Resources
 {
     public static class Registry
     {
+        // This is needed to make sure all well-known types get registered at startup
+        static Registry()
+        {
+            Arm.RegisterType();
+            Base.RegisterType();
+            Board.RegisterType();
+            Camera.RegisterType();
+            Encoder.RegisterType();
+            Gantry.RegisterType();
+            Gripper.RegisterType();
+            InputController.RegisterType();
+            Motor.RegisterType();
+            MovementSensor.RegisterType();
+            PowerSensor.RegisterType();
+            Sensor.RegisterType();
+            Servo.RegisterType();
+        }
+        public static ILogger Logger { get; set; } = NullLogger.Instance;
         private static readonly ConcurrentDictionary<SubType, ResourceRegistration> Subtypes = new(new SubTypeComparer());
         private static readonly ConcurrentDictionary<SubTypeModel, ResourceCreatorRegistration> Resources = new();
 
@@ -16,23 +37,31 @@ namespace Viam.Core.Resources
 
         public static bool RegisterResourceCreator(SubType subType, Model model, ResourceCreatorRegistration resourceRegistration) => Resources.TryAdd(new SubTypeModel(subType,model), resourceRegistration);
 
-        public static ResourceRegistration LookupSubtype(SubType subType)
+        [LogCall]
+        public static ResourceRegistration GetResourceRegistrationBySubtype(SubType subType, [CallerMemberName] string? caller = null)
         {
+            Logging.LogMessages.LogRegistryResourceGet(Logger, subType);
             if (Subtypes.TryGetValue(subType, out var resourceRegistration))
             {
+                Logging.LogMessages.LogRegistryResourceGetSuccess(Logger, subType);
                 return resourceRegistration;
             }
 
+            Logging.LogMessages.LogRegistryResourceGetFailure(Logger, subType);
             throw new ResourceRegistrationNotFoundException();
         }
 
-        public static ResourceCreatorRegistration LookupResourceCreatorRegistration(SubType subType, Model model)
+        [LogCall]
+        public static ResourceCreatorRegistration GetResourceCreatorRegistration(SubType subType, Model model, [CallerMemberName] string? caller = null)
         {
+            Logging.LogMessages.LogRegistryResourceCreatorGet(Logger, subType, model);
             if (Resources.TryGetValue(new SubTypeModel(subType, model), out var resourceCreatorRegistration))
             {
+                Logging.LogMessages.LogRegistryResourceCreatorGetSuccess(Logger, subType, model);
                 return resourceCreatorRegistration;
             }
 
+            Logging.LogMessages.LogRegistryResourceCreatorGetFailure(Logger, subType, model);
             throw new ResourceCreatorRegistrationNotFoundException();
         }
         // TODO: Implement this
@@ -47,13 +76,15 @@ namespace Viam.Core.Resources
 
     public class ResourceRegistration(
         SubType subType,
-        Func<ViamResourceName, ViamChannel, ResourceBase> clientCreator,
-        Func<ResourceManager, IServiceBase> rpcCreator)
+        Func<ViamResourceName, ViamChannel, ILogger, ResourceBase> clientCreator,
+        Func<ILogger, Services.IServiceBase> rpcCreator)
     {
         public SubType SubType => subType;
 
-        internal ResourceBase CreateRpcClient(ViamResourceName name, ViamChannel channel) => clientCreator(name, channel);
-        internal IServiceBase CreateServiceBase(ResourceManager manager) => rpcCreator(manager);
+        internal ResourceBase CreateRpcClient(ViamResourceName name, ViamChannel channel, ILogger logger) => clientCreator(name, channel, logger);
+        internal Services.IServiceBase CreateServiceBase(ILogger logger) => rpcCreator(logger);
+
+        public override string ToString() => subType.ToString();
     }
 
     public record ResourceCreatorRegistration(Func<ComponentConfig, string[], IResourceBase> Creator, Func<ComponentConfig, IEnumerable<string>> ConfigValidator);
@@ -66,7 +97,7 @@ namespace Viam.Core.Resources
         public static SubType Default = new("none", "none", "none");
 
         public static SubType FromResourceName(ViamResourceName resourceName) =>
-            new SubType(resourceName.Namespace, resourceName.Type, resourceName.Subtype);
+            new(resourceName.Namespace, resourceName.ResourceType, resourceName.ResourceSubtype);
 
         public static SubType FromString(string str)
         {
@@ -113,10 +144,6 @@ namespace Viam.Core.Resources
 
         public int GetHashCode(SubType obj) => HashCode.Combine(obj.Namespace, obj.ResourceType, obj.ResourceSubType);
     }
-
-    public class ResourceRegistrationNotFoundException : Exception;
-
-    public class ResourceCreatorRegistrationNotFoundException : Exception;
 
     public record struct SubTypeModel(SubType SubType, Model Model)
     {

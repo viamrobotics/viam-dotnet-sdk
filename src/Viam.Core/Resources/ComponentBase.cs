@@ -1,16 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-
-using Grpc.Core;
-
-using Viam.App.V1;
+﻿using Grpc.Core;
 
 namespace Viam.Core.Resources
 {
-    public interface IAsyncReconfigurable
-    {
-        public ValueTask Reconfigure(ComponentConfig config, IDictionary<ViamResourceName, IResourceBase> dependencies);
-    }
     public interface IComponentBase : IResourceBase;
 
     public abstract class ComponentBase<T, TClient>(ViamResourceName resourceName, TClient client) : ComponentBase(resourceName) where T : ComponentBase where TClient : ClientBase<TClient>

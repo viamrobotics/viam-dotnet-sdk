@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Grpc.Core;
+using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Base.V1;
 using Viam.Core.Resources.Components;
@@ -7,14 +8,14 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class Base : BaseService.BaseServiceBase, IServiceBase
+    internal class Base(ILogger logger) : BaseService.BaseServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.base.v1.BaseService";
 
         public override async Task<StopResponse> Stop(StopRequest request, ServerCallContext context)
         {
             var resource = (IBase)context.UserState["resource"];
-            await resource.Stop(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken);
+            await resource.Stop(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
             return new StopResponse();
         }
 
@@ -23,7 +24,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IBase)context.UserState["resource"];
             var res = await resource.DoCommand(request.Command.ToDictionary(),
                                          context.Deadline.ToTimeout(),
-                                         context.CancellationToken);
+                                         context.CancellationToken).ConfigureAwait(false);
 
             return new DoCommandResponse() { Result = res.ToStruct() };
         }
@@ -31,7 +32,7 @@ namespace Viam.Core.Resources.Services
         public override async Task<IsMovingResponse> IsMoving(IsMovingRequest request, ServerCallContext context)
         {
             var resource = (IBase)context.UserState["resource"];
-            var res = await resource.IsMoving(context.Deadline.ToTimeout(), context.CancellationToken);
+            var res = await resource.IsMoving(context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
             return new IsMovingResponse() { IsMoving = res };
         }
 
@@ -41,7 +42,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IBase)context.UserState["resource"];
             var res = await resource.GetGeometries(request.Extra,
                                                    context.Deadline.ToTimeout(),
-                                                   context.CancellationToken);
+                                                   context.CancellationToken).ConfigureAwait(false);
 
             return new GetGeometriesResponse() { Geometries = { res } };
         }
@@ -52,7 +53,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IBase)context.UserState["resource"];
             var res = await resource.GetProperties(request.Extra,
                                                    context.Deadline.ToTimeout(),
-                                                   context.CancellationToken);
+                                                   context.CancellationToken).ConfigureAwait(false);
 
             return new GetPropertiesResponse()
                    {
@@ -69,7 +70,7 @@ namespace Viam.Core.Resources.Services
                                         request.MmPerSec,
                                         request.Extra,
                                         context.Deadline.ToTimeout(),
-                                        context.CancellationToken);
+                                        context.CancellationToken).ConfigureAwait(false);
 
             return new MoveStraightResponse();
         }
@@ -81,7 +82,7 @@ namespace Viam.Core.Resources.Services
                                     request.Angular,
                                     request.Extra,
                                     context.Deadline.ToTimeout(),
-                                    context.CancellationToken);
+                                    context.CancellationToken).ConfigureAwait(false);
             return new SetPowerResponse();
         }
 
@@ -92,7 +93,7 @@ namespace Viam.Core.Resources.Services
                                        request.Angular,
                                        request.Extra,
                                        context.Deadline.ToTimeout(),
-                                       context.CancellationToken);
+                                       context.CancellationToken).ConfigureAwait(false);
             return new SetVelocityResponse();
         }
 
@@ -103,7 +104,7 @@ namespace Viam.Core.Resources.Services
                                 request.DegsPerSec,
                                 request.Extra,
                                 context.Deadline.ToTimeout(),
-                                context.CancellationToken);
+                                context.CancellationToken).ConfigureAwait(false);
 
             return new SpinResponse();
         }

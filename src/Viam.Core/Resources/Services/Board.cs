@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Grpc.Core;
+using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Board.V1;
 using Viam.Core.Resources.Components;
@@ -8,7 +9,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class Board : BoardService.BoardServiceBase, IServiceBase
+    internal class Board(ILogger logger) : BoardService.BoardServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.board.v1.BoardService";
 
@@ -17,7 +18,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IBoard)context.UserState["resource"];
             var res = await resource.DoCommand(request.Command.ToDictionary(),
                                                context.Deadline - DateTime.UtcNow,
-                                               context.CancellationToken);
+                                               context.CancellationToken).ConfigureAwait(false);
 
             return new DoCommandResponse() { Result = res.ToStruct() };
         }
@@ -29,7 +30,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IBoard)context.UserState["board"];
             var interrupt = await resource.GetDigitalInterruptByName(request.DigitalInterruptName);
 
-            var val = await interrupt.ValueAsync(request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken);
+            var val = await interrupt.ValueAsync(request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
 
             return new GetDigitalInterruptValueResponse() { Value = val };
         }
@@ -38,7 +39,7 @@ namespace Viam.Core.Resources.Services
         {
             var resource = (IBoard)context.UserState["resource"];
             var pin = await resource.GetGpioPinByName(request.Pin);
-            var val = await pin.GetAsync(request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken);
+            var val = await pin.GetAsync(request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
             return new GetGPIOResponse() { High = val };
         }
 
@@ -50,7 +51,7 @@ namespace Viam.Core.Resources.Services
         {
             var resource = (IBoard)context.UserState["resource"];
             var pin = await resource.GetGpioPinByName(request.Pin);
-            var val = await pin.GetPwmAsync(request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken);
+            var val = await pin.GetPwmAsync(request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
             return new PWMResponse() { DutyCyclePct = val };
         }
 
@@ -59,7 +60,7 @@ namespace Viam.Core.Resources.Services
         {
             var resource = (IBoard)context.UserState["resource"];
             var pin = await resource.GetGpioPinByName(request.Pin);
-            var val = await pin.GetPwmFrequencyAsync(request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken);
+            var val = await pin.GetPwmFrequencyAsync(request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
             return new PWMFrequencyResponse() { FrequencyHz = val };
         }
 
@@ -69,7 +70,7 @@ namespace Viam.Core.Resources.Services
         {
             var resource = (IBoard)context.UserState["board"];
             var reader = await resource.GetAnalogReaderByName(request.AnalogReaderName);
-            var val = await reader.ReadAsync(request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken);
+            var val = await reader.ReadAsync(request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
             return new ReadAnalogReaderResponse() { Value = val };
         }
 
@@ -77,7 +78,7 @@ namespace Viam.Core.Resources.Services
         {
             var resource = (IBoard)context.UserState["resource"];
             var pin = await resource.GetGpioPinByName(request.Pin);
-            await pin.SetAsync(request.High, request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken);
+            await pin.SetAsync(request.High, request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
             return new SetGPIOResponse();
         }
 
@@ -85,7 +86,7 @@ namespace Viam.Core.Resources.Services
         {
             var resource = (IBoard)context.UserState["resource"];
             var pin = await resource.GetGpioPinByName(request.Pin);
-            await pin.SetPwmAsync(request.DutyCyclePct, request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken);
+            await pin.SetPwmAsync(request.DutyCyclePct, request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
             return new SetPWMResponse();
         }
 
@@ -95,7 +96,7 @@ namespace Viam.Core.Resources.Services
         {
             var resource = (IBoard)context.UserState["resource"];
             var pin = await resource.GetGpioPinByName(request.Pin);
-            await pin.SetPwmFrequencyAsync(request.FrequencyHz, request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken);
+            await pin.SetPwmFrequencyAsync(request.FrequencyHz, request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
             return new SetPWMFrequencyResponse();
         }
 
@@ -107,7 +108,7 @@ namespace Viam.Core.Resources.Services
                                                        request.Duration.ToTimeSpan(),
                                                        request.Extra,
                                                        context.Deadline - DateTime.UtcNow,
-                                                       context.CancellationToken);
+                                                       context.CancellationToken).ConfigureAwait(false);
             return new SetPowerModeResponse();
         }
 
@@ -123,7 +124,7 @@ namespace Viam.Core.Resources.Services
                                             request.Value,
                                             request.Extra,
                                             context.Deadline - DateTime.UtcNow,
-                                            context.CancellationToken);
+                                            context.CancellationToken).ConfigureAwait(false);
             return new WriteAnalogResponse();
         }
     }

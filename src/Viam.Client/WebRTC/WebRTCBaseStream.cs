@@ -1,27 +1,38 @@
+using System.Buffers;
+using System.Diagnostics;
+using Google.Protobuf;
 using Microsoft.Extensions.Logging;
 using Proto.Rpc.Webrtc.V1;
 
 namespace Viam.Client.WebRTC
 {
-    internal class WebRTCBaseStream
+    internal record PacketMessageContents : IDisposable
     {
-        private readonly ILogger _logger;
-        private readonly Action<ulong> _onDone;
-        private bool _closed = false;
-        private readonly List<List<byte>> packetBuf = new List<List<byte>>();
-        private int _packetBufSize = 0;
+        public int Position { get; private set; }
+
+        public readonly byte[] Data = ArrayPool<byte>.Shared.Rent(WebRtcBaseStream.MaxMessageSize);
+
+        public void AppendData(ByteString data)
+        {
+            data.CopyTo(Data, Position);
+            Position += data.Length;
+        }
+
+        public void Dispose()
+        {
+            ArrayPool<byte>.Shared.Return(Data);
+        }
+    }
+
+    internal class WebRtcBaseStream(Proto.Rpc.Webrtc.V1.Stream stream, Action<ulong> onDone, ILogger logger)
+    {
+        private bool _closed;
+        private PacketMessageContents? _contents;
 
         // MaxMessageSize is the maximum size a gRPC message can be.
-        public static long MaxMessageSize = 1 << 25;
+        public static int MaxMessageSize = 1 << 25;
 
-        public readonly Proto.Rpc.Webrtc.V1.Stream Stream;
-
-        public WebRTCBaseStream(Proto.Rpc.Webrtc.V1.Stream stream, Action<ulong> onDone, ILogger logger)
-        {
-            Stream = stream;
-            _onDone = onDone;
-            _logger = logger;
-        }
+        public readonly Proto.Rpc.Webrtc.V1.Stream Stream = stream;
 
         public void CloseWithReceiveError(Exception ex)
         {
@@ -30,35 +41,36 @@ namespace Viam.Client.WebRTC
                 return;
             }
             _closed = true;
-            _onDone(Stream.Id);
+            onDone(Stream.Id);
         }
 
-        public List<byte>? ProcessPacketMessage(PacketMessage msg)
+        public PacketMessageContents? ProcessPacketMessage(PacketMessage msg)
         {
+            _contents ??= new PacketMessageContents();
+
             var data = msg.Data;
-            if (data.Length + _packetBufSize > MaxMessageSize)
+            if (data.Length + _contents.Position > MaxMessageSize)
             {
-                packetBuf.Clear();
-                _packetBufSize = 0;
-                _logger.LogWarning("message size larger than max {MaxMessageSize}; discarding", MaxMessageSize);
-                return null;
+                try
+                {
+                    logger.LogWarning("message size larger than max {MaxMessageSize}; discarding", MaxMessageSize);
+                    return null;
+                }
+                finally
+                {
+                    _contents.Dispose();
+                    _contents = null;
+                }
             }
 
-            packetBuf.Add(data.ToList());
-            _packetBufSize += data.Length;
+            Debug.Assert(_contents != null);
+
+            _contents.AppendData(msg.Data);
             if (msg.Eom)
             {
-                var allData = new List<byte>(_packetBufSize);
-                var position = 0;
-                foreach (var partialData in packetBuf)
-                {
-                    allData.InsertRange(position, partialData);
-                    position += partialData.Count;
-                }
-
-                packetBuf.Clear();
-                _packetBufSize = 0;
-                return allData;
+                var contents = _contents;
+                _contents = null;
+                return contents;
             }
 
             return null;

@@ -7,24 +7,25 @@ using Viam.Core;
 
 namespace Viam.Client.WebRTC
 {
-    public class WebRTCClientChannel : ViamChannel, IDisposable
+    public class WebRtcClientChannel : ViamChannel, IDisposable
     {
         // MaxStreamCount is the max number of streams a channel can have.
         public static int MaxStreamCount = 256;
 
-        private readonly WebRTCBaseChannel _baseChannel;
+        private readonly WebRtcBaseChannel _baseChannel;
         private readonly ILogger _logger;
-        private long _streamIdCounter = 0; // TODO(erd): lock
-        private readonly WebRTCClientCallInvoker _callInvoker;
+        private long _streamIdCounter; // TODO(erd): lock
+        private readonly WebRtcClientCallInvoker _callInvoker;
 
-        public readonly Dictionary<ulong, IWebRTCClientStreamContainer> Streams = new();
+        public readonly Dictionary<ulong, IWebRtcClientStreamContainer> Streams = new();
 
-        public WebRTCClientChannel(RTCPeerConnection peerConn, RTCDataChannel dataChannel, ILogger logger)
+        // TODO: Update this so we provide the right value to base()
+        public WebRtcClientChannel(RTCPeerConnection peerConn, RTCDataChannel dataChannel, ILogger logger) : base("webrtc")
         {
-            _baseChannel = new WebRTCBaseChannel(peerConn, dataChannel);
+            _baseChannel = new WebRtcBaseChannel(peerConn, dataChannel);
             dataChannel.onmessage += OnChannelMessage;
             _logger = logger;
-            _callInvoker = new WebRTCClientCallInvoker(this, logger);
+            _callInvoker = new WebRtcClientCallInvoker(this, logger);
         }
 
         protected override CallInvoker GetCallInvoker() => _callInvoker;
@@ -35,7 +36,7 @@ namespace Viam.Client.WebRTC
             Streams.Remove(id);
         }
 
-        public static Proto.Rpc.Webrtc.V1.Metadata FromGRPCMetadata(global::Grpc.Core.Metadata? metadata)
+        public static Proto.Rpc.Webrtc.V1.Metadata FromGrpcMetadata(global::Grpc.Core.Metadata? metadata)
         {
             var protoMd = new Proto.Rpc.Webrtc.V1.Metadata();
             if (metadata == null)
@@ -53,7 +54,7 @@ namespace Viam.Client.WebRTC
             return protoMd;
         }
 
-        public static global::Grpc.Core.Metadata ToGRPCMetadata(Proto.Rpc.Webrtc.V1.Metadata? metadata)
+        public static global::Grpc.Core.Metadata ToGrpcMetadata(Proto.Rpc.Webrtc.V1.Metadata? metadata)
         {
             var result = new global::Grpc.Core.Metadata();
             if (metadata == null)
@@ -88,14 +89,14 @@ namespace Viam.Client.WebRTC
 
             var stream = resp.Stream;
             var id = stream.Id;
-            var activeStream = Streams[id];
-            if (activeStream == null)
+            if (Streams.TryGetValue(id, out var activeStream))
+            {
+                activeStream.OnResponse(resp);
+            }
+            else
             {
                 _logger.LogWarning("no stream for id; discarding: {id}", id);
-                return;
             }
-
-            activeStream.OnResponse(resp);
         }
 
         public Task<bool> Ready() => _baseChannel.Ready.Task;

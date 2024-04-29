@@ -1,13 +1,10 @@
-using System;
 using System.Buffers;
-using System.Threading;
-using System.Threading.Tasks;
 using Google.Protobuf;
 using SIPSorcery.Net;
 
 namespace Viam.Client.WebRTC
 {
-    internal class WebRTCBaseChannel : IDisposable
+    internal class WebRtcBaseChannel : IDisposable
     {
         private readonly RTCPeerConnection _peerConn;
         private readonly RTCDataChannel _dataChannel;
@@ -15,12 +12,12 @@ namespace Viam.Client.WebRTC
         public readonly TaskCompletionSource<bool> Ready;
 
         private readonly SemaphoreSlim _semaphore = new(1);
-        private bool _closed = false;
+        private bool _closed;
         private string _closedReason = "";
         private readonly Action? _onPeerDone;
         private bool _peerDoneOnce;
 
-        public WebRTCBaseChannel(RTCPeerConnection peerConn,
+        public WebRtcBaseChannel(RTCPeerConnection peerConn,
                                  RTCDataChannel dataChannel,
                                  Action? onPeerDone = null)
         {

@@ -1,17 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-	<LangVersion>latest</LangVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<IsAotCompatible>false</IsAotCompatible>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Viam.Core\Viam.Core.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="SIPSorcery" Version="6.2.3" />
-  </ItemGroup>
-
+	<ItemGroup>
+		<ProjectReference Include="..\Viam.Core\Viam.Core.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="ConfigureAwait.Fody" Version="3.3.2">
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Fody" Version="6.8.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="SIPSorcery" Version="6.2.3" />
+	</ItemGroup>
+	<PropertyGroup>
+		<WeaverConfiguration>
+			<Weavers>
+				<ConfigureAwait />
+				<MethodBoundaryAspect />
+			</Weavers>
+		</WeaverConfiguration>
+	</PropertyGroup>
 </Project>

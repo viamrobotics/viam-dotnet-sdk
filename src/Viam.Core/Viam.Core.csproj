@@ -1,34 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>.net6</TargetFramework>
-    <Nullable>enable</Nullable>
-    <LangVersion>latest</LangVersion>
-	<IsAotCompatible>true</IsAotCompatible>
-  </PropertyGroup>
-  <ItemGroup>
-    <Compile Remove="Protos\**" />
-    <EmbeddedResource Remove="Protos\**" />
-    <None Remove="Protos\**" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="ConfigureAwait.Fody" Version="3.3.2" />
-    <PackageReference Include="Fody" Version="6.8.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Google.Protobuf" Version="3.26.1" />
-    <PackageReference Include="Google.Api.CommonProtos" Version="2.15.0" />
-    <PackageReference Include="Grpc.Net.Client" Version="2.62.0" />
-    <PackageReference Include="Grpc.Net.ClientFactory" Version="2.62.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.62.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="IndexRange" Version="1.0.3" />
-    <PackageReference Include="System.Net.Security" Version="4.3.2" />
-    <PackageReference Include="System.Text.Json" Version="8.0.3" />
-  </ItemGroup>
-  <ItemGroup>
-	<InternalsVisibleTo Include="Viam.ModularResources" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>.net6</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<IsAotCompatible>true</IsAotCompatible>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Remove="Protos\**" />
+		<EmbeddedResource Remove="Protos\**" />
+		<None Remove="Protos\**" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="ConfigureAwait.Fody" Version="3.3.2">
+			<PrivateAssets>all</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="Fody" Version="6.8.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Google.Protobuf" Version="3.26.1" />
+		<PackageReference Include="Google.Api.CommonProtos" Version="2.15.0" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.62.0" />
+		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.62.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.62.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="IndexRange" Version="1.0.3" />
+		<PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.149" />
+		<PackageReference Include="System.Net.Security" Version="4.3.2" />
+		<PackageReference Include="System.Text.Json" Version="8.0.3" />
+	</ItemGroup>
+	<PropertyGroup>
+		<WeaverConfiguration>
+			<Weavers>
+				<ConfigureAwait />
+				<MethodBoundaryAspect GenerateXsd="false"/>
+			</Weavers>
+		</WeaverConfiguration>
+	</PropertyGroup>
 </Project>

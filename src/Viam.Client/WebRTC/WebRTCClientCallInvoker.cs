@@ -1,23 +1,23 @@
-﻿using System;
-using Grpc.Core;
+﻿using Grpc.Core;
 using Microsoft.Extensions.Logging;
 
 namespace Viam.Client.WebRTC
 {
-    public class WebRTCClientCallInvoker(WebRTCClientChannel channel, ILogger logger) : CallInvoker
+    public class WebRtcClientCallInvoker(WebRtcClientChannel channel, ILogger logger) : CallInvoker
     {
-        private WebRTCClientStream<TRequest, TResponse> MakeStream<TRequest, TResponse>(Method<TRequest, TResponse> method) where TResponse : class
+        private WebRtcClientStream<TRequest, TResponse> MakeStream<TRequest, TResponse>(Method<TRequest, TResponse> method) where TResponse : class
         {
             var stream = channel.NextStreamId();
             if (channel.Streams.ContainsKey(stream.Id))
             {
                 throw new Exception("channel already exists with id");
             }
-            if (channel.Streams.Count > WebRTCClientChannel.MaxStreamCount)
+            if (channel.Streams.Count > WebRtcClientChannel.MaxStreamCount)
             {
                 throw new Exception("stream limit hit");
             }
-            var activeStream = new WebRTCClientStream<TRequest, TResponse>(method, stream, channel, (id) => channel.RemoveStreamById(stream.Id), logger);
+            // TODO: Should we be using stream.Id or id here?
+            var activeStream = new WebRtcClientStream<TRequest, TResponse>(method, stream, channel, (id) => channel.RemoveStreamById(stream.Id), logger);
             channel.Streams.Add(stream.Id, activeStream);
             return activeStream;
         }

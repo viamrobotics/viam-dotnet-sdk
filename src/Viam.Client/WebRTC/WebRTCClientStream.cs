@@ -1,31 +1,27 @@
-using System;
 using System.Buffers;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Grpc.Core;
 using Microsoft.Extensions.Logging;
 using Proto.Rpc.Webrtc.V1;
 
 namespace Viam.Client.WebRTC
 {
-    internal class WebRTCClientStream<TRequest, TResponse>(
+    internal class WebRtcClientStream<TRequest, TResponse>(
         Method<TRequest, TResponse> method,
         Proto.Rpc.Webrtc.V1.Stream stream,
-        WebRTCClientChannel grpcChannel,
+        WebRtcClientChannel grpcChannel,
         Action<ulong> onDone,
         ILogger logger)
-        : IWebRTCClientStreamContainer
+        : IWebRtcClientStreamContainer
         where TResponse : class
     {
         // see golang/client_stream.go
         private const int MaxRequestMessagePacketDataSize = 16373;
 
-        private readonly WebRTCBaseStream _baseStream = new(stream, onDone, logger);
+        private readonly WebRtcBaseStream _baseStream = new(stream, onDone, logger);
         private IResponseListener<TResponse> _responseListener = null!;
 
-        private bool _headersReceived = false;
-        private bool _trailersReceived = false;
+        private bool _headersReceived;
+        private bool _trailersReceived;
 
         private class FuncCallListener(
             Func<Status, global::Grpc.Core.Metadata, Task> onClose,
@@ -106,7 +102,7 @@ namespace Viam.Client.WebRTC
         {
             private readonly SemaphoreSlim _currentLock = new(1, 1);
 
-            private bool _complete = false;
+            private bool _complete;
             private TResponse? _current;
             private TaskCompletionSource<TResponse> _next = new();
 
@@ -229,28 +225,20 @@ namespace Viam.Client.WebRTC
             );
         }
 
-        private class ClientStreamWriter : IClientStreamWriter<TRequest>
+        private class ClientStreamWriter(WebRtcClientStream<TRequest, TResponse> clientStream, Task<bool> ready)
+            : IClientStreamWriter<TRequest>
         {
-            private readonly WebRTCClientStream<TRequest, TResponse> _clientStream;
             private readonly SemaphoreSlim _semaphore = new SemaphoreSlim(1, 1);
-            private readonly Task<bool> _ready;
-
-            public ClientStreamWriter(WebRTCClientStream<TRequest, TResponse> clientStream, Task<bool> ready)
-            {
-                _clientStream = clientStream;
-                _ready = ready;
-            }
 
             public WriteOptions? WriteOptions { get; set; }
 
             public async Task WriteAsync(TRequest message)
             {
-                await _ready;
+                await ready;
                 await _semaphore.WaitAsync();
                 try
                 {
-                    _clientStream.SendMessage(message);
-                    return;
+                    clientStream.SendMessage(message);
                 }
                 finally
                 {
@@ -260,12 +248,11 @@ namespace Viam.Client.WebRTC
 
             public async Task CompleteAsync()
             {
-                await _ready;
+                await ready;
                 await _semaphore.WaitAsync();
                 try
                 {
-                    _clientStream.HalfClose();
-                    return;
+                    clientStream.HalfClose();
                 }
                 finally
                 {
@@ -289,7 +276,7 @@ namespace Viam.Client.WebRTC
                 {
                     if (status.StatusCode != StatusCode.OK)
                     {
-                        var ex = new Exception(String.Format("Code=%d Message=%s", status.StatusCode, status.Detail));
+                        var ex = new Exception($"Code={status.StatusCode} Message={status.Detail}");
                         ready.SetException(ex);
                         result.SetException(ex);
                         respHeaders.SetException(ex);
@@ -353,7 +340,7 @@ namespace Viam.Client.WebRTC
                 {
                     if (status.StatusCode != StatusCode.OK)
                     {
-                        var ex = new Exception(String.Format("Code=%d Message=%s", status.StatusCode, status.Detail));
+                        var ex = new Exception($"Code={status.StatusCode} Message={status.Detail}");
                         ready.SetException(ex);
                         result.SetException(ex);
                         respHeaders.SetException(ex);
@@ -408,7 +395,7 @@ namespace Viam.Client.WebRTC
             var requestHeaders = new RequestHeaders
             {
                 Method = method.FullName,
-                Metadata = WebRTCClientChannel.FromGRPCMetadata(headers)
+                Metadata = WebRtcClientChannel.FromGrpcMetadata(headers)
             };
             try
             {
@@ -435,19 +422,19 @@ namespace Viam.Client.WebRTC
 
         private class SimpleSerializationContext : SerializationContext
         {
-            public byte[] Data { get; private set; } = { };
-            private readonly ArrayBufferWriter<byte> bufferWriter = new ArrayBufferWriter<byte>();
+            public byte[] Data { get; private set; } = [];
+            private readonly ArrayBufferWriter<byte> _bufferWriter = new();
 
             public override void Complete(byte[] payload)
             {
                 Data = payload;
             }
 
-            public override IBufferWriter<byte> GetBufferWriter() => bufferWriter;
+            public override IBufferWriter<byte> GetBufferWriter() => _bufferWriter;
 
             public override void Complete()
             {
-                Data = bufferWriter.WrittenSpan.ToArray();
+                Data = _bufferWriter.WrittenSpan.ToArray();
             }
         }
 
@@ -560,40 +547,40 @@ namespace Viam.Client.WebRTC
         private void ProcessHeaders(ResponseHeaders headers)
         {
             _headersReceived = true;
-            var metadata = WebRTCClientChannel.ToGRPCMetadata(headers.Metadata);
+            var metadata = WebRtcClientChannel.ToGrpcMetadata(headers.Metadata);
             _responseListener.OnHeaders(metadata);
 
             // TODO(erd): need?
             // close(s.headersReceived)
         }
 
-        private class SimpleDeserializationContext : DeserializationContext
+        private class SimpleDeserializationContext(byte[] data) : DeserializationContext
         {
-            private readonly byte[] _data;
+            public override int PayloadLength => data.Length;
 
-            public SimpleDeserializationContext(byte[] data)
-            {
-                _data = data;
-            }
+            // TODO: Determine if we really need this, as it is expensive.
+            public override byte[] PayloadAsNewBuffer() => data.ToArray();
 
-            public override int PayloadLength => _data.Length;
-
-            public override byte[] PayloadAsNewBuffer() => _data.ToArray();
-
-            public override ReadOnlySequence<byte> PayloadAsReadOnlySequence() => new ReadOnlySequence<byte>(_data);
+            public override ReadOnlySequence<byte> PayloadAsReadOnlySequence() => new(data);
         }
 
         // TODO(erd): synchronized
         private void ProcessMessage(ResponseMessage msg)
         {
             var result = _baseStream.ProcessPacketMessage(msg.PacketMessage);
+            // If the result is null, the message isn't done yet
             if (result == null)
             {
                 return;
             }
-            var ctx = new SimpleDeserializationContext(result.ToArray());
-            var resp = method.ResponseMarshaller.ContextualDeserializer(ctx);
-            _responseListener.OnMessage(resp);
+
+            // The resulting packet needs to be properly disposed of so the underlying rented array can be returned
+            using (result)
+            {
+                var ctx = new SimpleDeserializationContext(result.Data);
+                var resp = method.ResponseMarshaller.ContextualDeserializer(ctx);
+                _responseListener.OnMessage(resp);
+            }
         }
 
         private void ProcessTrailers(ResponseTrailers trailers)
@@ -607,7 +594,7 @@ namespace Viam.Client.WebRTC
                 msg = trailers.Status.Message;
             }
 
-            var metadata = WebRTCClientChannel.ToGRPCMetadata(trailers.Metadata);
+            var metadata = WebRtcClientChannel.ToGrpcMetadata(trailers.Metadata);
             _responseListener.OnClose(new Status(status, msg), metadata);
 
             if (status == StatusCode.OK)
@@ -615,8 +602,7 @@ namespace Viam.Client.WebRTC
                 _baseStream.CloseWithReceiveError(null!);
                 return;
             }
-
-            _baseStream.CloseWithReceiveError(new Exception(string.Format("Code=%d Message=%s", status, msg)));
+            _baseStream.CloseWithReceiveError(new Exception($"Code={status} Message={status}"));
         }
     }
 }

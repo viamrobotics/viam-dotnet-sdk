@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Grpc.Core;
+using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Servo.V1;
 using Viam.Core.Resources.Components;
@@ -7,7 +8,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class Servo : ServoService.ServoServiceBase, IServiceBase
+    internal class Servo(ILogger logger) : ServoService.ServoServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.servo.v1.ServoService";
 
@@ -16,7 +17,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IServo)context.UserState["resource"];
             var res = await resource.DoCommand(request.Command.ToDictionary(),
                                                context.Deadline.ToTimeout(),
-                                               context.CancellationToken);
+                                               context.CancellationToken).ConfigureAwait(false);
 
             return new DoCommandResponse() { Result = res.ToStruct() };
         }
@@ -27,7 +28,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IServo)context.UserState["resource"];
             var res = await resource.GetGeometries(request.Extra,
                                                    context.Deadline.ToTimeout(),
-                                                   context.CancellationToken);
+                                                   context.CancellationToken).ConfigureAwait(false);
 
             return new GetGeometriesResponse() { Geometries = { res } };
         }
@@ -35,14 +36,14 @@ namespace Viam.Core.Resources.Services
         public override async Task<StopResponse> Stop(StopRequest request, ServerCallContext context)
         {
             var resource = (IServo)context.UserState["resource"];
-            await resource.Stop(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken);
+            await resource.Stop(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
             return new StopResponse();
         }
 
         public override async Task<IsMovingResponse> IsMoving(IsMovingRequest request, ServerCallContext context)
         {
             var resource = (IServo)context.UserState["resource"];
-            var res = await resource.IsMoving(context.Deadline.ToTimeout(), context.CancellationToken);
+            var res = await resource.IsMoving(context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
             return new IsMovingResponse() { IsMoving = res };
         }
 
@@ -52,7 +53,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IServo)context.UserState["resource"];
             var res = await resource.GetPosition(request.Extra,
                                                  context.Deadline.ToTimeout(),
-                                                 context.CancellationToken);
+                                                 context.CancellationToken).ConfigureAwait(false);
 
             return new GetPositionResponse() { PositionDeg = res };
         }
@@ -63,7 +64,7 @@ namespace Viam.Core.Resources.Services
             await resource.Move(request.AngleDeg,
                                 request.Extra,
                                 context.Deadline.ToTimeout(),
-                                context.CancellationToken);
+                                context.CancellationToken).ConfigureAwait(false);
 
             return new MoveResponse();
         }

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 
 using Grpc.Core;
-
+using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Movementsensor.V1;
 using Viam.Core.Resources.Components;
@@ -9,7 +9,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class MovementSensor : MovementSensorService.MovementSensorServiceBase, IServiceBase
+    internal class MovementSensor(ILogger logger) : MovementSensorService.MovementSensorServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.movementsensor.v1.MovementSensorService";
 
@@ -19,7 +19,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IMovementSensor)context.UserState["resource"];
             var res = await resource.GetProperties(request.Extra,
                                                    context.Deadline.ToTimeout(),
-                                                   context.CancellationToken);
+                                                   context.CancellationToken).ConfigureAwait(false);
 
             return new GetPropertiesResponse()
             {
@@ -36,7 +36,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IMovementSensor)context.UserState["resource"];
             var res = await resource.DoCommand(request.Command.ToDictionary(),
                                                context.Deadline.ToTimeout(),
-                                               context.CancellationToken);
+                                               context.CancellationToken).ConfigureAwait(false);
 
             return new DoCommandResponse() { Result = res.ToStruct() };
         }
@@ -47,7 +47,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IMovementSensor)context.UserState["resource"];
             var res = await resource.GetGeometries(request.Extra,
                                                    context.Deadline.ToTimeout(),
-                                                   context.CancellationToken);
+                                                   context.CancellationToken).ConfigureAwait(false);
 
             return new GetGeometriesResponse() { Geometries = { res } };
         }
@@ -56,7 +56,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IMovementSensor)context.UserState["resource"];
             var res = await resource.GetPosition(request.Extra,
                                                  context.Deadline.ToTimeout(),
-                                                 context.CancellationToken);
+                                                 context.CancellationToken).ConfigureAwait(false);
 
             return new GetPositionResponse() { AltitudeM = res.Item2, Coordinate = res.Item1 };
         }
@@ -65,16 +65,16 @@ namespace Viam.Core.Resources.Services
             var resource = (IMovementSensor)context.UserState["resource"];
             var res = await resource.GetReadings(request.Extra,
                                                  context.Deadline.ToTimeout(),
-                                                 context.CancellationToken);
+                                                 context.CancellationToken).ConfigureAwait(false);
 
-            var resp = new GetReadingsResponse() { };
+            var resp = new GetReadingsResponse();
             resp.Readings.Add(res);
             return resp;
         }
         public override async Task<GetAccuracyResponse> GetAccuracy(GetAccuracyRequest request, ServerCallContext context)
         {
             var resource = (IMovementSensor)context.UserState["resource"];
-            var res = await resource.GetAccuracy(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken);
+            var res = await resource.GetAccuracy(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
             var resp = new GetAccuracyResponse()
             {
                 CompassDegreesError = res.CompassDegreesError,
@@ -90,7 +90,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IMovementSensor)context.UserState["resource"];
             var res = await resource.GetAngularVelocity(request.Extra,
                                                         context.Deadline.ToTimeout(),
-                                                        context.CancellationToken);
+                                                        context.CancellationToken).ConfigureAwait(false);
 
             return new GetAngularVelocityResponse() { AngularVelocity = res };
         }
@@ -99,7 +99,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IMovementSensor)context.UserState["resource"];
             var res = await resource.GetCompassHeading(request.Extra,
                                                        context.Deadline.ToTimeout(),
-                                                       context.CancellationToken);
+                                                       context.CancellationToken).ConfigureAwait(false);
 
             return new GetCompassHeadingResponse() { Value = res };
         }
@@ -108,7 +108,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IMovementSensor)context.UserState["resource"];
             var res = await resource.GetLinearAcceleration(request.Extra,
                                                            context.Deadline.ToTimeout(),
-                                                           context.CancellationToken);
+                                                           context.CancellationToken).ConfigureAwait(false);
 
             return new GetLinearAccelerationResponse() { LinearAcceleration = res };
         }
@@ -117,7 +117,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IMovementSensor)context.UserState["resource"];
             var res = await resource.GetLinearVelocity(request.Extra,
                                                        context.Deadline.ToTimeout(),
-                                                       context.CancellationToken);
+                                                       context.CancellationToken).ConfigureAwait(false);
 
             return new GetLinearVelocityResponse() { LinearVelocity = res };
         }
@@ -126,7 +126,7 @@ namespace Viam.Core.Resources.Services
             var resource = (IMovementSensor)context.UserState["resource"];
             var res = await resource.GetOrientation(request.Extra,
                                                     context.Deadline.ToTimeout(),
-                                                    context.CancellationToken);
+                                                    context.CancellationToken).ConfigureAwait(false);
 
             return new GetOrientationResponse() { Orientation = res };
         }

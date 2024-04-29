@@ -1,6 +1,4 @@
-﻿using System;
-
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 
 using SIPSorcery.Net;
@@ -51,7 +49,7 @@ namespace Viam.Client.Options
         public static ViamClientOptions FromAddress(string machineAddress) =>
             new(machineAddress);
 
-        public static ViamClientOptions FromCloud() => new ViamClientOptions("https://app.viam.com").WithPort(443).WithDisableWebRtc(true);
+        public static ViamClientOptions FromCloud() => new ViamClientOptions("https://app.viam.com").WithPort(443).WithDisableWebRtc();
 
         public ViamClientOptions WithApiCredentials(string apiKey, string apiKeyId)
         {

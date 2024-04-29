@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Google.Protobuf.WellKnownTypes;
+
+using Microsoft.Extensions.Logging;
+
 using Viam.Common.V1;
 using Viam.Component.Encoder.V1;
 using Viam.Core.Clients;
+using Viam.Core.Logging;
 using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components
@@ -31,10 +36,17 @@ namespace Viam.Core.Resources.Components
                                             CancellationToken cancellationToken = default);
     }
 
-    public class Encoder(ViamResourceName resourceName, ViamChannel channel) : ComponentBase<Encoder, EncoderService.EncoderServiceClient>(resourceName, new EncoderService.EncoderServiceClient(channel)), IEncoder
+    public class Encoder(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
+        ComponentBase<Encoder, EncoderService.EncoderServiceClient>(resourceName, new EncoderService.EncoderServiceClient(channel)),
+        IEncoder
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(new ResourceRegistration(SubType, (name, channel) => new Encoder(name, channel), manager => new Services.Encoder()));
+        internal static void RegisterType() => Registry.RegisterSubtype(
+            new ResourceRegistration(SubType,
+                                              (name, channel, logger) => new Encoder(name, channel, logger),
+                                              (logger) => new Services.Encoder(logger)));
         public static SubType SubType = SubType.FromRdkComponent("encoder");
+
+        [LogCall]
         public static Encoder FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
@@ -45,27 +57,33 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => ValueTask.CompletedTask;
 
+        [LogCall]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
-            var res = await Client.DoCommandAsync(new DoCommandRequest()
-                                                         {
-                                                             Name = ResourceName.Name, Command = command.ToStruct()
-                                                         });
+            var res = await Client
+                            .DoCommandAsync(
+                                new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
+                                deadline: timeout.ToDeadline(),
+                                cancellationToken: cancellationToken)
+                            .ConfigureAwait(false);
 
             return res.Result.ToDictionary();
         }
 
+        [LogCall]
         public async ValueTask ResetPosition(Struct? extra = null,
                                              TimeSpan? timeout = null,
                                              CancellationToken cancellationToken = default)
         {
             await Client.ResetPositionAsync(new ResetPositionRequest() { Name = Name, Extra = extra },
-                                                      deadline: timeout.ToDeadline(),
-                                                      cancellationToken: cancellationToken);
+                                            deadline: timeout.ToDeadline(),
+                                            cancellationToken: cancellationToken)
+                        .ConfigureAwait(false);
         }
 
+        [LogCall]
         public async ValueTask<(float, PositionType)> GetPosition(PositionType? positionType = null,
                                                                   Struct? extra = null,
                                                                   TimeSpan? timeout = null,
@@ -79,28 +97,33 @@ namespace Viam.Core.Resources.Components
                                                         Extra = extra
                                                     },
                                                     deadline: timeout.ToDeadline(),
-                                                    cancellationToken: cancellationToken);
+                                                    cancellationToken: cancellationToken)
+                                  .ConfigureAwait(false);
             return (res.Value, res.PositionType);
         }
 
+        [LogCall]
         public async ValueTask<Properties> GetProperties(Struct? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
         {
             var res = await Client.GetPropertiesAsync(new GetPropertiesRequest() { Name = Name, Extra = extra },
                                                       deadline: timeout.ToDeadline(),
-                                                      cancellationToken: cancellationToken);
+                                                      cancellationToken: cancellationToken)
+                                  .ConfigureAwait(false);
 
             return new Properties(res.AngleDegreesSupported, res.TicksCountSupported);
         }
 
+        [LogCall]
         public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
         {
             var res = await Client.GetGeometriesAsync(new GetGeometriesRequest() { Name = Name, Extra = extra },
                                                       deadline: timeout.ToDeadline(),
-                                                      cancellationToken: cancellationToken);
+                                                      cancellationToken: cancellationToken)
+                                  .ConfigureAwait(false);
 
             return res.Geometries.ToArray();
         }
