@@ -54,8 +54,8 @@ namespace Viam.Core.Resources.Services
                                                context.CancellationToken).ConfigureAwait(false);
 
             return new GetEventsResponse()
-                   {
-                       Events =
+            {
+                Events =
                        {
                            res.Select(kvp => new Event()
                                              {
@@ -65,7 +65,7 @@ namespace Viam.Core.Resources.Services
                                                  Time = Timestamp.FromDateTime(kvp.Value.Timestamp)
                                              })
                        }
-                   };
+            };
         }
 
         public override Task StreamEvents(StreamEventsRequest request,

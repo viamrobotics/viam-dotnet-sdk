@@ -30,7 +30,7 @@ namespace Viam.Core.Resources.Services
                                                    context.Deadline.ToTimeout(),
                                                    context.CancellationToken).ConfigureAwait(false);
 
-            return new GetGeometriesResponse() { Geometries = { res }};
+            return new GetGeometriesResponse() { Geometries = { res } };
         }
 
         public override async Task<GetPropertiesResponse> GetProperties(GetPropertiesRequest request,
@@ -42,9 +42,10 @@ namespace Viam.Core.Resources.Services
                                                    context.CancellationToken).ConfigureAwait(false);
 
             return new GetPropertiesResponse()
-                   {
-                       AngleDegreesSupported = res.AngleDegreesSupported, TicksCountSupported = res.TicksCountSupported
-                   };
+            {
+                AngleDegreesSupported = res.AngleDegreesSupported,
+                TicksCountSupported = res.TicksCountSupported
+            };
         }
 
         public override async Task<GetPositionResponse> GetPosition(GetPositionRequest request,
@@ -56,7 +57,7 @@ namespace Viam.Core.Resources.Services
                                                  context.Deadline.ToTimeout(),
                                                  context.CancellationToken).ConfigureAwait(false);
 
-            return new GetPositionResponse() { PositionType = res.PositionType, Value = res.Position};
+            return new GetPositionResponse() { PositionType = res.PositionType, Value = res.Position };
         }
 
         public override async Task<ResetPositionResponse> ResetPosition(ResetPositionRequest request,

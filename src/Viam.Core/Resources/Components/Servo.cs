@@ -44,7 +44,7 @@ namespace Viam.Core.Resources.Components
     }
     public class Servo(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
         : ComponentBase<Servo, ServoService.ServoServiceClient>(resourceName,
-                                                                new ServoService.ServoServiceClient(channel)), 
+                                                                new ServoService.ServoServiceClient(channel)),
           IServo
     {
         private readonly ILogger _logger = logger;

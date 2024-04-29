@@ -39,8 +39,8 @@ namespace Viam.Core.Resources.Components
                                             TimeSpan? timeout = null,
                                             CancellationToken cancellationToken = default);
     }
-    public class InputController(ViamResourceName resourceName, ViamChannel channel, ILogger logger) : 
-        ComponentBase<InputController, InputControllerService.InputControllerServiceClient>(resourceName, new InputControllerService.InputControllerServiceClient(channel)), 
+    public class InputController(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
+        ComponentBase<InputController, InputControllerService.InputControllerServiceClient>(resourceName, new InputControllerService.InputControllerServiceClient(channel)),
         IInputController
     {
         internal static void RegisterType() => Registry.RegisterSubtype(
@@ -144,18 +144,18 @@ namespace Viam.Core.Resources.Components
             public static EventType FromName(string name)
             {
                 return name switch
-                       {
-                           nameof(AllEvents) => AllEvents,
-                           nameof(Connect) => Connect,
-                           nameof(Disconnect) => Disconnect,
-                           nameof(ButtonPress) => ButtonPress,
-                           nameof(ButtonRelease) => ButtonRelease,
-                           nameof(ButtonHold) => ButtonHold,
-                           nameof(ButtonChange) => ButtonChange,
-                           nameof(PositionChangeAbs) => PositionChangeAbs,
-                           nameof(PositionChangeRel) => PositionChangeRel,
-                           _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown event type")
-                       };
+                {
+                    nameof(AllEvents) => AllEvents,
+                    nameof(Connect) => Connect,
+                    nameof(Disconnect) => Disconnect,
+                    nameof(ButtonPress) => ButtonPress,
+                    nameof(ButtonRelease) => ButtonRelease,
+                    nameof(ButtonHold) => ButtonHold,
+                    nameof(ButtonChange) => ButtonChange,
+                    nameof(PositionChangeAbs) => PositionChangeAbs,
+                    nameof(PositionChangeRel) => PositionChangeRel,
+                    _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown event type")
+                };
             }
 
             public static EventType AllEvents = new(nameof(AllEvents));
@@ -174,35 +174,35 @@ namespace Viam.Core.Resources.Components
             public static Control FromName(string name)
             {
                 return name switch
-                       {
-                           nameof(AbsoluteX) => AbsoluteX,
-                           nameof(AbsoluteY) => AbsoluteY,
-                           nameof(AbsoluteZ) => AbsoluteZ,
-                           nameof(AbsoluteRX) => AbsoluteRX,
-                           nameof(AbsoluteRY) => AbsoluteRY,
-                           nameof(AbsoluteRZ) => AbsoluteRZ,
-                           nameof(AbsoluteHat0X) => AbsoluteHat0X,
-                           nameof(AbsoluteHat0Y) => AbsoluteHat0Y,
-                           nameof(ButtonSouth) => ButtonSouth,
-                           nameof(ButtonEast) => ButtonEast,
-                           nameof(ButtonWest) => ButtonWest,
-                           nameof(ButtonNorth) => ButtonNorth,
-                           nameof(ButtonLT) => ButtonLT,
-                           nameof(ButtonRT) => ButtonRT,
-                           nameof(ButtonLT2) => ButtonLT2,
-                           nameof(ButtonRT2) => ButtonRT2,
-                           nameof(ButtonLThumb) => ButtonLThumb,
-                           nameof(ButtonRThumb) => ButtonRThumb,
-                           nameof(ButtonSelect) => ButtonSelect,
-                           nameof(ButtonStart) => ButtonStart,
-                           nameof(ButtonMenu) => ButtonMenu,
-                           nameof(ButtonRecord) => ButtonRecord,
-                           nameof(ButtonEStop) => ButtonEStop,
-                           nameof(AbsolutePedalAccelerator) => AbsolutePedalAccelerator,
-                           nameof(AbsolutePedalBrake) => AbsolutePedalBrake,
-                           nameof(AbsolutePedalClutch) => AbsolutePedalClutch,
-                           _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown control type")
-                       };
+                {
+                    nameof(AbsoluteX) => AbsoluteX,
+                    nameof(AbsoluteY) => AbsoluteY,
+                    nameof(AbsoluteZ) => AbsoluteZ,
+                    nameof(AbsoluteRX) => AbsoluteRX,
+                    nameof(AbsoluteRY) => AbsoluteRY,
+                    nameof(AbsoluteRZ) => AbsoluteRZ,
+                    nameof(AbsoluteHat0X) => AbsoluteHat0X,
+                    nameof(AbsoluteHat0Y) => AbsoluteHat0Y,
+                    nameof(ButtonSouth) => ButtonSouth,
+                    nameof(ButtonEast) => ButtonEast,
+                    nameof(ButtonWest) => ButtonWest,
+                    nameof(ButtonNorth) => ButtonNorth,
+                    nameof(ButtonLT) => ButtonLT,
+                    nameof(ButtonRT) => ButtonRT,
+                    nameof(ButtonLT2) => ButtonLT2,
+                    nameof(ButtonRT2) => ButtonRT2,
+                    nameof(ButtonLThumb) => ButtonLThumb,
+                    nameof(ButtonRThumb) => ButtonRThumb,
+                    nameof(ButtonSelect) => ButtonSelect,
+                    nameof(ButtonStart) => ButtonStart,
+                    nameof(ButtonMenu) => ButtonMenu,
+                    nameof(ButtonRecord) => ButtonRecord,
+                    nameof(ButtonEStop) => ButtonEStop,
+                    nameof(AbsolutePedalAccelerator) => AbsolutePedalAccelerator,
+                    nameof(AbsolutePedalBrake) => AbsolutePedalBrake,
+                    nameof(AbsolutePedalClutch) => AbsolutePedalClutch,
+                    _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown control type")
+                };
             }
 
             public static Control AbsoluteX = new(nameof(AbsoluteX));

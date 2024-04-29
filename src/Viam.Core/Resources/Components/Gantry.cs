@@ -44,8 +44,8 @@ namespace Viam.Core.Resources.Components
                                             TimeSpan? timeout = null,
                                             CancellationToken cancellationToken = default);
     }
-    public class Gantry(ViamResourceName resourceName, ViamChannel channel, ILogger logger) : 
-        ComponentBase<Gantry, GantryService.GantryServiceClient>(resourceName, new GantryService.GantryServiceClient(channel)), 
+    public class Gantry(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
+        ComponentBase<Gantry, GantryService.GantryServiceClient>(resourceName, new GantryService.GantryServiceClient(channel)),
         IGantry
     {
         internal static void RegisterType() => Registry.RegisterSubtype(
@@ -62,7 +62,7 @@ namespace Viam.Core.Resources.Components
         }
 
         public override DateTime? LastReconfigured => null;
-        
+
         public override ValueTask StopResource() => Stop();
 
         [LogCall]
@@ -101,12 +101,12 @@ namespace Viam.Core.Resources.Components
                                               CancellationToken cancellationToken = default)
         {
             await Client.MoveToPositionAsync(new MoveToPositionRequest()
-                                             {
-                                                 Name = Name,
-                                                 PositionsMm = { positions },
-                                                 SpeedsMmPerSec = { speeds },
-                                                 Extra = extra
-                                             },
+            {
+                Name = Name,
+                PositionsMm = { positions },
+                SpeedsMmPerSec = { speeds },
+                Extra = extra
+            },
                                              deadline: timeout.ToDeadline(),
                                              cancellationToken: cancellationToken)
                         .ConfigureAwait(false);

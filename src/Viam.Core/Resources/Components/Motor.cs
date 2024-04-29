@@ -62,8 +62,8 @@ namespace Viam.Core.Resources.Components
                                             CancellationToken cancellationToken = default);
     }
 
-    public class Motor(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :  
-        ComponentBase<Motor, MotorService.MotorServiceClient>(resourceName, new MotorService.MotorServiceClient(channel)), 
+    public class Motor(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
+        ComponentBase<Motor, MotorService.MotorServiceClient>(resourceName, new MotorService.MotorServiceClient(channel)),
         IMotor
     {
         internal static void RegisterType() => Registry.RegisterSubtype(
@@ -132,9 +132,12 @@ namespace Viam.Core.Resources.Components
                                     CancellationToken cancellationToken = default)
         {
             await Client.GoToAsync(new GoToRequest()
-                                   {
-                                       Name = Name, Rpm = rpm, PositionRevolutions = positionRevolutions, Extra = extra
-                                   },
+            {
+                Name = Name,
+                Rpm = rpm,
+                PositionRevolutions = positionRevolutions,
+                Extra = extra
+            },
                                    deadline: timeout.ToDeadline(),
                                    cancellationToken: cancellationToken)
                         .ConfigureAwait(false);

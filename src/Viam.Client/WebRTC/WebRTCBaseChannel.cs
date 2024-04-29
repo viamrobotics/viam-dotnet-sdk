@@ -137,7 +137,7 @@ namespace Viam.Client.WebRTC
             }
         }
 
-        
+
 
         public void Write(IMessage msg)
         {

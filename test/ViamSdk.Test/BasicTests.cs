@@ -20,7 +20,7 @@ namespace Viam.Core.Test
 
             var machineAddress = Environment.GetEnvironmentVariable("ROBOT_ADDRESS")
                               ?? throw new InvalidOperationException("Missing Environment Variable");
-            var apiKey = Environment.GetEnvironmentVariable("VIAM_API_KEY")?? throw new InvalidOperationException("Missing Environment Variable");
+            var apiKey = Environment.GetEnvironmentVariable("VIAM_API_KEY") ?? throw new InvalidOperationException("Missing Environment Variable");
             var apiKeyId = Environment.GetEnvironmentVariable("VIAM_API_KEY_ID")
                         ?? throw new InvalidOperationException("Missing Environment Variable");
 
@@ -66,7 +66,7 @@ namespace Viam.Core.Test
                 builder.AddConsole();
                 builder.SetMinimumLevel(LogLevel.Trace);
             });
-            
+
             var client = await AppClient.AtAddressAsync(_cloudClientOptions!);
             var parts = await client.GetRobotPartsAsync("659c14cd-a8f5-4d16-93be-7ab7e9ad3a7a");
 

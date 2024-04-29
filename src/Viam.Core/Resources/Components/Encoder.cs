@@ -90,12 +90,12 @@ namespace Viam.Core.Resources.Components
                                                                   CancellationToken cancellationToken = default)
         {
             var res = await Client.GetPositionAsync(new GetPositionRequest()
-                                                    {
-                                                        Name = Name,
-                                                        PositionType =
+            {
+                Name = Name,
+                PositionType =
                                                             positionType.GetValueOrDefault(PositionType.Unspecified),
-                                                        Extra = extra
-                                                    },
+                Extra = extra
+            },
                                                     deadline: timeout.ToDeadline(),
                                                     cancellationToken: cancellationToken)
                                   .ConfigureAwait(false);

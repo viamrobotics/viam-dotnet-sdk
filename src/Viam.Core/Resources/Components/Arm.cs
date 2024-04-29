@@ -118,9 +118,11 @@ namespace Viam.Core.Resources.Components
         {
             await Client
                 .MoveToJointPositionsAsync(new MoveToJointPositionsRequest()
-                                           {
-                                               Name = Name, Positions = jointPositions, Extra = extra
-                                           },
+                {
+                    Name = Name,
+                    Positions = jointPositions,
+                    Extra = extra
+                },
                                            deadline: timeout.ToDeadline(),
                                            cancellationToken: cancellationToken)
                 .ConfigureAwait(false);

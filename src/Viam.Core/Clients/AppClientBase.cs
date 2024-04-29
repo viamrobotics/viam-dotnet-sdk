@@ -25,7 +25,7 @@ namespace Viam.Core.Clients
         }
 
         [LogCall]
-        public async Task<RepeatedField<RobotPart>> GetRobotPartsAsync(string robotId, TimeSpan? timeout= null, CancellationToken cancellationToken = default)
+        public async Task<RepeatedField<RobotPart>> GetRobotPartsAsync(string robotId, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var result = await _appServiceClient.GetRobotPartsAsync(new GetRobotPartsRequest() { RobotId = robotId },
                                                                     deadline: timeout.ToDeadline(),

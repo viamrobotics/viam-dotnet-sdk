@@ -18,8 +18,8 @@ namespace Viam.Core.Resources.Components
                                             TimeSpan? timeout = null,
                                             CancellationToken cancellationToken = default);
     }
-    public class Generic(ResourceName resourceName, ViamChannel channel, ILogger logger) : 
-        ComponentBase<Generic, GenericService.GenericServiceClient>(resourceName, new GenericService.GenericServiceClient(channel)), 
+    public class Generic(ResourceName resourceName, ViamChannel channel, ILogger logger) :
+        ComponentBase<Generic, GenericService.GenericServiceClient>(resourceName, new GenericService.GenericServiceClient(channel)),
         IGeneric
     {
         public override DateTime? LastReconfigured { get; }

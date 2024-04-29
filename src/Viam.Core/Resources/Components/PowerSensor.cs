@@ -26,8 +26,8 @@ namespace Viam.Core.Resources.Components
                                    TimeSpan? timeout = null,
                                    CancellationToken cancellationToken = default);
     }
-    public class PowerSensor(ViamResourceName resourceName, ViamChannel channel, ILogger logger) : 
-        ComponentBase<PowerSensor, PowerSensorService.PowerSensorServiceClient>(resourceName, new PowerSensorService.PowerSensorServiceClient(channel)), 
+    public class PowerSensor(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
+        ComponentBase<PowerSensor, PowerSensorService.PowerSensorServiceClient>(resourceName, new PowerSensorService.PowerSensorServiceClient(channel)),
         IPowerSensor
     {
         internal static void RegisterType() => Registry.RegisterSubtype(

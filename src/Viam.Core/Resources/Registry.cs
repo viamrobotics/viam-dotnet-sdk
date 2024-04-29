@@ -35,7 +35,7 @@ namespace Viam.Core.Resources
 
         public static bool RegisterSubtype(ResourceRegistration resourceRegistration) => Subtypes.TryAdd(resourceRegistration.SubType, resourceRegistration);
 
-        public static bool RegisterResourceCreator(SubType subType, Model model, ResourceCreatorRegistration resourceRegistration) => Resources.TryAdd(new SubTypeModel(subType,model), resourceRegistration);
+        public static bool RegisterResourceCreator(SubType subType, Model model, ResourceCreatorRegistration resourceRegistration) => Resources.TryAdd(new SubTypeModel(subType, model), resourceRegistration);
 
         [LogCall]
         public static ResourceRegistration GetResourceRegistrationBySubtype(SubType subType, [CallerMemberName] string? caller = null)

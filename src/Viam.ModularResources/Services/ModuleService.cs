@@ -40,7 +40,7 @@ namespace Viam.ModularResources.Services
             var channel = await dialer.DialDirectAsync(options);
             _logger.LogDebug("Dialed parent, preparing resources...");
             var serviceNameToModels = new Dictionary<(string, SubType), ICollection<Model>>();
-            foreach(var registeredCreator in Registry.RegisteredResourceCreators)
+            foreach (var registeredCreator in Registry.RegisteredResourceCreators)
             {
                 _logger.LogDebug("Loading resource creator for {SubType} {Model}",
                                  registeredCreator.SubType,

@@ -33,8 +33,8 @@ namespace Viam.Core.Resources.Components
                                  CancellationToken cancellationToken = default);
     }
 
-    public class Gripper(ViamResourceName resourceName, ViamChannel channel, ILogger logger) : 
-        ComponentBase<Gripper, GripperService.GripperServiceClient>(resourceName, new GripperService.GripperServiceClient(channel)), 
+    public class Gripper(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
+        ComponentBase<Gripper, GripperService.GripperServiceClient>(resourceName, new GripperService.GripperServiceClient(channel)),
         IGripper
     {
         internal static void RegisterType() => Registry.RegisterSubtype(
@@ -60,9 +60,10 @@ namespace Viam.Core.Resources.Components
             CancellationToken cancellationToken = default)
         {
             var res = await Client.DoCommandAsync(new DoCommandRequest()
-                                                  {
-                                                      Name = ResourceName.Name, Command = command.ToStruct()
-                                                  },
+            {
+                Name = ResourceName.Name,
+                Command = command.ToStruct()
+            },
                                                   deadline: timeout.ToDeadline(),
                                                   cancellationToken: cancellationToken)
                                   .ConfigureAwait(false);

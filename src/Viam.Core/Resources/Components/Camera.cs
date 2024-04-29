@@ -113,15 +113,15 @@ namespace Viam.Core.Resources.Components
             public static MimeType FromName(string name)
             {
                 return name switch
-                       {
-                           nameof(Unsupported) => Unsupported,
-                           nameof(ViamRgba) => ViamRgba,
-                           nameof(ViamRawDepth) => ViamRawDepth,
-                           nameof(Jpeg) => Jpeg,
-                           nameof(Png) => Png,
-                           nameof(Pcd) => Pcd,
-                           _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown event type")
-                       };
+                {
+                    nameof(Unsupported) => Unsupported,
+                    nameof(ViamRgba) => ViamRgba,
+                    nameof(ViamRawDepth) => ViamRawDepth,
+                    nameof(Jpeg) => Jpeg,
+                    nameof(Png) => Png,
+                    nameof(Pcd) => Pcd,
+                    _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown event type")
+                };
             }
 
             public static MimeType Unsupported = new("unsupported");

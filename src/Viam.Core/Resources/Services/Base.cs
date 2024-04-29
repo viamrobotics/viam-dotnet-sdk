@@ -56,11 +56,11 @@ namespace Viam.Core.Resources.Services
                                                    context.CancellationToken).ConfigureAwait(false);
 
             return new GetPropertiesResponse()
-                   {
-                       TurningRadiusMeters = res.TurningRadius,
-                       WheelCircumferenceMeters = res.WheelCircumference,
-                       WidthMeters = res.Width
-                   };
+            {
+                TurningRadiusMeters = res.TurningRadius,
+                WheelCircumferenceMeters = res.WheelCircumference,
+                WidthMeters = res.Width
+            };
         }
 
         public override async Task<MoveStraightResponse> MoveStraight(MoveStraightRequest request, ServerCallContext context)

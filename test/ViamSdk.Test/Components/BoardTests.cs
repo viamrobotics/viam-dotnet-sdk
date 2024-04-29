@@ -8,7 +8,7 @@ namespace Viam.Core.Test.Components
     internal class BoardTests
     {
         private RobotClient? _robotClient;
-        
+
         [SetUp]
         public async Task Setup()
         {
@@ -20,7 +20,7 @@ namespace Viam.Core.Test.Components
 
             var machineAddress = Environment.GetEnvironmentVariable("ROBOT_ADDRESS")
                               ?? throw new InvalidOperationException("Missing Environment Variable");
-            var apiKey = Environment.GetEnvironmentVariable("VIAM_API_KEY")?? throw new InvalidOperationException("Missing Environment Variable");
+            var apiKey = Environment.GetEnvironmentVariable("VIAM_API_KEY") ?? throw new InvalidOperationException("Missing Environment Variable");
             var apiKeyId = Environment.GetEnvironmentVariable("VIAM_API_KEY_ID")
                         ?? throw new InvalidOperationException("Missing Environment Variable");
 

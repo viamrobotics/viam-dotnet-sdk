@@ -125,7 +125,10 @@ namespace Viam.Core.Resources.Components
             await Client.MoveStraightAsync(
                             new MoveStraightRequest()
                             {
-                                Name = Name, DistanceMm = distance, MmPerSec = velocity, Extra = extra
+                                Name = Name,
+                                DistanceMm = distance,
+                                MmPerSec = velocity,
+                                Extra = extra
                             },
                             deadline: timeout.ToDeadline(),
                             cancellationToken: cancellationToken)
@@ -140,9 +143,12 @@ namespace Viam.Core.Resources.Components
                                     CancellationToken cancellationToken = default)
         {
             await Client.SpinAsync(new SpinRequest()
-                                   {
-                                       Name = Name, AngleDeg = angle, DegsPerSec = velocity, Extra = extra
-                                   },
+            {
+                Name = Name,
+                AngleDeg = angle,
+                DegsPerSec = velocity,
+                Extra = extra
+            },
                                    deadline: timeout.ToDeadline(),
                                    cancellationToken: cancellationToken)
                         .ConfigureAwait(false);
@@ -171,9 +177,12 @@ namespace Viam.Core.Resources.Components
                                            CancellationToken cancellationToken = default)
         {
             await Client.SetVelocityAsync(new SetVelocityRequest()
-                                          {
-                                              Name = Name, Linear = linear, Angular = angular, Extra = extra
-                                          },
+            {
+                Name = Name,
+                Linear = linear,
+                Angular = angular,
+                Extra = extra
+            },
                                           deadline: timeout.ToDeadline(),
                                           cancellationToken: cancellationToken)
                         .ConfigureAwait(false);

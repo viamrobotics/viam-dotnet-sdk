@@ -18,11 +18,12 @@ namespace Viam.ModularResources
             var host = Host.CreateDefaultBuilder(args)
                 .ConfigureLogging(c =>
                 {
-                    c.AddSimpleConsole(o => {
+                    c.AddSimpleConsole(o =>
+                    {
                         o.SingleLine = true;
                         o.IncludeScopes = true;
                         o.UseUtcTimestamp = true;
-                        });
+                    });
                 })
                 .ConfigureServices(s =>
                 {

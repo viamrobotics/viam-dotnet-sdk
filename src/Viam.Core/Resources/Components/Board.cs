@@ -142,12 +142,12 @@ namespace Viam.Core.Resources.Components
                                                  CancellationToken cancellationToken = default)
         {
             await Client.SetPowerModeAsync(new SetPowerModeRequest()
-                                           {
-                                               Name = Name,
-                                               PowerMode = mode,
-                                               Duration = Duration.FromTimeSpan(duration),
-                                               Extra = extra
-                                           },
+            {
+                Name = Name,
+                PowerMode = mode,
+                Duration = Duration.FromTimeSpan(duration),
+                Extra = extra
+            },
                                            deadline: timeout.ToDeadline(),
                                            cancellationToken: cancellationToken)
                         .ConfigureAwait(false);
@@ -178,7 +178,9 @@ namespace Viam.Core.Resources.Components
             var res = await board.Client.ReadAnalogReaderAsync(
                                      new ReadAnalogReaderRequest()
                                      {
-                                         AnalogReaderName = name, BoardName = board.Name, Extra = extra
+                                         AnalogReaderName = name,
+                                         BoardName = board.Name,
+                                         Extra = extra
                                      },
                                      deadline: timeout.ToDeadline(),
                                      cancellationToken: cancellationToken)
@@ -210,7 +212,9 @@ namespace Viam.Core.Resources.Components
             var res = await board.Client.GetDigitalInterruptValueAsync(
                                      new GetDigitalInterruptValueRequest()
                                      {
-                                         BoardName = board.Name, DigitalInterruptName = name, Extra = extra
+                                         BoardName = board.Name,
+                                         DigitalInterruptName = name,
+                                         Extra = extra
                                      },
                                      deadline: timeout.ToDeadline(),
                                      cancellationToken: cancellationToken)
@@ -270,9 +274,12 @@ namespace Viam.Core.Resources.Components
                                            CancellationToken cancellationToken = default)
         {
             await board.Client.SetPWMAsync(new SetPWMRequest()
-                                           {
-                                               Name = board.Name, Pin = name, DutyCyclePct = dutyCyclePct, Extra = extra
-                                           },
+            {
+                Name = board.Name,
+                Pin = name,
+                DutyCyclePct = dutyCyclePct,
+                Extra = extra
+            },
                                            deadline: timeout.ToDeadline(),
                                            cancellationToken: cancellationToken)
                        .ConfigureAwait(false);
@@ -299,12 +306,12 @@ namespace Viam.Core.Resources.Components
                                                     CancellationToken cancellationToken = default)
         {
             await board.Client.SetPWMFrequencyAsync(new SetPWMFrequencyRequest()
-                                                    {
-                                                        Name = board.Name,
-                                                        Pin = name,
-                                                        FrequencyHz = frequencyHz,
-                                                        Extra = extra
-                                                    },
+            {
+                Name = board.Name,
+                Pin = name,
+                FrequencyHz = frequencyHz,
+                Extra = extra
+            },
                                                     deadline: timeout.ToDeadline(),
                                                     cancellationToken: cancellationToken)
                        .ConfigureAwait(false);

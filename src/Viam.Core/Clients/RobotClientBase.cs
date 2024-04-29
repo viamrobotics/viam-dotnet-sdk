@@ -90,7 +90,7 @@ namespace Viam.Core.Clients
         }
 
         [LogCall]
-        public async Task CancelOperationAsync(string operationId,TimeSpan? timeout = null, CancellationToken cancellationToken = default)
+        public async Task CancelOperationAsync(string operationId, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             await _robotServiceClient.CancelOperationAsync(new CancelOperationRequest() { Id = operationId },
                                                            deadline: timeout.ToDeadline(),
@@ -99,7 +99,7 @@ namespace Viam.Core.Clients
         }
 
         [LogCall]
-        public async Task BlockForOperationAsync(string operationId,TimeSpan? timeout = null, CancellationToken cancellationToken = default)
+        public async Task BlockForOperationAsync(string operationId, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             await _robotServiceClient
                                .BlockForOperationAsync(new BlockForOperationRequest() { Id = operationId },
@@ -109,7 +109,7 @@ namespace Viam.Core.Clients
         }
 
         [LogCall]
-        public async Task<Discovery[]> DiscoverComponentsAsync(IEnumerable<DiscoveryQuery>? queries = null,TimeSpan? timeout = null, CancellationToken cancellationToken = default)
+        public async Task<Discovery[]> DiscoverComponentsAsync(IEnumerable<DiscoveryQuery>? queries = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var query = new DiscoverComponentsRequest();
             if (queries != null)
@@ -124,7 +124,7 @@ namespace Viam.Core.Clients
         }
 
         [LogCall]
-        public async Task<FrameSystemConfig[]> FrameSystemConfigAsync(IEnumerable<Transform>? supplementalTransforms = null,TimeSpan? timeout = null, CancellationToken cancellationToken = default)
+        public async Task<FrameSystemConfig[]> FrameSystemConfigAsync(IEnumerable<Transform>? supplementalTransforms = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var request = new FrameSystemConfigRequest();
             if (supplementalTransforms != null)
@@ -140,7 +140,7 @@ namespace Viam.Core.Clients
         }
 
         [LogCall]
-        public async Task<PoseInFrame> TransformPoseAsync(string destination, PoseInFrame source, IEnumerable<Transform> supplementalTransforms,TimeSpan? timeout = null, CancellationToken cancellationToken = default)
+        public async Task<PoseInFrame> TransformPoseAsync(string destination, PoseInFrame source, IEnumerable<Transform> supplementalTransforms, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var request = new TransformPoseRequest() { Destination = destination, Source = source };
             request.SupplementalTransforms.AddRange(supplementalTransforms);
@@ -152,7 +152,7 @@ namespace Viam.Core.Clients
         }
 
         [LogCall]
-        public async Task<ByteString> TransformPcdAsync(string source, string destination, ByteString pointCloudPcd,TimeSpan? timeout = null, CancellationToken cancellationToken = default)
+        public async Task<ByteString> TransformPcdAsync(string source, string destination, ByteString pointCloudPcd, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var request = new TransformPCDRequest() { Source = source, Destination = destination, PointCloudPcd = pointCloudPcd };
             var result = await _robotServiceClient.TransformPCDAsync(request,
@@ -163,7 +163,7 @@ namespace Viam.Core.Clients
         }
 
         [LogCall]
-        public async Task<Status[]> GetStatusAsync(IEnumerable<ResourceName>? resourceNames = null,TimeSpan? timeout = null, CancellationToken cancellationToken = default)
+        public async Task<Status[]> GetStatusAsync(IEnumerable<ResourceName>? resourceNames = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var request = new GetStatusRequest();
             if (resourceNames != null)
@@ -192,7 +192,7 @@ namespace Viam.Core.Clients
         }
 
         [LogCall]
-        public async Task StopAllAsync(IEnumerable<StopExtraParameters>? extraParameters = null,TimeSpan? timeout = null, CancellationToken cancellationToken = default)
+        public async Task StopAllAsync(IEnumerable<StopExtraParameters>? extraParameters = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var request = new StopAllRequest();
             if (extraParameters != null)
@@ -207,7 +207,7 @@ namespace Viam.Core.Clients
         }
 
         [LogCall]
-        public async Task<(string Id, Duration HeartbeatWindow)> StartSessionAsync(string? resumeToken = null,TimeSpan? timeout = null, CancellationToken cancellationToken = default)
+        public async Task<(string Id, Duration HeartbeatWindow)> StartSessionAsync(string? resumeToken = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var result = await _robotServiceClient.StartSessionAsync(new StartSessionRequest() { Resume = resumeToken },
                                                                      deadline: timeout.ToDeadline(),

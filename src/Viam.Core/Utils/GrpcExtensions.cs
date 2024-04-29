@@ -24,22 +24,22 @@ namespace Viam.Core.Utils
         public static Value ConvertToValue(this object? value)
         {
             return value switch
-                   {
-                       string val                       => Value.ForString(val),
-                       bool val                         => Value.ForBool(val),
-                       double val                       => Value.ForNumber(val),
-                       float val                        => Value.ForNumber(val),
-                       int val                          => Value.ForNumber(val),
-                       long val                         => Value.ForNumber(val),
-                       uint val                         => Value.ForNumber(val),
-                       ulong val                        => Value.ForNumber(val),
-                       Value val                        => val,
-                       IDictionary<string, object?> val => Value.ForStruct(val.ToStruct()),
-                       IList<object> val => Value.ForList(val.Select(ConvertToValue)
-                                                             .ToArray()),
-                       null => Value.ForNull(),
-                       _    => throw new ArgumentOutOfRangeException(nameof(value), value, null)
-                   };
+            {
+                string val => Value.ForString(val),
+                bool val => Value.ForBool(val),
+                double val => Value.ForNumber(val),
+                float val => Value.ForNumber(val),
+                int val => Value.ForNumber(val),
+                long val => Value.ForNumber(val),
+                uint val => Value.ForNumber(val),
+                ulong val => Value.ForNumber(val),
+                Value val => val,
+                IDictionary<string, object?> val => Value.ForStruct(val.ToStruct()),
+                IList<object> val => Value.ForList(val.Select(ConvertToValue)
+                                                      .ToArray()),
+                null => Value.ForNull(),
+                _ => throw new ArgumentOutOfRangeException(nameof(value), value, null)
+            };
         }
 
         public static IDictionary<string, object?> ToDictionary(this Struct @struct)
@@ -50,16 +50,16 @@ namespace Viam.Core.Utils
         public static object? ConvertFromValue(this Value value)
         {
             return value.KindCase switch
-                   {
-                       Value.KindOneofCase.None        => null,
-                       Value.KindOneofCase.NullValue   => null,
-                       Value.KindOneofCase.NumberValue => value.NumberValue,
-                       Value.KindOneofCase.StringValue => value.StringValue,
-                       Value.KindOneofCase.BoolValue   => value.BoolValue,
-                       Value.KindOneofCase.StructValue => value.StructValue.ToDictionary(),
-                       Value.KindOneofCase.ListValue   => value.ListValue.Values.Select(ConvertFromValue).ToList(),
-                       _                               => throw new ArgumentOutOfRangeException()
-                   };
+            {
+                Value.KindOneofCase.None => null,
+                Value.KindOneofCase.NullValue => null,
+                Value.KindOneofCase.NumberValue => value.NumberValue,
+                Value.KindOneofCase.StringValue => value.StringValue,
+                Value.KindOneofCase.BoolValue => value.BoolValue,
+                Value.KindOneofCase.StructValue => value.StructValue.ToDictionary(),
+                Value.KindOneofCase.ListValue => value.ListValue.Values.Select(ConvertFromValue).ToList(),
+                _ => throw new ArgumentOutOfRangeException()
+            };
         }
 
         public static T? ConvertFromValue<T>(this Value value) where T : class

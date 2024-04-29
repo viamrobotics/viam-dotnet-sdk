@@ -35,8 +35,11 @@
 		<WeaverConfiguration>
 			<Weavers>
 				<ConfigureAwait />
-				<MethodBoundaryAspect GenerateXsd="false"/>
+				<MethodBoundaryAspect GenerateXsd="false" />
 			</Weavers>
 		</WeaverConfiguration>
 	</PropertyGroup>
+	<Target Name="FormatCode" BeforeTargets="BeforeBuild">
+		<Exec Command="dotnet format --exclude Proto/**" />
+	</Target>
 </Project>

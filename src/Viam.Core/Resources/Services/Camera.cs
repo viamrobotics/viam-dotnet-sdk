@@ -41,12 +41,12 @@ namespace Viam.Core.Resources.Services
             var resource = (ICamera)context.UserState["resource"];
             var resp = await resource.GetProperties(context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
             return new GetPropertiesResponse()
-                   {
-                       DistortionParameters = resp.DistortionParameters,
-                       IntrinsicParameters = resp.IntrinsicParameters,
-                       MimeTypes = { resp.MimeTypes },
-                       SupportsPcd = resp.SupportsPcd
-                   };
+            {
+                DistortionParameters = resp.DistortionParameters,
+                IntrinsicParameters = resp.IntrinsicParameters,
+                MimeTypes = { resp.MimeTypes },
+                SupportsPcd = resp.SupportsPcd
+            };
         }
 
         public override async Task<GetImageResponse> GetImage(GetImageRequest request, ServerCallContext context)
