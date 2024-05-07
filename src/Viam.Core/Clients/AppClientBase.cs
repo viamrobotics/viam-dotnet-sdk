@@ -24,7 +24,7 @@ namespace Viam.Core.Clients
             _appServiceClient = new AppService.AppServiceClient(channel);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task<RepeatedField<RobotPart>> GetRobotPartsAsync(string robotId, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var result = await _appServiceClient.GetRobotPartsAsync(new GetRobotPartsRequest() { RobotId = robotId },

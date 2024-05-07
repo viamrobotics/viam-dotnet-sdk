@@ -1,6 +1,9 @@
 ﻿using System.Threading.Tasks;
+
 using Grpc.Core;
+
 using Microsoft.Extensions.Logging;
+
 using Viam.Common.V1;
 using Viam.Component.Base.V1;
 using Viam.Core.Resources.Components;
@@ -8,9 +11,10 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class Base(ILogger logger) : BaseService.BaseServiceBase, IServiceBase
+    internal class Base(ILogger<Base> logger) : BaseService.BaseServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.base.v1.BaseService";
+        public SubType SubType { get; } = SubType.FromRdkComponent("base");
 
         public override async Task<StopResponse> Stop(StopRequest request, ServerCallContext context)
         {

@@ -3,12 +3,12 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Microsoft.Extensions.Logging;
 using Viam.Core.Clients;
 using Viam.Core.Logging;
-using Viam.Core.Resources.Components;
 using Viam.Core.Utils;
 
 namespace Viam.Core.Resources
@@ -18,87 +18,119 @@ namespace Viam.Core.Resources
         private readonly ConcurrentDictionary<ViamResourceName, IResourceBase> _resources = new();
         private readonly ILogger<ResourceManager> _logger = loggerFactory.CreateLogger<ResourceManager>();
 
-        [LogCall]
+        [LogInvocation]
         public void Register(ViamResourceName resourceName, IResourceBase resource, [CallerMemberName] string? caller = null)
         {
-            Logging.LogMessages.LogManagerResourceRegistration(_logger, resourceName, resource, caller);
-            _resources.TryAdd(resourceName, resource);
+            _logger.LogManagerResourceRegistration(resourceName, resource, caller);
+            if (_resources.TryAdd(resourceName, resource) == false)
+            {
+                throw new ResourceAlreadyRegisteredException();
+            }
         }
 
-        [LogCall]
+        [LogInvocation]
         public IResourceBase GetResource(ViamResourceName resourceName, [CallerMemberName] string? caller = null)
         {
-            Logging.LogMessages.LogManagerResourceGet(_logger, resourceName, caller);
+            _logger.LogManagerResourceGet(resourceName, caller);
             if (_resources.TryGetValue(resourceName, out var resource))
             {
-                Logging.LogMessages.LogManagerResourceGetSuccess(_logger, resourceName, resource, caller);
+                _logger.LogManagerResourceGetSuccess(resourceName, resource, caller);
                 return resource;
             }
 
-            Logging.LogMessages.LogManagerResourceGetFailure(_logger, resourceName, caller);
+            _logger.LogManagerResourceGetFailure(resourceName, caller);
             throw new ResourceNotFoundException(resourceName.ToString());
         }
 
         // This is a little inefficient, but we can fix this later
-        [LogCall]
+        [LogInvocation]
         public IResourceBase GetResourceByShortName(string name, [CallerMemberName] string? caller = null)
         {
-            Logging.LogMessages.LogManagerResourceGetByShortName(_logger, name, caller);
+            _logger.LogManagerResourceGetByShortName(name, caller);
             foreach (var item in _resources.Values)
             {
                 if (item.ResourceName.Name == name)
                 {
-                    Logging.LogMessages.LogManagerResourceGetByShortNameSuccess(_logger, name, item, caller);
+                    _logger.LogManagerResourceGetByShortNameSuccess(name, item, caller);
                     return item;
                 }
             }
 
-            Logging.LogMessages.LogManagerResourceGetByShortNameFailure(_logger, name, caller);
+            _logger.LogManagerResourceGetByShortNameFailure(name, caller);
             throw new ResourceNotFoundException(name);
         }
 
-        [LogCall]
+        [LogInvocation]
         public void RemoveResource(ViamResourceName resourceName, [CallerMemberName] string? caller = null)
         {
-            Logging.LogMessages.LogManagerResourceRemove(_logger, resourceName, caller);
+            _logger.LogManagerResourceRemove(resourceName, caller);
             if (_resources.TryRemove(resourceName, out _))
             {
-                Logging.LogMessages.LogManagerResourceRemoveSuccess(_logger, resourceName, caller);
+                _logger.LogManagerResourceRemoveSuccess(resourceName, caller);
                 return;
             }
 
-            Logging.LogMessages.LogManagerResourceRemoveFailure(_logger, resourceName, caller);
+            _logger.LogManagerResourceRemoveFailure(resourceName, caller);
             throw new ResourceNotFoundException(resourceName.ToString());
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task RefreshAsync(RobotClientBase client, [CallerMemberName] string? caller = null)
         {
-            Logging.LogMessages.LogManagerRefreshStart(_logger, caller);
+            _logger.LogManagerRefreshStart(caller);
             var resourceNames = await client.ResourceNamesAsync();
             var resourceNamesEnumerable = resourceNames.ToArray();
             var foo = resourceNamesEnumerable.Where(x => x.ResourceType == "component" || x.ResourceType == "service")
                                              .Where(x => x.ResourceSubtype != "remote");
             // TODO: Filter out movement sensors
+            // TODO: Filter power sensors?
             //.Where(x => x.Subtype != Sensor.SubType.ResourceSubType && !resourceNamesEnumerable.Contains(MovementSensor.GetResourceName(x.Name)));
             foreach (var fo in foo)
             {
                 CreateOrResetClient(fo, client.Channel);
             }
 
-            Logging.LogMessages.LogManagerRefreshFinish(_logger, caller);
+            _logger.LogManagerRefreshFinish(caller);
         }
 
-        [LogCall]
+        [LogInvocation]
+        public void RegisterRemoteResources(ViamResourceName[] remoteResourceNames, ViamChannel channel)
+        {
+            var resourceCount = 0;
+            _logger.LogManagerRegisterRemoteResources(remoteResourceNames);
+            foreach (var remoteResourceName in remoteResourceNames)
+            {
+                _logger.LogManagerRegisterRemoteResource(remoteResourceName);
+                try
+                {
+                    var registration = Registry.GetResourceRegistrationBySubtype(SubType.FromResourceName(remoteResourceName));
+
+                    var resource = registration.CreateRpcClient(remoteResourceName,
+                                                                channel,
+                                                                loggerFactory.CreateLogger(remoteResourceName.Name));
+
+                    Register(remoteResourceName, resource);
+                    resourceCount++;
+                }
+                catch (ResourceException ex)
+                {
+                    _logger.LogManagerRegisterRemoteResourcesError(remoteResourceName, ex);
+                }
+            }
+
+            _logger.LogManagerRegisterRemoteResourcesComplete(resourceCount);
+        }
+
+        [LogInvocation]
         public ICollection<ViamResourceName> GetResourceNames() => _resources.Keys;
 
-        [LogCall]
+        [LogInvocation]
         public ICollection<IResourceBase> GetResources() => _resources.Values;
 
-        [LogCall]
+        [LogInvocation]
         private void CreateOrResetClient(ViamResourceName resourceName, ViamChannel channel)
         {
-            Logging.LogMessages.LogManagerCreateOrRefreshClient(_logger, resourceName, channel);
+            _logger.LogManagerCreateOrRefreshClient(resourceName, channel);
             if (_resources.TryGetValue(resourceName, out var resource))
             {
                 // TODO: Implement reconfigurable
@@ -117,10 +149,10 @@ namespace Viam.Core.Resources
             }
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask DisposeAsync()
         {
-            Logging.LogMessages.LogManagerDispose(_logger);
+            _logger.LogManagerDispose();
             await _resources.Values.Select(x => x.DisposeAsync())
                             .WhenAll();
             GC.SuppressFinalize(this);

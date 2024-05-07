@@ -11,10 +11,10 @@ namespace Viam.ModularResources
 
         public static Module FromArgs(string[] args)
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                throw new PlatformNotSupportedException("We currently only support Modular Resources on Linux/macOS");
-            if (args.Length != 1)
-                throw new ArgumentException("You must provide a Unix socket path");
+            //if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            //    throw new PlatformNotSupportedException("We currently only support Modular Resources on Linux/macOS");
+            //if (args.Length != 1)
+            //    throw new ArgumentException("You must provide a Unix socket path");
             var host = Host.CreateDefaultBuilder(args)
                 .ConfigureLogging(c =>
                 {
@@ -37,9 +37,14 @@ namespace Viam.ModularResources
                 {
                     webBuilder.ConfigureKestrel(options =>
                     {
-                        var socket = args[0];
-                        options.ListenUnixSocket(socket, c => c.Protocols = HttpProtocols.Http2);
-                        options.ListenLocalhost(5000, c => c.Protocols = HttpProtocols.Http2);
+                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                            options.ListenAnyIP(5000, c => c.Protocols = HttpProtocols.Http2);
+                        else
+                        {
+                            var socket = args[0];
+                            options.ListenUnixSocket(socket, c => c.Protocols = HttpProtocols.Http2);
+                            options.ListenAnyIP(5000, c => c.Protocols = HttpProtocols.Http2);
+                        }
                     });
                 })
                 .Build();

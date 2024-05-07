@@ -12,9 +12,10 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class InputController(ILogger logger) : InputControllerService.InputControllerServiceBase, IServiceBase
+    internal class InputController(ILogger<InputController> logger) : InputControllerService.InputControllerServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.inputcontroller.v1.InputControllerService";
+        public SubType SubType { get; } = SubType.FromRdkComponent("input_controller");
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

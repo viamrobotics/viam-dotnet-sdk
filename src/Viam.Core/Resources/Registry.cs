@@ -2,66 +2,94 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+
 using Viam.App.V1;
 using Viam.Core.Logging;
-using Viam.Core.Resources.Components;
+using Viam.Core.Resources.Services;
 
 namespace Viam.Core.Resources
 {
     public static class Registry
     {
-        // This is needed to make sure all well-known types get registered at startup
-        static Registry()
-        {
-            Arm.RegisterType();
-            Base.RegisterType();
-            Board.RegisterType();
-            Camera.RegisterType();
-            Encoder.RegisterType();
-            Gantry.RegisterType();
-            Gripper.RegisterType();
-            InputController.RegisterType();
-            Motor.RegisterType();
-            MovementSensor.RegisterType();
-            PowerSensor.RegisterType();
-            Sensor.RegisterType();
-            Servo.RegisterType();
-        }
         public static ILogger Logger { get; set; } = NullLogger.Instance;
-        private static readonly ConcurrentDictionary<SubType, ResourceRegistration> Subtypes = new(new SubTypeComparer());
+        private static readonly ConcurrentDictionary<SubType, ComponentRegistration> Subtypes = new(new SubTypeComparer());
         private static readonly ConcurrentDictionary<SubTypeModel, ResourceCreatorRegistration> Resources = new();
 
-        public static bool RegisterSubtype(ResourceRegistration resourceRegistration) => Subtypes.TryAdd(resourceRegistration.SubType, resourceRegistration);
+        public static bool RegisterSubtype(ComponentRegistration componentRegistration) => Subtypes.TryAdd(componentRegistration.SubType, componentRegistration);
 
         public static bool RegisterResourceCreator(SubType subType, Model model, ResourceCreatorRegistration resourceRegistration) => Resources.TryAdd(new SubTypeModel(subType, model), resourceRegistration);
 
-        [LogCall]
-        public static ResourceRegistration GetResourceRegistrationBySubtype(SubType subType, [CallerMemberName] string? caller = null)
+        /// <summary>
+        /// Register the default services to the <see cref="IServiceCollection"/> if a component of that type was registered
+        /// </summary>
+        /// <param name="services">The <see cref="IServiceCollection"/> for the ASP.NET server</param>
+        public static void RegisterComponentServices(IServiceCollection services)
         {
-            Logging.LogMessages.LogRegistryResourceGet(Logger, subType);
+            if (Subtypes.ContainsKey(SubType.FromRdkComponent("arm")))
+                RegisterService<Arm>(services);
+            if (Subtypes.ContainsKey(SubType.FromRdkComponent("base")))
+                RegisterService<Base>(services);
+            if (Subtypes.ContainsKey(SubType.FromRdkComponent("board")))
+                RegisterService<Board>(services);
+            if (Subtypes.ContainsKey(SubType.FromRdkComponent("camera")))
+                RegisterService<Camera>(services);
+            if (Subtypes.ContainsKey(SubType.FromRdkComponent("encoder")))
+                RegisterService<Encoder>(services);
+            if (Subtypes.ContainsKey(SubType.FromRdkComponent("gantry")))
+                RegisterService<Gantry>(services);
+            if (Subtypes.ContainsKey(SubType.FromRdkComponent("generic")))
+                RegisterService<Generic>(services);
+            if (Subtypes.ContainsKey(SubType.FromRdkComponent("gripper")))
+                RegisterService<Gripper>(services);
+            if (Subtypes.ContainsKey(SubType.FromRdkComponent("input_controller")))
+                RegisterService<InputController>(services);
+            if (Subtypes.ContainsKey(SubType.FromRdkComponent("motor")))
+                RegisterService<Motor>(services);
+            if (Subtypes.ContainsKey(SubType.FromRdkComponent("movement_sensor")))
+                RegisterService<MovementSensor>(services);
+            if (Subtypes.ContainsKey(SubType.FromRdkComponent("power_sensor")))
+                RegisterService<PowerSensor>(services);
+            if (Subtypes.ContainsKey(SubType.FromRdkComponent("sensor")))
+                RegisterService<Sensor>(services);
+            if (Subtypes.ContainsKey(SubType.FromRdkComponent("servo")))
+                RegisterService<Servo>(services);
+        }
+
+        private static void RegisterService<TImpl>(IServiceCollection services) where TImpl : class, IServiceBase
+        {
+            services.AddTransient<TImpl>();
+            services.AddTransient<IServiceBase, TImpl>();
+        }
+
+        [LogInvocation]
+        public static ComponentRegistration GetResourceRegistrationBySubtype(SubType subType, [CallerMemberName] string? caller = null)
+        {
+            Logger.LogRegistryResourceGet(subType);
             if (Subtypes.TryGetValue(subType, out var resourceRegistration))
             {
-                Logging.LogMessages.LogRegistryResourceGetSuccess(Logger, subType);
+                Logger.LogRegistryResourceGetSuccess(subType);
                 return resourceRegistration;
             }
 
-            Logging.LogMessages.LogRegistryResourceGetFailure(Logger, subType);
+            Logger.LogRegistryResourceGetFailure(subType);
             throw new ResourceRegistrationNotFoundException();
         }
 
-        [LogCall]
+        [LogInvocation]
         public static ResourceCreatorRegistration GetResourceCreatorRegistration(SubType subType, Model model, [CallerMemberName] string? caller = null)
         {
-            Logging.LogMessages.LogRegistryResourceCreatorGet(Logger, subType, model);
+            Logger.LogRegistryResourceCreatorGet(subType, model);
             if (Resources.TryGetValue(new SubTypeModel(subType, model), out var resourceCreatorRegistration))
             {
-                Logging.LogMessages.LogRegistryResourceCreatorGetSuccess(Logger, subType, model);
+                Logger.LogRegistryResourceCreatorGetSuccess(subType, model);
                 return resourceCreatorRegistration;
             }
 
-            Logging.LogMessages.LogRegistryResourceCreatorGetFailure(Logger, subType, model);
+            Logger.LogRegistryResourceCreatorGetFailure(subType, model);
             throw new ResourceCreatorRegistrationNotFoundException();
         }
         // TODO: Implement this
@@ -74,20 +102,17 @@ namespace Viam.Core.Resources
         public static ICollection<SubTypeModel> RegisteredResourceCreators => Resources.Keys;
     }
 
-    public class ResourceRegistration(
-        SubType subType,
-        Func<ViamResourceName, ViamChannel, ILogger, ResourceBase> clientCreator,
-        Func<ILogger, Services.IServiceBase> rpcCreator)
+    public class ComponentRegistration(SubType subType, Func<ViamResourceName, ViamChannel, ILogger, ResourceBase> clientCreator)
     {
         public SubType SubType => subType;
 
+        [LogInvocation]
         internal ResourceBase CreateRpcClient(ViamResourceName name, ViamChannel channel, ILogger logger) => clientCreator(name, channel, logger);
-        internal Services.IServiceBase CreateServiceBase(ILogger logger) => rpcCreator(logger);
 
         public override string ToString() => subType.ToString();
     }
 
-    public record ResourceCreatorRegistration(Func<ComponentConfig, string[], IResourceBase> Creator, Func<ComponentConfig, IEnumerable<string>> ConfigValidator);
+    public record ResourceCreatorRegistration(Func<ILogger, ComponentConfig, IDictionary<ViamResourceName, IResourceBase>, IResourceBase> Creator, Func<ComponentConfig, IEnumerable<string>> ConfigValidator);
 
     public record SubType(string Namespace, string ResourceType, string ResourceSubType)
     {

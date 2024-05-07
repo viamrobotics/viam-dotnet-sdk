@@ -7,9 +7,6 @@ namespace Viam.Core.Grpc
     {
         protected override CallInvoker GetCallInvoker() => channel.CreateCallInvoker();
 
-        public override void Dispose()
-        {
-            channel.Dispose();
-        }
+        public override void Dispose() => channel.Dispose();
     }
 }

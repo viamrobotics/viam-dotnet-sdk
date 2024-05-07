@@ -1,6 +1,5 @@
 ﻿using Viam.Client.Options;
 using Viam.Core.Grpc;
-using Viam.Core.Options;
 
 namespace Viam.Client.Dialing
 {

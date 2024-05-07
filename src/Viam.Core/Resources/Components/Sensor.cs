@@ -22,18 +22,19 @@ namespace Viam.Core.Resources.Components
 
     [ConfigureAwait(false)]
     public class Sensor(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
-        : ComponentBase<Sensor, SensorService.SensorServiceClient>(resourceName,
-                                                                   new SensorService.SensorServiceClient(channel)),
+        : ComponentBase<Sensor, SensorService.SensorServiceClient>(resourceName, new SensorService.SensorServiceClient(channel)),
           ISensor
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(
-            new ResourceRegistration(SubType,
-                                     (name, channel, logger) => new Sensor(name, channel, logger),
-                                     (logger) => new Services.Sensor(logger)));
+        static Sensor() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new Sensor(name, channel, logger)));
 
         public static SubType SubType = SubType.FromRdkComponent("sensor");
+        public static ViamResourceName GetResourceName(string? name)
+        {
+            ArgumentNullException.ThrowIfNull(name, nameof(name));
+            return new ViamResourceName(SubType, name);
+        }
 
-        [LogCall]
+        [LogInvocation]
         public static Sensor FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
@@ -44,7 +45,7 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => ValueTask.CompletedTask;
 
-        [LogCall]
+        [LogInvocation]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
@@ -58,7 +59,7 @@ namespace Viam.Core.Resources.Components
             return res.Result.ToDictionary();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<IDictionary<string, object?>> GetReadings(Struct? extra = null,
                                                                          TimeSpan? timeout = null,
                                                                          CancellationToken cancellationToken = default)

@@ -3,5 +3,6 @@
     public interface IServiceBase
     {
         public string ServiceName { get; }
+        public SubType SubType { get; }
     }
 }

@@ -37,13 +37,10 @@ namespace Viam.Core.Resources.Components
         ComponentBase<Gripper, GripperService.GripperServiceClient>(resourceName, new GripperService.GripperServiceClient(channel)),
         IGripper
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(
-            new ResourceRegistration(SubType,
-                                              (name, channel, logger) => new Gripper(name, channel, logger),
-                                              (logger) => new Services.Gripper(logger)));
+        static Gripper() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new Gripper(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("gripper");
 
-        [LogCall]
+        [LogInvocation]
         public static Gripper FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
@@ -54,7 +51,7 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => Stop();
 
-        [LogCall]
+        [LogInvocation]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
@@ -71,7 +68,7 @@ namespace Viam.Core.Resources.Components
             return res.Result.ToDictionary();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask Open(Struct? extra = null,
                                     TimeSpan? timeout = null,
                                     CancellationToken cancellationToken = default)
@@ -82,7 +79,7 @@ namespace Viam.Core.Resources.Components
                         .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask Grab(Struct? extra = null,
                                     TimeSpan? timeout = null,
                                     CancellationToken cancellationToken = default)
@@ -93,7 +90,7 @@ namespace Viam.Core.Resources.Components
                         .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask Stop(Struct? extra = null,
                                     TimeSpan? timeout = null,
                                     CancellationToken cancellationToken = default)
@@ -104,7 +101,7 @@ namespace Viam.Core.Resources.Components
                         .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<bool> IsMoving(TimeSpan? timeout = null,
                                               CancellationToken cancellationToken = default)
         {

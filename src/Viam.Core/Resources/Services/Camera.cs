@@ -10,9 +10,10 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class Camera(ILogger logger) : CameraService.CameraServiceBase, IServiceBase
+    internal class Camera(ILogger<Camera> logger) : CameraService.CameraServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.camera.v1.CameraService";
+        public SubType SubType { get; } = SubType.FromRdkComponent("camera");
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

@@ -11,6 +11,7 @@ namespace Viam.Core.Resources.Services
     internal class Generic(ILogger<Generic> logger) : GenericService.GenericServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.generic.v1.GenericService";
+        public SubType SubType { get; } = SubType.FromRdkComponent("generic");
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

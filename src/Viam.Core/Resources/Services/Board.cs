@@ -9,9 +9,10 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class Board(ILogger logger) : BoardService.BoardServiceBase, IServiceBase
+    internal class Board(ILogger<Board> logger) : BoardService.BoardServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.board.v1.BoardService";
+        public SubType SubType { get; } = SubType.FromRdkComponent("board");
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

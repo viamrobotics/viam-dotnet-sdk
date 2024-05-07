@@ -57,14 +57,10 @@ namespace Viam.Core.Resources.Components
               resourceName,
               new MovementSensorService.MovementSensorServiceClient(channel)), IMovementSensor
     {
+        static MovementSensor() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new MovementSensor(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("movement_sensor");
 
-        internal static void RegisterType() => Registry.RegisterSubtype(
-            new ResourceRegistration(SubType,
-                                     (name, channel, logger) => new MovementSensor(name, channel, logger),
-                                     (logger) => new Services.MovementSensor(logger)));
-
-        [LogCall]
+        [LogInvocation]
         public static MovementSensor FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
@@ -75,7 +71,7 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => ValueTask.CompletedTask;
 
-        [LogCall]
+        [LogInvocation]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(
             IDictionary<string, object?> command,
             TimeSpan? timeout = null,
@@ -91,7 +87,7 @@ namespace Viam.Core.Resources.Components
             return res.Result.ToDictionary();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<(GeoPoint, float)> GetPosition(Struct? extra = null,
                                                               TimeSpan? timeout = null,
                                                               CancellationToken cancellationToken = default)
@@ -104,7 +100,7 @@ namespace Viam.Core.Resources.Components
             return (res.Coordinate, res.AltitudeM);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Vector3> GetLinearVelocity(Struct? extra = null,
                                                           TimeSpan? timeout = null,
                                                           CancellationToken cancellationToken = default)
@@ -117,7 +113,7 @@ namespace Viam.Core.Resources.Components
             return res.LinearVelocity;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Vector3> GetAngularVelocity(Struct? extra = null,
                                                            TimeSpan? timeout = null,
                                                            CancellationToken cancellationToken = default)
@@ -131,7 +127,7 @@ namespace Viam.Core.Resources.Components
             return res.AngularVelocity;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Vector3> GetLinearAcceleration(Struct? extra = null,
                                                               TimeSpan? timeout = null,
                                                               CancellationToken cancellationToken = default)
@@ -145,7 +141,7 @@ namespace Viam.Core.Resources.Components
             return res.LinearAcceleration;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<double> GetCompassHeading(Struct? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
@@ -159,7 +155,7 @@ namespace Viam.Core.Resources.Components
             return res.Value;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Orientation> GetOrientation(Struct? extra = null,
                                                            TimeSpan? timeout = null,
                                                            CancellationToken cancellationToken = default)
@@ -172,7 +168,7 @@ namespace Viam.Core.Resources.Components
             return res.Orientation;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Properties> GetProperties(Struct? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
@@ -190,7 +186,7 @@ namespace Viam.Core.Resources.Components
                                   res.PositionSupported);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Accuracy> GetAccuracy(Struct? extra = null,
                                                      TimeSpan? timeout = null,
                                                      CancellationToken cancellationToken = default)
@@ -211,7 +207,7 @@ namespace Viam.Core.Resources.Components
                                 res.PositionVdop);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
                                                    TimeSpan? timeout = null,
                                                    CancellationToken cancellationToken = default)
@@ -225,7 +221,7 @@ namespace Viam.Core.Resources.Components
             return res.Geometries.ToArray();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<IDictionary<string, object?>> GetReadings(Struct? extra = null,
                                                                          TimeSpan? timeout = null,
                                                                          CancellationToken cancellationToken = default)

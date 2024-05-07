@@ -24,7 +24,7 @@ namespace Viam.Core.Resources.Components
     {
         public override DateTime? LastReconfigured { get; }
 
-        [LogCall]
+        [LogInvocation]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(
             IDictionary<string, object?> command,
             TimeSpan? timeout = null,
@@ -42,7 +42,7 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => throw new NotImplementedException();
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
                                                    TimeSpan? timeout = null,
                                                    CancellationToken cancellationToken = default)

@@ -8,9 +8,10 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class Encoder(ILogger logger) : EncoderService.EncoderServiceBase, IServiceBase
+    internal class Encoder(ILogger<Encoder> logger) : EncoderService.EncoderServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.encoder.v1.EncoderService";
+        public SubType SubType { get; } = SubType.FromRdkComponent("encoder");
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

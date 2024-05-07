@@ -9,10 +9,10 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class Gantry(ILogger logger) : GantryService.GantryServiceBase, IServiceBase
+    internal class Gantry(ILogger<Gantry> logger) : GantryService.GantryServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.gantry.v1.GantryService";
-
+        public SubType SubType { get; } = SubType.FromRdkComponent("gantry");
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

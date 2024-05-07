@@ -8,9 +8,10 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class Motor(ILogger logger) : MotorService.MotorServiceBase, IServiceBase
+    internal class Motor(ILogger<Motor> logger) : MotorService.MotorServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.motor.v1.MotorService";
+        public SubType SubType { get; } = SubType.FromRdkComponent("motor");
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

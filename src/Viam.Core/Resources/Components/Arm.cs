@@ -49,16 +49,13 @@ namespace Viam.Core.Resources.Components
     }
 
     public class Arm(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
-        : ComponentBase<Arm, ArmService.ArmServiceClient>(resourceName, new ArmService.ArmServiceClient(channel)), IArm
+        : ComponentBase<Arm, ArmService.ArmServiceClient>(resourceName, new ArmService.ArmServiceClient(channel)),
+          IArm
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(
-            new ResourceRegistration(SubType,
-                                     (name, channel, logger) => new Arm(name, channel, logger),
-                                     (logger) => new Services.Arm(logger)));
-
+        static Arm() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new Arm(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("arm");
 
-        [LogCall]
+        [LogInvocation]
         public static Arm FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
@@ -69,7 +66,7 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => Stop();
 
-        [LogCall]
+        [LogInvocation]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
@@ -82,7 +79,7 @@ namespace Viam.Core.Resources.Components
             return res.Result.ToDictionary();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Pose> GetEndPosition(Struct? extra = null,
                                                     TimeSpan? timeout = null,
                                                     CancellationToken cancellationToken = default)
@@ -97,7 +94,7 @@ namespace Viam.Core.Resources.Components
             return res.Pose;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask MoveToPosition(Pose pose,
                                               Struct? extra = null,
                                               TimeSpan? timeout = null,
@@ -110,7 +107,7 @@ namespace Viam.Core.Resources.Components
                 .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask MoveToJoinPositions(JointPositions jointPositions,
                                                    Struct? extra = null,
                                                    TimeSpan? timeout = null,
@@ -128,7 +125,7 @@ namespace Viam.Core.Resources.Components
                 .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<JointPositions> GetJointPositions(Struct? extra = null,
                                                                  TimeSpan? timeout = null,
                                                                  CancellationToken cancellationToken = default)
@@ -143,7 +140,7 @@ namespace Viam.Core.Resources.Components
             return res.Positions;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask Stop(Struct? extra = null,
                                     TimeSpan? timeout = null,
                                     CancellationToken cancellationToken = default)
@@ -154,7 +151,7 @@ namespace Viam.Core.Resources.Components
                         .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<bool> IsMoving(TimeSpan? timeout = null,
                                               CancellationToken cancellationToken = default)
         {
@@ -166,7 +163,7 @@ namespace Viam.Core.Resources.Components
             return res.IsMoving;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<(KinematicsFileFormat, ByteString)> GetKinematics(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
@@ -180,7 +177,7 @@ namespace Viam.Core.Resources.Components
             return (res.Format, res.KinematicsData);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)

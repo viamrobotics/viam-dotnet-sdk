@@ -10,9 +10,10 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class Gripper(ILogger logger) : GripperService.GripperServiceBase, IServiceBase
+    internal class Gripper(ILogger<Gripper> logger) : GripperService.GripperServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.gripper.v1.GripperService";
+        public SubType SubType { get; } = SubType.FromRdkComponent("gripper");
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

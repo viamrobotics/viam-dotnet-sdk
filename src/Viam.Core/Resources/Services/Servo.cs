@@ -8,9 +8,10 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class Servo(ILogger logger) : ServoService.ServoServiceBase, IServiceBase
+    internal class Servo(ILogger<Servo> logger) : ServoService.ServoServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.servo.v1.ServoService";
+        public SubType SubType { get; } = SubType.FromRdkComponent("servo");
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

@@ -5,7 +5,6 @@ using SIPSorcery.Net;
 
 using Viam.Client.Dialing;
 using Viam.Core.Grpc;
-using Viam.Core.Options;
 
 namespace Viam.Client.Options
 {

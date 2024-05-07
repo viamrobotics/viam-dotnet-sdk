@@ -43,19 +43,13 @@ namespace Viam.Core.Resources.Components
 
     }
     public class Servo(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
-        : ComponentBase<Servo, ServoService.ServoServiceClient>(resourceName,
-                                                                new ServoService.ServoServiceClient(channel)),
+        : ComponentBase<Servo, ServoService.ServoServiceClient>(resourceName, new ServoService.ServoServiceClient(channel)),
           IServo
     {
-        private readonly ILogger _logger = logger;
-
-        internal static void RegisterType() => Registry.RegisterSubtype(
-            new ResourceRegistration(SubType,
-                                     (name, channel, logger) => new Servo(name, channel, logger),
-                                     (logger) => new Services.Servo(logger)));
+        static Servo() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new Servo(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("servo");
 
-        [LogCall]
+        [LogInvocation]
         public static Servo FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
@@ -66,7 +60,7 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => Stop();
 
-        [LogCall]
+        [LogInvocation]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
@@ -81,7 +75,7 @@ namespace Viam.Core.Resources.Components
             return res.Result.ToDictionary();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask Move(uint angle,
                                     Struct? extra = null,
                                     TimeSpan? timeout = null,
@@ -94,7 +88,7 @@ namespace Viam.Core.Resources.Components
                         .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<uint> GetPosition(Struct? extra = null,
                                                    TimeSpan? timeout = null,
                                                    CancellationToken cancellationToken = default,
@@ -108,7 +102,7 @@ namespace Viam.Core.Resources.Components
             return res.PositionDeg;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<bool> IsMoving(TimeSpan? timeout = null,
                                               CancellationToken cancellationToken = default,
                                               [CallerMemberName] string? caller = null)
@@ -120,7 +114,7 @@ namespace Viam.Core.Resources.Components
             return res.IsMoving;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask Stop(Struct? extra = null,
                                     TimeSpan? timeout = null,
                                     CancellationToken cancellationToken = default,
@@ -132,7 +126,7 @@ namespace Viam.Core.Resources.Components
                         .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default,

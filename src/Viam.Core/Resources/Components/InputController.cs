@@ -43,13 +43,10 @@ namespace Viam.Core.Resources.Components
         ComponentBase<InputController, InputControllerService.InputControllerServiceClient>(resourceName, new InputControllerService.InputControllerServiceClient(channel)),
         IInputController
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(
-            new ResourceRegistration(SubType,
-                                                      (name, channel, logger) => new InputController(name, channel, logger),
-                                                      (logger) => new Services.InputController(logger)));
+        static InputController() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new InputController(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("input_controller");
 
-        [LogCall]
+        [LogInvocation]
         public static InputController FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
@@ -60,7 +57,7 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => ValueTask.CompletedTask;
 
-        [LogCall]
+        [LogInvocation]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
@@ -75,7 +72,7 @@ namespace Viam.Core.Resources.Components
             return res.Result.ToDictionary();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
@@ -89,7 +86,7 @@ namespace Viam.Core.Resources.Components
             return res.Geometries.ToArray();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Control[]> GetControls(Struct? extra = null,
                                                       TimeSpan? timeout = null,
                                                       CancellationToken cancellationToken = default)
@@ -102,7 +99,7 @@ namespace Viam.Core.Resources.Components
             return res.Controls.Select(Control.FromName).ToArray();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<IDictionary<Control, Event>> GetEvents(Control control,
                                          Struct? extra = null,
                                          TimeSpan? timeout = null,
@@ -116,14 +113,14 @@ namespace Viam.Core.Resources.Components
             return res.Events.ToDictionary(x => Control.FromName(x.Control), Event.FromProto);
         }
 
-        [LogCall]
+        [LogInvocation]
         public ValueTask RegisterControlCallback(Control control,
                                                        Struct? extra = null,
                                                        TimeSpan? timeout = null,
                                                        CancellationToken cancellationToken = default) =>
             throw new NotImplementedException();
 
-        [LogCall]
+        [LogInvocation]
         public ValueTask TriggerEvent(Event @event,
                                       Struct? extra = null,
                                       TimeSpan? timeout = null,

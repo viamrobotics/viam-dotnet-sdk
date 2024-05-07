@@ -30,13 +30,10 @@ namespace Viam.Core.Resources.Components
         ComponentBase<PowerSensor, PowerSensorService.PowerSensorServiceClient>(resourceName, new PowerSensorService.PowerSensorServiceClient(channel)),
         IPowerSensor
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(
-            new ResourceRegistration(SubType,
-                                     (name, channel, logger) => new PowerSensor(name, channel, logger),
-                                     (logger) => new Services.PowerSensor(logger)));
+        static PowerSensor() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new PowerSensor(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("power_sensor");
 
-        [LogCall]
+        [LogInvocation]
         public static PowerSensor FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
@@ -47,7 +44,7 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => ValueTask.CompletedTask;
 
-        [LogCall]
+        [LogInvocation]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
@@ -62,7 +59,7 @@ namespace Viam.Core.Resources.Components
             return res.Result.ToDictionary();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<(double, bool)> GetVoltage(Struct? extra = null,
                                                           TimeSpan? timeout = null,
                                                           CancellationToken cancellationToken = default)
@@ -75,7 +72,7 @@ namespace Viam.Core.Resources.Components
             return (res.Volts, res.IsAc);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<(double, bool)> GetCurrent(Struct? extra = null,
                                                           TimeSpan? timeout = null,
                                                           CancellationToken cancellationToken = default)
@@ -88,7 +85,7 @@ namespace Viam.Core.Resources.Components
             return (res.Amperes, res.IsAc);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<double> GetPower(Struct? extra = null,
                                                 TimeSpan? timeout = null,
                                                 CancellationToken cancellationToken = default)
@@ -101,7 +98,7 @@ namespace Viam.Core.Resources.Components
             return res.Watts;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<IDictionary<string, object?>> GetReadings(Struct? extra = null,
                                                                          TimeSpan? timeout = null,
                                                                          CancellationToken cancellationToken = default)

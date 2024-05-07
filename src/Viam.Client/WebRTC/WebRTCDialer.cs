@@ -12,11 +12,16 @@ using SIPSorcery.Net;
 using Viam.Client.Dialing;
 using Viam.Core.Grpc;
 using Viam.Core;
-
+using Viam.Core.Logging;
 using Metadata = Grpc.Core.Metadata;
 
 namespace Viam.Client.WebRTC
 {
+    /// <summary>
+    /// A Dialer that uses WebRTC to connect to the Smart Machine
+    /// </summary>
+    /// <param name="logger">The <see cref="ILogger{WebRtcDialer}"/> to use for state logging</param>
+    /// <param name="grpcDialer">The <see cref="GrpcDialer"/> to use for signaling</param>
     internal class WebRtcDialer(ILogger<WebRtcDialer> logger, GrpcDialer grpcDialer)
     {
         internal class DialState(string uuid)
@@ -24,6 +29,12 @@ namespace Viam.Client.WebRTC
             public string Uuid { get; set; } = uuid;
         }
 
+        /// <summary>
+        /// Dial a Viam Smart Machine using WebRTC
+        /// </summary>
+        /// <param name="dialOptions">The <see cref="WebRtcDialOptions"/> to use when dialing the smart machine</param>
+        /// <returns>A <see cref="ValueTask{ViamChannel}"/></returns>
+        [LogInvocation]
         public async ValueTask<ViamChannel> DialDirectAsync(WebRtcDialOptions dialOptions)
         {
             logger.LogDebug("Dialing WebRTC to {address} with {signalingServer}", dialOptions.MachineAddress, dialOptions.SignalingAddress);
@@ -61,6 +72,7 @@ namespace Viam.Client.WebRTC
 
                     peerConnection.onicegatheringstatechange += async state =>
                     {
+                        logger.LogIceGatheringStateChange(state.ToString());
                         switch (state)
                         {
                             case RTCIceGatheringState.complete:

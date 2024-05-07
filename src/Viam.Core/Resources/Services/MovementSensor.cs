@@ -9,9 +9,10 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class MovementSensor(ILogger logger) : MovementSensorService.MovementSensorServiceBase, IServiceBase
+    internal class MovementSensor(ILogger<MovementSensor> logger) : MovementSensorService.MovementSensorServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.movementsensor.v1.MovementSensorService";
+        public SubType SubType { get; } = SubType.FromRdkComponent("movement_sensor");
 
         public override async Task<GetPropertiesResponse> GetProperties(GetPropertiesRequest request,
                                                                         ServerCallContext context)

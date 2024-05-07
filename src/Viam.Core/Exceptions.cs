@@ -2,9 +2,16 @@
 
 namespace Viam.Core
 {
-    public class ResourceRegistrationNotFoundException : Exception;
+    public class ResourceException : Exception;
 
-    public class ResourceCreatorRegistrationNotFoundException : Exception;
+    public class ResourceRegistrationNotFoundException : ResourceException;
+
+    public class ResourceCreatorRegistrationNotFoundException : ResourceException;
+
+    public class ResourceAlreadyRegisteredException : ResourceException;
 
     public class ResourceNotFoundException(string name) : Exception($"No resource with name {name} found");
+
+    public class MissingDependencyException(string? dependencyName = null)
+        : Exception($"Unable to find dependency {dependencyName ?? "null"} in dependency list. Did you forget to add to the \"Depends on\" list?");
 }

@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>.net6</TargetFramework>
+		<TargetFramework>net6</TargetFramework>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<IsAotCompatible>true</IsAotCompatible>
@@ -39,7 +39,4 @@
 			</Weavers>
 		</WeaverConfiguration>
 	</PropertyGroup>
-	<Target Name="FormatCode" BeforeTargets="BeforeBuild">
-		<Exec Command="dotnet format --exclude Proto/**" />
-	</Target>
 </Project>

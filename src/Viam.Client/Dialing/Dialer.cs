@@ -13,7 +13,7 @@ namespace Viam.Client.Dialing
 
         public Dialer(ILoggerFactory loggerFactory)
         {
-            _grpcDialer = new GrpcDialer(loggerFactory.CreateLogger<GrpcDialer>());
+            _grpcDialer = new GrpcDialer(loggerFactory.CreateLogger<GrpcDialer>(), loggerFactory);
             _webRtcDialer = new WebRtcDialer(loggerFactory.CreateLogger<WebRtcDialer>(), _grpcDialer);
         }
 

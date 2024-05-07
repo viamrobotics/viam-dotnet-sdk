@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 
 using Grpc.Core;
@@ -10,6 +11,7 @@ using Grpc.Net.Client;
 using Microsoft.Extensions.Logging;
 
 using Proto.Rpc.V1;
+
 using Viam.Core.Logging;
 
 namespace Viam.Core.Grpc
@@ -17,64 +19,82 @@ namespace Viam.Core.Grpc
     public record GrpcDialOptions(
         Uri MachineAddress,
         bool Insecure = false,
-        Options.Credentials? Credentials = null,
+        Credentials? Credentials = null,
         int Port = 8080)
     {
-        public override string ToString() => $"{MachineAddress}, {Insecure}, {Credentials}, {Port}";
+        public override string ToString() => $"Address: {MachineAddress}, Insecure: {Insecure}, Credentials: {Credentials}, Port: {Port}";
     }
 
-    public class GrpcDialer(ILogger<GrpcDialer> logger)
+    /// <summary>
+    /// A Dialer that uses GRPC to connect to the Smart Machine
+    /// </summary>
+    /// <param name="logger">The <see cref="ILogger{GrpcDialer}"/> to use for state logging</param>
+    internal class GrpcDialer(ILogger<GrpcDialer> logger, ILoggerFactory loggerFactory)
     {
-        [LogCall]
+        [LogInvocation]
         public ValueTask<ViamChannel> DialDirectAsync(GrpcDialOptions dialOptions, [CallerMemberName] string? caller = null)
         {
+            logger.LogDialDirect(dialOptions);
             var channelCredentialSecurity = dialOptions.Insecure
                                                 ? ChannelCredentials.Insecure
                                                 : ChannelCredentials.SecureSsl;
 
-            var channelOptions = new GrpcChannelOptions() { Credentials = channelCredentialSecurity };
+            var channelOptions = new GrpcChannelOptions()
+                                 {
+                                     //Credentials = channelCredentialSecurity,
+                                     LoggerFactory = loggerFactory
+                                 };
             var address = dialOptions.MachineAddress;
             // Custom transport implementation for UnixDomainSockets
             if (dialOptions.MachineAddress.IsFile)
             {
+                var socketPath = dialOptions.MachineAddress.LocalPath;
+                logger.LogDialUnixSocket(socketPath);
                 if (OperatingSystem.IsLinux() == false)
                     throw new PlatformNotSupportedException("Only Linux is supported for domain sockets.");
 
-                var endpoint = new UnixDomainSocketEndPoint(dialOptions.MachineAddress.ToString());
-                var factory = new UnixDomainSocketsConnectionFactory(endpoint);
-                var handler = new SocketsHttpHandler();
-                handler.ConnectCallback = factory.ConnectAsync;
+                var endpoint = new UnixDomainSocketEndPoint(socketPath);
+                var factory = new UnixDomainSocketsConnectionFactory(endpoint, logger);
+                HttpMessageHandler handler = new SocketsHttpHandler()
+                                             {
+                                                 ConnectCallback = factory.ConnectAsync,
+                                                 UseProxy = false,
+                                                 AllowAutoRedirect = false
+                                             };
                 channelOptions.HttpHandler = handler;
                 // This is needed to stop the GrpcChannel from trying to dial the actual file, which will fail
-                address = new Uri("http://localhost");
+                address = new Uri($"http://localhost:9090");
             }
 
             if (dialOptions.Credentials != null)
             {
-                logger.LogDebug("Setting up GRPC Auth Channel");
+                logger.LogDialCreateAuthChannel();
                 channelOptions.UnsafeUseInsecureChannelCallCredentials = dialOptions.Insecure;
                 var callCredentials = CallCredentials.FromInterceptor(async (context, metadata) =>
                 {
                     if (dialOptions.Credentials != null)
                     {
-                        logger.LogDebug("Creating GRPC Auth Channel");
+                        logger.LogDialDialingAuthChannel();
                         using var channel = global::Grpc.Net.Client.GrpcChannel.ForAddress(dialOptions.MachineAddress);
-                        logger.LogDebug("Created GRPC Auth Channel");
+                        logger.LogDialDialingAuthChannelSuccess();
 
+                        logger.LogDialCreateAuthClient();
                         var authClient = new AuthService.AuthServiceClient(channel);
-                        logger.LogDebug("Created AuthServiceClient");
+                        logger.LogDialCreateAuthClientSuccess();
+
+                        logger.LogDialAuthStart(dialOptions.Credentials.AuthEntity);
                         var authResponse = await authClient.AuthenticateAsync(
                                                new AuthenticateRequest()
                                                {
                                                    Entity = dialOptions.Credentials.AuthEntity,
-                                                   Credentials = new Credentials()
+                                                   Credentials = new Proto.Rpc.V1.Credentials()
                                                    {
                                                        Payload = dialOptions.Credentials.Payload,
                                                        Type = dialOptions.Credentials.Type
                                                    }
                                                });
 
-                        logger.LogDebug("Got auth response.");
+                        logger.LogDialAuthSuccess(dialOptions.Credentials.AuthEntity);
                         metadata.Add("Authorization", $"Bearer {authResponse.AccessToken}");
                     }
                 });
@@ -83,6 +103,7 @@ namespace Viam.Core.Grpc
             }
 
             var channel = new GrpcChannel(global::Grpc.Net.Client.GrpcChannel.ForAddress(address, channelOptions), address.ToString());
+            logger.LogDialComplete();
             return new ValueTask<ViamChannel>(channel);
         }
     }

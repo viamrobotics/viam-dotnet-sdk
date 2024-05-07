@@ -40,13 +40,10 @@ namespace Viam.Core.Resources.Components
         ComponentBase<Encoder, EncoderService.EncoderServiceClient>(resourceName, new EncoderService.EncoderServiceClient(channel)),
         IEncoder
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(
-            new ResourceRegistration(SubType,
-                                              (name, channel, logger) => new Encoder(name, channel, logger),
-                                              (logger) => new Services.Encoder(logger)));
+        static Encoder() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new Encoder(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("encoder");
 
-        [LogCall]
+        [LogInvocation]
         public static Encoder FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
@@ -57,7 +54,7 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => ValueTask.CompletedTask;
 
-        [LogCall]
+        [LogInvocation]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
@@ -72,7 +69,7 @@ namespace Viam.Core.Resources.Components
             return res.Result.ToDictionary();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask ResetPosition(Struct? extra = null,
                                              TimeSpan? timeout = null,
                                              CancellationToken cancellationToken = default)
@@ -83,7 +80,7 @@ namespace Viam.Core.Resources.Components
                         .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<(float, PositionType)> GetPosition(PositionType? positionType = null,
                                                                   Struct? extra = null,
                                                                   TimeSpan? timeout = null,
@@ -102,7 +99,7 @@ namespace Viam.Core.Resources.Components
             return (res.Value, res.PositionType);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Properties> GetProperties(Struct? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
@@ -115,7 +112,7 @@ namespace Viam.Core.Resources.Components
             return new Properties(res.AngleDegreesSupported, res.TicksCountSupported);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)

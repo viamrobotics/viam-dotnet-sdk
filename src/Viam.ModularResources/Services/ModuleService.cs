@@ -1,8 +1,11 @@
 ﻿using Grpc.Core;
 
 using Viam.Core;
+using Viam.Core.Clients;
 using Viam.Core.Grpc;
+using Viam.Core.Logging;
 using Viam.Core.Resources;
+using Viam.Core.Resources.Services;
 using Viam.Core.Utils;
 using Viam.Module.V1;
 using Viam.Robot.V1;
@@ -11,49 +14,82 @@ using grpcRobotService = Viam.Module.V1.ModuleService;
 
 namespace Viam.ModularResources.Services
 {
-    public class ModuleService(ResourceManager manager, ILoggerFactory loggerFactory) : grpcRobotService.ModuleServiceBase
+    public class ModuleService(IServiceProvider services, ResourceManager manager, ILoggerFactory loggerFactory) : grpcRobotService.ModuleServiceBase
     {
+        private static readonly SemaphoreSlim ParentAddressLock = new(1);
+        private static Uri? _parentAddress;
         private readonly ILogger<ModuleService> _logger = loggerFactory.CreateLogger<ModuleService>();
         public readonly ResourceManager Manager = manager;
 
-        public override Task<AddResourceResponse> AddResource(AddResourceRequest request, ServerCallContext context)
+        [LogInvocation]
+        public override async Task<AddResourceResponse> AddResource(AddResourceRequest request, ServerCallContext context)
         {
             _logger.LogDebug("Starting AddResource...");
             var config = request.Config;
             var subType = SubType.FromString(config.Api);
             var model = Model.FromString(config.Model);
-            _logger.LogDebug("Adding resource {Name} {SubType} {Model}", config.Name, subType, model);
-            var creator = Registry.GetResourceCreatorRegistration(subType, model);
-            var resource = creator.Creator(config, [.. request.Dependencies]);
-            _logger.LogDebug("Registering {ResourceName} with the ResourceManager", resource.ResourceName);
-            Manager.Register(resource.ResourceName, resource);
-            return Task.FromResult(new AddResourceResponse());
+            _logger.LogDebug("Adding resource {Name} {SubType} {Model} with dependencies {Dependencies}",
+                             config.Name,
+                             subType,
+                             model,
+                             string.Join(",", request.Dependencies.Select(x => x)));
+
+            try
+            {
+                var channel = await DialParent();
+                if (channel == null)
+                {
+                    throw new Exception("Unable to dial parent");
+                }
+
+                _logger.LogDebug("Dialed parent, preparing resources...");
+
+                // Try to load the resources from the parent
+                var client = new RobotClientBase(loggerFactory, channel);
+                var remoteResourceNames = await client.ResourceNamesAsync();
+                Manager.RegisterRemoteResources(remoteResourceNames, channel);
+
+                var creator = Registry.GetResourceCreatorRegistration(subType, model);
+
+                var dependencies = request.Dependencies.Select(GrpcExtensions.ToResourceName)
+                                          .ToDictionary(x => x, x => Manager.GetResource(x));
+
+                var resource = creator.Creator(loggerFactory.CreateLogger(config.Name), config, dependencies);
+                _logger.LogDebug("Registering {ResourceName} with the ResourceManager", resource.ResourceName);
+                Manager.Register(resource.ResourceName, resource);
+                return new AddResourceResponse();
+            }
+            catch (ResourceCreatorRegistrationNotFoundException ex)
+            {
+                _logger.LogDebug("Failed to find resource creator for {Model}", model);
+                throw;
+            }
         }
 
+        [LogInvocation]
         public override async Task<ReadyResponse> Ready(ReadyRequest request, ServerCallContext context)
         {
             _logger.LogDebug("Calling ready...");
             _logger.LogDebug("Dialing parent...");
-            var dialer = new GrpcDialer(loggerFactory.CreateLogger<GrpcDialer>());
-            // We need to force the correct URI format so we pre-pend file:///
-            var options = new GrpcDialOptions(new Uri($"file:///{request.ParentAddress}"), true);
-            var channel = await dialer.DialDirectAsync(options);
-            _logger.LogDebug("Dialed parent, preparing resources...");
+            // We need to force the correct URI scheme so we pre-pend file://
+            await SetParentAddress(new Uri($"file://{request.ParentAddress}")).ConfigureAwait(false);
+            
             var serviceNameToModels = new Dictionary<(string, SubType), ICollection<Model>>();
-            foreach (var registeredCreator in Registry.RegisteredResourceCreators)
-            {
-                _logger.LogDebug("Loading resource creator for {SubType} {Model}",
-                                 registeredCreator.SubType,
-                                 registeredCreator.Model);
-                var subType = registeredCreator.SubType;
-                var model = registeredCreator.Model;
-                var registration = Registry.GetResourceRegistrationBySubtype(subType);
-                var service = registration.CreateServiceBase(loggerFactory.CreateLogger(subType.ResourceSubType));
-                var serviceName = service.ServiceName;
 
-                var models = serviceNameToModels.GetValueOrDefault((serviceName, subType), new List<Model>());
+            foreach (var (subType, model) in Registry.RegisteredResourceCreators)
+            {
+                _logger.LogModularServiceLookingForService(subType, model);
+
+                var s = services.GetServices<IServiceBase>().ToArray();
+                var service = s.FirstOrDefault(x => x.SubType == subType);
+                if (service == null)
+                {
+                    _logger.LogModularServiceMissingService(subType, s.ToArray());
+                    continue;
+                }
+                var models = serviceNameToModels.GetValueOrDefault((service.ServiceName, subType), new List<Model>());
                 models.Add(model);
-                serviceNameToModels[(serviceName, subType)] = models;
+                serviceNameToModels[(service.ServiceName, subType)] = models;
             }
 
             _logger.LogDebug("Preparing handlers...");
@@ -73,10 +109,11 @@ namespace Viam.ModularResources.Services
                 Handlermap = handlers
             };
 
-            _logger.LogDebug("Done preparing ready response.");
+            _logger.LogDebug("Done preparing ready response");
             return resp;
         }
 
+        [LogInvocation]
         public override async Task<ReconfigureResourceResponse> ReconfigureResource(ReconfigureResourceRequest request, ServerCallContext context)
         {
             // TODO: Need to refresh the manager resources before doing this?
@@ -114,7 +151,7 @@ namespace Viam.ModularResources.Services
                 _logger.LogDebug("Looking up ResourceCreator in registry for {ResourceName}", resourceName);
                 var creator = Registry.GetResourceCreatorRegistration(subtype, model);
                 _logger.LogDebug("Creator found, invoking creator for {ResourceName}", resourceName);
-                resource = creator.Creator(request.Config, request.Dependencies.ToArray());
+                resource = creator.Creator(loggerFactory.CreateLogger(request.Config.Name), request.Config, dependencies);
                 Manager.Register(resourceName, resource);
             }
 
@@ -123,12 +160,14 @@ namespace Viam.ModularResources.Services
             return new ReconfigureResourceResponse();
         }
 
+        [LogInvocation]
         public override Task<RemoveResourceResponse> RemoveResource(RemoveResourceRequest request, ServerCallContext context)
         {
             Manager.RemoveResource(request.Name.ToResourceName());
             return Task.FromResult(new RemoveResourceResponse());
         }
 
+        [LogInvocation]
         public override Task<ValidateConfigResponse> ValidateConfig(ValidateConfigRequest request, ServerCallContext context)
         {
             var config = request.Config;
@@ -139,6 +178,39 @@ namespace Viam.ModularResources.Services
             var resp = new ValidateConfigResponse();
             resp.Dependencies.AddRange(dependencies);
             return Task.FromResult(resp);
+        }
+
+        [LogInvocation]
+        private async ValueTask SetParentAddress(Uri parentAddress)
+        {
+            await ParentAddressLock.WaitAsync();
+            try
+            {
+                _parentAddress ??= parentAddress;
+            }
+            finally
+            {
+                ParentAddressLock.Release();
+            }
+        }
+
+        [LogInvocation]
+        private async ValueTask<ViamChannel?> DialParent()
+        {
+            await ParentAddressLock.WaitAsync();
+            try
+            {
+                if (_parentAddress == null)
+                    return null;
+                var dialer = new GrpcDialer(loggerFactory.CreateLogger<GrpcDialer>(), loggerFactory);
+                var options = new GrpcDialOptions(_parentAddress, true);
+                var channel = await dialer.DialDirectAsync(options);
+                return channel;
+            }
+            finally
+            {
+                ParentAddressLock.Release();
+            }
         }
     }
 }

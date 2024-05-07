@@ -37,13 +37,13 @@ namespace Viam.Core.Clients
             _resourceManager = new ResourceManager(loggerFactory);
         }
 
-        [LogCall]
+        [LogInvocation]
         protected Task RefreshAsync() => _resourceManager.RefreshAsync(this);
 
-        [LogCall]
+        [LogInvocation]
         public T GetComponent<T>(ViamResourceName resourceName) where T : ResourceBase => (T)_resourceManager.GetResource(resourceName);
 
-        [LogCall]
+        [LogInvocation]
         public async Task<Operation[]> GetOperationsAsync(TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var result = await _robotServiceClient.GetOperationsAsync(new GetOperationsRequest(),
@@ -53,7 +53,7 @@ namespace Viam.Core.Clients
             return result.Operations.ToArray();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task<Session[]> GetSessionsAsync(TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var result = await _robotServiceClient.GetSessionsAsync(new GetSessionsRequest(),
@@ -64,7 +64,7 @@ namespace Viam.Core.Clients
             return result.Sessions.ToArray();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task<ViamResourceName[]> ResourceNamesAsync(TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var result = await _robotServiceClient.ResourceNamesAsync(new ResourceNamesRequest(),
@@ -72,13 +72,12 @@ namespace Viam.Core.Clients
                                                                       cancellationToken: cancellationToken)
                                                   .ConfigureAwait(false);
 
-            // ReSharper disable once SuspiciousTypeConversion.Global
-            // There is an implicit conversion between these types
-            return result.Resources.Cast<ViamResourceName>()
+            Logger.LogRobotClientResourceNamesResult(result.Resources.Join(), result.Resources.Count);
+            return result.Resources.Select(x => new ViamResourceName(x))
                          .ToArray();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task<ResourceRPCSubtype[]> GetResourceRpcSubtypesAsync(TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var result = await _robotServiceClient.ResourceRPCSubtypesAsync(new ResourceRPCSubtypesRequest(),
@@ -89,7 +88,7 @@ namespace Viam.Core.Clients
             return result.ResourceRpcSubtypes.ToArray();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task CancelOperationAsync(string operationId, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             await _robotServiceClient.CancelOperationAsync(new CancelOperationRequest() { Id = operationId },
@@ -98,7 +97,7 @@ namespace Viam.Core.Clients
                                      .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task BlockForOperationAsync(string operationId, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             await _robotServiceClient
@@ -108,7 +107,7 @@ namespace Viam.Core.Clients
                                .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task<Discovery[]> DiscoverComponentsAsync(IEnumerable<DiscoveryQuery>? queries = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var query = new DiscoverComponentsRequest();
@@ -123,7 +122,7 @@ namespace Viam.Core.Clients
             return result.Discovery.ToArray();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task<FrameSystemConfig[]> FrameSystemConfigAsync(IEnumerable<Transform>? supplementalTransforms = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var request = new FrameSystemConfigRequest();
@@ -139,7 +138,7 @@ namespace Viam.Core.Clients
             return result.FrameSystemConfigs.ToArray();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task<PoseInFrame> TransformPoseAsync(string destination, PoseInFrame source, IEnumerable<Transform> supplementalTransforms, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var request = new TransformPoseRequest() { Destination = destination, Source = source };
@@ -151,7 +150,7 @@ namespace Viam.Core.Clients
             return result.Pose;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task<ByteString> TransformPcdAsync(string source, string destination, ByteString pointCloudPcd, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var request = new TransformPCDRequest() { Source = source, Destination = destination, PointCloudPcd = pointCloudPcd };
@@ -162,7 +161,7 @@ namespace Viam.Core.Clients
             return result.PointCloudPcd;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task<Status[]> GetStatusAsync(IEnumerable<ResourceName>? resourceNames = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var request = new GetStatusRequest();
@@ -178,7 +177,7 @@ namespace Viam.Core.Clients
             return result.Status.ToArray();
         }
 
-        [LogCall]
+        [LogInvocation]
         public IAsyncStreamReader<StreamStatusResponse> StreamStatus(Duration every, IEnumerable<ResourceName>? resourceNames = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var request = new StreamStatusRequest() { Every = every };
@@ -191,7 +190,7 @@ namespace Viam.Core.Clients
                                       .ResponseStream;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task StopAllAsync(IEnumerable<StopExtraParameters>? extraParameters = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var request = new StopAllRequest();
@@ -206,7 +205,7 @@ namespace Viam.Core.Clients
                                      .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task<(string Id, Duration HeartbeatWindow)> StartSessionAsync(string? resumeToken = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var result = await _robotServiceClient.StartSessionAsync(new StartSessionRequest() { Resume = resumeToken },
@@ -217,7 +216,7 @@ namespace Viam.Core.Clients
             return (result.Id, result.HeartbeatWindow);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task SendSessionHeartbeatAsync(string sessionId, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var request = new SendSessionHeartbeatRequest() { Id = sessionId };
@@ -227,7 +226,7 @@ namespace Viam.Core.Clients
                                      .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task LogAsync(IEnumerable<LogEntry> logs)
         {
             var request = new LogRequest();
@@ -235,7 +234,7 @@ namespace Viam.Core.Clients
             await _robotServiceClient.LogAsync(request);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async Task<CloudMetadata> GetCloudMetadataAsync(TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var result = await _robotServiceClient.GetCloudMetadataAsync(new GetCloudMetadataRequest(),

@@ -86,12 +86,10 @@ namespace Viam.Core.Resources.Components
         : ComponentBase<Base, BaseService.BaseServiceClient>(resourceName, new BaseService.BaseServiceClient(channel)),
           IBase
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(
-            new ResourceRegistration(SubType, (name, channel, logger) => new Base(name, channel, logger), logger => new Services.Base(logger)));
-
+        static Base() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new Base(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("base");
 
-        [LogCall]
+        [LogInvocation]
         public static Board FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
@@ -102,7 +100,7 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => Stop();
 
-        [LogCall]
+        [LogInvocation]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
@@ -115,7 +113,7 @@ namespace Viam.Core.Resources.Components
             return res.Result.ToDictionary();
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask MoveStraight(long distance,
                                             double velocity,
                                             Struct? extra = null,
@@ -135,7 +133,7 @@ namespace Viam.Core.Resources.Components
                         .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask Spin(double angle,
                                     double velocity,
                                     Struct? extra = null,
@@ -154,7 +152,7 @@ namespace Viam.Core.Resources.Components
                         .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask SetPower(Vector3 linear,
                                         Vector3 angular,
                                         Struct? extra = null,
@@ -169,7 +167,7 @@ namespace Viam.Core.Resources.Components
                   .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask SetVelocity(Vector3 linear,
                                            Vector3 angular,
                                            Struct? extra = null,
@@ -188,7 +186,7 @@ namespace Viam.Core.Resources.Components
                         .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask Stop(Struct? extra = null,
                                     TimeSpan? timeout = null,
                                     CancellationToken cancellationToken = default)
@@ -199,7 +197,7 @@ namespace Viam.Core.Resources.Components
                         .ConfigureAwait(false);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<bool> IsMoving(TimeSpan? timeout = null,
                                               CancellationToken cancellationToken = default)
         {
@@ -211,7 +209,7 @@ namespace Viam.Core.Resources.Components
             return res.IsMoving;
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Properties> GetProperties(Struct? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
@@ -224,7 +222,7 @@ namespace Viam.Core.Resources.Components
             return new Properties(res.TurningRadiusMeters, res.WheelCircumferenceMeters, res.WidthMeters);
         }
 
-        [LogCall]
+        [LogInvocation]
         public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)

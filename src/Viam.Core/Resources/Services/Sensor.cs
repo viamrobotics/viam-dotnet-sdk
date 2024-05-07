@@ -9,9 +9,10 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class Sensor(ILogger logger) : SensorService.SensorServiceBase, IServiceBase
+    internal class Sensor(ILogger<Sensor> logger) : SensorService.SensorServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.sensor.v1.SensorService";
+        public SubType SubType { get; } = SubType.FromRdkComponent("sensor");
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

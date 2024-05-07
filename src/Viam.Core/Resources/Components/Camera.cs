@@ -42,14 +42,10 @@ namespace Viam.Core.Resources.Components
                                                                    new CameraService.CameraServiceClient(channel)),
           ICamera
     {
-        internal static void RegisterType() => Registry.RegisterSubtype(
-            new ResourceRegistration(SubType,
-                                             (name, channel, logger) => new Camera(name, channel, logger),
-                                             (logger) => new Services.Camera(logger)));
-
+        static Camera() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new Camera(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("camera");
 
-        [LogCall]
+        [LogInvocation]
         public static Camera FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
@@ -60,7 +56,7 @@ namespace Viam.Core.Resources.Components
 
         public override ValueTask StopResource() => ValueTask.CompletedTask;
 
-        [LogCall]
+        [LogInvocation]
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
@@ -73,30 +69,30 @@ namespace Viam.Core.Resources.Components
             return res.Result.ToDictionary();
         }
 
-        [LogCall]
+        [LogInvocation]
         public ValueTask<object> GetImage(MimeType mimeType,
                                           Struct? extra = null,
                                           TimeSpan? timeout = null,
                                           CancellationToken cancellationToken = default) =>
             throw new NotImplementedException();
 
-        [LogCall]
+        [LogInvocation]
         public ValueTask<object[]> GetImages(TimeSpan? timeout = null,
                                              CancellationToken cancellationToken = default) =>
             throw new NotImplementedException();
 
-        [LogCall]
+        [LogInvocation]
         public ValueTask<object> GetPointCloud(Struct? extra = null,
                                                TimeSpan? timeout = null,
                                                CancellationToken cancellationToken = default) =>
             throw new NotImplementedException();
 
-        [LogCall]
+        [LogInvocation]
         public ValueTask<Properties> GetProperties(TimeSpan? timeout = null,
                                                    CancellationToken cancellationToken = default) =>
             throw new NotImplementedException();
 
-        [LogCall]
+        [LogInvocation]
         public ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
                                                    TimeSpan? timeout = null,
                                                    CancellationToken cancellationToken = default) =>

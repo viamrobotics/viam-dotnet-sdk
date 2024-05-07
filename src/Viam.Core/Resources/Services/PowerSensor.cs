@@ -9,9 +9,11 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class PowerSensor(ILogger logger) : PowerSensorService.PowerSensorServiceBase, IServiceBase
+    internal class PowerSensor(ILogger<PowerSensor> logger) : PowerSensorService.PowerSensorServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.powersensor.v1.PowerSensorService";
+        public SubType SubType { get; } = SubType.FromRdkComponent("power_sensor");
+
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {
             var resource = (IPowerSensor)context.UserState["resource"];

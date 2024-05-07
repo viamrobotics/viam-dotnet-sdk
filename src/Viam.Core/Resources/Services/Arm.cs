@@ -12,9 +12,10 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Services
 {
-    internal class Arm(ILogger logger) : ArmService.ArmServiceBase, IServiceBase
+    internal class Arm(ILogger<Arm> logger) : ArmService.ArmServiceBase, IServiceBase
     {
         public string ServiceName => "viam.component.arm.v1.ArmService";
+        public SubType SubType { get; } = SubType.FromRdkComponent("arm");
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

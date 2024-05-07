@@ -8,7 +8,7 @@ using Viam.Core.Resources;
 
 namespace Viam.Core.Utils
 {
-    internal static class GrpcExtensions
+    public static class GrpcExtensions
     {
         public static Struct ToStruct(this IDictionary<string, object?> dict)
         {
