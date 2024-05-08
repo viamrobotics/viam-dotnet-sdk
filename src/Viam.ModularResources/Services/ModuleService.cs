@@ -5,7 +5,7 @@ using Viam.Core.Clients;
 using Viam.Core.Grpc;
 using Viam.Core.Logging;
 using Viam.Core.Resources;
-using Viam.Core.Resources.Services;
+using Viam.Core.Resources.Components;
 using Viam.Core.Utils;
 using Viam.Module.V1;
 using Viam.Robot.V1;
@@ -21,7 +21,7 @@ namespace Viam.ModularResources.Services
         private readonly ILogger<ModuleService> _logger = loggerFactory.CreateLogger<ModuleService>();
         public readonly ResourceManager Manager = manager;
 
-        [LogInvocation]
+        
         public override async Task<AddResourceResponse> AddResource(AddResourceRequest request, ServerCallContext context)
         {
             _logger.LogDebug("Starting AddResource...");
@@ -66,7 +66,7 @@ namespace Viam.ModularResources.Services
             }
         }
 
-        [LogInvocation]
+        
         public override async Task<ReadyResponse> Ready(ReadyRequest request, ServerCallContext context)
         {
             _logger.LogDebug("Calling ready...");
@@ -113,7 +113,7 @@ namespace Viam.ModularResources.Services
             return resp;
         }
 
-        [LogInvocation]
+        
         public override async Task<ReconfigureResourceResponse> ReconfigureResource(ReconfigureResourceRequest request, ServerCallContext context)
         {
             // TODO: Need to refresh the manager resources before doing this?
@@ -160,14 +160,14 @@ namespace Viam.ModularResources.Services
             return new ReconfigureResourceResponse();
         }
 
-        [LogInvocation]
+        
         public override Task<RemoveResourceResponse> RemoveResource(RemoveResourceRequest request, ServerCallContext context)
         {
             Manager.RemoveResource(request.Name.ToResourceName());
             return Task.FromResult(new RemoveResourceResponse());
         }
 
-        [LogInvocation]
+        
         public override Task<ValidateConfigResponse> ValidateConfig(ValidateConfigRequest request, ServerCallContext context)
         {
             var config = request.Config;
@@ -180,7 +180,7 @@ namespace Viam.ModularResources.Services
             return Task.FromResult(resp);
         }
 
-        [LogInvocation]
+        
         private async ValueTask SetParentAddress(Uri parentAddress)
         {
             await ParentAddressLock.WaitAsync();
@@ -194,7 +194,7 @@ namespace Viam.ModularResources.Services
             }
         }
 
-        [LogInvocation]
+        
         private async ValueTask<ViamChannel?> DialParent()
         {
             await ParentAddressLock.WaitAsync();

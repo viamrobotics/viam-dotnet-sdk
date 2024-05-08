@@ -4,14 +4,16 @@ using Viam.App.V1;
 using Viam.Core;
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components;
+using Viam.Core.Resources.Components.Sensor;
 using Viam.Core.Utils;
+using Viam.ModularResources;
 using Model = Viam.Core.Resources.Model;
 
-Registry.RegisterResourceCreator(Sensor.SubType,
+Registry.RegisterResourceCreator(SensorClient.SubType,
                                  ModularSensor.Model,
                                  new ResourceCreatorRegistration((logger, config, dependencies) => new ModularSensor(logger, config, dependencies), ModularSensor.ValidateConfig));
 var module = Viam.ModularResources.Module.FromArgs(args);
-module.AddModelFromRegistry(Sensor.SubType, new Model(new ModelFamily("viam", "sensor"), "mySensor"));
+module.AddModelFromRegistry(SensorClient.SubType, new Model(new ModelFamily("viam", "sensor"), "mySensor"));
 await module.Run();
 
 public class ModularSensor : ISensor, IAsyncReconfigurable
@@ -40,7 +42,7 @@ public class ModularSensor : ISensor, IAsyncReconfigurable
         //pmic_temp
         if (command.TryGetValue("command", out var cmd))
         {
-            Console.WriteLine(cmd);
+            _logger.LogDebug("Command: {Command}", cmd);
         }
 
         return new ValueTask<IDictionary<string, object?>>(new Dictionary<string, object?>());
@@ -69,8 +71,7 @@ public class ModularSensor : ISensor, IAsyncReconfigurable
 
         if (reading.TryGetValue("a", out var aObj))
         {
-            if (aObj is int a)
-                dict.Add("a", a);
+            dict.Add("a", aObj);
         }
 
         return dict;
@@ -81,7 +82,7 @@ public class ModularSensor : ISensor, IAsyncReconfigurable
         _logger.LogDebug("Reconfiguring!");
         var cfg = config.Attributes.ToDictionary();
         var cfgName = cfg["sensor_name"] as string;
-        var sensorName = Sensor.GetResourceName(cfgName);
+        var sensorName = SensorClient.GetResourceName(cfgName);
         var sensor = dependencies[sensorName] as ISensor;
         _temperatureSensor = sensor ?? throw new MissingDependencyException(cfgName);
         return ValueTask.CompletedTask;

@@ -9,7 +9,21 @@ using Microsoft.Extensions.Logging.Abstractions;
 
 using Viam.App.V1;
 using Viam.Core.Logging;
-using Viam.Core.Resources.Services;
+using Viam.Core.Resources.Components;
+using Viam.Core.Resources.Components.Arm;
+using Viam.Core.Resources.Components.Base;
+using Viam.Core.Resources.Components.Board;
+using Viam.Core.Resources.Components.Camera;
+using Viam.Core.Resources.Components.Encoder;
+using Viam.Core.Resources.Components.Gantry;
+using Viam.Core.Resources.Components.Generic;
+using Viam.Core.Resources.Components.Gripper;
+using Viam.Core.Resources.Components.InputController;
+using Viam.Core.Resources.Components.Motor;
+using Viam.Core.Resources.Components.MovementSensor;
+using Viam.Core.Resources.Components.PowerSensor;
+using Viam.Core.Resources.Components.Sensor;
+using Viam.Core.Resources.Components.Servo;
 
 namespace Viam.Core.Resources
 {
@@ -30,33 +44,33 @@ namespace Viam.Core.Resources
         public static void RegisterComponentServices(IServiceCollection services)
         {
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("arm")))
-                RegisterService<Arm>(services);
+                RegisterService<ArmService>(services);
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("base")))
-                RegisterService<Base>(services);
+                RegisterService<BaseService>(services);
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("board")))
-                RegisterService<Board>(services);
+                RegisterService<BoardService>(services);
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("camera")))
-                RegisterService<Camera>(services);
+                RegisterService<CameraService>(services);
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("encoder")))
-                RegisterService<Encoder>(services);
+                RegisterService<EncoderService>(services);
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("gantry")))
-                RegisterService<Gantry>(services);
+                RegisterService<GantryService>(services);
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("generic")))
-                RegisterService<Generic>(services);
+                RegisterService<GenericService>(services);
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("gripper")))
-                RegisterService<Gripper>(services);
+                RegisterService<GripperService>(services);
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("input_controller")))
-                RegisterService<InputController>(services);
+                RegisterService<InputControllerService>(services);
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("motor")))
-                RegisterService<Motor>(services);
+                RegisterService<MotorService>(services);
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("movement_sensor")))
-                RegisterService<MovementSensor>(services);
+                RegisterService<MovementSensorService>(services);
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("power_sensor")))
-                RegisterService<PowerSensor>(services);
+                RegisterService<PowerSensorService>(services);
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("sensor")))
-                RegisterService<Sensor>(services);
+                RegisterService<SensorService>(services);
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("servo")))
-                RegisterService<Servo>(services);
+                RegisterService<ServoService>(services);
         }
 
         private static void RegisterService<TImpl>(IServiceCollection services) where TImpl : class, IServiceBase
@@ -65,7 +79,7 @@ namespace Viam.Core.Resources
             services.AddTransient<IServiceBase, TImpl>();
         }
 
-        [LogInvocation]
+        
         public static ComponentRegistration GetResourceRegistrationBySubtype(SubType subType, [CallerMemberName] string? caller = null)
         {
             Logger.LogRegistryResourceGet(subType);
@@ -79,7 +93,7 @@ namespace Viam.Core.Resources
             throw new ResourceRegistrationNotFoundException();
         }
 
-        [LogInvocation]
+        
         public static ResourceCreatorRegistration GetResourceCreatorRegistration(SubType subType, Model model, [CallerMemberName] string? caller = null)
         {
             Logger.LogRegistryResourceCreatorGet(subType, model);
@@ -106,7 +120,7 @@ namespace Viam.Core.Resources
     {
         public SubType SubType => subType;
 
-        [LogInvocation]
+        
         internal ResourceBase CreateRpcClient(ViamResourceName name, ViamChannel channel, ILogger logger) => clientCreator(name, channel, logger);
 
         public override string ToString() => subType.ToString();

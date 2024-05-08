@@ -31,7 +31,7 @@ namespace Viam.Core.Grpc
     /// <param name="logger">The <see cref="ILogger{GrpcDialer}"/> to use for state logging</param>
     internal class GrpcDialer(ILogger<GrpcDialer> logger, ILoggerFactory loggerFactory)
     {
-        [LogInvocation]
+        
         public ValueTask<ViamChannel> DialDirectAsync(GrpcDialOptions dialOptions, [CallerMemberName] string? caller = null)
         {
             logger.LogDialDirect(dialOptions);

@@ -2,23 +2,22 @@
 using Grpc.Core.Interceptors;
 
 using Viam.Core.Resources;
-using Viam.Core.Resources.Services;
+using Viam.Core.Resources.Components.Generic;
+using Viam.Core.Resources.Components.Gripper;
+using Viam.Core.Resources.Components.InputController;
+using Viam.Core.Resources.Components.Motor;
+using Viam.Core.Resources.Components.MovementSensor;
+using Viam.Core.Resources.Components.PowerSensor;
+using Viam.Core.Resources.Components.Sensor;
+using Viam.Core.Resources.Components.Servo;
 using Viam.ModularResources.Services;
 
-using Arm = Viam.Core.Resources.Services.Arm;
-using Base = Viam.Core.Resources.Services.Base;
-using Board = Viam.Core.Resources.Services.Board;
-using Camera = Viam.Core.Resources.Services.Camera;
-using Encoder = Viam.Core.Resources.Services.Encoder;
-using Gantry = Viam.Core.Resources.Services.Gantry;
-using Generic = Viam.Core.Resources.Services.Generic;
-using Gripper = Viam.Core.Resources.Services.Gripper;
-using InputController = Viam.Core.Resources.Services.InputController;
-using Motor = Viam.Core.Resources.Services.Motor;
-using MovementSensor = Viam.Core.Resources.Services.MovementSensor;
-using PowerSensor = Viam.Core.Resources.Services.PowerSensor;
-using Sensor = Viam.Core.Resources.Services.Sensor;
-using Servo = Viam.Core.Resources.Services.Servo;
+using ArmService = Viam.Core.Resources.Components.Arm.ArmService;
+using BaseService = Viam.Core.Resources.Components.Base.BaseService;
+using BoardService = Viam.Core.Resources.Components.Board.BoardService;
+using CameraService = Viam.Core.Resources.Components.Camera.CameraService;
+using EncoderService = Viam.Core.Resources.Components.Encoder.EncoderService;
+using GantryService = Viam.Core.Resources.Components.Gantry.GantryService;
 
 namespace Viam.ModularResources
 {
@@ -46,47 +45,47 @@ namespace Viam.ModularResources
 
         private void MapComponentGrpcServices(IEndpointRouteBuilder e)
         {
-            if (e.ServiceProvider.GetService<Arm>() != null)
-                e.MapGrpcService<Arm>();
+            if (e.ServiceProvider.GetService<ArmService>() != null)
+                e.MapGrpcService<ArmService>();
 
-            if (e.ServiceProvider.GetService<Base>() != null)
-                e.MapGrpcService<Base>();
+            if (e.ServiceProvider.GetService<BaseService>() != null)
+                e.MapGrpcService<BaseService>();
 
-            if (e.ServiceProvider.GetService<Board>() != null)
-                e.MapGrpcService<Board>();
+            if (e.ServiceProvider.GetService<BoardService>() != null)
+                e.MapGrpcService<BoardService>();
 
-            if (e.ServiceProvider.GetService<Camera>() != null)
-                e.MapGrpcService<Camera>();
+            if (e.ServiceProvider.GetService<CameraService>() != null)
+                e.MapGrpcService<CameraService>();
 
-            if (e.ServiceProvider.GetService<Encoder>() != null)
-                e.MapGrpcService<Encoder>();
+            if (e.ServiceProvider.GetService<EncoderService>() != null)
+                e.MapGrpcService<EncoderService>();
 
-            if (e.ServiceProvider.GetService<Gantry>() != null)
-                e.MapGrpcService<Gantry>();
+            if (e.ServiceProvider.GetService<GantryService>() != null)
+                e.MapGrpcService<GantryService>();
 
-            if (e.ServiceProvider.GetService<Generic>() != null)
-                e.MapGrpcService<Generic>();
+            if (e.ServiceProvider.GetService<GenericService>() != null)
+                e.MapGrpcService<GenericService>();
 
-            if (e.ServiceProvider.GetService<Gripper>() != null)
-                e.MapGrpcService<Gripper>();
+            if (e.ServiceProvider.GetService<GripperService>() != null)
+                e.MapGrpcService<GripperService>();
 
-            if (e.ServiceProvider.GetService<InputController>() != null)
-                e.MapGrpcService<InputController>();
+            if (e.ServiceProvider.GetService<InputControllerService>() != null)
+                e.MapGrpcService<InputControllerService>();
 
-            if (e.ServiceProvider.GetService<Motor>() != null)
-                e.MapGrpcService<Motor>();
+            if (e.ServiceProvider.GetService<MotorService>() != null)
+                e.MapGrpcService<MotorService>();
 
-            if (e.ServiceProvider.GetService<MovementSensor>() != null)
-                e.MapGrpcService<MovementSensor>();
+            if (e.ServiceProvider.GetService<MovementSensorService>() != null)
+                e.MapGrpcService<MovementSensorService>();
 
-            if (e.ServiceProvider.GetService<PowerSensor>() != null)
-                e.MapGrpcService<PowerSensor>();
+            if (e.ServiceProvider.GetService<PowerSensorService>() != null)
+                e.MapGrpcService<PowerSensorService>();
 
-            if (e.ServiceProvider.GetService<Sensor>() != null)
-                e.MapGrpcService<Sensor>();
+            if (e.ServiceProvider.GetService<SensorService>() != null)
+                e.MapGrpcService<SensorService>();
 
-            if (e.ServiceProvider.GetService<Servo>() != null)
-                e.MapGrpcService<Servo>();
+            if (e.ServiceProvider.GetService<ServoService>() != null)
+                e.MapGrpcService<ServoService>();
         }
     }
 

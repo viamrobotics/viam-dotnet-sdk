@@ -1,4 +1,6 @@
 ﻿using System;
+using Viam.Component.Camera.V1;
+using Viam.Core.Resources;
 
 namespace Viam.Core
 {
@@ -14,4 +16,11 @@ namespace Viam.Core
 
     public class MissingDependencyException(string? dependencyName = null)
         : Exception($"Unable to find dependency {dependencyName ?? "null"} in dependency list. Did you forget to add to the \"Depends on\" list?");
+
+    public class ImageFormatNotSupportedException(string imageFormat)
+        : Exception($"Image of format {imageFormat} is not supported")
+    {
+        public ImageFormatNotSupportedException(MimeType mimeType):this(mimeType.ToString()){}
+        public ImageFormatNotSupportedException(Format protoImageFormat):this(protoImageFormat.ToString()){}
+    }
 }

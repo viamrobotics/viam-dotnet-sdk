@@ -16,8 +16,18 @@ namespace Viam.Core.Resources
                 Subtype = subtype.ResourceSubType
             })
         { }
+
+        public ResourceName ToResourceName() =>
+            new()
+            {
+                Name = Name,
+                Namespace = Namespace,
+                Type = ResourceType,
+                Subtype = ResourceSubtype
+            };
+
         // Implicit operator to convert from ViamResource to ResourceName
-        public static implicit operator ResourceName(ViamResourceName viamResource) => new ResourceName()
+        public static implicit operator ResourceName(ViamResourceName viamResource) => new()
         {
             Name = viamResource.Name,
             Namespace = viamResource.Namespace,

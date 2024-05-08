@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
+
 using Microsoft.Extensions.Logging;
+
+using Viam.Common.V1;
 using Viam.Core.Grpc;
 using Viam.Core.Resources;
+using Viam.Core.Utils;
 
 namespace Viam.Core.Logging
 {
@@ -14,20 +19,59 @@ namespace Viam.Core.Logging
          * 2000 - Communications Logging
          * 3000 - ModularResources Logging (Found in Viam.ModularResources)
          * 4000 - Client Method Logging
+         *      4000 - Robot Client
+         *      4100 - Arm Client
+         *      4100 - Base Client
+         *      4200 - Board Client
+         *      4300 - Camera Client
+         *      4400 - Encoder Client
+         *      4500 - Gantry Client
+         *      4600 - Generic Client
+         *      4700 - Gripper Client
+         *      4800 - InputController Client
+         *      4900 - Motor Client
+         *      5000 - MovementSensor Client
+         *      5100 - PowerSensor Client
+         *      5200 - Sensor Client
+         *      5300 - Servo Client
+         *      5400 - App Client
+         *  
          */
 
-        [LoggerMessage(EventId = 1000, Message = "Calling {Method} with ({Parameters})", Level = LogLevel.Trace)]
-        internal static partial void LogMethodInvocationStart(this ILogger logger, string method, object?[] parameters);
+        #region Method Invocation Logging
+        [LoggerMessage(EventId = 1000, Message = "Invoking {Method} with {Parameters}", Level = LogLevel.Trace, SkipEnabledCheck = true)]
+        private static partial void LogMethodInvocationStartImpl(this ILogger logger, string method, string parameters);
 
-        [LoggerMessage(EventId = 1001, Message = "Done executing {Method} with ({Parameters})", Level = LogLevel.Trace)]
-        internal static partial void LogMethodInvocationFinish(this ILogger logger, string method, object?[] parameters);
+        // We separate the caller from the implementation to explicitly guard against unnecessary calls to .ToLogParameters() when the logger isn't enabled
+        internal static void LogMethodInvocationStart(this ILogger logger,
+                                                              [CallerMemberName] string method = "unknown",
+                                                              params object?[]? parameters)
+        {
+            if (logger.IsEnabled(LogLevel.Trace))
+            {
+                logger.LogMethodInvocationStartImpl(method, parameters.ToLogFormat());
+            }
+        }
 
-        [LoggerMessage(EventId = 1002, Message = "An exception occurred while executing {Method} with ({Parameters})", Level = LogLevel.Debug)]
-        internal static partial void LogMethodInvocationException(this ILogger logger, string method, object?[] parameters, Exception? exception);
+        [LoggerMessage(EventId = 1001, Message = "Done executing {Method}. Results {Results}", Level = LogLevel.Trace)]
+        private static partial void LogMethodInvocationSuccessImpl(this ILogger logger, string method, string results);
+        
+        // We separate the caller from the implementation to explicitly guard against unnecessary calls to .ToLogParameters() when the logger isn't enabled
+        internal static void LogMethodInvocationSuccess(this ILogger logger,
+                                                        [CallerMemberName] string method = "unknown",
+                                                        params object?[]? results)
+        {
+            if (logger.IsEnabled(LogLevel.Trace))
+            {
+                logger.LogMethodInvocationSuccessImpl(method, results.ToLogFormat());
+            }
+        }
 
-        [LoggerMessage(EventId = 1003, Message = "Canceled executing {Method} with ({Parameters})", Level = LogLevel.Trace)]
-        internal static partial void LogMethodInvocationCanceled(this ILogger logger, string method, object?[] parameters);
+        [LoggerMessage(EventId = 1002, Message = "An exception occurred while executing {Method}", Level = LogLevel.Debug)]
+        internal static partial void LogMethodInvocationFailure(this ILogger logger, Exception? exception = null, [CallerMemberName] string method = "unknown");
+        #endregion
 
+        #region Registry Logging
         [LoggerMessage(EventId = 1100, Message = "Getting resource by {SubType} in registry", Level = LogLevel.Debug)]
         internal static partial void LogRegistryResourceGet(this ILogger logger, SubType subType);
 
@@ -45,7 +89,9 @@ namespace Viam.Core.Logging
 
         [LoggerMessage(EventId = 1105, Message = "Did not find ResourceCreator by {SubType} and {Model} in registry", Level = LogLevel.Debug)]
         internal static partial void LogRegistryResourceCreatorGetFailure(this ILogger logger, SubType subType, Model model);
+        #endregion
 
+        #region Resource Manager Logging
         [LoggerMessage(EventId = 1200, Message = "Registering Resource {ResourceName} {Resource} from {Caller} in manager", Level = LogLevel.Debug)]
         internal static partial void LogManagerResourceRegistration(this ILogger logger, ViamResourceName resourceName, IResourceBase resource, string? caller = null);
 
@@ -99,7 +145,9 @@ namespace Viam.Core.Logging
 
         [LoggerMessage(EventId = 1217, Message = "Failed to register resource {ResourceName}", Level = LogLevel.Debug)]
         internal static partial void LogManagerRegisterRemoteResourcesError(this ILogger logger, ViamResourceName resourceName, Exception exception);
+        #endregion
 
+        #region Dialer Logging
         [LoggerMessage(EventId = 2000, Message = "Dialing {Options}", Level = LogLevel.Information)]
         internal static partial void LogDialDirect(this ILogger logger, GrpcDialOptions options);
 
@@ -132,8 +180,25 @@ namespace Viam.Core.Logging
 
         [LoggerMessage(EventId = 2010, Message = "ICE Gathering State is now {State}", Level = LogLevel.Trace)]
         internal static partial void LogIceGatheringStateChange(this ILogger logger, string state);
+        #endregion
 
-        [LoggerMessage(EventId = 4000, Message = "Found {Count} resources: {ResourceNames}", Level = LogLevel.Trace)]
-        internal static partial void LogRobotClientResourceNamesResult(this ILogger logger, string resourceNames, int count);
+        #region Client Method Logging
+        #region Robot Client
+
+        #endregion
+
+        #region Arm Client
+
+        #endregion
+
+        #region Base Client
+
+        #endregion
+
+        #region App Client
+        [LoggerMessage(EventId = 5400, Message = "", Level = LogLevel.Trace)]
+        internal static partial void LogAppClientPlaceholder(this ILogger logger);
+        #endregion
+        #endregion
     }
 }

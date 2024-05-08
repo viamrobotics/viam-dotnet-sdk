@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Viam.Core.Clients;
 using Viam.Core.Logging;
+using Viam.Core.Resources.Components;
+using Viam.Core.Resources.Components.MovementSensor;
+using Viam.Core.Resources.Components.Sensor;
 using Viam.Core.Utils;
 
 namespace Viam.Core.Resources
@@ -18,7 +21,7 @@ namespace Viam.Core.Resources
         private readonly ConcurrentDictionary<ViamResourceName, IResourceBase> _resources = new();
         private readonly ILogger<ResourceManager> _logger = loggerFactory.CreateLogger<ResourceManager>();
 
-        [LogInvocation]
+        
         public void Register(ViamResourceName resourceName, IResourceBase resource, [CallerMemberName] string? caller = null)
         {
             _logger.LogManagerResourceRegistration(resourceName, resource, caller);
@@ -28,7 +31,7 @@ namespace Viam.Core.Resources
             }
         }
 
-        [LogInvocation]
+        
         public IResourceBase GetResource(ViamResourceName resourceName, [CallerMemberName] string? caller = null)
         {
             _logger.LogManagerResourceGet(resourceName, caller);
@@ -43,7 +46,7 @@ namespace Viam.Core.Resources
         }
 
         // This is a little inefficient, but we can fix this later
-        [LogInvocation]
+        
         public IResourceBase GetResourceByShortName(string name, [CallerMemberName] string? caller = null)
         {
             _logger.LogManagerResourceGetByShortName(name, caller);
@@ -60,7 +63,7 @@ namespace Viam.Core.Resources
             throw new ResourceNotFoundException(name);
         }
 
-        [LogInvocation]
+        
         public void RemoveResource(ViamResourceName resourceName, [CallerMemberName] string? caller = null)
         {
             _logger.LogManagerResourceRemove(resourceName, caller);
@@ -74,26 +77,24 @@ namespace Viam.Core.Resources
             throw new ResourceNotFoundException(resourceName.ToString());
         }
 
-        [LogInvocation]
+        
         public async Task RefreshAsync(RobotClientBase client, [CallerMemberName] string? caller = null)
         {
             _logger.LogManagerRefreshStart(caller);
             var resourceNames = await client.ResourceNamesAsync();
-            var resourceNamesEnumerable = resourceNames.ToArray();
-            var foo = resourceNamesEnumerable.Where(x => x.ResourceType == "component" || x.ResourceType == "service")
-                                             .Where(x => x.ResourceSubtype != "remote");
-            // TODO: Filter out movement sensors
-            // TODO: Filter power sensors?
-            //.Where(x => x.Subtype != Sensor.SubType.ResourceSubType && !resourceNamesEnumerable.Contains(MovementSensor.GetResourceName(x.Name)));
-            foreach (var fo in foo)
+            var filteredResourceName = resourceNames.Where(x => x.ResourceSubtype is "component" or "service")
+                                   .Where(x => x.ResourceSubtype != "remote")
+                                   .Where(x => x.ResourceSubtype != SensorClient.SubType.ResourceSubType
+                                            || !resourceNames.Contains(new ViamResourceName(MovementSensorClient.SubType, x.Name)));
+            foreach (var resourceName in filteredResourceName)
             {
-                CreateOrResetClient(fo, client.Channel);
+                CreateOrResetClient(resourceName, client.Channel);
             }
 
             _logger.LogManagerRefreshFinish(caller);
         }
 
-        [LogInvocation]
+        
         public void RegisterRemoteResources(ViamResourceName[] remoteResourceNames, ViamChannel channel)
         {
             var resourceCount = 0;
@@ -121,13 +122,13 @@ namespace Viam.Core.Resources
             _logger.LogManagerRegisterRemoteResourcesComplete(resourceCount);
         }
 
-        [LogInvocation]
+        
         public ICollection<ViamResourceName> GetResourceNames() => _resources.Keys;
 
-        [LogInvocation]
+        
         public ICollection<IResourceBase> GetResources() => _resources.Values;
 
-        [LogInvocation]
+        
         private void CreateOrResetClient(ViamResourceName resourceName, ViamChannel channel)
         {
             _logger.LogManagerCreateOrRefreshClient(resourceName, channel);
@@ -149,7 +150,7 @@ namespace Viam.Core.Resources
             }
         }
 
-        [LogInvocation]
+        
         public async ValueTask DisposeAsync()
         {
             _logger.LogManagerDispose();

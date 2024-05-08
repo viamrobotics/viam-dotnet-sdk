@@ -7,9 +7,9 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
-		<PublishTrimmed>false</PublishTrimmed>
-		<PublishSingleFile>true</PublishSingleFile>
-		<PublishAot>false</PublishAot>
+		<PublishTrimmed>true</PublishTrimmed>
+		<PublishSingleFile>false</PublishSingleFile>
+		<PublishAot>true</PublishAot>
 		<IsAotCompatible>true</IsAotCompatible>
 		<StripSymbols>true</StripSymbols>
 	</PropertyGroup>

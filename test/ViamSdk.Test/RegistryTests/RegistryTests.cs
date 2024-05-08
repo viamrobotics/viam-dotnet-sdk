@@ -2,6 +2,8 @@
 
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components;
+using Viam.Core.Resources.Components.Arm;
+using Viam.Core.Resources.Components.Sensor;
 
 namespace Viam.Core.Test.RegistryTests
 {
@@ -16,11 +18,10 @@ namespace Viam.Core.Test.RegistryTests
                 builder.SetMinimumLevel(LogLevel.Trace);
             });
 
-            Logging.Logger.SetLoggerFactory(loggerFactory);
-            var arm = Registry.GetResourceRegistrationBySubtype(Arm.SubType);
+            var arm = Registry.GetResourceRegistrationBySubtype(ArmClient.SubType);
             Assert.IsNotNull(arm);
 
-            var sensor = Registry.GetResourceRegistrationBySubtype(Sensor.SubType);
+            var sensor = Registry.GetResourceRegistrationBySubtype(SensorClient.SubType);
             Assert.IsNotNull(sensor);
         }
     }

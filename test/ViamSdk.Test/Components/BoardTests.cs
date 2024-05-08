@@ -2,6 +2,7 @@
 using Viam.Client.Clients;
 using Viam.Client.Options;
 using Viam.Core.Resources.Components;
+using Viam.Core.Resources.Components.Board;
 
 namespace Viam.Core.Test.Components
 {

@@ -1,5 +1,5 @@
 ﻿using Viam.Core.Resources;
-using Viam.Core.Resources.Services;
+using Viam.Core.Resources.Components;
 
 namespace Viam.ModularResources
 {

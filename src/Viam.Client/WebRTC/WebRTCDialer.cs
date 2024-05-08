@@ -34,7 +34,7 @@ namespace Viam.Client.WebRTC
         /// </summary>
         /// <param name="dialOptions">The <see cref="WebRtcDialOptions"/> to use when dialing the smart machine</param>
         /// <returns>A <see cref="ValueTask{ViamChannel}"/></returns>
-        [LogInvocation]
+        
         public async ValueTask<ViamChannel> DialDirectAsync(WebRtcDialOptions dialOptions)
         {
             logger.LogDebug("Dialing WebRTC to {address} with {signalingServer}", dialOptions.MachineAddress, dialOptions.SignalingAddress);

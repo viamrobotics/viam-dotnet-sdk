@@ -7,7 +7,6 @@ using Google.Protobuf.Collections;
 using Microsoft.Extensions.Logging;
 
 using Viam.App.V1;
-using Viam.Core.Logging;
 using Viam.Core.Utils;
 
 namespace Viam.Core.Clients
@@ -19,12 +18,10 @@ namespace Viam.Core.Clients
 
         protected internal AppClientBase(ILoggerFactory loggerFactory, ViamChannel channel)
         {
-            Logging.Logger.SetLoggerFactory(loggerFactory);
             Logger = loggerFactory.CreateLogger<AppClientBase>();
             _appServiceClient = new AppService.AppServiceClient(channel);
         }
 
-        [LogInvocation]
         public async Task<RepeatedField<RobotPart>> GetRobotPartsAsync(string robotId, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             var result = await _appServiceClient.GetRobotPartsAsync(new GetRobotPartsRequest() { RobotId = robotId },
