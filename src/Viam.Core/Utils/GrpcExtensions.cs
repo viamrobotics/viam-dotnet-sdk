@@ -10,12 +10,16 @@ namespace Viam.Core.Utils
 {
     public static class GrpcExtensions
     {
-        public static Struct ToStruct(this IDictionary<string, object?> dict)
+        public static Struct ToStruct(this IDictionary<string, object?>? dict)
         {
             var @struct = new Struct();
-            foreach (var (key, value) in dict)
+            if (dict == null)
             {
-                @struct.Fields[key] = ConvertToValue(value);
+                return @struct;
+            }
+            foreach (var kvp in dict)
+            {
+                @struct.Fields[kvp.Key] = ConvertToValue(kvp.Value);
             }
 
             return @struct;
@@ -75,9 +79,9 @@ namespace Viam.Core.Utils
 
         public static void Add(this MapField<string, Value> map, IDictionary<string, object?> dict)
         {
-            foreach (var (key, value) in dict)
+            foreach (var kvp in dict)
             {
-                map.Add(key, ConvertToValue(value));
+                map.Add(kvp.Key, ConvertToValue(kvp.Value));
             }
         }
 
@@ -96,7 +100,7 @@ namespace Viam.Core.Utils
 
         public static ViamResourceName ToResourceName(this string resourceName)
         {
-            var parts = resourceName.Split("/");
+            var parts = resourceName.Split('/');
             if (parts.Length != 2)
             {
                 throw new ArgumentException($"{resourceName} is not a valid ResourceName");

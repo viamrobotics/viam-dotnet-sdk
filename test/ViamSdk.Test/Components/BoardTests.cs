@@ -1,12 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 using Viam.Client.Clients;
-using Viam.Client.Options;
-using Viam.Core.Resources.Components;
+using Viam.Client.Dialing;
 using Viam.Core.Resources.Components.Board;
 
 namespace Viam.Core.Test.Components
 {
-    internal class BoardTests
+    internal class BoardClientTests
     {
         private RobotClient? _robotClient;
 
@@ -25,11 +24,11 @@ namespace Viam.Core.Test.Components
             var apiKeyId = Environment.GetEnvironmentVariable("VIAM_API_KEY_ID")
                         ?? throw new InvalidOperationException("Missing Environment Variable");
 
-            var robotClientOptions = ViamClientOptions
+            var robotClientOptions = DialOptions
                                      .FromAddress(machineAddress)
-                                     .WithLogger(loggerFactory)
+                                     .WithLogging(loggerFactory)
                                      .WithApiCredentials(apiKey, apiKeyId)
-                                     .WithDisableWebRtc();
+                                     .SetDisableWebRtc();
 
             _robotClient = await RobotClient.AtAddressAsync(robotClientOptions);
         }
@@ -37,7 +36,7 @@ namespace Viam.Core.Test.Components
         [Test]
         public async Task Test_GetPin()
         {
-            var board = Board.FromRobot(_robotClient!, "board");
+            var board = BoardClient.FromRobot(_robotClient!, "board");
             var pin = await board.GetGpioPinByName("37");
             try
             {

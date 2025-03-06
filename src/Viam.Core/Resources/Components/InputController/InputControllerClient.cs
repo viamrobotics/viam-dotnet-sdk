@@ -29,7 +29,7 @@ namespace Viam.Core.Resources.Components.InputController
         public static SubType SubType = SubType.FromRdkComponent("input_controller");
 
 
-        public static InputControllerClient FromRobot(RobotClientBase client, string name)
+        public static IInputController FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<InputControllerClient>(resourceName);
@@ -37,7 +37,7 @@ namespace Viam.Core.Resources.Components.InputController
 
         public override DateTime? LastReconfigured => null;
 
-        public override ValueTask StopResource() => ValueTask.CompletedTask;
+        public override ValueTask StopResource() => new ValueTask();
 
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,

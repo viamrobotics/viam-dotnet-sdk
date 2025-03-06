@@ -1,6 +1,9 @@
 using Grpc.Core;
+
 using Microsoft.Extensions.Logging;
+
 using Proto.Rpc.Webrtc.V1;
+
 using SIPSorcery.Net;
 
 using Viam.Core;
@@ -22,7 +25,7 @@ namespace Viam.Client.WebRTC
         // TODO: Update this so we provide the right value to base()
         public WebRtcClientChannel(RTCPeerConnection peerConn, RTCDataChannel dataChannel, ILogger logger) : base("webrtc")
         {
-            _baseChannel = new WebRtcBaseChannel(peerConn, dataChannel);
+            _baseChannel = new WebRtcBaseChannel(logger, peerConn, dataChannel);
             dataChannel.onmessage += OnChannelMessage;
             _logger = logger;
             _callInvoker = new WebRtcClientCallInvoker(this, logger);
@@ -33,6 +36,7 @@ namespace Viam.Client.WebRTC
         // TODO(erd): synchronized
         public void RemoveStreamById(ulong id)
         {
+            _logger.LogDebug("Removing stream {StreamId}", id);
             Streams.Remove(id);
         }
 
@@ -91,7 +95,14 @@ namespace Viam.Client.WebRTC
             var id = stream.Id;
             if (Streams.TryGetValue(id, out var activeStream))
             {
-                activeStream.OnResponse(resp);
+                try
+                {
+                    activeStream.OnResponse(resp);
+                }
+                catch (Exception e)
+                {
+                    _logger.LogError(e, "error handling response");
+                }
             }
             else
             {

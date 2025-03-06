@@ -32,7 +32,7 @@ namespace Viam.Core.Grpc
     internal class GrpcDialer(ILogger<GrpcDialer> logger, ILoggerFactory loggerFactory)
     {
         
-        public ValueTask<ViamChannel> DialDirectAsync(GrpcDialOptions dialOptions, [CallerMemberName] string? caller = null)
+        public ValueTask<ViamChannel> DialDirectAsync(GrpcDialOptions dialOptions, CancellationToken cancellationToken = default, [CallerMemberName] string? caller = null)
         {
             logger.LogDialDirect(dialOptions);
             var channelCredentialSecurity = dialOptions.Insecure
@@ -45,9 +45,12 @@ namespace Viam.Core.Grpc
                                      LoggerFactory = loggerFactory
                                  };
             var address = dialOptions.MachineAddress;
+            
             // Custom transport implementation for UnixDomainSockets
             if (dialOptions.MachineAddress.IsFile)
             {
+                // This is required because .NET 6.0 is the earliest version supported by the GRPC library and has domain socket support.
+#if NET6_0_OR_GREATER
                 var socketPath = dialOptions.MachineAddress.LocalPath;
                 logger.LogDialUnixSocket(socketPath);
                 if (OperatingSystem.IsLinux() == false)
@@ -64,6 +67,9 @@ namespace Viam.Core.Grpc
                 channelOptions.HttpHandler = handler;
                 // This is needed to stop the GrpcChannel from trying to dial the actual file, which will fail
                 address = new Uri($"http://localhost:9090");
+#else
+                throw new PlatformNotSupportedException("Unix Domain Sockets are only supported on .NET 6.0 or greater.");
+#endif
             }
 
             if (dialOptions.Credentials != null)

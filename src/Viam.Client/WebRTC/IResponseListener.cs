@@ -4,9 +4,9 @@ namespace Viam.Client.WebRTC
 {
     internal interface IResponseListener<in TResponse>
     {
-        Task OnClose(Status status, Metadata trailers);
+        void OnClose(Status status, Metadata trailers);
         void OnHeaders(Metadata headers);
-        Task OnMessage(TResponse message);
+        void OnMessage(TResponse message);
         void OnReady();
     }
 }

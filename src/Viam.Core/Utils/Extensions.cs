@@ -34,8 +34,9 @@ namespace Viam.Core.Utils
                     arr[i] = o.ToLogFormat();
                     i++;
                 }
-
-                return string.Join(", ", arr[..i]);
+                return i == 0
+                           ? "{}"
+                           : string.Join(", ", arr[..i]);
             }
             finally
             {

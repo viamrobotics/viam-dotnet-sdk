@@ -8,25 +8,10 @@ using Viam.Common.V1;
 using Viam.Component.Powersensor.V1;
 using Viam.Core.Clients;
 using Viam.Core.Logging;
-using Viam.Core.Resources.Components.Sensor;
 using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.PowerSensor
 {
-    public interface IPowerSensor : ISensor
-    {
-        ValueTask<(double, bool)> GetVoltage(Struct? extra = null,
-                                             TimeSpan? timeout = null,
-                                             CancellationToken cancellationToken = default);
-
-        ValueTask<(double, bool)> GetCurrent(Struct? extra = null,
-                                             TimeSpan? timeout = null,
-                                             CancellationToken cancellationToken = default);
-
-        ValueTask<double> GetPower(Struct? extra = null,
-                                   TimeSpan? timeout = null,
-                                   CancellationToken cancellationToken = default);
-    }
     public class PowerSensorClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
         ComponentBase<PowerSensorClient, Component.Powersensor.V1.PowerSensorService.PowerSensorServiceClient>(resourceName, new Component.Powersensor.V1.PowerSensorService.PowerSensorServiceClient(channel)),
         IPowerSensor
@@ -35,7 +20,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
         public static SubType SubType = SubType.FromRdkComponent("power_sensor");
 
 
-        public static PowerSensorClient FromRobot(RobotClientBase client, string name)
+        public static IPowerSensor FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<PowerSensorClient>(resourceName);
@@ -43,7 +28,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
 
         public override DateTime? LastReconfigured => null;
 
-        public override ValueTask StopResource() => ValueTask.CompletedTask;
+        public override ValueTask StopResource() => new ValueTask();
 
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,

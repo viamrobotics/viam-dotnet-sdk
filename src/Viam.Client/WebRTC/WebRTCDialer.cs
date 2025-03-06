@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 using System.Text.Json.Nodes;
-
+using Fody;
 using Grpc.Core;
 
 using Microsoft.Extensions.Logging;
@@ -17,11 +17,20 @@ using Metadata = Grpc.Core.Metadata;
 
 namespace Viam.Client.WebRTC
 {
+    public record WebRtcDialOptions(
+        Uri SignalingAddress,
+        string MachineAddress,
+        GrpcDialOptions SignalingOptions,
+        WebRtcOptions WebRtcOptions,
+        bool InsecureSignaling = false,
+        Credentials? Credentials = null);
+
     /// <summary>
     /// A Dialer that uses WebRTC to connect to the Smart Machine
     /// </summary>
     /// <param name="logger">The <see cref="ILogger{WebRtcDialer}"/> to use for state logging</param>
     /// <param name="grpcDialer">The <see cref="GrpcDialer"/> to use for signaling</param>
+    [ConfigureAwait(false)]
     internal class WebRtcDialer(ILogger<WebRtcDialer> logger, GrpcDialer grpcDialer)
     {
         internal class DialState(string uuid)
@@ -33,9 +42,9 @@ namespace Viam.Client.WebRTC
         /// Dial a Viam Smart Machine using WebRTC
         /// </summary>
         /// <param name="dialOptions">The <see cref="WebRtcDialOptions"/> to use when dialing the smart machine</param>
+        /// <param name="cancellationToken">The <see cref="CancellationToken"/> to cancel the operation</param>
         /// <returns>A <see cref="ValueTask{ViamChannel}"/></returns>
-        
-        public async ValueTask<ViamChannel> DialDirectAsync(WebRtcDialOptions dialOptions)
+        public async ValueTask<ViamChannel> DialDirectAsync(WebRtcDialOptions dialOptions, CancellationToken cancellationToken = default)
         {
             logger.LogDebug("Dialing WebRTC to {address} with {signalingServer}", dialOptions.MachineAddress, dialOptions.SignalingAddress);
 
@@ -43,7 +52,7 @@ namespace Viam.Client.WebRTC
 
             var signalingDialOptions = dialOptions.SignalingOptions;
 
-            var signalingChannel = await grpcDialer.DialDirectAsync(signalingDialOptions);
+            using var signalingChannel = await grpcDialer.DialDirectAsync(signalingDialOptions, cancellationToken);
             logger.LogDebug("connected to signaling channel");
             var signalingClient = new SignalingService.SignalingServiceClient(signalingChannel);
             var config = dialOptions.WebRtcOptions.RtcConfig;
@@ -63,6 +72,7 @@ namespace Viam.Client.WebRTC
 
             var successful = false;
             var dialState = new DialState(string.Empty);
+            WebRtcClientChannel? clientChannel = null;
             try
             {
                 var remoteDescriptionSent = new TaskCompletionSource<bool>();
@@ -78,7 +88,8 @@ namespace Viam.Client.WebRTC
                             case RTCIceGatheringState.complete:
                                 await remoteDescriptionSent.Task; // TODO(erd): and cancellation
                                 // callFlowWG.Wait()
-                                await SendDone(signalingClient, dialState.Uuid, md);
+                                logger.LogTrace("ICE Gathering Complete");
+                                await SendDone(signalingClient, dialState.Uuid, md, cancellationToken);
                                 break;
                         }
                     };
@@ -87,9 +98,16 @@ namespace Viam.Client.WebRTC
                     {
                         var uuid = await remoteDescriptionSent.Task; // TODO(erd): and cancellation
                         var iProto = IceCandidateToProto(i);
+                        logger.LogTrace("got ice candidate {Candidate}", iProto.Candidate);
+                        logger.LogTrace("sending call update for candidate {Candidate}", iProto.Candidate);
                         await signalingClient
                               .CallUpdateAsync(new CallUpdateRequest { Uuid = dialState.Uuid, Candidate = iProto },
-                                               headers: md);
+                                               headers: md,
+                                               deadline: DateTime.UtcNow.AddSeconds(5),
+                                               cancellationToken: cancellationToken)
+                              .ConfigureAwait(false);
+
+                        logger.LogTrace("ice candidate call update complete {Candidate}", iProto.Candidate);
                     };
 
                     await peerConnection.setLocalDescription(offer);
@@ -98,8 +116,9 @@ namespace Viam.Client.WebRTC
                 var encodedSdp = EncodeSdp(peerConnection.localDescription);
 
                 // TODO(erd): cancellation token...
-                var callingClient = signalingClient.Call(new CallRequest { Sdp = encodedSdp }, headers: md);
-
+                using var callingClient = signalingClient.Call(new CallRequest { Sdp = encodedSdp },
+                                                         headers: md,
+                                                         cancellationToken: cancellationToken);
                 // TODO(GOUT-11): do separate auth here
                 //if (dialOptions.ExternalAuthAddress != "")
                 //{
@@ -112,7 +131,7 @@ namespace Viam.Client.WebRTC
                 //    // for client channel
                 //}
 
-                var clientChannel = new WebRtcClientChannel(peerConnection, dataChannel, logger);
+                clientChannel = new WebRtcClientChannel(peerConnection, dataChannel, logger);
 
                 await ExchangeCandidates(signalingClient,
                                          callingClient,
@@ -120,17 +139,23 @@ namespace Viam.Client.WebRTC
                                          remoteDescriptionSent,
                                          dialState.Uuid,
                                          md,
-                                         dialOptions.WebRtcOptions.DisableTrickleIce, dialState);
+                                         dialOptions.WebRtcOptions.DisableTrickleIce,
+                                         dialState,
+                                         cancellationToken);
 
-                successful = true;
+                logger.LogTrace("Waiting for clientChannel ready");
                 await clientChannel.Ready();
+                successful = true;
+                logger.LogTrace("clientChannel ready!");
 
                 return clientChannel;
             }
             finally
             {
                 if (!successful)
-                    peerConnection.Close("Failed to dial");
+                {
+                    clientChannel?.Dispose();
+                }
             }
         }
 
@@ -173,17 +198,20 @@ namespace Viam.Client.WebRTC
                                               string expectedUuid,
                                               Metadata md,
                                               bool disableTrickleIce,
-                                              DialState state)
+                                              DialState state,
+                                              CancellationToken cancellationToken)
         {
             var haveInit = false;
             while (true)
             {
                 if (!(await callingClient.ResponseStream.MoveNext()))
                 {
+                    logger.LogTrace("signaling stream ended");
                     break;
                 }
 
                 var resp = callingClient.ResponseStream.Current;
+                logger.LogTrace("signaling stream next, stage {Stage}", resp.StageCase);
                 switch (resp.StageCase)
                 {
                     case CallResponse.StageOneofCase.Init:
@@ -196,15 +224,14 @@ namespace Viam.Client.WebRTC
                         state.Uuid = resp.Uuid;
                         var answer = DecodeSdp(resp.Init.Sdp);
 
-                        peerConnection.setRemoteDescription(
-                            new RTCSessionDescriptionInit { type = answer.type, sdp = answer.sdp.ToString() });
+                        peerConnection.setRemoteDescription(new RTCSessionDescriptionInit { type = answer.type, sdp = answer.sdp.ToString() });
 
                         remoteDescriptionSent.SetResult(true);
 
                         if (disableTrickleIce)
                         {
-                            await SendDone(signalingClient, state.Uuid, md)
-                                ;
+                            logger.LogTrace("TrickleICE is disabled");
+                            await SendDone(signalingClient, state.Uuid, md, cancellationToken);
 
                             return;
                         }
@@ -255,9 +282,10 @@ namespace Viam.Client.WebRTC
                 usernameFragment = i.UsernameFragment,
             };
 
-        private static async Task SendDone(SignalingService.SignalingServiceClient signalingClient, string uuid, Metadata md)
+        private async Task SendDone(SignalingService.SignalingServiceClient signalingClient, string uuid, Metadata md, CancellationToken cancellationToken)
         {
-            await signalingClient.CallUpdateAsync(new CallUpdateRequest { Uuid = uuid, Done = true }, headers: md);
+            logger.LogTrace("sending done to signaling service");
+            await signalingClient.CallUpdateAsync(new CallUpdateRequest { Uuid = uuid, Done = true }, headers: md, cancellationToken: cancellationToken);
         }
 
         private static async Task<(RTCPeerConnection Connection, RTCDataChannel Channel)> NewPeerConnectionForClient(

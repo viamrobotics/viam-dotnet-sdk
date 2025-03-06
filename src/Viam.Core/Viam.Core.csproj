@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net6</TargetFramework>
+		<TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<IsAotCompatible>true</IsAotCompatible>
+		<TrimmerSingleWarn>false</TrimmerSingleWarn>
 	</PropertyGroup>
 	<ItemGroup>
 		<Compile Remove="Protos\**" />
@@ -14,22 +15,23 @@
 		<PackageReference Include="ConfigureAwait.Fody" Version="3.3.2">
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
-		<PackageReference Include="Fody" Version="6.8.0">
+		<PackageReference Include="Fody" Version="6.9.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Google.Protobuf" Version="3.26.1" />
-		<PackageReference Include="Google.Api.CommonProtos" Version="2.15.0" />
-		<PackageReference Include="Grpc.Net.Client" Version="2.62.0" />
-		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.62.0" />
-		<PackageReference Include="Grpc.Tools" Version="2.62.0">
+		<PackageReference Include="Google.Protobuf" Version="3.30.0" />
+		<PackageReference Include="Google.Api.CommonProtos" Version="2.16.0" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.67.0" />
+		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.67.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.70.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="IndexRange" Version="1.0.3" />
-		<PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.149" />
+		<PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.150" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.2" />
 		<PackageReference Include="System.Net.Security" Version="4.3.2" />
-		<PackageReference Include="System.Text.Json" Version="8.0.3" />
+		<PackageReference Include="System.Text.Json" Version="9.0.2" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Folder Include="Resources\Services\" />

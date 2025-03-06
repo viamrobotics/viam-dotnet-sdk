@@ -8,10 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include = "../../../src/Viam.Net.Sdk.Core/Viam.Net.Sdk.Core.csproj" />
-      <Content Include="NLog.config">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </Content>
+    <ProjectReference Include="..\..\..\src\Viam.Client\Viam.Client.csproj" />
   </ItemGroup>
 
 </Project>

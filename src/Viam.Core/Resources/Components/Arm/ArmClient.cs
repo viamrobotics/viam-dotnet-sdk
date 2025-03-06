@@ -21,7 +21,7 @@ namespace Viam.Core.Resources.Components.Arm
         static ArmClient() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new ArmClient(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("arm");
 
-        public static ArmClient FromRobot(RobotClientBase client, string name)
+        public static IArm FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<ArmClient>(resourceName);

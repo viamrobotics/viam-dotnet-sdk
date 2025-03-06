@@ -4,10 +4,12 @@ using System.Net.Http;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Microsoft.Extensions.Logging;
 
 namespace Viam.Core.Grpc
 {
+#if NET6_0_OR_GREATER
     public record UnixDomainSocketsConnectionFactory(EndPoint endPoint, ILogger logger)
     {
         public async ValueTask<Stream> ConnectAsync(SocketsHttpConnectionContext ctx,
@@ -30,4 +32,5 @@ namespace Viam.Core.Grpc
             }
         }
     }
+#endif
 }

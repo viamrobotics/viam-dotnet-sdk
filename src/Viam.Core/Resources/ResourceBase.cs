@@ -16,7 +16,7 @@ namespace Viam.Core.Resources
             IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
-        public virtual ValueTask DisposeAsync() => ValueTask.CompletedTask;
+        public virtual ValueTask DisposeAsync() => new ValueTask();
     }
 
     public interface IResourceBase : IAsyncDisposable

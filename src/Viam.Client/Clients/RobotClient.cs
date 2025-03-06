@@ -1,12 +1,14 @@
 ﻿using Microsoft.Extensions.Logging;
 
 using Viam.Client.Dialing;
-using Viam.Client.Options;
 using Viam.Core;
 using Viam.Core.Clients;
 
 namespace Viam.Client.Clients
 {
+    /// <summary>
+    /// A client for interacting with Viam Smart Machines
+    /// </summary>
     public sealed class RobotClient : RobotClientBase
     {
         private RobotClient(ILoggerFactory loggerFactory, ViamChannel channel)
@@ -14,7 +16,7 @@ namespace Viam.Client.Clients
         {
         }
 
-        public static async ValueTask<RobotClient> AtAddressAsync(ViamClientOptions options)
+        public static async ValueTask<RobotClient> AtAddressAsync(DialOptions options)
         {
             var dialer = new Dialer(options.LoggerFactory);
             var channel = options.DisableWebRtc

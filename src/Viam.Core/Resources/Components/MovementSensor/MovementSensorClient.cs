@@ -22,7 +22,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
         public static SubType SubType = SubType.FromRdkComponent("movement_sensor");
 
 
-        public static MovementSensorClient FromRobot(RobotClientBase client, string name)
+        public static IMovementSensor FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<MovementSensorClient>(resourceName);
@@ -30,7 +30,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
 
         public override DateTime? LastReconfigured => null;
 
-        public override ValueTask StopResource() => ValueTask.CompletedTask;
+        public override ValueTask StopResource() => new ValueTask();
 
         public override async ValueTask<IDictionary<string, object?>> DoCommand(
             IDictionary<string, object?> command,

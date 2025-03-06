@@ -17,7 +17,7 @@ namespace Viam.Client.WebRTC
                 throw new Exception("stream limit hit");
             }
             // TODO: Should we be using stream.Id or id here?
-            var activeStream = new WebRtcClientStream<TRequest, TResponse>(method, stream, channel, (id) => channel.RemoveStreamById(stream.Id), logger);
+            var activeStream = new WebRtcClientStream<TRequest, TResponse>(method, stream, channel, channel.RemoveStreamById, logger);
             channel.Streams.Add(stream.Id, activeStream);
             return activeStream;
         }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Viam.Client.Clients;
-using Viam.Client.Options;
+using Viam.Client.Dialing;
 using Viam.Core.Resources.Components;
 using Viam.Core.Resources.Components.Sensor;
 
@@ -26,11 +26,11 @@ namespace Viam.Core.Test.Components
             var apiKeyId = Environment.GetEnvironmentVariable("VIAM_API_KEY_ID")
                         ?? throw new InvalidOperationException("Missing Environment Variable");
 
-            var robotClientOptions = ViamClientOptions
+            var robotClientOptions = DialOptions
                                   .FromAddress(machineAddress)
-                                  .WithLogger(loggerFactory)
+                                  .WithLogging(loggerFactory)
                                   .WithApiCredentials(apiKey, apiKeyId)
-                                  .WithDisableWebRtc();
+                                  .SetDisableWebRtc();
 
             _robotClient = await RobotClient.AtAddressAsync(robotClientOptions);
         }

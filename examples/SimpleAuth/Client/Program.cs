@@ -1,26 +1,19 @@
-﻿using Proto.Api.Robot.V1;
-using Viam.Net.Sdk.Core;
-using Proto.Rpc.V1;
+﻿using Microsoft.Extensions.Logging;
+using Viam.Client.Clients;
+using Viam.Client.Dialing;
 
-if (args.Length < 1)
+if (args.Length < 3)
 {
-    throw new ArgumentException("must supply grpc address");
+    throw new ArgumentException("must supply machine address, api-key, and api-key-id");
 }
 var grpcAddress = args[0];
+var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+var logger = loggerFactory.CreateLogger<Program>();
+var dialOpts = DialOptions.FromAddress(grpcAddress)
+                          .WithLogging(loggerFactory)
+                          .WithApiCredentials(args[1], args[2])
+                          .SetInsecure();
 
-var logger = NLog.LogManager.GetCurrentClassLogger();
-using (var dialer = new Dialer(logger))
-{
-    var dialOpts = new DialOptions
-    {
-        Insecure = true,
-        AuthEntity = "something-unique",
-        Credentials = new Credentials { Type = "api-key", Payload = "sosecret" }
-    };
-
-    using (var chan = await dialer.DialDirectGRPCAsync(grpcAddress, dialOpts))
-    {
-        var robotClient = new RobotService.RobotServiceClient(chan);
-        logger.Info(await robotClient.ResourceNamesAsync(new ResourceNamesRequest()));
-    }
-}
+var robotClient = await RobotClient.AtAddressAsync(dialOpts);
+var resourceNames = await robotClient.ResourceNamesAsync();
+logger.LogInformation("Resource Names: {ResourceName}", string.Join(",", resourceNames.Select(x => x.Name)));

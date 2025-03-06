@@ -9,37 +9,37 @@ namespace Viam.Core.Resources.Components.Board
     public interface IBoard : IComponentBase
     {
         /// <summary>
-        /// Get a <see cref="AnalogReader"/> from the <see cref="Board"/>
+        /// Get a <see cref="AnalogReader"/> from the <see cref="BoardClient"/>
         /// </summary>
-        /// <param name="name">The name of the pin capable of reading analog signals on the <see cref="Board"/></param>
+        /// <param name="name">The name of the pin capable of reading analog signals on the <see cref="BoardClient"/></param>
         /// <returns>A <see cref="AnalogReader"/></returns>
         ValueTask<AnalogReader> GetAnalogReaderByName(string name);
 
         /// <summary>
-        /// Get a <see cref="AnalogWriter"/> from the <see cref="Board"/>
+        /// Get a <see cref="AnalogWriter"/> from the <see cref="BoardClient"/>
         /// </summary>
-        /// <param name="name">The name of the pin capable of outputting analog signals on the <see cref="Board"/></param>
+        /// <param name="name">The name of the pin capable of outputting analog signals on the <see cref="BoardClient"/></param>
         /// <returns>A <see cref="AnalogWriter"/></returns>
         ValueTask<AnalogWriter> GetAnalogWriterByName(string name);
 
         /// <summary>
-        /// Get a <see cref="DigitalInterrupt"/> from the <see cref="Board"/>
+        /// Get a <see cref="DigitalInterrupt"/> from the <see cref="BoardClient"/>
         /// </summary>
-        /// <param name="name">The name of the pin capable of handling interrupts on the <see cref="Board"/></param>
+        /// <param name="name">The name of the pin capable of handling interrupts on the <see cref="BoardClient"/></param>
         /// <returns>A <see cref="DigitalInterrupt"/></returns>
         ValueTask<DigitalInterrupt> GetDigitalInterruptByName(string name);
 
         /// <summary>
-        /// Get a <see cref="GpioPin"/> from the <see cref="Board"/>
+        /// Get a <see cref="GpioPin"/> from the <see cref="BoardClient"/>
         /// </summary>
         /// <param name="name">The name of the pin</param>
         /// <returns>A <see cref="GpioPin"/></returns>
         ValueTask<GpioPin> GetGpioPinByName(string name);
 
         /// <summary>
-        /// Set the power mode of the <see cref="Board"/>
+        /// Set the power mode of the <see cref="BoardClient"/>
         /// </summary>
-        /// <param name="mode">The <see cref="PowerMode"/> to apply to the <see cref="Board"/></param>
+        /// <param name="mode">The <see cref="PowerMode"/> to apply to the <see cref="BoardClient"/></param>
         /// <param name="duration">The length of time the <paramref name="mode"/> should apply for</param>
         /// <param name="extra">Any extras for the command</param>
         /// <param name="timeout">The timeout to apply to the operation</param>
@@ -52,7 +52,7 @@ namespace Viam.Core.Resources.Components.Board
                           CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Write an analog value to an analog capable pin on the <see cref="Board"/>
+        /// Write an analog value to an analog capable pin on the <see cref="BoardClient"/>
         /// </summary>
         /// <param name="pin">The name of the pin to write the <paramref name="value"/> to</param>
         /// <param name="value">The value to write to the <paramref name="pin"/></param>

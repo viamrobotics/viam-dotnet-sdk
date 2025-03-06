@@ -11,7 +11,6 @@
 		<PublishSingleFile>false</PublishSingleFile>
 		<PublishAot>true</PublishAot>
 		<IsAotCompatible>true</IsAotCompatible>
-		<StripSymbols>true</StripSymbols>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -33,6 +32,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\src\Viam.Client\Viam.Client.csproj" />
 		<ProjectReference Include="..\..\src\Viam.Core\Viam.Core.csproj" />
 		<ProjectReference Include="..\..\src\Viam.ModularResources\Viam.ModularResources.csproj" />
 	</ItemGroup>

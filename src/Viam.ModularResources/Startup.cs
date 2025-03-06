@@ -91,6 +91,32 @@ namespace Viam.ModularResources
 
     internal class PopulateResourceByNameInterceptor(ILogger<PopulateResourceByNameInterceptor> logger, ResourceManager resourceManager) : Interceptor
     {
+        public override async Task ServerStreamingServerHandler<TRequest, TResponse>(TRequest request,
+            IServerStreamWriter<TResponse> responseStream,
+            ServerCallContext context,
+            ServerStreamingServerMethod<TRequest, TResponse> continuation)
+        {
+            var name = GetResourceName(request);
+            if (name != null)
+            {
+                logger.LogTrace("Found resource name field.");
+                var resource = resourceManager.GetResourceByShortName(name);
+                logger.LogTrace("Added {ResourceName} to UserState", resource.ResourceName);
+                context.UserState.Add(nameof(resource), resource);
+            }
+
+            var boardName = GetBoardName(request);
+            if (boardName != null)
+            {
+                logger.LogTrace("Found board name field.");
+                var resource = resourceManager.GetResourceByShortName(boardName);
+                logger.LogTrace("Added {ResourceName} to UserState", resource.ResourceName);
+                context.UserState.Add("board", resource);
+            }
+
+            await continuation(request, responseStream, context);
+        }
+        
         public override async Task<TResponse> UnaryServerHandler<TRequest, TResponse>(TRequest request,
             ServerCallContext context,
             UnaryServerMethod<TRequest, TResponse> continuation)

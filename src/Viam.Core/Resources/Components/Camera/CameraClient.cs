@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Viam.Core.Resources.Components.Camera
         public static SubType SubType = SubType.FromRdkComponent("camera");
 
 
-        public static CameraClient FromRobot(RobotClientBase client, string name)
+        public static ICamera FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<CameraClient>(resourceName);
@@ -33,7 +34,7 @@ namespace Viam.Core.Resources.Components.Camera
 
         public override DateTime? LastReconfigured => null;
 
-        public override ValueTask StopResource() => ValueTask.CompletedTask;
+        public override ValueTask StopResource() => new ValueTask();
 
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
@@ -60,7 +61,7 @@ namespace Viam.Core.Resources.Components.Camera
         }
 
 
-        public async ValueTask<ViamImage> GetImage(MimeType mimeType,
+        public async ValueTask<ViamImage> GetImage(MimeType? mimeType = null,
                                           Struct? extra = null,
                                           TimeSpan? timeout = null,
                                           CancellationToken cancellationToken = default)
@@ -73,7 +74,7 @@ namespace Viam.Core.Resources.Components.Camera
                                     new GetImageRequest()
                                     {
                                         Name = Name,
-                                        MimeType = mimeType.ToString(),
+                                        MimeType = mimeType?.ToGrpc() ?? string.Empty,
                                         Extra = extra
                                     },
                                     deadline: timeout.ToDeadline(),
@@ -167,11 +168,11 @@ namespace Viam.Core.Resources.Components.Camera
             try
             {
                 logger.LogMethodInvocationStart();
+                Debug.Assert(Client != null);
                 var result = await Client.GetPropertiesAsync(new GetPropertiesRequest() { Name = Name },
                                                              deadline: timeout.ToDeadline(),
                                                              cancellationToken: cancellationToken)
                                          .ConfigureAwait(false);
-
                 var response = new CameraProperties(
                     new DistortionParameters(result.DistortionParameters.Model,
                                              result.DistortionParameters.Parameters.ToArray()),

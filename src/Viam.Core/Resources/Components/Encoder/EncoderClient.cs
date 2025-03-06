@@ -23,7 +23,7 @@ namespace Viam.Core.Resources.Components.Encoder
         public static SubType SubType = SubType.FromRdkComponent("encoder");
 
 
-        public static EncoderClient FromRobot(RobotClientBase client, string name)
+        public static IEncoder FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<EncoderClient>(resourceName);
@@ -31,7 +31,7 @@ namespace Viam.Core.Resources.Components.Encoder
 
         public override DateTime? LastReconfigured => null;
 
-        public override ValueTask StopResource() => ValueTask.CompletedTask;
+        public override ValueTask StopResource() => new ValueTask();
 
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,

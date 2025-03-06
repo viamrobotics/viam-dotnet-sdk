@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-
+using Grpc.Core;
 using Microsoft.Extensions.Logging;
-
+using Proto.Rpc.Webrtc.V1;
 using Viam.Common.V1;
 using Viam.Core.Grpc;
 using Viam.Core.Resources;
 using Viam.Core.Utils;
+using Metadata = Grpc.Core.Metadata;
 
 namespace Viam.Core.Logging
 {
@@ -75,19 +76,22 @@ namespace Viam.Core.Logging
         [LoggerMessage(EventId = 1100, Message = "Getting resource by {SubType} in registry", Level = LogLevel.Debug)]
         internal static partial void LogRegistryResourceGet(this ILogger logger, SubType subType);
 
-        [LoggerMessage(EventId = 1101, Message = "Found resource by {SubType} in registry", Level = LogLevel.Debug)]
+        [LoggerMessage(EventId = 1101, Message = "Found built-in resource by {SubType} in registry", Level = LogLevel.Debug)]
+        internal static partial void LogRegistryBuiltInResourceGetSuccess(this ILogger logger, SubType subType);
+
+        [LoggerMessage(EventId = 1102, Message = "Found resource by {SubType} in registry", Level = LogLevel.Debug)]
         internal static partial void LogRegistryResourceGetSuccess(this ILogger logger, SubType subType);
 
-        [LoggerMessage(EventId = 1102, Message = "Did not find resource by {SubType} in registry", Level = LogLevel.Debug)]
+        [LoggerMessage(EventId = 1103, Message = "Did not find resource by {SubType} in registry", Level = LogLevel.Debug)]
         internal static partial void LogRegistryResourceGetFailure(this ILogger logger, SubType subType);
 
-        [LoggerMessage(EventId = 1103, Message = "Getting ResourceCreator by {SubType} and {Model} in registry", Level = LogLevel.Debug)]
+        [LoggerMessage(EventId = 1104, Message = "Getting ResourceCreator by {SubType} and {Model} in registry", Level = LogLevel.Debug)]
         internal static partial void LogRegistryResourceCreatorGet(this ILogger logger, SubType subType, Model model);
 
-        [LoggerMessage(EventId = 1104, Message = "Found ResourceCreator by {SubType} and {Model} in registry", Level = LogLevel.Debug)]
+        [LoggerMessage(EventId = 1105, Message = "Found ResourceCreator by {SubType} and {Model} in registry", Level = LogLevel.Debug)]
         internal static partial void LogRegistryResourceCreatorGetSuccess(this ILogger logger, SubType subType, Model model);
 
-        [LoggerMessage(EventId = 1105, Message = "Did not find ResourceCreator by {SubType} and {Model} in registry", Level = LogLevel.Debug)]
+        [LoggerMessage(EventId = 1106, Message = "Did not find ResourceCreator by {SubType} and {Model} in registry", Level = LogLevel.Debug)]
         internal static partial void LogRegistryResourceCreatorGetFailure(this ILogger logger, SubType subType, Model model);
         #endregion
 
@@ -147,7 +151,8 @@ namespace Viam.Core.Logging
         internal static partial void LogManagerRegisterRemoteResourcesError(this ILogger logger, ViamResourceName resourceName, Exception exception);
         #endregion
 
-        #region Dialer Logging
+        #region Communication Logging
+        #region Dialing Logging
         [LoggerMessage(EventId = 2000, Message = "Dialing {Options}", Level = LogLevel.Information)]
         internal static partial void LogDialDirect(this ILogger logger, GrpcDialOptions options);
 
@@ -180,6 +185,80 @@ namespace Viam.Core.Logging
 
         [LoggerMessage(EventId = 2010, Message = "ICE Gathering State is now {State}", Level = LogLevel.Trace)]
         internal static partial void LogIceGatheringStateChange(this ILogger logger, string state);
+        #endregion
+        #region WebRTC Logging
+        [LoggerMessage(EventId = 2100, Message = "Starting {ClassName} Request", Level = LogLevel.Debug)]
+        internal static partial void LogWebRtcCallStartRequest(this ILogger logger, string className);
+
+        [LoggerMessage(EventId = 2101, Message = "{ClassName} request waiting for OnReady", Level = LogLevel.Debug)]
+        internal static partial void LogWebRtcWaitForOnReady(this ILogger logger, string className);
+
+        [LoggerMessage(EventId = 2102, Message = "{ClassName} request OnReady success", Level = LogLevel.Debug)]
+        internal static partial void LogWebRtcWaitForOnReadySuccess(this ILogger logger, string className);
+
+        [LoggerMessage(EventId = 2103, Message = "{ClassName} Request HalfClose success", Level = LogLevel.Debug)]
+        internal static partial void LogWebRtcCallHalfClose(this ILogger logger, string className);
+
+        [LoggerMessage(EventId = 2104, Message = "{ClassName} Request setting ready", Level = LogLevel.Debug)]
+        internal static partial void LogWebRtcCallOnReady(this ILogger logger, string className);
+
+        [LoggerMessage(EventId = 2105, Message = "{ClassName} Request metadata received: {Metadata}", Level = LogLevel.Debug)]
+        internal static partial void LogWebRtcMetadataResponse(this ILogger logger, string className, Metadata metadata);
+
+        [LoggerMessage(EventId = 2106, Message = "{ClassName} Request response received", Level = LogLevel.Debug)]
+        internal static partial void LogWebRtcResponseReceived(this ILogger logger, string className);
+
+        [LoggerMessage(EventId = 2106, Message = "{ClassName} Request response received: {Response}", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcResponseReceivedWithResponse(this ILogger logger, string className, object response);
+
+        [LoggerMessage(EventId = 2107, Message = "{ClassName} Request close {StatusCode} {Detail}", Level = LogLevel.Debug)]
+        internal static partial void LogWebRtcClose(this ILogger logger, string className, StatusCode statusCode, string detail);
+
+        [LoggerMessage(EventId = 2108, Message = "Processing message", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcProcessMessage(this ILogger logger);
+
+        [LoggerMessage(EventId = 2109, Message = "Calling OnMessage", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcCallingOnMessage(this ILogger logger);
+
+        [LoggerMessage(EventId = 2110, Message = "Message not done yet", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcMessageNotDone(this ILogger logger);
+
+        [LoggerMessage(EventId = 2111, Message = "Message size {RequiredSize} is larger than current size {CurrentSize}", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcPacketMessageContentsSizeExceeded(this ILogger logger, int currentSize, int requiredSize);
+
+        [LoggerMessage(EventId = 2112, Message = "Copying {DataSize} bytes to array at position {Position}", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcPacketMessageCopyingData(this ILogger logger, int dataSize, int position);
+
+        [LoggerMessage(EventId = 2113, Message = "Done appending data", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcPacketMessageDataCopyDone(this ILogger logger);
+
+        [LoggerMessage(EventId = 2114, Message = "Disposing PacketMessageContents and returning array to pool", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcPacketMessageDispose(this ILogger logger);
+
+        [LoggerMessage(EventId = 2115, Message = "Growing array to {ArraySize}", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcPacketMessageGrowArrayStart(this ILogger logger, int arraySize);
+
+        [LoggerMessage(EventId = 2116, Message = "Got new array {ArraySize}", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcPacketMessageNewArraySize(this ILogger logger, int arraySize);
+
+        [LoggerMessage(EventId = 2116, Message = "Done resizing array", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcPacketMessageGrowArrayEnd(this ILogger logger);
+
+        [LoggerMessage(EventId = 2117, Message = "Message size {MessageSize} larger than max {MaxMessageSize}; discarding", Level = LogLevel.Warning)]
+        internal static partial void LogWebRtcMessageSizeExceeded(this ILogger logger, int messageSize, int maxMessageSize);
+
+        [LoggerMessage(EventId = 2118, Message = "Processing new packet message", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcProcessNewPacketMessage(this ILogger logger);
+
+        [LoggerMessage(EventId = 2118, Message = "Processing addition to existing packet message", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcProcessExistingPacketMessage(this ILogger logger);
+
+        [LoggerMessage(EventId = 2119, Message = "Processing packet message complete", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcProcessPacketMessageEndOfMessage(this ILogger logger);
+
+        [LoggerMessage(EventId = 2120, Message = "Sending WebRTC message", Level = LogLevel.Trace)]
+        internal static partial void LogWebRtcSendMessage(this ILogger logger);
+        #endregion
         #endregion
 
         #region Client Method Logging

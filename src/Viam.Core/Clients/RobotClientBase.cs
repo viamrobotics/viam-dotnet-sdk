@@ -36,9 +36,7 @@ namespace Viam.Core.Clients
             _resourceManager = new ResourceManager(loggerFactory);
         }
 
-        
         protected Task RefreshAsync() => _resourceManager.RefreshAsync(this);
-
         
         public T GetComponent<T>(ViamResourceName resourceName) where T : ResourceBase
         {
@@ -55,7 +53,6 @@ namespace Viam.Core.Clients
                 throw;
             }
         }
-
 
         public async Task<Operation[]> GetOperationsAsync(TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
@@ -76,7 +73,6 @@ namespace Viam.Core.Clients
                 throw;
             }
         }
-
         
         public async Task<Session[]> GetSessionsAsync(TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
@@ -97,7 +93,6 @@ namespace Viam.Core.Clients
                 throw;
             }
         }
-
         
         public async Task<ViamResourceName[]> ResourceNamesAsync(TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
@@ -119,7 +114,6 @@ namespace Viam.Core.Clients
                 throw;
             }
         }
-
         
         public async Task<ResourceRPCSubtype[]> GetResourceRpcSubTypesAsync(TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
@@ -140,7 +134,6 @@ namespace Viam.Core.Clients
                 throw;
             }
         }
-
         
         public async Task CancelOperationAsync(string operationId, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
@@ -160,7 +153,6 @@ namespace Viam.Core.Clients
                 throw;
             }
         }
-
         
         public async Task BlockForOperationAsync(string operationId, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
@@ -182,7 +174,6 @@ namespace Viam.Core.Clients
             }
         }
 
-        
         public async Task<Discovery[]> DiscoverComponentsAsync(DiscoveryQuery[]? queries = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: queries);
@@ -209,7 +200,6 @@ namespace Viam.Core.Clients
             }
         }
 
-        
         public async Task<FrameSystemConfig[]> FrameSystemConfigAsync(Transform[]? supplementalTransforms = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: supplementalTransforms);
@@ -236,7 +226,6 @@ namespace Viam.Core.Clients
             }
         }
 
-        
         public async Task<PoseInFrame> TransformPoseAsync(string destination, PoseInFrame source, Transform[] supplementalTransforms, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: [destination, source, supplementalTransforms]);
@@ -259,7 +248,6 @@ namespace Viam.Core.Clients
             }
         }
 
-        
         public async Task<ByteString> TransformPcdAsync(string source, string destination, ByteString pointCloudPcd, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters:[source, destination]);
@@ -285,7 +273,6 @@ namespace Viam.Core.Clients
             }
         }
 
-        
         public async Task<Status[]> GetStatusAsync(ViamResourceName[]? resourceNames = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: resourceNames);
@@ -312,7 +299,6 @@ namespace Viam.Core.Clients
             }
         }
 
-        
         public IAsyncStreamReader<StreamStatusResponse> StreamStatus(Duration every, ViamResourceName[]? resourceNames = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters:[every, resourceNames]);
@@ -337,7 +323,6 @@ namespace Viam.Core.Clients
             }
         }
 
-        
         public async Task StopAllAsync(StopExtraParameters[]? extraParameters = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: [extraParameters]);
@@ -363,7 +348,6 @@ namespace Viam.Core.Clients
             }
         }
 
-        
         public async Task<(string Id, Duration HeartbeatWindow)> StartSessionAsync(string? resumeToken = null, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: resumeToken);
@@ -385,7 +369,6 @@ namespace Viam.Core.Clients
             }
         }
 
-        
         public async Task SendSessionHeartbeatAsync(string sessionId, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: sessionId);
@@ -406,7 +389,6 @@ namespace Viam.Core.Clients
             }
         }
 
-        
         public async Task LogAsync(IEnumerable<LogEntry> logs)
         {
             Logger.LogMethodInvocationStart();
@@ -424,7 +406,6 @@ namespace Viam.Core.Clients
             }
         }
 
-        
         public async Task<CloudMetadata> GetCloudMetadataAsync(TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart();

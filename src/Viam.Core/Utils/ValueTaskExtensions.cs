@@ -3,6 +3,7 @@ using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Viam.Core.Utils
 {
@@ -11,7 +12,8 @@ namespace Viam.Core.Utils
         // https://stackoverflow.com/a/63141544
         public static async ValueTask<T[]> WhenAll<T>(this ValueTask<T>[] tasks)
         {
-            ArgumentNullException.ThrowIfNull(tasks);
+            if (tasks == null)
+                throw new ArgumentNullException(nameof(tasks));
             if (tasks.Length == 0)
                 return Array.Empty<T>();
 
@@ -53,7 +55,8 @@ namespace Viam.Core.Utils
 
         public static async ValueTask WhenAll(this IEnumerable<ValueTask> tasks)
         {
-            ArgumentNullException.ThrowIfNull(tasks);
+            if (tasks == null)
+                throw new ArgumentNullException(nameof(tasks));
             // We are going to enumerate this often, so it makes sense
             var internalTasks = tasks.ToList();
             if (internalTasks.Count == 0)

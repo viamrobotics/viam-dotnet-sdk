@@ -1,18 +1,20 @@
+using System.Buffers;
 using Microsoft.Extensions.Logging;
 using Viam.Client.Clients;
-using Viam.Client.Options;
+using Viam.Client.Dialing;
 
 namespace Viam.Core.Test
 {
     public class ClientTests
     {
-        private ViamClientOptions? _robotClientOptions;
-        private ViamClientOptions? _cloudClientOptions;
+        private DialOptions? _robotClientOptions;
+        private DialOptions? _cloudClientOptions;
+        private ILoggerFactory? _loggerFactory;
 
         [SetUp]
         public void Setup()
         {
-            using var loggerFactory = LoggerFactory.Create(builder =>
+            _loggerFactory = LoggerFactory.Create(builder =>
             {
                 builder.AddConsole();
                 builder.SetMinimumLevel(LogLevel.Trace);
@@ -24,16 +26,42 @@ namespace Viam.Core.Test
             var apiKeyId = Environment.GetEnvironmentVariable("VIAM_API_KEY_ID")
                         ?? throw new InvalidOperationException("Missing Environment Variable");
 
-            _robotClientOptions = ViamClientOptions
+            _robotClientOptions = DialOptions
                                 .FromAddress(machineAddress)
-                                .WithLogger(loggerFactory)
+                                .WithLogging(_loggerFactory)
                                 .WithApiCredentials(apiKey, apiKeyId)
-                                .WithDisableWebRtc();
+                                .SetDisableWebRtc();
 
-            _cloudClientOptions = ViamClientOptions.FromCloud()
-                                                   .WithLogger(loggerFactory)
-                                                   .WithApiCredentials(apiKey,
-                                                                       apiKeyId);
+            _cloudClientOptions = DialOptions.FromCloud()
+                                             .WithLogging(_loggerFactory)
+                                             .WithApiCredentials(apiKey,
+                                                                 apiKeyId);
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            _loggerFactory?.Dispose();
+        }
+
+        public class RentedArray<T>(int minimumSize) : IDisposable
+        {
+            private bool _disposed = false;
+            private readonly T[] _array = ArrayPool<T>.Shared.Rent(minimumSize);
+            public T[] Array
+            {
+                get
+                {
+                    if (_disposed) throw new ObjectDisposedException(nameof(Array));
+                    return _array;
+                }
+            }
+
+            public void Dispose()
+            {
+                _disposed = true;
+                ArrayPool<T>.Shared.Return(_array);
+            }
         }
 
         [Test]
@@ -67,8 +95,9 @@ namespace Viam.Core.Test
                 builder.SetMinimumLevel(LogLevel.Trace);
             });
 
-            var client = await AppClient.AtAddressAsync(_cloudClientOptions!);
-            var parts = await client.GetRobotPartsAsync("659c14cd-a8f5-4d16-93be-7ab7e9ad3a7a");
+            var client = await ViamClient.CreateFromDialOptions(_cloudClientOptions!);
+            var appClient = client.CreateAppClient();
+            var parts = await appClient.GetRobotParts("659c14cd-a8f5-4d16-93be-7ab7e9ad3a7a");
 
             Assert.That(parts, Is.Not.Null);
             Console.WriteLine(parts);

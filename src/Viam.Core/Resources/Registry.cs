@@ -33,6 +33,23 @@ namespace Viam.Core.Resources
         private static readonly ConcurrentDictionary<SubType, ComponentRegistration> Subtypes = new(new SubTypeComparer());
         private static readonly ConcurrentDictionary<SubTypeModel, ResourceCreatorRegistration> Resources = new();
 
+        private static readonly IDictionary<SubType, ComponentRegistration> BuiltIn =
+            new Dictionary<SubType, ComponentRegistration>()
+            {
+                { BaseClient.SubType, new ComponentRegistration(BaseClient.SubType, (name, channel, logger) => new BaseClient(name, channel, logger)) },
+                { BoardClient.SubType, new ComponentRegistration(BoardClient.SubType, (name, channel, logger) => new BoardClient(name, channel, logger)) },
+                { CameraClient.SubType, new ComponentRegistration(CameraClient.SubType, (name, channel, logger) => new CameraClient(name, channel, logger)) },
+                { EncoderClient.SubType, new ComponentRegistration(EncoderClient.SubType, (name, channel, logger) => new EncoderClient(name, channel, logger)) },
+                { GantryClient.SubType, new ComponentRegistration(GantryClient.SubType, (name, channel, logger) => new GantryClient(name, channel, logger)) },
+                { GripperClient.SubType, new ComponentRegistration(GripperClient.SubType, (name, channel, logger) => new GripperClient(name, channel, logger)) },
+                { InputControllerClient.SubType, new ComponentRegistration(InputControllerClient.SubType, (name, channel, logger) => new InputControllerClient(name, channel, logger)) },
+                { MotorClient.SubType, new ComponentRegistration(MotorClient.SubType, (name, channel, logger) => new MotorClient(name, channel, logger)) },
+                { MovementSensorClient.SubType, new ComponentRegistration(MovementSensorClient.SubType, (name, channel, logger) => new MovementSensorClient(name, channel, logger)) },
+                { PowerSensorClient.SubType, new ComponentRegistration(PowerSensorClient.SubType, (name, channel, logger) => new PowerSensorClient(name, channel, logger)) },
+                { SensorClient.SubType, new ComponentRegistration(SensorClient.SubType, (name, channel, logger) => new SensorClient(name, channel, logger)) },
+                { ServoClient.SubType, new ComponentRegistration(ServoClient.SubType, (name, channel, logger) => new ServoClient(name, channel, logger)) },
+            };
+
         public static bool RegisterSubtype(ComponentRegistration componentRegistration) => Subtypes.TryAdd(componentRegistration.SubType, componentRegistration);
 
         public static bool RegisterResourceCreator(SubType subType, Model model, ResourceCreatorRegistration resourceRegistration) => Resources.TryAdd(new SubTypeModel(subType, model), resourceRegistration);
@@ -78,11 +95,17 @@ namespace Viam.Core.Resources
             services.AddTransient<TImpl>();
             services.AddTransient<IServiceBase, TImpl>();
         }
-
         
         public static ComponentRegistration GetResourceRegistrationBySubtype(SubType subType, [CallerMemberName] string? caller = null)
         {
             Logger.LogRegistryResourceGet(subType);
+
+            if (BuiltIn.TryGetValue(subType, out var builtInResourceRegistration))
+            {
+                Logger.LogRegistryBuiltInResourceGetSuccess(subType);
+                return builtInResourceRegistration;
+            }
+
             if (Subtypes.TryGetValue(subType, out var resourceRegistration))
             {
                 Logger.LogRegistryResourceGetSuccess(subType);
@@ -181,7 +204,16 @@ namespace Viam.Core.Resources
                 && x.ResourceSubType == y.ResourceSubType;
         }
 
-        public int GetHashCode(SubType obj) => HashCode.Combine(obj.Namespace, obj.ResourceType, obj.ResourceSubType);
+        public int GetHashCode(SubType obj)
+        {
+            unchecked
+            {
+                var hashCode = obj.Namespace.GetHashCode();
+                hashCode = (hashCode * 397) ^ (obj.ResourceType.GetHashCode());
+                hashCode = (hashCode * 397) ^ (obj.ResourceSubType.GetHashCode());
+                return hashCode;
+            }
+        }
     }
 
     public record struct SubTypeModel(SubType SubType, Model Model)
@@ -191,6 +223,7 @@ namespace Viam.Core.Resources
 
     public record struct Model(ModelFamily Family, string Name)
     {
+        public Model(string @namespace, string family, string name) : this(new ModelFamily(@namespace, family), name) { }
         public override string ToString() => $"{Family}:{Name}";
 
         public static Model FromString(string str)

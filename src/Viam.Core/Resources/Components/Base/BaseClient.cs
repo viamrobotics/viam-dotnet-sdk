@@ -24,10 +24,10 @@ namespace Viam.Core.Resources.Components.Base
         public static SubType SubType = SubType.FromRdkComponent("base");
 
 
-        public static Board.Board FromRobot(RobotClientBase client, string name)
+        public static IBase FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<Board.Board>(resourceName);
+            return client.GetComponent<BaseClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

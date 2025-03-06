@@ -81,27 +81,45 @@ namespace Viam.Core.Resources
         public static MimeType FromGrpc(string name) =>
             name switch
             {
-                nameof(MimeType.Unsupported) => MimeType.Unsupported,
-                nameof(MimeType.ViamRgba) => MimeType.ViamRgba,
-                nameof(MimeType.ViamRawDepth) => MimeType.ViamRawDepth,
-                nameof(MimeType.Jpeg) => MimeType.Jpeg,
-                nameof(MimeType.Png) => MimeType.Png,
-                nameof(MimeType.Pcd) => MimeType.Pcd,
+                "unsupported" => MimeType.Unsupported,
+                "image/vnd.viam.rgba" => MimeType.ViamRgba,
+                "image/vnd.viam.dep" => MimeType.ViamRawDepth,
+                "image/jpeg" => MimeType.Jpeg,
+                "image/png" => MimeType.Png,
+                "pointcloud/pcd" => MimeType.Pcd,
                 _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown MimeType")
             };
 
-        public static MimeType FromGrpc(Viam.Component.Camera.V1.Format mimeType) => FromGrpc(mimeType.ToString());
+        public static MimeType FromGrpc(Viam.Component.Camera.V1.Format mimeType) => mimeType switch
+        {
+            Viam.Component.Camera.V1.Format.Unspecified => MimeType.Unspecified,
+            Viam.Component.Camera.V1.Format.Png => MimeType.Png,
+            Viam.Component.Camera.V1.Format.Jpeg => MimeType.Jpeg,
+            Viam.Component.Camera.V1.Format.RawDepth => MimeType.ViamRawDepth,
+            Viam.Component.Camera.V1.Format.RawRgba => MimeType.ViamRgba,
+            _ => throw new ArgumentOutOfRangeException(nameof(mimeType), mimeType, "Unknown MimeType")
+        };
 
-        public static string ToGrpc(this MimeType mimeType) => mimeType.ToString();
+        public static string ToGrpc(this MimeType mimeType) => mimeType switch
+        {
+            MimeType.Unsupported => "unsupported",
+            MimeType.Unspecified => "unspecified",
+            MimeType.ViamRgba => "image/vnd.viam.rgba",
+            MimeType.ViamRawDepth => "image/vnd.viam.dep",
+            MimeType.Jpeg => "image/jpeg",
+            MimeType.Png => "image/png",
+            MimeType.Pcd => "pointcloud/pcd",
+            _ => throw new ArgumentOutOfRangeException(nameof(mimeType), mimeType, "Unknown MimeType")
+        };
         public static Format ToGrpcFormat(this MimeType mimeType) => mimeType switch
-                                                                     {
-                                                                         MimeType.Png          => Format.Png,
-                                                                         MimeType.Jpeg         => Format.Jpeg,
-                                                                         MimeType.ViamRawDepth => Format.RawDepth,
-                                                                         MimeType.ViamRgba     => Format.RawRgba,
-                                                                         MimeType.Unspecified => Format.Unspecified,
-                                                                         _ => throw new ArgumentOutOfRangeException(nameof(mimeType), mimeType, "Unsupported image format")
-                                                                     };
+        {
+            MimeType.Png => Format.Png,
+            MimeType.Jpeg => Format.Jpeg,
+            MimeType.ViamRawDepth => Format.RawDepth,
+            MimeType.ViamRgba => Format.RawRgba,
+            MimeType.Unspecified => Format.Unspecified,
+            _ => throw new ArgumentOutOfRangeException(nameof(mimeType), mimeType, "Unsupported image format")
+        };
     }
 
     public record ViamImage(ReadOnlyMemory<byte> bytes, MimeType mimeType, int width, int height, string? sourceName = null);

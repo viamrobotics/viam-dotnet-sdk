@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
-		<IsAotCompatible>false</IsAotCompatible>
+		<TrimmerSingleWarn>false</TrimmerSingleWarn>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -15,11 +15,12 @@
 		<PackageReference Include="ConfigureAwait.Fody" Version="3.3.2">
 			<PrivateAssets>all</PrivateAssets>
 		</PackageReference>
-		<PackageReference Include="Fody" Version="6.8.0">
+		<PackageReference Include="Fody" Version="6.9.2">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="SIPSorcery" Version="6.2.3" />
+		<PackageReference Include="SIPSorcery" Version="8.0.9" />
+		<PackageReference Include="System.Memory" Version="4.6.0" />
 	</ItemGroup>
 	<PropertyGroup>
 		<WeaverConfiguration>

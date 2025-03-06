@@ -22,12 +22,12 @@ namespace Viam.Core.Resources.Components.Sensor
         public static SubType SubType = SubType.FromRdkComponent("sensor");
         public static ViamResourceName GetResourceName(string? name)
         {
-            ArgumentNullException.ThrowIfNull(name, nameof(name));
+            if (name == null)
+                throw new ArgumentNullException(nameof(name));
             return new ViamResourceName(SubType, name);
         }
 
-
-        public static SensorClient FromRobot(RobotClientBase client, string name)
+        public static ISensor FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<SensorClient>(resourceName);
@@ -35,12 +35,13 @@ namespace Viam.Core.Resources.Components.Sensor
 
         public override DateTime? LastReconfigured => null;
 
-        public override ValueTask StopResource() => ValueTask.CompletedTask;
+        public override ValueTask StopResource() => new ValueTask();
 
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            Console.WriteLine("Class DoCommand");
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, command]);

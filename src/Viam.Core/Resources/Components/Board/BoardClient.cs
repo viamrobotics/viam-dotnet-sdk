@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Google.Protobuf.WellKnownTypes;
+
 using Microsoft.Extensions.Logging;
+
 using Viam.Common.V1;
 using Viam.Component.Board.V1;
 using Viam.Core.Clients;
@@ -13,35 +16,35 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.Board
 {
     /// <summary>
-    /// A <see cref="Board"/> client capable of interacting with a <see cref="Board"/> component on a machine
+    /// A <see cref="BoardClient"/> client capable of interacting with a <see cref="BoardClient"/> component on a machine
     /// </summary>
     /// <param name="resourceName">The <see cref="ResourceName"/> of the component</param>
     /// <param name="channel">The <see cref="ViamChannel"/> to use for communication with the component</param>
     /// <param name="logger">A logger</param>
-    public class Board(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
-        : ComponentBase<Board, Component.Board.V1.BoardService.BoardServiceClient>(resourceName, new Component.Board.V1.BoardService.BoardServiceClient(channel)),
+    public class BoardClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
+        : ComponentBase<BoardClient, Component.Board.V1.BoardService.BoardServiceClient>(resourceName, new Component.Board.V1.BoardService.BoardServiceClient(channel)),
           IBoard
     {
-        static Board() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new Board(name, channel, logger)));
+        static BoardClient() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new BoardClient(name, channel, logger)));
 
         public static SubType SubType = SubType.FromRdkComponent("board");
 
         /// <summary>
-        /// Get a <see cref="Board"/> by <paramref name="name"/> from the supplied <see cref="RobotClientBase"/>
+        /// Get a <see cref="BoardClient"/> by <paramref name="name"/> from the supplied <see cref="RobotClientBase"/>
         /// </summary>
         /// <param name="client">The <see cref="RobotClientBase"/></param>
         /// <param name="name">The name of the component</param>
-        /// <returns>A <see cref="Board"/> component</returns>
+        /// <returns>A <see cref="BoardClient"/> component</returns>
 
-        public static Board FromRobot(RobotClientBase client, string name)
+        public static IBoard FromRobot(RobotClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<Board>(resourceName);
+            return client.GetComponent<BoardClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;
 
-        public override ValueTask StopResource() => ValueTask.CompletedTask;
+        public override ValueTask StopResource() => new ValueTask();
 
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
@@ -87,14 +90,14 @@ namespace Viam.Core.Resources.Components.Board
         {
             try
             {
-                logger.LogMethodInvocationStart(parameters:[Name, mode, Duration.FromTimeSpan(duration)]);
+                logger.LogMethodInvocationStart(parameters: [Name, mode, Duration.FromTimeSpan(duration)]);
                 await Client.SetPowerModeAsync(new SetPowerModeRequest()
-                                               {
-                                                   Name = Name,
-                                                   PowerMode = mode,
-                                                   Duration = Duration.FromTimeSpan(duration),
-                                                   Extra = extra
-                                               },
+                {
+                    Name = Name,
+                    PowerMode = mode,
+                    Duration = Duration.FromTimeSpan(duration),
+                    Extra = extra
+                },
                                                deadline: timeout.ToDeadline(),
                                                cancellationToken: cancellationToken)
                             .ConfigureAwait(false);
@@ -116,7 +119,7 @@ namespace Viam.Core.Resources.Components.Board
         {
             try
             {
-                logger.LogMethodInvocationStart(parameters:[Name, pin, value]);
+                logger.LogMethodInvocationStart(parameters: [Name, pin, value]);
                 await Client
                       .WriteAnalogAsync(new WriteAnalogRequest() { Name = Name, Pin = pin, Value = value, Extra = extra },
                                         deadline: timeout.ToDeadline(),
@@ -132,8 +135,17 @@ namespace Viam.Core.Resources.Components.Board
         }
     }
 
-    public record AnalogReader(ILogger logger, string name, Board board)
+    public record AnalogReader
     {
+        private readonly ILogger _logger;
+        private readonly string _name;
+        private readonly BoardClient _boardClient;
+        internal AnalogReader(ILogger logger, string name, BoardClient boardClient)
+        {
+            _logger = logger;
+            _name = name;
+            _boardClient = boardClient;
+        }
 
         public async ValueTask<int> ReadAsync(Struct? extra = null,
                                               TimeSpan? timeout = null,
@@ -141,30 +153,39 @@ namespace Viam.Core.Resources.Components.Board
         {
             try
             {
-                logger.LogMethodInvocationStart(parameters: [board.Name, name]);
-                var res = await board.Client.ReadAnalogReaderAsync(
+                _logger.LogMethodInvocationStart(parameters: [_boardClient.Name, _name]);
+                var res = await _boardClient.Client.ReadAnalogReaderAsync(
                                          new ReadAnalogReaderRequest()
                                          {
-                                             AnalogReaderName = name,
-                                             BoardName = board.Name,
+                                             AnalogReaderName = _name,
+                                             BoardName = _boardClient.Name,
                                              Extra = extra
                                          },
                                          deadline: timeout.ToDeadline(),
                                          cancellationToken: cancellationToken)
                                      .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.Value);
+                _logger.LogMethodInvocationSuccess(results: res.Value);
                 return res.Value;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                _logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
     }
 
-    public record AnalogWriter(ILogger logger, string name, Board board)
+    public record AnalogWriter
     {
+        private readonly ILogger _logger;
+        private readonly string _name;
+        private readonly BoardClient _boardClient;
+        internal AnalogWriter(ILogger logger, string name, BoardClient boardClient)
+        {
+            _logger = logger;
+            _name = name;
+            _boardClient = boardClient;
+        }
         public async ValueTask WriteAsync(int value,
                                           Struct? extra = null,
                                           TimeSpan? timeout = null,
@@ -172,21 +193,30 @@ namespace Viam.Core.Resources.Components.Board
         {
             try
             {
-                logger.LogMethodInvocationStart(parameters: [board.Name, name, value]);
-                await board.WriteAnalogAsync(name, value, extra, timeout, cancellationToken)
+                _logger.LogMethodInvocationStart(parameters: [_boardClient.Name, _name, value]);
+                await _boardClient.WriteAnalogAsync(_name, value, extra, timeout, cancellationToken)
                            .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                _logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                _logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
     }
 
-    public record DigitalInterrupt(ILogger logger, string name, Board board)
+    public record DigitalInterrupt
     {
+        private readonly ILogger _logger;
+        private readonly string _name;
+        private readonly BoardClient _boardClient;
+        internal DigitalInterrupt(ILogger logger, string name, BoardClient boardClient)
+        {
+            _logger = logger;
+            _name = name;
+            _boardClient = boardClient;
+        }
 
         public async ValueTask<long> ValueAsync(Struct? extra = null,
                                                 TimeSpan? timeout = null,
@@ -194,30 +224,40 @@ namespace Viam.Core.Resources.Components.Board
         {
             try
             {
-                logger.LogMethodInvocationStart(parameters: [board.Name, name]);
-                var res = await board.Client.GetDigitalInterruptValueAsync(
+                _logger.LogMethodInvocationStart(parameters: [_boardClient.Name, _name]);
+                var res = await _boardClient.Client.GetDigitalInterruptValueAsync(
                                          new GetDigitalInterruptValueRequest()
                                          {
-                                             BoardName = board.Name,
-                                             DigitalInterruptName = name,
+                                             BoardName = _boardClient.Name,
+                                             DigitalInterruptName = _name,
                                              Extra = extra
                                          },
                                          deadline: timeout.ToDeadline(),
                                          cancellationToken: cancellationToken)
                                      .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.Value);
+                _logger.LogMethodInvocationSuccess(results: res.Value);
                 return res.Value;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                _logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
     }
 
-    public record GpioPin(ILogger logger, string name, Board board)
+    public record GpioPin
     {
+        private readonly ILogger _logger;
+        private readonly string _name;
+        private readonly BoardClient _boardClient;
+
+        internal GpioPin(ILogger logger, string name, BoardClient boardClient)
+        {
+            _logger = logger;
+            _name = name;
+            _boardClient = boardClient;
+        }
 
         public async ValueTask<bool> GetAsync(Struct? extra = null,
                                               TimeSpan? timeout = null,
@@ -225,18 +265,18 @@ namespace Viam.Core.Resources.Components.Board
         {
             try
             {
-                logger.LogMethodInvocationStart(parameters:[board.Name, name]);
-                var res = await board.Client.GetGPIOAsync(
-                                         new GetGPIORequest() { Name = board.Name, Pin = name, Extra = extra },
+                _logger.LogMethodInvocationStart(parameters: [_boardClient.Name, _name]);
+                var res = await _boardClient.Client.GetGPIOAsync(
+                                         new GetGPIORequest() { Name = _boardClient.Name, Pin = _name, Extra = extra },
                                          deadline: timeout.ToDeadline(),
                                          cancellationToken: cancellationToken)
                                      .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.High);
+                _logger.LogMethodInvocationSuccess(results: res.High);
                 return res.High;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                _logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -249,17 +289,17 @@ namespace Viam.Core.Resources.Components.Board
         {
             try
             {
-                logger.LogMethodInvocationStart(parameters:[board.Name, name, value]);
-                await board.Client.SetGPIOAsync(
-                               new SetGPIORequest() { Name = board.Name, Pin = name, High = value, Extra = extra },
+                _logger.LogMethodInvocationStart(parameters: [_boardClient.Name, _name, value]);
+                await _boardClient.Client.SetGPIOAsync(
+                               new SetGPIORequest() { Name = _boardClient.Name, Pin = _name, High = value, Extra = extra },
                                deadline: timeout.ToDeadline(),
                                cancellationToken: cancellationToken)
                            .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                _logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                _logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -271,18 +311,18 @@ namespace Viam.Core.Resources.Components.Board
         {
             try
             {
-                logger.LogMethodInvocationStart(parameters:[board.Name, name]);
-                var res = await board.Client.PWMAsync(
-                                         new PWMRequest() { Name = board.Name, Pin = name, Extra = extra },
+                _logger.LogMethodInvocationStart(parameters: [_boardClient.Name, _name]);
+                var res = await _boardClient.Client.PWMAsync(
+                                         new PWMRequest() { Name = _boardClient.Name, Pin = _name, Extra = extra },
                                          deadline: timeout.ToDeadline(),
                                          cancellationToken: cancellationToken)
                                      .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.DutyCyclePct);
+                _logger.LogMethodInvocationSuccess(results: res.DutyCyclePct);
                 return res.DutyCyclePct;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                _logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -295,22 +335,22 @@ namespace Viam.Core.Resources.Components.Board
         {
             try
             {
-                logger.LogMethodInvocationStart(parameters:[board.Name, name, dutyCyclePct]);
-                await board.Client.SetPWMAsync(new SetPWMRequest()
-                                               {
-                                                   Name = board.Name,
-                                                   Pin = name,
-                                                   DutyCyclePct = dutyCyclePct,
-                                                   Extra = extra
-                                               },
+                _logger.LogMethodInvocationStart(parameters: [_boardClient.Name, _name, dutyCyclePct]);
+                await _boardClient.Client.SetPWMAsync(new SetPWMRequest()
+                {
+                    Name = _boardClient.Name,
+                    Pin = _name,
+                    DutyCyclePct = dutyCyclePct,
+                    Extra = extra
+                },
                                                deadline: timeout.ToDeadline(),
                                                cancellationToken: cancellationToken)
                            .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                _logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                _logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -322,19 +362,19 @@ namespace Viam.Core.Resources.Components.Board
         {
             try
             {
-                logger.LogMethodInvocationStart(parameters: [board.Name, name]);
-                var res = await board.Client.PWMFrequencyAsync(
-                                         new PWMFrequencyRequest() { Name = board.Name, Pin = name, Extra = extra },
+                _logger.LogMethodInvocationStart(parameters: [_boardClient.Name, _name]);
+                var res = await _boardClient.Client.PWMFrequencyAsync(
+                                         new PWMFrequencyRequest() { Name = _boardClient.Name, Pin = _name, Extra = extra },
                                          deadline: timeout.ToDeadline(),
                                          cancellationToken: cancellationToken)
                                      .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.FrequencyHz);
+                _logger.LogMethodInvocationSuccess(results: res.FrequencyHz);
                 return res.FrequencyHz;
 
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                _logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -347,22 +387,22 @@ namespace Viam.Core.Resources.Components.Board
         {
             try
             {
-                logger.LogMethodInvocationStart(parameters:[board.Name, name, frequencyHz]);
-                await board.Client.SetPWMFrequencyAsync(new SetPWMFrequencyRequest()
-                                                        {
-                                                            Name = board.Name,
-                                                            Pin = name,
-                                                            FrequencyHz = frequencyHz,
-                                                            Extra = extra
-                                                        },
+                _logger.LogMethodInvocationStart(parameters: [_boardClient.Name, _name, frequencyHz]);
+                await _boardClient.Client.SetPWMFrequencyAsync(new SetPWMFrequencyRequest()
+                {
+                    Name = _boardClient.Name,
+                    Pin = _name,
+                    FrequencyHz = frequencyHz,
+                    Extra = extra
+                },
                                                         deadline: timeout.ToDeadline(),
                                                         cancellationToken: cancellationToken)
                            .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                _logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                _logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }

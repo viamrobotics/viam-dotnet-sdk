@@ -82,10 +82,12 @@ namespace Viam.Core.Resources
         {
             _logger.LogManagerRefreshStart(caller);
             var resourceNames = await client.ResourceNamesAsync();
-            var filteredResourceName = resourceNames.Where(x => x.ResourceSubtype is "component" or "service")
+            _logger.LogDebug("Filtering {ResourceCount} resources", resourceNames.Length);
+            var filteredResourceName = resourceNames.Where(x => x.ResourceType is "component" or "service")
                                    .Where(x => x.ResourceSubtype != "remote")
                                    .Where(x => x.ResourceSubtype != SensorClient.SubType.ResourceSubType
                                             || !resourceNames.Contains(new ViamResourceName(MovementSensorClient.SubType, x.Name)));
+            _logger.LogDebug("Refreshing client for {ResourceCount} resources", filteredResourceName.Count());
             foreach (var resourceName in filteredResourceName)
             {
                 CreateOrResetClient(resourceName, client.Channel);
