@@ -1,0 +1,30 @@
+name: License Finder
+
+on:
+  workflow_dispatch:
+  workflow_call:
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  license_finder:
+    if: github.repository_owner == 'viamrobotics'
+    name: Audit 3rd-Party Licenses
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/viamrobotics/canon:amd64-cache
+    timeout-minutes: 30
+    env:
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8
+
+      - run: dotnet build src/Viam.Net.Sdk.Core
+
+      - name: Run license finder
+        run: license_finder --project-path src/Viam.Net.Sdk.Core --decisions-file doc/dependency_decisions.yml
