@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Google.Protobuf.WellKnownTypes;
@@ -9,20 +10,20 @@ namespace Viam.Core.Resources.Components.Encoder
 {
     public interface IEncoder : IComponentBase
     {
-        ValueTask ResetPosition(Struct? extra = null,
+        ValueTask ResetPosition(IDictionary<string, object?>? extra = null,
                                 TimeSpan? timeout = null,
                                 CancellationToken cancellationToken = default);
 
         ValueTask<(float Position, PositionType PositionType)> GetPosition(PositionType? positionType = null,
-                                                                           Struct? extra = null,
+                                                                           IDictionary<string, object?>? extra = null,
                                                                            TimeSpan? timeout = null,
                                                                            CancellationToken cancellationToken = default);
 
-        ValueTask<EncoderProperties> GetProperties(Struct? extra = null,
+        ValueTask<EncoderProperties> GetProperties(IDictionary<string, object?>? extra = null,
                                                    TimeSpan? timeout = null,
                                                    CancellationToken cancellationToken = default);
 
-        ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+        ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
                                             TimeSpan? timeout = null,
                                             CancellationToken cancellationToken = default);
     }

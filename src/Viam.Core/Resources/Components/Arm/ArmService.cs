@@ -45,7 +45,7 @@ namespace Viam.Core.Resources.Components.Arm
                 var resource = (IArm)context.UserState["resource"];
                 // TODO: This deadline math is probably wrong.
                 var pose = await resource
-                                 .GetEndPosition(request.Extra,
+                                 .GetEndPosition(request.Extra?.ToDictionary(),
                                                  context.Deadline - DateTime.UtcNow,
                                                  context.CancellationToken)
                                  .ConfigureAwait(false);
@@ -67,7 +67,7 @@ namespace Viam.Core.Resources.Components.Arm
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IArm)context.UserState["resource"];
                 var geometries = await resource
-                                       .GetGeometries(request.Extra,
+                                       .GetGeometries(request.Extra?.ToDictionary(),
                                                       context.Deadline - DateTime.UtcNow,
                                                       context.CancellationToken)
                                        .ConfigureAwait(false);
@@ -89,7 +89,7 @@ namespace Viam.Core.Resources.Components.Arm
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IArm)context.UserState["resource"];
                 var jointPositions = await resource
-                                           .GetJointPositions(request.Extra,
+                                           .GetJointPositions(request.Extra?.ToDictionary(),
                                                               context.Deadline - DateTime.UtcNow,
                                                               context.CancellationToken)
                                            .ConfigureAwait(false);
@@ -110,7 +110,7 @@ namespace Viam.Core.Resources.Components.Arm
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IArm)context.UserState["resource"];
-                var (format, data) = await resource.GetKinematics(request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
+                var (format, data) = await resource.GetKinematics(request.Extra?.ToDictionary(), context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
                 var response = new GetKinematicsResponse() { Format = format, KinematicsData = data };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -146,7 +146,7 @@ namespace Viam.Core.Resources.Components.Arm
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IArm)context.UserState["resource"];
-                await resource.MoveToJoinPositions(request.Positions, request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
+                await resource.MoveToJoinPositions(request.Positions, request.Extra?.ToDictionary(), context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
                 var response = new MoveToJointPositionsResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -164,7 +164,7 @@ namespace Viam.Core.Resources.Components.Arm
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IArm)context.UserState["resource"];
-                await resource.MoveToPosition(request.To, request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
+                await resource.MoveToPosition(request.To, request.Extra?.ToDictionary(), context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
                 var response = new MoveToPositionResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -182,7 +182,7 @@ namespace Viam.Core.Resources.Components.Arm
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IArm)context.UserState["resource"];
-                await resource.Stop(request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
+                await resource.Stop(request.Extra?.ToDictionary(), context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
                 var response = new StopResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;

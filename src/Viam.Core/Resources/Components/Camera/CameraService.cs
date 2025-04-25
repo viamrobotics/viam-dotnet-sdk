@@ -47,7 +47,7 @@ namespace Viam.Core.Resources.Components.Camera
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ICamera)context.UserState["resource"];
-                var resp = await resource.GetGeometries(request.Extra,
+                var resp = await resource.GetGeometries(request.Extra?.ToDictionary(),
                                                         context.Deadline.ToTimeout(),
                                                         context.CancellationToken).ConfigureAwait(false);
 
@@ -95,7 +95,7 @@ namespace Viam.Core.Resources.Components.Camera
                 var resource = (ICamera)context.UserState["resource"];
                 var resp = await resource.GetImage(
                                MimeTypeExtensions.FromGrpc(request.MimeType),
-                               request.Extra,
+                               request.Extra?.ToDictionary(),
                                context.Deadline.ToTimeout(),
                                context.CancellationToken).ConfigureAwait(false);
 
@@ -146,7 +146,7 @@ namespace Viam.Core.Resources.Components.Camera
                 var resource = (ICamera)context.UserState["resource"];
                 var resp = await resource.GetPointCloud(
                                              MimeTypeExtensions.FromGrpc(request.MimeType),
-                                             request.Extra,
+                                             request.Extra?.ToDictionary(),
                                              context.Deadline.ToTimeout(),
                                              context.CancellationToken)
                                          .ConfigureAwait(false);

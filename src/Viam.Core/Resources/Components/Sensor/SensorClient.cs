@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Fody;
-using Google.Protobuf.WellKnownTypes;
 using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Core.Clients;
@@ -63,7 +62,7 @@ namespace Viam.Core.Resources.Components.Sensor
         }
 
 
-        public async ValueTask<IDictionary<string, object?>> GetReadings(Struct? extra = null,
+        public async ValueTask<IDictionary<string, object?>> GetReadings(IDictionary<string, object?>? extra = null,
                                                                          TimeSpan? timeout = null,
                                                                          CancellationToken cancellationToken = default)
         {
@@ -71,7 +70,7 @@ namespace Viam.Core.Resources.Components.Sensor
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client
-                                .GetReadingsAsync(new GetReadingsRequest() { Name = ResourceName.Name, Extra = extra },
+                                .GetReadingsAsync(new GetReadingsRequest() { Name = ResourceName.Name, Extra = extra?.ToStruct() },
                                                   deadline: timeout.ToDeadline(),
                                                   cancellationToken: cancellationToken)
                                 .ConfigureAwait(false);

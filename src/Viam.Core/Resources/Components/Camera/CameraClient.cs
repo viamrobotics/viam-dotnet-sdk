@@ -5,8 +5,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Google.Protobuf.WellKnownTypes;
-
 using Microsoft.Extensions.Logging;
 
 using Viam.Common.V1;
@@ -62,7 +60,7 @@ namespace Viam.Core.Resources.Components.Camera
 
 
         public async ValueTask<ViamImage> GetImage(MimeType? mimeType = null,
-                                          Struct? extra = null,
+                                          IDictionary<string, object?>? extra = null,
                                           TimeSpan? timeout = null,
                                           CancellationToken cancellationToken = default)
         {
@@ -75,7 +73,7 @@ namespace Viam.Core.Resources.Components.Camera
                                     {
                                         Name = Name,
                                         MimeType = mimeType?.ToGrpc() ?? string.Empty,
-                                        Extra = extra
+                                        Extra = extra?.ToStruct()
                                     },
                                     deadline: timeout.ToDeadline(),
                                     cancellationToken: cancellationToken)
@@ -131,7 +129,7 @@ namespace Viam.Core.Resources.Components.Camera
 
 
         public async ValueTask<ViamImage> GetPointCloud(MimeType mimeType,
-                                                        Struct? extra = null,
+                                                        IDictionary<string, object?>? extra = null,
                                                         TimeSpan? timeout = null,
                                                         CancellationToken cancellationToken = default)
         {
@@ -144,7 +142,7 @@ namespace Viam.Core.Resources.Components.Camera
                                        {
                                            Name = Name,
                                            MimeType = mimeType.ToGrpc(),
-                                           Extra = extra
+                                           Extra = extra?.ToStruct()
                                        },
                                        deadline: timeout.ToDeadline(),
                                        cancellationToken: cancellationToken)
@@ -196,14 +194,14 @@ namespace Viam.Core.Resources.Components.Camera
         }
 
 
-        public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+        public async ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
                                                    TimeSpan? timeout = null,
                                                    CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart();
-                var result = await Client.GetGeometriesAsync(new GetGeometriesRequest() { Name = Name, Extra = extra },
+                var result = await Client.GetGeometriesAsync(new GetGeometriesRequest() { Name = Name, Extra = extra?.ToStruct() },
                                                              deadline: timeout.ToDeadline(),
                                                              cancellationToken: cancellationToken)
                                          .ConfigureAwait(false);

@@ -61,14 +61,14 @@ namespace Viam.Core.Resources.Components.Gripper
         }
 
 
-        public async ValueTask Open(Struct? extra = null,
+        public async ValueTask Open(IDictionary<string, object?>? extra = null,
                                     TimeSpan? timeout = null,
                                     CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                await Client.OpenAsync(new OpenRequest() { Name = Name, Extra = extra },
+                await Client.OpenAsync(new OpenRequest() { Name = Name, Extra = extra?.ToStruct() },
                                        deadline: timeout.ToDeadline(),
                                        cancellationToken: cancellationToken)
                             .ConfigureAwait(false);
@@ -82,14 +82,14 @@ namespace Viam.Core.Resources.Components.Gripper
         }
 
 
-        public async ValueTask Grab(Struct? extra = null,
+        public async ValueTask Grab(IDictionary<string, object?>? extra = null,
                                     TimeSpan? timeout = null,
                                     CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                await Client.GrabAsync(new GrabRequest() { Name = Name, Extra = extra },
+                await Client.GrabAsync(new GrabRequest() { Name = Name, Extra = extra?.ToStruct() },
                                        deadline: timeout.ToDeadline(),
                                        cancellationToken: cancellationToken)
                             .ConfigureAwait(false);
@@ -103,14 +103,14 @@ namespace Viam.Core.Resources.Components.Gripper
         }
 
 
-        public async ValueTask Stop(Struct? extra = null,
+        public async ValueTask Stop(IDictionary<string, object?>? extra = null,
                                     TimeSpan? timeout = null,
                                     CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra },
+                await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra?.ToStruct() },
                                        deadline: timeout.ToDeadline(),
                                        cancellationToken: cancellationToken)
                             .ConfigureAwait(false);

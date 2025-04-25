@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
 using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Powersensor.V1;
@@ -56,14 +55,14 @@ namespace Viam.Core.Resources.Components.PowerSensor
         }
 
 
-        public async ValueTask<(double, bool)> GetVoltage(Struct? extra = null,
+        public async ValueTask<(double, bool)> GetVoltage(IDictionary<string, object?>? extra = null,
                                                           TimeSpan? timeout = null,
                                                           CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetVoltageAsync(new GetVoltageRequest() { Name = Name, Extra = extra },
+                var res = await Client.GetVoltageAsync(new GetVoltageRequest() { Name = Name, Extra = extra?.ToStruct() },
                                                        deadline: timeout.ToDeadline(),
                                                        cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -78,14 +77,14 @@ namespace Viam.Core.Resources.Components.PowerSensor
         }
 
 
-        public async ValueTask<(double, bool)> GetCurrent(Struct? extra = null,
+        public async ValueTask<(double, bool)> GetCurrent(IDictionary<string, object?>? extra = null,
                                                           TimeSpan? timeout = null,
                                                           CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetCurrentAsync(new GetCurrentRequest() { Name = Name, Extra = extra },
+                var res = await Client.GetCurrentAsync(new GetCurrentRequest() { Name = Name, Extra = extra?.ToStruct() },
                                                        deadline: timeout.ToDeadline(),
                                                        cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -100,14 +99,14 @@ namespace Viam.Core.Resources.Components.PowerSensor
         }
 
 
-        public async ValueTask<double> GetPower(Struct? extra = null,
+        public async ValueTask<double> GetPower(IDictionary<string, object?>? extra = null,
                                                 TimeSpan? timeout = null,
                                                 CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetPowerAsync(new GetPowerRequest() { Name = Name, Extra = extra },
+                var res = await Client.GetPowerAsync(new GetPowerRequest() { Name = Name, Extra = extra?.ToStruct() },
                                                      deadline: timeout.ToDeadline(),
                                                      cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -122,14 +121,14 @@ namespace Viam.Core.Resources.Components.PowerSensor
         }
 
 
-        public async ValueTask<IDictionary<string, object?>> GetReadings(Struct? extra = null,
+        public async ValueTask<IDictionary<string, object?>> GetReadings(IDictionary<string, object?>? extra = null,
                                                                          TimeSpan? timeout = null,
                                                                          CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetReadingsAsync(new GetReadingsRequest() { Name = Name, Extra = extra },
+                var res = await Client.GetReadingsAsync(new GetReadingsRequest() { Name = Name, Extra = extra?.ToStruct() },
                                                         deadline: timeout.ToDeadline(),
                                                         cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);

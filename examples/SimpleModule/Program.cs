@@ -49,7 +49,7 @@ await my_dotnet_sensor.DoCommand(new Dictionary<string, object?>());
 
 //    public static string[] ValidateConfig(ComponentConfig config) => Array.Empty<string>();
 
-//    public ValueTask<IDictionary<string, object?>> GetReadings(Struct? extra = null,
+//    public ValueTask<IDictionary<string, object?>> GetReadings(IDictionary<string, object?>? extra = null,
 //                                                               TimeSpan? timeout = null,
 //                                                               CancellationToken cancellationToken =
 //                                                                   default)

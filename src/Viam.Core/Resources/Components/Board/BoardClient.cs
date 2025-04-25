@@ -84,7 +84,7 @@ namespace Viam.Core.Resources.Components.Board
 
         public async ValueTask SetPowerModeAsync(PowerMode mode,
                                                  TimeSpan duration,
-                                                 Struct? extra = null,
+                                                 IDictionary<string, object?>? extra = null,
                                                  TimeSpan? timeout = null,
                                                  CancellationToken cancellationToken = default)
         {
@@ -96,7 +96,7 @@ namespace Viam.Core.Resources.Components.Board
                     Name = Name,
                     PowerMode = mode,
                     Duration = Duration.FromTimeSpan(duration),
-                    Extra = extra
+                    Extra = extra?.ToStruct()
                 },
                                                deadline: timeout.ToDeadline(),
                                                cancellationToken: cancellationToken)
@@ -113,7 +113,7 @@ namespace Viam.Core.Resources.Components.Board
 
         public async ValueTask WriteAnalogAsync(string pin,
                                                 int value,
-                                                Struct? extra = null,
+                                                IDictionary<string, object?>? extra = null,
                                                 TimeSpan? timeout = null,
                                                 CancellationToken cancellationToken = default)
         {
@@ -121,7 +121,7 @@ namespace Viam.Core.Resources.Components.Board
             {
                 logger.LogMethodInvocationStart(parameters: [Name, pin, value]);
                 await Client
-                      .WriteAnalogAsync(new WriteAnalogRequest() { Name = Name, Pin = pin, Value = value, Extra = extra },
+                      .WriteAnalogAsync(new WriteAnalogRequest() { Name = Name, Pin = pin, Value = value, Extra = extra?.ToStruct() },
                                         deadline: timeout.ToDeadline(),
                                         cancellationToken: cancellationToken)
                       .ConfigureAwait(false);
@@ -147,7 +147,7 @@ namespace Viam.Core.Resources.Components.Board
             _boardClient = boardClient;
         }
 
-        public async ValueTask<int> ReadAsync(Struct? extra = null,
+        public async ValueTask<int> ReadAsync(IDictionary<string, object?>? extra = null,
                                               TimeSpan? timeout = null,
                                               CancellationToken cancellationToken = default)
         {
@@ -159,7 +159,7 @@ namespace Viam.Core.Resources.Components.Board
                                          {
                                              AnalogReaderName = _name,
                                              BoardName = _boardClient.Name,
-                                             Extra = extra
+                                             Extra = extra?.ToStruct()
                                          },
                                          deadline: timeout.ToDeadline(),
                                          cancellationToken: cancellationToken)
@@ -187,7 +187,7 @@ namespace Viam.Core.Resources.Components.Board
             _boardClient = boardClient;
         }
         public async ValueTask WriteAsync(int value,
-                                          Struct? extra = null,
+                                          IDictionary<string, object?>? extra = null,
                                           TimeSpan? timeout = null,
                                           CancellationToken cancellationToken = default)
         {
@@ -218,7 +218,7 @@ namespace Viam.Core.Resources.Components.Board
             _boardClient = boardClient;
         }
 
-        public async ValueTask<long> ValueAsync(Struct? extra = null,
+        public async ValueTask<long> ValueAsync(IDictionary<string, object?>? extra = null,
                                                 TimeSpan? timeout = null,
                                                 CancellationToken cancellationToken = default)
         {
@@ -230,7 +230,7 @@ namespace Viam.Core.Resources.Components.Board
                                          {
                                              BoardName = _boardClient.Name,
                                              DigitalInterruptName = _name,
-                                             Extra = extra
+                                             Extra = extra?.ToStruct()
                                          },
                                          deadline: timeout.ToDeadline(),
                                          cancellationToken: cancellationToken)
@@ -259,7 +259,7 @@ namespace Viam.Core.Resources.Components.Board
             _boardClient = boardClient;
         }
 
-        public async ValueTask<bool> GetAsync(Struct? extra = null,
+        public async ValueTask<bool> GetAsync(IDictionary<string, object?>? extra = null,
                                               TimeSpan? timeout = null,
                                               CancellationToken cancellationToken = default)
         {
@@ -267,7 +267,7 @@ namespace Viam.Core.Resources.Components.Board
             {
                 _logger.LogMethodInvocationStart(parameters: [_boardClient.Name, _name]);
                 var res = await _boardClient.Client.GetGPIOAsync(
-                                         new GetGPIORequest() { Name = _boardClient.Name, Pin = _name, Extra = extra },
+                                         new GetGPIORequest() { Name = _boardClient.Name, Pin = _name, Extra = extra?.ToStruct() },
                                          deadline: timeout.ToDeadline(),
                                          cancellationToken: cancellationToken)
                                      .ConfigureAwait(false);
@@ -283,7 +283,7 @@ namespace Viam.Core.Resources.Components.Board
 
 
         public async ValueTask SetAsync(bool value,
-                                        Struct? extra = null,
+                                        IDictionary<string, object?>? extra = null,
                                         TimeSpan? timeout = null,
                                         CancellationToken cancellationToken = default)
         {
@@ -291,7 +291,7 @@ namespace Viam.Core.Resources.Components.Board
             {
                 _logger.LogMethodInvocationStart(parameters: [_boardClient.Name, _name, value]);
                 await _boardClient.Client.SetGPIOAsync(
-                               new SetGPIORequest() { Name = _boardClient.Name, Pin = _name, High = value, Extra = extra },
+                               new SetGPIORequest() { Name = _boardClient.Name, Pin = _name, High = value, Extra = extra?.ToStruct() },
                                deadline: timeout.ToDeadline(),
                                cancellationToken: cancellationToken)
                            .ConfigureAwait(false);
@@ -305,7 +305,7 @@ namespace Viam.Core.Resources.Components.Board
         }
 
 
-        public async ValueTask<double> GetPwmAsync(Struct? extra = null,
+        public async ValueTask<double> GetPwmAsync(IDictionary<string, object?>? extra = null,
                                                    TimeSpan? timeout = null,
                                                    CancellationToken cancellationToken = default)
         {
@@ -313,7 +313,7 @@ namespace Viam.Core.Resources.Components.Board
             {
                 _logger.LogMethodInvocationStart(parameters: [_boardClient.Name, _name]);
                 var res = await _boardClient.Client.PWMAsync(
-                                         new PWMRequest() { Name = _boardClient.Name, Pin = _name, Extra = extra },
+                                         new PWMRequest() { Name = _boardClient.Name, Pin = _name, Extra = extra?.ToStruct() },
                                          deadline: timeout.ToDeadline(),
                                          cancellationToken: cancellationToken)
                                      .ConfigureAwait(false);
@@ -329,7 +329,7 @@ namespace Viam.Core.Resources.Components.Board
 
 
         public async ValueTask SetPwmAsync(double dutyCyclePct,
-                                           Struct? extra = null,
+                                           IDictionary<string, object?>? extra = null,
                                            TimeSpan? timeout = null,
                                            CancellationToken cancellationToken = default)
         {
@@ -341,7 +341,7 @@ namespace Viam.Core.Resources.Components.Board
                     Name = _boardClient.Name,
                     Pin = _name,
                     DutyCyclePct = dutyCyclePct,
-                    Extra = extra
+                    Extra = extra?.ToStruct()
                 },
                                                deadline: timeout.ToDeadline(),
                                                cancellationToken: cancellationToken)
@@ -356,7 +356,7 @@ namespace Viam.Core.Resources.Components.Board
         }
 
 
-        public async ValueTask<ulong> GetPwmFrequencyAsync(Struct? extra = null,
+        public async ValueTask<ulong> GetPwmFrequencyAsync(IDictionary<string, object?>? extra = null,
                                                            TimeSpan? timeout = null,
                                                            CancellationToken cancellationToken = default)
         {
@@ -364,7 +364,7 @@ namespace Viam.Core.Resources.Components.Board
             {
                 _logger.LogMethodInvocationStart(parameters: [_boardClient.Name, _name]);
                 var res = await _boardClient.Client.PWMFrequencyAsync(
-                                         new PWMFrequencyRequest() { Name = _boardClient.Name, Pin = _name, Extra = extra },
+                                         new PWMFrequencyRequest() { Name = _boardClient.Name, Pin = _name, Extra = extra?.ToStruct() },
                                          deadline: timeout.ToDeadline(),
                                          cancellationToken: cancellationToken)
                                      .ConfigureAwait(false);
@@ -381,7 +381,7 @@ namespace Viam.Core.Resources.Components.Board
 
 
         public async ValueTask SetPwmFrequencyAsync(ulong frequencyHz,
-                                                    Struct? extra = null,
+                                                    IDictionary<string, object?>? extra = null,
                                                     TimeSpan? timeout = null,
                                                     CancellationToken cancellationToken = default)
         {
@@ -393,7 +393,7 @@ namespace Viam.Core.Resources.Components.Board
                     Name = _boardClient.Name,
                     Pin = _name,
                     FrequencyHz = frequencyHz,
-                    Extra = extra
+                    Extra = extra?.ToStruct()
                 },
                                                         deadline: timeout.ToDeadline(),
                                                         cancellationToken: cancellationToken)

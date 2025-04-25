@@ -4,8 +4,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-using Google.Protobuf.WellKnownTypes;
-
 using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Encoder.V1;
@@ -59,14 +57,14 @@ namespace Viam.Core.Resources.Components.Encoder
         }
 
 
-        public async ValueTask ResetPosition(Struct? extra = null,
+        public async ValueTask ResetPosition(IDictionary<string, object?>? extra = null,
                                              TimeSpan? timeout = null,
                                              CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                await Client.ResetPositionAsync(new ResetPositionRequest() { Name = Name, Extra = extra },
+                await Client.ResetPositionAsync(new ResetPositionRequest() { Name = Name, Extra = extra?.ToStruct() },
                                                 deadline: timeout.ToDeadline(),
                                                 cancellationToken: cancellationToken)
                             .ConfigureAwait(false);
@@ -81,7 +79,7 @@ namespace Viam.Core.Resources.Components.Encoder
 
 
         public async ValueTask<(float, PositionType)> GetPosition(PositionType? positionType = null,
-                                                                  Struct? extra = null,
+                                                                  IDictionary<string, object?>? extra = null,
                                                                   TimeSpan? timeout = null,
                                                                   CancellationToken cancellationToken = default)
         {
@@ -94,7 +92,7 @@ namespace Viam.Core.Resources.Components.Encoder
                     PositionType =
                                                                 positionType.GetValueOrDefault(
                                                                     PositionType.Unspecified),
-                    Extra = extra
+                    Extra = extra?.ToStruct()
                 },
                                                         deadline: timeout.ToDeadline(),
                                                         cancellationToken: cancellationToken)
@@ -110,14 +108,14 @@ namespace Viam.Core.Resources.Components.Encoder
         }
 
 
-        public async ValueTask<EncoderProperties> GetProperties(Struct? extra = null,
+        public async ValueTask<EncoderProperties> GetProperties(IDictionary<string, object?>? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetPropertiesAsync(new GetPropertiesRequest() { Name = Name, Extra = extra },
+                var res = await Client.GetPropertiesAsync(new GetPropertiesRequest() { Name = Name, Extra = extra?.ToStruct() },
                                                           deadline: timeout.ToDeadline(),
                                                           cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -134,14 +132,14 @@ namespace Viam.Core.Resources.Components.Encoder
         }
 
 
-        public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+        public async ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: Name);
-                var res = await Client.GetGeometriesAsync(new GetGeometriesRequest() { Name = Name, Extra = extra },
+                var res = await Client.GetGeometriesAsync(new GetGeometriesRequest() { Name = Name, Extra = extra?.ToStruct() },
                                                           deadline: timeout.ToDeadline(),
                                                           cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);

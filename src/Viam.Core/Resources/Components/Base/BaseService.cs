@@ -22,7 +22,7 @@ namespace Viam.Core.Resources.Components.Base
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IBase)context.UserState["resource"];
-                await resource.Stop(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                await resource.Stop(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
                 var response = new StopResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -80,7 +80,7 @@ namespace Viam.Core.Resources.Components.Base
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IBase)context.UserState["resource"];
-                var res = await resource.GetGeometries(request.Extra,
+                var res = await resource.GetGeometries(request.Extra?.ToDictionary(),
                                                        context.Deadline.ToTimeout(),
                                                        context.CancellationToken).ConfigureAwait(false);
 
@@ -102,7 +102,7 @@ namespace Viam.Core.Resources.Components.Base
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IBase)context.UserState["resource"];
-                var res = await resource.GetProperties(request.Extra,
+                var res = await resource.GetProperties(request.Extra?.ToDictionary(),
                                                        context.Deadline.ToTimeout(),
                                                        context.CancellationToken).ConfigureAwait(false);
 
@@ -130,7 +130,7 @@ namespace Viam.Core.Resources.Components.Base
                 var resource = (IBase)context.UserState["resource"];
                 await resource.MoveStraight(request.DistanceMm,
                                             request.MmPerSec,
-                                            request.Extra,
+                                            request.Extra?.ToDictionary(),
                                             context.Deadline.ToTimeout(),
                                             context.CancellationToken).ConfigureAwait(false);
 
@@ -153,7 +153,7 @@ namespace Viam.Core.Resources.Components.Base
                 var resource = (IBase)context.UserState["resource"];
                 await resource.SetPower(request.Linear,
                                         request.Angular,
-                                        request.Extra,
+                                        request.Extra?.ToDictionary(),
                                         context.Deadline.ToTimeout(),
                                         context.CancellationToken).ConfigureAwait(false);
                 var response = new SetPowerResponse();
@@ -175,7 +175,7 @@ namespace Viam.Core.Resources.Components.Base
                 var resource = (IBase)context.UserState["resource"];
                 await resource.SetVelocity(request.Linear,
                                            request.Angular,
-                                           request.Extra,
+                                           request.Extra?.ToDictionary(),
                                            context.Deadline.ToTimeout(),
                                            context.CancellationToken).ConfigureAwait(false);
                 var response = new SetVelocityResponse();
@@ -197,7 +197,7 @@ namespace Viam.Core.Resources.Components.Base
                 var resource = (IBase)context.UserState["resource"];
                 await resource.Spin(request.AngleDeg,
                                     request.DegsPerSec,
-                                    request.Extra,
+                                    request.Extra?.ToDictionary(),
                                     context.Deadline.ToTimeout(),
                                     context.CancellationToken).ConfigureAwait(false);
 

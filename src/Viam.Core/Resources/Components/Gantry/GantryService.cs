@@ -44,7 +44,7 @@ namespace Viam.Core.Resources.Components.Gantry
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGantry)context.UserState["resource"];
-                await resource.Stop(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                await resource.Stop(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
                 var response = new StopResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -63,7 +63,7 @@ namespace Viam.Core.Resources.Components.Gantry
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGantry)context.UserState["resource"];
-                var res = await resource.GetGeometries(request.Extra,
+                var res = await resource.GetGeometries(request.Extra?.ToDictionary(),
                                                        context.Deadline.ToTimeout(),
                                                        context.CancellationToken).ConfigureAwait(false);
 
@@ -102,7 +102,7 @@ namespace Viam.Core.Resources.Components.Gantry
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGantry)context.UserState["resource"];
-                var res = await resource.GetLengths(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                var res = await resource.GetLengths(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
                 var response = new GetLengthsResponse() { LengthsMm = { res } };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -121,7 +121,7 @@ namespace Viam.Core.Resources.Components.Gantry
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGantry)context.UserState["resource"];
-                var res = await resource.GetPosition(request.Extra,
+                var res = await resource.GetPosition(request.Extra?.ToDictionary(),
                                                      context.Deadline.ToTimeout(),
                                                      context.CancellationToken).ConfigureAwait(false);
 
@@ -142,7 +142,7 @@ namespace Viam.Core.Resources.Components.Gantry
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGantry)context.UserState["resource"];
-                await resource.Home(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                await resource.Home(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
                 var response = new HomeResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -164,7 +164,7 @@ namespace Viam.Core.Resources.Components.Gantry
                 var resource = (IGantry)context.UserState["resource"];
                 await resource.MoveToPosition(request.PositionsMm.ToArray(),
                                               request.SpeedsMmPerSec.ToArray(),
-                                              request.Extra,
+                                              request.Extra?.ToDictionary(),
                                               context.Deadline.ToTimeout(),
                                               context.CancellationToken).ConfigureAwait(false);
 

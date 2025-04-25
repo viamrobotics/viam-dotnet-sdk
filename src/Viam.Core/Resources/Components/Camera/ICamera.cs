@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 
 namespace Viam.Core.Resources.Components.Camera
@@ -9,7 +9,7 @@ namespace Viam.Core.Resources.Components.Camera
     public interface ICamera : IComponentBase
     {
         ValueTask<ViamImage> GetImage(MimeType? mimeType = null,
-                                      Struct? extra = null,
+                                      IDictionary<string, object?>? extra = null,
                                       TimeSpan? timeout = null,
                                       CancellationToken cancellationToken = default);
 
@@ -17,14 +17,14 @@ namespace Viam.Core.Resources.Components.Camera
                                          CancellationToken cancellationToken = default);
 
         ValueTask<ViamImage> GetPointCloud(MimeType mimeType,
-                                           Struct? extra = null,
+                                           IDictionary<string, object?>? extra = null,
                                            TimeSpan? timeout = null,
                                            CancellationToken cancellationToken = default);
 
         ValueTask<CameraProperties> GetProperties(TimeSpan? timeout = null,
                                                   CancellationToken cancellationToken = default);
 
-        ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+        ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
                                             TimeSpan? timeout = null,
                                             CancellationToken cancellationToken = default);
     }

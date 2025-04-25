@@ -35,7 +35,7 @@ namespace Viam.Core.Resources.Components.Board
                 var interrupt = await resource.GetDigitalInterruptByName(request.DigitalInterruptName);
 
                 var val = await interrupt
-                                .ValueAsync(request.Extra,
+                                .ValueAsync(request.Extra?.ToDictionary(),
                                             context.Deadline - DateTime.UtcNow,
                                             context.CancellationToken)
                                 .ConfigureAwait(false);
@@ -58,7 +58,7 @@ namespace Viam.Core.Resources.Components.Board
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IBoard)context.UserState["resource"];
                 var pin = await resource.GetGpioPinByName(request.Pin);
-                var val = await pin.GetAsync(request.Extra,
+                var val = await pin.GetAsync(request.Extra?.ToDictionary(),
                                              context.Deadline - DateTime.UtcNow,
                                              context.CancellationToken)
                                    .ConfigureAwait(false);
@@ -96,7 +96,7 @@ namespace Viam.Core.Resources.Components.Board
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IBoard)context.UserState["resource"];
                 var pin = await resource.GetGpioPinByName(request.Pin);
-                var val = await pin.GetPwmAsync(request.Extra,
+                var val = await pin.GetPwmAsync(request.Extra?.ToDictionary(),
                                                 context.Deadline - DateTime.UtcNow,
                                                 context.CancellationToken)
                                    .ConfigureAwait(false);
@@ -120,7 +120,7 @@ namespace Viam.Core.Resources.Components.Board
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IBoard)context.UserState["resource"];
                 var pin = await resource.GetGpioPinByName(request.Pin);
-                var val = await pin.GetPwmFrequencyAsync(request.Extra,
+                var val = await pin.GetPwmFrequencyAsync(request.Extra?.ToDictionary(),
                                                          context.Deadline - DateTime.UtcNow,
                                                          context.CancellationToken)
                                    .ConfigureAwait(false);
@@ -146,7 +146,7 @@ namespace Viam.Core.Resources.Components.Board
                 var resource = (IBoard)context.UserState["board"];
                 var reader = await resource.GetAnalogReaderByName(request.AnalogReaderName);
                 var val = await reader
-                                .ReadAsync(request.Extra, context.Deadline - DateTime.UtcNow, context.CancellationToken)
+                                .ReadAsync(request.Extra?.ToDictionary(), context.Deadline - DateTime.UtcNow, context.CancellationToken)
                                 .ConfigureAwait(false);
 
                 var response = new ReadAnalogReaderResponse() { Value = val };
@@ -168,7 +168,7 @@ namespace Viam.Core.Resources.Components.Board
                 var resource = (IBoard)context.UserState["resource"];
                 var pin = await resource.GetGpioPinByName(request.Pin);
                 await pin.SetAsync(request.High,
-                                   request.Extra,
+                                   request.Extra?.ToDictionary(),
                                    context.Deadline - DateTime.UtcNow,
                                    context.CancellationToken)
                          .ConfigureAwait(false);
@@ -192,7 +192,7 @@ namespace Viam.Core.Resources.Components.Board
                 var resource = (IBoard)context.UserState["resource"];
                 var pin = await resource.GetGpioPinByName(request.Pin);
                 await pin.SetPwmAsync(request.DutyCyclePct,
-                                      request.Extra,
+                                      request.Extra?.ToDictionary(),
                                       context.Deadline - DateTime.UtcNow,
                                       context.CancellationToken)
                          .ConfigureAwait(false);
@@ -218,7 +218,7 @@ namespace Viam.Core.Resources.Components.Board
                 var resource = (IBoard)context.UserState["resource"];
                 var pin = await resource.GetGpioPinByName(request.Pin);
                 await pin.SetPwmFrequencyAsync(request.FrequencyHz,
-                                               request.Extra,
+                                               request.Extra?.ToDictionary(),
                                                context.Deadline - DateTime.UtcNow,
                                                context.CancellationToken)
                          .ConfigureAwait(false);
@@ -243,7 +243,7 @@ namespace Viam.Core.Resources.Components.Board
                 var resource = (IBoard)context.UserState["resource"];
                 await resource.SetPowerModeAsync(request.PowerMode,
                                                  request.Duration.ToTimeSpan(),
-                                                 request.Extra,
+                                                 request.Extra?.ToDictionary(),
                                                  context.Deadline - DateTime.UtcNow,
                                                  context.CancellationToken)
                               .ConfigureAwait(false);
@@ -272,7 +272,7 @@ namespace Viam.Core.Resources.Components.Board
                 var resource = (IBoard)context.UserState["resource"];
                 await resource.WriteAnalogAsync(request.Pin,
                                                 request.Value,
-                                                request.Extra,
+                                                request.Extra?.ToDictionary(),
                                                 context.Deadline - DateTime.UtcNow,
                                                 context.CancellationToken)
                               .ConfigureAwait(false);

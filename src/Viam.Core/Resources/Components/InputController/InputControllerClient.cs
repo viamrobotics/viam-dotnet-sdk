@@ -65,7 +65,7 @@ namespace Viam.Core.Resources.Components.InputController
         }
 
 
-        public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+        public async ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
         {
@@ -73,7 +73,7 @@ namespace Viam.Core.Resources.Components.InputController
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetGeometriesAsync(
-                                          new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra },
+                                          new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra?.ToStruct() },
                                           deadline: timeout.ToDeadline(),
                                           cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -90,14 +90,14 @@ namespace Viam.Core.Resources.Components.InputController
         }
 
 
-        public async ValueTask<Control[]> GetControls(Struct? extra = null,
+        public async ValueTask<Control[]> GetControls(IDictionary<string, object?>? extra = null,
                                                       TimeSpan? timeout = null,
                                                       CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetControlsAsync(new GetControlsRequest() { Controller = Name, Extra = extra },
+                var res = await Client.GetControlsAsync(new GetControlsRequest() { Controller = Name, Extra = extra?.ToStruct() },
                                                         deadline: timeout.ToDeadline(),
                                                         cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -117,14 +117,14 @@ namespace Viam.Core.Resources.Components.InputController
 
 
         public async ValueTask<IDictionary<Control, Event>> GetEvents(Control control,
-                                                                      Struct? extra = null,
+                                                                      IDictionary<string, object?>? extra = null,
                                                                       TimeSpan? timeout = null,
                                                                       CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetEventsAsync(new GetEventsRequest() { Controller = Name, Extra = extra },
+                var res = await Client.GetEventsAsync(new GetEventsRequest() { Controller = Name, Extra = extra?.ToStruct() },
                                                       deadline: timeout.ToDeadline(),
                                                       cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -142,7 +142,7 @@ namespace Viam.Core.Resources.Components.InputController
 
 
         public ValueTask RegisterControlCallback(Control control,
-                                                 Struct? extra = null,
+                                                 IDictionary<string, object?>? extra = null,
                                                  TimeSpan? timeout = null,
                                                  CancellationToken cancellationToken = default)
         {
@@ -161,7 +161,7 @@ namespace Viam.Core.Resources.Components.InputController
 
 
         public ValueTask TriggerEvent(Event @event,
-                                      Struct? extra = null,
+                                      IDictionary<string, object?>? extra = null,
                                       TimeSpan? timeout = null,
                                       CancellationToken cancellationToken = default)
         {

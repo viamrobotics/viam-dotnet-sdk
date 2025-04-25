@@ -78,7 +78,7 @@ namespace Viam.Client.WebRTC
                 _semaphore.Release();
             }
 
-            _logger.LogTrace("WebRTCBaseChannel Handling connection state change {ConnectionState}", connectionState);
+            _logger.LogTrace("WebRTCBaseChannel Handling connection state change: {ConnectionState}", connectionState);
             switch (connectionState)
             {
                 case RTCIceConnectionState.failed:

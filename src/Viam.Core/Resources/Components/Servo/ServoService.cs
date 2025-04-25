@@ -45,7 +45,7 @@ namespace Viam.Core.Resources.Components.Servo
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
-                var res = await resource.GetGeometries(request.Extra,
+                var res = await resource.GetGeometries(request.Extra?.ToDictionary(),
                                                        context.Deadline.ToTimeout(),
                                                        context.CancellationToken).ConfigureAwait(false);
 
@@ -66,7 +66,7 @@ namespace Viam.Core.Resources.Components.Servo
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
-                await resource.Stop(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                await resource.Stop(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
                 var response = new StopResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -103,7 +103,7 @@ namespace Viam.Core.Resources.Components.Servo
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
-                var res = await resource.GetPosition(request.Extra,
+                var res = await resource.GetPosition(request.Extra?.ToDictionary(),
                                                      context.Deadline.ToTimeout(),
                                                      context.CancellationToken).ConfigureAwait(false);
 
@@ -125,7 +125,7 @@ namespace Viam.Core.Resources.Components.Servo
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
                 await resource.Move(request.AngleDeg,
-                                    request.Extra,
+                                    request.Extra?.ToDictionary(),
                                     context.Deadline.ToTimeout(),
                                     context.CancellationToken).ConfigureAwait(false);
 

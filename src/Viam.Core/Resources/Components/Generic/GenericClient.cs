@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
 using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Core.Logging;
@@ -46,7 +45,7 @@ namespace Viam.Core.Resources.Components.Generic
         public override ValueTask StopResource() => throw new NotImplementedException();
 
 
-        public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+        public async ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
                                                    TimeSpan? timeout = null,
                                                    CancellationToken cancellationToken = default)
         {
@@ -54,7 +53,7 @@ namespace Viam.Core.Resources.Components.Generic
             try
             {
                 var res = await Client.GetGeometriesAsync(
-                                          new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra },
+                                          new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra?.ToStruct() },
                                           deadline: timeout.ToDeadline(),
                                           cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);

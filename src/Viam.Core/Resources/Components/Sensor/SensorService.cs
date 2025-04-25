@@ -43,7 +43,7 @@ namespace Viam.Core.Resources.Components.Sensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ISensor)context.UserState["resource"];
-                var res = await resource.GetReadings(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                var res = await resource.GetReadings(request.Extra.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetReadingsResponse();
                 response.Readings.Add(res);

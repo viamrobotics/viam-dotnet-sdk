@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
@@ -19,8 +19,8 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="SIPSorcery" Version="8.0.9" />
-		<PackageReference Include="System.Memory" Version="4.6.0" />
+		<PackageReference Include="SIPSorcery" Version="8.0.12" />
+		<PackageReference Include="System.Memory" Version="4.6.3" />
 	</ItemGroup>
 	<PropertyGroup>
 		<WeaverConfiguration>
@@ -29,5 +29,13 @@
 				<MethodBoundaryAspect />
 			</Weavers>
 		</WeaverConfiguration>
+	</PropertyGroup>
+	<PropertyGroup>
+		<PackageId>Viam.Client</PackageId>
+		<Version>0.0.0-dev</Version>
+		<Authors>TheGreatCO</Authors>
+		<Description>Viam Client Library</Description>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<!-- optional -->
 	</PropertyGroup>
 </Project>

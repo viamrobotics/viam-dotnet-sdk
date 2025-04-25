@@ -59,14 +59,14 @@ namespace Viam.Core.Resources.Components.MovementSensor
         }
 
 
-        public async ValueTask<(GeoPoint, float)> GetPosition(Struct? extra = null,
+        public async ValueTask<(GeoPoint, float)> GetPosition(IDictionary<string, object?>? extra = null,
                                                               TimeSpan? timeout = null,
                                                               CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetPositionAsync(new GetPositionRequest() { Name = Name, Extra = extra },
+                var res = await Client.GetPositionAsync(new GetPositionRequest() { Name = Name, Extra = extra?.ToStruct() },
                                                         deadline: timeout.ToDeadline(),
                                                         cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -81,7 +81,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
         }
 
 
-        public async ValueTask<Vector3> GetLinearVelocity(Struct? extra = null,
+        public async ValueTask<Vector3> GetLinearVelocity(IDictionary<string, object?>? extra = null,
                                                           TimeSpan? timeout = null,
                                                           CancellationToken cancellationToken = default)
         {
@@ -89,7 +89,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetLinearVelocityAsync(
-                                          new GetLinearVelocityRequest() { Name = Name, Extra = extra },
+                                          new GetLinearVelocityRequest() { Name = Name, Extra = extra?.ToStruct() },
                                           deadline: timeout.ToDeadline(),
                                           cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -104,7 +104,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
         }
 
 
-        public async ValueTask<Vector3> GetAngularVelocity(Struct? extra = null,
+        public async ValueTask<Vector3> GetAngularVelocity(IDictionary<string, object?>? extra = null,
                                                            TimeSpan? timeout = null,
                                                            CancellationToken cancellationToken = default)
         {
@@ -112,7 +112,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetAngularVelocityAsync(
-                                          new GetAngularVelocityRequest() { Name = Name, Extra = extra },
+                                          new GetAngularVelocityRequest() { Name = Name, Extra = extra?.ToStruct() },
                                           deadline: timeout.ToDeadline(),
                                           cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -127,7 +127,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
         }
 
 
-        public async ValueTask<Vector3> GetLinearAcceleration(Struct? extra = null,
+        public async ValueTask<Vector3> GetLinearAcceleration(IDictionary<string, object?>? extra = null,
                                                               TimeSpan? timeout = null,
                                                               CancellationToken cancellationToken = default)
         {
@@ -135,7 +135,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetLinearAccelerationAsync(
-                                          new GetLinearAccelerationRequest() { Name = Name, Extra = extra, },
+                                          new GetLinearAccelerationRequest() { Name = Name, Extra = extra?.ToStruct(), },
                                           deadline: timeout.ToDeadline(),
                                           cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -150,7 +150,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
         }
 
 
-        public async ValueTask<double> GetCompassHeading(Struct? extra = null,
+        public async ValueTask<double> GetCompassHeading(IDictionary<string, object?>? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
         {
@@ -158,7 +158,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetCompassHeadingAsync(
-                                          new GetCompassHeadingRequest() { Name = Name, Extra = extra, },
+                                          new GetCompassHeadingRequest() { Name = Name, Extra = extra?.ToStruct(), },
                                           deadline: timeout.ToDeadline(),
                                           cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -173,14 +173,14 @@ namespace Viam.Core.Resources.Components.MovementSensor
         }
 
 
-        public async ValueTask<Orientation> GetOrientation(Struct? extra = null,
+        public async ValueTask<Orientation> GetOrientation(IDictionary<string, object?>? extra = null,
                                                            TimeSpan? timeout = null,
                                                            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetOrientationAsync(new GetOrientationRequest() { Name = Name, Extra = extra, },
+                var res = await Client.GetOrientationAsync(new GetOrientationRequest() { Name = Name, Extra = extra?.ToStruct(), },
                                                            deadline: timeout.ToDeadline(),
                                                            cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -195,14 +195,14 @@ namespace Viam.Core.Resources.Components.MovementSensor
         }
 
 
-        public async ValueTask<Properties> GetProperties(Struct? extra = null,
+        public async ValueTask<Properties> GetProperties(IDictionary<string, object?>? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetPropertiesAsync(new GetPropertiesRequest() { Name = Name, Extra = extra },
+                var res = await Client.GetPropertiesAsync(new GetPropertiesRequest() { Name = Name, Extra = extra?.ToStruct() },
                                                           deadline: timeout.ToDeadline(),
                                                           cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -224,14 +224,14 @@ namespace Viam.Core.Resources.Components.MovementSensor
         }
 
 
-        public async ValueTask<Accuracy> GetAccuracy(Struct? extra = null,
+        public async ValueTask<Accuracy> GetAccuracy(IDictionary<string, object?>? extra = null,
                                                      TimeSpan? timeout = null,
                                                      CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetAccuracyAsync(new GetAccuracyRequest() { Name = Name, Extra = extra, },
+                var res = await Client.GetAccuracyAsync(new GetAccuracyRequest() { Name = Name, Extra = extra?.ToStruct(), },
                                                         deadline: timeout.ToDeadline(),
                                                         cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -256,7 +256,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
         }
 
 
-        public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+        public async ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
         {
@@ -264,7 +264,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetGeometriesAsync(
-                                          new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra },
+                                          new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra?.ToStruct() },
                                           deadline: timeout.ToDeadline(),
                                           cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);
@@ -281,14 +281,14 @@ namespace Viam.Core.Resources.Components.MovementSensor
         }
 
 
-        public async ValueTask<IDictionary<string, object?>> GetReadings(Struct? extra = null,
+        public async ValueTask<IDictionary<string, object?>> GetReadings(IDictionary<string, object?>? extra = null,
                                                                          TimeSpan? timeout = null,
                                                                          CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetReadingsAsync(new GetReadingsRequest() { Name = Name, Extra = extra, },
+                var res = await Client.GetReadingsAsync(new GetReadingsRequest() { Name = Name, Extra = extra?.ToStruct(), },
                                                         deadline: timeout.ToDeadline(),
                                                         cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);

@@ -23,7 +23,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetProperties(request.Extra,
+                var res = await resource.GetProperties(request.Extra?.ToDictionary(),
                                                        context.Deadline.ToTimeout(),
                                                        context.CancellationToken).ConfigureAwait(false);
 
@@ -73,7 +73,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetGeometries(request.Extra,
+                var res = await resource.GetGeometries(request.Extra?.ToDictionary(),
                                                        context.Deadline.ToTimeout(),
                                                        context.CancellationToken).ConfigureAwait(false);
 
@@ -93,7 +93,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetPosition(request.Extra,
+                var res = await resource.GetPosition(request.Extra?.ToDictionary(),
                                                      context.Deadline.ToTimeout(),
                                                      context.CancellationToken).ConfigureAwait(false);
 
@@ -113,7 +113,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetReadings(request.Extra,
+                var res = await resource.GetReadings(request.Extra?.ToDictionary(),
                                                      context.Deadline.ToTimeout(),
                                                      context.CancellationToken).ConfigureAwait(false);
 
@@ -134,7 +134,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetAccuracy(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                var res = await resource.GetAccuracy(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
                 var response = new GetAccuracyResponse()
                 {
                     CompassDegreesError = res.CompassDegreesError,
@@ -158,7 +158,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetAngularVelocity(request.Extra,
+                var res = await resource.GetAngularVelocity(request.Extra?.ToDictionary(),
                                                             context.Deadline.ToTimeout(),
                                                             context.CancellationToken).ConfigureAwait(false);
 
@@ -178,7 +178,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetCompassHeading(request.Extra,
+                var res = await resource.GetCompassHeading(request.Extra?.ToDictionary(),
                                                            context.Deadline.ToTimeout(),
                                                            context.CancellationToken).ConfigureAwait(false);
 
@@ -198,7 +198,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetLinearAcceleration(request.Extra,
+                var res = await resource.GetLinearAcceleration(request.Extra?.ToDictionary(),
                                                                context.Deadline.ToTimeout(),
                                                                context.CancellationToken).ConfigureAwait(false);
 
@@ -218,7 +218,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetLinearVelocity(request.Extra,
+                var res = await resource.GetLinearVelocity(request.Extra?.ToDictionary(),
                                                            context.Deadline.ToTimeout(),
                                                            context.CancellationToken).ConfigureAwait(false);
 
@@ -238,7 +238,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetOrientation(request.Extra,
+                var res = await resource.GetOrientation(request.Extra?.ToDictionary(),
                                                         context.Deadline.ToTimeout(),
                                                         context.CancellationToken).ConfigureAwait(false);
 

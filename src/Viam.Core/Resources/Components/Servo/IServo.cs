@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,12 +11,12 @@ namespace Viam.Core.Resources.Components.Servo
     public interface IServo : IComponentBase
     {
         ValueTask Move(uint angle,
-                       Struct? extra = null,
+                       IDictionary<string, object?>? extra = null,
                        TimeSpan? timeout = null,
                        CancellationToken cancellationToken = default,
                        [CallerMemberName] string? caller = null);
 
-        ValueTask<uint> GetPosition(Struct? extra = null,
+        ValueTask<uint> GetPosition(IDictionary<string, object?>? extra = null,
                                     TimeSpan? timeout = null,
                                     CancellationToken cancellationToken = default,
                                     [CallerMemberName] string? caller = null);
@@ -24,12 +25,12 @@ namespace Viam.Core.Resources.Components.Servo
                                  CancellationToken cancellationToken = default,
                                  [CallerMemberName] string? caller = null);
 
-        ValueTask Stop(Struct? extra = null,
+        ValueTask Stop(IDictionary<string, object?>? extra = null,
                        TimeSpan? timeout = null,
                        CancellationToken cancellationToken = default,
                        [CallerMemberName] string? caller = null);
 
-        ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+        ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
                                             TimeSpan? timeout = null,
                                             CancellationToken cancellationToken = default,
                                             [CallerMemberName] string? caller = null);

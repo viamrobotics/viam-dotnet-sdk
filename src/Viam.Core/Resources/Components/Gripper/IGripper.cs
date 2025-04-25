@@ -1,21 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
 
 namespace Viam.Core.Resources.Components.Gripper
 {
     public interface IGripper : IComponentBase
     {
-        ValueTask Open(Struct? extra = null,
+        ValueTask Open(IDictionary<string, object?>? extra = null,
                        TimeSpan? timeout = null,
                        CancellationToken cancellationToken = default);
 
-        ValueTask Grab(Struct? extra = null,
+        ValueTask Grab(IDictionary<string, object?>? extra = null,
                        TimeSpan? timeout = null,
                        CancellationToken cancellationToken = default);
 
-        ValueTask Stop(Struct? extra = null,
+        ValueTask Stop(IDictionary<string, object?>? extra = null,
                        TimeSpan? timeout = null,
                        CancellationToken cancellationToken = default);
 

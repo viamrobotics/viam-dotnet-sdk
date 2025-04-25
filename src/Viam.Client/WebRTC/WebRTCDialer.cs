@@ -14,6 +14,7 @@ using Viam.Core.Grpc;
 using Viam.Core;
 using Viam.Core.Logging;
 using Metadata = Grpc.Core.Metadata;
+using TinyJson;
 
 namespace Viam.Client.WebRTC
 {
@@ -46,7 +47,7 @@ namespace Viam.Client.WebRTC
         /// <returns>A <see cref="ValueTask{ViamChannel}"/></returns>
         public async ValueTask<ViamChannel> DialDirectAsync(WebRtcDialOptions dialOptions, CancellationToken cancellationToken = default)
         {
-            logger.LogDebug("Dialing WebRTC to {address} with {signalingServer}", dialOptions.MachineAddress, dialOptions.SignalingAddress);
+            logger.LogDebug("Dialing WebRTC to {address} with signaling server {signalingServer}", dialOptions.MachineAddress, dialOptions.SignalingAddress);
 
             var md = new Metadata { { "rpc-host", dialOptions.MachineAddress } };
 
@@ -215,6 +216,7 @@ namespace Viam.Client.WebRTC
                 switch (resp.StageCase)
                 {
                     case CallResponse.StageOneofCase.Init:
+                        logger.LogTrace("Candidate Exchange State: Init");
                         if (haveInit)
                         {
                             throw new Exception("got init stage more than once");
@@ -224,6 +226,7 @@ namespace Viam.Client.WebRTC
                         state.Uuid = resp.Uuid;
                         var answer = DecodeSdp(resp.Init.Sdp);
 
+                        logger.LogTrace("Candidate Exchange Response: {Response}", resp.ToJson());
                         peerConnection.setRemoteDescription(new RTCSessionDescriptionInit { type = answer.type, sdp = answer.sdp.ToString() });
 
                         remoteDescriptionSent.SetResult(true);
@@ -238,6 +241,7 @@ namespace Viam.Client.WebRTC
 
                         break;
                     case CallResponse.StageOneofCase.Update:
+                        logger.LogTrace("Candidate Exchange State: Update");
                         if (!haveInit)
                         {
                             throw new Exception("got update stage before init stage");
@@ -249,6 +253,7 @@ namespace Viam.Client.WebRTC
                         }
 
                         var candidate = IceCandidateFromProto(resp.Update.Candidate);
+                        logger.LogTrace("Got canddidate: {Candidate}", candidate.candidate);
                         peerConnection.addIceCandidate(candidate);
                         break;
                     default:

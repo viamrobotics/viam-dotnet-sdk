@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Google.Protobuf;
-using Google.Protobuf.WellKnownTypes;
 using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Arm.V1;
@@ -55,7 +54,7 @@ namespace Viam.Core.Resources.Components.Arm
         }
 
 
-        public async ValueTask<Pose> GetEndPosition(Struct? extra = null,
+        public async ValueTask<Pose> GetEndPosition(IDictionary<string, object?>? extra = null,
                                                     TimeSpan? timeout = null,
                                                     CancellationToken cancellationToken = default)
         {
@@ -64,7 +63,7 @@ namespace Viam.Core.Resources.Components.Arm
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client
                               .GetEndPositionAsync(
-                                  new GetEndPositionRequest() { Name = Name, Extra = extra },
+                                  new GetEndPositionRequest() { Name = Name, Extra = extra?.ToStruct() },
                                   deadline: timeout.ToDeadline(),
                                   cancellationToken: cancellationToken)
                               .ConfigureAwait(false);
@@ -81,14 +80,14 @@ namespace Viam.Core.Resources.Components.Arm
 
 
         public async ValueTask MoveToPosition(Pose pose,
-                                              Struct? extra = null,
+                                              IDictionary<string, object?>? extra = null,
                                               TimeSpan? timeout = null,
                                               CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, pose]);
-                await Client.MoveToPositionAsync(new MoveToPositionRequest() { Name = Name, To = pose, Extra = extra },
+                await Client.MoveToPositionAsync(new MoveToPositionRequest() { Name = Name, To = pose, Extra = extra?.ToStruct() },
                                      deadline: timeout.ToDeadline(),
                                      cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
@@ -104,7 +103,7 @@ namespace Viam.Core.Resources.Components.Arm
 
 
         public async ValueTask MoveToJoinPositions(JointPositions jointPositions,
-                                                   Struct? extra = null,
+                                                   IDictionary<string, object?>? extra = null,
                                                    TimeSpan? timeout = null,
                                                    CancellationToken cancellationToken = default)
         {
@@ -116,7 +115,7 @@ namespace Viam.Core.Resources.Components.Arm
                       {
                           Name = Name,
                           Positions = jointPositions,
-                          Extra = extra
+                          Extra = extra?.ToStruct()
                       },
                                                  deadline: timeout.ToDeadline(),
                                                  cancellationToken: cancellationToken)
@@ -131,7 +130,7 @@ namespace Viam.Core.Resources.Components.Arm
         }
 
 
-        public async ValueTask<JointPositions> GetJointPositions(Struct? extra = null,
+        public async ValueTask<JointPositions> GetJointPositions(IDictionary<string, object?>? extra = null,
                                                                  TimeSpan? timeout = null,
                                                                  CancellationToken cancellationToken = default)
         {
@@ -140,7 +139,7 @@ namespace Viam.Core.Resources.Components.Arm
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client
                               .GetJointPositionsAsync(
-                                  new GetJointPositionsRequest() { Name = Name, Extra = extra },
+                                  new GetJointPositionsRequest() { Name = Name, Extra = extra?.ToStruct() },
                                   deadline: timeout.ToDeadline(),
                                   cancellationToken: cancellationToken)
                               .ConfigureAwait(false);
@@ -155,14 +154,14 @@ namespace Viam.Core.Resources.Components.Arm
         }
 
 
-        public async ValueTask Stop(Struct? extra = null,
+        public async ValueTask Stop(IDictionary<string, object?>? extra = null,
                                     TimeSpan? timeout = null,
                                     CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra },
+                await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra?.ToStruct() },
                                        deadline: timeout.ToDeadline(),
                                        cancellationToken: cancellationToken)
                             .ConfigureAwait(false);
@@ -197,7 +196,7 @@ namespace Viam.Core.Resources.Components.Arm
         }
 
 
-        public async ValueTask<(KinematicsFileFormat, ByteString)> GetKinematics(Struct? extra = null,
+        public async ValueTask<(KinematicsFileFormat, ByteString)> GetKinematics(IDictionary<string, object?>? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -205,7 +204,7 @@ namespace Viam.Core.Resources.Components.Arm
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client
-                              .GetKinematicsAsync(new GetKinematicsRequest() { Name = Name, Extra = extra },
+                              .GetKinematicsAsync(new GetKinematicsRequest() { Name = Name, Extra = extra?.ToStruct() },
                                                   deadline: timeout.ToDeadline(),
                                                   cancellationToken: cancellationToken)
                               .ConfigureAwait(false);
@@ -220,14 +219,14 @@ namespace Viam.Core.Resources.Components.Arm
         }
 
 
-        public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+        public async ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetGeometriesAsync(new GetGeometriesRequest() { Name = Name, Extra = extra },
+                var res = await Client.GetGeometriesAsync(new GetGeometriesRequest() { Name = Name, Extra = extra?.ToStruct() },
                                                           deadline: timeout.ToDeadline(),
                                                           cancellationToken: cancellationToken)
                                       .ConfigureAwait(false);

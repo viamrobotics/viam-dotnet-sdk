@@ -21,7 +21,7 @@ using Status = Viam.Robot.V1.Status;
 
 namespace Viam.Core.Clients
 {
-    public class RobotClientBase
+    public class RobotClientBase : IDisposable
     {
         internal readonly ViamChannel Channel;
         protected readonly ILogger<RobotClientBase> Logger;
@@ -37,6 +37,11 @@ namespace Viam.Core.Clients
         }
 
         protected Task RefreshAsync() => _resourceManager.RefreshAsync(this);
+
+        public void Dispose()
+        {
+            Channel.Dispose();
+        }
         
         public T GetComponent<T>(ViamResourceName resourceName) where T : ResourceBase
         {

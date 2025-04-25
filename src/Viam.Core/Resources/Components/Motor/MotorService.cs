@@ -43,7 +43,7 @@ namespace Viam.Core.Resources.Components.Motor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMotor)context.UserState["resource"];
-                await resource.Stop(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                await resource.Stop(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
                 var response = new StopResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -80,7 +80,7 @@ namespace Viam.Core.Resources.Components.Motor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMotor)context.UserState["resource"];
-                var res = await resource.GetGeometries(request.Extra,
+                var res = await resource.GetGeometries(request.Extra?.ToDictionary(),
                                                        context.Deadline.ToTimeout(),
                                                        context.CancellationToken).ConfigureAwait(false);
 
@@ -102,7 +102,7 @@ namespace Viam.Core.Resources.Components.Motor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMotor)context.UserState["resource"];
-                var res = await resource.GetProperties(request.Extra,
+                var res = await resource.GetProperties(request.Extra?.ToDictionary(),
                                                        context.Deadline.ToTimeout(),
                                                        context.CancellationToken).ConfigureAwait(false);
 
@@ -124,7 +124,7 @@ namespace Viam.Core.Resources.Components.Motor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMotor)context.UserState["resource"];
-                var res = await resource.GetPosition(request.Extra,
+                var res = await resource.GetPosition(request.Extra?.ToDictionary(),
                                                      context.Deadline.ToTimeout(),
                                                      context.CancellationToken).ConfigureAwait(false);
 
@@ -147,7 +147,7 @@ namespace Viam.Core.Resources.Components.Motor
                 var resource = (IMotor)context.UserState["resource"];
                 await resource.GoFor(request.Rpm,
                                      request.Revolutions,
-                                     request.Extra,
+                                     request.Extra?.ToDictionary(),
                                      context.Deadline.ToTimeout(),
                                      context.CancellationToken).ConfigureAwait(false);
 
@@ -170,7 +170,7 @@ namespace Viam.Core.Resources.Components.Motor
                 var resource = (IMotor)context.UserState["resource"];
                 await resource.GoTo(request.Rpm,
                                     request.PositionRevolutions,
-                                    request.Extra,
+                                    request.Extra?.ToDictionary(),
                                     context.Deadline.ToTimeout(),
                                     context.CancellationToken).ConfigureAwait(false);
 
@@ -191,7 +191,7 @@ namespace Viam.Core.Resources.Components.Motor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMotor)context.UserState["resource"];
-                var res = await resource.IsPowered(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                var res = await resource.IsPowered(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
                 var response = new IsPoweredResponse() { IsOn = res.IsOn, PowerPct = res.PowerPct };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -212,7 +212,7 @@ namespace Viam.Core.Resources.Components.Motor
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMotor)context.UserState["resource"];
                 await resource.ResetZeroPosition(request.Offset,
-                                                 request.Extra,
+                                                 request.Extra?.ToDictionary(),
                                                  context.Deadline.ToTimeout(),
                                                  context.CancellationToken).ConfigureAwait(false);
 
@@ -234,7 +234,7 @@ namespace Viam.Core.Resources.Components.Motor
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMotor)context.UserState["resource"];
                 await resource.SetPower(request.PowerPct,
-                                        request.Extra,
+                                        request.Extra?.ToDictionary(),
                                         context.Deadline.ToTimeout(),
                                         context.CancellationToken).ConfigureAwait(false);
 

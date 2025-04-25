@@ -29,8 +29,7 @@ namespace Viam.Core.Test
             _robotClientOptions = DialOptions
                                 .FromAddress(machineAddress)
                                 .WithLogging(_loggerFactory)
-                                .WithApiCredentials(apiKey, apiKeyId)
-                                .SetDisableWebRtc();
+                                .WithApiCredentials(apiKey, apiKeyId);
 
             _cloudClientOptions = DialOptions.FromCloud()
                                              .WithLogging(_loggerFactory)

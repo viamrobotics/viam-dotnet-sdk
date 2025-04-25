@@ -44,7 +44,7 @@ namespace Viam.Core.Resources.Components.Encoder
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IEncoder)context.UserState["resource"];
-                var res = await resource.GetGeometries(request.Extra,
+                var res = await resource.GetGeometries(request.Extra?.ToDictionary(),
                                                        context.Deadline.ToTimeout(),
                                                        context.CancellationToken).ConfigureAwait(false);
 
@@ -66,7 +66,7 @@ namespace Viam.Core.Resources.Components.Encoder
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IEncoder)context.UserState["resource"];
-                var res = await resource.GetProperties(request.Extra,
+                var res = await resource.GetProperties(request.Extra?.ToDictionary(),
                                                        context.Deadline.ToTimeout(),
                                                        context.CancellationToken).ConfigureAwait(false);
 
@@ -94,7 +94,7 @@ namespace Viam.Core.Resources.Components.Encoder
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IEncoder)context.UserState["resource"];
                 var res = await resource.GetPosition(request.PositionType,
-                                                     request.Extra,
+                                                     request.Extra?.ToDictionary(),
                                                      context.Deadline.ToTimeout(),
                                                      context.CancellationToken).ConfigureAwait(false);
 
@@ -116,7 +116,7 @@ namespace Viam.Core.Resources.Components.Encoder
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IEncoder)context.UserState["resource"];
-                await resource.ResetPosition(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                await resource.ResetPosition(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
                 var response = new ResetPositionResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;

@@ -9,26 +9,26 @@ namespace Viam.Core.Resources.Components.InputController
 {
     public interface IInputController : IComponentBase
     {
-        ValueTask<InputControllerClient.Control[]> GetControls(Struct? extra = null,
+        ValueTask<InputControllerClient.Control[]> GetControls(IDictionary<string, object?>? extra = null,
                                                          TimeSpan? timeout = null,
                                                          CancellationToken cancellationToken = default);
 
         ValueTask<IDictionary<InputControllerClient.Control, InputControllerClient.Event>> GetEvents(InputControllerClient.Control control,
-            Struct? extra = null,
+            IDictionary<string, object?>? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
         ValueTask RegisterControlCallback(InputControllerClient.Control control,
-                                          Struct? extra = null,
+                                          IDictionary<string, object?>? extra = null,
                                           TimeSpan? timeout = null,
                                           CancellationToken cancellationToken = default);
 
         ValueTask TriggerEvent(InputControllerClient.Event @event,
-                               Struct? extra = null,
+                               IDictionary<string, object?>? extra = null,
                                TimeSpan? timeout = null,
                                CancellationToken cancellationToken = default);
 
-        ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
+        ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
                                             TimeSpan? timeout = null,
                                             CancellationToken cancellationToken = default);
     }

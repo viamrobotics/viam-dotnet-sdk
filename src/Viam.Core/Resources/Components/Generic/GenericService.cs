@@ -44,7 +44,7 @@ namespace Viam.Core.Resources.Components.Generic
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGeneric)context.UserState["resource"];
-                var res = await resource.GetGeometries(request.Extra,
+                var res = await resource.GetGeometries(request.Extra?.ToDictionary(),
                                                        context.Deadline.ToTimeout(),
                                                        context.CancellationToken).ConfigureAwait(false);
 
