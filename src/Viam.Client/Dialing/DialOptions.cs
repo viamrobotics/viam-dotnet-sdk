@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 
-using SIPSorcery.Net;
 using Viam.Client.WebRTC;
 using Viam.Core.Grpc;
 
@@ -15,7 +14,6 @@ namespace Viam.Client.Dialing
         public Credentials? Credentials { get; private set; }
         public bool DisableWebRtc { get; private set; }
         public bool Insecure { get; private set; }
-        public WebRtcOptions? WebRtcOptions { get; private set; }
         public int Port { get; private set; } = 8080;
 
         private DialOptions(string machineAddress)
@@ -40,8 +38,8 @@ namespace Viam.Client.Dialing
             new(SignalingAddress ?? new Uri("https://app.viam.com"),
                 MachineAddress,
                 new(SignalingAddress ?? new Uri("https://app.viam.com"), Insecure, Credentials, 443),
-                WebRtcOptions ?? WebRtcOptions.Default,
                 Insecure,
+                false,
                 Credentials);
 
         public static DialOptions FromAddress(string machineAddress) =>
@@ -88,15 +86,5 @@ namespace Viam.Client.Dialing
             LoggerFactory = loggerFactory;
             return this;
         }
-    }
-
-    public record WebRtcOptions(RTCConfiguration RtcConfig, string? ExternalAuthEntity = null, bool DisableTrickleIce = false)
-    {
-        private static readonly RTCConfiguration DefaultRtcConfig = new()
-        {
-            iceServers = [new RTCIceServer { urls = "stun:global.stun.twilio.com:3478?transport=udp" }]
-        };
-
-        public static WebRtcOptions Default = new(DefaultRtcConfig);
     }
 }

@@ -18,10 +18,8 @@ namespace Viam.Client.Dialing
 
         public Dialer(ILoggerFactory loggerFactory)
         {
-            if (Environment.GetEnvironmentVariable("ENABLE_SIPSORCERY_LOGGING") != null)
-                SIPSorcery.LogFactory.Set(loggerFactory);
             _grpcDialer = new GrpcDialer(loggerFactory.CreateLogger<GrpcDialer>(), loggerFactory);
-            _webRtcDialer = new WebRtcDialer(loggerFactory.CreateLogger<WebRtcDialer>(), _grpcDialer);
+            _webRtcDialer = new WebRtcDialer(loggerFactory.CreateLogger<WebRtcDialer>(), loggerFactory);
         }
 
         public ValueTask<ViamChannel> DialGrpcDirectAsync(GrpcDialOptions dialOptions, CancellationToken cancellationToken = default) =>

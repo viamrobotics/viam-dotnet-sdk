@@ -1,12 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<TargetFrameworks>netstandard2.1</TargetFrameworks>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<TrimmerSingleWarn>false</TrimmerSingleWarn>
+		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="runtimes\win-x64\native\libviam_rust_utils-windows_x86_64.dll" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Viam.Core\Viam.Core.csproj" />
@@ -19,7 +24,6 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="SIPSorcery" Version="8.0.12" />
 		<PackageReference Include="System.Memory" Version="4.6.3" />
 	</ItemGroup>
 	<PropertyGroup>
@@ -38,4 +42,18 @@
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 		<!-- optional -->
 	</PropertyGroup>
+	<ItemGroup>
+		<NativeLibrary Include="runtimes\win-x64\native\libviam_rust_utils-windows_x86_64.dll">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</NativeLibrary>
+		<NativeLibrary Include="runtimes\linux-x64\native\libviam_rpc_client.so">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</NativeLibrary>
+		<NativeLibrary Include="runtimes\osx-arm64\native\libviam_rpc_client.dylib">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</NativeLibrary>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="runtimes\**" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
 </Project>

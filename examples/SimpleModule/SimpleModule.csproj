@@ -11,6 +11,7 @@
 		<PublishSingleFile>false</PublishSingleFile>
 		<PublishAot>true</PublishAot>
 		<IsAotCompatible>true</IsAotCompatible>
+		<Platforms>AnyCPU;x64</Platforms>
 	</PropertyGroup>
 
 	<ItemGroup>

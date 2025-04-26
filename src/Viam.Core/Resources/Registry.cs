@@ -91,7 +91,7 @@ namespace Viam.Core.Resources
                 RegisterService<ServoService>(services);
         }
 
-        private static void RegisterService<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TImpl>(IServiceCollection services) where TImpl : class, IServiceBase
+        private static void RegisterService<TImpl>(IServiceCollection services) where TImpl : class, IServiceBase
         {
             services.AddTransient<TImpl>();
             services.AddTransient<IServiceBase, TImpl>();
