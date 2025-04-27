@@ -4,15 +4,8 @@ namespace Viam.Client.WebRTC
 {
     internal class RustRTC
     {
-        //#if WINDOWS
-        private const string LibraryName = "runtimes\\win-x64\\native\\libviam_rust_utils-windows_x86_64.dll";
-        //#elif LINUX
-        //    private const string LibraryName = "libviam_rust_utils-linux_x86_64.so";
-        //#elif OSX
-        //    private const string LibraryName = "libviam_rust_utils-macos_aarch64.dylib";
-        //#else
-        //#error Unsupported platform
-        //#endif
+        private const string LibraryName = "viam_rust_utils";
+
         [DllImport(LibraryName, EntryPoint = "init_rust_runtime")]
         public static extern IntPtr InitRustRuntime();
 

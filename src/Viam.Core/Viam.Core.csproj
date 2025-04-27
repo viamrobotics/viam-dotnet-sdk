@@ -4,7 +4,7 @@
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<TrimmerSingleWarn>false</TrimmerSingleWarn>
-		<Platforms>AnyCPU;x64</Platforms>
+		<Platforms>AnyCPU</Platforms>
 	</PropertyGroup>
 	<ItemGroup>
 		<Compile Remove="Protos\**" />
