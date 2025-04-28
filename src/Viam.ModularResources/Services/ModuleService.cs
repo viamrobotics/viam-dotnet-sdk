@@ -57,9 +57,29 @@ namespace Viam.ModularResources.Services
                 var resource = creator.Creator(loggerFactory.CreateLogger(config.Name), config, dependencies);
                 _logger.LogDebug("Registering {ResourceName} with the ResourceManager", resource.ResourceName);
                 Manager.Register(resource.ResourceName, resource);
+
+                // Since C# constructors don't support async, we have to invoke the reconfigure method here to let the normal reconfigure behavior go through
+                if (resource is IAsyncReconfigurable reconfigurable)
+                {
+                    _logger.LogDebug("Resource {ResourceName} supports reconfiguration", resource.ResourceName);
+                    try
+                    {
+                        await reconfigurable.Reconfigure(config, dependencies);
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogError(e, "Failed to reconfigure resource {ResourceName}", resource.ResourceName);
+                        throw;
+                    }
+                    _logger.LogDebug("Reconfigured {ReourceName}", resource.ResourceName);
+                }
+                else
+                {
+                    _logger.LogDebug("Resource {ResourceName} does not support reconfiguration", resource.ResourceName);
+                }
                 return new AddResourceResponse();
             }
-            catch (ResourceCreatorRegistrationNotFoundException ex)
+            catch (ResourceCreatorRegistrationNotFoundException)
             {
                 _logger.LogDebug("Failed to find resource creator for {Model}", model);
                 throw;

@@ -11,7 +11,11 @@
 		<PublishSingleFile>false</PublishSingleFile>
 		<PublishAot>true</PublishAot>
 		<IsAotCompatible>true</IsAotCompatible>
-		<Platforms>AnyCPU;x64</Platforms>
+		<Platforms>AnyCPU</Platforms>
+	</PropertyGroup>
+	<PropertyGroup>
+		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
+		<CompilerGeneratedFilesOutputPath>obj\$(Configuration)\$(TargetFramework)\Generated</CompilerGeneratedFilesOutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -36,6 +40,10 @@
 		<ProjectReference Include="..\..\src\Viam.Client\Viam.Client.csproj" />
 		<ProjectReference Include="..\..\src\Viam.Core\Viam.Core.csproj" />
 		<ProjectReference Include="..\..\src\Viam.ModularResources\Viam.ModularResources.csproj" />
+		<ProjectReference Include="..\..\src\Viam.Serialization\Viam.Serialization.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Analyzer Include="..\..\src\Viam.Serialization\bin\$(Configuration)\netstandard2.0\Viam.Serialization.dll" />
 	</ItemGroup>
 
 </Project>

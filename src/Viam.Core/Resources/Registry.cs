@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
-
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
+
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 
 using Viam.App.V1;
 using Viam.Core.Logging;
@@ -32,8 +32,9 @@ namespace Viam.Core.Resources
     {
         public static ILogger Logger { get; set; } = NullLogger.Instance;
         private static readonly ConcurrentDictionary<SubType, ComponentRegistration> Subtypes = new(new SubTypeComparer());
-        private static readonly ConcurrentDictionary<SubTypeModel, ResourceCreatorRegistration> Resources = new();
+        private static readonly ConcurrentDictionary<SubTypeModel, object> Resources = new();
 
+        // TODO: Make this happen automatically, maybe based on reflection? but that rules out any chance of AOT...
         private static readonly IDictionary<SubType, ComponentRegistration> BuiltIn =
             new Dictionary<SubType, ComponentRegistration>()
             {
@@ -61,6 +62,7 @@ namespace Viam.Core.Resources
         /// <param name="services">The <see cref="IServiceCollection"/> for the ASP.NET server</param>
         public static void RegisterComponentServices(IServiceCollection services)
         {
+            // TODO: Make this happen more dynamically so when new components are added, they are automatically registered
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("arm")))
                 RegisterService<ArmService>(services);
             if (Subtypes.ContainsKey(SubType.FromRdkComponent("base")))
@@ -123,8 +125,12 @@ namespace Viam.Core.Resources
             Logger.LogRegistryResourceCreatorGet(subType, model);
             if (Resources.TryGetValue(new SubTypeModel(subType, model), out var resourceCreatorRegistration))
             {
-                Logger.LogRegistryResourceCreatorGetSuccess(subType, model);
-                return resourceCreatorRegistration;
+                if (resourceCreatorRegistration is ResourceCreatorRegistration typedRegistration)
+                {
+                    Logger.LogRegistryResourceCreatorGetSuccess(subType, model);
+                    return typedRegistration;
+                }
+                throw new ResourceCreatorTypException(subType, model);
             }
 
             Logger.LogRegistryResourceCreatorGetFailure(subType, model);
@@ -150,8 +156,10 @@ namespace Viam.Core.Resources
         public override string ToString() => subType.ToString();
     }
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "C# is dumb sometimes")]
     public record ResourceCreatorRegistration(Func<ILogger, ComponentConfig, IDictionary<ViamResourceName, IResourceBase>, IResourceBase> Creator, Func<ComponentConfig, IEnumerable<string>> ConfigValidator);
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "C# is dumb sometimes")]
     public record SubType(string Namespace, string ResourceType, string ResourceSubType)
     {
         public override string ToString() => $"{Namespace}:{ResourceType}:{ResourceSubType}";

@@ -4,9 +4,11 @@ using Viam.Core.Resources;
 
 namespace Viam.Core
 {
-    public class ResourceException : Exception;
+    public class ResourceException(string? message = null) : Exception(message);
 
     public class ResourceRegistrationNotFoundException : ResourceException;
+
+    public class ResourceCreatorTypException(SubType subType, Model model) : ResourceException($"Resource creator registration for {subType} and {model} is not of type {typeof(ResourceCreatorRegistration)}");
 
     public class ResourceCreatorRegistrationNotFoundException : ResourceException;
 

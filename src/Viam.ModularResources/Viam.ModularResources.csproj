@@ -38,7 +38,7 @@
 		<Version>0.0.0-dev</Version>
 		<Authors>TheGreatCO</Authors>
 		<Description>Viam ModularResources Library</Description>
-		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<!-- optional -->
 	</PropertyGroup>
 </Project>

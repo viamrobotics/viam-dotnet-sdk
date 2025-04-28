@@ -7,11 +7,8 @@
 		<Nullable>enable</Nullable>
 		<PublishAot>true</PublishAot>
 		<TrimmerSingleWarn>false</TrimmerSingleWarn>
-		<Platforms>AnyCPU;x64</Platforms>
+		<Platforms>AnyCPU</Platforms>
 	</PropertyGroup>
-
-	<ItemGroup>
-	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\src\Viam.Client\Viam.Client.csproj" />

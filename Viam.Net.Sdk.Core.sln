@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleWeb", "examples\Simpl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAuth", "examples\SimpleAuth\Client\SimpleAuth.csproj", "{BA811175-8162-4957-A0FD-3E8B08B22F38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viam.Serialization", "src\Viam.Serialization\Viam.Serialization.csproj", "{D57D9532-3912-471A-9914-9519DD305318}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,10 @@ Global
 		{BA811175-8162-4957-A0FD-3E8B08B22F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA811175-8162-4957-A0FD-3E8B08B22F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA811175-8162-4957-A0FD-3E8B08B22F38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D57D9532-3912-471A-9914-9519DD305318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D57D9532-3912-471A-9914-9519DD305318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D57D9532-3912-471A-9914-9519DD305318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D57D9532-3912-471A-9914-9519DD305318}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

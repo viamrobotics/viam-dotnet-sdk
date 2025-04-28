@@ -17,7 +17,7 @@ namespace Viam.Core.Resources.Components.Camera
         {
             if (bytes[..4] != [0x52, 0x47, 0x42, 0x41])
                 throw new ArgumentException("Invalid Viam RGBA header", nameof(bytes));
-#if NETSTANDARD2_1_OR_GREATER
+#if NET6_0_OR_GREATER
             var width = BitConverter.ToInt32(bytes.Slice(4, 4));
             var height = BitConverter.ToInt32(bytes.Slice(8, 4));
 #elif NETFRAMEWORK
@@ -33,7 +33,7 @@ namespace Viam.Core.Resources.Components.Camera
         {
             if (bytes[12..16] != [0x49, 0x48, 0x44, 0x52])
                 throw new ArgumentException("Invalid PNG header", nameof(bytes));
-#if NETSTANDARD2_1_OR_GREATER
+#if NET6_0_OR_GREATER
             var width = BitConverter.ToInt32(bytes[16..20]);
             var height = BitConverter.ToInt32(bytes[20..24]);
 #elif NETFRAMEWORK
