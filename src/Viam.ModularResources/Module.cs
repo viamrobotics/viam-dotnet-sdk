@@ -11,25 +11,36 @@ namespace Viam.ModularResources
     {
         private readonly ILogger<Module> _logger = host.Services.GetRequiredService<ILoggerFactory>().CreateLogger<Module>();
 
-        public static Module FromArgs(string[] args)
+        public static Module FromArgs(string[] args, ILoggerFactory? loggerFactory = null)
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
                 throw new PlatformNotSupportedException("We currently only support Modular Resources on Linux/macOS");
             if (args.Length != 1)
                 throw new ArgumentException("You must provide a Unix socket path");
             var host = Host.CreateDefaultBuilder(args)
+                .ConfigureServices((c, s) =>
+                {
+                    if (loggerFactory != null)
+                    {
+                        s.AddSingleton<ILoggerFactory>(loggerFactory);
+                        s.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
+                    }
+                    s.AddSingleton<ResourceManager>();
+                })
                 .ConfigureLogging(c =>
                 {
-                    c.AddSimpleConsole(o =>
+                    if (loggerFactory == null)
                     {
-                        o.SingleLine = true;
-                        o.IncludeScopes = true;
-                        o.UseUtcTimestamp = true;
-                    });
-                })
-                .ConfigureServices(s =>
-                {
-                    s.AddSingleton<ResourceManager>();
+                        c.AddSimpleConsole(o =>
+                        {
+                            o.SingleLine = true;
+                            o.IncludeScopes = true;
+                            o.UseUtcTimestamp = true;
+                        });
+                    } else
+                    {
+                        c.ClearProviders();
+                    }
                 })
                 .ConfigureWebHostDefaults(b =>
                 {

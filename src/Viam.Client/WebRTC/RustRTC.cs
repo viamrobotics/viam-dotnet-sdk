@@ -4,7 +4,7 @@ namespace Viam.Client.WebRTC
 {
     internal class RustRTC
     {
-        private const string LibraryName = "viam_rust_utils";
+        private const string LibraryName = "libviam_rust_utils";
 
         [DllImport(LibraryName, EntryPoint = "init_rust_runtime")]
         public static extern IntPtr InitRustRuntime();

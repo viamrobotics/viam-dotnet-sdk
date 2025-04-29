@@ -45,7 +45,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 
-		<Content Include="native\win-x64\viam_rust_utils.dll">
+		<Content Include="native\win-x64\libviam_rust_utils.dll">
 			<Pack>true</Pack>
 			<PackagePath>runtimes\win-x64\native\</PackagePath>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
