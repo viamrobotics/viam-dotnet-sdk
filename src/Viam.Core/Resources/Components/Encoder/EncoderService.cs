@@ -13,8 +13,8 @@ namespace Viam.Core.Resources.Components.Encoder
 {
     internal class EncoderService(ILogger<EncoderService> logger) : Component.Encoder.V1.EncoderService.EncoderServiceBase, IServiceBase
     {
-        public string ServiceName => "viam.component.encoder.v1.EncoderService";
-        public SubType SubType { get; } = SubType.FromRdkComponent("encoder");
+        public static Service ServiceName => Service.EncoderService;
+        public static SubType SubType { get; } = SubType.Encoder;
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

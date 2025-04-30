@@ -13,8 +13,8 @@ namespace Viam.Core.Resources.Components.Motor
 {
     internal class MotorService(ILogger<MotorService> logger) : Component.Motor.V1.MotorService.MotorServiceBase, IServiceBase
     {
-        public string ServiceName => "viam.component.motor.v1.MotorService";
-        public SubType SubType { get; } = SubType.FromRdkComponent("motor");
+        public static Service ServiceName => Service.MotorService;
+        public static SubType SubType { get; } = SubType.Motor;
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

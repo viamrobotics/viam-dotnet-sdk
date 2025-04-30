@@ -20,9 +20,7 @@ namespace Viam.Core.Resources.Components.Base
         : ComponentBase<BaseClient, Component.Base.V1.BaseService.BaseServiceClient>(resourceName, new Component.Base.V1.BaseService.BaseServiceClient(channel)),
           IBase
     {
-        static BaseClient() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new BaseClient(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("base");
-
 
         public static IBase FromRobot(RobotClientBase client, string name)
         {

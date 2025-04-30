@@ -13,8 +13,8 @@ namespace Viam.Core.Resources.Components.Gripper
 {
     internal class GripperService(ILogger<GripperService> logger) : Component.Gripper.V1.GripperService.GripperServiceBase, IServiceBase
     {
-        public string ServiceName => "viam.component.gripper.v1.GripperService";
-        public SubType SubType { get; } = SubType.FromRdkComponent("gripper");
+        public static Service ServiceName => Service.GripperService;
+        public static SubType SubType { get; } = SubType.Gripper;
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

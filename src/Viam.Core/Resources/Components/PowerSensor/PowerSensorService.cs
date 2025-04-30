@@ -13,8 +13,8 @@ namespace Viam.Core.Resources.Components.PowerSensor
 {
     internal class PowerSensorService(ILogger<PowerSensorService> logger) : Component.Powersensor.V1.PowerSensorService.PowerSensorServiceBase, IServiceBase
     {
-        public string ServiceName => "viam.component.powersensor.v1.PowerSensorService";
-        public SubType SubType { get; } = SubType.FromRdkComponent("power_sensor");
+        public static Service ServiceName => Service.PowerSensorService;
+        public static SubType SubType { get; } = SubType.PowerSensor;
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

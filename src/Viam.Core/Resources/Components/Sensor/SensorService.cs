@@ -12,8 +12,8 @@ namespace Viam.Core.Resources.Components.Sensor
 {
     internal class SensorService(ILogger<SensorService> logger) : Component.Sensor.V1.SensorService.SensorServiceBase, IServiceBase
     {
-        public string ServiceName => "viam.component.sensor.v1.SensorService";
-        public SubType SubType { get; } = SubType.FromRdkComponent("sensor");
+        public static Service ServiceName => Service.SensorService;
+        public static SubType SubType { get; } = SubType.Sensor;
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

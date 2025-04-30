@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Server.Kestrel.Core;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 
 using Viam.Core;
@@ -10,54 +11,6 @@ namespace Viam.ModularResources
     public class Module(IHost host)
     {
         private readonly ILogger<Module> _logger = host.Services.GetRequiredService<ILoggerFactory>().CreateLogger<Module>();
-
-        public static Module FromArgs(string[] args, ILoggerFactory? loggerFactory = null)
-        {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                throw new PlatformNotSupportedException("We currently only support Modular Resources on Linux/macOS");
-            if (args.Length != 1)
-                throw new ArgumentException("You must provide a Unix socket path");
-            var host = Host.CreateDefaultBuilder(args)
-                .ConfigureServices((c, s) =>
-                {
-                    if (loggerFactory != null)
-                    {
-                        s.AddSingleton<ILoggerFactory>(loggerFactory);
-                        s.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
-                    }
-                    s.AddSingleton<ResourceManager>();
-                })
-                .ConfigureLogging(c =>
-                {
-                    if (loggerFactory == null)
-                    {
-                        c.AddSimpleConsole(o =>
-                        {
-                            o.SingleLine = true;
-                            o.IncludeScopes = true;
-                            o.UseUtcTimestamp = true;
-                        });
-                    } else
-                    {
-                        c.ClearProviders();
-                    }
-                })
-                .ConfigureWebHostDefaults(b =>
-                {
-                    b.UseStartup<Startup>();
-                })
-                .ConfigureWebHost(webBuilder =>
-                {
-                    webBuilder.ConfigureKestrel(options =>
-                    {
-                        var socket = args[0];
-                        options.ListenUnixSocket(socket, c => c.Protocols = HttpProtocols.Http2);
-                    });
-                })
-                .Build();
-
-            return new Module(host);
-        }
 
         public async ValueTask Start(CancellationToken cancellationToken = default)
         {
@@ -75,20 +28,6 @@ namespace Viam.ModularResources
         {
             _logger.LogTrace("Stopping Module");
             await host.StopAsync(cancellationToken);
-        }
-
-        public void AddModelFromRegistry(SubType subType, Model model)
-        {
-            try
-            {
-                _logger.LogDebug("Adding model {Model} for {SubType}", model, subType);
-                Registry.GetResourceCreatorRegistration(subType, model);
-            }
-            catch (ResourceCreatorRegistrationNotFoundException)
-            {
-                _logger.LogError("Cannot add model because it has not been registered for {SubType} {Model}", subType, model);
-                throw;
-            }
         }
     }
 }

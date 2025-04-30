@@ -1,19 +1,49 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace Viam.Client.WebRTC
 {
-    internal class RustRTC
+    internal partial class RustRTC
     {
+        static RustRTC()
+        {
+            // Register the DllImport resolver for the current assembly.
+            NativeLibrary.SetDllImportResolver(
+                typeof(RustRTC).Assembly,
+                DllImportResolver
+            );
+        }
+        private static IntPtr DllImportResolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
+        {
+            if (libraryName == "libviam_rust_utils")
+            {
+                var assemblyPath = Path.GetDirectoryName(assembly.Location);
+                if (assemblyPath == null)
+                {
+                    throw new InvalidOperationException("Unable to get assembly path");
+                }
+                var libPath = Path.Combine(assemblyPath, "runtimes", "native", RuntimeInformation.RuntimeIdentifier);
+                if (!Path.Exists(libPath))
+                {
+                    throw new FileNotFoundException($"Expected library path does not exist: {libPath}");
+                }
+                return NativeLibrary.Load(Path.Combine(libPath, libraryName));
+            }
+
+            // Otherwise, fallback to default import resolver.
+            return IntPtr.Zero;
+        }
+
         private const string LibraryName = "libviam_rust_utils";
 
-        [DllImport(LibraryName, EntryPoint = "init_rust_runtime")]
-        public static extern IntPtr InitRustRuntime();
+        [LibraryImport(LibraryName, EntryPoint = "init_rust_runtime")]
+        private static partial IntPtr InitRustRuntimeInternal();
 
-        [DllImport(LibraryName, EntryPoint = "free_rust_runtime")]
-        public static extern int FreeRustRuntime(IntPtr pointer);
+        [LibraryImport(LibraryName, EntryPoint = "free_rust_runtime")]
+        private static partial int FreeRustRuntimeInternal(IntPtr pointer);
 
-        [DllImport(LibraryName, EntryPoint = "dial")]
-        public static extern IntPtr Dial(
+        [LibraryImport(LibraryName, EntryPoint = "dial")]
+        private static partial IntPtr DialInternal(
             [MarshalAs(UnmanagedType.LPUTF8Str)] string c_uri,
             [MarshalAs(UnmanagedType.LPUTF8Str)] string? c_entity,
             [MarshalAs(UnmanagedType.LPUTF8Str)] string? c_type,
@@ -23,7 +53,33 @@ namespace Viam.Client.WebRTC
             IntPtr rt_ptr // This points to your Rust runtime (obtained separately)
         );
 
-        [DllImport(LibraryName, EntryPoint = "free_string")]
-        public static extern void FreeString(IntPtr ptr);
+        [LibraryImport(LibraryName, EntryPoint = "free_string")]
+        private static partial void FreeStringInternal(IntPtr ptr);
+
+        public static IntPtr InitRustRuntime()
+        {
+            return InitRustRuntimeInternal();
+        }
+
+        public static int FreeRustRuntime(IntPtr pointer)
+        {
+            return FreeRustRuntimeInternal(pointer);
+        }
+
+        public static string Dial(string uri, string? entity, string? type, string? payload, bool allowInsecure, float timeout, IntPtr rtPtr)
+        {
+            var result = DialInternal(uri, entity, type, payload, allowInsecure, timeout, rtPtr);
+            if (result == IntPtr.Zero)
+            {
+                throw new InvalidOperationException("Failed to dial");
+            }
+            var resultString = Marshal.PtrToStringUTF8(result);
+            FreeStringInternal(result);
+            if (resultString == null)
+            {
+                throw new InvalidOperationException("Failed to convert result to string");
+            }
+            return resultString;
+        }
     }
 }

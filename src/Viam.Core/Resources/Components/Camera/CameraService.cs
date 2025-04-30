@@ -16,8 +16,8 @@ namespace Viam.Core.Resources.Components.Camera
 {
     internal class CameraService(ILogger<CameraService> logger) : Component.Camera.V1.CameraService.CameraServiceBase, IServiceBase
     {
-        public string ServiceName => "viam.component.camera.v1.CameraService";
-        public SubType SubType { get; } = SubType.FromRdkComponent("camera");
+        public static Service ServiceName => Service.CameraService;
+        public static SubType SubType { get; } = SubType.Camera;
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

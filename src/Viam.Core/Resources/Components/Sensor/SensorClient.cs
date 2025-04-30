@@ -12,12 +12,12 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.Sensor
 {
     [ConfigureAwait(false)]
-    public class SensorClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
-        : ComponentBase<SensorClient, Component.Sensor.V1.SensorService.SensorServiceClient>(resourceName, new Component.Sensor.V1.SensorService.SensorServiceClient(channel)),
+    public class SensorClient(ViamResourceName resourceName, ViamChannel channel, ILogger<SensorClient> logger)
+        : ComponentBase<SensorClient, Component.Sensor.V1.SensorService.SensorServiceClient>(
+            resourceName, 
+            new Component.Sensor.V1.SensorService.SensorServiceClient(channel)),
           ISensor
     {
-        static SensorClient() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new SensorClient(name, channel, logger)));
-
         public static SubType SubType = SubType.FromRdkComponent("sensor");
         public static ViamResourceName GetResourceName(string? name)
         {

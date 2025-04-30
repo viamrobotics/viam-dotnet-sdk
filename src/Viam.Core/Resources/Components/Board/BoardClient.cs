@@ -18,15 +18,12 @@ namespace Viam.Core.Resources.Components.Board
     /// <summary>
     /// A <see cref="BoardClient"/> client capable of interacting with a <see cref="BoardClient"/> component on a machine
     /// </summary>
-    /// <param name="resourceName">The <see cref="ResourceName"/> of the component</param>
     /// <param name="channel">The <see cref="ViamChannel"/> to use for communication with the component</param>
     /// <param name="logger">A logger</param>
     public class BoardClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
         : ComponentBase<BoardClient, Component.Board.V1.BoardService.BoardServiceClient>(resourceName, new Component.Board.V1.BoardService.BoardServiceClient(channel)),
           IBoard
     {
-        static BoardClient() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new BoardClient(name, channel, logger)));
-
         public static SubType SubType = SubType.FromRdkComponent("board");
 
         /// <summary>

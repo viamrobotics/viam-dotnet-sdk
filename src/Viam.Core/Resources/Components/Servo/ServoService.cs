@@ -14,8 +14,8 @@ namespace Viam.Core.Resources.Components.Servo
 {
     internal class ServoService(ILogger<ServoService> logger) : Component.Servo.V1.ServoService.ServoServiceBase, IServiceBase
     {
-        public string ServiceName => "viam.component.servo.v1.ServoService";
-        public SubType SubType { get; } = SubType.FromRdkComponent("servo");
+        public static Service ServiceName => Service.ServoService;
+        public static SubType SubType { get; } = SubType.Servo;
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

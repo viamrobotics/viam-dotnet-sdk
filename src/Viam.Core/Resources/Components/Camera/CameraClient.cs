@@ -16,13 +16,10 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.Camera
 {
     public class CameraClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
-        : ComponentBase<CameraClient, Component.Camera.V1.CameraService.CameraServiceClient>(resourceName,
-                                                                   new Component.Camera.V1.CameraService.CameraServiceClient(channel)),
+        : ComponentBase<CameraClient, Component.Camera.V1.CameraService.CameraServiceClient>(resourceName, new Component.Camera.V1.CameraService.CameraServiceClient(channel)),
           ICamera
     {
-        static CameraClient() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new CameraClient(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("camera");
-
 
         public static ICamera FromRobot(RobotClientBase client, string name)
         {

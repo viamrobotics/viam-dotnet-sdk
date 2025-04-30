@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 using Google.Protobuf;
@@ -9,11 +11,27 @@ using Google.Protobuf.WellKnownTypes;
 
 using Grpc.Core;
 
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 
 using Viam.Common.V1;
 using Viam.Core.Logging;
 using Viam.Core.Resources;
+using Viam.Core.Resources.Components;
+using Viam.Core.Resources.Components.Arm;
+using Viam.Core.Resources.Components.Base;
+using Viam.Core.Resources.Components.Board;
+using Viam.Core.Resources.Components.Camera;
+using Viam.Core.Resources.Components.Encoder;
+using Viam.Core.Resources.Components.Gantry;
+using Viam.Core.Resources.Components.Gripper;
+using Viam.Core.Resources.Components.InputController;
+using Viam.Core.Resources.Components.Motor;
+using Viam.Core.Resources.Components.MovementSensor;
+using Viam.Core.Resources.Components.PowerSensor;
+using Viam.Core.Resources.Components.Sensor;
+using Viam.Core.Resources.Components.Servo;
 using Viam.Core.Utils;
 using Viam.Robot.V1;
 
@@ -23,32 +41,97 @@ namespace Viam.Core.Clients
 {
     public class RobotClientBase : IDisposable
     {
-        internal readonly ViamChannel Channel;
         protected readonly ILogger<RobotClientBase> Logger;
         private readonly RobotService.RobotServiceClient _robotServiceClient;
-        private readonly ResourceManager _resourceManager;
+        private readonly IServiceProvider _services;
 
-        protected internal RobotClientBase(ILoggerFactory loggerFactory, ViamChannel channel)
+        private RobotClientBase(ILogger<RobotClientBase> logger, ViamChannel channel)
         {
-            Channel = channel;
-            Logger = loggerFactory.CreateLogger<RobotClientBase>();
+            Logger = logger;
             _robotServiceClient = new RobotService.RobotServiceClient(channel);
-            _resourceManager = new ResourceManager(loggerFactory);
+            
+            // This is overwritten in the other constructors, the nullability checks suck sometimes
+            _services = new ServiceCollection().BuildServiceProvider();
         }
 
-        protected Task RefreshAsync() => _resourceManager.RefreshAsync(this);
+        protected internal RobotClientBase(ILogger<RobotClientBase> logger, ViamChannel channel, IServiceProvider services) 
+            : this(logger, channel)
+        {
+            _services = services;
+        }
+
+        protected internal RobotClientBase(ILoggerFactory loggerFactory, ViamChannel channel) 
+            : this(loggerFactory.CreateLogger<RobotClientBase>(), channel)
+        {
+            Logger = loggerFactory.CreateLogger<RobotClientBase>();
+            _robotServiceClient = new RobotService.RobotServiceClient(channel);
+            
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddSingleton(this);
+            serviceCollection.AddSingleton<ViamChannel>(channel);
+            serviceCollection.AddSingleton<ILoggerFactory>(loggerFactory);
+            serviceCollection.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
+
+            // Register the built-in component types
+            RegisterComponent<ArmClient>(serviceCollection);
+            RegisterComponent<BaseClient>(serviceCollection);
+            RegisterComponent<BoardClient>(serviceCollection);
+            RegisterComponent<CameraClient>(serviceCollection);
+            RegisterComponent<EncoderClient>(serviceCollection);
+            RegisterComponent<GantryClient>(serviceCollection);
+            RegisterComponent<GripperClient>(serviceCollection);
+            RegisterComponent<InputControllerClient>(serviceCollection);
+            RegisterComponent<MotorClient>(serviceCollection);
+            RegisterComponent<MovementSensorClient>(serviceCollection);
+            RegisterComponent<PowerSensorClient>(serviceCollection);
+            RegisterComponent<SensorClient>(serviceCollection);
+            RegisterComponent<ServoClient>(serviceCollection);
+
+            // Now we can build the provider
+            _services = serviceCollection.BuildServiceProvider();
+        }
+
+        private void RegisterComponent<TImpl>(IServiceCollection services) where TImpl : class, IResourceBase
+        {
+            services.AddTransient<IResourceBase, TImpl>();
+            services.AddTransient<TImpl>();
+        }
+
+        protected async Task RefreshAsync([CallerMemberName] string? caller = null)
+        {
+            Logger.LogManagerRefreshStart(caller);
+            var resourceNames = await ResourceNamesAsync();
+            Logger.LogDebug("Filtering {ResourceCount} resources", resourceNames.Length);
+            var filteredResourceName = resourceNames.Where(x => x.SubType.ResourceType is "component" or "service")
+                                   .Where(x => x.SubType.ResourceSubType != "remote")
+                                   .Where(x => x.SubType.ResourceSubType != SensorClient.SubType.ResourceSubType
+                                            || !resourceNames.Contains(new ViamResourceName(MovementSensorClient.SubType, x.Name)));
+            Logger.LogDebug("Refreshing client for {ResourceCount} resources", filteredResourceName.Count());
+            foreach (var resourceName in filteredResourceName)
+            {
+            }
+
+            Logger.LogManagerRefreshFinish(caller);
+        }
 
         public void Dispose()
         {
-            Channel.Dispose();
+            if (_services == null)
+            {
+                return;
+            }
+            if (_services is IDisposable disposable)
+            {
+                disposable.Dispose();
+            }
         }
         
-        public T GetComponent<T>(ViamResourceName resourceName) where T : ResourceBase
+        public T GetComponent<T>(ViamResourceName resourceName) where T : IResourceBase
         {
             Logger.LogMethodInvocationStart();
             try
             {
-                var resource = (T)_resourceManager.GetResource(resourceName);
+                var resource = ActivatorUtilities.CreateInstance<T>(_services, resourceName);
                 Logger.LogMethodInvocationSuccess();
                 return resource;
             }
@@ -437,6 +520,6 @@ namespace Viam.Core.Clients
             }
         }
 
-        public override string ToString() => $"RobotClientBase+{Channel}";
+        public override string ToString() => $"RobotClientBase+{_services.GetRequiredService<ViamChannel>()}";
     }
 }

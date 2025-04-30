@@ -15,10 +15,10 @@ namespace Viam.Core.Resources.Components.MovementSensor
 {
     public class MovementSensorClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
         : ComponentBase<MovementSensorClient, Component.Movementsensor.V1.MovementSensorService.MovementSensorServiceClient>(
-              resourceName,
-              new Component.Movementsensor.V1.MovementSensorService.MovementSensorServiceClient(channel)), IMovementSensor
+            resourceName,
+            new Component.Movementsensor.V1.MovementSensorService.MovementSensorServiceClient(channel)),
+        IMovementSensor
     {
-        static MovementSensorClient() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new MovementSensorClient(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("movement_sensor");
 
 

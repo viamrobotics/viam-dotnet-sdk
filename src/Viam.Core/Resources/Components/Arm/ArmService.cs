@@ -13,8 +13,8 @@ namespace Viam.Core.Resources.Components.Arm
 {
     internal class ArmService(ILogger<ArmService> logger) : Component.Arm.V1.ArmService.ArmServiceBase, IServiceBase
     {
-        public string ServiceName => "viam.component.arm.v1.ArmService";
-        public SubType SubType { get; } = SubType.FromRdkComponent("arm");
+        public static Service ServiceName => Service.ArmService;
+        public static SubType SubType { get; } = SubType.Arm;
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

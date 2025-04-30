@@ -18,9 +18,7 @@ namespace Viam.Core.Resources.Components.Gripper
         ComponentBase<GripperClient, Component.Gripper.V1.GripperService.GripperServiceClient>(resourceName, new Component.Gripper.V1.GripperService.GripperServiceClient(channel)),
         IGripper
     {
-        static GripperClient() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new GripperClient(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("gripper");
-
 
         public static IGripper FromRobot(RobotClientBase client, string name)
         {

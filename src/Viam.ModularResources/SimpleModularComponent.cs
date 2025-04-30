@@ -3,14 +3,13 @@ using Viam.Core.Resources;
 
 namespace Viam.ModularResources
 {
-    public class SimpleModularComponent : IAsyncReconfigurable, IAsyncDisposable
+    public class SimpleModularComponent<T> : IAsyncReconfigurable, IAsyncDisposable
     {
-        protected readonly ILogger Logger;
+        protected readonly ILogger<T> Logger;
 
-        protected SimpleModularComponent(ILogger logger, ComponentConfig config, IDictionary<ViamResourceName, IResourceBase> dependencies)
+        protected SimpleModularComponent(ILogger<T> logger)
         {
             Logger = logger;
-            ResourceName = new ViamResourceName(SubType.FromString(config.Api), config.Name);
         }
 
         public ViamResourceName ResourceName { get; }

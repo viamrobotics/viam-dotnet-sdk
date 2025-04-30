@@ -11,8 +11,8 @@ namespace Viam.Core.Resources.Components.Board
 {
     internal class BoardService(ILogger<BoardService> logger) : Component.Board.V1.BoardService.BoardServiceBase, IServiceBase
     {
-        public string ServiceName => "viam.component.board.v1.BoardService";
-        public SubType SubType { get; } = SubType.FromRdkComponent("board");
+        public static Service ServiceName => Service.BoardService;
+        public static SubType SubType { get; } = SubType.Board;
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

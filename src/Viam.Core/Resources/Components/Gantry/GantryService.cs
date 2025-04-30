@@ -14,8 +14,8 @@ namespace Viam.Core.Resources.Components.Gantry
 {
     internal class GantryService(ILogger<GantryService> logger) : Component.Gantry.V1.GantryService.GantryServiceBase, IServiceBase
     {
-        public string ServiceName => "viam.component.gantry.v1.GantryService";
-        public SubType SubType { get; } = SubType.FromRdkComponent("gantry");
+        public static Service ServiceName => Service.GantryService;
+        public static SubType SubType { get; } = SubType.Gantry;
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

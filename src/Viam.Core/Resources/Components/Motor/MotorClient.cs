@@ -17,9 +17,7 @@ namespace Viam.Core.Resources.Components.Motor
         ComponentBase<MotorClient, Component.Motor.V1.MotorService.MotorServiceClient>(resourceName, new Component.Motor.V1.MotorService.MotorServiceClient(channel)),
         IMotor
     {
-        static MotorClient() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new MotorClient(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("motor");
-
 
         public static IMotor FromRobot(RobotClientBase client, string name)
         {

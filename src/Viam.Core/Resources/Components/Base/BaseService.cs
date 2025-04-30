@@ -13,8 +13,8 @@ namespace Viam.Core.Resources.Components.Base
 {
     internal class BaseService(ILogger<BaseService> logger) : Component.Base.V1.BaseService.BaseServiceBase, IServiceBase
     {
-        public string ServiceName => "viam.component.base.v1.BaseService";
-        public SubType SubType { get; } = SubType.FromRdkComponent("base");
+        public static Service ServiceName => Service.BaseService;
+        public static SubType SubType { get; } = SubType.Base;
 
         public override async Task<StopResponse> Stop(StopRequest request, ServerCallContext context)
         {

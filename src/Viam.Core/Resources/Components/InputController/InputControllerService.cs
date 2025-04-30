@@ -16,8 +16,8 @@ namespace Viam.Core.Resources.Components.InputController
 {
     internal class InputControllerService(ILogger<InputControllerService> logger) : Component.Inputcontroller.V1.InputControllerService.InputControllerServiceBase, IServiceBase
     {
-        public string ServiceName => "viam.component.inputcontroller.v1.InputControllerService";
-        public SubType SubType { get; } = SubType.FromRdkComponent("input_controller");
+        public static Service ServiceName => Service.InputControllerService;
+        public static SubType SubType { get; } = SubType.InputController;
 
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {

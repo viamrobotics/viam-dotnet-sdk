@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging.Console;
 
 using Viam.Client.Clients;
 using Viam.Client.Dialing;
+using Viam.Core.Resources.Components.Sensor;
 
 if (args.Length < 3)
 {
@@ -23,3 +24,7 @@ var dialOpts = DialOptions.FromAddress(grpcAddress)
 var robotClient = await RobotClient.AtAddressAsync(dialOpts);
 var resourceNames = await robotClient.ResourceNamesAsync();
 logger.LogInformation("Resource Names: {ResourceName}", string.Join(",", resourceNames.Select(x => x.Name)));
+
+using var client = SensorClient.FromRobot(robotClient, "mySensor");
+var readings = await client.GetReadings();
+logger.LogInformation("Readings: {Readings}", string.Join(",", readings.Select(x => $"{x.Key}: {x.Value}")));

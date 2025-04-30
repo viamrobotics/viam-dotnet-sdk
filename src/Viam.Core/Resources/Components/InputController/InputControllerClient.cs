@@ -16,16 +16,11 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.InputController
 {
     public class InputControllerClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
-        : ComponentBase<InputControllerClient,
-              Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient>(
-              resourceName,
-              new Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient(channel)),
+        : ComponentBase<InputControllerClient, Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient>(
+            resourceName, 
+            new Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient(channel)),
           IInputController
     {
-        static InputControllerClient() => Registry.RegisterSubtype(
-            new ComponentRegistration(SubType,
-                                      (name, channel, logger) => new InputControllerClient(name, channel, logger)));
-
         public static SubType SubType = SubType.FromRdkComponent("input_controller");
 
 

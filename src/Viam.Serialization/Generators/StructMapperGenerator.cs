@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Viam.Serialization
+namespace Viam.Serialization.Generators
 {
     [Generator]
     public class StructMapperGenerator : IIncrementalGenerator

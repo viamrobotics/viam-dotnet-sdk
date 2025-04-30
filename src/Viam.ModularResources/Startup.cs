@@ -25,9 +25,9 @@ namespace Viam.ModularResources
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            Registry.RegisterComponentServices(services);
             services.AddGrpc(o => o.Interceptors.Add<PopulateResourceByNameInterceptor>());
             services.AddGrpcReflection();
+            services.AddSingleton<ResourceManager>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -100,8 +100,9 @@ namespace Viam.ModularResources
             if (name != null)
             {
                 logger.LogTrace("Found resource name field.");
-                var resource = resourceManager.GetResourceByShortName(name);
-                logger.LogTrace("Added {ResourceName} to UserState", resource.ResourceName);
+                logger.LogDebug("Adding {ResourceName} to UserState", name);
+                var resource = resourceManager.GetService(name);
+                logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
                 context.UserState.Add(nameof(resource), resource);
             }
 
@@ -109,9 +110,9 @@ namespace Viam.ModularResources
             if (boardName != null)
             {
                 logger.LogTrace("Found board name field.");
-                var resource = resourceManager.GetResourceByShortName(boardName);
-                logger.LogTrace("Added {ResourceName} to UserState", resource.ResourceName);
-                context.UserState.Add("board", resource);
+                //var resource = resourceManager.GetResourceByShortName(boardName);
+                //logger.LogTrace("Added {ResourceName} to UserState", resource.ResourceName);
+                //context.UserState.Add("board", resource);
             }
 
             await continuation(request, responseStream, context);
@@ -125,8 +126,9 @@ namespace Viam.ModularResources
             if (name != null)
             {
                 logger.LogTrace("Found resource name field.");
-                var resource = resourceManager.GetResourceByShortName(name);
-                logger.LogTrace("Added {ResourceName} to UserState", resource.ResourceName);
+                logger.LogDebug("Adding {ResourceName} to UserState", name);
+                var resource = resourceManager.GetService(name);
+                logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
                 context.UserState.Add(nameof(resource), resource);
             }
 
@@ -134,9 +136,9 @@ namespace Viam.ModularResources
             if (boardName != null)
             {
                 logger.LogTrace("Found board name field.");
-                var resource = resourceManager.GetResourceByShortName(boardName);
-                logger.LogTrace("Added {ResourceName} to UserState", resource.ResourceName);
-                context.UserState.Add("board", resource);
+                //var resource = resourceManager.GetResourceByShortName(boardName);
+                //logger.LogTrace("Added {ResourceName} to UserState", resource.ResourceName);
+                //context.UserState.Add("board", resource);
             }
 
             return await continuation(request, context);

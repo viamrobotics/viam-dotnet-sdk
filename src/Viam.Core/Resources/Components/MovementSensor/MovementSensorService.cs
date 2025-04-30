@@ -13,8 +13,8 @@ namespace Viam.Core.Resources.Components.MovementSensor
 {
     internal class MovementSensorService(ILogger<MovementSensorService> logger) : Component.Movementsensor.V1.MovementSensorService.MovementSensorServiceBase, IServiceBase
     {
-        public string ServiceName => "viam.component.movementsensor.v1.MovementSensorService";
-        public SubType SubType { get; } = SubType.FromRdkComponent("movement_sensor");
+        public static Service ServiceName => Service.MovementSensorService;
+        public static SubType SubType { get; } = SubType.MovementSensor;
 
         public override async Task<GetPropertiesResponse> GetProperties(GetPropertiesRequest request,
                                                                         ServerCallContext context)

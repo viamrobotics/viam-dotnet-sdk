@@ -12,12 +12,12 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.PowerSensor
 {
     public class PowerSensorClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
-        ComponentBase<PowerSensorClient, Component.Powersensor.V1.PowerSensorService.PowerSensorServiceClient>(resourceName, new Component.Powersensor.V1.PowerSensorService.PowerSensorServiceClient(channel)),
+        ComponentBase<PowerSensorClient, Component.Powersensor.V1.PowerSensorService.PowerSensorServiceClient>(
+            resourceName, 
+            new Component.Powersensor.V1.PowerSensorService.PowerSensorServiceClient(channel)),
         IPowerSensor
     {
-        static PowerSensorClient() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new PowerSensorClient(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("power_sensor");
-
 
         public static IPowerSensor FromRobot(RobotClientBase client, string name)
         {

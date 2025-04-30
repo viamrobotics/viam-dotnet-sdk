@@ -7,22 +7,21 @@ namespace Viam.Core.Resources
 {
     public abstract class ResourceBase(ViamResourceName resourceName) : IResourceBase
     {
-        public ViamResourceName ResourceName => resourceName;
+        public ViamResourceName ResourceName { get; } = resourceName;
+        public string Name => ResourceName.Name;
         public abstract DateTime? LastReconfigured { get; }
         public virtual ResourceStatus GetStatus() => ResourceStatus.DefaultCreator(this);
         public abstract ValueTask StopResource();
-        public string Name => ResourceName.Name;
         public abstract ValueTask<IDictionary<string, object?>> DoCommand(
             IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
-        public virtual ValueTask DisposeAsync() => new ValueTask();
+        public void Dispose() { }
     }
 
-    public interface IResourceBase : IAsyncDisposable
+    public interface IResourceBase : IDisposable
     {
         public ViamResourceName ResourceName { get; }
-
         public ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
                                                                  TimeSpan? timeout = null,
                                                                  CancellationToken cancellationToken = default);

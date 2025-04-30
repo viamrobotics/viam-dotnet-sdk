@@ -1,8 +1,9 @@
-﻿namespace Viam.Core.Resources.Components
+﻿using System;
+
+namespace Viam.Core.Resources.Components
 {
     public interface IServiceBase
     {
-        public string ServiceName { get; }
-        public SubType SubType { get; }
+        public abstract static SubType SubType { get; }
     }
 }

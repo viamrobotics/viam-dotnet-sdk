@@ -7,4 +7,9 @@ namespace Viam.ModularResources
     {
         public ValueTask Reconfigure(ComponentConfig config, IDictionary<ViamResourceName, IResourceBase> dependencies);
     }
+
+    public interface IReconfigurable
+    {
+        public void Reconfigure(ComponentConfig config, IDictionary<ViamResourceName, IResourceBase> dependencies);
+    }
 }

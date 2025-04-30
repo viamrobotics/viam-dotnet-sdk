@@ -15,7 +15,7 @@ namespace Viam.Core.Resources
 
     public abstract class ComponentBase<T, TClient>(ViamResourceName resourceName, TClient client) : ComponentBase(resourceName) where T : ComponentBase where TClient : ClientBase<TClient>
     {
-        public TClient Client => client;
+        public TClient Client = client;
 
         public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
         TimeSpan? timeout = null, CancellationToken cancellationToken = default)
@@ -39,8 +39,9 @@ namespace Viam.Core.Resources
                 var response = res.Result.ToDictionary();
                 return response;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+                // TODO: We should probably wrap the exception before re-throwing it.
                 throw;
             }
         }

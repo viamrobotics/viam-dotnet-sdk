@@ -50,19 +50,18 @@ namespace Viam.Client.WebRTC
             try
             {
                 logger.LogTrace("Rust runtime initialized");
-                var proxyPointer = RustRTC.Dial(dialOptions.machineAddress, dialOptions.credentials?.AuthEntity, dialOptions.credentials?.Type, dialOptions.credentials?.Payload, allowInsecure, dialOptions.timeout, runtimePointer);
+                var proxyPath = RustRTC.Dial(dialOptions.machineAddress, dialOptions.credentials?.AuthEntity, dialOptions.credentials?.Type, dialOptions.credentials?.Payload, allowInsecure, dialOptions.timeout, runtimePointer);
                 logger.LogTrace("Dialed successfully, got proxy pointer");
                 try
                 {
-                    var path = Marshal.PtrToStringUTF8(proxyPointer);
-                    logger.LogTrace("Parsed proxy address: {path}", path);
-                    var uri = new Uri($"http://{path}");
-                    if (path.StartsWith("tcp://"))
+                    logger.LogTrace("Parsed proxy address: {path}", proxyPath);
+                    var uri = new Uri($"http://{proxyPath}");
+                    if (proxyPath.StartsWith("tcp://"))
                     {
-                        var proxyAddress = path.Replace("tcp://", "");
+                        var proxyAddress = proxyPath.Replace("tcp://", "");
                         uri = new Uri($"http://{proxyAddress}");
                     }
-                    if (path.StartsWith("unix://"))
+                    if (proxyPath.StartsWith("unix://"))
                     {
                         //var proxyAddress = path.Replace("unix://", "");
                         //uri = new Uri($"http://{proxyAddress}");
@@ -81,10 +80,6 @@ namespace Viam.Client.WebRTC
                 {
                     logger.LogError(ex, "Failed to parse proxy address");
                     throw;
-                }
-                finally
-                {
-                    RustRTC.FreeString(proxyPointer);
                 }
             }
             catch (Exception ex)

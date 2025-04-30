@@ -17,9 +17,7 @@ namespace Viam.Core.Resources.Components.Encoder
         ComponentBase<EncoderClient, Component.Encoder.V1.EncoderService.EncoderServiceClient>(resourceName, new Component.Encoder.V1.EncoderService.EncoderServiceClient(channel)),
         IEncoder
     {
-        static EncoderClient() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new EncoderClient(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("encoder");
-
 
         public static IEncoder FromRobot(RobotClientBase client, string name)
         {

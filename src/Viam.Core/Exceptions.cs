@@ -8,8 +8,6 @@ namespace Viam.Core
 
     public class ResourceRegistrationNotFoundException : ResourceException;
 
-    public class ResourceCreatorTypException(SubType subType, Model model) : ResourceException($"Resource creator registration for {subType} and {model} is not of type {typeof(ResourceCreatorRegistration)}");
-
     public class ResourceCreatorRegistrationNotFoundException : ResourceException;
 
     public class ResourceAlreadyRegisteredException : ResourceException;

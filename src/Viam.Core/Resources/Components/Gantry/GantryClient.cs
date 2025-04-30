@@ -16,9 +16,7 @@ namespace Viam.Core.Resources.Components.Gantry
         ComponentBase<GantryClient, Component.Gantry.V1.GantryService.GantryServiceClient>(resourceName, new Component.Gantry.V1.GantryService.GantryServiceClient(channel)),
         IGantry
     {
-        static GantryClient() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new GantryClient(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("gantry");
-
 
         public static IGantry FromRobot(RobotClientBase client, string name)
         {

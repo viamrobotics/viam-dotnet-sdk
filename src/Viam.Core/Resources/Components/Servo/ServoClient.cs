@@ -17,9 +17,7 @@ namespace Viam.Core.Resources.Components.Servo
         : ComponentBase<ServoClient, Component.Servo.V1.ServoService.ServoServiceClient>(resourceName, new Component.Servo.V1.ServoService.ServoServiceClient(channel)),
           IServo
     {
-        static ServoClient() => Registry.RegisterSubtype(new ComponentRegistration(SubType, (name, channel, logger) => new ServoClient(name, channel, logger)));
         public static SubType SubType = SubType.FromRdkComponent("servo");
-
 
         public static IServo FromRobot(RobotClientBase client, string name)
         {
