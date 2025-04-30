@@ -7,6 +7,8 @@ using System.Text;
 using System.Linq;
 using Microsoft.CodeAnalysis.Text;
 using System.Data.SqlTypes;
+using Microsoft.CodeAnalysis.CSharp;
+using System.Diagnostics;
 
 namespace Viam.Serialization.Generators
 {
@@ -35,12 +37,33 @@ namespace Viam.Serialization.Generators
 
         private static bool IsClassWithAttribute(SyntaxNode node)
         {
-            // Check if the node is a class declaration with the [DictionaryMapper] attribute
-            return node is ClassDeclarationSyntax classDeclaration &&
-                   classDeclaration.AttributeLists
-                        .ToList()
-                       .SelectMany(al => al.Attributes)
-                       .Any(attr => attr.Name.ToString().Contains("DictionaryMapper"));
+            if (node is not ClassDeclarationSyntax classDecl)
+                return false;
+            var hasAttribute = classDecl.AttributeLists
+                .SelectMany(attrList => attrList.Attributes)
+                .Any(attr => attr.Name.ToString() == nameof(DictionaryMapperAttribute).Replace("Attribute", ""));
+            if (!hasAttribute)
+                return false;
+            var isPartial = classDecl.Modifiers.Any(SyntaxKind.PartialKeyword);
+
+            if (!isPartial)
+            {
+                var diagnostic = Diagnostic.Create(
+                    new DiagnosticDescriptor(
+                        id: "VIAMGEN003",
+                        title: "DictionaryMapper requires partial classes",
+                        messageFormat: "Class '{0}' must be marked 'partial' to allow source generation.",
+                        category: "DictionaryMapper",
+                        DiagnosticSeverity.Error,
+                        isEnabledByDefault: true),
+                    classDecl.Identifier.GetLocation(),
+                    classDecl.Identifier.Text);
+
+                // Report the diagnostic
+                throw new InvalidOperationException($"Class '{classDecl.Identifier.Text}' must be marked 'partial' to allow source generation.");
+            }
+
+            return true;
         }
 
         private static INamedTypeSymbol? GetClassSymbol(GeneratorSyntaxContext context)

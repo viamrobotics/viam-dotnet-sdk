@@ -20,7 +20,7 @@ namespace Viam.Serialization.Generators
             var classDeclarations = context.SyntaxProvider
                 .CreateSyntaxProvider(
                     predicate: static (s, _) => IsCandidateClass(s),
-                    transform: static (ctx, _) => GetSemanticTargetWithAttribute(ctx))
+                    transform: static (ctx, _) => GetClassSymbol(ctx))
                 .Where(static m => m is not null);
 
             var compilationAndClasses = context.CompilationProvider.Combine(classDeclarations.Collect());
@@ -447,28 +447,40 @@ namespace Viam.Serialization.Generators
 
         private static bool IsCandidateClass(SyntaxNode node)
         {
-            return node is ClassDeclarationSyntax classDecl
-                && classDecl.AttributeLists.Count > 0
-                && classDecl.Modifiers.Any(m => m.IsKind(SyntaxKind.PartialKeyword));
-        }
+            if (node is not ClassDeclarationSyntax classDecl)
+                return false;
+            var hasAttribute = classDecl.AttributeLists
+                .SelectMany(attrList => attrList.Attributes)
+                .Any(attr => attr.Name.ToString() == nameof(StructMappableAttribute).Replace("Attribute", ""));
+            if (!hasAttribute)
+                return false;
+            var isPartial = classDecl.Modifiers.Any(SyntaxKind.PartialKeyword);
 
-        private static INamedTypeSymbol? GetSemanticTargetWithAttribute(GeneratorSyntaxContext context)
-        {
-            var classDecl = (ClassDeclarationSyntax)context.Node;
-
-            var classSymbol = context.SemanticModel.GetDeclaredSymbol(classDecl) as INamedTypeSymbol;
-            if (classSymbol == null)
-                return null;
-
-            foreach (var attribute in classSymbol.GetAttributes())
+            if (!isPartial)
             {
-                if (attribute.AttributeClass?.ToDisplayString() == "Viam.Core.Serialization.StructMappableAttribute")
-                {
-                    return classSymbol;
-                }
+                var diagnostic = Diagnostic.Create(
+                    new DiagnosticDescriptor(
+                        id: "VIAMGEN003",
+                        title: "DictionaryMapper requires partial classes",
+                        messageFormat: "Class '{0}' must be marked 'partial' to allow source generation.",
+                        category: "DictionaryMapper",
+                        DiagnosticSeverity.Error,
+                        isEnabledByDefault: true),
+                    classDecl.Identifier.GetLocation(),
+                    classDecl.Identifier.Text);
+
+                // Report the diagnostic
+                throw new InvalidOperationException($"Class '{classDecl.Identifier.Text}' must be marked 'partial' to allow source generation.");
             }
 
-            return null;
+            return true;
+        }
+
+        private static INamedTypeSymbol? GetClassSymbol(GeneratorSyntaxContext context)
+        {
+            // Get the semantic model and symbol for the class
+            var classDeclaration = (ClassDeclarationSyntax)context.Node;
+            return context.SemanticModel.GetDeclaredSymbol(classDeclaration) as INamedTypeSymbol;
         }
 
         private static string GetJsonPropertyName(IPropertySymbol prop)
