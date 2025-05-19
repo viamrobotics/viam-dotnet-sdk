@@ -16,11 +16,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Analyzer Include="..\..\src\Viam.Serialization.Analyzer\bin\$(Configuration)\netstandard2.0\Viam.Serialization.Analyzer.dll" />
+    <ProjectReference Include="..\Viam.Serialization.Analyzer\Viam.Serialization.Analyzer.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Viam.Serialization.Analyzer\Viam.Serialization.Analyzer.csproj" />
+    <None Include="..\..\src\Viam.Serialization.Analyzer\bin\$(Configuration)\netstandard2.0\Viam.Serialization.Analyzer.dll"
+          Pack="true"
+          PackagePath="analyzers/dotnet/cs"
+          Visible="false" />
   </ItemGroup>
 
 </Project>
