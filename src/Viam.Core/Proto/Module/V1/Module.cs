@@ -44,20 +44,24 @@ namespace Viam.Module.V1 {
             "cBgCIAEoCzIaLnZpYW0ubW9kdWxlLnYxLkhhbmRsZXJNYXBSCmhhbmRsZXJt",
             "YXASIwoNd2VicnRjX2Fuc3dlchgDIAEoCVIMd2VicnRjQW5zd2VyIk0KFVZh",
             "bGlkYXRlQ29uZmlnUmVxdWVzdBI0CgZjb25maWcYASABKAsyHC52aWFtLmFw",
-            "cC52MS5Db21wb25lbnRDb25maWdSBmNvbmZpZyI8ChZWYWxpZGF0ZUNvbmZp",
+            "cC52MS5Db21wb25lbnRDb25maWdSBmNvbmZpZyJxChZWYWxpZGF0ZUNvbmZp",
             "Z1Jlc3BvbnNlEiIKDGRlcGVuZGVuY2llcxgBIAMoCVIMZGVwZW5kZW5jaWVz",
-            "Mt8DCg1Nb2R1bGVTZXJ2aWNlElYKC0FkZFJlc291cmNlEiIudmlhbS5tb2R1",
-            "bGUudjEuQWRkUmVzb3VyY2VSZXF1ZXN0GiMudmlhbS5tb2R1bGUudjEuQWRk",
-            "UmVzb3VyY2VSZXNwb25zZRJuChNSZWNvbmZpZ3VyZVJlc291cmNlEioudmlh",
-            "bS5tb2R1bGUudjEuUmVjb25maWd1cmVSZXNvdXJjZVJlcXVlc3QaKy52aWFt",
-            "Lm1vZHVsZS52MS5SZWNvbmZpZ3VyZVJlc291cmNlUmVzcG9uc2USXwoOUmVt",
-            "b3ZlUmVzb3VyY2USJS52aWFtLm1vZHVsZS52MS5SZW1vdmVSZXNvdXJjZVJl",
-            "cXVlc3QaJi52aWFtLm1vZHVsZS52MS5SZW1vdmVSZXNvdXJjZVJlc3BvbnNl",
-            "EkQKBVJlYWR5EhwudmlhbS5tb2R1bGUudjEuUmVhZHlSZXF1ZXN0Gh0udmlh",
-            "bS5tb2R1bGUudjEuUmVhZHlSZXNwb25zZRJfCg5WYWxpZGF0ZUNvbmZpZxIl",
-            "LnZpYW0ubW9kdWxlLnYxLlZhbGlkYXRlQ29uZmlnUmVxdWVzdBomLnZpYW0u",
-            "bW9kdWxlLnYxLlZhbGlkYXRlQ29uZmlnUmVzcG9uc2VCG1oZZ28udmlhbS5j",
-            "b20vYXBpL21vZHVsZS92MWIGcHJvdG8z"));
+            "EjMKFW9wdGlvbmFsX2RlcGVuZGVuY2llcxgCIAMoCVIUb3B0aW9uYWxEZXBl",
+            "bmRlbmNpZXMy3wMKDU1vZHVsZVNlcnZpY2USVgoLQWRkUmVzb3VyY2USIi52",
+            "aWFtLm1vZHVsZS52MS5BZGRSZXNvdXJjZVJlcXVlc3QaIy52aWFtLm1vZHVs",
+            "ZS52MS5BZGRSZXNvdXJjZVJlc3BvbnNlEm4KE1JlY29uZmlndXJlUmVzb3Vy",
+            "Y2USKi52aWFtLm1vZHVsZS52MS5SZWNvbmZpZ3VyZVJlc291cmNlUmVxdWVz",
+            "dBorLnZpYW0ubW9kdWxlLnYxLlJlY29uZmlndXJlUmVzb3VyY2VSZXNwb25z",
+            "ZRJfCg5SZW1vdmVSZXNvdXJjZRIlLnZpYW0ubW9kdWxlLnYxLlJlbW92ZVJl",
+            "c291cmNlUmVxdWVzdBomLnZpYW0ubW9kdWxlLnYxLlJlbW92ZVJlc291cmNl",
+            "UmVzcG9uc2USRAoFUmVhZHkSHC52aWFtLm1vZHVsZS52MS5SZWFkeVJlcXVl",
+            "c3QaHS52aWFtLm1vZHVsZS52MS5SZWFkeVJlc3BvbnNlEl8KDlZhbGlkYXRl",
+            "Q29uZmlnEiUudmlhbS5tb2R1bGUudjEuVmFsaWRhdGVDb25maWdSZXF1ZXN0",
+            "GiYudmlhbS5tb2R1bGUudjEuVmFsaWRhdGVDb25maWdSZXNwb25zZUKWAQoS",
+            "Y29tLnZpYW0ubW9kdWxlLnYxQgtNb2R1bGVQcm90b1ABWhlnby52aWFtLmNv",
+            "bS9hcGkvbW9kdWxlL3YxogIDVk1YqgIOVmlhbS5Nb2R1bGUuVjHKAg5WaWFt",
+            "XE1vZHVsZVxWMeICGlZpYW1cTW9kdWxlXFYxXEdQQk1ldGFkYXRh6gIQVmlh",
+            "bTo6TW9kdWxlOjpWMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Viam.App.V1.RobotReflection.Descriptor, global::Viam.Robot.V1.RobotReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -72,7 +76,7 @@ namespace Viam.Module.V1 {
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Module.V1.ReadyRequest), global::Viam.Module.V1.ReadyRequest.Parser, new[]{ "ParentAddress", "WebrtcOffer" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Module.V1.ReadyResponse), global::Viam.Module.V1.ReadyResponse.Parser, new[]{ "Ready", "Handlermap", "WebrtcAnswer" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Module.V1.ValidateConfigRequest), global::Viam.Module.V1.ValidateConfigRequest.Parser, new[]{ "Config" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Module.V1.ValidateConfigResponse), global::Viam.Module.V1.ValidateConfigResponse.Parser, new[]{ "Dependencies" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Module.V1.ValidateConfigResponse), global::Viam.Module.V1.ValidateConfigResponse.Parser, new[]{ "Dependencies", "OptionalDependencies" }, null, null, null, null)
           }));
     }
     #endregion
@@ -256,7 +260,11 @@ namespace Viam.Module.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -282,7 +290,11 @@ namespace Viam.Module.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -431,7 +443,11 @@ namespace Viam.Module.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -446,7 +462,11 @@ namespace Viam.Module.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -634,7 +654,11 @@ namespace Viam.Module.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -660,7 +684,11 @@ namespace Viam.Module.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -809,7 +837,11 @@ namespace Viam.Module.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -824,7 +856,11 @@ namespace Viam.Module.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -991,7 +1027,11 @@ namespace Viam.Module.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1010,7 +1050,11 @@ namespace Viam.Module.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1152,7 +1196,11 @@ namespace Viam.Module.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1167,7 +1215,11 @@ namespace Viam.Module.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1355,7 +1407,11 @@ namespace Viam.Module.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1381,7 +1437,11 @@ namespace Viam.Module.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1548,7 +1608,11 @@ namespace Viam.Module.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1567,7 +1631,11 @@ namespace Viam.Module.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1767,7 +1835,11 @@ namespace Viam.Module.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1790,7 +1862,11 @@ namespace Viam.Module.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2026,7 +2102,11 @@ namespace Viam.Module.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2056,7 +2136,11 @@ namespace Viam.Module.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2241,7 +2325,11 @@ namespace Viam.Module.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2263,7 +2351,11 @@ namespace Viam.Module.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2317,6 +2409,7 @@ namespace Viam.Module.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ValidateConfigResponse(ValidateConfigResponse other) : this() {
       dependencies_ = other.dependencies_.Clone();
+      optionalDependencies_ = other.optionalDependencies_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2337,6 +2430,17 @@ namespace Viam.Module.V1 {
       get { return dependencies_; }
     }
 
+    /// <summary>Field number for the "optional_dependencies" field.</summary>
+    public const int OptionalDependenciesFieldNumber = 2;
+    private static readonly pb::FieldCodec<string> _repeated_optionalDependencies_codec
+        = pb::FieldCodec.ForString(18);
+    private readonly pbc::RepeatedField<string> optionalDependencies_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<string> OptionalDependencies {
+      get { return optionalDependencies_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -2353,6 +2457,7 @@ namespace Viam.Module.V1 {
         return true;
       }
       if(!dependencies_.Equals(other.dependencies_)) return false;
+      if(!optionalDependencies_.Equals(other.optionalDependencies_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2361,6 +2466,7 @@ namespace Viam.Module.V1 {
     public override int GetHashCode() {
       int hash = 1;
       hash ^= dependencies_.GetHashCode();
+      hash ^= optionalDependencies_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2380,6 +2486,7 @@ namespace Viam.Module.V1 {
       output.WriteRawMessage(this);
     #else
       dependencies_.WriteTo(output, _repeated_dependencies_codec);
+      optionalDependencies_.WriteTo(output, _repeated_optionalDependencies_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2391,6 +2498,7 @@ namespace Viam.Module.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
       dependencies_.WriteTo(ref output, _repeated_dependencies_codec);
+      optionalDependencies_.WriteTo(ref output, _repeated_optionalDependencies_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2402,6 +2510,7 @@ namespace Viam.Module.V1 {
     public int CalculateSize() {
       int size = 0;
       size += dependencies_.CalculateSize(_repeated_dependencies_codec);
+      size += optionalDependencies_.CalculateSize(_repeated_optionalDependencies_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -2415,6 +2524,7 @@ namespace Viam.Module.V1 {
         return;
       }
       dependencies_.Add(other.dependencies_);
+      optionalDependencies_.Add(other.optionalDependencies_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2426,12 +2536,20 @@ namespace Viam.Module.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
             dependencies_.AddEntriesFrom(input, _repeated_dependencies_codec);
+            break;
+          }
+          case 18: {
+            optionalDependencies_.AddEntriesFrom(input, _repeated_optionalDependencies_codec);
             break;
           }
         }
@@ -2445,12 +2563,20 @@ namespace Viam.Module.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
             dependencies_.AddEntriesFrom(ref input, _repeated_dependencies_codec);
+            break;
+          }
+          case 18: {
+            optionalDependencies_.AddEntriesFrom(ref input, _repeated_optionalDependencies_codec);
             break;
           }
         }

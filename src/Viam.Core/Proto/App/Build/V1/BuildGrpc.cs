@@ -60,6 +60,34 @@ namespace Viam.App.Build.V1 {
     static readonly grpc::Marshaller<global::Viam.App.Build.V1.ListJobsRequest> __Marshaller_viam_app_build_v1_ListJobsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.ListJobsRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.Build.V1.ListJobsResponse> __Marshaller_viam_app_build_v1_ListJobsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.ListJobsResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Build.V1.LinkRepoRequest> __Marshaller_viam_app_build_v1_LinkRepoRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.LinkRepoRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Build.V1.LinkRepoResponse> __Marshaller_viam_app_build_v1_LinkRepoResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.LinkRepoResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Build.V1.UnlinkRepoRequest> __Marshaller_viam_app_build_v1_UnlinkRepoRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.UnlinkRepoRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Build.V1.UnlinkRepoResponse> __Marshaller_viam_app_build_v1_UnlinkRepoResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.UnlinkRepoResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Build.V1.ListRepoLinksRequest> __Marshaller_viam_app_build_v1_ListRepoLinksRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.ListRepoLinksRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Build.V1.ListRepoLinksResponse> __Marshaller_viam_app_build_v1_ListRepoLinksResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.ListRepoLinksResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Build.V1.ListAppLinksRequest> __Marshaller_viam_app_build_v1_ListAppLinksRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.ListAppLinksRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Build.V1.ListAppLinksResponse> __Marshaller_viam_app_build_v1_ListAppLinksResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.ListAppLinksResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Build.V1.RemoveAppLinkRequest> __Marshaller_viam_app_build_v1_RemoveAppLinkRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.RemoveAppLinkRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Build.V1.RemoveAppLinkResponse> __Marshaller_viam_app_build_v1_RemoveAppLinkResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.RemoveAppLinkResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Build.V1.LinkOrgRequest> __Marshaller_viam_app_build_v1_LinkOrgRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.LinkOrgRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Build.V1.LinkOrgResponse> __Marshaller_viam_app_build_v1_LinkOrgResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.LinkOrgResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Build.V1.UnlinkOrgRequest> __Marshaller_viam_app_build_v1_UnlinkOrgRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.UnlinkOrgRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Build.V1.UnlinkOrgResponse> __Marshaller_viam_app_build_v1_UnlinkOrgResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Build.V1.UnlinkOrgResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.Build.V1.StartBuildRequest, global::Viam.App.Build.V1.StartBuildResponse> __Method_StartBuild = new grpc::Method<global::Viam.App.Build.V1.StartBuildRequest, global::Viam.App.Build.V1.StartBuildResponse>(
@@ -84,6 +112,62 @@ namespace Viam.App.Build.V1 {
         "ListJobs",
         __Marshaller_viam_app_build_v1_ListJobsRequest,
         __Marshaller_viam_app_build_v1_ListJobsResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.Build.V1.LinkRepoRequest, global::Viam.App.Build.V1.LinkRepoResponse> __Method_LinkRepo = new grpc::Method<global::Viam.App.Build.V1.LinkRepoRequest, global::Viam.App.Build.V1.LinkRepoResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "LinkRepo",
+        __Marshaller_viam_app_build_v1_LinkRepoRequest,
+        __Marshaller_viam_app_build_v1_LinkRepoResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.Build.V1.UnlinkRepoRequest, global::Viam.App.Build.V1.UnlinkRepoResponse> __Method_UnlinkRepo = new grpc::Method<global::Viam.App.Build.V1.UnlinkRepoRequest, global::Viam.App.Build.V1.UnlinkRepoResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UnlinkRepo",
+        __Marshaller_viam_app_build_v1_UnlinkRepoRequest,
+        __Marshaller_viam_app_build_v1_UnlinkRepoResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.Build.V1.ListRepoLinksRequest, global::Viam.App.Build.V1.ListRepoLinksResponse> __Method_ListRepoLinks = new grpc::Method<global::Viam.App.Build.V1.ListRepoLinksRequest, global::Viam.App.Build.V1.ListRepoLinksResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ListRepoLinks",
+        __Marshaller_viam_app_build_v1_ListRepoLinksRequest,
+        __Marshaller_viam_app_build_v1_ListRepoLinksResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.Build.V1.ListAppLinksRequest, global::Viam.App.Build.V1.ListAppLinksResponse> __Method_ListAppLinks = new grpc::Method<global::Viam.App.Build.V1.ListAppLinksRequest, global::Viam.App.Build.V1.ListAppLinksResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ListAppLinks",
+        __Marshaller_viam_app_build_v1_ListAppLinksRequest,
+        __Marshaller_viam_app_build_v1_ListAppLinksResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.Build.V1.RemoveAppLinkRequest, global::Viam.App.Build.V1.RemoveAppLinkResponse> __Method_RemoveAppLink = new grpc::Method<global::Viam.App.Build.V1.RemoveAppLinkRequest, global::Viam.App.Build.V1.RemoveAppLinkResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "RemoveAppLink",
+        __Marshaller_viam_app_build_v1_RemoveAppLinkRequest,
+        __Marshaller_viam_app_build_v1_RemoveAppLinkResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.Build.V1.LinkOrgRequest, global::Viam.App.Build.V1.LinkOrgResponse> __Method_LinkOrg = new grpc::Method<global::Viam.App.Build.V1.LinkOrgRequest, global::Viam.App.Build.V1.LinkOrgResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "LinkOrg",
+        __Marshaller_viam_app_build_v1_LinkOrgRequest,
+        __Marshaller_viam_app_build_v1_LinkOrgResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.Build.V1.UnlinkOrgRequest, global::Viam.App.Build.V1.UnlinkOrgResponse> __Method_UnlinkOrg = new grpc::Method<global::Viam.App.Build.V1.UnlinkOrgRequest, global::Viam.App.Build.V1.UnlinkOrgResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UnlinkOrg",
+        __Marshaller_viam_app_build_v1_UnlinkOrgRequest,
+        __Marshaller_viam_app_build_v1_UnlinkOrgResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -128,6 +212,90 @@ namespace Viam.App.Build.V1 {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.App.Build.V1.ListJobsResponse> ListJobs(global::Viam.App.Build.V1.ListJobsRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// link a git repo to a module.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.Build.V1.LinkRepoResponse> LinkRepo(global::Viam.App.Build.V1.LinkRepoRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// delete a module-repo link.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.Build.V1.UnlinkRepoResponse> UnlinkRepo(global::Viam.App.Build.V1.UnlinkRepoRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// list module-repo links owned by user (directly or through orgs).
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.Build.V1.ListRepoLinksResponse> ListRepoLinks(global::Viam.App.Build.V1.ListRepoLinksRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// list external oauth apps owned by user (directly or through orgs).
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.Build.V1.ListAppLinksResponse> ListAppLinks(global::Viam.App.Build.V1.ListAppLinksRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// delete a viam-app link.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.Build.V1.RemoveAppLinkResponse> RemoveAppLink(global::Viam.App.Build.V1.RemoveAppLinkRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// add an org to an oauth app link.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.Build.V1.LinkOrgResponse> LinkOrg(global::Viam.App.Build.V1.LinkOrgRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// remove an org from an oauth app link.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.Build.V1.UnlinkOrgResponse> UnlinkOrg(global::Viam.App.Build.V1.UnlinkOrgRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -281,6 +449,342 @@ namespace Viam.App.Build.V1 {
       {
         return CallInvoker.AsyncUnaryCall(__Method_ListJobs, null, options, request);
       }
+      /// <summary>
+      /// link a git repo to a module.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Build.V1.LinkRepoResponse LinkRepo(global::Viam.App.Build.V1.LinkRepoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return LinkRepo(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// link a git repo to a module.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Build.V1.LinkRepoResponse LinkRepo(global::Viam.App.Build.V1.LinkRepoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_LinkRepo, null, options, request);
+      }
+      /// <summary>
+      /// link a git repo to a module.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Build.V1.LinkRepoResponse> LinkRepoAsync(global::Viam.App.Build.V1.LinkRepoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return LinkRepoAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// link a git repo to a module.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Build.V1.LinkRepoResponse> LinkRepoAsync(global::Viam.App.Build.V1.LinkRepoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_LinkRepo, null, options, request);
+      }
+      /// <summary>
+      /// delete a module-repo link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Build.V1.UnlinkRepoResponse UnlinkRepo(global::Viam.App.Build.V1.UnlinkRepoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UnlinkRepo(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// delete a module-repo link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Build.V1.UnlinkRepoResponse UnlinkRepo(global::Viam.App.Build.V1.UnlinkRepoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UnlinkRepo, null, options, request);
+      }
+      /// <summary>
+      /// delete a module-repo link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Build.V1.UnlinkRepoResponse> UnlinkRepoAsync(global::Viam.App.Build.V1.UnlinkRepoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UnlinkRepoAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// delete a module-repo link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Build.V1.UnlinkRepoResponse> UnlinkRepoAsync(global::Viam.App.Build.V1.UnlinkRepoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UnlinkRepo, null, options, request);
+      }
+      /// <summary>
+      /// list module-repo links owned by user (directly or through orgs).
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Build.V1.ListRepoLinksResponse ListRepoLinks(global::Viam.App.Build.V1.ListRepoLinksRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListRepoLinks(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// list module-repo links owned by user (directly or through orgs).
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Build.V1.ListRepoLinksResponse ListRepoLinks(global::Viam.App.Build.V1.ListRepoLinksRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ListRepoLinks, null, options, request);
+      }
+      /// <summary>
+      /// list module-repo links owned by user (directly or through orgs).
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Build.V1.ListRepoLinksResponse> ListRepoLinksAsync(global::Viam.App.Build.V1.ListRepoLinksRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListRepoLinksAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// list module-repo links owned by user (directly or through orgs).
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Build.V1.ListRepoLinksResponse> ListRepoLinksAsync(global::Viam.App.Build.V1.ListRepoLinksRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ListRepoLinks, null, options, request);
+      }
+      /// <summary>
+      /// list external oauth apps owned by user (directly or through orgs).
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Build.V1.ListAppLinksResponse ListAppLinks(global::Viam.App.Build.V1.ListAppLinksRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListAppLinks(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// list external oauth apps owned by user (directly or through orgs).
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Build.V1.ListAppLinksResponse ListAppLinks(global::Viam.App.Build.V1.ListAppLinksRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ListAppLinks, null, options, request);
+      }
+      /// <summary>
+      /// list external oauth apps owned by user (directly or through orgs).
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Build.V1.ListAppLinksResponse> ListAppLinksAsync(global::Viam.App.Build.V1.ListAppLinksRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListAppLinksAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// list external oauth apps owned by user (directly or through orgs).
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Build.V1.ListAppLinksResponse> ListAppLinksAsync(global::Viam.App.Build.V1.ListAppLinksRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ListAppLinks, null, options, request);
+      }
+      /// <summary>
+      /// delete a viam-app link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Build.V1.RemoveAppLinkResponse RemoveAppLink(global::Viam.App.Build.V1.RemoveAppLinkRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RemoveAppLink(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// delete a viam-app link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Build.V1.RemoveAppLinkResponse RemoveAppLink(global::Viam.App.Build.V1.RemoveAppLinkRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_RemoveAppLink, null, options, request);
+      }
+      /// <summary>
+      /// delete a viam-app link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Build.V1.RemoveAppLinkResponse> RemoveAppLinkAsync(global::Viam.App.Build.V1.RemoveAppLinkRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RemoveAppLinkAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// delete a viam-app link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Build.V1.RemoveAppLinkResponse> RemoveAppLinkAsync(global::Viam.App.Build.V1.RemoveAppLinkRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_RemoveAppLink, null, options, request);
+      }
+      /// <summary>
+      /// add an org to an oauth app link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Build.V1.LinkOrgResponse LinkOrg(global::Viam.App.Build.V1.LinkOrgRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return LinkOrg(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// add an org to an oauth app link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Build.V1.LinkOrgResponse LinkOrg(global::Viam.App.Build.V1.LinkOrgRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_LinkOrg, null, options, request);
+      }
+      /// <summary>
+      /// add an org to an oauth app link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Build.V1.LinkOrgResponse> LinkOrgAsync(global::Viam.App.Build.V1.LinkOrgRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return LinkOrgAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// add an org to an oauth app link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Build.V1.LinkOrgResponse> LinkOrgAsync(global::Viam.App.Build.V1.LinkOrgRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_LinkOrg, null, options, request);
+      }
+      /// <summary>
+      /// remove an org from an oauth app link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Build.V1.UnlinkOrgResponse UnlinkOrg(global::Viam.App.Build.V1.UnlinkOrgRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UnlinkOrg(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// remove an org from an oauth app link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Build.V1.UnlinkOrgResponse UnlinkOrg(global::Viam.App.Build.V1.UnlinkOrgRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UnlinkOrg, null, options, request);
+      }
+      /// <summary>
+      /// remove an org from an oauth app link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Build.V1.UnlinkOrgResponse> UnlinkOrgAsync(global::Viam.App.Build.V1.UnlinkOrgRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UnlinkOrgAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// remove an org from an oauth app link.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Build.V1.UnlinkOrgResponse> UnlinkOrgAsync(global::Viam.App.Build.V1.UnlinkOrgRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UnlinkOrg, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override BuildServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -297,7 +801,14 @@ namespace Viam.App.Build.V1 {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_StartBuild, serviceImpl.StartBuild)
           .AddMethod(__Method_GetLogs, serviceImpl.GetLogs)
-          .AddMethod(__Method_ListJobs, serviceImpl.ListJobs).Build();
+          .AddMethod(__Method_ListJobs, serviceImpl.ListJobs)
+          .AddMethod(__Method_LinkRepo, serviceImpl.LinkRepo)
+          .AddMethod(__Method_UnlinkRepo, serviceImpl.UnlinkRepo)
+          .AddMethod(__Method_ListRepoLinks, serviceImpl.ListRepoLinks)
+          .AddMethod(__Method_ListAppLinks, serviceImpl.ListAppLinks)
+          .AddMethod(__Method_RemoveAppLink, serviceImpl.RemoveAppLink)
+          .AddMethod(__Method_LinkOrg, serviceImpl.LinkOrg)
+          .AddMethod(__Method_UnlinkOrg, serviceImpl.UnlinkOrg).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -310,6 +821,13 @@ namespace Viam.App.Build.V1 {
       serviceBinder.AddMethod(__Method_StartBuild, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Build.V1.StartBuildRequest, global::Viam.App.Build.V1.StartBuildResponse>(serviceImpl.StartBuild));
       serviceBinder.AddMethod(__Method_GetLogs, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Viam.App.Build.V1.GetLogsRequest, global::Viam.App.Build.V1.GetLogsResponse>(serviceImpl.GetLogs));
       serviceBinder.AddMethod(__Method_ListJobs, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Build.V1.ListJobsRequest, global::Viam.App.Build.V1.ListJobsResponse>(serviceImpl.ListJobs));
+      serviceBinder.AddMethod(__Method_LinkRepo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Build.V1.LinkRepoRequest, global::Viam.App.Build.V1.LinkRepoResponse>(serviceImpl.LinkRepo));
+      serviceBinder.AddMethod(__Method_UnlinkRepo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Build.V1.UnlinkRepoRequest, global::Viam.App.Build.V1.UnlinkRepoResponse>(serviceImpl.UnlinkRepo));
+      serviceBinder.AddMethod(__Method_ListRepoLinks, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Build.V1.ListRepoLinksRequest, global::Viam.App.Build.V1.ListRepoLinksResponse>(serviceImpl.ListRepoLinks));
+      serviceBinder.AddMethod(__Method_ListAppLinks, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Build.V1.ListAppLinksRequest, global::Viam.App.Build.V1.ListAppLinksResponse>(serviceImpl.ListAppLinks));
+      serviceBinder.AddMethod(__Method_RemoveAppLink, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Build.V1.RemoveAppLinkRequest, global::Viam.App.Build.V1.RemoveAppLinkResponse>(serviceImpl.RemoveAppLink));
+      serviceBinder.AddMethod(__Method_LinkOrg, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Build.V1.LinkOrgRequest, global::Viam.App.Build.V1.LinkOrgResponse>(serviceImpl.LinkOrg));
+      serviceBinder.AddMethod(__Method_UnlinkOrg, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Build.V1.UnlinkOrgRequest, global::Viam.App.Build.V1.UnlinkOrgResponse>(serviceImpl.UnlinkOrg));
     }
 
   }

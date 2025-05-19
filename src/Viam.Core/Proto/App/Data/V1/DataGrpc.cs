@@ -61,6 +61,14 @@ namespace Viam.App.Data.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.Data.V1.TabularDataByMQLResponse> __Marshaller_viam_app_data_v1_TabularDataByMQLResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Data.V1.TabularDataByMQLResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Data.V1.ExportTabularDataRequest> __Marshaller_viam_app_data_v1_ExportTabularDataRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Data.V1.ExportTabularDataRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Data.V1.ExportTabularDataResponse> __Marshaller_viam_app_data_v1_ExportTabularDataResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Data.V1.ExportTabularDataResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Data.V1.GetLatestTabularDataRequest> __Marshaller_viam_app_data_v1_GetLatestTabularDataRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Data.V1.GetLatestTabularDataRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Data.V1.GetLatestTabularDataResponse> __Marshaller_viam_app_data_v1_GetLatestTabularDataResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Data.V1.GetLatestTabularDataResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.Data.V1.BinaryDataByFilterRequest> __Marshaller_viam_app_data_v1_BinaryDataByFilterRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Data.V1.BinaryDataByFilterRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.Data.V1.BinaryDataByFilterResponse> __Marshaller_viam_app_data_v1_BinaryDataByFilterResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Data.V1.BinaryDataByFilterResponse.Parser));
@@ -113,6 +121,10 @@ namespace Viam.App.Data.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.Data.V1.BoundingBoxLabelsByFilterResponse> __Marshaller_viam_app_data_v1_BoundingBoxLabelsByFilterResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Data.V1.BoundingBoxLabelsByFilterResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Data.V1.UpdateBoundingBoxRequest> __Marshaller_viam_app_data_v1_UpdateBoundingBoxRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Data.V1.UpdateBoundingBoxRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Data.V1.UpdateBoundingBoxResponse> __Marshaller_viam_app_data_v1_UpdateBoundingBoxResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Data.V1.UpdateBoundingBoxResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.Data.V1.GetDatabaseConnectionRequest> __Marshaller_viam_app_data_v1_GetDatabaseConnectionRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Data.V1.GetDatabaseConnectionRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.Data.V1.GetDatabaseConnectionResponse> __Marshaller_viam_app_data_v1_GetDatabaseConnectionResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Data.V1.GetDatabaseConnectionResponse.Parser));
@@ -152,6 +164,22 @@ namespace Viam.App.Data.V1 {
         "TabularDataByMQL",
         __Marshaller_viam_app_data_v1_TabularDataByMQLRequest,
         __Marshaller_viam_app_data_v1_TabularDataByMQLResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.Data.V1.ExportTabularDataRequest, global::Viam.App.Data.V1.ExportTabularDataResponse> __Method_ExportTabularData = new grpc::Method<global::Viam.App.Data.V1.ExportTabularDataRequest, global::Viam.App.Data.V1.ExportTabularDataResponse>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "ExportTabularData",
+        __Marshaller_viam_app_data_v1_ExportTabularDataRequest,
+        __Marshaller_viam_app_data_v1_ExportTabularDataResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.Data.V1.GetLatestTabularDataRequest, global::Viam.App.Data.V1.GetLatestTabularDataResponse> __Method_GetLatestTabularData = new grpc::Method<global::Viam.App.Data.V1.GetLatestTabularDataRequest, global::Viam.App.Data.V1.GetLatestTabularDataResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetLatestTabularData",
+        __Marshaller_viam_app_data_v1_GetLatestTabularDataRequest,
+        __Marshaller_viam_app_data_v1_GetLatestTabularDataResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.Data.V1.BinaryDataByFilterRequest, global::Viam.App.Data.V1.BinaryDataByFilterResponse> __Method_BinaryDataByFilter = new grpc::Method<global::Viam.App.Data.V1.BinaryDataByFilterRequest, global::Viam.App.Data.V1.BinaryDataByFilterResponse>(
@@ -258,6 +286,14 @@ namespace Viam.App.Data.V1 {
         __Marshaller_viam_app_data_v1_BoundingBoxLabelsByFilterResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.Data.V1.UpdateBoundingBoxRequest, global::Viam.App.Data.V1.UpdateBoundingBoxResponse> __Method_UpdateBoundingBox = new grpc::Method<global::Viam.App.Data.V1.UpdateBoundingBoxRequest, global::Viam.App.Data.V1.UpdateBoundingBoxResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateBoundingBox",
+        __Marshaller_viam_app_data_v1_UpdateBoundingBoxRequest,
+        __Marshaller_viam_app_data_v1_UpdateBoundingBoxResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.Data.V1.GetDatabaseConnectionRequest, global::Viam.App.Data.V1.GetDatabaseConnectionResponse> __Method_GetDatabaseConnection = new grpc::Method<global::Viam.App.Data.V1.GetDatabaseConnectionRequest, global::Viam.App.Data.V1.GetDatabaseConnectionResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
@@ -305,6 +341,7 @@ namespace Viam.App.Data.V1 {
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.App.Data.V1.TabularDataByFilterResponse> TabularDataByFilter(global::Viam.App.Data.V1.TabularDataByFilterRequest request, grpc::ServerCallContext context)
       {
@@ -331,6 +368,31 @@ namespace Viam.App.Data.V1 {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.App.Data.V1.TabularDataByMQLResponse> TabularDataByMQL(global::Viam.App.Data.V1.TabularDataByMQLRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// ExportTabularData queries tabular data from the specified data source.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="responseStream">Used for sending responses back to the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>A task indicating completion of the handler.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task ExportTabularData(global::Viam.App.Data.V1.ExportTabularDataRequest request, grpc::IServerStreamWriter<global::Viam.App.Data.V1.ExportTabularDataResponse> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// GetLatestTabularData gets the most recent tabular data captured from the specified data source.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.Data.V1.GetLatestTabularDataResponse> GetLatestTabularData(global::Viam.App.Data.V1.GetLatestTabularDataRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -492,6 +554,18 @@ namespace Viam.App.Data.V1 {
       }
 
       /// <summary>
+      /// UpdateBoundingBox updates the bounding box associated with a given binary ID and bounding box ID.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.Data.V1.UpdateBoundingBoxResponse> UpdateBoundingBox(global::Viam.App.Data.V1.UpdateBoundingBoxRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
       /// GetDatabaseConnection gets a connection to access a MongoDB Atlas Data Federation instance. It
       /// returns the hostname of the federated database.
       /// </summary>
@@ -578,6 +652,7 @@ namespace Viam.App.Data.V1 {
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The response received from the server.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::Viam.App.Data.V1.TabularDataByFilterResponse TabularDataByFilter(global::Viam.App.Data.V1.TabularDataByFilterRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -589,6 +664,7 @@ namespace Viam.App.Data.V1 {
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The response received from the server.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::Viam.App.Data.V1.TabularDataByFilterResponse TabularDataByFilter(global::Viam.App.Data.V1.TabularDataByFilterRequest request, grpc::CallOptions options)
       {
@@ -602,6 +678,7 @@ namespace Viam.App.Data.V1 {
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The call object.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual grpc::AsyncUnaryCall<global::Viam.App.Data.V1.TabularDataByFilterResponse> TabularDataByFilterAsync(global::Viam.App.Data.V1.TabularDataByFilterRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -613,6 +690,7 @@ namespace Viam.App.Data.V1 {
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The call object.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual grpc::AsyncUnaryCall<global::Viam.App.Data.V1.TabularDataByFilterResponse> TabularDataByFilterAsync(global::Viam.App.Data.V1.TabularDataByFilterRequest request, grpc::CallOptions options)
       {
@@ -713,6 +791,78 @@ namespace Viam.App.Data.V1 {
       public virtual grpc::AsyncUnaryCall<global::Viam.App.Data.V1.TabularDataByMQLResponse> TabularDataByMQLAsync(global::Viam.App.Data.V1.TabularDataByMQLRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_TabularDataByMQL, null, options, request);
+      }
+      /// <summary>
+      /// ExportTabularData queries tabular data from the specified data source.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncServerStreamingCall<global::Viam.App.Data.V1.ExportTabularDataResponse> ExportTabularData(global::Viam.App.Data.V1.ExportTabularDataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ExportTabularData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// ExportTabularData queries tabular data from the specified data source.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncServerStreamingCall<global::Viam.App.Data.V1.ExportTabularDataResponse> ExportTabularData(global::Viam.App.Data.V1.ExportTabularDataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_ExportTabularData, null, options, request);
+      }
+      /// <summary>
+      /// GetLatestTabularData gets the most recent tabular data captured from the specified data source.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Data.V1.GetLatestTabularDataResponse GetLatestTabularData(global::Viam.App.Data.V1.GetLatestTabularDataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetLatestTabularData(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// GetLatestTabularData gets the most recent tabular data captured from the specified data source.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Data.V1.GetLatestTabularDataResponse GetLatestTabularData(global::Viam.App.Data.V1.GetLatestTabularDataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetLatestTabularData, null, options, request);
+      }
+      /// <summary>
+      /// GetLatestTabularData gets the most recent tabular data captured from the specified data source.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Data.V1.GetLatestTabularDataResponse> GetLatestTabularDataAsync(global::Viam.App.Data.V1.GetLatestTabularDataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetLatestTabularDataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// GetLatestTabularData gets the most recent tabular data captured from the specified data source.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Data.V1.GetLatestTabularDataResponse> GetLatestTabularDataAsync(global::Viam.App.Data.V1.GetLatestTabularDataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetLatestTabularData, null, options, request);
       }
       /// <summary>
       /// BinaryDataByFilter queries binary data and metadata based on given filters.
@@ -1339,6 +1489,54 @@ namespace Viam.App.Data.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_BoundingBoxLabelsByFilter, null, options, request);
       }
       /// <summary>
+      /// UpdateBoundingBox updates the bounding box associated with a given binary ID and bounding box ID.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Data.V1.UpdateBoundingBoxResponse UpdateBoundingBox(global::Viam.App.Data.V1.UpdateBoundingBoxRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateBoundingBox(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// UpdateBoundingBox updates the bounding box associated with a given binary ID and bounding box ID.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Data.V1.UpdateBoundingBoxResponse UpdateBoundingBox(global::Viam.App.Data.V1.UpdateBoundingBoxRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateBoundingBox, null, options, request);
+      }
+      /// <summary>
+      /// UpdateBoundingBox updates the bounding box associated with a given binary ID and bounding box ID.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Data.V1.UpdateBoundingBoxResponse> UpdateBoundingBoxAsync(global::Viam.App.Data.V1.UpdateBoundingBoxRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateBoundingBoxAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// UpdateBoundingBox updates the bounding box associated with a given binary ID and bounding box ID.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Data.V1.UpdateBoundingBoxResponse> UpdateBoundingBoxAsync(global::Viam.App.Data.V1.UpdateBoundingBoxRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateBoundingBox, null, options, request);
+      }
+      /// <summary>
       /// GetDatabaseConnection gets a connection to access a MongoDB Atlas Data Federation instance. It
       /// returns the hostname of the federated database.
       /// </summary>
@@ -1555,6 +1753,8 @@ namespace Viam.App.Data.V1 {
           .AddMethod(__Method_TabularDataByFilter, serviceImpl.TabularDataByFilter)
           .AddMethod(__Method_TabularDataBySQL, serviceImpl.TabularDataBySQL)
           .AddMethod(__Method_TabularDataByMQL, serviceImpl.TabularDataByMQL)
+          .AddMethod(__Method_ExportTabularData, serviceImpl.ExportTabularData)
+          .AddMethod(__Method_GetLatestTabularData, serviceImpl.GetLatestTabularData)
           .AddMethod(__Method_BinaryDataByFilter, serviceImpl.BinaryDataByFilter)
           .AddMethod(__Method_BinaryDataByIDs, serviceImpl.BinaryDataByIDs)
           .AddMethod(__Method_DeleteTabularData, serviceImpl.DeleteTabularData)
@@ -1568,6 +1768,7 @@ namespace Viam.App.Data.V1 {
           .AddMethod(__Method_AddBoundingBoxToImageByID, serviceImpl.AddBoundingBoxToImageByID)
           .AddMethod(__Method_RemoveBoundingBoxFromImageByID, serviceImpl.RemoveBoundingBoxFromImageByID)
           .AddMethod(__Method_BoundingBoxLabelsByFilter, serviceImpl.BoundingBoxLabelsByFilter)
+          .AddMethod(__Method_UpdateBoundingBox, serviceImpl.UpdateBoundingBox)
           .AddMethod(__Method_GetDatabaseConnection, serviceImpl.GetDatabaseConnection)
           .AddMethod(__Method_ConfigureDatabaseUser, serviceImpl.ConfigureDatabaseUser)
           .AddMethod(__Method_AddBinaryDataToDatasetByIDs, serviceImpl.AddBinaryDataToDatasetByIDs)
@@ -1584,6 +1785,8 @@ namespace Viam.App.Data.V1 {
       serviceBinder.AddMethod(__Method_TabularDataByFilter, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Data.V1.TabularDataByFilterRequest, global::Viam.App.Data.V1.TabularDataByFilterResponse>(serviceImpl.TabularDataByFilter));
       serviceBinder.AddMethod(__Method_TabularDataBySQL, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Data.V1.TabularDataBySQLRequest, global::Viam.App.Data.V1.TabularDataBySQLResponse>(serviceImpl.TabularDataBySQL));
       serviceBinder.AddMethod(__Method_TabularDataByMQL, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Data.V1.TabularDataByMQLRequest, global::Viam.App.Data.V1.TabularDataByMQLResponse>(serviceImpl.TabularDataByMQL));
+      serviceBinder.AddMethod(__Method_ExportTabularData, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Viam.App.Data.V1.ExportTabularDataRequest, global::Viam.App.Data.V1.ExportTabularDataResponse>(serviceImpl.ExportTabularData));
+      serviceBinder.AddMethod(__Method_GetLatestTabularData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Data.V1.GetLatestTabularDataRequest, global::Viam.App.Data.V1.GetLatestTabularDataResponse>(serviceImpl.GetLatestTabularData));
       serviceBinder.AddMethod(__Method_BinaryDataByFilter, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Data.V1.BinaryDataByFilterRequest, global::Viam.App.Data.V1.BinaryDataByFilterResponse>(serviceImpl.BinaryDataByFilter));
       serviceBinder.AddMethod(__Method_BinaryDataByIDs, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Data.V1.BinaryDataByIDsRequest, global::Viam.App.Data.V1.BinaryDataByIDsResponse>(serviceImpl.BinaryDataByIDs));
       serviceBinder.AddMethod(__Method_DeleteTabularData, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Data.V1.DeleteTabularDataRequest, global::Viam.App.Data.V1.DeleteTabularDataResponse>(serviceImpl.DeleteTabularData));
@@ -1597,6 +1800,7 @@ namespace Viam.App.Data.V1 {
       serviceBinder.AddMethod(__Method_AddBoundingBoxToImageByID, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Data.V1.AddBoundingBoxToImageByIDRequest, global::Viam.App.Data.V1.AddBoundingBoxToImageByIDResponse>(serviceImpl.AddBoundingBoxToImageByID));
       serviceBinder.AddMethod(__Method_RemoveBoundingBoxFromImageByID, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Data.V1.RemoveBoundingBoxFromImageByIDRequest, global::Viam.App.Data.V1.RemoveBoundingBoxFromImageByIDResponse>(serviceImpl.RemoveBoundingBoxFromImageByID));
       serviceBinder.AddMethod(__Method_BoundingBoxLabelsByFilter, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Data.V1.BoundingBoxLabelsByFilterRequest, global::Viam.App.Data.V1.BoundingBoxLabelsByFilterResponse>(serviceImpl.BoundingBoxLabelsByFilter));
+      serviceBinder.AddMethod(__Method_UpdateBoundingBox, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Data.V1.UpdateBoundingBoxRequest, global::Viam.App.Data.V1.UpdateBoundingBoxResponse>(serviceImpl.UpdateBoundingBox));
       serviceBinder.AddMethod(__Method_GetDatabaseConnection, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Data.V1.GetDatabaseConnectionRequest, global::Viam.App.Data.V1.GetDatabaseConnectionResponse>(serviceImpl.GetDatabaseConnection));
       serviceBinder.AddMethod(__Method_ConfigureDatabaseUser, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Data.V1.ConfigureDatabaseUserRequest, global::Viam.App.Data.V1.ConfigureDatabaseUserResponse>(serviceImpl.ConfigureDatabaseUser));
       serviceBinder.AddMethod(__Method_AddBinaryDataToDatasetByIDs, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Data.V1.AddBinaryDataToDatasetByIDsRequest, global::Viam.App.Data.V1.AddBinaryDataToDatasetByIDsResponse>(serviceImpl.AddBinaryDataToDatasetByIDs));

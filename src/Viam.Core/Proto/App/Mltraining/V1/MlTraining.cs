@@ -27,7 +27,7 @@ namespace Viam.App.Mltraining.V1 {
             "CiNhcHAvbWx0cmFpbmluZy92MS9tbF90cmFpbmluZy5wcm90bxIWdmlhbS5h",
             "cHAubWx0cmFpbmluZy52MRofZ29vZ2xlL3Byb3RvYnVmL3RpbWVzdGFtcC5w",
             "cm90bxoXZ29vZ2xlL3JwYy9zdGF0dXMucHJvdG8aFnRhZ2dlci92MS90YWdn",
-            "ZXIucHJvdG8iigQKGFN1Ym1pdFRyYWluaW5nSm9iUmVxdWVzdBJHCgpkYXRh",
+            "ZXIucHJvdG8ikAUKGFN1Ym1pdFRyYWluaW5nSm9iUmVxdWVzdBJHCgpkYXRh",
             "c2V0X2lkGAcgASgJQiiahJ4DI2Jzb246ImRhdGFzZXRfaWQiIGpzb246ImRh",
             "dGFzZXRfaWQiUglkYXRhc2V0SWQSWwoPb3JnYW5pemF0aW9uX2lkGAIgASgJ",
             "QjKahJ4DLWJzb246Im9yZ2FuaXphdGlvbl9pZCIganNvbjoib3JnYW5pemF0",
@@ -37,118 +37,145 @@ namespace Viam.App.Mltraining.V1 {
             "ZWxfdmVyc2lvbiIganNvbjoibW9kZWxfdmVyc2lvbiJSDG1vZGVsVmVyc2lv",
             "bhJqCgptb2RlbF90eXBlGAUgASgOMiEudmlhbS5hcHAubWx0cmFpbmluZy52",
             "MS5Nb2RlbFR5cGVCKJqEngMjYnNvbjoibW9kZWxfdHlwZSIganNvbjoibW9k",
-            "ZWxfdHlwZSJSCW1vZGVsVHlwZRIwCgR0YWdzGAYgAygJQhyahJ4DF2Jzb246",
-            "InRhZ3MiIGpzb246InRhZ3MiUgR0YWdzSgQIARACUgZmaWx0ZXIiKwoZU3Vi",
-            "bWl0VHJhaW5pbmdKb2JSZXNwb25zZRIOCgJpZBgBIAEoCVICaWQixAMKHlN1",
-            "Ym1pdEN1c3RvbVRyYWluaW5nSm9iUmVxdWVzdBJHCgpkYXRhc2V0X2lkGAEg",
-            "ASgJQiiahJ4DI2Jzb246ImRhdGFzZXRfaWQiIGpzb246ImRhdGFzZXRfaWQi",
-            "UglkYXRhc2V0SWQSXgoQcmVnaXN0cnlfaXRlbV9pZBgCIAEoCUI0moSeAy9i",
-            "c29uOiJyZWdpc3RyeV9pdGVtX2lkIiBqc29uOiJyZWdpc3RyeV9pdGVtX2lk",
-            "IlIOcmVnaXN0cnlJdGVtSWQSWwoPb3JnYW5pemF0aW9uX2lkGAMgASgJQjKa",
-            "hJ4DLWJzb246Im9yZ2FuaXphdGlvbl9pZCIganNvbjoib3JnYW5pemF0aW9u",
-            "X2lkIlIOb3JnYW5pemF0aW9uSWQSRwoKbW9kZWxfbmFtZRgEIAEoCUIomoSe",
-            "AyNic29uOiJtb2RlbF9uYW1lIiBqc29uOiJtb2RlbF9uYW1lIlIJbW9kZWxO",
-            "YW1lElMKDW1vZGVsX3ZlcnNpb24YBSABKAlCLpqEngMpYnNvbjoibW9kZWxf",
-            "dmVyc2lvbiIganNvbjoibW9kZWxfdmVyc2lvbiJSDG1vZGVsVmVyc2lvbiIx",
-            "Ch9TdWJtaXRDdXN0b21UcmFpbmluZ0pvYlJlc3BvbnNlEg4KAmlkGAEgASgJ",
-            "UgJpZCInChVHZXRUcmFpbmluZ0pvYlJlcXVlc3QSDgoCaWQYASABKAlSAmlk",
-            "ImEKFkdldFRyYWluaW5nSm9iUmVzcG9uc2USRwoIbWV0YWRhdGEYASABKAsy",
-            "Ky52aWFtLmFwcC5tbHRyYWluaW5nLnYxLlRyYWluaW5nSm9iTWV0YWRhdGFS",
-            "CG1ldGFkYXRhIoIBChdMaXN0VHJhaW5pbmdKb2JzUmVxdWVzdBInCg9vcmdh",
-            "bml6YXRpb25faWQYASABKAlSDm9yZ2FuaXphdGlvbklkEj4KBnN0YXR1cxgC",
-            "IAEoDjImLnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuVHJhaW5pbmdTdGF0dXNS",
-            "BnN0YXR1cyJbChhMaXN0VHJhaW5pbmdKb2JzUmVzcG9uc2USPwoEam9icxgB",
-            "IAMoCzIrLnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuVHJhaW5pbmdKb2JNZXRh",
-            "ZGF0YVIEam9icyLTDQoTVHJhaW5pbmdKb2JNZXRhZGF0YRJuCgdyZXF1ZXN0",
-            "GAEgASgLMjAudmlhbS5hcHAubWx0cmFpbmluZy52MS5TdWJtaXRUcmFpbmlu",
-            "Z0pvYlJlcXVlc3RCIpqEngMdYnNvbjoicmVxdWVzdCIganNvbjoicmVxdWVz",
-            "dCJSB3JlcXVlc3QSMwoCaWQYByABKAlCI5qEngMeYnNvbjoiX2lkIiBqc29u",
-            "OiJpZCxvbWl0ZW1wdHkiUgJpZBJHCgpkYXRhc2V0X2lkGAsgASgJQiiahJ4D",
-            "I2Jzb246ImRhdGFzZXRfaWQiIGpzb246ImRhdGFzZXRfaWQiUglkYXRhc2V0",
-            "SWQSWwoPb3JnYW5pemF0aW9uX2lkGAwgASgJQjKahJ4DLWJzb246Im9yZ2Fu",
-            "aXphdGlvbl9pZCIganNvbjoib3JnYW5pemF0aW9uX2lkIlIOb3JnYW5pemF0",
-            "aW9uSWQSRwoKbW9kZWxfbmFtZRgNIAEoCUIomoSeAyNic29uOiJtb2RlbF9u",
-            "YW1lIiBqc29uOiJtb2RlbF9uYW1lIlIJbW9kZWxOYW1lElMKDW1vZGVsX3Zl",
-            "cnNpb24YDiABKAlCLpqEngMpYnNvbjoibW9kZWxfdmVyc2lvbiIganNvbjoi",
-            "bW9kZWxfdmVyc2lvbiJSDG1vZGVsVmVyc2lvbhJqCgptb2RlbF90eXBlGA8g",
-            "ASgOMiEudmlhbS5hcHAubWx0cmFpbmluZy52MS5Nb2RlbFR5cGVCKJqEngMj",
-            "YnNvbjoibW9kZWxfdHlwZSIganNvbjoibW9kZWxfdHlwZSJSCW1vZGVsVHlw",
-            "ZRKDAQoPbW9kZWxfZnJhbWV3b3JrGBEgASgOMiYudmlhbS5hcHAubWx0cmFp",
-            "bmluZy52MS5Nb2RlbEZyYW1ld29ya0IymoSeAy1ic29uOiJtb2RlbF9mcmFt",
-            "ZXdvcmsiIGpzb246Im1vZGVsX2ZyYW1ld29yayJSDm1vZGVsRnJhbWV3b3Jr",
-            "ElIKDWlzX2N1c3RvbV9qb2IYEiABKAhCLpqEngMpYnNvbjoiaXNfY3VzdG9t",
-            "X2pvYiIganNvbjoiaXNfY3VzdG9tX2pvYiJSC2lzQ3VzdG9tSm9iEl4KEHJl",
-            "Z2lzdHJ5X2l0ZW1faWQYEyABKAlCNJqEngMvYnNvbjoicmVnaXN0cnlfaXRl",
-            "bV9pZCIganNvbjoicmVnaXN0cnlfaXRlbV9pZCJSDnJlZ2lzdHJ5SXRlbUlk",
-            "EmAKBnN0YXR1cxgCIAEoDjImLnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuVHJh",
-            "aW5pbmdTdGF0dXNCIJqEngMbYnNvbjoic3RhdHVzIiBqc29uOiJzdGF0dXMi",
-            "UgZzdGF0dXMSYwoMZXJyb3Jfc3RhdHVzGAggASgLMhIuZ29vZ2xlLnJwYy5T",
-            "dGF0dXNCLJqEngMnYnNvbjoiZXJyb3Jfc3RhdHVzIiBqc29uOiJlcnJvcl9z",
-            "dGF0dXMiUgtlcnJvclN0YXR1cxJjCgpjcmVhdGVkX29uGAMgASgLMhouZ29v",
-            "Z2xlLnByb3RvYnVmLlRpbWVzdGFtcEIomoSeAyNic29uOiJjcmVhdGVkX29u",
-            "IiBqc29uOiJjcmVhdGVkX29uIlIJY3JlYXRlZE9uEm8KDWxhc3RfbW9kaWZp",
-            "ZWQYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wQi6ahJ4DKWJz",
-            "b246Imxhc3RfbW9kaWZpZWQiIGpzb246Imxhc3RfbW9kaWZpZWQiUgxsYXN0",
-            "TW9kaWZpZWQSewoQdHJhaW5pbmdfc3RhcnRlZBgJIAEoCzIaLmdvb2dsZS5w",
-            "cm90b2J1Zi5UaW1lc3RhbXBCNJqEngMvYnNvbjoidHJhaW5pbmdfc3RhcnRl",
-            "ZCIganNvbjoidHJhaW5pbmdfc3RhcnRlZCJSD3RyYWluaW5nU3RhcnRlZBJz",
-            "Cg50cmFpbmluZ19lbmRlZBgKIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1l",
-            "c3RhbXBCMJqEngMrYnNvbjoidHJhaW5pbmdfZW5kZWQiIGpzb246InRyYWlu",
-            "aW5nX2VuZGVkIlINdHJhaW5pbmdFbmRlZBJaCg9zeW5jZWRfbW9kZWxfaWQY",
-            "BSABKAlCMpqEngMtYnNvbjoic3luY2VkX21vZGVsX2lkIiBqc29uOiJzeW5j",
-            "ZWRfbW9kZWxfaWQiUg1zeW5jZWRNb2RlbElkEjAKBHRhZ3MYECADKAlCHJqE",
-            "ngMXYnNvbjoidGFncyIganNvbjoidGFncyJSBHRhZ3NKBAgGEAdSCnVzZXJf",
-            "ZW1haWwiKgoYQ2FuY2VsVHJhaW5pbmdKb2JSZXF1ZXN0Eg4KAmlkGAEgASgJ",
-            "UgJpZCIbChlDYW5jZWxUcmFpbmluZ0pvYlJlc3BvbnNlIjMKIURlbGV0ZUNv",
-            "bXBsZXRlZFRyYWluaW5nSm9iUmVxdWVzdBIOCgJpZBgBIAEoCVICaWQiJAoi",
-            "RGVsZXRlQ29tcGxldGVkVHJhaW5pbmdKb2JSZXNwb25zZSqfAQoJTW9kZWxU",
-            "eXBlEhoKFk1PREVMX1RZUEVfVU5TUEVDSUZJRUQQABIqCiZNT0RFTF9UWVBF",
-            "X1NJTkdMRV9MQUJFTF9DTEFTU0lGSUNBVElPThABEikKJU1PREVMX1RZUEVf",
-            "TVVMVElfTEFCRUxfQ0xBU1NJRklDQVRJT04QAhIfChtNT0RFTF9UWVBFX09C",
-            "SkVDVF9ERVRFQ1RJT04QAyqkAQoOTW9kZWxGcmFtZXdvcmsSHwobTU9ERUxf",
-            "RlJBTUVXT1JLX1VOU1BFQ0lGSUVEEAASGgoWTU9ERUxfRlJBTUVXT1JLX1RG",
-            "TElURRABEh4KGk1PREVMX0ZSQU1FV09SS19URU5TT1JGTE9XEAISGwoXTU9E",
-            "RUxfRlJBTUVXT1JLX1BZVE9SQ0gQAxIYChRNT0RFTF9GUkFNRVdPUktfT05O",
-            "WBAEKucBCg5UcmFpbmluZ1N0YXR1cxIfChtUUkFJTklOR19TVEFUVVNfVU5T",
-            "UEVDSUZJRUQQABIbChdUUkFJTklOR19TVEFUVVNfUEVORElORxABEh8KG1RS",
-            "QUlOSU5HX1NUQVRVU19JTl9QUk9HUkVTUxACEh0KGVRSQUlOSU5HX1NUQVRV",
-            "U19DT01QTEVURUQQAxIaChZUUkFJTklOR19TVEFUVVNfRkFJTEVEEAQSHAoY",
-            "VFJBSU5JTkdfU1RBVFVTX0NBTkNFTEVEEAUSHQoZVFJBSU5JTkdfU1RBVFVT",
-            "X0NBTkNFTElORxAGMpIGChFNTFRyYWluaW5nU2VydmljZRJ4ChFTdWJtaXRU",
-            "cmFpbmluZ0pvYhIwLnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuU3VibWl0VHJh",
-            "aW5pbmdKb2JSZXF1ZXN0GjEudmlhbS5hcHAubWx0cmFpbmluZy52MS5TdWJt",
-            "aXRUcmFpbmluZ0pvYlJlc3BvbnNlEooBChdTdWJtaXRDdXN0b21UcmFpbmlu",
-            "Z0pvYhI2LnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuU3VibWl0Q3VzdG9tVHJh",
-            "aW5pbmdKb2JSZXF1ZXN0GjcudmlhbS5hcHAubWx0cmFpbmluZy52MS5TdWJt",
-            "aXRDdXN0b21UcmFpbmluZ0pvYlJlc3BvbnNlEm8KDkdldFRyYWluaW5nSm9i",
-            "Ei0udmlhbS5hcHAubWx0cmFpbmluZy52MS5HZXRUcmFpbmluZ0pvYlJlcXVl",
-            "c3QaLi52aWFtLmFwcC5tbHRyYWluaW5nLnYxLkdldFRyYWluaW5nSm9iUmVz",
-            "cG9uc2USdQoQTGlzdFRyYWluaW5nSm9icxIvLnZpYW0uYXBwLm1sdHJhaW5p",
-            "bmcudjEuTGlzdFRyYWluaW5nSm9ic1JlcXVlc3QaMC52aWFtLmFwcC5tbHRy",
-            "YWluaW5nLnYxLkxpc3RUcmFpbmluZ0pvYnNSZXNwb25zZRJ4ChFDYW5jZWxU",
-            "cmFpbmluZ0pvYhIwLnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuQ2FuY2VsVHJh",
-            "aW5pbmdKb2JSZXF1ZXN0GjEudmlhbS5hcHAubWx0cmFpbmluZy52MS5DYW5j",
-            "ZWxUcmFpbmluZ0pvYlJlc3BvbnNlEpMBChpEZWxldGVDb21wbGV0ZWRUcmFp",
-            "bmluZ0pvYhI5LnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuRGVsZXRlQ29tcGxl",
-            "dGVkVHJhaW5pbmdKb2JSZXF1ZXN0GjoudmlhbS5hcHAubWx0cmFpbmluZy52",
-            "MS5EZWxldGVDb21wbGV0ZWRUcmFpbmluZ0pvYlJlc3BvbnNlQiNaIWdvLnZp",
-            "YW0uY29tL2FwaS9hcHAvbWx0cmFpbmluZy92MWIGcHJvdG8z"));
+            "ZWxfdHlwZSJSCW1vZGVsVHlwZRKDAQoPbW9kZWxfZnJhbWV3b3JrGAggASgO",
+            "MiYudmlhbS5hcHAubWx0cmFpbmluZy52MS5Nb2RlbEZyYW1ld29ya0IymoSe",
+            "Ay1ic29uOiJtb2RlbF9mcmFtZXdvcmsiIGpzb246Im1vZGVsX2ZyYW1ld29y",
+            "ayJSDm1vZGVsRnJhbWV3b3JrEjAKBHRhZ3MYBiADKAlCHJqEngMXYnNvbjoi",
+            "dGFncyIganNvbjoidGFncyJSBHRhZ3NKBAgBEAJSBmZpbHRlciIrChlTdWJt",
+            "aXRUcmFpbmluZ0pvYlJlc3BvbnNlEg4KAmlkGAEgASgJUgJpZCLbBQoeU3Vi",
+            "bWl0Q3VzdG9tVHJhaW5pbmdKb2JSZXF1ZXN0EkcKCmRhdGFzZXRfaWQYASAB",
+            "KAlCKJqEngMjYnNvbjoiZGF0YXNldF9pZCIganNvbjoiZGF0YXNldF9pZCJS",
+            "CWRhdGFzZXRJZBJeChByZWdpc3RyeV9pdGVtX2lkGAIgASgJQjSahJ4DL2Jz",
+            "b246InJlZ2lzdHJ5X2l0ZW1faWQiIGpzb246InJlZ2lzdHJ5X2l0ZW1faWQi",
+            "Ug5yZWdpc3RyeUl0ZW1JZBJyChVyZWdpc3RyeV9pdGVtX3ZlcnNpb24YBiAB",
+            "KAlCPpqEngM5YnNvbjoicmVnaXN0cnlfaXRlbV92ZXJzaW9uIiBqc29uOiJy",
+            "ZWdpc3RyeV9pdGVtX3ZlcnNpb24iUhNyZWdpc3RyeUl0ZW1WZXJzaW9uElsK",
+            "D29yZ2FuaXphdGlvbl9pZBgDIAEoCUIymoSeAy1ic29uOiJvcmdhbml6YXRp",
+            "b25faWQiIGpzb246Im9yZ2FuaXphdGlvbl9pZCJSDm9yZ2FuaXphdGlvbklk",
+            "EkcKCm1vZGVsX25hbWUYBCABKAlCKJqEngMjYnNvbjoibW9kZWxfbmFtZSIg",
+            "anNvbjoibW9kZWxfbmFtZSJSCW1vZGVsTmFtZRJTCg1tb2RlbF92ZXJzaW9u",
+            "GAUgASgJQi6ahJ4DKWJzb246Im1vZGVsX3ZlcnNpb24iIGpzb246Im1vZGVs",
+            "X3ZlcnNpb24iUgxtb2RlbFZlcnNpb24SYwoJYXJndW1lbnRzGAcgAygLMkUu",
+            "dmlhbS5hcHAubWx0cmFpbmluZy52MS5TdWJtaXRDdXN0b21UcmFpbmluZ0pv",
+            "YlJlcXVlc3QuQXJndW1lbnRzRW50cnlSCWFyZ3VtZW50cxo8Cg5Bcmd1bWVu",
+            "dHNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFs",
+            "dWU6AjgBIjEKH1N1Ym1pdEN1c3RvbVRyYWluaW5nSm9iUmVzcG9uc2USDgoC",
+            "aWQYASABKAlSAmlkIicKFUdldFRyYWluaW5nSm9iUmVxdWVzdBIOCgJpZBgB",
+            "IAEoCVICaWQiYQoWR2V0VHJhaW5pbmdKb2JSZXNwb25zZRJHCghtZXRhZGF0",
+            "YRgBIAEoCzIrLnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuVHJhaW5pbmdKb2JN",
+            "ZXRhZGF0YVIIbWV0YWRhdGEiggEKF0xpc3RUcmFpbmluZ0pvYnNSZXF1ZXN0",
+            "EicKD29yZ2FuaXphdGlvbl9pZBgBIAEoCVIOb3JnYW5pemF0aW9uSWQSPgoG",
+            "c3RhdHVzGAIgASgOMiYudmlhbS5hcHAubWx0cmFpbmluZy52MS5UcmFpbmlu",
+            "Z1N0YXR1c1IGc3RhdHVzIlsKGExpc3RUcmFpbmluZ0pvYnNSZXNwb25zZRI/",
+            "CgRqb2JzGAEgAygLMisudmlhbS5hcHAubWx0cmFpbmluZy52MS5UcmFpbmlu",
+            "Z0pvYk1ldGFkYXRhUgRqb2JzIuYNChNUcmFpbmluZ0pvYk1ldGFkYXRhEjMK",
+            "AmlkGAcgASgJQiOahJ4DHmJzb246Il9pZCIganNvbjoiaWQsb21pdGVtcHR5",
+            "IlICaWQSRwoKZGF0YXNldF9pZBgLIAEoCUIomoSeAyNic29uOiJkYXRhc2V0",
+            "X2lkIiBqc29uOiJkYXRhc2V0X2lkIlIJZGF0YXNldElkElsKD29yZ2FuaXph",
+            "dGlvbl9pZBgMIAEoCUIymoSeAy1ic29uOiJvcmdhbml6YXRpb25faWQiIGpz",
+            "b246Im9yZ2FuaXphdGlvbl9pZCJSDm9yZ2FuaXphdGlvbklkEkcKCm1vZGVs",
+            "X25hbWUYDSABKAlCKJqEngMjYnNvbjoibW9kZWxfbmFtZSIganNvbjoibW9k",
+            "ZWxfbmFtZSJSCW1vZGVsTmFtZRJTCg1tb2RlbF92ZXJzaW9uGA4gASgJQi6a",
+            "hJ4DKWJzb246Im1vZGVsX3ZlcnNpb24iIGpzb246Im1vZGVsX3ZlcnNpb24i",
+            "Ugxtb2RlbFZlcnNpb24SagoKbW9kZWxfdHlwZRgPIAEoDjIhLnZpYW0uYXBw",
+            "Lm1sdHJhaW5pbmcudjEuTW9kZWxUeXBlQiiahJ4DI2Jzb246Im1vZGVsX3R5",
+            "cGUiIGpzb246Im1vZGVsX3R5cGUiUgltb2RlbFR5cGUSgwEKD21vZGVsX2Zy",
+            "YW1ld29yaxgRIAEoDjImLnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuTW9kZWxG",
+            "cmFtZXdvcmtCMpqEngMtYnNvbjoibW9kZWxfZnJhbWV3b3JrIiBqc29uOiJt",
+            "b2RlbF9mcmFtZXdvcmsiUg5tb2RlbEZyYW1ld29yaxJSCg1pc19jdXN0b21f",
+            "am9iGBIgASgIQi6ahJ4DKWJzb246ImlzX2N1c3RvbV9qb2IiIGpzb246Imlz",
+            "X2N1c3RvbV9qb2IiUgtpc0N1c3RvbUpvYhJeChByZWdpc3RyeV9pdGVtX2lk",
+            "GBMgASgJQjSahJ4DL2Jzb246InJlZ2lzdHJ5X2l0ZW1faWQiIGpzb246InJl",
+            "Z2lzdHJ5X2l0ZW1faWQiUg5yZWdpc3RyeUl0ZW1JZBJyChVyZWdpc3RyeV9p",
+            "dGVtX3ZlcnNpb24YFCABKAlCPpqEngM5YnNvbjoicmVnaXN0cnlfaXRlbV92",
+            "ZXJzaW9uIiBqc29uOiJyZWdpc3RyeV9pdGVtX3ZlcnNpb24iUhNyZWdpc3Ry",
+            "eUl0ZW1WZXJzaW9uEmAKBnN0YXR1cxgCIAEoDjImLnZpYW0uYXBwLm1sdHJh",
+            "aW5pbmcudjEuVHJhaW5pbmdTdGF0dXNCIJqEngMbYnNvbjoic3RhdHVzIiBq",
+            "c29uOiJzdGF0dXMiUgZzdGF0dXMSYwoMZXJyb3Jfc3RhdHVzGAggASgLMhIu",
+            "Z29vZ2xlLnJwYy5TdGF0dXNCLJqEngMnYnNvbjoiZXJyb3Jfc3RhdHVzIiBq",
+            "c29uOiJlcnJvcl9zdGF0dXMiUgtlcnJvclN0YXR1cxJjCgpjcmVhdGVkX29u",
+            "GAMgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcEIomoSeAyNic29u",
+            "OiJjcmVhdGVkX29uIiBqc29uOiJjcmVhdGVkX29uIlIJY3JlYXRlZE9uEm8K",
+            "DWxhc3RfbW9kaWZpZWQYBCABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0",
+            "YW1wQi6ahJ4DKWJzb246Imxhc3RfbW9kaWZpZWQiIGpzb246Imxhc3RfbW9k",
+            "aWZpZWQiUgxsYXN0TW9kaWZpZWQSewoQdHJhaW5pbmdfc3RhcnRlZBgJIAEo",
+            "CzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBCNJqEngMvYnNvbjoidHJh",
+            "aW5pbmdfc3RhcnRlZCIganNvbjoidHJhaW5pbmdfc3RhcnRlZCJSD3RyYWlu",
+            "aW5nU3RhcnRlZBJzCg50cmFpbmluZ19lbmRlZBgKIAEoCzIaLmdvb2dsZS5w",
+            "cm90b2J1Zi5UaW1lc3RhbXBCMJqEngMrYnNvbjoidHJhaW5pbmdfZW5kZWQi",
+            "IGpzb246InRyYWluaW5nX2VuZGVkIlINdHJhaW5pbmdFbmRlZBJaCg9zeW5j",
+            "ZWRfbW9kZWxfaWQYBSABKAlCMpqEngMtYnNvbjoic3luY2VkX21vZGVsX2lk",
+            "IiBqc29uOiJzeW5jZWRfbW9kZWxfaWQiUg1zeW5jZWRNb2RlbElkEjAKBHRh",
+            "Z3MYECADKAlCHJqEngMXYnNvbjoidGFncyIganNvbjoidGFncyJSBHRhZ3NK",
+            "BAgBEAJKBAgGEAdSB3JlcXVlc3RSCnVzZXJfZW1haWwiKgoYQ2FuY2VsVHJh",
+            "aW5pbmdKb2JSZXF1ZXN0Eg4KAmlkGAEgASgJUgJpZCIbChlDYW5jZWxUcmFp",
+            "bmluZ0pvYlJlc3BvbnNlIjMKIURlbGV0ZUNvbXBsZXRlZFRyYWluaW5nSm9i",
+            "UmVxdWVzdBIOCgJpZBgBIAEoCVICaWQiJAoiRGVsZXRlQ29tcGxldGVkVHJh",
+            "aW5pbmdKb2JSZXNwb25zZSJ1ChNUcmFpbmluZ0pvYkxvZ0VudHJ5EhQKBWxl",
+            "dmVsGAEgASgJUgVsZXZlbBIuCgR0aW1lGAIgASgLMhouZ29vZ2xlLnByb3Rv",
+            "YnVmLlRpbWVzdGFtcFIEdGltZRIYCgdtZXNzYWdlGAMgASgJUgdtZXNzYWdl",
+            "Il4KGUdldFRyYWluaW5nSm9iTG9nc1JlcXVlc3QSDgoCaWQYASABKAlSAmlk",
+            "EiIKCnBhZ2VfdG9rZW4YAiABKAlIAFIJcGFnZVRva2VuiAEBQg0KC19wYWdl",
+            "X3Rva2VuIoUBChpHZXRUcmFpbmluZ0pvYkxvZ3NSZXNwb25zZRI/CgRsb2dz",
+            "GAEgAygLMisudmlhbS5hcHAubWx0cmFpbmluZy52MS5UcmFpbmluZ0pvYkxv",
+            "Z0VudHJ5UgRsb2dzEiYKD25leHRfcGFnZV90b2tlbhgCIAEoCVINbmV4dFBh",
+            "Z2VUb2tlbiqfAQoJTW9kZWxUeXBlEhoKFk1PREVMX1RZUEVfVU5TUEVDSUZJ",
+            "RUQQABIqCiZNT0RFTF9UWVBFX1NJTkdMRV9MQUJFTF9DTEFTU0lGSUNBVElP",
+            "ThABEikKJU1PREVMX1RZUEVfTVVMVElfTEFCRUxfQ0xBU1NJRklDQVRJT04Q",
+            "AhIfChtNT0RFTF9UWVBFX09CSkVDVF9ERVRFQ1RJT04QAyqkAQoOTW9kZWxG",
+            "cmFtZXdvcmsSHwobTU9ERUxfRlJBTUVXT1JLX1VOU1BFQ0lGSUVEEAASGgoW",
+            "TU9ERUxfRlJBTUVXT1JLX1RGTElURRABEh4KGk1PREVMX0ZSQU1FV09SS19U",
+            "RU5TT1JGTE9XEAISGwoXTU9ERUxfRlJBTUVXT1JLX1BZVE9SQ0gQAxIYChRN",
+            "T0RFTF9GUkFNRVdPUktfT05OWBAEKucBCg5UcmFpbmluZ1N0YXR1cxIfChtU",
+            "UkFJTklOR19TVEFUVVNfVU5TUEVDSUZJRUQQABIbChdUUkFJTklOR19TVEFU",
+            "VVNfUEVORElORxABEh8KG1RSQUlOSU5HX1NUQVRVU19JTl9QUk9HUkVTUxAC",
+            "Eh0KGVRSQUlOSU5HX1NUQVRVU19DT01QTEVURUQQAxIaChZUUkFJTklOR19T",
+            "VEFUVVNfRkFJTEVEEAQSHAoYVFJBSU5JTkdfU1RBVFVTX0NBTkNFTEVEEAUS",
+            "HQoZVFJBSU5JTkdfU1RBVFVTX0NBTkNFTElORxAGMo8HChFNTFRyYWluaW5n",
+            "U2VydmljZRJ4ChFTdWJtaXRUcmFpbmluZ0pvYhIwLnZpYW0uYXBwLm1sdHJh",
+            "aW5pbmcudjEuU3VibWl0VHJhaW5pbmdKb2JSZXF1ZXN0GjEudmlhbS5hcHAu",
+            "bWx0cmFpbmluZy52MS5TdWJtaXRUcmFpbmluZ0pvYlJlc3BvbnNlEooBChdT",
+            "dWJtaXRDdXN0b21UcmFpbmluZ0pvYhI2LnZpYW0uYXBwLm1sdHJhaW5pbmcu",
+            "djEuU3VibWl0Q3VzdG9tVHJhaW5pbmdKb2JSZXF1ZXN0GjcudmlhbS5hcHAu",
+            "bWx0cmFpbmluZy52MS5TdWJtaXRDdXN0b21UcmFpbmluZ0pvYlJlc3BvbnNl",
+            "Em8KDkdldFRyYWluaW5nSm9iEi0udmlhbS5hcHAubWx0cmFpbmluZy52MS5H",
+            "ZXRUcmFpbmluZ0pvYlJlcXVlc3QaLi52aWFtLmFwcC5tbHRyYWluaW5nLnYx",
+            "LkdldFRyYWluaW5nSm9iUmVzcG9uc2USdQoQTGlzdFRyYWluaW5nSm9icxIv",
+            "LnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuTGlzdFRyYWluaW5nSm9ic1JlcXVl",
+            "c3QaMC52aWFtLmFwcC5tbHRyYWluaW5nLnYxLkxpc3RUcmFpbmluZ0pvYnNS",
+            "ZXNwb25zZRJ4ChFDYW5jZWxUcmFpbmluZ0pvYhIwLnZpYW0uYXBwLm1sdHJh",
+            "aW5pbmcudjEuQ2FuY2VsVHJhaW5pbmdKb2JSZXF1ZXN0GjEudmlhbS5hcHAu",
+            "bWx0cmFpbmluZy52MS5DYW5jZWxUcmFpbmluZ0pvYlJlc3BvbnNlEpMBChpE",
+            "ZWxldGVDb21wbGV0ZWRUcmFpbmluZ0pvYhI5LnZpYW0uYXBwLm1sdHJhaW5p",
+            "bmcudjEuRGVsZXRlQ29tcGxldGVkVHJhaW5pbmdKb2JSZXF1ZXN0Gjoudmlh",
+            "bS5hcHAubWx0cmFpbmluZy52MS5EZWxldGVDb21wbGV0ZWRUcmFpbmluZ0pv",
+            "YlJlc3BvbnNlEnsKEkdldFRyYWluaW5nSm9iTG9ncxIxLnZpYW0uYXBwLm1s",
+            "dHJhaW5pbmcudjEuR2V0VHJhaW5pbmdKb2JMb2dzUmVxdWVzdBoyLnZpYW0u",
+            "YXBwLm1sdHJhaW5pbmcudjEuR2V0VHJhaW5pbmdKb2JMb2dzUmVzcG9uc2VC",
+            "ywEKGmNvbS52aWFtLmFwcC5tbHRyYWluaW5nLnYxQg9NbFRyYWluaW5nUHJv",
+            "dG9QAVohZ28udmlhbS5jb20vYXBpL2FwcC9tbHRyYWluaW5nL3YxogIDVkFN",
+            "qgIWVmlhbS5BcHAuTWx0cmFpbmluZy5WMcoCFlZpYW1cQXBwXE1sdHJhaW5p",
+            "bmdcVjHiAiJWaWFtXEFwcFxNbHRyYWluaW5nXFYxXEdQQk1ldGFkYXRh6gIZ",
+            "VmlhbTo6QXBwOjpNbHRyYWluaW5nOjpWMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Rpc.StatusReflection.Descriptor, global::Tagger.V1.TaggerReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Rpc.StatusReflection.Descriptor, global::Viam.Core.Proto.TaggerReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Viam.App.Mltraining.V1.ModelType), typeof(global::Viam.App.Mltraining.V1.ModelFramework), typeof(global::Viam.App.Mltraining.V1.TrainingStatus), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.SubmitTrainingJobRequest), global::Viam.App.Mltraining.V1.SubmitTrainingJobRequest.Parser, new[]{ "DatasetId", "OrganizationId", "ModelName", "ModelVersion", "ModelType", "Tags" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.SubmitTrainingJobRequest), global::Viam.App.Mltraining.V1.SubmitTrainingJobRequest.Parser, new[]{ "DatasetId", "OrganizationId", "ModelName", "ModelVersion", "ModelType", "ModelFramework", "Tags" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.SubmitTrainingJobResponse), global::Viam.App.Mltraining.V1.SubmitTrainingJobResponse.Parser, new[]{ "Id" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.SubmitCustomTrainingJobRequest), global::Viam.App.Mltraining.V1.SubmitCustomTrainingJobRequest.Parser, new[]{ "DatasetId", "RegistryItemId", "OrganizationId", "ModelName", "ModelVersion" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.SubmitCustomTrainingJobRequest), global::Viam.App.Mltraining.V1.SubmitCustomTrainingJobRequest.Parser, new[]{ "DatasetId", "RegistryItemId", "RegistryItemVersion", "OrganizationId", "ModelName", "ModelVersion", "Arguments" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.SubmitCustomTrainingJobResponse), global::Viam.App.Mltraining.V1.SubmitCustomTrainingJobResponse.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.GetTrainingJobRequest), global::Viam.App.Mltraining.V1.GetTrainingJobRequest.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.GetTrainingJobResponse), global::Viam.App.Mltraining.V1.GetTrainingJobResponse.Parser, new[]{ "Metadata" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.ListTrainingJobsRequest), global::Viam.App.Mltraining.V1.ListTrainingJobsRequest.Parser, new[]{ "OrganizationId", "Status" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.ListTrainingJobsResponse), global::Viam.App.Mltraining.V1.ListTrainingJobsResponse.Parser, new[]{ "Jobs" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.TrainingJobMetadata), global::Viam.App.Mltraining.V1.TrainingJobMetadata.Parser, new[]{ "Request", "Id", "DatasetId", "OrganizationId", "ModelName", "ModelVersion", "ModelType", "ModelFramework", "IsCustomJob", "RegistryItemId", "Status", "ErrorStatus", "CreatedOn", "LastModified", "TrainingStarted", "TrainingEnded", "SyncedModelId", "Tags" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.TrainingJobMetadata), global::Viam.App.Mltraining.V1.TrainingJobMetadata.Parser, new[]{ "Id", "DatasetId", "OrganizationId", "ModelName", "ModelVersion", "ModelType", "ModelFramework", "IsCustomJob", "RegistryItemId", "RegistryItemVersion", "Status", "ErrorStatus", "CreatedOn", "LastModified", "TrainingStarted", "TrainingEnded", "SyncedModelId", "Tags" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.CancelTrainingJobRequest), global::Viam.App.Mltraining.V1.CancelTrainingJobRequest.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.CancelTrainingJobResponse), global::Viam.App.Mltraining.V1.CancelTrainingJobResponse.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobRequest), global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobRequest.Parser, new[]{ "Id" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobResponse), global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobResponse.Parser, null, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobResponse), global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobResponse.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.TrainingJobLogEntry), global::Viam.App.Mltraining.V1.TrainingJobLogEntry.Parser, new[]{ "Level", "Time", "Message" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.GetTrainingJobLogsRequest), global::Viam.App.Mltraining.V1.GetTrainingJobLogsRequest.Parser, new[]{ "Id", "PageToken" }, new[]{ "PageToken" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.GetTrainingJobLogsResponse), global::Viam.App.Mltraining.V1.GetTrainingJobLogsResponse.Parser, new[]{ "Logs", "NextPageToken" }, null, null, null, null)
           }));
     }
     #endregion
@@ -223,6 +250,7 @@ namespace Viam.App.Mltraining.V1 {
       modelName_ = other.modelName_;
       modelVersion_ = other.modelVersion_;
       modelType_ = other.modelType_;
+      modelFramework_ = other.modelFramework_;
       tags_ = other.tags_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -293,6 +321,18 @@ namespace Viam.App.Mltraining.V1 {
       }
     }
 
+    /// <summary>Field number for the "model_framework" field.</summary>
+    public const int ModelFrameworkFieldNumber = 8;
+    private global::Viam.App.Mltraining.V1.ModelFramework modelFramework_ = global::Viam.App.Mltraining.V1.ModelFramework.Unspecified;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Viam.App.Mltraining.V1.ModelFramework ModelFramework {
+      get { return modelFramework_; }
+      set {
+        modelFramework_ = value;
+      }
+    }
+
     /// <summary>Field number for the "tags" field.</summary>
     public const int TagsFieldNumber = 6;
     private static readonly pb::FieldCodec<string> _repeated_tags_codec
@@ -324,6 +364,7 @@ namespace Viam.App.Mltraining.V1 {
       if (ModelName != other.ModelName) return false;
       if (ModelVersion != other.ModelVersion) return false;
       if (ModelType != other.ModelType) return false;
+      if (ModelFramework != other.ModelFramework) return false;
       if(!tags_.Equals(other.tags_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -337,6 +378,7 @@ namespace Viam.App.Mltraining.V1 {
       if (ModelName.Length != 0) hash ^= ModelName.GetHashCode();
       if (ModelVersion.Length != 0) hash ^= ModelVersion.GetHashCode();
       if (ModelType != global::Viam.App.Mltraining.V1.ModelType.Unspecified) hash ^= ModelType.GetHashCode();
+      if (ModelFramework != global::Viam.App.Mltraining.V1.ModelFramework.Unspecified) hash ^= ModelFramework.GetHashCode();
       hash ^= tags_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -377,6 +419,10 @@ namespace Viam.App.Mltraining.V1 {
         output.WriteRawTag(58);
         output.WriteString(DatasetId);
       }
+      if (ModelFramework != global::Viam.App.Mltraining.V1.ModelFramework.Unspecified) {
+        output.WriteRawTag(64);
+        output.WriteEnum((int) ModelFramework);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -408,6 +454,10 @@ namespace Viam.App.Mltraining.V1 {
         output.WriteRawTag(58);
         output.WriteString(DatasetId);
       }
+      if (ModelFramework != global::Viam.App.Mltraining.V1.ModelFramework.Unspecified) {
+        output.WriteRawTag(64);
+        output.WriteEnum((int) ModelFramework);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -432,6 +482,9 @@ namespace Viam.App.Mltraining.V1 {
       }
       if (ModelType != global::Viam.App.Mltraining.V1.ModelType.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ModelType);
+      }
+      if (ModelFramework != global::Viam.App.Mltraining.V1.ModelFramework.Unspecified) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) ModelFramework);
       }
       size += tags_.CalculateSize(_repeated_tags_codec);
       if (_unknownFields != null) {
@@ -461,6 +514,9 @@ namespace Viam.App.Mltraining.V1 {
       if (other.ModelType != global::Viam.App.Mltraining.V1.ModelType.Unspecified) {
         ModelType = other.ModelType;
       }
+      if (other.ModelFramework != global::Viam.App.Mltraining.V1.ModelFramework.Unspecified) {
+        ModelFramework = other.ModelFramework;
+      }
       tags_.Add(other.tags_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -473,7 +529,11 @@ namespace Viam.App.Mltraining.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -501,6 +561,10 @@ namespace Viam.App.Mltraining.V1 {
             DatasetId = input.ReadString();
             break;
           }
+          case 64: {
+            ModelFramework = (global::Viam.App.Mltraining.V1.ModelFramework) input.ReadEnum();
+            break;
+          }
         }
       }
     #endif
@@ -512,7 +576,11 @@ namespace Viam.App.Mltraining.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -538,6 +606,10 @@ namespace Viam.App.Mltraining.V1 {
           }
           case 58: {
             DatasetId = input.ReadString();
+            break;
+          }
+          case 64: {
+            ModelFramework = (global::Viam.App.Mltraining.V1.ModelFramework) input.ReadEnum();
             break;
           }
         }
@@ -703,7 +775,11 @@ namespace Viam.App.Mltraining.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -722,7 +798,11 @@ namespace Viam.App.Mltraining.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -774,9 +854,11 @@ namespace Viam.App.Mltraining.V1 {
     public SubmitCustomTrainingJobRequest(SubmitCustomTrainingJobRequest other) : this() {
       datasetId_ = other.datasetId_;
       registryItemId_ = other.registryItemId_;
+      registryItemVersion_ = other.registryItemVersion_;
       organizationId_ = other.organizationId_;
       modelName_ = other.modelName_;
       modelVersion_ = other.modelVersion_;
+      arguments_ = other.arguments_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -807,6 +889,18 @@ namespace Viam.App.Mltraining.V1 {
       get { return registryItemId_; }
       set {
         registryItemId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "registry_item_version" field.</summary>
+    public const int RegistryItemVersionFieldNumber = 6;
+    private string registryItemVersion_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string RegistryItemVersion {
+      get { return registryItemVersion_; }
+      set {
+        registryItemVersion_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -846,6 +940,17 @@ namespace Viam.App.Mltraining.V1 {
       }
     }
 
+    /// <summary>Field number for the "arguments" field.</summary>
+    public const int ArgumentsFieldNumber = 7;
+    private static readonly pbc::MapField<string, string>.Codec _map_arguments_codec
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 58);
+    private readonly pbc::MapField<string, string> arguments_ = new pbc::MapField<string, string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, string> Arguments {
+      get { return arguments_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -863,9 +968,11 @@ namespace Viam.App.Mltraining.V1 {
       }
       if (DatasetId != other.DatasetId) return false;
       if (RegistryItemId != other.RegistryItemId) return false;
+      if (RegistryItemVersion != other.RegistryItemVersion) return false;
       if (OrganizationId != other.OrganizationId) return false;
       if (ModelName != other.ModelName) return false;
       if (ModelVersion != other.ModelVersion) return false;
+      if (!Arguments.Equals(other.Arguments)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -875,9 +982,11 @@ namespace Viam.App.Mltraining.V1 {
       int hash = 1;
       if (DatasetId.Length != 0) hash ^= DatasetId.GetHashCode();
       if (RegistryItemId.Length != 0) hash ^= RegistryItemId.GetHashCode();
+      if (RegistryItemVersion.Length != 0) hash ^= RegistryItemVersion.GetHashCode();
       if (OrganizationId.Length != 0) hash ^= OrganizationId.GetHashCode();
       if (ModelName.Length != 0) hash ^= ModelName.GetHashCode();
       if (ModelVersion.Length != 0) hash ^= ModelVersion.GetHashCode();
+      hash ^= Arguments.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -916,6 +1025,11 @@ namespace Viam.App.Mltraining.V1 {
         output.WriteRawTag(42);
         output.WriteString(ModelVersion);
       }
+      if (RegistryItemVersion.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(RegistryItemVersion);
+      }
+      arguments_.WriteTo(output, _map_arguments_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -946,6 +1060,11 @@ namespace Viam.App.Mltraining.V1 {
         output.WriteRawTag(42);
         output.WriteString(ModelVersion);
       }
+      if (RegistryItemVersion.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(RegistryItemVersion);
+      }
+      arguments_.WriteTo(ref output, _map_arguments_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -962,6 +1081,9 @@ namespace Viam.App.Mltraining.V1 {
       if (RegistryItemId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(RegistryItemId);
       }
+      if (RegistryItemVersion.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RegistryItemVersion);
+      }
       if (OrganizationId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(OrganizationId);
       }
@@ -971,6 +1093,7 @@ namespace Viam.App.Mltraining.V1 {
       if (ModelVersion.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ModelVersion);
       }
+      size += arguments_.CalculateSize(_map_arguments_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -989,6 +1112,9 @@ namespace Viam.App.Mltraining.V1 {
       if (other.RegistryItemId.Length != 0) {
         RegistryItemId = other.RegistryItemId;
       }
+      if (other.RegistryItemVersion.Length != 0) {
+        RegistryItemVersion = other.RegistryItemVersion;
+      }
       if (other.OrganizationId.Length != 0) {
         OrganizationId = other.OrganizationId;
       }
@@ -998,6 +1124,7 @@ namespace Viam.App.Mltraining.V1 {
       if (other.ModelVersion.Length != 0) {
         ModelVersion = other.ModelVersion;
       }
+      arguments_.MergeFrom(other.arguments_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1009,7 +1136,11 @@ namespace Viam.App.Mltraining.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1033,6 +1164,14 @@ namespace Viam.App.Mltraining.V1 {
             ModelVersion = input.ReadString();
             break;
           }
+          case 50: {
+            RegistryItemVersion = input.ReadString();
+            break;
+          }
+          case 58: {
+            arguments_.AddEntriesFrom(input, _map_arguments_codec);
+            break;
+          }
         }
       }
     #endif
@@ -1044,7 +1183,11 @@ namespace Viam.App.Mltraining.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1066,6 +1209,14 @@ namespace Viam.App.Mltraining.V1 {
           }
           case 42: {
             ModelVersion = input.ReadString();
+            break;
+          }
+          case 50: {
+            RegistryItemVersion = input.ReadString();
+            break;
+          }
+          case 58: {
+            arguments_.AddEntriesFrom(ref input, _map_arguments_codec);
             break;
           }
         }
@@ -1231,7 +1382,11 @@ namespace Viam.App.Mltraining.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1250,7 +1405,11 @@ namespace Viam.App.Mltraining.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1421,7 +1580,11 @@ namespace Viam.App.Mltraining.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1440,7 +1603,11 @@ namespace Viam.App.Mltraining.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1614,7 +1781,11 @@ namespace Viam.App.Mltraining.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1636,7 +1807,11 @@ namespace Viam.App.Mltraining.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1839,7 +2014,11 @@ namespace Viam.App.Mltraining.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1862,7 +2041,11 @@ namespace Viam.App.Mltraining.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2026,7 +2209,11 @@ namespace Viam.App.Mltraining.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2045,7 +2232,11 @@ namespace Viam.App.Mltraining.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2095,7 +2286,6 @@ namespace Viam.App.Mltraining.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TrainingJobMetadata(TrainingJobMetadata other) : this() {
-      request_ = other.request_ != null ? other.request_.Clone() : null;
       id_ = other.id_;
       datasetId_ = other.datasetId_;
       organizationId_ = other.organizationId_;
@@ -2105,6 +2295,7 @@ namespace Viam.App.Mltraining.V1 {
       modelFramework_ = other.modelFramework_;
       isCustomJob_ = other.isCustomJob_;
       registryItemId_ = other.registryItemId_;
+      registryItemVersion_ = other.registryItemVersion_;
       status_ = other.status_;
       errorStatus_ = other.errorStatus_ != null ? other.errorStatus_.Clone() : null;
       createdOn_ = other.createdOn_ != null ? other.createdOn_.Clone() : null;
@@ -2120,18 +2311,6 @@ namespace Viam.App.Mltraining.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public TrainingJobMetadata Clone() {
       return new TrainingJobMetadata(this);
-    }
-
-    /// <summary>Field number for the "request" field.</summary>
-    public const int RequestFieldNumber = 1;
-    private global::Viam.App.Mltraining.V1.SubmitTrainingJobRequest request_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Viam.App.Mltraining.V1.SubmitTrainingJobRequest Request {
-      get { return request_; }
-      set {
-        request_ = value;
-      }
     }
 
     /// <summary>Field number for the "id" field.</summary>
@@ -2239,6 +2418,18 @@ namespace Viam.App.Mltraining.V1 {
       get { return registryItemId_; }
       set {
         registryItemId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "registry_item_version" field.</summary>
+    public const int RegistryItemVersionFieldNumber = 20;
+    private string registryItemVersion_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string RegistryItemVersion {
+      get { return registryItemVersion_; }
+      set {
+        registryItemVersion_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -2352,7 +2543,6 @@ namespace Viam.App.Mltraining.V1 {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (!object.Equals(Request, other.Request)) return false;
       if (Id != other.Id) return false;
       if (DatasetId != other.DatasetId) return false;
       if (OrganizationId != other.OrganizationId) return false;
@@ -2362,6 +2552,7 @@ namespace Viam.App.Mltraining.V1 {
       if (ModelFramework != other.ModelFramework) return false;
       if (IsCustomJob != other.IsCustomJob) return false;
       if (RegistryItemId != other.RegistryItemId) return false;
+      if (RegistryItemVersion != other.RegistryItemVersion) return false;
       if (Status != other.Status) return false;
       if (!object.Equals(ErrorStatus, other.ErrorStatus)) return false;
       if (!object.Equals(CreatedOn, other.CreatedOn)) return false;
@@ -2377,7 +2568,6 @@ namespace Viam.App.Mltraining.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (request_ != null) hash ^= Request.GetHashCode();
       if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (DatasetId.Length != 0) hash ^= DatasetId.GetHashCode();
       if (OrganizationId.Length != 0) hash ^= OrganizationId.GetHashCode();
@@ -2387,6 +2577,7 @@ namespace Viam.App.Mltraining.V1 {
       if (ModelFramework != global::Viam.App.Mltraining.V1.ModelFramework.Unspecified) hash ^= ModelFramework.GetHashCode();
       if (IsCustomJob != false) hash ^= IsCustomJob.GetHashCode();
       if (RegistryItemId.Length != 0) hash ^= RegistryItemId.GetHashCode();
+      if (RegistryItemVersion.Length != 0) hash ^= RegistryItemVersion.GetHashCode();
       if (Status != global::Viam.App.Mltraining.V1.TrainingStatus.Unspecified) hash ^= Status.GetHashCode();
       if (errorStatus_ != null) hash ^= ErrorStatus.GetHashCode();
       if (createdOn_ != null) hash ^= CreatedOn.GetHashCode();
@@ -2413,10 +2604,6 @@ namespace Viam.App.Mltraining.V1 {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (request_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Request);
-      }
       if (Status != global::Viam.App.Mltraining.V1.TrainingStatus.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Status);
@@ -2482,6 +2669,10 @@ namespace Viam.App.Mltraining.V1 {
         output.WriteRawTag(154, 1);
         output.WriteString(RegistryItemId);
       }
+      if (RegistryItemVersion.Length != 0) {
+        output.WriteRawTag(162, 1);
+        output.WriteString(RegistryItemVersion);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2492,10 +2683,6 @@ namespace Viam.App.Mltraining.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (request_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(Request);
-      }
       if (Status != global::Viam.App.Mltraining.V1.TrainingStatus.Unspecified) {
         output.WriteRawTag(16);
         output.WriteEnum((int) Status);
@@ -2561,6 +2748,10 @@ namespace Viam.App.Mltraining.V1 {
         output.WriteRawTag(154, 1);
         output.WriteString(RegistryItemId);
       }
+      if (RegistryItemVersion.Length != 0) {
+        output.WriteRawTag(162, 1);
+        output.WriteString(RegistryItemVersion);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2571,9 +2762,6 @@ namespace Viam.App.Mltraining.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (request_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Request);
-      }
       if (Id.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
       }
@@ -2600,6 +2788,9 @@ namespace Viam.App.Mltraining.V1 {
       }
       if (RegistryItemId.Length != 0) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(RegistryItemId);
+      }
+      if (RegistryItemVersion.Length != 0) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(RegistryItemVersion);
       }
       if (Status != global::Viam.App.Mltraining.V1.TrainingStatus.Unspecified) {
         size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Status);
@@ -2635,12 +2826,6 @@ namespace Viam.App.Mltraining.V1 {
       if (other == null) {
         return;
       }
-      if (other.request_ != null) {
-        if (request_ == null) {
-          Request = new global::Viam.App.Mltraining.V1.SubmitTrainingJobRequest();
-        }
-        Request.MergeFrom(other.Request);
-      }
       if (other.Id.Length != 0) {
         Id = other.Id;
       }
@@ -2667,6 +2852,9 @@ namespace Viam.App.Mltraining.V1 {
       }
       if (other.RegistryItemId.Length != 0) {
         RegistryItemId = other.RegistryItemId;
+      }
+      if (other.RegistryItemVersion.Length != 0) {
+        RegistryItemVersion = other.RegistryItemVersion;
       }
       if (other.Status != global::Viam.App.Mltraining.V1.TrainingStatus.Unspecified) {
         Status = other.Status;
@@ -2716,17 +2904,14 @@ namespace Viam.App.Mltraining.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            if (request_ == null) {
-              Request = new global::Viam.App.Mltraining.V1.SubmitTrainingJobRequest();
-            }
-            input.ReadMessage(Request);
-            break;
-          }
           case 16: {
             Status = (global::Viam.App.Mltraining.V1.TrainingStatus) input.ReadEnum();
             break;
@@ -2810,6 +2995,10 @@ namespace Viam.App.Mltraining.V1 {
             RegistryItemId = input.ReadString();
             break;
           }
+          case 162: {
+            RegistryItemVersion = input.ReadString();
+            break;
+          }
         }
       }
     #endif
@@ -2821,17 +3010,14 @@ namespace Viam.App.Mltraining.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            if (request_ == null) {
-              Request = new global::Viam.App.Mltraining.V1.SubmitTrainingJobRequest();
-            }
-            input.ReadMessage(Request);
-            break;
-          }
           case 16: {
             Status = (global::Viam.App.Mltraining.V1.TrainingStatus) input.ReadEnum();
             break;
@@ -2913,6 +3099,10 @@ namespace Viam.App.Mltraining.V1 {
           }
           case 154: {
             RegistryItemId = input.ReadString();
+            break;
+          }
+          case 162: {
+            RegistryItemVersion = input.ReadString();
             break;
           }
         }
@@ -3078,7 +3268,11 @@ namespace Viam.App.Mltraining.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3097,7 +3291,11 @@ namespace Viam.App.Mltraining.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3239,7 +3437,11 @@ namespace Viam.App.Mltraining.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3254,7 +3456,11 @@ namespace Viam.App.Mltraining.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3421,7 +3627,11 @@ namespace Viam.App.Mltraining.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3440,7 +3650,11 @@ namespace Viam.App.Mltraining.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3582,7 +3796,11 @@ namespace Viam.App.Mltraining.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3597,10 +3815,768 @@ namespace Viam.App.Mltraining.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class TrainingJobLogEntry : pb::IMessage<TrainingJobLogEntry>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<TrainingJobLogEntry> _parser = new pb::MessageParser<TrainingJobLogEntry>(() => new TrainingJobLogEntry());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<TrainingJobLogEntry> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Viam.App.Mltraining.V1.MlTrainingReflection.Descriptor.MessageTypes[13]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TrainingJobLogEntry() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TrainingJobLogEntry(TrainingJobLogEntry other) : this() {
+      level_ = other.level_;
+      time_ = other.time_ != null ? other.time_.Clone() : null;
+      message_ = other.message_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TrainingJobLogEntry Clone() {
+      return new TrainingJobLogEntry(this);
+    }
+
+    /// <summary>Field number for the "level" field.</summary>
+    public const int LevelFieldNumber = 1;
+    private string level_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Level {
+      get { return level_; }
+      set {
+        level_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "time" field.</summary>
+    public const int TimeFieldNumber = 2;
+    private global::Google.Protobuf.WellKnownTypes.Timestamp time_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Timestamp Time {
+      get { return time_; }
+      set {
+        time_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "message" field.</summary>
+    public const int MessageFieldNumber = 3;
+    private string message_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Message {
+      get { return message_; }
+      set {
+        message_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as TrainingJobLogEntry);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(TrainingJobLogEntry other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Level != other.Level) return false;
+      if (!object.Equals(Time, other.Time)) return false;
+      if (Message != other.Message) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Level.Length != 0) hash ^= Level.GetHashCode();
+      if (time_ != null) hash ^= Time.GetHashCode();
+      if (Message.Length != 0) hash ^= Message.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Level.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Level);
+      }
+      if (time_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Time);
+      }
+      if (Message.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Message);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Level.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Level);
+      }
+      if (time_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Time);
+      }
+      if (Message.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Message);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Level.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Level);
+      }
+      if (time_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Time);
+      }
+      if (Message.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Message);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(TrainingJobLogEntry other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Level.Length != 0) {
+        Level = other.Level;
+      }
+      if (other.time_ != null) {
+        if (time_ == null) {
+          Time = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+        }
+        Time.MergeFrom(other.Time);
+      }
+      if (other.Message.Length != 0) {
+        Message = other.Message;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Level = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (time_ == null) {
+              Time = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(Time);
+            break;
+          }
+          case 26: {
+            Message = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Level = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (time_ == null) {
+              Time = new global::Google.Protobuf.WellKnownTypes.Timestamp();
+            }
+            input.ReadMessage(Time);
+            break;
+          }
+          case 26: {
+            Message = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class GetTrainingJobLogsRequest : pb::IMessage<GetTrainingJobLogsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<GetTrainingJobLogsRequest> _parser = new pb::MessageParser<GetTrainingJobLogsRequest>(() => new GetTrainingJobLogsRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<GetTrainingJobLogsRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Viam.App.Mltraining.V1.MlTrainingReflection.Descriptor.MessageTypes[14]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetTrainingJobLogsRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetTrainingJobLogsRequest(GetTrainingJobLogsRequest other) : this() {
+      id_ = other.id_;
+      pageToken_ = other.pageToken_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetTrainingJobLogsRequest Clone() {
+      return new GetTrainingJobLogsRequest(this);
+    }
+
+    /// <summary>Field number for the "id" field.</summary>
+    public const int IdFieldNumber = 1;
+    private string id_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Id {
+      get { return id_; }
+      set {
+        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "page_token" field.</summary>
+    public const int PageTokenFieldNumber = 2;
+    private readonly static string PageTokenDefaultValue = "";
+
+    private string pageToken_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string PageToken {
+      get { return pageToken_ ?? PageTokenDefaultValue; }
+      set {
+        pageToken_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+    /// <summary>Gets whether the "page_token" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasPageToken {
+      get { return pageToken_ != null; }
+    }
+    /// <summary>Clears the value of the "page_token" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearPageToken() {
+      pageToken_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as GetTrainingJobLogsRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(GetTrainingJobLogsRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Id != other.Id) return false;
+      if (PageToken != other.PageToken) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (HasPageToken) hash ^= PageToken.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (HasPageToken) {
+        output.WriteRawTag(18);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Id.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Id);
+      }
+      if (HasPageToken) {
+        output.WriteRawTag(18);
+        output.WriteString(PageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Id.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      }
+      if (HasPageToken) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PageToken);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(GetTrainingJobLogsRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Id.Length != 0) {
+        Id = other.Id;
+      }
+      if (other.HasPageToken) {
+        PageToken = other.PageToken;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Id = input.ReadString();
+            break;
+          }
+          case 18: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Id = input.ReadString();
+            break;
+          }
+          case 18: {
+            PageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class GetTrainingJobLogsResponse : pb::IMessage<GetTrainingJobLogsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<GetTrainingJobLogsResponse> _parser = new pb::MessageParser<GetTrainingJobLogsResponse>(() => new GetTrainingJobLogsResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<GetTrainingJobLogsResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Viam.App.Mltraining.V1.MlTrainingReflection.Descriptor.MessageTypes[15]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetTrainingJobLogsResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetTrainingJobLogsResponse(GetTrainingJobLogsResponse other) : this() {
+      logs_ = other.logs_.Clone();
+      nextPageToken_ = other.nextPageToken_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetTrainingJobLogsResponse Clone() {
+      return new GetTrainingJobLogsResponse(this);
+    }
+
+    /// <summary>Field number for the "logs" field.</summary>
+    public const int LogsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Viam.App.Mltraining.V1.TrainingJobLogEntry> _repeated_logs_codec
+        = pb::FieldCodec.ForMessage(10, global::Viam.App.Mltraining.V1.TrainingJobLogEntry.Parser);
+    private readonly pbc::RepeatedField<global::Viam.App.Mltraining.V1.TrainingJobLogEntry> logs_ = new pbc::RepeatedField<global::Viam.App.Mltraining.V1.TrainingJobLogEntry>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Viam.App.Mltraining.V1.TrainingJobLogEntry> Logs {
+      get { return logs_; }
+    }
+
+    /// <summary>Field number for the "next_page_token" field.</summary>
+    public const int NextPageTokenFieldNumber = 2;
+    private string nextPageToken_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string NextPageToken {
+      get { return nextPageToken_; }
+      set {
+        nextPageToken_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as GetTrainingJobLogsResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(GetTrainingJobLogsResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!logs_.Equals(other.logs_)) return false;
+      if (NextPageToken != other.NextPageToken) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= logs_.GetHashCode();
+      if (NextPageToken.Length != 0) hash ^= NextPageToken.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      logs_.WriteTo(output, _repeated_logs_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      logs_.WriteTo(ref output, _repeated_logs_codec);
+      if (NextPageToken.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += logs_.CalculateSize(_repeated_logs_codec);
+      if (NextPageToken.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(NextPageToken);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(GetTrainingJobLogsResponse other) {
+      if (other == null) {
+        return;
+      }
+      logs_.Add(other.logs_);
+      if (other.NextPageToken.Length != 0) {
+        NextPageToken = other.NextPageToken;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            logs_.AddEntriesFrom(input, _repeated_logs_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            logs_.AddEntriesFrom(ref input, _repeated_logs_codec);
+            break;
+          }
+          case 18: {
+            NextPageToken = input.ReadString();
+            break;
+          }
         }
       }
     }

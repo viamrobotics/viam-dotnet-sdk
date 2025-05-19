@@ -9,7 +9,8 @@ using grpc = global::Grpc.Core;
 
 namespace Viam.Service.Shell.V1 {
   /// <summary>
-  /// A ShellService service allows access to an interactive shell experience.
+  /// A ShellService service allows access to an interactive shell experience, including
+  /// utilities commonly found in tandem with other secure shells.
   /// </summary>
   public static partial class ShellService
   {
@@ -53,6 +54,14 @@ namespace Viam.Service.Shell.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Service.Shell.V1.ShellResponse> __Marshaller_viam_service_shell_v1_ShellResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Service.Shell.V1.ShellResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Service.Shell.V1.CopyFilesToMachineRequest> __Marshaller_viam_service_shell_v1_CopyFilesToMachineRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Service.Shell.V1.CopyFilesToMachineRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Service.Shell.V1.CopyFilesToMachineResponse> __Marshaller_viam_service_shell_v1_CopyFilesToMachineResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Service.Shell.V1.CopyFilesToMachineResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Service.Shell.V1.CopyFilesFromMachineRequest> __Marshaller_viam_service_shell_v1_CopyFilesFromMachineRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Service.Shell.V1.CopyFilesFromMachineRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Service.Shell.V1.CopyFilesFromMachineResponse> __Marshaller_viam_service_shell_v1_CopyFilesFromMachineResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Service.Shell.V1.CopyFilesFromMachineResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Common.V1.DoCommandRequest> __Marshaller_viam_common_v1_DoCommandRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Common.V1.DoCommandRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Common.V1.DoCommandResponse> __Marshaller_viam_common_v1_DoCommandResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Common.V1.DoCommandResponse.Parser));
@@ -64,6 +73,22 @@ namespace Viam.Service.Shell.V1 {
         "Shell",
         __Marshaller_viam_service_shell_v1_ShellRequest,
         __Marshaller_viam_service_shell_v1_ShellResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.Service.Shell.V1.CopyFilesToMachineRequest, global::Viam.Service.Shell.V1.CopyFilesToMachineResponse> __Method_CopyFilesToMachine = new grpc::Method<global::Viam.Service.Shell.V1.CopyFilesToMachineRequest, global::Viam.Service.Shell.V1.CopyFilesToMachineResponse>(
+        grpc::MethodType.DuplexStreaming,
+        __ServiceName,
+        "CopyFilesToMachine",
+        __Marshaller_viam_service_shell_v1_CopyFilesToMachineRequest,
+        __Marshaller_viam_service_shell_v1_CopyFilesToMachineResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.Service.Shell.V1.CopyFilesFromMachineRequest, global::Viam.Service.Shell.V1.CopyFilesFromMachineResponse> __Method_CopyFilesFromMachine = new grpc::Method<global::Viam.Service.Shell.V1.CopyFilesFromMachineRequest, global::Viam.Service.Shell.V1.CopyFilesFromMachineResponse>(
+        grpc::MethodType.DuplexStreaming,
+        __ServiceName,
+        "CopyFilesFromMachine",
+        __Marshaller_viam_service_shell_v1_CopyFilesFromMachineRequest,
+        __Marshaller_viam_service_shell_v1_CopyFilesFromMachineResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.Common.V1.DoCommandRequest, global::Viam.Common.V1.DoCommandResponse> __Method_DoCommand = new grpc::Method<global::Viam.Common.V1.DoCommandRequest, global::Viam.Common.V1.DoCommandResponse>(
@@ -92,6 +117,45 @@ namespace Viam.Service.Shell.V1 {
       /// <returns>A task indicating completion of the handler.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task Shell(grpc::IAsyncStreamReader<global::Viam.Service.Shell.V1.ShellRequest> requestStream, grpc::IServerStreamWriter<global::Viam.Service.Shell.V1.ShellResponse> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// CopyFilesToMachines copies a stream of files from a client to the connected-to machine.
+      /// Initially, metadata is sent to describe the destination in the filesystem in addition
+      /// to what kind of file(s) are being sent.
+      /// Once metadata is sent, the file transfer can proceed where one-by-one, file data is sent
+      /// until EOF per file.
+      /// After each file is sent, the machine must respond with an ACK before the next file can
+      /// be sent. This provides back-pressure and ordering.
+      /// The order in which individual files are sent does not matter; that is, if traversing a
+      /// directory, copying depth-first, breadth-first, or any other algorithm does not matter.
+      /// Permissions and metadata on files copied are only preserved if the preserve option is
+      /// set in the initial request metadata.
+      /// </summary>
+      /// <param name="requestStream">Used for reading requests from the client.</param>
+      /// <param name="responseStream">Used for sending responses back to the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>A task indicating completion of the handler.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task CopyFilesToMachine(grpc::IAsyncStreamReader<global::Viam.Service.Shell.V1.CopyFilesToMachineRequest> requestStream, grpc::IServerStreamWriter<global::Viam.Service.Shell.V1.CopyFilesToMachineResponse> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// CopyFilesFromMachine copies a stream of files from a connected-to machine to the calling client.
+      /// Essentially, it is the inverse of CopyFilesToMachine with the same ACK mechanism in reverse.
+      /// The initial metadata request will request the paths to copy along with if permissions should
+      /// be preserved (and consequently sent over the wire).
+      /// </summary>
+      /// <param name="requestStream">Used for reading requests from the client.</param>
+      /// <param name="responseStream">Used for sending responses back to the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>A task indicating completion of the handler.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task CopyFilesFromMachine(grpc::IAsyncStreamReader<global::Viam.Service.Shell.V1.CopyFilesFromMachineRequest> requestStream, grpc::IServerStreamWriter<global::Viam.Service.Shell.V1.CopyFilesFromMachineResponse> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -160,6 +224,76 @@ namespace Viam.Service.Shell.V1 {
         return CallInvoker.AsyncDuplexStreamingCall(__Method_Shell, null, options);
       }
       /// <summary>
+      /// CopyFilesToMachines copies a stream of files from a client to the connected-to machine.
+      /// Initially, metadata is sent to describe the destination in the filesystem in addition
+      /// to what kind of file(s) are being sent.
+      /// Once metadata is sent, the file transfer can proceed where one-by-one, file data is sent
+      /// until EOF per file.
+      /// After each file is sent, the machine must respond with an ACK before the next file can
+      /// be sent. This provides back-pressure and ordering.
+      /// The order in which individual files are sent does not matter; that is, if traversing a
+      /// directory, copying depth-first, breadth-first, or any other algorithm does not matter.
+      /// Permissions and metadata on files copied are only preserved if the preserve option is
+      /// set in the initial request metadata.
+      /// </summary>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncDuplexStreamingCall<global::Viam.Service.Shell.V1.CopyFilesToMachineRequest, global::Viam.Service.Shell.V1.CopyFilesToMachineResponse> CopyFilesToMachine(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CopyFilesToMachine(new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// CopyFilesToMachines copies a stream of files from a client to the connected-to machine.
+      /// Initially, metadata is sent to describe the destination in the filesystem in addition
+      /// to what kind of file(s) are being sent.
+      /// Once metadata is sent, the file transfer can proceed where one-by-one, file data is sent
+      /// until EOF per file.
+      /// After each file is sent, the machine must respond with an ACK before the next file can
+      /// be sent. This provides back-pressure and ordering.
+      /// The order in which individual files are sent does not matter; that is, if traversing a
+      /// directory, copying depth-first, breadth-first, or any other algorithm does not matter.
+      /// Permissions and metadata on files copied are only preserved if the preserve option is
+      /// set in the initial request metadata.
+      /// </summary>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncDuplexStreamingCall<global::Viam.Service.Shell.V1.CopyFilesToMachineRequest, global::Viam.Service.Shell.V1.CopyFilesToMachineResponse> CopyFilesToMachine(grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncDuplexStreamingCall(__Method_CopyFilesToMachine, null, options);
+      }
+      /// <summary>
+      /// CopyFilesFromMachine copies a stream of files from a connected-to machine to the calling client.
+      /// Essentially, it is the inverse of CopyFilesToMachine with the same ACK mechanism in reverse.
+      /// The initial metadata request will request the paths to copy along with if permissions should
+      /// be preserved (and consequently sent over the wire).
+      /// </summary>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncDuplexStreamingCall<global::Viam.Service.Shell.V1.CopyFilesFromMachineRequest, global::Viam.Service.Shell.V1.CopyFilesFromMachineResponse> CopyFilesFromMachine(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CopyFilesFromMachine(new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// CopyFilesFromMachine copies a stream of files from a connected-to machine to the calling client.
+      /// Essentially, it is the inverse of CopyFilesToMachine with the same ACK mechanism in reverse.
+      /// The initial metadata request will request the paths to copy along with if permissions should
+      /// be preserved (and consequently sent over the wire).
+      /// </summary>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncDuplexStreamingCall<global::Viam.Service.Shell.V1.CopyFilesFromMachineRequest, global::Viam.Service.Shell.V1.CopyFilesFromMachineResponse> CopyFilesFromMachine(grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncDuplexStreamingCall(__Method_CopyFilesFromMachine, null, options);
+      }
+      /// <summary>
       /// DoCommand sends/receives arbitrary commands
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -222,6 +356,8 @@ namespace Viam.Service.Shell.V1 {
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_Shell, serviceImpl.Shell)
+          .AddMethod(__Method_CopyFilesToMachine, serviceImpl.CopyFilesToMachine)
+          .AddMethod(__Method_CopyFilesFromMachine, serviceImpl.CopyFilesFromMachine)
           .AddMethod(__Method_DoCommand, serviceImpl.DoCommand).Build();
     }
 
@@ -233,6 +369,8 @@ namespace Viam.Service.Shell.V1 {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, ShellServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_Shell, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::Viam.Service.Shell.V1.ShellRequest, global::Viam.Service.Shell.V1.ShellResponse>(serviceImpl.Shell));
+      serviceBinder.AddMethod(__Method_CopyFilesToMachine, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::Viam.Service.Shell.V1.CopyFilesToMachineRequest, global::Viam.Service.Shell.V1.CopyFilesToMachineResponse>(serviceImpl.CopyFilesToMachine));
+      serviceBinder.AddMethod(__Method_CopyFilesFromMachine, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::Viam.Service.Shell.V1.CopyFilesFromMachineRequest, global::Viam.Service.Shell.V1.CopyFilesFromMachineResponse>(serviceImpl.CopyFilesFromMachine));
       serviceBinder.AddMethod(__Method_DoCommand, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Common.V1.DoCommandRequest, global::Viam.Common.V1.DoCommandResponse>(serviceImpl.DoCommand));
     }
 

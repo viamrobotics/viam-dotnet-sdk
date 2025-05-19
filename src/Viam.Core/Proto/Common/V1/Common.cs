@@ -27,87 +27,89 @@ namespace Viam.Common.V1 {
             "ChZjb21tb24vdjEvY29tbW9uLnByb3RvEg52aWFtLmNvbW1vbi52MRogZ29v",
             "Z2xlL3Byb3RvYnVmL2Rlc2NyaXB0b3IucHJvdG8aHGdvb2dsZS9wcm90b2J1",
             "Zi9zdHJ1Y3QucHJvdG8aH2dvb2dsZS9wcm90b2J1Zi90aW1lc3RhbXAucHJv",
-            "dG8ibgoMUmVzb3VyY2VOYW1lEhwKCW5hbWVzcGFjZRgBIAEoCVIJbmFtZXNw",
-            "YWNlEhIKBHR5cGUYAiABKAlSBHR5cGUSGAoHc3VidHlwZRgDIAEoCVIHc3Vi",
-            "dHlwZRISCgRuYW1lGAQgASgJUgRuYW1lIiQKDEFuYWxvZ1N0YXR1cxIUCgV2",
-            "YWx1ZRgBIAEoBVIFdmFsdWUiLgoWRGlnaXRhbEludGVycnVwdFN0YXR1cxIU",
-            "CgV2YWx1ZRgBIAEoA1IFdmFsdWUieQoEUG9zZRIMCgF4GAEgASgBUgF4EgwK",
-            "AXkYAiABKAFSAXkSDAoBehgDIAEoAVIBehIPCgNvX3gYBCABKAFSAm9YEg8K",
-            "A29feRgFIAEoAVICb1kSDwoDb196GAYgASgBUgJvWhIUCgV0aGV0YRgHIAEo",
-            "AVIFdGhldGEiVgoLT3JpZW50YXRpb24SDwoDb194GAEgASgBUgJvWBIPCgNv",
-            "X3kYAiABKAFSAm9ZEg8KA29fehgDIAEoAVICb1oSFAoFdGhldGEYBCABKAFS",
-            "BXRoZXRhImAKC1Bvc2VJbkZyYW1lEicKD3JlZmVyZW5jZV9mcmFtZRgBIAEo",
-            "CVIOcmVmZXJlbmNlRnJhbWUSKAoEcG9zZRgCIAEoCzIULnZpYW0uY29tbW9u",
-            "LnYxLlBvc2VSBHBvc2UiMwoHVmVjdG9yMxIMCgF4GAEgASgBUgF4EgwKAXkY",
-            "AiABKAFSAXkSDAoBehgDIAEoAVIBeiIlCgZTcGhlcmUSGwoJcmFkaXVzX21t",
-            "GAEgASgBUghyYWRpdXNNbSJDCgdDYXBzdWxlEhsKCXJhZGl1c19tbRgBIAEo",
-            "AVIIcmFkaXVzTW0SGwoJbGVuZ3RoX21tGAIgASgBUghsZW5ndGhNbSJEChBS",
-            "ZWN0YW5ndWxhclByaXNtEjAKB2RpbXNfbW0YASABKAsyFy52aWFtLmNvbW1v",
-            "bi52MS5WZWN0b3IzUgZkaW1zTW0i/AEKCEdlb21ldHJ5EiwKBmNlbnRlchgB",
-            "IAEoCzIULnZpYW0uY29tbW9uLnYxLlBvc2VSBmNlbnRlchIwCgZzcGhlcmUY",
-            "AiABKAsyFi52aWFtLmNvbW1vbi52MS5TcGhlcmVIAFIGc3BoZXJlEjQKA2Jv",
-            "eBgDIAEoCzIgLnZpYW0uY29tbW9uLnYxLlJlY3Rhbmd1bGFyUHJpc21IAFID",
-            "Ym94EjMKB2NhcHN1bGUYBSABKAsyFy52aWFtLmNvbW1vbi52MS5DYXBzdWxl",
-            "SABSB2NhcHN1bGUSFAoFbGFiZWwYBCABKAlSBWxhYmVsQg8KDWdlb21ldHJ5",
-            "X3R5cGUidgoRR2VvbWV0cmllc0luRnJhbWUSJwoPcmVmZXJlbmNlX2ZyYW1l",
-            "GAEgASgJUg5yZWZlcmVuY2VGcmFtZRI4CgpnZW9tZXRyaWVzGAIgAygLMhgu",
-            "dmlhbS5jb21tb24udjEuR2VvbWV0cnlSCmdlb21ldHJpZXMidgoQUG9pbnRD",
-            "bG91ZE9iamVjdBIfCgtwb2ludF9jbG91ZBgBIAEoDFIKcG9pbnRDbG91ZBJB",
-            "CgpnZW9tZXRyaWVzGAIgASgLMiEudmlhbS5jb21tb24udjEuR2VvbWV0cmll",
-            "c0luRnJhbWVSCmdlb21ldHJpZXMiRAoIR2VvUG9pbnQSGgoIbGF0aXR1ZGUY",
-            "ASABKAFSCGxhdGl0dWRlEhwKCWxvbmdpdHVkZRgCIAEoAVIJbG9uZ2l0dWRl",
-            "In0KC0dlb09ic3RhY2xlEjQKCGxvY2F0aW9uGAEgASgLMhgudmlhbS5jb21t",
-            "b24udjEuR2VvUG9pbnRSCGxvY2F0aW9uEjgKCmdlb21ldHJpZXMYAiADKAsy",
-            "GC52aWFtLmNvbW1vbi52MS5HZW9tZXRyeVIKZ2VvbWV0cmllcyLiAQoJVHJh",
-            "bnNmb3JtEicKD3JlZmVyZW5jZV9mcmFtZRgBIAEoCVIOcmVmZXJlbmNlRnJh",
-            "bWUSUAoWcG9zZV9pbl9vYnNlcnZlcl9mcmFtZRgCIAEoCzIbLnZpYW0uY29t",
-            "bW9uLnYxLlBvc2VJbkZyYW1lUhNwb3NlSW5PYnNlcnZlckZyYW1lEkYKD3Bo",
-            "eXNpY2FsX29iamVjdBgDIAEoCzIYLnZpYW0uY29tbW9uLnYxLkdlb21ldHJ5",
-            "SABSDnBoeXNpY2FsT2JqZWN0iAEBQhIKEF9waHlzaWNhbF9vYmplY3QiiAEK",
-            "CldvcmxkU3RhdGUSPwoJb2JzdGFjbGVzGAEgAygLMiEudmlhbS5jb21tb24u",
-            "djEuR2VvbWV0cmllc0luRnJhbWVSCW9ic3RhY2xlcxI5Cgp0cmFuc2Zvcm1z",
-            "GAMgAygLMhkudmlhbS5jb21tb24udjEuVHJhbnNmb3JtUgp0cmFuc2Zvcm1z",
-            "Ii0KDkFjdHVhdG9yU3RhdHVzEhsKCWlzX21vdmluZxgBIAEoCFIIaXNNb3Zp",
-            "bmciZAoQUmVzcG9uc2VNZXRhZGF0YRJACgtjYXB0dXJlZF9hdBgBIAEoCzIa",
-            "Lmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBIAFIKY2FwdHVyZWRBdIgBAUIO",
-            "CgxfY2FwdHVyZWRfYXQiWQoQRG9Db21tYW5kUmVxdWVzdBISCgRuYW1lGAEg",
-            "ASgJUgRuYW1lEjEKB2NvbW1hbmQYAiABKAsyFy5nb29nbGUucHJvdG9idWYu",
-            "U3RydWN0Ugdjb21tYW5kIkQKEURvQ29tbWFuZFJlc3BvbnNlEi8KBnJlc3Vs",
-            "dBgBIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBnJlc3VsdCJZChRH",
-            "ZXRLaW5lbWF0aWNzUmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEi0KBWV4",
-            "dHJhGGMgASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFIFZXh0cmEifgoV",
-            "R2V0S2luZW1hdGljc1Jlc3BvbnNlEjwKBmZvcm1hdBgBIAEoDjIkLnZpYW0u",
-            "Y29tbW9uLnYxLktpbmVtYXRpY3NGaWxlRm9ybWF0UgZmb3JtYXQSJwoPa2lu",
-            "ZW1hdGljc19kYXRhGAIgASgMUg5raW5lbWF0aWNzRGF0YSJZChRHZXRHZW9t",
-            "ZXRyaWVzUmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEi0KBWV4dHJhGGMg",
-            "ASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFIFZXh0cmEiUQoVR2V0R2Vv",
-            "bWV0cmllc1Jlc3BvbnNlEjgKCmdlb21ldHJpZXMYASADKAsyGC52aWFtLmNv",
-            "bW1vbi52MS5HZW9tZXRyeVIKZ2VvbWV0cmllcyJXChJHZXRSZWFkaW5nc1Jl",
-            "cXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZRItCgVleHRyYRhjIAEoCzIXLmdv",
-            "b2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4dHJhIrkBChNHZXRSZWFkaW5nc1Jl",
-            "c3BvbnNlEk0KCHJlYWRpbmdzGAEgAygLMjEudmlhbS5jb21tb24udjEuR2V0",
-            "UmVhZGluZ3NSZXNwb25zZS5SZWFkaW5nc0VudHJ5UghyZWFkaW5ncxpTCg1S",
-            "ZWFkaW5nc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EiwKBXZhbHVlGAIgASgL",
-            "MhYuZ29vZ2xlLnByb3RvYnVmLlZhbHVlUgV2YWx1ZToCOAEilwIKCExvZ0Vu",
-            "dHJ5EhIKBGhvc3QYASABKAlSBGhvc3QSFAoFbGV2ZWwYAiABKAlSBWxldmVs",
-            "Ei4KBHRpbWUYAyABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgR0",
-            "aW1lEh8KC2xvZ2dlcl9uYW1lGAQgASgJUgpsb2dnZXJOYW1lEhgKB21lc3Nh",
-            "Z2UYBSABKAlSB21lc3NhZ2USLwoGY2FsbGVyGAYgASgLMhcuZ29vZ2xlLnBy",
-            "b3RvYnVmLlN0cnVjdFIGY2FsbGVyEhQKBXN0YWNrGAcgASgJUgVzdGFjaxIv",
-            "CgZmaWVsZHMYCCADKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0UgZmaWVs",
-            "ZHMqfwoUS2luZW1hdGljc0ZpbGVGb3JtYXQSJgoiS0lORU1BVElDU19GSUxF",
-            "X0ZPUk1BVF9VTlNQRUNJRklFRBAAEh4KGktJTkVNQVRJQ1NfRklMRV9GT1JN",
-            "QVRfU1ZBEAESHwobS0lORU1BVElDU19GSUxFX0ZPUk1BVF9VUkRGEAI6YQoa",
-            "c2FmZXR5X2hlYXJ0YmVhdF9tb25pdG9yZWQSHi5nb29nbGUucHJvdG9idWYu",
-            "TWV0aG9kT3B0aW9ucxikkgUgASgIUhhzYWZldHlIZWFydGJlYXRNb25pdG9y",
-            "ZWSIAQFCLwoSY29tLnZpYW0uY29tbW9uLnYxWhlnby52aWFtLmNvbS9hcGkv",
-            "Y29tbW9uL3YxYgZwcm90bzM="));
+            "dG8irgEKDFJlc291cmNlTmFtZRIcCgluYW1lc3BhY2UYASABKAlSCW5hbWVz",
+            "cGFjZRISCgR0eXBlGAIgASgJUgR0eXBlEhgKB3N1YnR5cGUYAyABKAlSB3N1",
+            "YnR5cGUSEgoEbmFtZRgEIAEoCVIEbmFtZRIfCgtyZW1vdGVfcGF0aBgFIAMo",
+            "CVIKcmVtb3RlUGF0aBIdCgpsb2NhbF9uYW1lGAYgASgJUglsb2NhbE5hbWUi",
+            "eQoEUG9zZRIMCgF4GAEgASgBUgF4EgwKAXkYAiABKAFSAXkSDAoBehgDIAEo",
+            "AVIBehIPCgNvX3gYBCABKAFSAm9YEg8KA29feRgFIAEoAVICb1kSDwoDb196",
+            "GAYgASgBUgJvWhIUCgV0aGV0YRgHIAEoAVIFdGhldGEiVgoLT3JpZW50YXRp",
+            "b24SDwoDb194GAEgASgBUgJvWBIPCgNvX3kYAiABKAFSAm9ZEg8KA29fehgD",
+            "IAEoAVICb1oSFAoFdGhldGEYBCABKAFSBXRoZXRhImAKC1Bvc2VJbkZyYW1l",
+            "EicKD3JlZmVyZW5jZV9mcmFtZRgBIAEoCVIOcmVmZXJlbmNlRnJhbWUSKAoE",
+            "cG9zZRgCIAEoCzIULnZpYW0uY29tbW9uLnYxLlBvc2VSBHBvc2UiMwoHVmVj",
+            "dG9yMxIMCgF4GAEgASgBUgF4EgwKAXkYAiABKAFSAXkSDAoBehgDIAEoAVIB",
+            "eiIlCgZTcGhlcmUSGwoJcmFkaXVzX21tGAEgASgBUghyYWRpdXNNbSJDCgdD",
+            "YXBzdWxlEhsKCXJhZGl1c19tbRgBIAEoAVIIcmFkaXVzTW0SGwoJbGVuZ3Ro",
+            "X21tGAIgASgBUghsZW5ndGhNbSJEChBSZWN0YW5ndWxhclByaXNtEjAKB2Rp",
+            "bXNfbW0YASABKAsyFy52aWFtLmNvbW1vbi52MS5WZWN0b3IzUgZkaW1zTW0i",
+            "PQoETWVzaBIhCgxjb250ZW50X3R5cGUYASABKAlSC2NvbnRlbnRUeXBlEhIK",
+            "BG1lc2gYAiABKAxSBG1lc2giqAIKCEdlb21ldHJ5EiwKBmNlbnRlchgBIAEo",
+            "CzIULnZpYW0uY29tbW9uLnYxLlBvc2VSBmNlbnRlchIwCgZzcGhlcmUYAiAB",
+            "KAsyFi52aWFtLmNvbW1vbi52MS5TcGhlcmVIAFIGc3BoZXJlEjQKA2JveBgD",
+            "IAEoCzIgLnZpYW0uY29tbW9uLnYxLlJlY3Rhbmd1bGFyUHJpc21IAFIDYm94",
+            "EjMKB2NhcHN1bGUYBSABKAsyFy52aWFtLmNvbW1vbi52MS5DYXBzdWxlSABS",
+            "B2NhcHN1bGUSKgoEbWVzaBgGIAEoCzIULnZpYW0uY29tbW9uLnYxLk1lc2hI",
+            "AFIEbWVzaBIUCgVsYWJlbBgEIAEoCVIFbGFiZWxCDwoNZ2VvbWV0cnlfdHlw",
+            "ZSJ2ChFHZW9tZXRyaWVzSW5GcmFtZRInCg9yZWZlcmVuY2VfZnJhbWUYASAB",
+            "KAlSDnJlZmVyZW5jZUZyYW1lEjgKCmdlb21ldHJpZXMYAiADKAsyGC52aWFt",
+            "LmNvbW1vbi52MS5HZW9tZXRyeVIKZ2VvbWV0cmllcyJ2ChBQb2ludENsb3Vk",
+            "T2JqZWN0Eh8KC3BvaW50X2Nsb3VkGAEgASgMUgpwb2ludENsb3VkEkEKCmdl",
+            "b21ldHJpZXMYAiABKAsyIS52aWFtLmNvbW1vbi52MS5HZW9tZXRyaWVzSW5G",
+            "cmFtZVIKZ2VvbWV0cmllcyJECghHZW9Qb2ludBIaCghsYXRpdHVkZRgBIAEo",
+            "AVIIbGF0aXR1ZGUSHAoJbG9uZ2l0dWRlGAIgASgBUglsb25naXR1ZGUifQoL",
+            "R2VvR2VvbWV0cnkSNAoIbG9jYXRpb24YASABKAsyGC52aWFtLmNvbW1vbi52",
+            "MS5HZW9Qb2ludFIIbG9jYXRpb24SOAoKZ2VvbWV0cmllcxgCIAMoCzIYLnZp",
+            "YW0uY29tbW9uLnYxLkdlb21ldHJ5UgpnZW9tZXRyaWVzIuIBCglUcmFuc2Zv",
+            "cm0SJwoPcmVmZXJlbmNlX2ZyYW1lGAEgASgJUg5yZWZlcmVuY2VGcmFtZRJQ",
+            "ChZwb3NlX2luX29ic2VydmVyX2ZyYW1lGAIgASgLMhsudmlhbS5jb21tb24u",
+            "djEuUG9zZUluRnJhbWVSE3Bvc2VJbk9ic2VydmVyRnJhbWUSRgoPcGh5c2lj",
+            "YWxfb2JqZWN0GAMgASgLMhgudmlhbS5jb21tb24udjEuR2VvbWV0cnlIAFIO",
+            "cGh5c2ljYWxPYmplY3SIAQFCEgoQX3BoeXNpY2FsX29iamVjdCKIAQoKV29y",
+            "bGRTdGF0ZRI/CglvYnN0YWNsZXMYASADKAsyIS52aWFtLmNvbW1vbi52MS5H",
+            "ZW9tZXRyaWVzSW5GcmFtZVIJb2JzdGFjbGVzEjkKCnRyYW5zZm9ybXMYAyAD",
+            "KAsyGS52aWFtLmNvbW1vbi52MS5UcmFuc2Zvcm1SCnRyYW5zZm9ybXMiLQoO",
+            "QWN0dWF0b3JTdGF0dXMSGwoJaXNfbW92aW5nGAEgASgIUghpc01vdmluZyJk",
+            "ChBSZXNwb25zZU1ldGFkYXRhEkAKC2NhcHR1cmVkX2F0GAEgASgLMhouZ29v",
+            "Z2xlLnByb3RvYnVmLlRpbWVzdGFtcEgAUgpjYXB0dXJlZEF0iAEBQg4KDF9j",
+            "YXB0dXJlZF9hdCJZChBEb0NvbW1hbmRSZXF1ZXN0EhIKBG5hbWUYASABKAlS",
+            "BG5hbWUSMQoHY29tbWFuZBgCIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1",
+            "Y3RSB2NvbW1hbmQiRAoRRG9Db21tYW5kUmVzcG9uc2USLwoGcmVzdWx0GAEg",
+            "ASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFIGcmVzdWx0IlkKFEdldEtp",
+            "bmVtYXRpY3NSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUSLQoFZXh0cmEY",
+            "YyABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0UgVleHRyYSJ+ChVHZXRL",
+            "aW5lbWF0aWNzUmVzcG9uc2USPAoGZm9ybWF0GAEgASgOMiQudmlhbS5jb21t",
+            "b24udjEuS2luZW1hdGljc0ZpbGVGb3JtYXRSBmZvcm1hdBInCg9raW5lbWF0",
+            "aWNzX2RhdGEYAiABKAxSDmtpbmVtYXRpY3NEYXRhIlkKFEdldEdlb21ldHJp",
+            "ZXNSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUSLQoFZXh0cmEYYyABKAsy",
+            "Fy5nb29nbGUucHJvdG9idWYuU3RydWN0UgVleHRyYSJRChVHZXRHZW9tZXRy",
+            "aWVzUmVzcG9uc2USOAoKZ2VvbWV0cmllcxgBIAMoCzIYLnZpYW0uY29tbW9u",
+            "LnYxLkdlb21ldHJ5UgpnZW9tZXRyaWVzIlcKEkdldFJlYWRpbmdzUmVxdWVz",
+            "dBISCgRuYW1lGAEgASgJUgRuYW1lEi0KBWV4dHJhGGMgASgLMhcuZ29vZ2xl",
+            "LnByb3RvYnVmLlN0cnVjdFIFZXh0cmEiuQEKE0dldFJlYWRpbmdzUmVzcG9u",
+            "c2USTQoIcmVhZGluZ3MYASADKAsyMS52aWFtLmNvbW1vbi52MS5HZXRSZWFk",
+            "aW5nc1Jlc3BvbnNlLlJlYWRpbmdzRW50cnlSCHJlYWRpbmdzGlMKDVJlYWRp",
+            "bmdzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSLAoFdmFsdWUYAiABKAsyFi5n",
+            "b29nbGUucHJvdG9idWYuVmFsdWVSBXZhbHVlOgI4ASKXAgoITG9nRW50cnkS",
+            "EgoEaG9zdBgBIAEoCVIEaG9zdBIUCgVsZXZlbBgCIAEoCVIFbGV2ZWwSLgoE",
+            "dGltZRgDIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSBHRpbWUS",
+            "HwoLbG9nZ2VyX25hbWUYBCABKAlSCmxvZ2dlck5hbWUSGAoHbWVzc2FnZRgF",
+            "IAEoCVIHbWVzc2FnZRIvCgZjYWxsZXIYBiABKAsyFy5nb29nbGUucHJvdG9i",
+            "dWYuU3RydWN0UgZjYWxsZXISFAoFc3RhY2sYByABKAlSBXN0YWNrEi8KBmZp",
+            "ZWxkcxgIIAMoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBmZpZWxkcyp/",
+            "ChRLaW5lbWF0aWNzRmlsZUZvcm1hdBImCiJLSU5FTUFUSUNTX0ZJTEVfRk9S",
+            "TUFUX1VOU1BFQ0lGSUVEEAASHgoaS0lORU1BVElDU19GSUxFX0ZPUk1BVF9T",
+            "VkEQARIfChtLSU5FTUFUSUNTX0ZJTEVfRk9STUFUX1VSREYQAjphChpzYWZl",
+            "dHlfaGVhcnRiZWF0X21vbml0b3JlZBIeLmdvb2dsZS5wcm90b2J1Zi5NZXRo",
+            "b2RPcHRpb25zGKSSBSABKAhSGHNhZmV0eUhlYXJ0YmVhdE1vbml0b3JlZIgB",
+            "AUKWAQoSY29tLnZpYW0uY29tbW9uLnYxQgtDb21tb25Qcm90b1ABWhlnby52",
+            "aWFtLmNvbS9hcGkvY29tbW9uL3YxogIDVkNYqgIOVmlhbS5Db21tb24uVjHK",
+            "Ag5WaWFtXENvbW1vblxWMeICGlZpYW1cQ29tbW9uXFYxXEdQQk1ldGFkYXRh",
+            "6gIQVmlhbTo6Q29tbW9uOjpWMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.Reflection.DescriptorReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Viam.Common.V1.KinematicsFileFormat), }, new pb::Extension[] { CommonExtensions.SafetyHeartbeatMonitored }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.ResourceName), global::Viam.Common.V1.ResourceName.Parser, new[]{ "Namespace", "Type", "Subtype", "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.AnalogStatus), global::Viam.Common.V1.AnalogStatus.Parser, new[]{ "Value" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.DigitalInterruptStatus), global::Viam.Common.V1.DigitalInterruptStatus.Parser, new[]{ "Value" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.ResourceName), global::Viam.Common.V1.ResourceName.Parser, new[]{ "Namespace", "Type", "Subtype", "Name", "RemotePath", "LocalName" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.Pose), global::Viam.Common.V1.Pose.Parser, new[]{ "X", "Y", "Z", "OX", "OY", "OZ", "Theta" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.Orientation), global::Viam.Common.V1.Orientation.Parser, new[]{ "OX", "OY", "OZ", "Theta" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.PoseInFrame), global::Viam.Common.V1.PoseInFrame.Parser, new[]{ "ReferenceFrame", "Pose" }, null, null, null, null),
@@ -115,11 +117,12 @@ namespace Viam.Common.V1 {
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.Sphere), global::Viam.Common.V1.Sphere.Parser, new[]{ "RadiusMm" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.Capsule), global::Viam.Common.V1.Capsule.Parser, new[]{ "RadiusMm", "LengthMm" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.RectangularPrism), global::Viam.Common.V1.RectangularPrism.Parser, new[]{ "DimsMm" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.Geometry), global::Viam.Common.V1.Geometry.Parser, new[]{ "Center", "Sphere", "Box", "Capsule", "Label" }, new[]{ "GeometryType" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.Mesh), global::Viam.Common.V1.Mesh.Parser, new[]{ "ContentType", "Mesh_" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.Geometry), global::Viam.Common.V1.Geometry.Parser, new[]{ "Center", "Sphere", "Box", "Capsule", "Mesh", "Label" }, new[]{ "GeometryType" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.GeometriesInFrame), global::Viam.Common.V1.GeometriesInFrame.Parser, new[]{ "ReferenceFrame", "Geometries" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.PointCloudObject), global::Viam.Common.V1.PointCloudObject.Parser, new[]{ "PointCloud", "Geometries" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.GeoPoint), global::Viam.Common.V1.GeoPoint.Parser, new[]{ "Latitude", "Longitude" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.GeoObstacle), global::Viam.Common.V1.GeoObstacle.Parser, new[]{ "Location", "Geometries" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.GeoGeometry), global::Viam.Common.V1.GeoGeometry.Parser, new[]{ "Location", "Geometries" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.Transform), global::Viam.Common.V1.Transform.Parser, new[]{ "ReferenceFrame", "PoseInObserverFrame", "PhysicalObject" }, new[]{ "PhysicalObject" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.WorldState), global::Viam.Common.V1.WorldState.Parser, new[]{ "Obstacles", "Transforms" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Common.V1.ActuatorStatus), global::Viam.Common.V1.ActuatorStatus.Parser, new[]{ "IsMoving" }, null, null, null, null),
@@ -198,6 +201,8 @@ namespace Viam.Common.V1 {
       type_ = other.type_;
       subtype_ = other.subtype_;
       name_ = other.name_;
+      remotePath_ = other.remotePath_.Clone();
+      localName_ = other.localName_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -255,6 +260,29 @@ namespace Viam.Common.V1 {
       }
     }
 
+    /// <summary>Field number for the "remote_path" field.</summary>
+    public const int RemotePathFieldNumber = 5;
+    private static readonly pb::FieldCodec<string> _repeated_remotePath_codec
+        = pb::FieldCodec.ForString(42);
+    private readonly pbc::RepeatedField<string> remotePath_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<string> RemotePath {
+      get { return remotePath_; }
+    }
+
+    /// <summary>Field number for the "local_name" field.</summary>
+    public const int LocalNameFieldNumber = 6;
+    private string localName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string LocalName {
+      get { return localName_; }
+      set {
+        localName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -274,6 +302,8 @@ namespace Viam.Common.V1 {
       if (Type != other.Type) return false;
       if (Subtype != other.Subtype) return false;
       if (Name != other.Name) return false;
+      if(!remotePath_.Equals(other.remotePath_)) return false;
+      if (LocalName != other.LocalName) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -285,6 +315,8 @@ namespace Viam.Common.V1 {
       if (Type.Length != 0) hash ^= Type.GetHashCode();
       if (Subtype.Length != 0) hash ^= Subtype.GetHashCode();
       if (Name.Length != 0) hash ^= Name.GetHashCode();
+      hash ^= remotePath_.GetHashCode();
+      if (LocalName.Length != 0) hash ^= LocalName.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -319,6 +351,11 @@ namespace Viam.Common.V1 {
         output.WriteRawTag(34);
         output.WriteString(Name);
       }
+      remotePath_.WriteTo(output, _repeated_remotePath_codec);
+      if (LocalName.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(LocalName);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -345,6 +382,11 @@ namespace Viam.Common.V1 {
         output.WriteRawTag(34);
         output.WriteString(Name);
       }
+      remotePath_.WriteTo(ref output, _repeated_remotePath_codec);
+      if (LocalName.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(LocalName);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -366,6 +408,10 @@ namespace Viam.Common.V1 {
       }
       if (Name.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      size += remotePath_.CalculateSize(_repeated_remotePath_codec);
+      if (LocalName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LocalName);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -391,6 +437,10 @@ namespace Viam.Common.V1 {
       if (other.Name.Length != 0) {
         Name = other.Name;
       }
+      remotePath_.Add(other.remotePath_);
+      if (other.LocalName.Length != 0) {
+        LocalName = other.LocalName;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -402,7 +452,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -422,6 +476,14 @@ namespace Viam.Common.V1 {
             Name = input.ReadString();
             break;
           }
+          case 42: {
+            remotePath_.AddEntriesFrom(input, _repeated_remotePath_codec);
+            break;
+          }
+          case 50: {
+            LocalName = input.ReadString();
+            break;
+          }
         }
       }
     #endif
@@ -433,7 +495,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -453,390 +519,12 @@ namespace Viam.Common.V1 {
             Name = input.ReadString();
             break;
           }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class AnalogStatus : pb::IMessage<AnalogStatus>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<AnalogStatus> _parser = new pb::MessageParser<AnalogStatus>(() => new AnalogStatus());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<AnalogStatus> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[1]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public AnalogStatus() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public AnalogStatus(AnalogStatus other) : this() {
-      value_ = other.value_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public AnalogStatus Clone() {
-      return new AnalogStatus(this);
-    }
-
-    /// <summary>Field number for the "value" field.</summary>
-    public const int ValueFieldNumber = 1;
-    private int value_;
-    /// <summary>
-    /// Current value of the analog reader of a robot's board
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Value {
-      get { return value_; }
-      set {
-        value_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as AnalogStatus);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(AnalogStatus other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Value != other.Value) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Value != 0) hash ^= Value.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (Value != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Value);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Value != 0) {
-        output.WriteRawTag(8);
-        output.WriteInt32(Value);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (Value != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Value);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(AnalogStatus other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Value != 0) {
-        Value = other.Value;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            Value = input.ReadInt32();
+          case 42: {
+            remotePath_.AddEntriesFrom(ref input, _repeated_remotePath_codec);
             break;
           }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 8: {
-            Value = input.ReadInt32();
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class DigitalInterruptStatus : pb::IMessage<DigitalInterruptStatus>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<DigitalInterruptStatus> _parser = new pb::MessageParser<DigitalInterruptStatus>(() => new DigitalInterruptStatus());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<DigitalInterruptStatus> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[2]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public DigitalInterruptStatus() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public DigitalInterruptStatus(DigitalInterruptStatus other) : this() {
-      value_ = other.value_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public DigitalInterruptStatus Clone() {
-      return new DigitalInterruptStatus(this);
-    }
-
-    /// <summary>Field number for the "value" field.</summary>
-    public const int ValueFieldNumber = 1;
-    private long value_;
-    /// <summary>
-    /// Current value of the digital interrupt of a robot's board
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long Value {
-      get { return value_; }
-      set {
-        value_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as DigitalInterruptStatus);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(DigitalInterruptStatus other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Value != other.Value) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Value != 0L) hash ^= Value.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (Value != 0L) {
-        output.WriteRawTag(8);
-        output.WriteInt64(Value);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Value != 0L) {
-        output.WriteRawTag(8);
-        output.WriteInt64(Value);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (Value != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeInt64Size(Value);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(DigitalInterruptStatus other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Value != 0L) {
-        Value = other.Value;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 8: {
-            Value = input.ReadInt64();
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 8: {
-            Value = input.ReadInt64();
+          case 50: {
+            LocalName = input.ReadString();
             break;
           }
         }
@@ -871,7 +559,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[3]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1207,7 +895,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1250,7 +942,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1304,7 +1000,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[4]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1544,7 +1240,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1575,7 +1275,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1620,7 +1324,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[5]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1793,7 +1497,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1819,7 +1527,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1856,7 +1568,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2055,7 +1767,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2082,7 +1798,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2120,7 +1840,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2261,7 +1981,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2280,7 +2004,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2310,7 +2038,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2480,7 +2208,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2503,7 +2235,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2541,7 +2277,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2685,7 +2421,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2707,7 +2447,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2716,6 +2460,247 @@ namespace Viam.Common.V1 {
               DimsMm = new global::Viam.Common.V1.Vector3();
             }
             input.ReadMessage(DimsMm);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class Mesh : pb::IMessage<Mesh>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<Mesh> _parser = new pb::MessageParser<Mesh>(() => new Mesh());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<Mesh> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Mesh() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Mesh(Mesh other) : this() {
+      contentType_ = other.contentType_;
+      mesh_ = other.mesh_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Mesh Clone() {
+      return new Mesh(this);
+    }
+
+    /// <summary>Field number for the "content_type" field.</summary>
+    public const int ContentTypeFieldNumber = 1;
+    private string contentType_ = "";
+    /// <summary>
+    /// Content type of mesh (e.g. ply)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ContentType {
+      get { return contentType_; }
+      set {
+        contentType_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "mesh" field.</summary>
+    public const int Mesh_FieldNumber = 2;
+    private pb::ByteString mesh_ = pb::ByteString.Empty;
+    /// <summary>
+    /// Contents of mesh data in binary form defined by content_type
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString Mesh_ {
+      get { return mesh_; }
+      set {
+        mesh_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as Mesh);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(Mesh other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ContentType != other.ContentType) return false;
+      if (Mesh_ != other.Mesh_) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ContentType.Length != 0) hash ^= ContentType.GetHashCode();
+      if (Mesh_.Length != 0) hash ^= Mesh_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (ContentType.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ContentType);
+      }
+      if (Mesh_.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(Mesh_);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ContentType.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ContentType);
+      }
+      if (Mesh_.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteBytes(Mesh_);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (ContentType.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ContentType);
+      }
+      if (Mesh_.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(Mesh_);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(Mesh other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ContentType.Length != 0) {
+        ContentType = other.ContentType;
+      }
+      if (other.Mesh_.Length != 0) {
+        Mesh_ = other.Mesh_;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            ContentType = input.ReadString();
+            break;
+          }
+          case 18: {
+            Mesh_ = input.ReadBytes();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ContentType = input.ReadString();
+            break;
+          }
+          case 18: {
+            Mesh_ = input.ReadBytes();
             break;
           }
         }
@@ -2743,7 +2728,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2774,6 +2759,9 @@ namespace Viam.Common.V1 {
           break;
         case GeometryTypeOneofCase.Capsule:
           Capsule = other.Capsule.Clone();
+          break;
+        case GeometryTypeOneofCase.Mesh:
+          Mesh = other.Mesh.Clone();
           break;
       }
 
@@ -2837,6 +2825,18 @@ namespace Viam.Common.V1 {
       }
     }
 
+    /// <summary>Field number for the "mesh" field.</summary>
+    public const int MeshFieldNumber = 6;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Viam.Common.V1.Mesh Mesh {
+      get { return geometryTypeCase_ == GeometryTypeOneofCase.Mesh ? (global::Viam.Common.V1.Mesh) geometryType_ : null; }
+      set {
+        geometryType_ = value;
+        geometryTypeCase_ = value == null ? GeometryTypeOneofCase.None : GeometryTypeOneofCase.Mesh;
+      }
+    }
+
     /// <summary>Field number for the "label" field.</summary>
     public const int LabelFieldNumber = 4;
     private string label_ = "";
@@ -2859,6 +2859,7 @@ namespace Viam.Common.V1 {
       Sphere = 2,
       Box = 3,
       Capsule = 5,
+      Mesh = 6,
     }
     private GeometryTypeOneofCase geometryTypeCase_ = GeometryTypeOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2893,6 +2894,7 @@ namespace Viam.Common.V1 {
       if (!object.Equals(Sphere, other.Sphere)) return false;
       if (!object.Equals(Box, other.Box)) return false;
       if (!object.Equals(Capsule, other.Capsule)) return false;
+      if (!object.Equals(Mesh, other.Mesh)) return false;
       if (Label != other.Label) return false;
       if (GeometryTypeCase != other.GeometryTypeCase) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -2906,6 +2908,7 @@ namespace Viam.Common.V1 {
       if (geometryTypeCase_ == GeometryTypeOneofCase.Sphere) hash ^= Sphere.GetHashCode();
       if (geometryTypeCase_ == GeometryTypeOneofCase.Box) hash ^= Box.GetHashCode();
       if (geometryTypeCase_ == GeometryTypeOneofCase.Capsule) hash ^= Capsule.GetHashCode();
+      if (geometryTypeCase_ == GeometryTypeOneofCase.Mesh) hash ^= Mesh.GetHashCode();
       if (Label.Length != 0) hash ^= Label.GetHashCode();
       hash ^= (int) geometryTypeCase_;
       if (_unknownFields != null) {
@@ -2946,6 +2949,10 @@ namespace Viam.Common.V1 {
         output.WriteRawTag(42);
         output.WriteMessage(Capsule);
       }
+      if (geometryTypeCase_ == GeometryTypeOneofCase.Mesh) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Mesh);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2976,6 +2983,10 @@ namespace Viam.Common.V1 {
         output.WriteRawTag(42);
         output.WriteMessage(Capsule);
       }
+      if (geometryTypeCase_ == GeometryTypeOneofCase.Mesh) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Mesh);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2997,6 +3008,9 @@ namespace Viam.Common.V1 {
       }
       if (geometryTypeCase_ == GeometryTypeOneofCase.Capsule) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Capsule);
+      }
+      if (geometryTypeCase_ == GeometryTypeOneofCase.Mesh) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Mesh);
       }
       if (Label.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Label);
@@ -3041,6 +3055,12 @@ namespace Viam.Common.V1 {
           }
           Capsule.MergeFrom(other.Capsule);
           break;
+        case GeometryTypeOneofCase.Mesh:
+          if (Mesh == null) {
+            Mesh = new global::Viam.Common.V1.Mesh();
+          }
+          Mesh.MergeFrom(other.Mesh);
+          break;
       }
 
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -3054,7 +3074,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3096,6 +3120,15 @@ namespace Viam.Common.V1 {
             Capsule = subBuilder;
             break;
           }
+          case 50: {
+            global::Viam.Common.V1.Mesh subBuilder = new global::Viam.Common.V1.Mesh();
+            if (geometryTypeCase_ == GeometryTypeOneofCase.Mesh) {
+              subBuilder.MergeFrom(Mesh);
+            }
+            input.ReadMessage(subBuilder);
+            Mesh = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -3107,7 +3140,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3149,6 +3186,15 @@ namespace Viam.Common.V1 {
             Capsule = subBuilder;
             break;
           }
+          case 50: {
+            global::Viam.Common.V1.Mesh subBuilder = new global::Viam.Common.V1.Mesh();
+            if (geometryTypeCase_ == GeometryTypeOneofCase.Mesh) {
+              subBuilder.MergeFrom(Mesh);
+            }
+            input.ReadMessage(subBuilder);
+            Mesh = subBuilder;
+            break;
+          }
         }
       }
     }
@@ -3175,7 +3221,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3340,7 +3386,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3363,7 +3413,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3401,7 +3455,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3580,7 +3634,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3606,7 +3664,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3643,7 +3705,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3813,7 +3875,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3836,7 +3902,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3856,25 +3926,24 @@ namespace Viam.Common.V1 {
   }
 
   /// <summary>
-  /// GeoObstacle contains information about the geometric structure of an obstacle and the location of the obstacle,
-  /// captured in latitude and longitude.
+  /// GeoGeometry contains information describing Geometry(s) that is located at a GeoPoint
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class GeoObstacle : pb::IMessage<GeoObstacle>
+  public sealed partial class GeoGeometry : pb::IMessage<GeoGeometry>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<GeoObstacle> _parser = new pb::MessageParser<GeoObstacle>(() => new GeoObstacle());
+    private static readonly pb::MessageParser<GeoGeometry> _parser = new pb::MessageParser<GeoGeometry>(() => new GeoGeometry());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<GeoObstacle> Parser { get { return _parser; } }
+    public static pb::MessageParser<GeoGeometry> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3885,7 +3954,7 @@ namespace Viam.Common.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GeoObstacle() {
+    public GeoGeometry() {
       OnConstruction();
     }
 
@@ -3893,7 +3962,7 @@ namespace Viam.Common.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GeoObstacle(GeoObstacle other) : this() {
+    public GeoGeometry(GeoGeometry other) : this() {
       location_ = other.location_ != null ? other.location_.Clone() : null;
       geometries_ = other.geometries_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -3901,15 +3970,15 @@ namespace Viam.Common.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GeoObstacle Clone() {
-      return new GeoObstacle(this);
+    public GeoGeometry Clone() {
+      return new GeoGeometry(this);
     }
 
     /// <summary>Field number for the "location" field.</summary>
     public const int LocationFieldNumber = 1;
     private global::Viam.Common.V1.GeoPoint location_;
     /// <summary>
-    /// Location of the obstacle
+    /// Location of the geometry
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3926,7 +3995,7 @@ namespace Viam.Common.V1 {
         = pb::FieldCodec.ForMessage(18, global::Viam.Common.V1.Geometry.Parser);
     private readonly pbc::RepeatedField<global::Viam.Common.V1.Geometry> geometries_ = new pbc::RepeatedField<global::Viam.Common.V1.Geometry>();
     /// <summary>
-    /// Geometries that describe the obstacle, where embedded Pose data is with respect to the specified location
+    /// Geometries associated with the location, where embedded Pose data is with respect to the specified location
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -3937,12 +4006,12 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as GeoObstacle);
+      return Equals(other as GeoGeometry);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(GeoObstacle other) {
+    public bool Equals(GeoGeometry other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -4020,7 +4089,7 @@ namespace Viam.Common.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(GeoObstacle other) {
+    public void MergeFrom(GeoGeometry other) {
       if (other == null) {
         return;
       }
@@ -4042,7 +4111,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4068,7 +4141,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4110,7 +4187,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[15]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4321,7 +4398,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4354,7 +4435,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4403,7 +4488,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[16]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4454,7 +4539,8 @@ namespace Viam.Common.V1 {
         = pb::FieldCodec.ForMessage(26, global::Viam.Common.V1.Transform.Parser);
     private readonly pbc::RepeatedField<global::Viam.Common.V1.Transform> transforms_ = new pbc::RepeatedField<global::Viam.Common.V1.Transform>();
     /// <summary>
-    /// a list of Transforms, optionally with geometries. Used as supplemental transforms to transform a pose from one reference frame to another, or to attach moving geometries to the frame system. This field is optional
+    /// a list of Transforms, optionally with geometries. Used as supplemental transforms to transform a pose from one reference frame to
+    /// another, or to attach moving geometries to the frame system. This field is optional
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -4557,7 +4643,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4580,7 +4670,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4617,7 +4711,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[17]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4758,7 +4852,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4777,7 +4875,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4807,7 +4909,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[18]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4957,7 +5059,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4979,7 +5085,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -5015,7 +5125,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[19]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5188,7 +5298,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -5214,7 +5328,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -5254,7 +5372,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[20]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5398,7 +5516,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -5420,7 +5542,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -5453,7 +5579,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[21]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5632,7 +5758,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -5658,7 +5788,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -5695,7 +5829,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[22]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[21]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5872,7 +6006,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -5895,7 +6033,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -5929,7 +6071,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[23]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[22]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6108,7 +6250,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -6134,7 +6280,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -6171,7 +6321,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[24]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[23]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6304,7 +6454,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -6323,7 +6477,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -6353,7 +6511,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[25]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[24]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6532,7 +6690,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -6558,7 +6720,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -6595,7 +6761,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[26]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[25]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6725,7 +6891,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -6744,7 +6914,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -6774,7 +6948,7 @@ namespace Viam.Common.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[27]; }
+      get { return global::Viam.Common.V1.CommonReflection.Descriptor.MessageTypes[26]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7113,7 +7287,11 @@ namespace Viam.Common.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -7166,7 +7344,11 @@ namespace Viam.Common.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

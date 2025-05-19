@@ -1,16 +1,15 @@
-﻿using System;
-using System.Threading.Tasks;
-
-using Grpc.Core;
-
+﻿using Grpc.Core;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
 using Viam.Common.V1;
 using Viam.Core.Logging;
 using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.Sensor
 {
-    internal class SensorService(ILogger<SensorService> logger) : Component.Sensor.V1.SensorService.SensorServiceBase, IServiceBase
+    internal class SensorService(ILogger<SensorService> logger)
+        : Component.Sensor.V1.SensorService.SensorServiceBase, IServiceBase
     {
         public static Service ServiceName => Service.SensorService;
         public static SubType SubType { get; } = SubType.Sensor;
@@ -22,9 +21,9 @@ namespace Viam.Core.Resources.Components.Sensor
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ISensor)context.UserState["resource"];
                 var res = await resource.DoCommand(request.Command.ToDictionary(),
-                                                   context.Deadline.ToTimeout(),
-                                                   context.CancellationToken)
-                                        .ConfigureAwait(false);
+                        context.Deadline.ToTimeout(),
+                        context.CancellationToken)
+                    .ConfigureAwait(false);
 
                 var response = new DoCommandResponse() { Result = res.ToStruct() };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -37,13 +36,16 @@ namespace Viam.Core.Resources.Components.Sensor
             }
         }
 
-        public override async Task<GetReadingsResponse> GetReadings(GetReadingsRequest request, ServerCallContext context)
+        public override async Task<GetReadingsResponse> GetReadings(GetReadingsRequest request,
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ISensor)context.UserState["resource"];
-                var res = await resource.GetReadings(request.Extra.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                var res = await resource
+                    .GetReadings(request.Extra.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken)
+                    .ConfigureAwait(false);
 
                 var response = new GetReadingsResponse();
                 response.Readings.Add(res);

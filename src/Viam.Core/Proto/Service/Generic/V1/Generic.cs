@@ -30,8 +30,11 @@ namespace Viam.Service.Generic.V1 {
             "CglEb0NvbW1hbmQSIC52aWFtLmNvbW1vbi52MS5Eb0NvbW1hbmRSZXF1ZXN0",
             "GiEudmlhbS5jb21tb24udjEuRG9Db21tYW5kUmVzcG9uc2UiNoLT5JMCMCIu",
             "L3ZpYW0vYXBpL3YxL3NlcnZpY2UvZ2VuZXJpYy97bmFtZX0vZG9fY29tbWFu",
-            "ZEJBChtjb20udmlhbS5zZXJ2aWNlLmdlbmVyaWMudjFaImdvLnZpYW0uY29t",
-            "L2FwaS9zZXJ2aWNlL2dlbmVyaWMvdjFiBnByb3RvMw=="));
+            "ZELOAQobY29tLnZpYW0uc2VydmljZS5nZW5lcmljLnYxQgxHZW5lcmljUHJv",
+            "dG9QAVoiZ28udmlhbS5jb20vYXBpL3NlcnZpY2UvZ2VuZXJpYy92MaICA1ZT",
+            "R6oCF1ZpYW0uU2VydmljZS5HZW5lcmljLlYxygIXVmlhbVxTZXJ2aWNlXEdl",
+            "bmVyaWNcVjHiAiNWaWFtXFNlcnZpY2VcR2VuZXJpY1xWMVxHUEJNZXRhZGF0",
+            "YeoCGlZpYW06OlNlcnZpY2U6OkdlbmVyaWM6OlYxYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, null));

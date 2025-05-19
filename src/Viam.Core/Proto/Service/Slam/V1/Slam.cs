@@ -26,59 +26,59 @@ namespace Viam.Service.Slam.V1 {
           string.Concat(
             "ChpzZXJ2aWNlL3NsYW0vdjEvc2xhbS5wcm90bxIUdmlhbS5zZXJ2aWNlLnNs",
             "YW0udjEaFmNvbW1vbi92MS9jb21tb24ucHJvdG8aHGdvb2dsZS9hcGkvYW5u",
-            "b3RhdGlvbnMucHJvdG8aHGdvb2dsZS9wcm90b2J1Zi9zdHJ1Y3QucHJvdG8i",
-            "KAoSR2V0UG9zaXRpb25SZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUinwEK",
-            "E0dldFBvc2l0aW9uUmVzcG9uc2USKAoEcG9zZRgBIAEoCzIULnZpYW0uY29t",
-            "bW9uLnYxLlBvc2VSBHBvc2USLwoTY29tcG9uZW50X3JlZmVyZW5jZRgCIAEo",
-            "CVISY29tcG9uZW50UmVmZXJlbmNlEi0KBWV4dHJhGGMgASgLMhcuZ29vZ2xl",
-            "LnByb3RvYnVmLlN0cnVjdFIFZXh0cmEidAoXR2V0UG9pbnRDbG91ZE1hcFJl",
-            "cXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZRIvChFyZXR1cm5fZWRpdGVkX21h",
-            "cBgCIAEoCEgAUg9yZXR1cm5FZGl0ZWRNYXCIAQFCFAoSX3JldHVybl9lZGl0",
-            "ZWRfbWFwIk0KGEdldFBvaW50Q2xvdWRNYXBSZXNwb25zZRIxChVwb2ludF9j",
-            "bG91ZF9wY2RfY2h1bmsYASABKAxSEnBvaW50Q2xvdWRQY2RDaHVuayItChdH",
-            "ZXRJbnRlcm5hbFN0YXRlUmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lIkwK",
-            "GEdldEludGVybmFsU3RhdGVSZXNwb25zZRIwChRpbnRlcm5hbF9zdGF0ZV9j",
-            "aHVuaxgBIAEoDFISaW50ZXJuYWxTdGF0ZUNodW5rIioKFEdldFByb3BlcnRp",
-            "ZXNSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUimgIKFUdldFByb3BlcnRp",
-            "ZXNSZXNwb25zZRIdCgpjbG91ZF9zbGFtGAEgASgIUgljbG91ZFNsYW0SRAoM",
-            "bWFwcGluZ19tb2RlGAIgASgOMiEudmlhbS5zZXJ2aWNlLnNsYW0udjEuTWFw",
-            "cGluZ01vZGVSC21hcHBpbmdNb2RlEjwKGGludGVybmFsX3N0YXRlX2ZpbGVf",
-            "dHlwZRgDIAEoCUgAUhVpbnRlcm5hbFN0YXRlRmlsZVR5cGWIAQESQQoLc2Vu",
-            "c29yX2luZm8YBCADKAsyIC52aWFtLnNlcnZpY2Uuc2xhbS52MS5TZW5zb3JJ",
-            "bmZvUgpzZW5zb3JJbmZvQhsKGV9pbnRlcm5hbF9zdGF0ZV9maWxlX3R5cGUi",
-            "VgoKU2Vuc29ySW5mbxISCgRuYW1lGAEgASgJUgRuYW1lEjQKBHR5cGUYAiAB",
-            "KA4yIC52aWFtLnNlcnZpY2Uuc2xhbS52MS5TZW5zb3JUeXBlUgR0eXBlKpIB",
-            "CgtNYXBwaW5nTW9kZRIcChhNQVBQSU5HX01PREVfVU5TUEVDSUZJRUQQABIf",
-            "ChtNQVBQSU5HX01PREVfQ1JFQVRFX05FV19NQVAQARIeChpNQVBQSU5HX01P",
-            "REVfTE9DQUxJWkVfT05MWRACEiQKIE1BUFBJTkdfTU9ERV9VUERBVEVfRVhJ",
-            "U1RJTkdfTUFQEAMqYgoKU2Vuc29yVHlwZRIbChdTRU5TT1JfVFlQRV9VTlNQ",
-            "RUNJRklFRBAAEhYKElNFTlNPUl9UWVBFX0NBTUVSQRABEh8KG1NFTlNPUl9U",
-            "WVBFX01PVkVNRU5UX1NFTlNPUhACMqwGCgtTTEFNU2VydmljZRKVAQoLR2V0",
-            "UG9zaXRpb24SKC52aWFtLnNlcnZpY2Uuc2xhbS52MS5HZXRQb3NpdGlvblJl",
-            "cXVlc3QaKS52aWFtLnNlcnZpY2Uuc2xhbS52MS5HZXRQb3NpdGlvblJlc3Bv",
-            "bnNlIjGC0+STAisSKS92aWFtL2FwaS92MS9zZXJ2aWNlL3NsYW0ve25hbWV9",
-            "L3Bvc2l0aW9uEq0BChBHZXRQb2ludENsb3VkTWFwEi0udmlhbS5zZXJ2aWNl",
-            "LnNsYW0udjEuR2V0UG9pbnRDbG91ZE1hcFJlcXVlc3QaLi52aWFtLnNlcnZp",
-            "Y2Uuc2xhbS52MS5HZXRQb2ludENsb3VkTWFwUmVzcG9uc2UiOILT5JMCMhIw",
-            "L3ZpYW0vYXBpL3YxL3NlcnZpY2Uvc2xhbS97bmFtZX0vcG9pbnRfY2xvdWRf",
-            "bWFwMAESrAEKEEdldEludGVybmFsU3RhdGUSLS52aWFtLnNlcnZpY2Uuc2xh",
-            "bS52MS5HZXRJbnRlcm5hbFN0YXRlUmVxdWVzdBouLnZpYW0uc2VydmljZS5z",
-            "bGFtLnYxLkdldEludGVybmFsU3RhdGVSZXNwb25zZSI3gtPkkwIxEi8vdmlh",
-            "bS9hcGkvdjEvc2VydmljZS9zbGFtL3tuYW1lfS9pbnRlcm5hbF9zdGF0ZTAB",
-            "Ep0BCg1HZXRQcm9wZXJ0aWVzEioudmlhbS5zZXJ2aWNlLnNsYW0udjEuR2V0",
-            "UHJvcGVydGllc1JlcXVlc3QaKy52aWFtLnNlcnZpY2Uuc2xhbS52MS5HZXRQ",
-            "cm9wZXJ0aWVzUmVzcG9uc2UiM4LT5JMCLRIrL3ZpYW0vYXBpL3YxL3NlcnZp",
-            "Y2Uvc2xhbS97bmFtZX0vcHJvcGVydGllcxKFAQoJRG9Db21tYW5kEiAudmlh",
-            "bS5jb21tb24udjEuRG9Db21tYW5kUmVxdWVzdBohLnZpYW0uY29tbW9uLnYx",
-            "LkRvQ29tbWFuZFJlc3BvbnNlIjOC0+STAi0iKy92aWFtL2FwaS92MS9zZXJ2",
-            "aWNlL3NsYW0ve25hbWV9L2RvX2NvbW1hbmRCOwoYY29tLnZpYW0uc2Vydmlj",
-            "ZS5zbGFtLnYxWh9nby52aWFtLmNvbS9hcGkvc2VydmljZS9zbGFtL3YxYgZw",
+            "b3RhdGlvbnMucHJvdG8iKAoSR2V0UG9zaXRpb25SZXF1ZXN0EhIKBG5hbWUY",
+            "ASABKAlSBG5hbWUiPwoTR2V0UG9zaXRpb25SZXNwb25zZRIoCgRwb3NlGAEg",
+            "ASgLMhQudmlhbS5jb21tb24udjEuUG9zZVIEcG9zZSJ0ChdHZXRQb2ludENs",
+            "b3VkTWFwUmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEi8KEXJldHVybl9l",
+            "ZGl0ZWRfbWFwGAIgASgISABSD3JldHVybkVkaXRlZE1hcIgBAUIUChJfcmV0",
+            "dXJuX2VkaXRlZF9tYXAiTQoYR2V0UG9pbnRDbG91ZE1hcFJlc3BvbnNlEjEK",
+            "FXBvaW50X2Nsb3VkX3BjZF9jaHVuaxgBIAEoDFIScG9pbnRDbG91ZFBjZENo",
+            "dW5rIi0KF0dldEludGVybmFsU3RhdGVSZXF1ZXN0EhIKBG5hbWUYASABKAlS",
+            "BG5hbWUiTAoYR2V0SW50ZXJuYWxTdGF0ZVJlc3BvbnNlEjAKFGludGVybmFs",
+            "X3N0YXRlX2NodW5rGAEgASgMUhJpbnRlcm5hbFN0YXRlQ2h1bmsiKgoUR2V0",
+            "UHJvcGVydGllc1JlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZSKaAgoVR2V0",
+            "UHJvcGVydGllc1Jlc3BvbnNlEh0KCmNsb3VkX3NsYW0YASABKAhSCWNsb3Vk",
+            "U2xhbRJECgxtYXBwaW5nX21vZGUYAiABKA4yIS52aWFtLnNlcnZpY2Uuc2xh",
+            "bS52MS5NYXBwaW5nTW9kZVILbWFwcGluZ01vZGUSPAoYaW50ZXJuYWxfc3Rh",
+            "dGVfZmlsZV90eXBlGAMgASgJSABSFWludGVybmFsU3RhdGVGaWxlVHlwZYgB",
+            "ARJBCgtzZW5zb3JfaW5mbxgEIAMoCzIgLnZpYW0uc2VydmljZS5zbGFtLnYx",
+            "LlNlbnNvckluZm9SCnNlbnNvckluZm9CGwoZX2ludGVybmFsX3N0YXRlX2Zp",
+            "bGVfdHlwZSJWCgpTZW5zb3JJbmZvEhIKBG5hbWUYASABKAlSBG5hbWUSNAoE",
+            "dHlwZRgCIAEoDjIgLnZpYW0uc2VydmljZS5zbGFtLnYxLlNlbnNvclR5cGVS",
+            "BHR5cGUqkgEKC01hcHBpbmdNb2RlEhwKGE1BUFBJTkdfTU9ERV9VTlNQRUNJ",
+            "RklFRBAAEh8KG01BUFBJTkdfTU9ERV9DUkVBVEVfTkVXX01BUBABEh4KGk1B",
+            "UFBJTkdfTU9ERV9MT0NBTElaRV9PTkxZEAISJAogTUFQUElOR19NT0RFX1VQ",
+            "REFURV9FWElTVElOR19NQVAQAypiCgpTZW5zb3JUeXBlEhsKF1NFTlNPUl9U",
+            "WVBFX1VOU1BFQ0lGSUVEEAASFgoSU0VOU09SX1RZUEVfQ0FNRVJBEAESHwob",
+            "U0VOU09SX1RZUEVfTU9WRU1FTlRfU0VOU09SEAIyrAYKC1NMQU1TZXJ2aWNl",
+            "EpUBCgtHZXRQb3NpdGlvbhIoLnZpYW0uc2VydmljZS5zbGFtLnYxLkdldFBv",
+            "c2l0aW9uUmVxdWVzdBopLnZpYW0uc2VydmljZS5zbGFtLnYxLkdldFBvc2l0",
+            "aW9uUmVzcG9uc2UiMYLT5JMCKxIpL3ZpYW0vYXBpL3YxL3NlcnZpY2Uvc2xh",
+            "bS97bmFtZX0vcG9zaXRpb24SrQEKEEdldFBvaW50Q2xvdWRNYXASLS52aWFt",
+            "LnNlcnZpY2Uuc2xhbS52MS5HZXRQb2ludENsb3VkTWFwUmVxdWVzdBouLnZp",
+            "YW0uc2VydmljZS5zbGFtLnYxLkdldFBvaW50Q2xvdWRNYXBSZXNwb25zZSI4",
+            "gtPkkwIyEjAvdmlhbS9hcGkvdjEvc2VydmljZS9zbGFtL3tuYW1lfS9wb2lu",
+            "dF9jbG91ZF9tYXAwARKsAQoQR2V0SW50ZXJuYWxTdGF0ZRItLnZpYW0uc2Vy",
+            "dmljZS5zbGFtLnYxLkdldEludGVybmFsU3RhdGVSZXF1ZXN0Gi4udmlhbS5z",
+            "ZXJ2aWNlLnNsYW0udjEuR2V0SW50ZXJuYWxTdGF0ZVJlc3BvbnNlIjeC0+ST",
+            "AjESLy92aWFtL2FwaS92MS9zZXJ2aWNlL3NsYW0ve25hbWV9L2ludGVybmFs",
+            "X3N0YXRlMAESnQEKDUdldFByb3BlcnRpZXMSKi52aWFtLnNlcnZpY2Uuc2xh",
+            "bS52MS5HZXRQcm9wZXJ0aWVzUmVxdWVzdBorLnZpYW0uc2VydmljZS5zbGFt",
+            "LnYxLkdldFByb3BlcnRpZXNSZXNwb25zZSIzgtPkkwItEisvdmlhbS9hcGkv",
+            "djEvc2VydmljZS9zbGFtL3tuYW1lfS9wcm9wZXJ0aWVzEoUBCglEb0NvbW1h",
+            "bmQSIC52aWFtLmNvbW1vbi52MS5Eb0NvbW1hbmRSZXF1ZXN0GiEudmlhbS5j",
+            "b21tb24udjEuRG9Db21tYW5kUmVzcG9uc2UiM4LT5JMCLSIrL3ZpYW0vYXBp",
+            "L3YxL3NlcnZpY2Uvc2xhbS97bmFtZX0vZG9fY29tbWFuZEK5AQoYY29tLnZp",
+            "YW0uc2VydmljZS5zbGFtLnYxQglTbGFtUHJvdG9QAVofZ28udmlhbS5jb20v",
+            "YXBpL3NlcnZpY2Uvc2xhbS92MaICA1ZTU6oCFFZpYW0uU2VydmljZS5TbGFt",
+            "LlYxygIUVmlhbVxTZXJ2aWNlXFNsYW1cVjHiAiBWaWFtXFNlcnZpY2VcU2xh",
+            "bVxWMVxHUEJNZXRhZGF0YeoCF1ZpYW06OlNlcnZpY2U6OlNsYW06OlYxYgZw",
             "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Viam.Service.Slam.V1.MappingMode), typeof(global::Viam.Service.Slam.V1.SensorType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Slam.V1.GetPositionRequest), global::Viam.Service.Slam.V1.GetPositionRequest.Parser, new[]{ "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Slam.V1.GetPositionResponse), global::Viam.Service.Slam.V1.GetPositionResponse.Parser, new[]{ "Pose", "ComponentReference", "Extra" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Slam.V1.GetPositionResponse), global::Viam.Service.Slam.V1.GetPositionResponse.Parser, new[]{ "Pose" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Slam.V1.GetPointCloudMapRequest), global::Viam.Service.Slam.V1.GetPointCloudMapRequest.Parser, new[]{ "Name", "ReturnEditedMap" }, new[]{ "ReturnEditedMap" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Slam.V1.GetPointCloudMapResponse), global::Viam.Service.Slam.V1.GetPointCloudMapResponse.Parser, new[]{ "PointCloudPcdChunk" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Slam.V1.GetInternalStateRequest), global::Viam.Service.Slam.V1.GetInternalStateRequest.Parser, new[]{ "Name" }, null, null, null, null),
@@ -272,7 +272,11 @@ namespace Viam.Service.Slam.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -291,7 +295,11 @@ namespace Viam.Service.Slam.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -342,8 +350,6 @@ namespace Viam.Service.Slam.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetPositionResponse(GetPositionResponse other) : this() {
       pose_ = other.pose_ != null ? other.pose_.Clone() : null;
-      componentReference_ = other.componentReference_;
-      extra_ = other.extra_ != null ? other.extra_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -368,36 +374,6 @@ namespace Viam.Service.Slam.V1 {
       }
     }
 
-    /// <summary>Field number for the "component_reference" field.</summary>
-    public const int ComponentReferenceFieldNumber = 2;
-    private string componentReference_ = "";
-    /// <summary>
-    /// This is usually the name of the camera that is in the SLAM config
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string ComponentReference {
-      get { return componentReference_; }
-      set {
-        componentReference_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "extra" field.</summary>
-    public const int ExtraFieldNumber = 99;
-    private global::Google.Protobuf.WellKnownTypes.Struct extra_;
-    /// <summary>
-    /// Additional information in the response
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Google.Protobuf.WellKnownTypes.Struct Extra {
-      get { return extra_; }
-      set {
-        extra_ = value;
-      }
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -414,8 +390,6 @@ namespace Viam.Service.Slam.V1 {
         return true;
       }
       if (!object.Equals(Pose, other.Pose)) return false;
-      if (ComponentReference != other.ComponentReference) return false;
-      if (!object.Equals(Extra, other.Extra)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -424,8 +398,6 @@ namespace Viam.Service.Slam.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (pose_ != null) hash ^= Pose.GetHashCode();
-      if (ComponentReference.Length != 0) hash ^= ComponentReference.GetHashCode();
-      if (extra_ != null) hash ^= Extra.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -448,14 +420,6 @@ namespace Viam.Service.Slam.V1 {
         output.WriteRawTag(10);
         output.WriteMessage(Pose);
       }
-      if (ComponentReference.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(ComponentReference);
-      }
-      if (extra_ != null) {
-        output.WriteRawTag(154, 6);
-        output.WriteMessage(Extra);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -470,14 +434,6 @@ namespace Viam.Service.Slam.V1 {
         output.WriteRawTag(10);
         output.WriteMessage(Pose);
       }
-      if (ComponentReference.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(ComponentReference);
-      }
-      if (extra_ != null) {
-        output.WriteRawTag(154, 6);
-        output.WriteMessage(Extra);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -490,12 +446,6 @@ namespace Viam.Service.Slam.V1 {
       int size = 0;
       if (pose_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Pose);
-      }
-      if (ComponentReference.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(ComponentReference);
-      }
-      if (extra_ != null) {
-        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Extra);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -515,15 +465,6 @@ namespace Viam.Service.Slam.V1 {
         }
         Pose.MergeFrom(other.Pose);
       }
-      if (other.ComponentReference.Length != 0) {
-        ComponentReference = other.ComponentReference;
-      }
-      if (other.extra_ != null) {
-        if (extra_ == null) {
-          Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
-        }
-        Extra.MergeFrom(other.Extra);
-      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -535,7 +476,11 @@ namespace Viam.Service.Slam.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -544,17 +489,6 @@ namespace Viam.Service.Slam.V1 {
               Pose = new global::Viam.Common.V1.Pose();
             }
             input.ReadMessage(Pose);
-            break;
-          }
-          case 18: {
-            ComponentReference = input.ReadString();
-            break;
-          }
-          case 794: {
-            if (extra_ == null) {
-              Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
-            }
-            input.ReadMessage(Extra);
             break;
           }
         }
@@ -568,7 +502,11 @@ namespace Viam.Service.Slam.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -577,17 +515,6 @@ namespace Viam.Service.Slam.V1 {
               Pose = new global::Viam.Common.V1.Pose();
             }
             input.ReadMessage(Pose);
-            break;
-          }
-          case 18: {
-            ComponentReference = input.ReadString();
-            break;
-          }
-          case 794: {
-            if (extra_ == null) {
-              Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
-            }
-            input.ReadMessage(Extra);
             break;
           }
         }
@@ -807,7 +734,11 @@ namespace Viam.Service.Slam.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -830,7 +761,11 @@ namespace Viam.Service.Slam.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -905,8 +840,8 @@ namespace Viam.Service.Slam.V1 {
     /// format where XY is the ground plane and positive Z is up, following
     /// the Right Hand Rule.
     ///
-    /// Read more about the pointcloud format here:
-    /// https://pointclouds.org/documentation/tutorials/pcd_file_format.html
+    /// Read more about the pointcloud format
+    /// [in the docs](https://pointclouds.org/documentation/tutorials/pcd_file_format.html)
     ///
     /// Viam expects pointcloud data with fields "x y z" or "x y z rgb", and for
     /// this to be specified in the pointcloud header in the FIELDS entry. If color
@@ -1025,7 +960,11 @@ namespace Viam.Service.Slam.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1044,7 +983,11 @@ namespace Viam.Service.Slam.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1218,7 +1161,11 @@ namespace Viam.Service.Slam.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1237,7 +1184,11 @@ namespace Viam.Service.Slam.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1412,7 +1363,11 @@ namespace Viam.Service.Slam.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1431,7 +1386,11 @@ namespace Viam.Service.Slam.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1605,7 +1564,11 @@ namespace Viam.Service.Slam.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1624,7 +1587,11 @@ namespace Viam.Service.Slam.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1888,7 +1855,11 @@ namespace Viam.Service.Slam.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1919,7 +1890,11 @@ namespace Viam.Service.Slam.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2131,7 +2106,11 @@ namespace Viam.Service.Slam.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2154,7 +2133,11 @@ namespace Viam.Service.Slam.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

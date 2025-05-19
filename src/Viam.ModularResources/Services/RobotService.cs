@@ -1,19 +1,15 @@
-﻿using Google.Protobuf.WellKnownTypes;
-
-using Grpc.Core;
-using Viam.Common.V1;
-using Viam.Core.Resources;
-using Viam.Core.Utils;
+﻿using Grpc.Core;
 using Viam.Robot.V1;
-
 using grpcRobotService = Viam.Robot.V1.RobotService;
 using Status = Grpc.Core.Status;
 
 namespace Viam.ModularResources.Services
 {
-    public class RobotService(IServiceProvider services, ILogger<RobotService> logger) : grpcRobotService.RobotServiceBase
+    public class RobotService(IServiceProvider services, ILogger<RobotService> logger)
+        : grpcRobotService.RobotServiceBase
     {
-        public override Task<ResourceNamesResponse> ResourceNames(ResourceNamesRequest request, ServerCallContext context)
+        public override Task<ResourceNamesResponse> ResourceNames(ResourceNamesRequest request,
+            ServerCallContext context)
         {
             var resp = new ResourceNamesResponse();
             // ReSharper disable once SuspiciousTypeConversion.Global
@@ -51,7 +47,8 @@ namespace Viam.ModularResources.Services
             return Task.FromResult(new GetStatusResponse());
         }
 
-        public override async Task StreamStatus(StreamStatusRequest request, IServerStreamWriter<StreamStatusResponse> responseStream, ServerCallContext context)
+        public override async Task StreamStatus(StreamStatusRequest request,
+            IServerStreamWriter<StreamStatusResponse> responseStream, ServerCallContext context)
         {
             //while (true)
             //{
@@ -106,11 +103,6 @@ namespace Viam.ModularResources.Services
 
         public override Task<TransformPoseResponse>
             TransformPose(TransformPoseRequest request, ServerCallContext context) =>
-            throw new RpcException(new Status(StatusCode.Unimplemented, "Method is not implemented"));
-
-        public override Task<DiscoverComponentsResponse> DiscoverComponents(
-            DiscoverComponentsRequest request,
-            ServerCallContext context) =>
             throw new RpcException(new Status(StatusCode.Unimplemented, "Method is not implemented"));
 
         public override Task<GetSessionsResponse>

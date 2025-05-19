@@ -1,10 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 
-using Viam.Core.Resources;
-using Viam.Core.Resources.Components;
-using Viam.Core.Resources.Components.Arm;
-using Viam.Core.Resources.Components.Sensor;
-
 namespace Viam.Core.Test.RegistryTests
 {
     public class RegistryTests
@@ -18,10 +13,10 @@ namespace Viam.Core.Test.RegistryTests
                 builder.SetMinimumLevel(LogLevel.Trace);
             });
 
-            var arm = Registry.GetResourceRegistrationBySubtype(ArmClient.SubType);
+            //var arm = Registry.GetResourceRegistrationBySubtype(ArmClient.SubType);
             //Assert.IsNotNull(arm);
 
-            var sensor = Registry.GetResourceRegistrationBySubtype(SensorClient.SubType);
+            //var sensor = Registry.GetResourceRegistrationBySubtype(SensorClient.SubType);
             //Assert.IsNotNull(sensor);
         }
     }

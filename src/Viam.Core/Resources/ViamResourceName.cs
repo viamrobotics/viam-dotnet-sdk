@@ -6,8 +6,11 @@ namespace Viam.Core.Resources
     {
         public SubType SubType { get; init; }
         public string Name { get; init; }
+
         public ViamResourceName(ResourceName resourceName)
-            : this(new SubType(resourceName.Namespace, resourceName.Type, resourceName.Subtype), resourceName.Name) { }
+            : this(new SubType(resourceName.Namespace, resourceName.Type, resourceName.Subtype), resourceName.Name)
+        {
+        }
 
         public ViamResourceName(SubType subtype, string name)
         {

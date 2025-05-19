@@ -36,9 +36,13 @@ namespace Viam.Service.Datamanager.V1 {
             "YW1hbmFnZXIve25hbWV9L2RhdGFzeW5jEowBCglEb0NvbW1hbmQSIC52aWFt",
             "LmNvbW1vbi52MS5Eb0NvbW1hbmRSZXF1ZXN0GiEudmlhbS5jb21tb24udjEu",
             "RG9Db21tYW5kUmVzcG9uc2UiOoLT5JMCNCIyL3ZpYW0vYXBpL3YxL3NlcnZp",
-            "Y2UvZGF0YW1hbmFnZXIve25hbWV9L2RvX2NvbW1hbmRCSQofY29tLnZpYW0u",
-            "c2VydmljZS5kYXRhbWFuYWdlci52MVomZ28udmlhbS5jb20vYXBpL3NlcnZp",
-            "Y2UvZGF0YW1hbmFnZXIvdjFiBnByb3RvMw=="));
+            "Y2UvZGF0YW1hbmFnZXIve25hbWV9L2RvX2NvbW1hbmRC6gEKH2NvbS52aWFt",
+            "LnNlcnZpY2UuZGF0YW1hbmFnZXIudjFCEERhdGFNYW5hZ2VyUHJvdG9QAVom",
+            "Z28udmlhbS5jb20vYXBpL3NlcnZpY2UvZGF0YW1hbmFnZXIvdjGiAgNWU0Sq",
+            "AhtWaWFtLlNlcnZpY2UuRGF0YW1hbmFnZXIuVjHKAhtWaWFtXFNlcnZpY2Vc",
+            "RGF0YW1hbmFnZXJcVjHiAidWaWFtXFNlcnZpY2VcRGF0YW1hbmFnZXJcVjFc",
+            "R1BCTWV0YWRhdGHqAh5WaWFtOjpTZXJ2aWNlOjpEYXRhbWFuYWdlcjo6VjFi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -241,7 +245,11 @@ namespace Viam.Service.Datamanager.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -267,7 +275,11 @@ namespace Viam.Service.Datamanager.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -416,7 +428,11 @@ namespace Viam.Service.Datamanager.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -431,7 +447,11 @@ namespace Viam.Service.Datamanager.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

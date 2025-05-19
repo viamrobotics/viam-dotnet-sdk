@@ -1,10 +1,9 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
-using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Motor.V1;
 using Viam.Core.Clients;
@@ -14,7 +13,8 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.Motor
 {
     public class MotorClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
-        ComponentBase<MotorClient, Component.Motor.V1.MotorService.MotorServiceClient>(resourceName, new Component.Motor.V1.MotorService.MotorServiceClient(channel)),
+        ComponentBase<MotorClient, Component.Motor.V1.MotorService.MotorServiceClient>(resourceName,
+            new Component.Motor.V1.MotorService.MotorServiceClient(channel)),
         IMotor
     {
         public static SubType SubType = SubType.FromRdkComponent("motor");
@@ -37,11 +37,11 @@ namespace Viam.Core.Resources.Components.Motor
             {
                 logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client
-                                .DoCommandAsync(
-                                    new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
-                                    deadline: timeout.ToDeadline(),
-                                    cancellationToken: cancellationToken)
-                                .ConfigureAwait(false);
+                    .DoCommandAsync(
+                        new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
                 logger.LogMethodInvocationSuccess(results: response);
@@ -56,17 +56,18 @@ namespace Viam.Core.Resources.Components.Motor
 
 
         public async ValueTask SetPower(double power,
-                                   IDictionary<string, object?>? extra = null,
-                                   TimeSpan? timeout = null,
-                                   CancellationToken cancellationToken = default)
+            IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, power]);
-                await Client.SetPowerAsync(new SetPowerRequest() { Name = Name, PowerPct = power, Extra = extra?.ToStruct() },
-                                           deadline: timeout.ToDeadline(),
-                                           cancellationToken: cancellationToken)
-                            .ConfigureAwait(false);
+                await Client.SetPowerAsync(
+                        new SetPowerRequest() { Name = Name, PowerPct = power, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
@@ -78,19 +79,20 @@ namespace Viam.Core.Resources.Components.Motor
 
 
         public async ValueTask GoFor(double rpm,
-                                     double revolutions,
-                                     IDictionary<string, object?>? extra = null,
-                                     TimeSpan? timeout = null,
-                                     CancellationToken cancellationToken = default)
+            double revolutions,
+            IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, rpm, revolutions]);
                 await Client.GoForAsync(
-                                new GoForRequest() { Name = Name, Revolutions = revolutions, Rpm = rpm, Extra = extra?.ToStruct() },
-                                deadline: timeout.ToDeadline(),
-                                cancellationToken: cancellationToken)
-                            .ConfigureAwait(false);
+                        new GoForRequest()
+                            { Name = Name, Revolutions = revolutions, Rpm = rpm, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
@@ -102,24 +104,24 @@ namespace Viam.Core.Resources.Components.Motor
 
 
         public async ValueTask GoTo(double rpm,
-                                    double positionRevolutions,
-                                    IDictionary<string, object?>? extra = null,
-                                    TimeSpan? timeout = null,
-                                    CancellationToken cancellationToken = default)
+            double positionRevolutions,
+            IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, rpm, positionRevolutions]);
                 await Client.GoToAsync(new GoToRequest()
-                {
-                    Name = Name,
-                    Rpm = rpm,
-                    PositionRevolutions = positionRevolutions,
-                    Extra = extra?.ToStruct()
-                },
-                                       deadline: timeout.ToDeadline(),
-                                       cancellationToken: cancellationToken)
-                            .ConfigureAwait(false);
+                        {
+                            Name = Name,
+                            Rpm = rpm,
+                            PositionRevolutions = positionRevolutions,
+                            Extra = extra?.ToStruct()
+                        },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
@@ -131,18 +133,18 @@ namespace Viam.Core.Resources.Components.Motor
 
 
         public async ValueTask ResetZeroPosition(double offset,
-                                                 IDictionary<string, object?>? extra = null,
-                                                 TimeSpan? timeout = null,
-                                                 CancellationToken cancellationToken = default)
+            IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, offset]);
                 await Client.ResetZeroPositionAsync(
-                                new ResetZeroPositionRequest() { Name = Name, Offset = offset, Extra = extra?.ToStruct() },
-                                deadline: timeout.ToDeadline(),
-                                cancellationToken: cancellationToken)
-                            .ConfigureAwait(false);
+                        new ResetZeroPositionRequest() { Name = Name, Offset = offset, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
@@ -154,16 +156,17 @@ namespace Viam.Core.Resources.Components.Motor
 
 
         public async ValueTask<double> GetPosition(IDictionary<string, object?>? extra = null,
-                                                   TimeSpan? timeout = null,
-                                                   CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetPositionAsync(new GetPositionRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                                        deadline: timeout.ToDeadline(),
-                                                        cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                var res = await Client.GetPositionAsync(
+                        new GetPositionRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess(results: res.Position);
                 return res.Position;
             }
@@ -176,16 +179,17 @@ namespace Viam.Core.Resources.Components.Motor
 
 
         public async ValueTask<Properties> GetProperties(IDictionary<string, object?>? extra = null,
-                                                         TimeSpan? timeout = null,
-                                                         CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetPropertiesAsync(new GetPropertiesRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                                          deadline: timeout.ToDeadline(),
-                                                          cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                var res = await Client.GetPropertiesAsync(
+                        new GetPropertiesRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
                 var props = new Properties(res.PositionReporting);
                 logger.LogMethodInvocationSuccess(results: props);
@@ -200,16 +204,16 @@ namespace Viam.Core.Resources.Components.Motor
 
 
         public async ValueTask Stop(IDictionary<string, object?>? extra = null,
-                                    TimeSpan? timeout = null,
-                                    CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                       deadline: timeout.ToDeadline(),
-                                       cancellationToken: cancellationToken)
-                            .ConfigureAwait(false);
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
@@ -221,16 +225,16 @@ namespace Viam.Core.Resources.Components.Motor
 
 
         public async ValueTask<(bool IsOn, double PowerPct)> IsPowered(IDictionary<string, object?>? extra = null,
-                                                                       TimeSpan? timeout = null,
-                                                                       CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.IsPoweredAsync(new IsPoweredRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                                      deadline: timeout.ToDeadline(),
-                                                      cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess(results: [res.IsOn, res.PowerPct]);
                 return (res.IsOn, res.PowerPct);
             }
@@ -243,15 +247,15 @@ namespace Viam.Core.Resources.Components.Motor
 
 
         public async ValueTask<bool> IsMoving(TimeSpan? timeout = null,
-                                              CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.IsMovingAsync(new IsMovingRequest() { Name = Name },
-                                                     deadline: timeout.ToDeadline(),
-                                                     cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess(results: res.IsMoving);
                 return res.IsMoving;
             }
@@ -264,19 +268,20 @@ namespace Viam.Core.Resources.Components.Motor
 
 
         public async ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
-                                                         TimeSpan? timeout = null,
-                                                         CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetGeometriesAsync(new GetGeometriesRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                                          deadline: timeout.ToDeadline(),
-                                                          cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                var res = await Client.GetGeometriesAsync(
+                        new GetGeometriesRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
                 var geometries = res.Geometries.ToArray();
-                logger.LogMethodInvocationSuccess(results:geometries);
+                logger.LogMethodInvocationSuccess(results: geometries);
                 return geometries;
             }
             catch (Exception ex)

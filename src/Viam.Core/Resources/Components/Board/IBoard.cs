@@ -46,10 +46,10 @@ namespace Viam.Core.Resources.Components.Board
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> to use for the operation</param>
         /// <returns>A <see cref="ValueTask"/> that completes when the request completes</returns>
         ValueTask SetPowerModeAsync(PowerMode mode,
-                          TimeSpan duration,
-                          IDictionary<string, object?>? extra = null,
-                          TimeSpan? timeout = null,
-                          CancellationToken cancellationToken = default);
+            TimeSpan duration,
+            IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Write an analog value to an analog capable pin on the <see cref="BoardClient"/>
@@ -61,9 +61,9 @@ namespace Viam.Core.Resources.Components.Board
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> to use for the operation</param>
         /// <returns>A <see cref="ValueTask"/> that completes when the request completes</returns>
         ValueTask WriteAnalogAsync(string pin,
-                                   int value,
-                                   IDictionary<string, object?>? extra = null,
-                                   TimeSpan? timeout = null,
-                                   CancellationToken cancellationToken = default);
+            int value,
+            IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default);
     }
 }

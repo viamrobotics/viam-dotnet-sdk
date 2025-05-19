@@ -45,9 +45,13 @@ namespace Viam.Component.Posetracker.V1 {
             "L2RvX2NvbW1hbmQSmwEKDUdldEdlb21ldHJpZXMSJC52aWFtLmNvbW1vbi52",
             "MS5HZXRHZW9tZXRyaWVzUmVxdWVzdBolLnZpYW0uY29tbW9uLnYxLkdldEdl",
             "b21ldHJpZXNSZXNwb25zZSI9gtPkkwI3EjUvdmlhbS9hcGkvdjEvY29tcG9u",
-            "ZW50L3Bvc2VfdHJhY2tlci97bmFtZX0vZ2VvbWV0cmllc0I1ChVjb20udmlh",
-            "bS5jb21wb25lbnQudjFaHGdvLnZpYW0uY29tL2FwaS9jb21wb25lbnQvdjFi",
-            "BnByb3RvMw=="));
+            "ZW50L3Bvc2VfdHJhY2tlci97bmFtZX0vZ2VvbWV0cmllc0LqAQohY29tLnZp",
+            "YW0uY29tcG9uZW50LnBvc2V0cmFja2VyLnYxQhBQb3NlVHJhY2tlclByb3Rv",
+            "UAFaHGdvLnZpYW0uY29tL2FwaS9jb21wb25lbnQvdjGiAgNWQ1CqAh1WaWFt",
+            "LkNvbXBvbmVudC5Qb3NldHJhY2tlci5WMcoCHVZpYW1cQ29tcG9uZW50XFBv",
+            "c2V0cmFja2VyXFYx4gIpVmlhbVxDb21wb25lbnRcUG9zZXRyYWNrZXJcVjFc",
+            "R1BCTWV0YWRhdGHqAiBWaWFtOjpDb21wb25lbnQ6OlBvc2V0cmFja2VyOjpW",
+            "MWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -276,7 +280,11 @@ namespace Viam.Component.Posetracker.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -306,7 +314,11 @@ namespace Viam.Component.Posetracker.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -480,7 +492,11 @@ namespace Viam.Component.Posetracker.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -499,7 +515,11 @@ namespace Viam.Component.Posetracker.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

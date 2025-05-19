@@ -64,120 +64,124 @@ namespace Viam.Service.Motion.V1 {
             "ZWdzUGVyU2VjiAEBQiAKHl9wb3NpdGlvbl9wb2xsaW5nX2ZyZXF1ZW5jeV9o",
             "ekIgCh5fb2JzdGFjbGVfcG9sbGluZ19mcmVxdWVuY3lfaHpCEwoRX3BsYW5f",
             "ZGV2aWF0aW9uX21CEwoRX2xpbmVhcl9tX3Blcl9zZWNCFwoVX2FuZ3VsYXJf",
-            "ZGVnc19wZXJfc2VjIowEChJNb3ZlT25HbG9iZVJlcXVlc3QSEgoEbmFtZRgB",
+            "ZGVnc19wZXJfc2VjItQEChJNb3ZlT25HbG9iZVJlcXVlc3QSEgoEbmFtZRgB",
             "IAEoCVIEbmFtZRI6CgtkZXN0aW5hdGlvbhgCIAEoCzIYLnZpYW0uY29tbW9u",
             "LnYxLkdlb1BvaW50UgtkZXN0aW5hdGlvbhIdCgdoZWFkaW5nGAMgASgBSABS",
             "B2hlYWRpbmeIAQESQwoOY29tcG9uZW50X25hbWUYBCABKAsyHC52aWFtLmNv",
             "bW1vbi52MS5SZXNvdXJjZU5hbWVSDWNvbXBvbmVudE5hbWUSTgoUbW92ZW1l",
             "bnRfc2Vuc29yX25hbWUYBSABKAsyHC52aWFtLmNvbW1vbi52MS5SZXNvdXJj",
             "ZU5hbWVSEm1vdmVtZW50U2Vuc29yTmFtZRI5CglvYnN0YWNsZXMYBiADKAsy",
-            "Gy52aWFtLmNvbW1vbi52MS5HZW9PYnN0YWNsZVIJb2JzdGFjbGVzEmMKFG1v",
+            "Gy52aWFtLmNvbW1vbi52MS5HZW9HZW9tZXRyeVIJb2JzdGFjbGVzEmMKFG1v",
             "dGlvbl9jb25maWd1cmF0aW9uGAcgASgLMisudmlhbS5zZXJ2aWNlLm1vdGlv",
             "bi52MS5Nb3Rpb25Db25maWd1cmF0aW9uSAFSE21vdGlvbkNvbmZpZ3VyYXRp",
-            "b26IAQESLQoFZXh0cmEYYyABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0",
-            "UgVleHRyYUIKCghfaGVhZGluZ0IXChVfbW90aW9uX2NvbmZpZ3VyYXRpb24i",
-            "OAoTTW92ZU9uR2xvYmVSZXNwb25zZRIhCgxleGVjdXRpb25faWQYASABKAlS",
-            "C2V4ZWN1dGlvbklkIpkCCg5HZXRQb3NlUmVxdWVzdBISCgRuYW1lGAEgASgJ",
-            "UgRuYW1lEkMKDmNvbXBvbmVudF9uYW1lGAIgASgLMhwudmlhbS5jb21tb24u",
-            "djEuUmVzb3VyY2VOYW1lUg1jb21wb25lbnROYW1lEisKEWRlc3RpbmF0aW9u",
-            "X2ZyYW1lGAMgASgJUhBkZXN0aW5hdGlvbkZyYW1lElIKF3N1cHBsZW1lbnRh",
-            "bF90cmFuc2Zvcm1zGAQgAygLMhkudmlhbS5jb21tb24udjEuVHJhbnNmb3Jt",
-            "UhZzdXBwbGVtZW50YWxUcmFuc2Zvcm1zEi0KBWV4dHJhGGMgASgLMhcuZ29v",
-            "Z2xlLnByb3RvYnVmLlN0cnVjdFIFZXh0cmEiQgoPR2V0UG9zZVJlc3BvbnNl",
-            "Ei8KBHBvc2UYASABKAsyGy52aWFtLmNvbW1vbi52MS5Qb3NlSW5GcmFtZVIE",
-            "cG9zZSKZAQoPU3RvcFBsYW5SZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUS",
-            "QwoOY29tcG9uZW50X25hbWUYAiABKAsyHC52aWFtLmNvbW1vbi52MS5SZXNv",
-            "dXJjZU5hbWVSDWNvbXBvbmVudE5hbWUSLQoFZXh0cmEYYyABKAsyFy5nb29n",
-            "bGUucHJvdG9idWYuU3RydWN0UgVleHRyYSISChBTdG9wUGxhblJlc3BvbnNl",
-            "IogBChdMaXN0UGxhblN0YXR1c2VzUmVxdWVzdBISCgRuYW1lGAEgASgJUgRu",
-            "YW1lEioKEW9ubHlfYWN0aXZlX3BsYW5zGAIgASgIUg9vbmx5QWN0aXZlUGxh",
-            "bnMSLQoFZXh0cmEYYyABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0UgVl",
-            "eHRyYSJ5ChhMaXN0UGxhblN0YXR1c2VzUmVzcG9uc2USXQoWcGxhbl9zdGF0",
-            "dXNlc193aXRoX2lkcxgBIAMoCzIoLnZpYW0uc2VydmljZS5tb3Rpb24udjEu",
-            "UGxhblN0YXR1c1dpdGhJRFITcGxhblN0YXR1c2VzV2l0aElkcyL3AQoOR2V0",
-            "UGxhblJlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZRJDCg5jb21wb25lbnRf",
-            "bmFtZRgCIAEoCzIcLnZpYW0uY29tbW9uLnYxLlJlc291cmNlTmFtZVINY29t",
-            "cG9uZW50TmFtZRIkCg5sYXN0X3BsYW5fb25seRgDIAEoCFIMbGFzdFBsYW5P",
-            "bmx5EiYKDGV4ZWN1dGlvbl9pZBgEIAEoCUgAUgtleGVjdXRpb25JZIgBARIt",
-            "CgVleHRyYRhjIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4dHJh",
-            "Qg8KDV9leGVjdXRpb25faWQiwQEKD0dldFBsYW5SZXNwb25zZRJfChhjdXJy",
-            "ZW50X3BsYW5fd2l0aF9zdGF0dXMYASABKAsyJi52aWFtLnNlcnZpY2UubW90",
-            "aW9uLnYxLlBsYW5XaXRoU3RhdHVzUhVjdXJyZW50UGxhbldpdGhTdGF0dXMS",
-            "TQoOcmVwbGFuX2hpc3RvcnkYAiADKAsyJi52aWFtLnNlcnZpY2UubW90aW9u",
-            "LnYxLlBsYW5XaXRoU3RhdHVzUg1yZXBsYW5IaXN0b3J5IrMCCgtDb25zdHJh",
-            "aW50cxJVChFsaW5lYXJfY29uc3RyYWludBgBIAMoCzIoLnZpYW0uc2Vydmlj",
-            "ZS5tb3Rpb24udjEuTGluZWFyQ29uc3RyYWludFIQbGluZWFyQ29uc3RyYWlu",
-            "dBJkChZvcmllbnRhdGlvbl9jb25zdHJhaW50GAIgAygLMi0udmlhbS5zZXJ2",
-            "aWNlLm1vdGlvbi52MS5PcmllbnRhdGlvbkNvbnN0cmFpbnRSFW9yaWVudGF0",
-            "aW9uQ29uc3RyYWludBJnChdjb2xsaXNpb25fc3BlY2lmaWNhdGlvbhgDIAMo",
-            "CzIuLnZpYW0uc2VydmljZS5tb3Rpb24udjEuQ29sbGlzaW9uU3BlY2lmaWNh",
-            "dGlvblIWY29sbGlzaW9uU3BlY2lmaWNhdGlvbiK7AQoQTGluZWFyQ29uc3Ry",
-            "YWludBIvChFsaW5lX3RvbGVyYW5jZV9tbRgBIAEoAkgAUg9saW5lVG9sZXJh",
-            "bmNlTW2IAQESQQoab3JpZW50YXRpb25fdG9sZXJhbmNlX2RlZ3MYAiABKAJI",
-            "AVIYb3JpZW50YXRpb25Ub2xlcmFuY2VEZWdziAEBQhQKEl9saW5lX3RvbGVy",
-            "YW5jZV9tbUIdChtfb3JpZW50YXRpb25fdG9sZXJhbmNlX2RlZ3MieQoVT3Jp",
-            "ZW50YXRpb25Db25zdHJhaW50EkEKGm9yaWVudGF0aW9uX3RvbGVyYW5jZV9k",
-            "ZWdzGAEgASgCSABSGG9yaWVudGF0aW9uVG9sZXJhbmNlRGVnc4gBAUIdChtf",
-            "b3JpZW50YXRpb25fdG9sZXJhbmNlX2RlZ3MiwQEKFkNvbGxpc2lvblNwZWNp",
-            "ZmljYXRpb24SXQoGYWxsb3dzGAEgAygLMkUudmlhbS5zZXJ2aWNlLm1vdGlv",
-            "bi52MS5Db2xsaXNpb25TcGVjaWZpY2F0aW9uLkFsbG93ZWRGcmFtZUNvbGxp",
-            "c2lvbnNSBmFsbG93cxpIChZBbGxvd2VkRnJhbWVDb2xsaXNpb25zEhYKBmZy",
-            "YW1lMRgBIAEoCVIGZnJhbWUxEhYKBmZyYW1lMhgCIAEoCVIGZnJhbWUyIskB",
-            "Cg5QbGFuV2l0aFN0YXR1cxIwCgRwbGFuGAEgASgLMhwudmlhbS5zZXJ2aWNl",
-            "Lm1vdGlvbi52MS5QbGFuUgRwbGFuEjoKBnN0YXR1cxgCIAEoCzIiLnZpYW0u",
-            "c2VydmljZS5tb3Rpb24udjEuUGxhblN0YXR1c1IGc3RhdHVzEkkKDnN0YXR1",
-            "c19oaXN0b3J5GAMgAygLMiIudmlhbS5zZXJ2aWNlLm1vdGlvbi52MS5QbGFu",
-            "U3RhdHVzUg1zdGF0dXNIaXN0b3J5Is8BChBQbGFuU3RhdHVzV2l0aElEEhcK",
-            "B3BsYW5faWQYASABKAlSBnBsYW5JZBJDCg5jb21wb25lbnRfbmFtZRgCIAEo",
-            "CzIcLnZpYW0uY29tbW9uLnYxLlJlc291cmNlTmFtZVINY29tcG9uZW50TmFt",
-            "ZRIhCgxleGVjdXRpb25faWQYAyABKAlSC2V4ZWN1dGlvbklkEjoKBnN0YXR1",
-            "cxgEIAEoCzIiLnZpYW0uc2VydmljZS5tb3Rpb24udjEuUGxhblN0YXR1c1IG",
-            "c3RhdHVzIqcBCgpQbGFuU3RhdHVzEjcKBXN0YXRlGAEgASgOMiEudmlhbS5z",
-            "ZXJ2aWNlLm1vdGlvbi52MS5QbGFuU3RhdGVSBXN0YXRlEjgKCXRpbWVzdGFt",
-            "cBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSCXRpbWVzdGFt",
-            "cBIbCgZyZWFzb24YAyABKAlIAFIGcmVhc29uiAEBQgkKB19yZWFzb24itgEK",
-            "BFBsYW4SDgoCaWQYASABKAlSAmlkEkMKDmNvbXBvbmVudF9uYW1lGAIgASgL",
-            "MhwudmlhbS5jb21tb24udjEuUmVzb3VyY2VOYW1lUg1jb21wb25lbnROYW1l",
-            "EiEKDGV4ZWN1dGlvbl9pZBgDIAEoCVILZXhlY3V0aW9uSWQSNgoFc3RlcHMY",
-            "BCADKAsyIC52aWFtLnNlcnZpY2UubW90aW9uLnYxLlBsYW5TdGVwUgVzdGVw",
-            "cyKrAQoIUGxhblN0ZXASPgoEc3RlcBgBIAMoCzIqLnZpYW0uc2VydmljZS5t",
-            "b3Rpb24udjEuUGxhblN0ZXAuU3RlcEVudHJ5UgRzdGVwGl8KCVN0ZXBFbnRy",
-            "eRIQCgNrZXkYASABKAlSA2tleRI8CgV2YWx1ZRgCIAEoCzImLnZpYW0uc2Vy",
-            "dmljZS5tb3Rpb24udjEuQ29tcG9uZW50U3RhdGVSBXZhbHVlOgI4ASI6Cg5D",
-            "b21wb25lbnRTdGF0ZRIoCgRwb3NlGAEgASgLMhQudmlhbS5jb21tb24udjEu",
-            "UG9zZVIEcG9zZSqMAQoJUGxhblN0YXRlEhoKFlBMQU5fU1RBVEVfVU5TUEVD",
-            "SUZJRUQQABIaChZQTEFOX1NUQVRFX0lOX1BST0dSRVNTEAESFgoSUExBTl9T",
-            "VEFURV9TVE9QUEVEEAISGAoUUExBTl9TVEFURV9TVUNDRUVERUQQAxIVChFQ",
-            "TEFOX1NUQVRFX0ZBSUxFRBAEMskJCg1Nb3Rpb25TZXJ2aWNlEoIBCgRNb3Zl",
-            "EiMudmlhbS5zZXJ2aWNlLm1vdGlvbi52MS5Nb3ZlUmVxdWVzdBokLnZpYW0u",
-            "c2VydmljZS5tb3Rpb24udjEuTW92ZVJlc3BvbnNlIi+C0+STAikiJy92aWFt",
-            "L2FwaS92MS9zZXJ2aWNlL21vdGlvbi97bmFtZX0vbW92ZRKYAQoJTW92ZU9u",
-            "TWFwEigudmlhbS5zZXJ2aWNlLm1vdGlvbi52MS5Nb3ZlT25NYXBSZXF1ZXN0",
-            "GikudmlhbS5zZXJ2aWNlLm1vdGlvbi52MS5Nb3ZlT25NYXBSZXNwb25zZSI2",
-            "gtPkkwIwIi4vdmlhbS9hcGkvdjEvc2VydmljZS9tb3Rpb24ve25hbWV9L21v",
-            "dmVfb25fbWFwEqABCgtNb3ZlT25HbG9iZRIqLnZpYW0uc2VydmljZS5tb3Rp",
-            "b24udjEuTW92ZU9uR2xvYmVSZXF1ZXN0GisudmlhbS5zZXJ2aWNlLm1vdGlv",
-            "bi52MS5Nb3ZlT25HbG9iZVJlc3BvbnNlIjiC0+STAjIiMC92aWFtL2FwaS92",
-            "MS9zZXJ2aWNlL21vdGlvbi97bmFtZX0vbW92ZV9vbl9nbG9iZRKLAQoHR2V0",
-            "UG9zZRImLnZpYW0uc2VydmljZS5tb3Rpb24udjEuR2V0UG9zZVJlcXVlc3Qa",
-            "Jy52aWFtLnNlcnZpY2UubW90aW9uLnYxLkdldFBvc2VSZXNwb25zZSIvgtPk",
-            "kwIpEicvdmlhbS9hcGkvdjEvc2VydmljZS9tb3Rpb24ve25hbWV9L3Bvc2US",
-            "kwEKCFN0b3BQbGFuEicudmlhbS5zZXJ2aWNlLm1vdGlvbi52MS5TdG9wUGxh",
-            "blJlcXVlc3QaKC52aWFtLnNlcnZpY2UubW90aW9uLnYxLlN0b3BQbGFuUmVz",
-            "cG9uc2UiNILT5JMCLhosL3ZpYW0vYXBpL3YxL3NlcnZpY2UvbW90aW9uL3tu",
-            "YW1lfS9zdG9wX3BsYW4StAEKEExpc3RQbGFuU3RhdHVzZXMSLy52aWFtLnNl",
-            "cnZpY2UubW90aW9uLnYxLkxpc3RQbGFuU3RhdHVzZXNSZXF1ZXN0GjAudmlh",
-            "bS5zZXJ2aWNlLm1vdGlvbi52MS5MaXN0UGxhblN0YXR1c2VzUmVzcG9uc2Ui",
-            "PYLT5JMCNxI1L3ZpYW0vYXBpL3YxL3NlcnZpY2UvbW90aW9uL3tuYW1lfS9s",
-            "aXN0X3BsYW5fc3RhdHVzZXMSjwEKB0dldFBsYW4SJi52aWFtLnNlcnZpY2Uu",
-            "bW90aW9uLnYxLkdldFBsYW5SZXF1ZXN0GicudmlhbS5zZXJ2aWNlLm1vdGlv",
-            "bi52MS5HZXRQbGFuUmVzcG9uc2UiM4LT5JMCLRIrL3ZpYW0vYXBpL3YxL3Nl",
-            "cnZpY2UvbW90aW9uL3tuYW1lfS9nZXRfcGxhbhKHAQoJRG9Db21tYW5kEiAu",
-            "dmlhbS5jb21tb24udjEuRG9Db21tYW5kUmVxdWVzdBohLnZpYW0uY29tbW9u",
-            "LnYxLkRvQ29tbWFuZFJlc3BvbnNlIjWC0+STAi8iLS92aWFtL2FwaS92MS9z",
-            "ZXJ2aWNlL21vdGlvbi97bmFtZX0vZG9fY29tbWFuZEI/Chpjb20udmlhbS5z",
-            "ZXJ2aWNlLm1vdGlvbi52MVohZ28udmlhbS5jb20vYXBpL3NlcnZpY2UvbW90",
-            "aW9uL3YxYgZwcm90bzM="));
+            "b26IAQESRgoQYm91bmRpbmdfcmVnaW9ucxgIIAMoCzIbLnZpYW0uY29tbW9u",
+            "LnYxLkdlb0dlb21ldHJ5Ug9ib3VuZGluZ1JlZ2lvbnMSLQoFZXh0cmEYYyAB",
+            "KAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0UgVleHRyYUIKCghfaGVhZGlu",
+            "Z0IXChVfbW90aW9uX2NvbmZpZ3VyYXRpb24iOAoTTW92ZU9uR2xvYmVSZXNw",
+            "b25zZRIhCgxleGVjdXRpb25faWQYASABKAlSC2V4ZWN1dGlvbklkIpkCCg5H",
+            "ZXRQb3NlUmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEkMKDmNvbXBvbmVu",
+            "dF9uYW1lGAIgASgLMhwudmlhbS5jb21tb24udjEuUmVzb3VyY2VOYW1lUg1j",
+            "b21wb25lbnROYW1lEisKEWRlc3RpbmF0aW9uX2ZyYW1lGAMgASgJUhBkZXN0",
+            "aW5hdGlvbkZyYW1lElIKF3N1cHBsZW1lbnRhbF90cmFuc2Zvcm1zGAQgAygL",
+            "MhkudmlhbS5jb21tb24udjEuVHJhbnNmb3JtUhZzdXBwbGVtZW50YWxUcmFu",
+            "c2Zvcm1zEi0KBWV4dHJhGGMgASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVj",
+            "dFIFZXh0cmEiQgoPR2V0UG9zZVJlc3BvbnNlEi8KBHBvc2UYASABKAsyGy52",
+            "aWFtLmNvbW1vbi52MS5Qb3NlSW5GcmFtZVIEcG9zZSKZAQoPU3RvcFBsYW5S",
+            "ZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUSQwoOY29tcG9uZW50X25hbWUY",
+            "AiABKAsyHC52aWFtLmNvbW1vbi52MS5SZXNvdXJjZU5hbWVSDWNvbXBvbmVu",
+            "dE5hbWUSLQoFZXh0cmEYYyABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0",
+            "UgVleHRyYSISChBTdG9wUGxhblJlc3BvbnNlIogBChdMaXN0UGxhblN0YXR1",
+            "c2VzUmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEioKEW9ubHlfYWN0aXZl",
+            "X3BsYW5zGAIgASgIUg9vbmx5QWN0aXZlUGxhbnMSLQoFZXh0cmEYYyABKAsy",
+            "Fy5nb29nbGUucHJvdG9idWYuU3RydWN0UgVleHRyYSJ5ChhMaXN0UGxhblN0",
+            "YXR1c2VzUmVzcG9uc2USXQoWcGxhbl9zdGF0dXNlc193aXRoX2lkcxgBIAMo",
+            "CzIoLnZpYW0uc2VydmljZS5tb3Rpb24udjEuUGxhblN0YXR1c1dpdGhJRFIT",
+            "cGxhblN0YXR1c2VzV2l0aElkcyL3AQoOR2V0UGxhblJlcXVlc3QSEgoEbmFt",
+            "ZRgBIAEoCVIEbmFtZRJDCg5jb21wb25lbnRfbmFtZRgCIAEoCzIcLnZpYW0u",
+            "Y29tbW9uLnYxLlJlc291cmNlTmFtZVINY29tcG9uZW50TmFtZRIkCg5sYXN0",
+            "X3BsYW5fb25seRgDIAEoCFIMbGFzdFBsYW5Pbmx5EiYKDGV4ZWN1dGlvbl9p",
+            "ZBgEIAEoCUgAUgtleGVjdXRpb25JZIgBARItCgVleHRyYRhjIAEoCzIXLmdv",
+            "b2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4dHJhQg8KDV9leGVjdXRpb25faWQi",
+            "wQEKD0dldFBsYW5SZXNwb25zZRJfChhjdXJyZW50X3BsYW5fd2l0aF9zdGF0",
+            "dXMYASABKAsyJi52aWFtLnNlcnZpY2UubW90aW9uLnYxLlBsYW5XaXRoU3Rh",
+            "dHVzUhVjdXJyZW50UGxhbldpdGhTdGF0dXMSTQoOcmVwbGFuX2hpc3RvcnkY",
+            "AiADKAsyJi52aWFtLnNlcnZpY2UubW90aW9uLnYxLlBsYW5XaXRoU3RhdHVz",
+            "Ug1yZXBsYW5IaXN0b3J5IrMCCgtDb25zdHJhaW50cxJVChFsaW5lYXJfY29u",
+            "c3RyYWludBgBIAMoCzIoLnZpYW0uc2VydmljZS5tb3Rpb24udjEuTGluZWFy",
+            "Q29uc3RyYWludFIQbGluZWFyQ29uc3RyYWludBJkChZvcmllbnRhdGlvbl9j",
+            "b25zdHJhaW50GAIgAygLMi0udmlhbS5zZXJ2aWNlLm1vdGlvbi52MS5Pcmll",
+            "bnRhdGlvbkNvbnN0cmFpbnRSFW9yaWVudGF0aW9uQ29uc3RyYWludBJnChdj",
+            "b2xsaXNpb25fc3BlY2lmaWNhdGlvbhgDIAMoCzIuLnZpYW0uc2VydmljZS5t",
+            "b3Rpb24udjEuQ29sbGlzaW9uU3BlY2lmaWNhdGlvblIWY29sbGlzaW9uU3Bl",
+            "Y2lmaWNhdGlvbiK7AQoQTGluZWFyQ29uc3RyYWludBIvChFsaW5lX3RvbGVy",
+            "YW5jZV9tbRgBIAEoAkgAUg9saW5lVG9sZXJhbmNlTW2IAQESQQoab3JpZW50",
+            "YXRpb25fdG9sZXJhbmNlX2RlZ3MYAiABKAJIAVIYb3JpZW50YXRpb25Ub2xl",
+            "cmFuY2VEZWdziAEBQhQKEl9saW5lX3RvbGVyYW5jZV9tbUIdChtfb3JpZW50",
+            "YXRpb25fdG9sZXJhbmNlX2RlZ3MieQoVT3JpZW50YXRpb25Db25zdHJhaW50",
+            "EkEKGm9yaWVudGF0aW9uX3RvbGVyYW5jZV9kZWdzGAEgASgCSABSGG9yaWVu",
+            "dGF0aW9uVG9sZXJhbmNlRGVnc4gBAUIdChtfb3JpZW50YXRpb25fdG9sZXJh",
+            "bmNlX2RlZ3MiwQEKFkNvbGxpc2lvblNwZWNpZmljYXRpb24SXQoGYWxsb3dz",
+            "GAEgAygLMkUudmlhbS5zZXJ2aWNlLm1vdGlvbi52MS5Db2xsaXNpb25TcGVj",
+            "aWZpY2F0aW9uLkFsbG93ZWRGcmFtZUNvbGxpc2lvbnNSBmFsbG93cxpIChZB",
+            "bGxvd2VkRnJhbWVDb2xsaXNpb25zEhYKBmZyYW1lMRgBIAEoCVIGZnJhbWUx",
+            "EhYKBmZyYW1lMhgCIAEoCVIGZnJhbWUyIskBCg5QbGFuV2l0aFN0YXR1cxIw",
+            "CgRwbGFuGAEgASgLMhwudmlhbS5zZXJ2aWNlLm1vdGlvbi52MS5QbGFuUgRw",
+            "bGFuEjoKBnN0YXR1cxgCIAEoCzIiLnZpYW0uc2VydmljZS5tb3Rpb24udjEu",
+            "UGxhblN0YXR1c1IGc3RhdHVzEkkKDnN0YXR1c19oaXN0b3J5GAMgAygLMiIu",
+            "dmlhbS5zZXJ2aWNlLm1vdGlvbi52MS5QbGFuU3RhdHVzUg1zdGF0dXNIaXN0",
+            "b3J5Is8BChBQbGFuU3RhdHVzV2l0aElEEhcKB3BsYW5faWQYASABKAlSBnBs",
+            "YW5JZBJDCg5jb21wb25lbnRfbmFtZRgCIAEoCzIcLnZpYW0uY29tbW9uLnYx",
+            "LlJlc291cmNlTmFtZVINY29tcG9uZW50TmFtZRIhCgxleGVjdXRpb25faWQY",
+            "AyABKAlSC2V4ZWN1dGlvbklkEjoKBnN0YXR1cxgEIAEoCzIiLnZpYW0uc2Vy",
+            "dmljZS5tb3Rpb24udjEuUGxhblN0YXR1c1IGc3RhdHVzIqcBCgpQbGFuU3Rh",
+            "dHVzEjcKBXN0YXRlGAEgASgOMiEudmlhbS5zZXJ2aWNlLm1vdGlvbi52MS5Q",
+            "bGFuU3RhdGVSBXN0YXRlEjgKCXRpbWVzdGFtcBgCIAEoCzIaLmdvb2dsZS5w",
+            "cm90b2J1Zi5UaW1lc3RhbXBSCXRpbWVzdGFtcBIbCgZyZWFzb24YAyABKAlI",
+            "AFIGcmVhc29uiAEBQgkKB19yZWFzb24itgEKBFBsYW4SDgoCaWQYASABKAlS",
+            "AmlkEkMKDmNvbXBvbmVudF9uYW1lGAIgASgLMhwudmlhbS5jb21tb24udjEu",
+            "UmVzb3VyY2VOYW1lUg1jb21wb25lbnROYW1lEiEKDGV4ZWN1dGlvbl9pZBgD",
+            "IAEoCVILZXhlY3V0aW9uSWQSNgoFc3RlcHMYBCADKAsyIC52aWFtLnNlcnZp",
+            "Y2UubW90aW9uLnYxLlBsYW5TdGVwUgVzdGVwcyKrAQoIUGxhblN0ZXASPgoE",
+            "c3RlcBgBIAMoCzIqLnZpYW0uc2VydmljZS5tb3Rpb24udjEuUGxhblN0ZXAu",
+            "U3RlcEVudHJ5UgRzdGVwGl8KCVN0ZXBFbnRyeRIQCgNrZXkYASABKAlSA2tl",
+            "eRI8CgV2YWx1ZRgCIAEoCzImLnZpYW0uc2VydmljZS5tb3Rpb24udjEuQ29t",
+            "cG9uZW50U3RhdGVSBXZhbHVlOgI4ASI6Cg5Db21wb25lbnRTdGF0ZRIoCgRw",
+            "b3NlGAEgASgLMhQudmlhbS5jb21tb24udjEuUG9zZVIEcG9zZSqMAQoJUGxh",
+            "blN0YXRlEhoKFlBMQU5fU1RBVEVfVU5TUEVDSUZJRUQQABIaChZQTEFOX1NU",
+            "QVRFX0lOX1BST0dSRVNTEAESFgoSUExBTl9TVEFURV9TVE9QUEVEEAISGAoU",
+            "UExBTl9TVEFURV9TVUNDRUVERUQQAxIVChFQTEFOX1NUQVRFX0ZBSUxFRBAE",
+            "MskJCg1Nb3Rpb25TZXJ2aWNlEoIBCgRNb3ZlEiMudmlhbS5zZXJ2aWNlLm1v",
+            "dGlvbi52MS5Nb3ZlUmVxdWVzdBokLnZpYW0uc2VydmljZS5tb3Rpb24udjEu",
+            "TW92ZVJlc3BvbnNlIi+C0+STAikiJy92aWFtL2FwaS92MS9zZXJ2aWNlL21v",
+            "dGlvbi97bmFtZX0vbW92ZRKYAQoJTW92ZU9uTWFwEigudmlhbS5zZXJ2aWNl",
+            "Lm1vdGlvbi52MS5Nb3ZlT25NYXBSZXF1ZXN0GikudmlhbS5zZXJ2aWNlLm1v",
+            "dGlvbi52MS5Nb3ZlT25NYXBSZXNwb25zZSI2gtPkkwIwIi4vdmlhbS9hcGkv",
+            "djEvc2VydmljZS9tb3Rpb24ve25hbWV9L21vdmVfb25fbWFwEqABCgtNb3Zl",
+            "T25HbG9iZRIqLnZpYW0uc2VydmljZS5tb3Rpb24udjEuTW92ZU9uR2xvYmVS",
+            "ZXF1ZXN0GisudmlhbS5zZXJ2aWNlLm1vdGlvbi52MS5Nb3ZlT25HbG9iZVJl",
+            "c3BvbnNlIjiC0+STAjIiMC92aWFtL2FwaS92MS9zZXJ2aWNlL21vdGlvbi97",
+            "bmFtZX0vbW92ZV9vbl9nbG9iZRKLAQoHR2V0UG9zZRImLnZpYW0uc2Vydmlj",
+            "ZS5tb3Rpb24udjEuR2V0UG9zZVJlcXVlc3QaJy52aWFtLnNlcnZpY2UubW90",
+            "aW9uLnYxLkdldFBvc2VSZXNwb25zZSIvgtPkkwIpEicvdmlhbS9hcGkvdjEv",
+            "c2VydmljZS9tb3Rpb24ve25hbWV9L3Bvc2USkwEKCFN0b3BQbGFuEicudmlh",
+            "bS5zZXJ2aWNlLm1vdGlvbi52MS5TdG9wUGxhblJlcXVlc3QaKC52aWFtLnNl",
+            "cnZpY2UubW90aW9uLnYxLlN0b3BQbGFuUmVzcG9uc2UiNILT5JMCLhosL3Zp",
+            "YW0vYXBpL3YxL3NlcnZpY2UvbW90aW9uL3tuYW1lfS9zdG9wX3BsYW4StAEK",
+            "EExpc3RQbGFuU3RhdHVzZXMSLy52aWFtLnNlcnZpY2UubW90aW9uLnYxLkxp",
+            "c3RQbGFuU3RhdHVzZXNSZXF1ZXN0GjAudmlhbS5zZXJ2aWNlLm1vdGlvbi52",
+            "MS5MaXN0UGxhblN0YXR1c2VzUmVzcG9uc2UiPYLT5JMCNxI1L3ZpYW0vYXBp",
+            "L3YxL3NlcnZpY2UvbW90aW9uL3tuYW1lfS9saXN0X3BsYW5fc3RhdHVzZXMS",
+            "jwEKB0dldFBsYW4SJi52aWFtLnNlcnZpY2UubW90aW9uLnYxLkdldFBsYW5S",
+            "ZXF1ZXN0GicudmlhbS5zZXJ2aWNlLm1vdGlvbi52MS5HZXRQbGFuUmVzcG9u",
+            "c2UiM4LT5JMCLRIrL3ZpYW0vYXBpL3YxL3NlcnZpY2UvbW90aW9uL3tuYW1l",
+            "fS9nZXRfcGxhbhKHAQoJRG9Db21tYW5kEiAudmlhbS5jb21tb24udjEuRG9D",
+            "b21tYW5kUmVxdWVzdBohLnZpYW0uY29tbW9uLnYxLkRvQ29tbWFuZFJlc3Bv",
+            "bnNlIjWC0+STAi8iLS92aWFtL2FwaS92MS9zZXJ2aWNlL21vdGlvbi97bmFt",
+            "ZX0vZG9fY29tbWFuZELHAQoaY29tLnZpYW0uc2VydmljZS5tb3Rpb24udjFC",
+            "C01vdGlvblByb3RvUAFaIWdvLnZpYW0uY29tL2FwaS9zZXJ2aWNlL21vdGlv",
+            "bi92MaICA1ZTTaoCFlZpYW0uU2VydmljZS5Nb3Rpb24uVjHKAhZWaWFtXFNl",
+            "cnZpY2VcTW90aW9uXFYx4gIiVmlhbVxTZXJ2aWNlXE1vdGlvblxWMVxHUEJN",
+            "ZXRhZGF0YeoCGVZpYW06OlNlcnZpY2U6Ok1vdGlvbjo6VjFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Viam.Service.Motion.V1.PlanState), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -187,7 +191,7 @@ namespace Viam.Service.Motion.V1 {
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Motion.V1.MoveOnMapResponse), global::Viam.Service.Motion.V1.MoveOnMapResponse.Parser, new[]{ "ExecutionId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Motion.V1.ObstacleDetector), global::Viam.Service.Motion.V1.ObstacleDetector.Parser, new[]{ "VisionService", "Camera" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Motion.V1.MotionConfiguration), global::Viam.Service.Motion.V1.MotionConfiguration.Parser, new[]{ "ObstacleDetectors", "PositionPollingFrequencyHz", "ObstaclePollingFrequencyHz", "PlanDeviationM", "LinearMPerSec", "AngularDegsPerSec" }, new[]{ "PositionPollingFrequencyHz", "ObstaclePollingFrequencyHz", "PlanDeviationM", "LinearMPerSec", "AngularDegsPerSec" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Motion.V1.MoveOnGlobeRequest), global::Viam.Service.Motion.V1.MoveOnGlobeRequest.Parser, new[]{ "Name", "Destination", "Heading", "ComponentName", "MovementSensorName", "Obstacles", "MotionConfiguration", "Extra" }, new[]{ "Heading", "MotionConfiguration" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Motion.V1.MoveOnGlobeRequest), global::Viam.Service.Motion.V1.MoveOnGlobeRequest.Parser, new[]{ "Name", "Destination", "Heading", "ComponentName", "MovementSensorName", "Obstacles", "MotionConfiguration", "BoundingRegions", "Extra" }, new[]{ "Heading", "MotionConfiguration" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Motion.V1.MoveOnGlobeResponse), global::Viam.Service.Motion.V1.MoveOnGlobeResponse.Parser, new[]{ "ExecutionId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Motion.V1.GetPoseRequest), global::Viam.Service.Motion.V1.GetPoseRequest.Parser, new[]{ "Name", "ComponentName", "DestinationFrame", "SupplementalTransforms", "Extra" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Motion.V1.GetPoseResponse), global::Viam.Service.Motion.V1.GetPoseResponse.Parser, new[]{ "Pose" }, null, null, null, null),
@@ -569,7 +573,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -623,7 +631,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -829,7 +841,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -848,7 +864,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1218,7 +1238,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1276,7 +1300,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1491,7 +1519,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1510,7 +1542,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1719,7 +1755,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1748,7 +1788,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2158,7 +2202,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2197,7 +2245,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2276,6 +2328,7 @@ namespace Viam.Service.Motion.V1 {
       movementSensorName_ = other.movementSensorName_ != null ? other.movementSensorName_.Clone() : null;
       obstacles_ = other.obstacles_.Clone();
       motionConfiguration_ = other.motionConfiguration_ != null ? other.motionConfiguration_.Clone() : null;
+      boundingRegions_ = other.boundingRegions_.Clone();
       extra_ = other.extra_ != null ? other.extra_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
@@ -2378,15 +2431,15 @@ namespace Viam.Service.Motion.V1 {
 
     /// <summary>Field number for the "obstacles" field.</summary>
     public const int ObstaclesFieldNumber = 6;
-    private static readonly pb::FieldCodec<global::Viam.Common.V1.GeoObstacle> _repeated_obstacles_codec
-        = pb::FieldCodec.ForMessage(50, global::Viam.Common.V1.GeoObstacle.Parser);
-    private readonly pbc::RepeatedField<global::Viam.Common.V1.GeoObstacle> obstacles_ = new pbc::RepeatedField<global::Viam.Common.V1.GeoObstacle>();
+    private static readonly pb::FieldCodec<global::Viam.Common.V1.GeoGeometry> _repeated_obstacles_codec
+        = pb::FieldCodec.ForMessage(50, global::Viam.Common.V1.GeoGeometry.Parser);
+    private readonly pbc::RepeatedField<global::Viam.Common.V1.GeoGeometry> obstacles_ = new pbc::RepeatedField<global::Viam.Common.V1.GeoGeometry>();
     /// <summary>
     /// Obstacles to be considered for motion planning
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::Viam.Common.V1.GeoObstacle> Obstacles {
+    public pbc::RepeatedField<global::Viam.Common.V1.GeoGeometry> Obstacles {
       get { return obstacles_; }
     }
 
@@ -2403,6 +2456,20 @@ namespace Viam.Service.Motion.V1 {
       set {
         motionConfiguration_ = value;
       }
+    }
+
+    /// <summary>Field number for the "bounding_regions" field.</summary>
+    public const int BoundingRegionsFieldNumber = 8;
+    private static readonly pb::FieldCodec<global::Viam.Common.V1.GeoGeometry> _repeated_boundingRegions_codec
+        = pb::FieldCodec.ForMessage(66, global::Viam.Common.V1.GeoGeometry.Parser);
+    private readonly pbc::RepeatedField<global::Viam.Common.V1.GeoGeometry> boundingRegions_ = new pbc::RepeatedField<global::Viam.Common.V1.GeoGeometry>();
+    /// <summary>
+    /// Set of obstacles which the robot must remain within while navigating
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Viam.Common.V1.GeoGeometry> BoundingRegions {
+      get { return boundingRegions_; }
     }
 
     /// <summary>Field number for the "extra" field.</summary>
@@ -2442,6 +2509,7 @@ namespace Viam.Service.Motion.V1 {
       if (!object.Equals(MovementSensorName, other.MovementSensorName)) return false;
       if(!obstacles_.Equals(other.obstacles_)) return false;
       if (!object.Equals(MotionConfiguration, other.MotionConfiguration)) return false;
+      if(!boundingRegions_.Equals(other.boundingRegions_)) return false;
       if (!object.Equals(Extra, other.Extra)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -2457,6 +2525,7 @@ namespace Viam.Service.Motion.V1 {
       if (movementSensorName_ != null) hash ^= MovementSensorName.GetHashCode();
       hash ^= obstacles_.GetHashCode();
       if (motionConfiguration_ != null) hash ^= MotionConfiguration.GetHashCode();
+      hash ^= boundingRegions_.GetHashCode();
       if (extra_ != null) hash ^= Extra.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -2501,6 +2570,7 @@ namespace Viam.Service.Motion.V1 {
         output.WriteRawTag(58);
         output.WriteMessage(MotionConfiguration);
       }
+      boundingRegions_.WriteTo(output, _repeated_boundingRegions_codec);
       if (extra_ != null) {
         output.WriteRawTag(154, 6);
         output.WriteMessage(Extra);
@@ -2540,6 +2610,7 @@ namespace Viam.Service.Motion.V1 {
         output.WriteRawTag(58);
         output.WriteMessage(MotionConfiguration);
       }
+      boundingRegions_.WriteTo(ref output, _repeated_boundingRegions_codec);
       if (extra_ != null) {
         output.WriteRawTag(154, 6);
         output.WriteMessage(Extra);
@@ -2573,6 +2644,7 @@ namespace Viam.Service.Motion.V1 {
       if (motionConfiguration_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(MotionConfiguration);
       }
+      size += boundingRegions_.CalculateSize(_repeated_boundingRegions_codec);
       if (extra_ != null) {
         size += 2 + pb::CodedOutputStream.ComputeMessageSize(Extra);
       }
@@ -2619,6 +2691,7 @@ namespace Viam.Service.Motion.V1 {
         }
         MotionConfiguration.MergeFrom(other.MotionConfiguration);
       }
+      boundingRegions_.Add(other.boundingRegions_);
       if (other.extra_ != null) {
         if (extra_ == null) {
           Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
@@ -2636,7 +2709,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2680,6 +2757,10 @@ namespace Viam.Service.Motion.V1 {
             input.ReadMessage(MotionConfiguration);
             break;
           }
+          case 66: {
+            boundingRegions_.AddEntriesFrom(input, _repeated_boundingRegions_codec);
+            break;
+          }
           case 794: {
             if (extra_ == null) {
               Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
@@ -2698,7 +2779,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2740,6 +2825,10 @@ namespace Viam.Service.Motion.V1 {
               MotionConfiguration = new global::Viam.Service.Motion.V1.MotionConfiguration();
             }
             input.ReadMessage(MotionConfiguration);
+            break;
+          }
+          case 66: {
+            boundingRegions_.AddEntriesFrom(ref input, _repeated_boundingRegions_codec);
             break;
           }
           case 794: {
@@ -2917,7 +3006,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2936,7 +3029,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3233,7 +3330,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3274,7 +3375,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3470,7 +3575,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3492,7 +3601,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3739,7 +3852,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3772,7 +3889,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3928,7 +4049,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3943,7 +4068,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4181,7 +4310,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4211,7 +4344,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4389,7 +4526,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4408,7 +4549,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4731,7 +4876,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4772,7 +4921,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4995,7 +5148,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -5021,7 +5178,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -5233,7 +5394,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -5260,7 +5425,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -5510,7 +5679,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -5533,7 +5706,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -5732,7 +5909,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -5751,7 +5932,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -5917,7 +6102,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -5936,7 +6125,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -6139,7 +6332,11 @@ namespace Viam.Service.Motion.V1 {
         #else
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
+          if ((tag & 7) == 4) {
+            // Abort on any end group tag.
+            return;
+          }
+          switch(tag) {
               default:
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
@@ -6162,7 +6359,11 @@ namespace Viam.Service.Motion.V1 {
         void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
           uint tag;
           while ((tag = input.ReadTag()) != 0) {
-            switch(tag) {
+          if ((tag & 7) == 4) {
+            // Abort on any end group tag.
+            return;
+          }
+          switch(tag) {
               default:
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
                 break;
@@ -6408,7 +6609,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -6441,7 +6646,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -6738,7 +6947,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -6775,7 +6988,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -7055,7 +7272,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -7085,7 +7306,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -7366,7 +7591,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -7400,7 +7629,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -7581,7 +7814,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -7600,7 +7837,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -7777,7 +8018,11 @@ namespace Viam.Service.Motion.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -7799,7 +8044,11 @@ namespace Viam.Service.Motion.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

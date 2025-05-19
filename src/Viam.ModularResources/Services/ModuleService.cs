@@ -1,41 +1,35 @@
 ﻿using Grpc.Core;
-
 using System.Data;
-
 using Viam.Core;
 using Viam.Core.Clients;
 using Viam.Core.Grpc;
-using Viam.Core.Logging;
 using Viam.Core.Resources;
-using Viam.Core.Resources.Components;
-using Viam.Core.Resources.Components.Sensor;
 using Viam.Core.Utils;
 using Viam.Module.V1;
 using Viam.Robot.V1;
-
-using static Google.Rpc.Context.AttributeContext.Types;
-
 using grpcRobotService = Viam.Module.V1.ModuleService;
 
 namespace Viam.ModularResources.Services
 {
-    public class ModuleService(IServiceProvider services, ILoggerFactory loggerFactory) : grpcRobotService.ModuleServiceBase
+    public class ModuleService(IServiceProvider services, ILoggerFactory loggerFactory)
+        : grpcRobotService.ModuleServiceBase
     {
         private static readonly SemaphoreSlim ParentAddressLock = new(1);
         private static Uri? _parentAddress;
         private readonly ILogger<ModuleService> _logger = loggerFactory.CreateLogger<ModuleService>();
 
-        public override async Task<AddResourceResponse> AddResource(AddResourceRequest request, ServerCallContext context)
+        public override async Task<AddResourceResponse> AddResource(AddResourceRequest request,
+            ServerCallContext context)
         {
             _logger.LogDebug("Starting AddResource...");
             var config = request.Config;
             var subType = SubType.FromString(config.Api);
             var model = Model.FromString(config.Model);
             _logger.LogDebug("Adding resource {Name} {SubType} {Model} with dependencies {Dependencies}",
-                             config.Name,
-                             subType,
-                             model,
-                             string.Join(",", request.Dependencies.Select(x => x)));
+                config.Name,
+                subType,
+                model,
+                string.Join(",", request.Dependencies.Select(x => x)));
 
             try
             {
@@ -55,14 +49,17 @@ namespace Viam.ModularResources.Services
                     _logger.LogDebug("Found remote resource {ResourceName}", name);
                 }
 
-                _logger.LogDebug("Want to add resource {ResourceName} {ResourceSubType} {ResourceModel}", config.Name, subType, model);
+                _logger.LogDebug("Want to add resource {ResourceName} {ResourceSubType} {ResourceModel}", config.Name,
+                    subType, model);
                 var resourceManager = services.GetRequiredService<ResourceManager>();
-                var resource = resourceManager.ResolveService(config.Name, subType) ?? throw new Exception($"Unable to find resource {config.Name} {subType} {model}");
+                var resource = resourceManager.ResolveService(config.Name, subType) ??
+                               throw new Exception($"Unable to find resource {config.Name} {subType} {model}");
                 _logger.LogDebug("Got resource {Name}", resource.Name);
 
                 var dependencies = request.Dependencies.Select(GrpcExtensions.ToResourceName)
-                                    .ToDictionary(x => x, x => (IResourceBase)resourceManager.ResolveService(x.Name, x.SubType));
-                _logger.LogDebug("Got dependencies {Dependencies}", string.Join(",", dependencies.Select(x => x.ToString())));
+                    .ToDictionary(x => x, x => (IResourceBase)resourceManager.ResolveService(x.Name, x.SubType));
+                _logger.LogDebug("Got dependencies {Dependencies}",
+                    string.Join(",", dependencies.Select(x => x.ToString())));
 
                 await ReconfigureResource(resource, config, dependencies);
                 return new AddResourceResponse();
@@ -88,8 +85,10 @@ namespace Viam.ModularResources.Services
             _logger.LogDebug("Getting modular resources...");
             foreach (var (subType, resource) in resourceManager.RegisteredResources)
             {
-                _logger.LogInformation("Found modular service {ServiceName} {SubType}", resource.ServiceName, resource.SubType);
-                var models = serviceNameToModels.GetValueOrDefault((resource.ServiceName, resource.SubType), new List<Model>());
+                _logger.LogInformation("Found modular service {ServiceName} {SubType}", resource.ServiceName,
+                    resource.SubType);
+                var models =
+                    serviceNameToModels.GetValueOrDefault((resource.ServiceName, resource.SubType), new List<Model>());
                 models.Add(resource.Model);
                 serviceNameToModels[(resource.ServiceName, resource.SubType)] = models;
             }
@@ -99,7 +98,8 @@ namespace Viam.ModularResources.Services
             foreach (var ((serviceName, subType), models) in serviceNameToModels)
             {
                 _logger.LogTrace("Preparing handler for {Service}", serviceName);
-                var rpcSubtype = new ResourceRPCSubtype() { Subtype = new ViamResourceName(subType, string.Empty), ProtoService = serviceName };
+                var rpcSubtype = new ResourceRPCSubtype()
+                    { Subtype = new ViamResourceName(subType, string.Empty), ProtoService = serviceName };
                 var handler = new HandlerDefinition() { Subtype = rpcSubtype };
                 handler.Models.AddRange(models.Select(x => x.ToString()));
                 handlers.Handlers.Add(handler);
@@ -115,21 +115,23 @@ namespace Viam.ModularResources.Services
             return resp;
         }
 
-        public override async Task<ReconfigureResourceResponse> ReconfigureResource(ReconfigureResourceRequest request, ServerCallContext context)
+        public override async Task<ReconfigureResourceResponse> ReconfigureResource(ReconfigureResourceRequest request,
+            ServerCallContext context)
         {
             var config = request.Config;
             var subType = SubType.FromString(config.Api);
             var model = Model.FromString(config.Model);
             _logger.LogDebug("Reconfiguring resource {Name} {SubType} {Model} with dependencies {Dependencies}",
-                             config.Name,
-                             subType,
-                             model,
-                             string.Join(",", request.Dependencies.Select(x => x)));
+                config.Name,
+                subType,
+                model,
+                string.Join(",", request.Dependencies.Select(x => x)));
             var resourceManager = services.GetRequiredService<ResourceManager>();
-            var resource = resourceManager.ResolveService(config.Name, subType) ?? throw new Exception($"Unable to find resource {config.Name} {subType} {model}");
+            var resource = resourceManager.ResolveService(config.Name, subType) ??
+                           throw new Exception($"Unable to find resource {config.Name} {subType} {model}");
             var dependencies = request.Dependencies.Select(GrpcExtensions.ToResourceName)
-                                    .ToDictionary(x => x, x => (IResourceBase)resourceManager.ResolveService(x.Name, x.SubType));
-            
+                .ToDictionary(x => x, x => (IResourceBase)resourceManager.ResolveService(x.Name, x.SubType));
+
             await ReconfigureResource(resource, config, dependencies);
 
             _logger.LogDebug("Done reconfiguring {ResourceName}", resource.Name);
@@ -137,20 +139,23 @@ namespace Viam.ModularResources.Services
             return new ReconfigureResourceResponse();
         }
 
-        public override Task<RemoveResourceResponse> RemoveResource(RemoveResourceRequest request, ServerCallContext context)
+        public override Task<RemoveResourceResponse> RemoveResource(RemoveResourceRequest request,
+            ServerCallContext context)
         {
             var resourceManager = services.GetRequiredService<ResourceManager>();
             resourceManager.RemoveResource(request.Name);
             return Task.FromResult(new RemoveResourceResponse());
         }
 
-        public override Task<ValidateConfigResponse> ValidateConfig(ValidateConfigRequest request, ServerCallContext context)
+        public override Task<ValidateConfigResponse> ValidateConfig(ValidateConfigRequest request,
+            ServerCallContext context)
         {
             var config = request.Config;
             var subType = SubType.FromString(config.Api);
             var model = Model.FromString(config.Model);
             var resourceManager = services.GetRequiredService<ResourceManager>();
-            var resource = resourceManager.ResolveService(config.Name, subType) ?? throw new Exception($"Unable to find resource {config.Name} {subType} {model}");
+            var resource = resourceManager.ResolveService(config.Name, subType) ??
+                           throw new Exception($"Unable to find resource {config.Name} {subType} {model}");
             var deps = resource.ValidateConfig(config);
             var resp = new ValidateConfigResponse();
             resp.Dependencies.AddRange(deps);
@@ -188,7 +193,8 @@ namespace Viam.ModularResources.Services
             }
         }
 
-        private async ValueTask ReconfigureResource(IModularResource resource, App.V1.ComponentConfig config, Dictionary<ViamResourceName, IResourceBase> dependencies)
+        private async ValueTask ReconfigureResource(IModularResource resource, App.V1.ComponentConfig config,
+            Dictionary<ViamResourceName, IResourceBase> dependencies)
         {
             if (resource is IAsyncReconfigurable asyncReconfigurable)
             {
@@ -202,6 +208,7 @@ namespace Viam.ModularResources.Services
                     _logger.LogError(e, "Failed to reconfigure resource {ResourceName}", resource.Name);
                     throw;
                 }
+
                 _logger.LogDebug("Reconfigured {ReourceName}", resource.Name);
             }
             else if (resource is IReconfigurable reconfigurable)
@@ -216,6 +223,7 @@ namespace Viam.ModularResources.Services
                     _logger.LogError(e, "Failed to reconfigure resource {ResourceName}", resource.Name);
                     throw;
                 }
+
                 _logger.LogDebug("Reconfigured {ReourceName}", resource.Name);
             }
             else

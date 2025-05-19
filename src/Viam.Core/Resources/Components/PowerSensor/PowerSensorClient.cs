@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Powersensor.V1;
 using Viam.Core.Clients;
@@ -11,9 +11,9 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.PowerSensor
 {
-    public class PowerSensorClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
+    public class PowerSensorClient(ViamResourceName resourceName, ViamChannel channel, ILogger<PowerSensorClient> logger) :
         ComponentBase<PowerSensorClient, Component.Powersensor.V1.PowerSensorService.PowerSensorServiceClient>(
-            resourceName, 
+            resourceName,
             new Component.Powersensor.V1.PowerSensorService.PowerSensorServiceClient(channel)),
         IPowerSensor
     {
@@ -37,11 +37,11 @@ namespace Viam.Core.Resources.Components.PowerSensor
             {
                 logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client
-                                .DoCommandAsync(
-                                    new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
-                                    deadline: timeout.ToDeadline(),
-                                    cancellationToken: cancellationToken)
-                                .ConfigureAwait(false);
+                    .DoCommandAsync(
+                        new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
                 logger.LogMethodInvocationSuccess(results: response);
@@ -56,16 +56,17 @@ namespace Viam.Core.Resources.Components.PowerSensor
 
 
         public async ValueTask<(double, bool)> GetVoltage(IDictionary<string, object?>? extra = null,
-                                                          TimeSpan? timeout = null,
-                                                          CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetVoltageAsync(new GetVoltageRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                                       deadline: timeout.ToDeadline(),
-                                                       cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                var res = await Client.GetVoltageAsync(
+                        new GetVoltageRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess(results: [res.Volts, res.IsAc]);
                 return (res.Volts, res.IsAc);
             }
@@ -78,16 +79,17 @@ namespace Viam.Core.Resources.Components.PowerSensor
 
 
         public async ValueTask<(double, bool)> GetCurrent(IDictionary<string, object?>? extra = null,
-                                                          TimeSpan? timeout = null,
-                                                          CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetCurrentAsync(new GetCurrentRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                                       deadline: timeout.ToDeadline(),
-                                                       cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                var res = await Client.GetCurrentAsync(
+                        new GetCurrentRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess(results: [res.Amperes, res.IsAc]);
                 return (res.Amperes, res.IsAc);
             }
@@ -100,16 +102,16 @@ namespace Viam.Core.Resources.Components.PowerSensor
 
 
         public async ValueTask<double> GetPower(IDictionary<string, object?>? extra = null,
-                                                TimeSpan? timeout = null,
-                                                CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetPowerAsync(new GetPowerRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                                     deadline: timeout.ToDeadline(),
-                                                     cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess(results: res.Watts);
                 return res.Watts;
             }
@@ -121,17 +123,18 @@ namespace Viam.Core.Resources.Components.PowerSensor
         }
 
 
-        public async ValueTask<IDictionary<string, object?>> GetReadings(IDictionary<string, object?>? extra = null,
-                                                                         TimeSpan? timeout = null,
-                                                                         CancellationToken cancellationToken = default)
+        public async ValueTask<Dictionary<string, object?>> GetReadings(IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetReadingsAsync(new GetReadingsRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                                        deadline: timeout.ToDeadline(),
-                                                        cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                var res = await Client.GetReadingsAsync(
+                        new GetReadingsRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
                 var readings = res.Readings.ToDictionary();
                 logger.LogMethodInvocationSuccess(results: readings);

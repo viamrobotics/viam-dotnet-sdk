@@ -61,6 +61,18 @@ namespace Viam.App.V1 {
     static readonly grpc::Marshaller<global::Viam.App.V1.GetInvoicePdfRequest> __Marshaller_viam_app_v1_GetInvoicePdfRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetInvoicePdfRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.GetInvoicePdfResponse> __Marshaller_viam_app_v1_GetInvoicePdfResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetInvoicePdfResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.SendPaymentRequiredEmailRequest> __Marshaller_viam_app_v1_SendPaymentRequiredEmailRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.SendPaymentRequiredEmailRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.SendPaymentRequiredEmailResponse> __Marshaller_viam_app_v1_SendPaymentRequiredEmailResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.SendPaymentRequiredEmailResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetAvailableBillingTiersRequest> __Marshaller_viam_app_v1_GetAvailableBillingTiersRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetAvailableBillingTiersRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetAvailableBillingTiersResponse> __Marshaller_viam_app_v1_GetAvailableBillingTiersResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetAvailableBillingTiersResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateOrganizationBillingTierRequest> __Marshaller_viam_app_v1_UpdateOrganizationBillingTierRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateOrganizationBillingTierRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateOrganizationBillingTierResponse> __Marshaller_viam_app_v1_UpdateOrganizationBillingTierResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateOrganizationBillingTierResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.V1.GetCurrentMonthUsageRequest, global::Viam.App.V1.GetCurrentMonthUsageResponse> __Method_GetCurrentMonthUsage = new grpc::Method<global::Viam.App.V1.GetCurrentMonthUsageRequest, global::Viam.App.V1.GetCurrentMonthUsageResponse>(
@@ -93,6 +105,30 @@ namespace Viam.App.V1 {
         "GetInvoicePdf",
         __Marshaller_viam_app_v1_GetInvoicePdfRequest,
         __Marshaller_viam_app_v1_GetInvoicePdfResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.SendPaymentRequiredEmailRequest, global::Viam.App.V1.SendPaymentRequiredEmailResponse> __Method_SendPaymentRequiredEmail = new grpc::Method<global::Viam.App.V1.SendPaymentRequiredEmailRequest, global::Viam.App.V1.SendPaymentRequiredEmailResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "SendPaymentRequiredEmail",
+        __Marshaller_viam_app_v1_SendPaymentRequiredEmailRequest,
+        __Marshaller_viam_app_v1_SendPaymentRequiredEmailResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.GetAvailableBillingTiersRequest, global::Viam.App.V1.GetAvailableBillingTiersResponse> __Method_GetAvailableBillingTiers = new grpc::Method<global::Viam.App.V1.GetAvailableBillingTiersRequest, global::Viam.App.V1.GetAvailableBillingTiersResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetAvailableBillingTiers",
+        __Marshaller_viam_app_v1_GetAvailableBillingTiersRequest,
+        __Marshaller_viam_app_v1_GetAvailableBillingTiersResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.UpdateOrganizationBillingTierRequest, global::Viam.App.V1.UpdateOrganizationBillingTierResponse> __Method_UpdateOrganizationBillingTier = new grpc::Method<global::Viam.App.V1.UpdateOrganizationBillingTierRequest, global::Viam.App.V1.UpdateOrganizationBillingTierResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateOrganizationBillingTier",
+        __Marshaller_viam_app_v1_UpdateOrganizationBillingTierRequest,
+        __Marshaller_viam_app_v1_UpdateOrganizationBillingTierResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -149,6 +185,42 @@ namespace Viam.App.V1 {
       /// <returns>A task indicating completion of the handler.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task GetInvoicePdf(global::Viam.App.V1.GetInvoicePdfRequest request, grpc::IServerStreamWriter<global::Viam.App.V1.GetInvoicePdfResponse> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Send an email with a prompt to the user's org's billing page.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.SendPaymentRequiredEmailResponse> SendPaymentRequiredEmail(global::Viam.App.V1.SendPaymentRequiredEmailRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Get available billing tiers that can be assigned to organizations
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.GetAvailableBillingTiersResponse> GetAvailableBillingTiers(global::Viam.App.V1.GetAvailableBillingTiersRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Update an organization's billing tier
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.UpdateOrganizationBillingTierResponse> UpdateOrganizationBillingTier(global::Viam.App.V1.UpdateOrganizationBillingTierRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -350,6 +422,150 @@ namespace Viam.App.V1 {
       {
         return CallInvoker.AsyncServerStreamingCall(__Method_GetInvoicePdf, null, options, request);
       }
+      /// <summary>
+      /// Send an email with a prompt to the user's org's billing page.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.SendPaymentRequiredEmailResponse SendPaymentRequiredEmail(global::Viam.App.V1.SendPaymentRequiredEmailRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SendPaymentRequiredEmail(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Send an email with a prompt to the user's org's billing page.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.SendPaymentRequiredEmailResponse SendPaymentRequiredEmail(global::Viam.App.V1.SendPaymentRequiredEmailRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SendPaymentRequiredEmail, null, options, request);
+      }
+      /// <summary>
+      /// Send an email with a prompt to the user's org's billing page.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.SendPaymentRequiredEmailResponse> SendPaymentRequiredEmailAsync(global::Viam.App.V1.SendPaymentRequiredEmailRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SendPaymentRequiredEmailAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Send an email with a prompt to the user's org's billing page.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.SendPaymentRequiredEmailResponse> SendPaymentRequiredEmailAsync(global::Viam.App.V1.SendPaymentRequiredEmailRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SendPaymentRequiredEmail, null, options, request);
+      }
+      /// <summary>
+      /// Get available billing tiers that can be assigned to organizations
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetAvailableBillingTiersResponse GetAvailableBillingTiers(global::Viam.App.V1.GetAvailableBillingTiersRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAvailableBillingTiers(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Get available billing tiers that can be assigned to organizations
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetAvailableBillingTiersResponse GetAvailableBillingTiers(global::Viam.App.V1.GetAvailableBillingTiersRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetAvailableBillingTiers, null, options, request);
+      }
+      /// <summary>
+      /// Get available billing tiers that can be assigned to organizations
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetAvailableBillingTiersResponse> GetAvailableBillingTiersAsync(global::Viam.App.V1.GetAvailableBillingTiersRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAvailableBillingTiersAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Get available billing tiers that can be assigned to organizations
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetAvailableBillingTiersResponse> GetAvailableBillingTiersAsync(global::Viam.App.V1.GetAvailableBillingTiersRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetAvailableBillingTiers, null, options, request);
+      }
+      /// <summary>
+      /// Update an organization's billing tier
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateOrganizationBillingTierResponse UpdateOrganizationBillingTier(global::Viam.App.V1.UpdateOrganizationBillingTierRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateOrganizationBillingTier(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Update an organization's billing tier
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateOrganizationBillingTierResponse UpdateOrganizationBillingTier(global::Viam.App.V1.UpdateOrganizationBillingTierRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateOrganizationBillingTier, null, options, request);
+      }
+      /// <summary>
+      /// Update an organization's billing tier
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateOrganizationBillingTierResponse> UpdateOrganizationBillingTierAsync(global::Viam.App.V1.UpdateOrganizationBillingTierRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateOrganizationBillingTierAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Update an organization's billing tier
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateOrganizationBillingTierResponse> UpdateOrganizationBillingTierAsync(global::Viam.App.V1.UpdateOrganizationBillingTierRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateOrganizationBillingTier, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override BillingServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -367,7 +583,10 @@ namespace Viam.App.V1 {
           .AddMethod(__Method_GetCurrentMonthUsage, serviceImpl.GetCurrentMonthUsage)
           .AddMethod(__Method_GetOrgBillingInformation, serviceImpl.GetOrgBillingInformation)
           .AddMethod(__Method_GetInvoicesSummary, serviceImpl.GetInvoicesSummary)
-          .AddMethod(__Method_GetInvoicePdf, serviceImpl.GetInvoicePdf).Build();
+          .AddMethod(__Method_GetInvoicePdf, serviceImpl.GetInvoicePdf)
+          .AddMethod(__Method_SendPaymentRequiredEmail, serviceImpl.SendPaymentRequiredEmail)
+          .AddMethod(__Method_GetAvailableBillingTiers, serviceImpl.GetAvailableBillingTiers)
+          .AddMethod(__Method_UpdateOrganizationBillingTier, serviceImpl.UpdateOrganizationBillingTier).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -381,6 +600,9 @@ namespace Viam.App.V1 {
       serviceBinder.AddMethod(__Method_GetOrgBillingInformation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetOrgBillingInformationRequest, global::Viam.App.V1.GetOrgBillingInformationResponse>(serviceImpl.GetOrgBillingInformation));
       serviceBinder.AddMethod(__Method_GetInvoicesSummary, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetInvoicesSummaryRequest, global::Viam.App.V1.GetInvoicesSummaryResponse>(serviceImpl.GetInvoicesSummary));
       serviceBinder.AddMethod(__Method_GetInvoicePdf, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Viam.App.V1.GetInvoicePdfRequest, global::Viam.App.V1.GetInvoicePdfResponse>(serviceImpl.GetInvoicePdf));
+      serviceBinder.AddMethod(__Method_SendPaymentRequiredEmail, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.SendPaymentRequiredEmailRequest, global::Viam.App.V1.SendPaymentRequiredEmailResponse>(serviceImpl.SendPaymentRequiredEmail));
+      serviceBinder.AddMethod(__Method_GetAvailableBillingTiers, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetAvailableBillingTiersRequest, global::Viam.App.V1.GetAvailableBillingTiersResponse>(serviceImpl.GetAvailableBillingTiers));
+      serviceBinder.AddMethod(__Method_UpdateOrganizationBillingTier, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateOrganizationBillingTierRequest, global::Viam.App.V1.UpdateOrganizationBillingTierResponse>(serviceImpl.UpdateOrganizationBillingTier));
     }
 
   }

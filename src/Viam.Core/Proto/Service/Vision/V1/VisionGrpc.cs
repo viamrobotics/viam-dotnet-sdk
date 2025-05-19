@@ -69,6 +69,14 @@ namespace Viam.Service.Vision.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Service.Vision.V1.GetObjectPointCloudsResponse> __Marshaller_viam_service_vision_v1_GetObjectPointCloudsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Service.Vision.V1.GetObjectPointCloudsResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Service.Vision.V1.GetPropertiesRequest> __Marshaller_viam_service_vision_v1_GetPropertiesRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Service.Vision.V1.GetPropertiesRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Service.Vision.V1.GetPropertiesResponse> __Marshaller_viam_service_vision_v1_GetPropertiesResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Service.Vision.V1.GetPropertiesResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Service.Vision.V1.CaptureAllFromCameraRequest> __Marshaller_viam_service_vision_v1_CaptureAllFromCameraRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Service.Vision.V1.CaptureAllFromCameraRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Service.Vision.V1.CaptureAllFromCameraResponse> __Marshaller_viam_service_vision_v1_CaptureAllFromCameraResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Service.Vision.V1.CaptureAllFromCameraResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Common.V1.DoCommandRequest> __Marshaller_viam_common_v1_DoCommandRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Common.V1.DoCommandRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Common.V1.DoCommandResponse> __Marshaller_viam_common_v1_DoCommandResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Common.V1.DoCommandResponse.Parser));
@@ -112,6 +120,22 @@ namespace Viam.Service.Vision.V1 {
         "GetObjectPointClouds",
         __Marshaller_viam_service_vision_v1_GetObjectPointCloudsRequest,
         __Marshaller_viam_service_vision_v1_GetObjectPointCloudsResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.Service.Vision.V1.GetPropertiesRequest, global::Viam.Service.Vision.V1.GetPropertiesResponse> __Method_GetProperties = new grpc::Method<global::Viam.Service.Vision.V1.GetPropertiesRequest, global::Viam.Service.Vision.V1.GetPropertiesResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetProperties",
+        __Marshaller_viam_service_vision_v1_GetPropertiesRequest,
+        __Marshaller_viam_service_vision_v1_GetPropertiesResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.Service.Vision.V1.CaptureAllFromCameraRequest, global::Viam.Service.Vision.V1.CaptureAllFromCameraResponse> __Method_CaptureAllFromCamera = new grpc::Method<global::Viam.Service.Vision.V1.CaptureAllFromCameraRequest, global::Viam.Service.Vision.V1.CaptureAllFromCameraResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CaptureAllFromCamera",
+        __Marshaller_viam_service_vision_v1_CaptureAllFromCameraRequest,
+        __Marshaller_viam_service_vision_v1_CaptureAllFromCameraResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.Common.V1.DoCommandRequest, global::Viam.Common.V1.DoCommandResponse> __Method_DoCommand = new grpc::Method<global::Viam.Common.V1.DoCommandRequest, global::Viam.Common.V1.DoCommandResponse>(
@@ -189,6 +213,24 @@ namespace Viam.Service.Vision.V1 {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.Service.Vision.V1.GetObjectPointCloudsResponse> GetObjectPointClouds(global::Viam.Service.Vision.V1.GetObjectPointCloudsRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// GetProperties will return the properties as booleans given the name of the vision service
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.Service.Vision.V1.GetPropertiesResponse> GetProperties(global::Viam.Service.Vision.V1.GetPropertiesRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.Service.Vision.V1.CaptureAllFromCameraResponse> CaptureAllFromCamera(global::Viam.Service.Vision.V1.CaptureAllFromCameraRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -483,6 +525,74 @@ namespace Viam.Service.Vision.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_GetObjectPointClouds, null, options, request);
       }
       /// <summary>
+      /// GetProperties will return the properties as booleans given the name of the vision service
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Service.Vision.V1.GetPropertiesResponse GetProperties(global::Viam.Service.Vision.V1.GetPropertiesRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetProperties(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// GetProperties will return the properties as booleans given the name of the vision service
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Service.Vision.V1.GetPropertiesResponse GetProperties(global::Viam.Service.Vision.V1.GetPropertiesRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetProperties, null, options, request);
+      }
+      /// <summary>
+      /// GetProperties will return the properties as booleans given the name of the vision service
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Service.Vision.V1.GetPropertiesResponse> GetPropertiesAsync(global::Viam.Service.Vision.V1.GetPropertiesRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetPropertiesAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// GetProperties will return the properties as booleans given the name of the vision service
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Service.Vision.V1.GetPropertiesResponse> GetPropertiesAsync(global::Viam.Service.Vision.V1.GetPropertiesRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetProperties, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Service.Vision.V1.CaptureAllFromCameraResponse CaptureAllFromCamera(global::Viam.Service.Vision.V1.CaptureAllFromCameraRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CaptureAllFromCamera(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Service.Vision.V1.CaptureAllFromCameraResponse CaptureAllFromCamera(global::Viam.Service.Vision.V1.CaptureAllFromCameraRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CaptureAllFromCamera, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Service.Vision.V1.CaptureAllFromCameraResponse> CaptureAllFromCameraAsync(global::Viam.Service.Vision.V1.CaptureAllFromCameraRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CaptureAllFromCameraAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Service.Vision.V1.CaptureAllFromCameraResponse> CaptureAllFromCameraAsync(global::Viam.Service.Vision.V1.CaptureAllFromCameraRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CaptureAllFromCamera, null, options, request);
+      }
+      /// <summary>
       /// DoCommand sends/receives arbitrary commands
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -549,6 +659,8 @@ namespace Viam.Service.Vision.V1 {
           .AddMethod(__Method_GetClassificationsFromCamera, serviceImpl.GetClassificationsFromCamera)
           .AddMethod(__Method_GetClassifications, serviceImpl.GetClassifications)
           .AddMethod(__Method_GetObjectPointClouds, serviceImpl.GetObjectPointClouds)
+          .AddMethod(__Method_GetProperties, serviceImpl.GetProperties)
+          .AddMethod(__Method_CaptureAllFromCamera, serviceImpl.CaptureAllFromCamera)
           .AddMethod(__Method_DoCommand, serviceImpl.DoCommand).Build();
     }
 
@@ -564,6 +676,8 @@ namespace Viam.Service.Vision.V1 {
       serviceBinder.AddMethod(__Method_GetClassificationsFromCamera, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Service.Vision.V1.GetClassificationsFromCameraRequest, global::Viam.Service.Vision.V1.GetClassificationsFromCameraResponse>(serviceImpl.GetClassificationsFromCamera));
       serviceBinder.AddMethod(__Method_GetClassifications, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Service.Vision.V1.GetClassificationsRequest, global::Viam.Service.Vision.V1.GetClassificationsResponse>(serviceImpl.GetClassifications));
       serviceBinder.AddMethod(__Method_GetObjectPointClouds, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Service.Vision.V1.GetObjectPointCloudsRequest, global::Viam.Service.Vision.V1.GetObjectPointCloudsResponse>(serviceImpl.GetObjectPointClouds));
+      serviceBinder.AddMethod(__Method_GetProperties, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Service.Vision.V1.GetPropertiesRequest, global::Viam.Service.Vision.V1.GetPropertiesResponse>(serviceImpl.GetProperties));
+      serviceBinder.AddMethod(__Method_CaptureAllFromCamera, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Service.Vision.V1.CaptureAllFromCameraRequest, global::Viam.Service.Vision.V1.CaptureAllFromCameraResponse>(serviceImpl.CaptureAllFromCamera));
       serviceBinder.AddMethod(__Method_DoCommand, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Common.V1.DoCommandRequest, global::Viam.Common.V1.DoCommandResponse>(serviceImpl.DoCommand));
     }
 

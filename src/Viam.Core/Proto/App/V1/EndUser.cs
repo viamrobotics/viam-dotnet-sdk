@@ -27,33 +27,47 @@ namespace Viam.App.V1 {
             "ChVhcHAvdjEvZW5kX3VzZXIucHJvdG8SC3ZpYW0uYXBwLnYxIhgKFklzTGVn",
             "YWxBY2NlcHRlZFJlcXVlc3QiQAoXSXNMZWdhbEFjY2VwdGVkUmVzcG9uc2US",
             "JQoOYWNjZXB0ZWRfbGVnYWwYASABKAhSDWFjY2VwdGVkTGVnYWwiFAoSQWNj",
-            "ZXB0TGVnYWxSZXF1ZXN0IhUKE0FjY2VwdExlZ2FsUmVzcG9uc2UixwEKHlJl",
+            "ZXB0TGVnYWxSZXF1ZXN0IhUKE0FjY2VwdExlZ2FsUmVzcG9uc2UiywEKHlJl",
             "Z2lzdGVyQXV0aEFwcGxpY2F0aW9uUmVxdWVzdBIpChBhcHBsaWNhdGlvbl9u",
             "YW1lGAEgASgJUg9hcHBsaWNhdGlvbk5hbWUSFQoGb3JnX2lkGAIgASgJUgVv",
             "cmdJZBIfCgtvcmlnaW5fdXJpcxgDIAMoCVIKb3JpZ2luVXJpcxIjCg1yZWRp",
             "cmVjdF91cmlzGAQgAygJUgxyZWRpcmVjdFVyaXMSHQoKbG9nb3V0X3VyaRgF",
-            "IAEoCVIJbG9nb3V0VXJpIosBCh9SZWdpc3RlckF1dGhBcHBsaWNhdGlvblJl",
-            "c3BvbnNlEiUKDmFwcGxpY2F0aW9uX2lkGAEgASgJUg1hcHBsaWNhdGlvbklk",
-            "EikKEGFwcGxpY2F0aW9uX25hbWUYAiABKAlSD2FwcGxpY2F0aW9uTmFtZRIW",
-            "CgZzZWNyZXQYAyABKAlSBnNlY3JldCLsAQocVXBkYXRlQXV0aEFwcGxpY2F0",
-            "aW9uUmVxdWVzdBIVCgZvcmdfaWQYASABKAlSBW9yZ0lkEiUKDmFwcGxpY2F0",
-            "aW9uX2lkGAIgASgJUg1hcHBsaWNhdGlvbklkEikKEGFwcGxpY2F0aW9uX25h",
-            "bWUYAyABKAlSD2FwcGxpY2F0aW9uTmFtZRIfCgtvcmlnaW5fdXJpcxgEIAMo",
-            "CVIKb3JpZ2luVXJpcxIjCg1yZWRpcmVjdF91cmlzGAUgAygJUgxyZWRpcmVj",
-            "dFVyaXMSHQoKbG9nb3V0X3VyaRgGIAEoCVIJbG9nb3V0VXJpInEKHVVwZGF0",
-            "ZUF1dGhBcHBsaWNhdGlvblJlc3BvbnNlEiUKDmFwcGxpY2F0aW9uX2lkGAEg",
-            "ASgJUg1hcHBsaWNhdGlvbklkEikKEGFwcGxpY2F0aW9uX25hbWUYAiABKAlS",
-            "D2FwcGxpY2F0aW9uTmFtZTKmAwoORW5kVXNlclNlcnZpY2USXAoPSXNMZWdh",
-            "bEFjY2VwdGVkEiMudmlhbS5hcHAudjEuSXNMZWdhbEFjY2VwdGVkUmVxdWVz",
-            "dBokLnZpYW0uYXBwLnYxLklzTGVnYWxBY2NlcHRlZFJlc3BvbnNlElAKC0Fj",
-            "Y2VwdExlZ2FsEh8udmlhbS5hcHAudjEuQWNjZXB0TGVnYWxSZXF1ZXN0GiAu",
-            "dmlhbS5hcHAudjEuQWNjZXB0TGVnYWxSZXNwb25zZRJ0ChdSZWdpc3RlckF1",
-            "dGhBcHBsaWNhdGlvbhIrLnZpYW0uYXBwLnYxLlJlZ2lzdGVyQXV0aEFwcGxp",
-            "Y2F0aW9uUmVxdWVzdBosLnZpYW0uYXBwLnYxLlJlZ2lzdGVyQXV0aEFwcGxp",
-            "Y2F0aW9uUmVzcG9uc2USbgoVVXBkYXRlQXV0aEFwcGxpY2F0aW9uEikudmlh",
-            "bS5hcHAudjEuVXBkYXRlQXV0aEFwcGxpY2F0aW9uUmVxdWVzdBoqLnZpYW0u",
-            "YXBwLnYxLlVwZGF0ZUF1dGhBcHBsaWNhdGlvblJlc3BvbnNlQhhaFmdvLnZp",
-            "YW0uY29tL2FwaS9hcHAvdjFiBnByb3RvMw=="));
+            "IAEoCVIJbG9nb3V0VXJpOgIYASKcAQofUmVnaXN0ZXJBdXRoQXBwbGljYXRp",
+            "b25SZXNwb25zZRIlCg5hcHBsaWNhdGlvbl9pZBgBIAEoCVINYXBwbGljYXRp",
+            "b25JZBIpChBhcHBsaWNhdGlvbl9uYW1lGAIgASgJUg9hcHBsaWNhdGlvbk5h",
+            "bWUSIwoNY2xpZW50X3NlY3JldBgDIAEoCVIMY2xpZW50U2VjcmV0OgIYASLw",
+            "AQocVXBkYXRlQXV0aEFwcGxpY2F0aW9uUmVxdWVzdBIVCgZvcmdfaWQYASAB",
+            "KAlSBW9yZ0lkEiUKDmFwcGxpY2F0aW9uX2lkGAIgASgJUg1hcHBsaWNhdGlv",
+            "bklkEikKEGFwcGxpY2F0aW9uX25hbWUYAyABKAlSD2FwcGxpY2F0aW9uTmFt",
+            "ZRIfCgtvcmlnaW5fdXJpcxgEIAMoCVIKb3JpZ2luVXJpcxIjCg1yZWRpcmVj",
+            "dF91cmlzGAUgAygJUgxyZWRpcmVjdFVyaXMSHQoKbG9nb3V0X3VyaRgGIAEo",
+            "CVIJbG9nb3V0VXJpOgIYASJ1Ch1VcGRhdGVBdXRoQXBwbGljYXRpb25SZXNw",
+            "b25zZRIlCg5hcHBsaWNhdGlvbl9pZBgBIAEoCVINYXBwbGljYXRpb25JZBIp",
+            "ChBhcHBsaWNhdGlvbl9uYW1lGAIgASgJUg9hcHBsaWNhdGlvbk5hbWU6AhgB",
+            "Il0KGUdldEF1dGhBcHBsaWNhdGlvblJlcXVlc3QSFQoGb3JnX2lkGAEgASgJ",
+            "UgVvcmdJZBIlCg5hcHBsaWNhdGlvbl9pZBgCIAEoCVINYXBwbGljYXRpb25J",
+            "ZDoCGAEi/AEKGkdldEF1dGhBcHBsaWNhdGlvblJlc3BvbnNlEiUKDmFwcGxp",
+            "Y2F0aW9uX2lkGAEgASgJUg1hcHBsaWNhdGlvbklkEikKEGFwcGxpY2F0aW9u",
+            "X25hbWUYAiABKAlSD2FwcGxpY2F0aW9uTmFtZRIjCg1jbGllbnRfc2VjcmV0",
+            "GAMgASgJUgxjbGllbnRTZWNyZXQSHwoLb3JpZ2luX3VyaXMYBCADKAlSCm9y",
+            "aWdpblVyaXMSIwoNcmVkaXJlY3RfdXJpcxgFIAMoCVIMcmVkaXJlY3RVcmlz",
+            "Eh0KCmxvZ291dF91cmkYBiABKAlSCWxvZ291dFVyaToCGAEynAQKDkVuZFVz",
+            "ZXJTZXJ2aWNlElwKD0lzTGVnYWxBY2NlcHRlZBIjLnZpYW0uYXBwLnYxLklz",
+            "TGVnYWxBY2NlcHRlZFJlcXVlc3QaJC52aWFtLmFwcC52MS5Jc0xlZ2FsQWNj",
+            "ZXB0ZWRSZXNwb25zZRJQCgtBY2NlcHRMZWdhbBIfLnZpYW0uYXBwLnYxLkFj",
+            "Y2VwdExlZ2FsUmVxdWVzdBogLnZpYW0uYXBwLnYxLkFjY2VwdExlZ2FsUmVz",
+            "cG9uc2USeQoXUmVnaXN0ZXJBdXRoQXBwbGljYXRpb24SKy52aWFtLmFwcC52",
+            "MS5SZWdpc3RlckF1dGhBcHBsaWNhdGlvblJlcXVlc3QaLC52aWFtLmFwcC52",
+            "MS5SZWdpc3RlckF1dGhBcHBsaWNhdGlvblJlc3BvbnNlIgOIAgEScwoVVXBk",
+            "YXRlQXV0aEFwcGxpY2F0aW9uEikudmlhbS5hcHAudjEuVXBkYXRlQXV0aEFw",
+            "cGxpY2F0aW9uUmVxdWVzdBoqLnZpYW0uYXBwLnYxLlVwZGF0ZUF1dGhBcHBs",
+            "aWNhdGlvblJlc3BvbnNlIgOIAgESagoSR2V0QXV0aEFwcGxpY2F0aW9uEiYu",
+            "dmlhbS5hcHAudjEuR2V0QXV0aEFwcGxpY2F0aW9uUmVxdWVzdBonLnZpYW0u",
+            "YXBwLnYxLkdldEF1dGhBcHBsaWNhdGlvblJlc3BvbnNlIgOIAgFChQEKD2Nv",
+            "bS52aWFtLmFwcC52MUIMRW5kVXNlclByb3RvUAFaFmdvLnZpYW0uY29tL2Fw",
+            "aS9hcHAvdjGiAgNWQViqAgtWaWFtLkFwcC5WMcoCC1ZpYW1cQXBwXFYx4gIX",
+            "VmlhbVxBcHBcVjFcR1BCTWV0YWRhdGHqAg1WaWFtOjpBcHA6OlYxYgZwcm90",
+            "bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -62,9 +76,11 @@ namespace Viam.App.V1 {
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.V1.AcceptLegalRequest), global::Viam.App.V1.AcceptLegalRequest.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.V1.AcceptLegalResponse), global::Viam.App.V1.AcceptLegalResponse.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.V1.RegisterAuthApplicationRequest), global::Viam.App.V1.RegisterAuthApplicationRequest.Parser, new[]{ "ApplicationName", "OrgId", "OriginUris", "RedirectUris", "LogoutUri" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.V1.RegisterAuthApplicationResponse), global::Viam.App.V1.RegisterAuthApplicationResponse.Parser, new[]{ "ApplicationId", "ApplicationName", "Secret" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.V1.RegisterAuthApplicationResponse), global::Viam.App.V1.RegisterAuthApplicationResponse.Parser, new[]{ "ApplicationId", "ApplicationName", "ClientSecret" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.V1.UpdateAuthApplicationRequest), global::Viam.App.V1.UpdateAuthApplicationRequest.Parser, new[]{ "OrgId", "ApplicationId", "ApplicationName", "OriginUris", "RedirectUris", "LogoutUri" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.V1.UpdateAuthApplicationResponse), global::Viam.App.V1.UpdateAuthApplicationResponse.Parser, new[]{ "ApplicationId", "ApplicationName" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.V1.UpdateAuthApplicationResponse), global::Viam.App.V1.UpdateAuthApplicationResponse.Parser, new[]{ "ApplicationId", "ApplicationName" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.V1.GetAuthApplicationRequest), global::Viam.App.V1.GetAuthApplicationRequest.Parser, new[]{ "OrgId", "ApplicationId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.V1.GetAuthApplicationResponse), global::Viam.App.V1.GetAuthApplicationResponse.Parser, new[]{ "ApplicationId", "ApplicationName", "ClientSecret", "OriginUris", "RedirectUris", "LogoutUri" }, null, null, null, null)
           }));
     }
     #endregion
@@ -198,7 +214,11 @@ namespace Viam.App.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -213,7 +233,11 @@ namespace Viam.App.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -383,7 +407,11 @@ namespace Viam.App.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -402,7 +430,11 @@ namespace Viam.App.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -544,7 +576,11 @@ namespace Viam.App.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -559,7 +595,11 @@ namespace Viam.App.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -697,7 +737,11 @@ namespace Viam.App.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -712,7 +756,11 @@ namespace Viam.App.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -723,6 +771,7 @@ namespace Viam.App.V1 {
 
   }
 
+  [global::System.ObsoleteAttribute]
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class RegisterAuthApplicationRequest : pb::IMessage<RegisterAuthApplicationRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -973,7 +1022,11 @@ namespace Viam.App.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1008,7 +1061,11 @@ namespace Viam.App.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1039,6 +1096,7 @@ namespace Viam.App.V1 {
 
   }
 
+  [global::System.ObsoleteAttribute]
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class RegisterAuthApplicationResponse : pb::IMessage<RegisterAuthApplicationResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -1076,7 +1134,7 @@ namespace Viam.App.V1 {
     public RegisterAuthApplicationResponse(RegisterAuthApplicationResponse other) : this() {
       applicationId_ = other.applicationId_;
       applicationName_ = other.applicationName_;
-      secret_ = other.secret_;
+      clientSecret_ = other.clientSecret_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1110,15 +1168,15 @@ namespace Viam.App.V1 {
       }
     }
 
-    /// <summary>Field number for the "secret" field.</summary>
-    public const int SecretFieldNumber = 3;
-    private string secret_ = "";
+    /// <summary>Field number for the "client_secret" field.</summary>
+    public const int ClientSecretFieldNumber = 3;
+    private string clientSecret_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Secret {
-      get { return secret_; }
+    public string ClientSecret {
+      get { return clientSecret_; }
       set {
-        secret_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        clientSecret_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1139,7 +1197,7 @@ namespace Viam.App.V1 {
       }
       if (ApplicationId != other.ApplicationId) return false;
       if (ApplicationName != other.ApplicationName) return false;
-      if (Secret != other.Secret) return false;
+      if (ClientSecret != other.ClientSecret) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1149,7 +1207,7 @@ namespace Viam.App.V1 {
       int hash = 1;
       if (ApplicationId.Length != 0) hash ^= ApplicationId.GetHashCode();
       if (ApplicationName.Length != 0) hash ^= ApplicationName.GetHashCode();
-      if (Secret.Length != 0) hash ^= Secret.GetHashCode();
+      if (ClientSecret.Length != 0) hash ^= ClientSecret.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1176,9 +1234,9 @@ namespace Viam.App.V1 {
         output.WriteRawTag(18);
         output.WriteString(ApplicationName);
       }
-      if (Secret.Length != 0) {
+      if (ClientSecret.Length != 0) {
         output.WriteRawTag(26);
-        output.WriteString(Secret);
+        output.WriteString(ClientSecret);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1198,9 +1256,9 @@ namespace Viam.App.V1 {
         output.WriteRawTag(18);
         output.WriteString(ApplicationName);
       }
-      if (Secret.Length != 0) {
+      if (ClientSecret.Length != 0) {
         output.WriteRawTag(26);
-        output.WriteString(Secret);
+        output.WriteString(ClientSecret);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1218,8 +1276,8 @@ namespace Viam.App.V1 {
       if (ApplicationName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ApplicationName);
       }
-      if (Secret.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Secret);
+      if (ClientSecret.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientSecret);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1239,8 +1297,8 @@ namespace Viam.App.V1 {
       if (other.ApplicationName.Length != 0) {
         ApplicationName = other.ApplicationName;
       }
-      if (other.Secret.Length != 0) {
-        Secret = other.Secret;
+      if (other.ClientSecret.Length != 0) {
+        ClientSecret = other.ClientSecret;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1253,7 +1311,11 @@ namespace Viam.App.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1266,7 +1328,7 @@ namespace Viam.App.V1 {
             break;
           }
           case 26: {
-            Secret = input.ReadString();
+            ClientSecret = input.ReadString();
             break;
           }
         }
@@ -1280,7 +1342,11 @@ namespace Viam.App.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1293,7 +1359,7 @@ namespace Viam.App.V1 {
             break;
           }
           case 26: {
-            Secret = input.ReadString();
+            ClientSecret = input.ReadString();
             break;
           }
         }
@@ -1303,6 +1369,7 @@ namespace Viam.App.V1 {
 
   }
 
+  [global::System.ObsoleteAttribute]
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class UpdateAuthApplicationRequest : pb::IMessage<UpdateAuthApplicationRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -1582,7 +1649,11 @@ namespace Viam.App.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1621,7 +1692,11 @@ namespace Viam.App.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1656,6 +1731,7 @@ namespace Viam.App.V1 {
 
   }
 
+  [global::System.ObsoleteAttribute]
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class UpdateAuthApplicationResponse : pb::IMessage<UpdateAuthApplicationResponse>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -1841,7 +1917,11 @@ namespace Viam.App.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1864,7 +1944,11 @@ namespace Viam.App.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1874,6 +1958,604 @@ namespace Viam.App.V1 {
           }
           case 18: {
             ApplicationName = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.ObsoleteAttribute]
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class GetAuthApplicationRequest : pb::IMessage<GetAuthApplicationRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<GetAuthApplicationRequest> _parser = new pb::MessageParser<GetAuthApplicationRequest>(() => new GetAuthApplicationRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<GetAuthApplicationRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Viam.App.V1.EndUserReflection.Descriptor.MessageTypes[8]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetAuthApplicationRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetAuthApplicationRequest(GetAuthApplicationRequest other) : this() {
+      orgId_ = other.orgId_;
+      applicationId_ = other.applicationId_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetAuthApplicationRequest Clone() {
+      return new GetAuthApplicationRequest(this);
+    }
+
+    /// <summary>Field number for the "org_id" field.</summary>
+    public const int OrgIdFieldNumber = 1;
+    private string orgId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string OrgId {
+      get { return orgId_; }
+      set {
+        orgId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "application_id" field.</summary>
+    public const int ApplicationIdFieldNumber = 2;
+    private string applicationId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ApplicationId {
+      get { return applicationId_; }
+      set {
+        applicationId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as GetAuthApplicationRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(GetAuthApplicationRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (OrgId != other.OrgId) return false;
+      if (ApplicationId != other.ApplicationId) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (OrgId.Length != 0) hash ^= OrgId.GetHashCode();
+      if (ApplicationId.Length != 0) hash ^= ApplicationId.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (OrgId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(OrgId);
+      }
+      if (ApplicationId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ApplicationId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (OrgId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(OrgId);
+      }
+      if (ApplicationId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ApplicationId);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (OrgId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(OrgId);
+      }
+      if (ApplicationId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ApplicationId);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(GetAuthApplicationRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.OrgId.Length != 0) {
+        OrgId = other.OrgId;
+      }
+      if (other.ApplicationId.Length != 0) {
+        ApplicationId = other.ApplicationId;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            OrgId = input.ReadString();
+            break;
+          }
+          case 18: {
+            ApplicationId = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            OrgId = input.ReadString();
+            break;
+          }
+          case 18: {
+            ApplicationId = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.ObsoleteAttribute]
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class GetAuthApplicationResponse : pb::IMessage<GetAuthApplicationResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<GetAuthApplicationResponse> _parser = new pb::MessageParser<GetAuthApplicationResponse>(() => new GetAuthApplicationResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<GetAuthApplicationResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Viam.App.V1.EndUserReflection.Descriptor.MessageTypes[9]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetAuthApplicationResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetAuthApplicationResponse(GetAuthApplicationResponse other) : this() {
+      applicationId_ = other.applicationId_;
+      applicationName_ = other.applicationName_;
+      clientSecret_ = other.clientSecret_;
+      originUris_ = other.originUris_.Clone();
+      redirectUris_ = other.redirectUris_.Clone();
+      logoutUri_ = other.logoutUri_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetAuthApplicationResponse Clone() {
+      return new GetAuthApplicationResponse(this);
+    }
+
+    /// <summary>Field number for the "application_id" field.</summary>
+    public const int ApplicationIdFieldNumber = 1;
+    private string applicationId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ApplicationId {
+      get { return applicationId_; }
+      set {
+        applicationId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "application_name" field.</summary>
+    public const int ApplicationNameFieldNumber = 2;
+    private string applicationName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ApplicationName {
+      get { return applicationName_; }
+      set {
+        applicationName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "client_secret" field.</summary>
+    public const int ClientSecretFieldNumber = 3;
+    private string clientSecret_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ClientSecret {
+      get { return clientSecret_; }
+      set {
+        clientSecret_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "origin_uris" field.</summary>
+    public const int OriginUrisFieldNumber = 4;
+    private static readonly pb::FieldCodec<string> _repeated_originUris_codec
+        = pb::FieldCodec.ForString(34);
+    private readonly pbc::RepeatedField<string> originUris_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<string> OriginUris {
+      get { return originUris_; }
+    }
+
+    /// <summary>Field number for the "redirect_uris" field.</summary>
+    public const int RedirectUrisFieldNumber = 5;
+    private static readonly pb::FieldCodec<string> _repeated_redirectUris_codec
+        = pb::FieldCodec.ForString(42);
+    private readonly pbc::RepeatedField<string> redirectUris_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<string> RedirectUris {
+      get { return redirectUris_; }
+    }
+
+    /// <summary>Field number for the "logout_uri" field.</summary>
+    public const int LogoutUriFieldNumber = 6;
+    private string logoutUri_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string LogoutUri {
+      get { return logoutUri_; }
+      set {
+        logoutUri_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as GetAuthApplicationResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(GetAuthApplicationResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ApplicationId != other.ApplicationId) return false;
+      if (ApplicationName != other.ApplicationName) return false;
+      if (ClientSecret != other.ClientSecret) return false;
+      if(!originUris_.Equals(other.originUris_)) return false;
+      if(!redirectUris_.Equals(other.redirectUris_)) return false;
+      if (LogoutUri != other.LogoutUri) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ApplicationId.Length != 0) hash ^= ApplicationId.GetHashCode();
+      if (ApplicationName.Length != 0) hash ^= ApplicationName.GetHashCode();
+      if (ClientSecret.Length != 0) hash ^= ClientSecret.GetHashCode();
+      hash ^= originUris_.GetHashCode();
+      hash ^= redirectUris_.GetHashCode();
+      if (LogoutUri.Length != 0) hash ^= LogoutUri.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (ApplicationId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ApplicationId);
+      }
+      if (ApplicationName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ApplicationName);
+      }
+      if (ClientSecret.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(ClientSecret);
+      }
+      originUris_.WriteTo(output, _repeated_originUris_codec);
+      redirectUris_.WriteTo(output, _repeated_redirectUris_codec);
+      if (LogoutUri.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(LogoutUri);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ApplicationId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ApplicationId);
+      }
+      if (ApplicationName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ApplicationName);
+      }
+      if (ClientSecret.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(ClientSecret);
+      }
+      originUris_.WriteTo(ref output, _repeated_originUris_codec);
+      redirectUris_.WriteTo(ref output, _repeated_redirectUris_codec);
+      if (LogoutUri.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(LogoutUri);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (ApplicationId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ApplicationId);
+      }
+      if (ApplicationName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ApplicationName);
+      }
+      if (ClientSecret.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ClientSecret);
+      }
+      size += originUris_.CalculateSize(_repeated_originUris_codec);
+      size += redirectUris_.CalculateSize(_repeated_redirectUris_codec);
+      if (LogoutUri.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LogoutUri);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(GetAuthApplicationResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ApplicationId.Length != 0) {
+        ApplicationId = other.ApplicationId;
+      }
+      if (other.ApplicationName.Length != 0) {
+        ApplicationName = other.ApplicationName;
+      }
+      if (other.ClientSecret.Length != 0) {
+        ClientSecret = other.ClientSecret;
+      }
+      originUris_.Add(other.originUris_);
+      redirectUris_.Add(other.redirectUris_);
+      if (other.LogoutUri.Length != 0) {
+        LogoutUri = other.LogoutUri;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            ApplicationId = input.ReadString();
+            break;
+          }
+          case 18: {
+            ApplicationName = input.ReadString();
+            break;
+          }
+          case 26: {
+            ClientSecret = input.ReadString();
+            break;
+          }
+          case 34: {
+            originUris_.AddEntriesFrom(input, _repeated_originUris_codec);
+            break;
+          }
+          case 42: {
+            redirectUris_.AddEntriesFrom(input, _repeated_redirectUris_codec);
+            break;
+          }
+          case 50: {
+            LogoutUri = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            ApplicationId = input.ReadString();
+            break;
+          }
+          case 18: {
+            ApplicationName = input.ReadString();
+            break;
+          }
+          case 26: {
+            ClientSecret = input.ReadString();
+            break;
+          }
+          case 34: {
+            originUris_.AddEntriesFrom(ref input, _repeated_originUris_codec);
+            break;
+          }
+          case 42: {
+            redirectUris_.AddEntriesFrom(ref input, _repeated_redirectUris_codec);
+            break;
+          }
+          case 50: {
+            LogoutUri = input.ReadString();
             break;
           }
         }

@@ -67,9 +67,13 @@ namespace Viam.Component.Audioinput.V1 {
             "YW5kEpkBCg1HZXRHZW9tZXRyaWVzEiQudmlhbS5jb21tb24udjEuR2V0R2Vv",
             "bWV0cmllc1JlcXVlc3QaJS52aWFtLmNvbW1vbi52MS5HZXRHZW9tZXRyaWVz",
             "UmVzcG9uc2UiO4LT5JMCNRIzL3ZpYW0vYXBpL3YxL2NvbXBvbmVudC9hdWRp",
-            "b2lucHV0L3tuYW1lfS9nZW9tZXRyaWVzQksKIGNvbS52aWFtLmNvbXBvbmVu",
-            "dC5hdWRpb2lucHV0LnYxWidnby52aWFtLmNvbS9hcGkvY29tcG9uZW50L2F1",
-            "ZGlvaW5wdXQvdjFiBnByb3RvMw=="));
+            "b2lucHV0L3tuYW1lfS9nZW9tZXRyaWVzQu8BCiBjb20udmlhbS5jb21wb25l",
+            "bnQuYXVkaW9pbnB1dC52MUIPQXVkaW9pbnB1dFByb3RvUAFaJ2dvLnZpYW0u",
+            "Y29tL2FwaS9jb21wb25lbnQvYXVkaW9pbnB1dC92MaICA1ZDQaoCHFZpYW0u",
+            "Q29tcG9uZW50LkF1ZGlvaW5wdXQuVjHKAhxWaWFtXENvbXBvbmVudFxBdWRp",
+            "b2lucHV0XFYx4gIoVmlhbVxDb21wb25lbnRcQXVkaW9pbnB1dFxWMVxHUEJN",
+            "ZXRhZGF0YeoCH1ZpYW06OkNvbXBvbmVudDo6QXVkaW9pbnB1dDo6VjFiBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.HttpbodyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Viam.Component.Audioinput.V1.SampleFormat), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -286,7 +290,11 @@ namespace Viam.Component.Audioinput.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -312,7 +320,11 @@ namespace Viam.Component.Audioinput.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -551,7 +563,11 @@ namespace Viam.Component.Audioinput.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -578,7 +594,11 @@ namespace Viam.Component.Audioinput.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -794,7 +814,11 @@ namespace Viam.Component.Audioinput.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -817,7 +841,11 @@ namespace Viam.Component.Audioinput.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1027,7 +1055,11 @@ namespace Viam.Component.Audioinput.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1050,7 +1082,11 @@ namespace Viam.Component.Audioinput.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1293,7 +1329,11 @@ namespace Viam.Component.Audioinput.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1326,7 +1366,11 @@ namespace Viam.Component.Audioinput.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1514,7 +1558,11 @@ namespace Viam.Component.Audioinput.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1533,7 +1581,11 @@ namespace Viam.Component.Audioinput.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1881,7 +1933,11 @@ namespace Viam.Component.Audioinput.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1927,7 +1983,11 @@ namespace Viam.Component.Audioinput.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

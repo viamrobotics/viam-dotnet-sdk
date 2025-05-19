@@ -73,9 +73,9 @@ namespace Viam.Robot.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Robot.V1.BlockForOperationResponse> __Marshaller_viam_robot_v1_BlockForOperationResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.BlockForOperationResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Viam.Robot.V1.DiscoverComponentsRequest> __Marshaller_viam_robot_v1_DiscoverComponentsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.DiscoverComponentsRequest.Parser));
+    static readonly grpc::Marshaller<global::Viam.Robot.V1.GetModelsFromModulesRequest> __Marshaller_viam_robot_v1_GetModelsFromModulesRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.GetModelsFromModulesRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::Viam.Robot.V1.DiscoverComponentsResponse> __Marshaller_viam_robot_v1_DiscoverComponentsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.DiscoverComponentsResponse.Parser));
+    static readonly grpc::Marshaller<global::Viam.Robot.V1.GetModelsFromModulesResponse> __Marshaller_viam_robot_v1_GetModelsFromModulesResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.GetModelsFromModulesResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Robot.V1.FrameSystemConfigRequest> __Marshaller_viam_robot_v1_FrameSystemConfigRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.FrameSystemConfigRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -120,6 +120,26 @@ namespace Viam.Robot.V1 {
     static readonly grpc::Marshaller<global::Viam.Robot.V1.RestartModuleRequest> __Marshaller_viam_robot_v1_RestartModuleRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.RestartModuleRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Robot.V1.RestartModuleResponse> __Marshaller_viam_robot_v1_RestartModuleResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.RestartModuleResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Robot.V1.ShutdownRequest> __Marshaller_viam_robot_v1_ShutdownRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.ShutdownRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Robot.V1.ShutdownResponse> __Marshaller_viam_robot_v1_ShutdownResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.ShutdownResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Robot.V1.GetMachineStatusRequest> __Marshaller_viam_robot_v1_GetMachineStatusRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.GetMachineStatusRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Robot.V1.GetMachineStatusResponse> __Marshaller_viam_robot_v1_GetMachineStatusResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.GetMachineStatusResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Robot.V1.GetVersionRequest> __Marshaller_viam_robot_v1_GetVersionRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.GetVersionRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Robot.V1.GetVersionResponse> __Marshaller_viam_robot_v1_GetVersionResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.GetVersionResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Robot.V1.TunnelRequest> __Marshaller_viam_robot_v1_TunnelRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.TunnelRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Robot.V1.TunnelResponse> __Marshaller_viam_robot_v1_TunnelResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.TunnelResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Robot.V1.ListTunnelsRequest> __Marshaller_viam_robot_v1_ListTunnelsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.ListTunnelsRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Robot.V1.ListTunnelsResponse> __Marshaller_viam_robot_v1_ListTunnelsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Robot.V1.ListTunnelsResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.Robot.V1.GetOperationsRequest, global::Viam.Robot.V1.GetOperationsResponse> __Method_GetOperations = new grpc::Method<global::Viam.Robot.V1.GetOperationsRequest, global::Viam.Robot.V1.GetOperationsResponse>(
@@ -170,12 +190,12 @@ namespace Viam.Robot.V1 {
         __Marshaller_viam_robot_v1_BlockForOperationResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Viam.Robot.V1.DiscoverComponentsRequest, global::Viam.Robot.V1.DiscoverComponentsResponse> __Method_DiscoverComponents = new grpc::Method<global::Viam.Robot.V1.DiscoverComponentsRequest, global::Viam.Robot.V1.DiscoverComponentsResponse>(
+    static readonly grpc::Method<global::Viam.Robot.V1.GetModelsFromModulesRequest, global::Viam.Robot.V1.GetModelsFromModulesResponse> __Method_GetModelsFromModules = new grpc::Method<global::Viam.Robot.V1.GetModelsFromModulesRequest, global::Viam.Robot.V1.GetModelsFromModulesResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "DiscoverComponents",
-        __Marshaller_viam_robot_v1_DiscoverComponentsRequest,
-        __Marshaller_viam_robot_v1_DiscoverComponentsResponse);
+        "GetModelsFromModules",
+        __Marshaller_viam_robot_v1_GetModelsFromModulesRequest,
+        __Marshaller_viam_robot_v1_GetModelsFromModulesResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.Robot.V1.FrameSystemConfigRequest, global::Viam.Robot.V1.FrameSystemConfigResponse> __Method_FrameSystemConfig = new grpc::Method<global::Viam.Robot.V1.FrameSystemConfigRequest, global::Viam.Robot.V1.FrameSystemConfigResponse>(
@@ -265,6 +285,46 @@ namespace Viam.Robot.V1 {
         __Marshaller_viam_robot_v1_RestartModuleRequest,
         __Marshaller_viam_robot_v1_RestartModuleResponse);
 
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.Robot.V1.ShutdownRequest, global::Viam.Robot.V1.ShutdownResponse> __Method_Shutdown = new grpc::Method<global::Viam.Robot.V1.ShutdownRequest, global::Viam.Robot.V1.ShutdownResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "Shutdown",
+        __Marshaller_viam_robot_v1_ShutdownRequest,
+        __Marshaller_viam_robot_v1_ShutdownResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.Robot.V1.GetMachineStatusRequest, global::Viam.Robot.V1.GetMachineStatusResponse> __Method_GetMachineStatus = new grpc::Method<global::Viam.Robot.V1.GetMachineStatusRequest, global::Viam.Robot.V1.GetMachineStatusResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetMachineStatus",
+        __Marshaller_viam_robot_v1_GetMachineStatusRequest,
+        __Marshaller_viam_robot_v1_GetMachineStatusResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.Robot.V1.GetVersionRequest, global::Viam.Robot.V1.GetVersionResponse> __Method_GetVersion = new grpc::Method<global::Viam.Robot.V1.GetVersionRequest, global::Viam.Robot.V1.GetVersionResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetVersion",
+        __Marshaller_viam_robot_v1_GetVersionRequest,
+        __Marshaller_viam_robot_v1_GetVersionResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.Robot.V1.TunnelRequest, global::Viam.Robot.V1.TunnelResponse> __Method_Tunnel = new grpc::Method<global::Viam.Robot.V1.TunnelRequest, global::Viam.Robot.V1.TunnelResponse>(
+        grpc::MethodType.DuplexStreaming,
+        __ServiceName,
+        "Tunnel",
+        __Marshaller_viam_robot_v1_TunnelRequest,
+        __Marshaller_viam_robot_v1_TunnelResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.Robot.V1.ListTunnelsRequest, global::Viam.Robot.V1.ListTunnelsResponse> __Method_ListTunnels = new grpc::Method<global::Viam.Robot.V1.ListTunnelsRequest, global::Viam.Robot.V1.ListTunnelsResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ListTunnels",
+        __Marshaller_viam_robot_v1_ListTunnelsRequest,
+        __Marshaller_viam_robot_v1_ListTunnelsResponse);
+
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
@@ -324,13 +384,13 @@ namespace Viam.Robot.V1 {
       }
 
       /// <summary>
-      /// DiscoverComponents returns the list of discovered component configurations.
+      /// GetModelsFromModules returns the list of models supported in modules on the machine.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::Viam.Robot.V1.DiscoverComponentsResponse> DiscoverComponents(global::Viam.Robot.V1.DiscoverComponentsRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::Viam.Robot.V1.GetModelsFromModulesResponse> GetModelsFromModules(global::Viam.Robot.V1.GetModelsFromModulesRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -359,6 +419,7 @@ namespace Viam.Robot.V1 {
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.Robot.V1.GetStatusResponse> GetStatus(global::Viam.Robot.V1.GetStatusRequest request, grpc::ServerCallContext context)
       {
@@ -372,6 +433,7 @@ namespace Viam.Robot.V1 {
       /// <param name="responseStream">Used for sending responses back to the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>A task indicating completion of the handler.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task StreamStatus(global::Viam.Robot.V1.StreamStatusRequest request, grpc::IServerStreamWriter<global::Viam.Robot.V1.StreamStatusResponse> responseStream, grpc::ServerCallContext context)
       {
@@ -443,6 +505,67 @@ namespace Viam.Robot.V1 {
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.Robot.V1.RestartModuleResponse> RestartModule(global::Viam.Robot.V1.RestartModuleRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Shutdown shuts down the robot.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.Robot.V1.ShutdownResponse> Shutdown(global::Viam.Robot.V1.ShutdownRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// GetMachineStatus returns the current status of the robot.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.Robot.V1.GetMachineStatusResponse> GetMachineStatus(global::Viam.Robot.V1.GetMachineStatusRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// GetVersion returns version information about the robot.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.Robot.V1.GetVersionResponse> GetVersion(global::Viam.Robot.V1.GetVersionRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Tunnel tunnels traffic to the destination port of the robot server.
+      /// </summary>
+      /// <param name="requestStream">Used for reading requests from the client.</param>
+      /// <param name="responseStream">Used for sending responses back to the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>A task indicating completion of the handler.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task Tunnel(grpc::IAsyncStreamReader<global::Viam.Robot.V1.TunnelRequest> requestStream, grpc::IServerStreamWriter<global::Viam.Robot.V1.TunnelResponse> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// ListTunnels lists all available tunnels configured on the robot.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.Robot.V1.ListTunnelsResponse> ListTunnels(global::Viam.Robot.V1.ListTunnelsRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -653,7 +776,7 @@ namespace Viam.Robot.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_BlockForOperation, null, options, request);
       }
       /// <summary>
-      /// DiscoverComponents returns the list of discovered component configurations.
+      /// GetModelsFromModules returns the list of models supported in modules on the machine.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -661,23 +784,23 @@ namespace Viam.Robot.V1 {
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The response received from the server.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Viam.Robot.V1.DiscoverComponentsResponse DiscoverComponents(global::Viam.Robot.V1.DiscoverComponentsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::Viam.Robot.V1.GetModelsFromModulesResponse GetModelsFromModules(global::Viam.Robot.V1.GetModelsFromModulesRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return DiscoverComponents(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return GetModelsFromModules(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// DiscoverComponents returns the list of discovered component configurations.
+      /// GetModelsFromModules returns the list of models supported in modules on the machine.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The response received from the server.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::Viam.Robot.V1.DiscoverComponentsResponse DiscoverComponents(global::Viam.Robot.V1.DiscoverComponentsRequest request, grpc::CallOptions options)
+      public virtual global::Viam.Robot.V1.GetModelsFromModulesResponse GetModelsFromModules(global::Viam.Robot.V1.GetModelsFromModulesRequest request, grpc::CallOptions options)
       {
-        return CallInvoker.BlockingUnaryCall(__Method_DiscoverComponents, null, options, request);
+        return CallInvoker.BlockingUnaryCall(__Method_GetModelsFromModules, null, options, request);
       }
       /// <summary>
-      /// DiscoverComponents returns the list of discovered component configurations.
+      /// GetModelsFromModules returns the list of models supported in modules on the machine.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -685,20 +808,20 @@ namespace Viam.Robot.V1 {
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The call object.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Viam.Robot.V1.DiscoverComponentsResponse> DiscoverComponentsAsync(global::Viam.Robot.V1.DiscoverComponentsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::Viam.Robot.V1.GetModelsFromModulesResponse> GetModelsFromModulesAsync(global::Viam.Robot.V1.GetModelsFromModulesRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
-        return DiscoverComponentsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+        return GetModelsFromModulesAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// DiscoverComponents returns the list of discovered component configurations.
+      /// GetModelsFromModules returns the list of models supported in modules on the machine.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The call object.</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual grpc::AsyncUnaryCall<global::Viam.Robot.V1.DiscoverComponentsResponse> DiscoverComponentsAsync(global::Viam.Robot.V1.DiscoverComponentsRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::Viam.Robot.V1.GetModelsFromModulesResponse> GetModelsFromModulesAsync(global::Viam.Robot.V1.GetModelsFromModulesRequest request, grpc::CallOptions options)
       {
-        return CallInvoker.AsyncUnaryCall(__Method_DiscoverComponents, null, options, request);
+        return CallInvoker.AsyncUnaryCall(__Method_GetModelsFromModules, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::Viam.Robot.V1.FrameSystemConfigResponse FrameSystemConfig(global::Viam.Robot.V1.FrameSystemConfigRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
@@ -768,6 +891,7 @@ namespace Viam.Robot.V1 {
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The response received from the server.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::Viam.Robot.V1.GetStatusResponse GetStatus(global::Viam.Robot.V1.GetStatusRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -779,6 +903,7 @@ namespace Viam.Robot.V1 {
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The response received from the server.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::Viam.Robot.V1.GetStatusResponse GetStatus(global::Viam.Robot.V1.GetStatusRequest request, grpc::CallOptions options)
       {
@@ -792,6 +917,7 @@ namespace Viam.Robot.V1 {
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The call object.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual grpc::AsyncUnaryCall<global::Viam.Robot.V1.GetStatusResponse> GetStatusAsync(global::Viam.Robot.V1.GetStatusRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -803,6 +929,7 @@ namespace Viam.Robot.V1 {
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The call object.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual grpc::AsyncUnaryCall<global::Viam.Robot.V1.GetStatusResponse> GetStatusAsync(global::Viam.Robot.V1.GetStatusRequest request, grpc::CallOptions options)
       {
@@ -816,6 +943,7 @@ namespace Viam.Robot.V1 {
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The call object.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual grpc::AsyncServerStreamingCall<global::Viam.Robot.V1.StreamStatusResponse> StreamStatus(global::Viam.Robot.V1.StreamStatusRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -827,6 +955,7 @@ namespace Viam.Robot.V1 {
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The call object.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual grpc::AsyncServerStreamingCall<global::Viam.Robot.V1.StreamStatusResponse> StreamStatus(global::Viam.Robot.V1.StreamStatusRequest request, grpc::CallOptions options)
       {
@@ -1104,6 +1233,220 @@ namespace Viam.Robot.V1 {
       {
         return CallInvoker.AsyncUnaryCall(__Method_RestartModule, null, options, request);
       }
+      /// <summary>
+      /// Shutdown shuts down the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Robot.V1.ShutdownResponse Shutdown(global::Viam.Robot.V1.ShutdownRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Shutdown(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Shutdown shuts down the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Robot.V1.ShutdownResponse Shutdown(global::Viam.Robot.V1.ShutdownRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_Shutdown, null, options, request);
+      }
+      /// <summary>
+      /// Shutdown shuts down the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Robot.V1.ShutdownResponse> ShutdownAsync(global::Viam.Robot.V1.ShutdownRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ShutdownAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Shutdown shuts down the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Robot.V1.ShutdownResponse> ShutdownAsync(global::Viam.Robot.V1.ShutdownRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_Shutdown, null, options, request);
+      }
+      /// <summary>
+      /// GetMachineStatus returns the current status of the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Robot.V1.GetMachineStatusResponse GetMachineStatus(global::Viam.Robot.V1.GetMachineStatusRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetMachineStatus(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// GetMachineStatus returns the current status of the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Robot.V1.GetMachineStatusResponse GetMachineStatus(global::Viam.Robot.V1.GetMachineStatusRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetMachineStatus, null, options, request);
+      }
+      /// <summary>
+      /// GetMachineStatus returns the current status of the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Robot.V1.GetMachineStatusResponse> GetMachineStatusAsync(global::Viam.Robot.V1.GetMachineStatusRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetMachineStatusAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// GetMachineStatus returns the current status of the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Robot.V1.GetMachineStatusResponse> GetMachineStatusAsync(global::Viam.Robot.V1.GetMachineStatusRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetMachineStatus, null, options, request);
+      }
+      /// <summary>
+      /// GetVersion returns version information about the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Robot.V1.GetVersionResponse GetVersion(global::Viam.Robot.V1.GetVersionRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetVersion(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// GetVersion returns version information about the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Robot.V1.GetVersionResponse GetVersion(global::Viam.Robot.V1.GetVersionRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetVersion, null, options, request);
+      }
+      /// <summary>
+      /// GetVersion returns version information about the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Robot.V1.GetVersionResponse> GetVersionAsync(global::Viam.Robot.V1.GetVersionRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetVersionAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// GetVersion returns version information about the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Robot.V1.GetVersionResponse> GetVersionAsync(global::Viam.Robot.V1.GetVersionRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetVersion, null, options, request);
+      }
+      /// <summary>
+      /// Tunnel tunnels traffic to the destination port of the robot server.
+      /// </summary>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncDuplexStreamingCall<global::Viam.Robot.V1.TunnelRequest, global::Viam.Robot.V1.TunnelResponse> Tunnel(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return Tunnel(new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Tunnel tunnels traffic to the destination port of the robot server.
+      /// </summary>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncDuplexStreamingCall<global::Viam.Robot.V1.TunnelRequest, global::Viam.Robot.V1.TunnelResponse> Tunnel(grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncDuplexStreamingCall(__Method_Tunnel, null, options);
+      }
+      /// <summary>
+      /// ListTunnels lists all available tunnels configured on the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Robot.V1.ListTunnelsResponse ListTunnels(global::Viam.Robot.V1.ListTunnelsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListTunnels(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// ListTunnels lists all available tunnels configured on the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Robot.V1.ListTunnelsResponse ListTunnels(global::Viam.Robot.V1.ListTunnelsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ListTunnels, null, options, request);
+      }
+      /// <summary>
+      /// ListTunnels lists all available tunnels configured on the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Robot.V1.ListTunnelsResponse> ListTunnelsAsync(global::Viam.Robot.V1.ListTunnelsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListTunnelsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// ListTunnels lists all available tunnels configured on the robot.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Robot.V1.ListTunnelsResponse> ListTunnelsAsync(global::Viam.Robot.V1.ListTunnelsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ListTunnels, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override RobotServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -1124,7 +1467,7 @@ namespace Viam.Robot.V1 {
           .AddMethod(__Method_ResourceRPCSubtypes, serviceImpl.ResourceRPCSubtypes)
           .AddMethod(__Method_CancelOperation, serviceImpl.CancelOperation)
           .AddMethod(__Method_BlockForOperation, serviceImpl.BlockForOperation)
-          .AddMethod(__Method_DiscoverComponents, serviceImpl.DiscoverComponents)
+          .AddMethod(__Method_GetModelsFromModules, serviceImpl.GetModelsFromModules)
           .AddMethod(__Method_FrameSystemConfig, serviceImpl.FrameSystemConfig)
           .AddMethod(__Method_TransformPose, serviceImpl.TransformPose)
           .AddMethod(__Method_TransformPCD, serviceImpl.TransformPCD)
@@ -1135,7 +1478,12 @@ namespace Viam.Robot.V1 {
           .AddMethod(__Method_SendSessionHeartbeat, serviceImpl.SendSessionHeartbeat)
           .AddMethod(__Method_Log, serviceImpl.Log)
           .AddMethod(__Method_GetCloudMetadata, serviceImpl.GetCloudMetadata)
-          .AddMethod(__Method_RestartModule, serviceImpl.RestartModule).Build();
+          .AddMethod(__Method_RestartModule, serviceImpl.RestartModule)
+          .AddMethod(__Method_Shutdown, serviceImpl.Shutdown)
+          .AddMethod(__Method_GetMachineStatus, serviceImpl.GetMachineStatus)
+          .AddMethod(__Method_GetVersion, serviceImpl.GetVersion)
+          .AddMethod(__Method_Tunnel, serviceImpl.Tunnel)
+          .AddMethod(__Method_ListTunnels, serviceImpl.ListTunnels).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -1151,7 +1499,7 @@ namespace Viam.Robot.V1 {
       serviceBinder.AddMethod(__Method_ResourceRPCSubtypes, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.ResourceRPCSubtypesRequest, global::Viam.Robot.V1.ResourceRPCSubtypesResponse>(serviceImpl.ResourceRPCSubtypes));
       serviceBinder.AddMethod(__Method_CancelOperation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.CancelOperationRequest, global::Viam.Robot.V1.CancelOperationResponse>(serviceImpl.CancelOperation));
       serviceBinder.AddMethod(__Method_BlockForOperation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.BlockForOperationRequest, global::Viam.Robot.V1.BlockForOperationResponse>(serviceImpl.BlockForOperation));
-      serviceBinder.AddMethod(__Method_DiscoverComponents, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.DiscoverComponentsRequest, global::Viam.Robot.V1.DiscoverComponentsResponse>(serviceImpl.DiscoverComponents));
+      serviceBinder.AddMethod(__Method_GetModelsFromModules, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.GetModelsFromModulesRequest, global::Viam.Robot.V1.GetModelsFromModulesResponse>(serviceImpl.GetModelsFromModules));
       serviceBinder.AddMethod(__Method_FrameSystemConfig, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.FrameSystemConfigRequest, global::Viam.Robot.V1.FrameSystemConfigResponse>(serviceImpl.FrameSystemConfig));
       serviceBinder.AddMethod(__Method_TransformPose, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.TransformPoseRequest, global::Viam.Robot.V1.TransformPoseResponse>(serviceImpl.TransformPose));
       serviceBinder.AddMethod(__Method_TransformPCD, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.TransformPCDRequest, global::Viam.Robot.V1.TransformPCDResponse>(serviceImpl.TransformPCD));
@@ -1163,6 +1511,11 @@ namespace Viam.Robot.V1 {
       serviceBinder.AddMethod(__Method_Log, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.LogRequest, global::Viam.Robot.V1.LogResponse>(serviceImpl.Log));
       serviceBinder.AddMethod(__Method_GetCloudMetadata, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.GetCloudMetadataRequest, global::Viam.Robot.V1.GetCloudMetadataResponse>(serviceImpl.GetCloudMetadata));
       serviceBinder.AddMethod(__Method_RestartModule, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.RestartModuleRequest, global::Viam.Robot.V1.RestartModuleResponse>(serviceImpl.RestartModule));
+      serviceBinder.AddMethod(__Method_Shutdown, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.ShutdownRequest, global::Viam.Robot.V1.ShutdownResponse>(serviceImpl.Shutdown));
+      serviceBinder.AddMethod(__Method_GetMachineStatus, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.GetMachineStatusRequest, global::Viam.Robot.V1.GetMachineStatusResponse>(serviceImpl.GetMachineStatus));
+      serviceBinder.AddMethod(__Method_GetVersion, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.GetVersionRequest, global::Viam.Robot.V1.GetVersionResponse>(serviceImpl.GetVersion));
+      serviceBinder.AddMethod(__Method_Tunnel, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::Viam.Robot.V1.TunnelRequest, global::Viam.Robot.V1.TunnelResponse>(serviceImpl.Tunnel));
+      serviceBinder.AddMethod(__Method_ListTunnels, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Robot.V1.ListTunnelsRequest, global::Viam.Robot.V1.ListTunnelsResponse>(serviceImpl.ListTunnels));
     }
 
   }

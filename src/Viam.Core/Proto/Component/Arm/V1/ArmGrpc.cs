@@ -65,6 +65,10 @@ namespace Viam.Component.Arm.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Component.Arm.V1.MoveToJointPositionsResponse> __Marshaller_viam_component_arm_v1_MoveToJointPositionsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Component.Arm.V1.MoveToJointPositionsResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Component.Arm.V1.MoveThroughJointPositionsRequest> __Marshaller_viam_component_arm_v1_MoveThroughJointPositionsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Component.Arm.V1.MoveThroughJointPositionsRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Component.Arm.V1.MoveThroughJointPositionsResponse> __Marshaller_viam_component_arm_v1_MoveThroughJointPositionsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Component.Arm.V1.MoveThroughJointPositionsResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Component.Arm.V1.StopRequest> __Marshaller_viam_component_arm_v1_StopRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Component.Arm.V1.StopRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Component.Arm.V1.StopResponse> __Marshaller_viam_component_arm_v1_StopResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Component.Arm.V1.StopResponse.Parser));
@@ -116,6 +120,14 @@ namespace Viam.Component.Arm.V1 {
         "MoveToJointPositions",
         __Marshaller_viam_component_arm_v1_MoveToJointPositionsRequest,
         __Marshaller_viam_component_arm_v1_MoveToJointPositionsResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.Component.Arm.V1.MoveThroughJointPositionsRequest, global::Viam.Component.Arm.V1.MoveThroughJointPositionsResponse> __Method_MoveThroughJointPositions = new grpc::Method<global::Viam.Component.Arm.V1.MoveThroughJointPositionsRequest, global::Viam.Component.Arm.V1.MoveThroughJointPositionsResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "MoveThroughJointPositions",
+        __Marshaller_viam_component_arm_v1_MoveThroughJointPositionsRequest,
+        __Marshaller_viam_component_arm_v1_MoveThroughJointPositionsResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.Component.Arm.V1.StopRequest, global::Viam.Component.Arm.V1.StopResponse> __Method_Stop = new grpc::Method<global::Viam.Component.Arm.V1.StopRequest, global::Viam.Component.Arm.V1.StopResponse>(
@@ -213,6 +225,20 @@ namespace Viam.Component.Arm.V1 {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.Component.Arm.V1.MoveToJointPositionsResponse> MoveToJointPositions(global::Viam.Component.Arm.V1.MoveToJointPositionsRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// MoveThroughJointPositions moves every joint on a robot's arm to the specified JointPositions in the order they are specified,
+      /// obeying the specified velocity and acceleration limits.
+      /// This will block until done or a new operation cancels this one
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.Component.Arm.V1.MoveThroughJointPositionsResponse> MoveThroughJointPositions(global::Viam.Component.Arm.V1.MoveThroughJointPositionsRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -507,6 +533,62 @@ namespace Viam.Component.Arm.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_MoveToJointPositions, null, options, request);
       }
       /// <summary>
+      /// MoveThroughJointPositions moves every joint on a robot's arm to the specified JointPositions in the order they are specified,
+      /// obeying the specified velocity and acceleration limits.
+      /// This will block until done or a new operation cancels this one
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Component.Arm.V1.MoveThroughJointPositionsResponse MoveThroughJointPositions(global::Viam.Component.Arm.V1.MoveThroughJointPositionsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return MoveThroughJointPositions(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// MoveThroughJointPositions moves every joint on a robot's arm to the specified JointPositions in the order they are specified,
+      /// obeying the specified velocity and acceleration limits.
+      /// This will block until done or a new operation cancels this one
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Component.Arm.V1.MoveThroughJointPositionsResponse MoveThroughJointPositions(global::Viam.Component.Arm.V1.MoveThroughJointPositionsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_MoveThroughJointPositions, null, options, request);
+      }
+      /// <summary>
+      /// MoveThroughJointPositions moves every joint on a robot's arm to the specified JointPositions in the order they are specified,
+      /// obeying the specified velocity and acceleration limits.
+      /// This will block until done or a new operation cancels this one
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Component.Arm.V1.MoveThroughJointPositionsResponse> MoveThroughJointPositionsAsync(global::Viam.Component.Arm.V1.MoveThroughJointPositionsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return MoveThroughJointPositionsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// MoveThroughJointPositions moves every joint on a robot's arm to the specified JointPositions in the order they are specified,
+      /// obeying the specified velocity and acceleration limits.
+      /// This will block until done or a new operation cancels this one
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Component.Arm.V1.MoveThroughJointPositionsResponse> MoveThroughJointPositionsAsync(global::Viam.Component.Arm.V1.MoveThroughJointPositionsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_MoveThroughJointPositions, null, options, request);
+      }
+      /// <summary>
       /// Stop stops a robot's arm
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -764,6 +846,7 @@ namespace Viam.Component.Arm.V1 {
           .AddMethod(__Method_MoveToPosition, serviceImpl.MoveToPosition)
           .AddMethod(__Method_GetJointPositions, serviceImpl.GetJointPositions)
           .AddMethod(__Method_MoveToJointPositions, serviceImpl.MoveToJointPositions)
+          .AddMethod(__Method_MoveThroughJointPositions, serviceImpl.MoveThroughJointPositions)
           .AddMethod(__Method_Stop, serviceImpl.Stop)
           .AddMethod(__Method_IsMoving, serviceImpl.IsMoving)
           .AddMethod(__Method_DoCommand, serviceImpl.DoCommand)
@@ -782,6 +865,7 @@ namespace Viam.Component.Arm.V1 {
       serviceBinder.AddMethod(__Method_MoveToPosition, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Component.Arm.V1.MoveToPositionRequest, global::Viam.Component.Arm.V1.MoveToPositionResponse>(serviceImpl.MoveToPosition));
       serviceBinder.AddMethod(__Method_GetJointPositions, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Component.Arm.V1.GetJointPositionsRequest, global::Viam.Component.Arm.V1.GetJointPositionsResponse>(serviceImpl.GetJointPositions));
       serviceBinder.AddMethod(__Method_MoveToJointPositions, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Component.Arm.V1.MoveToJointPositionsRequest, global::Viam.Component.Arm.V1.MoveToJointPositionsResponse>(serviceImpl.MoveToJointPositions));
+      serviceBinder.AddMethod(__Method_MoveThroughJointPositions, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Component.Arm.V1.MoveThroughJointPositionsRequest, global::Viam.Component.Arm.V1.MoveThroughJointPositionsResponse>(serviceImpl.MoveThroughJointPositions));
       serviceBinder.AddMethod(__Method_Stop, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Component.Arm.V1.StopRequest, global::Viam.Component.Arm.V1.StopResponse>(serviceImpl.Stop));
       serviceBinder.AddMethod(__Method_IsMoving, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Component.Arm.V1.IsMovingRequest, global::Viam.Component.Arm.V1.IsMovingResponse>(serviceImpl.IsMoving));
       serviceBinder.AddMethod(__Method_DoCommand, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Common.V1.DoCommandRequest, global::Viam.Common.V1.DoCommandResponse>(serviceImpl.DoCommand));

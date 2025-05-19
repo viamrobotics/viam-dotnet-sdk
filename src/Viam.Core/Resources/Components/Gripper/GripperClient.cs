@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Google.Protobuf.WellKnownTypes;
-
-using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Gripper.V1;
 using Viam.Core.Clients;
@@ -15,7 +12,8 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.Gripper
 {
     public class GripperClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
-        ComponentBase<GripperClient, Component.Gripper.V1.GripperService.GripperServiceClient>(resourceName, new Component.Gripper.V1.GripperService.GripperServiceClient(channel)),
+        ComponentBase<GripperClient, Component.Gripper.V1.GripperService.GripperServiceClient>(resourceName,
+            new Component.Gripper.V1.GripperService.GripperServiceClient(channel)),
         IGripper
     {
         public static SubType SubType = SubType.FromRdkComponent("gripper");
@@ -38,13 +36,13 @@ namespace Viam.Core.Resources.Components.Gripper
             {
                 logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client.DoCommandAsync(new DoCommandRequest()
-                {
-                    Name = ResourceName.Name,
-                    Command = command.ToStruct()
-                },
-                                                      deadline: timeout.ToDeadline(),
-                                                      cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                        {
+                            Name = ResourceName.Name,
+                            Command = command.ToStruct()
+                        },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
                 logger.LogMethodInvocationSuccess(results: response);
@@ -55,21 +53,20 @@ namespace Viam.Core.Resources.Components.Gripper
                 logger.LogMethodInvocationFailure(ex);
                 throw;
             }
-
         }
 
 
         public async ValueTask Open(IDictionary<string, object?>? extra = null,
-                                    TimeSpan? timeout = null,
-                                    CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 await Client.OpenAsync(new OpenRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                       deadline: timeout.ToDeadline(),
-                                       cancellationToken: cancellationToken)
-                            .ConfigureAwait(false);
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
@@ -81,16 +78,16 @@ namespace Viam.Core.Resources.Components.Gripper
 
 
         public async ValueTask Grab(IDictionary<string, object?>? extra = null,
-                                    TimeSpan? timeout = null,
-                                    CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 await Client.GrabAsync(new GrabRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                       deadline: timeout.ToDeadline(),
-                                       cancellationToken: cancellationToken)
-                            .ConfigureAwait(false);
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
@@ -102,16 +99,16 @@ namespace Viam.Core.Resources.Components.Gripper
 
 
         public async ValueTask Stop(IDictionary<string, object?>? extra = null,
-                                    TimeSpan? timeout = null,
-                                    CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                       deadline: timeout.ToDeadline(),
-                                       cancellationToken: cancellationToken)
-                            .ConfigureAwait(false);
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
@@ -123,15 +120,15 @@ namespace Viam.Core.Resources.Components.Gripper
 
 
         public async ValueTask<bool> IsMoving(TimeSpan? timeout = null,
-                                              CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.IsMovingAsync(new IsMovingRequest() { Name = Name },
-                                                     deadline: timeout.ToDeadline(),
-                                                     cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess(results: res.IsMoving);
                 return res.IsMoving;
             }

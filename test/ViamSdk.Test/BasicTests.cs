@@ -1,5 +1,5 @@
-using System.Buffers;
 using Microsoft.Extensions.Logging;
+using System.Buffers;
 using Viam.Client.Clients;
 using Viam.Client.Dialing;
 
@@ -21,20 +21,21 @@ namespace Viam.Core.Test
             });
 
             var machineAddress = Environment.GetEnvironmentVariable("ROBOT_ADDRESS")
-                              ?? throw new InvalidOperationException("Missing Environment Variable");
-            var apiKey = Environment.GetEnvironmentVariable("VIAM_API_KEY") ?? throw new InvalidOperationException("Missing Environment Variable");
+                                 ?? throw new InvalidOperationException("Missing Environment Variable");
+            var apiKey = Environment.GetEnvironmentVariable("VIAM_API_KEY") ??
+                         throw new InvalidOperationException("Missing Environment Variable");
             var apiKeyId = Environment.GetEnvironmentVariable("VIAM_API_KEY_ID")
-                        ?? throw new InvalidOperationException("Missing Environment Variable");
+                           ?? throw new InvalidOperationException("Missing Environment Variable");
 
             _robotClientOptions = DialOptions
-                                .FromAddress(machineAddress)
-                                .WithLogging(_loggerFactory)
-                                .WithApiCredentials(apiKey, apiKeyId);
+                .FromAddress(machineAddress)
+                .WithLogging(_loggerFactory)
+                .WithApiCredentials(apiKey, apiKeyId);
 
             _cloudClientOptions = DialOptions.FromCloud()
-                                             .WithLogging(_loggerFactory)
-                                             .WithApiCredentials(apiKey,
-                                                                 apiKeyId);
+                .WithLogging(_loggerFactory)
+                .WithApiCredentials(apiKey,
+                    apiKeyId);
         }
 
         [TearDown]
@@ -47,6 +48,7 @@ namespace Viam.Core.Test
         {
             private bool _disposed = false;
             private readonly T[] _array = ArrayPool<T>.Shared.Rent(minimumSize);
+
             public T[] Array
             {
                 get

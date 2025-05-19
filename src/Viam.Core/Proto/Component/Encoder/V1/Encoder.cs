@@ -63,8 +63,12 @@ namespace Viam.Component.Encoder.V1 {
             "EiQudmlhbS5jb21tb24udjEuR2V0R2VvbWV0cmllc1JlcXVlc3QaJS52aWFt",
             "LmNvbW1vbi52MS5HZXRHZW9tZXRyaWVzUmVzcG9uc2UiOILT5JMCMhIwL3Zp",
             "YW0vYXBpL3YxL2NvbXBvbmVudC9lbmNvZGVyL3tuYW1lfS9nZW9tZXRyaWVz",
-            "QkUKHWNvbS52aWFtLmNvbXBvbmVudC5lbmNvZGVyLnYxWiRnby52aWFtLmNv",
-            "bS9hcGkvY29tcG9uZW50L2VuY29kZXIvdjFiBnByb3RvMw=="));
+            "QtoBCh1jb20udmlhbS5jb21wb25lbnQuZW5jb2Rlci52MUIMRW5jb2RlclBy",
+            "b3RvUAFaJGdvLnZpYW0uY29tL2FwaS9jb21wb25lbnQvZW5jb2Rlci92MaIC",
+            "A1ZDRaoCGVZpYW0uQ29tcG9uZW50LkVuY29kZXIuVjHKAhlWaWFtXENvbXBv",
+            "bmVudFxFbmNvZGVyXFYx4gIlVmlhbVxDb21wb25lbnRcRW5jb2RlclxWMVxH",
+            "UEJNZXRhZGF0YeoCHFZpYW06OkNvbXBvbmVudDo6RW5jb2Rlcjo6VjFiBnBy",
+            "b3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Viam.Component.Encoder.V1.PositionType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -344,7 +348,11 @@ namespace Viam.Component.Encoder.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -374,7 +382,11 @@ namespace Viam.Component.Encoder.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -585,7 +597,11 @@ namespace Viam.Component.Encoder.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -608,7 +624,11 @@ namespace Viam.Component.Encoder.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -821,7 +841,11 @@ namespace Viam.Component.Encoder.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -847,7 +871,11 @@ namespace Viam.Component.Encoder.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -996,7 +1024,11 @@ namespace Viam.Component.Encoder.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1011,7 +1043,11 @@ namespace Viam.Component.Encoder.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1216,7 +1252,11 @@ namespace Viam.Component.Encoder.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1242,7 +1282,11 @@ namespace Viam.Component.Encoder.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1449,7 +1493,11 @@ namespace Viam.Component.Encoder.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1472,7 +1520,11 @@ namespace Viam.Component.Encoder.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

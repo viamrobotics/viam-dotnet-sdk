@@ -69,6 +69,10 @@ namespace Viam.App.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.ListOrganizationsByUserResponse> __Marshaller_viam_app_v1_ListOrganizationsByUserResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ListOrganizationsByUserResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.SearchOrganizationsRequest> __Marshaller_viam_app_v1_SearchOrganizationsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.SearchOrganizationsRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.SearchOrganizationsResponse> __Marshaller_viam_app_v1_SearchOrganizationsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.SearchOrganizationsResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.GetOrganizationRequest> __Marshaller_viam_app_v1_GetOrganizationRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetOrganizationRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.GetOrganizationResponse> __Marshaller_viam_app_v1_GetOrganizationResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetOrganizationResponse.Parser));
@@ -81,9 +85,21 @@ namespace Viam.App.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.UpdateOrganizationResponse> __Marshaller_viam_app_v1_UpdateOrganizationResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateOrganizationResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateOrganizationNamespaceRequest> __Marshaller_viam_app_v1_UpdateOrganizationNamespaceRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateOrganizationNamespaceRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateOrganizationNamespaceResponse> __Marshaller_viam_app_v1_UpdateOrganizationNamespaceResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateOrganizationNamespaceResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.DeleteOrganizationRequest> __Marshaller_viam_app_v1_DeleteOrganizationRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DeleteOrganizationRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.DeleteOrganizationResponse> __Marshaller_viam_app_v1_DeleteOrganizationResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DeleteOrganizationResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetOrganizationMetadataRequest> __Marshaller_viam_app_v1_GetOrganizationMetadataRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetOrganizationMetadataRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetOrganizationMetadataResponse> __Marshaller_viam_app_v1_GetOrganizationMetadataResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetOrganizationMetadataResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateOrganizationMetadataRequest> __Marshaller_viam_app_v1_UpdateOrganizationMetadataRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateOrganizationMetadataRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateOrganizationMetadataResponse> __Marshaller_viam_app_v1_UpdateOrganizationMetadataResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateOrganizationMetadataResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.ListOrganizationMembersRequest> __Marshaller_viam_app_v1_ListOrganizationMembersRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ListOrganizationMembersRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -109,6 +125,66 @@ namespace Viam.App.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.ResendOrganizationInviteResponse> __Marshaller_viam_app_v1_ResendOrganizationInviteResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ResendOrganizationInviteResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.EnableBillingServiceRequest> __Marshaller_viam_app_v1_EnableBillingServiceRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.EnableBillingServiceRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.EnableBillingServiceResponse> __Marshaller_viam_app_v1_EnableBillingServiceResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.EnableBillingServiceResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.DisableBillingServiceRequest> __Marshaller_viam_app_v1_DisableBillingServiceRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DisableBillingServiceRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.DisableBillingServiceResponse> __Marshaller_viam_app_v1_DisableBillingServiceResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DisableBillingServiceResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateBillingServiceRequest> __Marshaller_viam_app_v1_UpdateBillingServiceRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateBillingServiceRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateBillingServiceResponse> __Marshaller_viam_app_v1_UpdateBillingServiceResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateBillingServiceResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetBillingServiceConfigRequest> __Marshaller_viam_app_v1_GetBillingServiceConfigRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetBillingServiceConfigRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetBillingServiceConfigResponse> __Marshaller_viam_app_v1_GetBillingServiceConfigResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetBillingServiceConfigResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.OrganizationSetSupportEmailRequest> __Marshaller_viam_app_v1_OrganizationSetSupportEmailRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.OrganizationSetSupportEmailRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.OrganizationSetSupportEmailResponse> __Marshaller_viam_app_v1_OrganizationSetSupportEmailResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.OrganizationSetSupportEmailResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.OrganizationGetSupportEmailRequest> __Marshaller_viam_app_v1_OrganizationGetSupportEmailRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.OrganizationGetSupportEmailRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.OrganizationGetSupportEmailResponse> __Marshaller_viam_app_v1_OrganizationGetSupportEmailResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.OrganizationGetSupportEmailResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.OrganizationSetLogoRequest> __Marshaller_viam_app_v1_OrganizationSetLogoRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.OrganizationSetLogoRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.OrganizationSetLogoResponse> __Marshaller_viam_app_v1_OrganizationSetLogoResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.OrganizationSetLogoResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.OrganizationGetLogoRequest> __Marshaller_viam_app_v1_OrganizationGetLogoRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.OrganizationGetLogoRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.OrganizationGetLogoResponse> __Marshaller_viam_app_v1_OrganizationGetLogoResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.OrganizationGetLogoResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.EnableAuthServiceRequest> __Marshaller_viam_app_v1_EnableAuthServiceRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.EnableAuthServiceRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.EnableAuthServiceResponse> __Marshaller_viam_app_v1_EnableAuthServiceResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.EnableAuthServiceResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.DisableAuthServiceRequest> __Marshaller_viam_app_v1_DisableAuthServiceRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DisableAuthServiceRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.DisableAuthServiceResponse> __Marshaller_viam_app_v1_DisableAuthServiceResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DisableAuthServiceResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.CreateOAuthAppRequest> __Marshaller_viam_app_v1_CreateOAuthAppRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.CreateOAuthAppRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.CreateOAuthAppResponse> __Marshaller_viam_app_v1_CreateOAuthAppResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.CreateOAuthAppResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.ReadOAuthAppRequest> __Marshaller_viam_app_v1_ReadOAuthAppRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ReadOAuthAppRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.ReadOAuthAppResponse> __Marshaller_viam_app_v1_ReadOAuthAppResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ReadOAuthAppResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateOAuthAppRequest> __Marshaller_viam_app_v1_UpdateOAuthAppRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateOAuthAppRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateOAuthAppResponse> __Marshaller_viam_app_v1_UpdateOAuthAppResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateOAuthAppResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.DeleteOAuthAppRequest> __Marshaller_viam_app_v1_DeleteOAuthAppRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DeleteOAuthAppRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.DeleteOAuthAppResponse> __Marshaller_viam_app_v1_DeleteOAuthAppResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DeleteOAuthAppResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.ListOAuthAppsRequest> __Marshaller_viam_app_v1_ListOAuthAppsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ListOAuthAppsRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.ListOAuthAppsResponse> __Marshaller_viam_app_v1_ListOAuthAppsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ListOAuthAppsResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.CreateLocationRequest> __Marshaller_viam_app_v1_CreateLocationRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.CreateLocationRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.CreateLocationResponse> __Marshaller_viam_app_v1_CreateLocationResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.CreateLocationResponse.Parser));
@@ -124,6 +200,14 @@ namespace Viam.App.V1 {
     static readonly grpc::Marshaller<global::Viam.App.V1.DeleteLocationRequest> __Marshaller_viam_app_v1_DeleteLocationRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DeleteLocationRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.DeleteLocationResponse> __Marshaller_viam_app_v1_DeleteLocationResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DeleteLocationResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetLocationMetadataRequest> __Marshaller_viam_app_v1_GetLocationMetadataRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetLocationMetadataRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetLocationMetadataResponse> __Marshaller_viam_app_v1_GetLocationMetadataResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetLocationMetadataResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateLocationMetadataRequest> __Marshaller_viam_app_v1_UpdateLocationMetadataRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateLocationMetadataRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateLocationMetadataResponse> __Marshaller_viam_app_v1_UpdateLocationMetadataResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateLocationMetadataResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.ListLocationsRequest> __Marshaller_viam_app_v1_ListLocationsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ListLocationsRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -152,6 +236,14 @@ namespace Viam.App.V1 {
     static readonly grpc::Marshaller<global::Viam.App.V1.GetRobotRequest> __Marshaller_viam_app_v1_GetRobotRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetRobotRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.GetRobotResponse> __Marshaller_viam_app_v1_GetRobotResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetRobotResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetRobotMetadataRequest> __Marshaller_viam_app_v1_GetRobotMetadataRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetRobotMetadataRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetRobotMetadataResponse> __Marshaller_viam_app_v1_GetRobotMetadataResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetRobotMetadataResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateRobotMetadataRequest> __Marshaller_viam_app_v1_UpdateRobotMetadataRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateRobotMetadataRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateRobotMetadataResponse> __Marshaller_viam_app_v1_UpdateRobotMetadataResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateRobotMetadataResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.GetRoverRentalRobotsRequest> __Marshaller_viam_app_v1_GetRoverRentalRobotsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetRoverRentalRobotsRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -188,6 +280,14 @@ namespace Viam.App.V1 {
     static readonly grpc::Marshaller<global::Viam.App.V1.DeleteRobotPartRequest> __Marshaller_viam_app_v1_DeleteRobotPartRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DeleteRobotPartRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.DeleteRobotPartResponse> __Marshaller_viam_app_v1_DeleteRobotPartResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DeleteRobotPartResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetRobotPartMetadataRequest> __Marshaller_viam_app_v1_GetRobotPartMetadataRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetRobotPartMetadataRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetRobotPartMetadataResponse> __Marshaller_viam_app_v1_GetRobotPartMetadataResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetRobotPartMetadataResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateRobotPartMetadataRequest> __Marshaller_viam_app_v1_UpdateRobotPartMetadataRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateRobotPartMetadataRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.UpdateRobotPartMetadataResponse> __Marshaller_viam_app_v1_UpdateRobotPartMetadataResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateRobotPartMetadataResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.GetRobotAPIKeysRequest> __Marshaller_viam_app_v1_GetRobotAPIKeysRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetRobotAPIKeysRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -245,6 +345,34 @@ namespace Viam.App.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.DeleteFragmentResponse> __Marshaller_viam_app_v1_DeleteFragmentResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DeleteFragmentResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.ListNestedFragmentsRequest> __Marshaller_viam_app_v1_ListNestedFragmentsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ListNestedFragmentsRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.ListNestedFragmentsResponse> __Marshaller_viam_app_v1_ListNestedFragmentsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ListNestedFragmentsResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.ListMachineFragmentsRequest> __Marshaller_viam_app_v1_ListMachineFragmentsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ListMachineFragmentsRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.ListMachineFragmentsResponse> __Marshaller_viam_app_v1_ListMachineFragmentsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ListMachineFragmentsResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.ListMachineSummariesRequest> __Marshaller_viam_app_v1_ListMachineSummariesRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ListMachineSummariesRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.ListMachineSummariesResponse> __Marshaller_viam_app_v1_ListMachineSummariesResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ListMachineSummariesResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetFragmentHistoryRequest> __Marshaller_viam_app_v1_GetFragmentHistoryRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetFragmentHistoryRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetFragmentHistoryResponse> __Marshaller_viam_app_v1_GetFragmentHistoryResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetFragmentHistoryResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetFragmentUsageRequest> __Marshaller_viam_app_v1_GetFragmentUsageRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetFragmentUsageRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetFragmentUsageResponse> __Marshaller_viam_app_v1_GetFragmentUsageResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetFragmentUsageResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.SetFragmentTagRequest> __Marshaller_viam_app_v1_SetFragmentTagRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.SetFragmentTagRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.SetFragmentTagResponse> __Marshaller_viam_app_v1_SetFragmentTagResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.SetFragmentTagResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.DeleteFragmentTagRequest> __Marshaller_viam_app_v1_DeleteFragmentTagRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DeleteFragmentTagRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.DeleteFragmentTagResponse> __Marshaller_viam_app_v1_DeleteFragmentTagResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DeleteFragmentTagResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.AddRoleRequest> __Marshaller_viam_app_v1_AddRoleRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.AddRoleRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.AddRoleResponse> __Marshaller_viam_app_v1_AddRoleResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.AddRoleResponse.Parser));
@@ -285,6 +413,14 @@ namespace Viam.App.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.DeleteRegistryItemResponse> __Marshaller_viam_app_v1_DeleteRegistryItemResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.DeleteRegistryItemResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.RenameRegistryItemRequest> __Marshaller_viam_app_v1_RenameRegistryItemRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.RenameRegistryItemRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.RenameRegistryItemResponse> __Marshaller_viam_app_v1_RenameRegistryItemResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.RenameRegistryItemResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.TransferRegistryItemRequest> __Marshaller_viam_app_v1_TransferRegistryItemRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.TransferRegistryItemRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.TransferRegistryItemResponse> __Marshaller_viam_app_v1_TransferRegistryItemResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.TransferRegistryItemResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.CreateModuleRequest> __Marshaller_viam_app_v1_CreateModuleRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.CreateModuleRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.CreateModuleResponse> __Marshaller_viam_app_v1_CreateModuleResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.CreateModuleResponse.Parser));
@@ -317,6 +453,10 @@ namespace Viam.App.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.ListKeysResponse> __Marshaller_viam_app_v1_ListKeysResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.ListKeysResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.RenameKeyRequest> __Marshaller_viam_app_v1_RenameKeyRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.RenameKeyRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.RenameKeyResponse> __Marshaller_viam_app_v1_RenameKeyResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.RenameKeyResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.RotateKeyRequest> __Marshaller_viam_app_v1_RotateKeyRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.RotateKeyRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.RotateKeyResponse> __Marshaller_viam_app_v1_RotateKeyResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.RotateKeyResponse.Parser));
@@ -324,6 +464,10 @@ namespace Viam.App.V1 {
     static readonly grpc::Marshaller<global::Viam.App.V1.CreateKeyFromExistingKeyAuthorizationsRequest> __Marshaller_viam_app_v1_CreateKeyFromExistingKeyAuthorizationsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.CreateKeyFromExistingKeyAuthorizationsRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.CreateKeyFromExistingKeyAuthorizationsResponse> __Marshaller_viam_app_v1_CreateKeyFromExistingKeyAuthorizationsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.CreateKeyFromExistingKeyAuthorizationsResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetAppContentRequest> __Marshaller_viam_app_v1_GetAppContentRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetAppContentRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetAppContentResponse> __Marshaller_viam_app_v1_GetAppContentResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetAppContentResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.V1.GetUserIDByEmailRequest, global::Viam.App.V1.GetUserIDByEmailResponse> __Method_GetUserIDByEmail = new grpc::Method<global::Viam.App.V1.GetUserIDByEmailRequest, global::Viam.App.V1.GetUserIDByEmailResponse>(
@@ -366,6 +510,14 @@ namespace Viam.App.V1 {
         __Marshaller_viam_app_v1_ListOrganizationsByUserResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.SearchOrganizationsRequest, global::Viam.App.V1.SearchOrganizationsResponse> __Method_SearchOrganizations = new grpc::Method<global::Viam.App.V1.SearchOrganizationsRequest, global::Viam.App.V1.SearchOrganizationsResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "SearchOrganizations",
+        __Marshaller_viam_app_v1_SearchOrganizationsRequest,
+        __Marshaller_viam_app_v1_SearchOrganizationsResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.V1.GetOrganizationRequest, global::Viam.App.V1.GetOrganizationResponse> __Method_GetOrganization = new grpc::Method<global::Viam.App.V1.GetOrganizationRequest, global::Viam.App.V1.GetOrganizationResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
@@ -390,12 +542,36 @@ namespace Viam.App.V1 {
         __Marshaller_viam_app_v1_UpdateOrganizationResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.UpdateOrganizationNamespaceRequest, global::Viam.App.V1.UpdateOrganizationNamespaceResponse> __Method_UpdateOrganizationNamespace = new grpc::Method<global::Viam.App.V1.UpdateOrganizationNamespaceRequest, global::Viam.App.V1.UpdateOrganizationNamespaceResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateOrganizationNamespace",
+        __Marshaller_viam_app_v1_UpdateOrganizationNamespaceRequest,
+        __Marshaller_viam_app_v1_UpdateOrganizationNamespaceResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.V1.DeleteOrganizationRequest, global::Viam.App.V1.DeleteOrganizationResponse> __Method_DeleteOrganization = new grpc::Method<global::Viam.App.V1.DeleteOrganizationRequest, global::Viam.App.V1.DeleteOrganizationResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "DeleteOrganization",
         __Marshaller_viam_app_v1_DeleteOrganizationRequest,
         __Marshaller_viam_app_v1_DeleteOrganizationResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.GetOrganizationMetadataRequest, global::Viam.App.V1.GetOrganizationMetadataResponse> __Method_GetOrganizationMetadata = new grpc::Method<global::Viam.App.V1.GetOrganizationMetadataRequest, global::Viam.App.V1.GetOrganizationMetadataResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetOrganizationMetadata",
+        __Marshaller_viam_app_v1_GetOrganizationMetadataRequest,
+        __Marshaller_viam_app_v1_GetOrganizationMetadataResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.UpdateOrganizationMetadataRequest, global::Viam.App.V1.UpdateOrganizationMetadataResponse> __Method_UpdateOrganizationMetadata = new grpc::Method<global::Viam.App.V1.UpdateOrganizationMetadataRequest, global::Viam.App.V1.UpdateOrganizationMetadataResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateOrganizationMetadata",
+        __Marshaller_viam_app_v1_UpdateOrganizationMetadataRequest,
+        __Marshaller_viam_app_v1_UpdateOrganizationMetadataResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.V1.ListOrganizationMembersRequest, global::Viam.App.V1.ListOrganizationMembersResponse> __Method_ListOrganizationMembers = new grpc::Method<global::Viam.App.V1.ListOrganizationMembersRequest, global::Viam.App.V1.ListOrganizationMembersResponse>(
@@ -446,6 +622,126 @@ namespace Viam.App.V1 {
         __Marshaller_viam_app_v1_ResendOrganizationInviteResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.EnableBillingServiceRequest, global::Viam.App.V1.EnableBillingServiceResponse> __Method_EnableBillingService = new grpc::Method<global::Viam.App.V1.EnableBillingServiceRequest, global::Viam.App.V1.EnableBillingServiceResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "EnableBillingService",
+        __Marshaller_viam_app_v1_EnableBillingServiceRequest,
+        __Marshaller_viam_app_v1_EnableBillingServiceResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.DisableBillingServiceRequest, global::Viam.App.V1.DisableBillingServiceResponse> __Method_DisableBillingService = new grpc::Method<global::Viam.App.V1.DisableBillingServiceRequest, global::Viam.App.V1.DisableBillingServiceResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DisableBillingService",
+        __Marshaller_viam_app_v1_DisableBillingServiceRequest,
+        __Marshaller_viam_app_v1_DisableBillingServiceResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.UpdateBillingServiceRequest, global::Viam.App.V1.UpdateBillingServiceResponse> __Method_UpdateBillingService = new grpc::Method<global::Viam.App.V1.UpdateBillingServiceRequest, global::Viam.App.V1.UpdateBillingServiceResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateBillingService",
+        __Marshaller_viam_app_v1_UpdateBillingServiceRequest,
+        __Marshaller_viam_app_v1_UpdateBillingServiceResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.GetBillingServiceConfigRequest, global::Viam.App.V1.GetBillingServiceConfigResponse> __Method_GetBillingServiceConfig = new grpc::Method<global::Viam.App.V1.GetBillingServiceConfigRequest, global::Viam.App.V1.GetBillingServiceConfigResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetBillingServiceConfig",
+        __Marshaller_viam_app_v1_GetBillingServiceConfigRequest,
+        __Marshaller_viam_app_v1_GetBillingServiceConfigResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.OrganizationSetSupportEmailRequest, global::Viam.App.V1.OrganizationSetSupportEmailResponse> __Method_OrganizationSetSupportEmail = new grpc::Method<global::Viam.App.V1.OrganizationSetSupportEmailRequest, global::Viam.App.V1.OrganizationSetSupportEmailResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "OrganizationSetSupportEmail",
+        __Marshaller_viam_app_v1_OrganizationSetSupportEmailRequest,
+        __Marshaller_viam_app_v1_OrganizationSetSupportEmailResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.OrganizationGetSupportEmailRequest, global::Viam.App.V1.OrganizationGetSupportEmailResponse> __Method_OrganizationGetSupportEmail = new grpc::Method<global::Viam.App.V1.OrganizationGetSupportEmailRequest, global::Viam.App.V1.OrganizationGetSupportEmailResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "OrganizationGetSupportEmail",
+        __Marshaller_viam_app_v1_OrganizationGetSupportEmailRequest,
+        __Marshaller_viam_app_v1_OrganizationGetSupportEmailResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.OrganizationSetLogoRequest, global::Viam.App.V1.OrganizationSetLogoResponse> __Method_OrganizationSetLogo = new grpc::Method<global::Viam.App.V1.OrganizationSetLogoRequest, global::Viam.App.V1.OrganizationSetLogoResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "OrganizationSetLogo",
+        __Marshaller_viam_app_v1_OrganizationSetLogoRequest,
+        __Marshaller_viam_app_v1_OrganizationSetLogoResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.OrganizationGetLogoRequest, global::Viam.App.V1.OrganizationGetLogoResponse> __Method_OrganizationGetLogo = new grpc::Method<global::Viam.App.V1.OrganizationGetLogoRequest, global::Viam.App.V1.OrganizationGetLogoResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "OrganizationGetLogo",
+        __Marshaller_viam_app_v1_OrganizationGetLogoRequest,
+        __Marshaller_viam_app_v1_OrganizationGetLogoResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.EnableAuthServiceRequest, global::Viam.App.V1.EnableAuthServiceResponse> __Method_EnableAuthService = new grpc::Method<global::Viam.App.V1.EnableAuthServiceRequest, global::Viam.App.V1.EnableAuthServiceResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "EnableAuthService",
+        __Marshaller_viam_app_v1_EnableAuthServiceRequest,
+        __Marshaller_viam_app_v1_EnableAuthServiceResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.DisableAuthServiceRequest, global::Viam.App.V1.DisableAuthServiceResponse> __Method_DisableAuthService = new grpc::Method<global::Viam.App.V1.DisableAuthServiceRequest, global::Viam.App.V1.DisableAuthServiceResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DisableAuthService",
+        __Marshaller_viam_app_v1_DisableAuthServiceRequest,
+        __Marshaller_viam_app_v1_DisableAuthServiceResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.CreateOAuthAppRequest, global::Viam.App.V1.CreateOAuthAppResponse> __Method_CreateOAuthApp = new grpc::Method<global::Viam.App.V1.CreateOAuthAppRequest, global::Viam.App.V1.CreateOAuthAppResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "CreateOAuthApp",
+        __Marshaller_viam_app_v1_CreateOAuthAppRequest,
+        __Marshaller_viam_app_v1_CreateOAuthAppResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.ReadOAuthAppRequest, global::Viam.App.V1.ReadOAuthAppResponse> __Method_ReadOAuthApp = new grpc::Method<global::Viam.App.V1.ReadOAuthAppRequest, global::Viam.App.V1.ReadOAuthAppResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ReadOAuthApp",
+        __Marshaller_viam_app_v1_ReadOAuthAppRequest,
+        __Marshaller_viam_app_v1_ReadOAuthAppResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.UpdateOAuthAppRequest, global::Viam.App.V1.UpdateOAuthAppResponse> __Method_UpdateOAuthApp = new grpc::Method<global::Viam.App.V1.UpdateOAuthAppRequest, global::Viam.App.V1.UpdateOAuthAppResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateOAuthApp",
+        __Marshaller_viam_app_v1_UpdateOAuthAppRequest,
+        __Marshaller_viam_app_v1_UpdateOAuthAppResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.DeleteOAuthAppRequest, global::Viam.App.V1.DeleteOAuthAppResponse> __Method_DeleteOAuthApp = new grpc::Method<global::Viam.App.V1.DeleteOAuthAppRequest, global::Viam.App.V1.DeleteOAuthAppResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DeleteOAuthApp",
+        __Marshaller_viam_app_v1_DeleteOAuthAppRequest,
+        __Marshaller_viam_app_v1_DeleteOAuthAppResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.ListOAuthAppsRequest, global::Viam.App.V1.ListOAuthAppsResponse> __Method_ListOAuthApps = new grpc::Method<global::Viam.App.V1.ListOAuthAppsRequest, global::Viam.App.V1.ListOAuthAppsResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ListOAuthApps",
+        __Marshaller_viam_app_v1_ListOAuthAppsRequest,
+        __Marshaller_viam_app_v1_ListOAuthAppsResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.V1.CreateLocationRequest, global::Viam.App.V1.CreateLocationResponse> __Method_CreateLocation = new grpc::Method<global::Viam.App.V1.CreateLocationRequest, global::Viam.App.V1.CreateLocationResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
@@ -476,6 +772,22 @@ namespace Viam.App.V1 {
         "DeleteLocation",
         __Marshaller_viam_app_v1_DeleteLocationRequest,
         __Marshaller_viam_app_v1_DeleteLocationResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.GetLocationMetadataRequest, global::Viam.App.V1.GetLocationMetadataResponse> __Method_GetLocationMetadata = new grpc::Method<global::Viam.App.V1.GetLocationMetadataRequest, global::Viam.App.V1.GetLocationMetadataResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetLocationMetadata",
+        __Marshaller_viam_app_v1_GetLocationMetadataRequest,
+        __Marshaller_viam_app_v1_GetLocationMetadataResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.UpdateLocationMetadataRequest, global::Viam.App.V1.UpdateLocationMetadataResponse> __Method_UpdateLocationMetadata = new grpc::Method<global::Viam.App.V1.UpdateLocationMetadataRequest, global::Viam.App.V1.UpdateLocationMetadataResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateLocationMetadata",
+        __Marshaller_viam_app_v1_UpdateLocationMetadataRequest,
+        __Marshaller_viam_app_v1_UpdateLocationMetadataResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.V1.ListLocationsRequest, global::Viam.App.V1.ListLocationsResponse> __Method_ListLocations = new grpc::Method<global::Viam.App.V1.ListLocationsRequest, global::Viam.App.V1.ListLocationsResponse>(
@@ -532,6 +844,22 @@ namespace Viam.App.V1 {
         "GetRobot",
         __Marshaller_viam_app_v1_GetRobotRequest,
         __Marshaller_viam_app_v1_GetRobotResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.GetRobotMetadataRequest, global::Viam.App.V1.GetRobotMetadataResponse> __Method_GetRobotMetadata = new grpc::Method<global::Viam.App.V1.GetRobotMetadataRequest, global::Viam.App.V1.GetRobotMetadataResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetRobotMetadata",
+        __Marshaller_viam_app_v1_GetRobotMetadataRequest,
+        __Marshaller_viam_app_v1_GetRobotMetadataResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.UpdateRobotMetadataRequest, global::Viam.App.V1.UpdateRobotMetadataResponse> __Method_UpdateRobotMetadata = new grpc::Method<global::Viam.App.V1.UpdateRobotMetadataRequest, global::Viam.App.V1.UpdateRobotMetadataResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateRobotMetadata",
+        __Marshaller_viam_app_v1_UpdateRobotMetadataRequest,
+        __Marshaller_viam_app_v1_UpdateRobotMetadataResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.V1.GetRoverRentalRobotsRequest, global::Viam.App.V1.GetRoverRentalRobotsResponse> __Method_GetRoverRentalRobots = new grpc::Method<global::Viam.App.V1.GetRoverRentalRobotsRequest, global::Viam.App.V1.GetRoverRentalRobotsResponse>(
@@ -604,6 +932,22 @@ namespace Viam.App.V1 {
         "DeleteRobotPart",
         __Marshaller_viam_app_v1_DeleteRobotPartRequest,
         __Marshaller_viam_app_v1_DeleteRobotPartResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.GetRobotPartMetadataRequest, global::Viam.App.V1.GetRobotPartMetadataResponse> __Method_GetRobotPartMetadata = new grpc::Method<global::Viam.App.V1.GetRobotPartMetadataRequest, global::Viam.App.V1.GetRobotPartMetadataResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetRobotPartMetadata",
+        __Marshaller_viam_app_v1_GetRobotPartMetadataRequest,
+        __Marshaller_viam_app_v1_GetRobotPartMetadataResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.UpdateRobotPartMetadataRequest, global::Viam.App.V1.UpdateRobotPartMetadataResponse> __Method_UpdateRobotPartMetadata = new grpc::Method<global::Viam.App.V1.UpdateRobotPartMetadataRequest, global::Viam.App.V1.UpdateRobotPartMetadataResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "UpdateRobotPartMetadata",
+        __Marshaller_viam_app_v1_UpdateRobotPartMetadataRequest,
+        __Marshaller_viam_app_v1_UpdateRobotPartMetadataResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.V1.GetRobotAPIKeysRequest, global::Viam.App.V1.GetRobotAPIKeysResponse> __Method_GetRobotAPIKeys = new grpc::Method<global::Viam.App.V1.GetRobotAPIKeysRequest, global::Viam.App.V1.GetRobotAPIKeysResponse>(
@@ -718,6 +1062,62 @@ namespace Viam.App.V1 {
         __Marshaller_viam_app_v1_DeleteFragmentResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.ListNestedFragmentsRequest, global::Viam.App.V1.ListNestedFragmentsResponse> __Method_ListNestedFragments = new grpc::Method<global::Viam.App.V1.ListNestedFragmentsRequest, global::Viam.App.V1.ListNestedFragmentsResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ListNestedFragments",
+        __Marshaller_viam_app_v1_ListNestedFragmentsRequest,
+        __Marshaller_viam_app_v1_ListNestedFragmentsResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.ListMachineFragmentsRequest, global::Viam.App.V1.ListMachineFragmentsResponse> __Method_ListMachineFragments = new grpc::Method<global::Viam.App.V1.ListMachineFragmentsRequest, global::Viam.App.V1.ListMachineFragmentsResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ListMachineFragments",
+        __Marshaller_viam_app_v1_ListMachineFragmentsRequest,
+        __Marshaller_viam_app_v1_ListMachineFragmentsResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.ListMachineSummariesRequest, global::Viam.App.V1.ListMachineSummariesResponse> __Method_ListMachineSummaries = new grpc::Method<global::Viam.App.V1.ListMachineSummariesRequest, global::Viam.App.V1.ListMachineSummariesResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ListMachineSummaries",
+        __Marshaller_viam_app_v1_ListMachineSummariesRequest,
+        __Marshaller_viam_app_v1_ListMachineSummariesResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.GetFragmentHistoryRequest, global::Viam.App.V1.GetFragmentHistoryResponse> __Method_GetFragmentHistory = new grpc::Method<global::Viam.App.V1.GetFragmentHistoryRequest, global::Viam.App.V1.GetFragmentHistoryResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetFragmentHistory",
+        __Marshaller_viam_app_v1_GetFragmentHistoryRequest,
+        __Marshaller_viam_app_v1_GetFragmentHistoryResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.GetFragmentUsageRequest, global::Viam.App.V1.GetFragmentUsageResponse> __Method_GetFragmentUsage = new grpc::Method<global::Viam.App.V1.GetFragmentUsageRequest, global::Viam.App.V1.GetFragmentUsageResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetFragmentUsage",
+        __Marshaller_viam_app_v1_GetFragmentUsageRequest,
+        __Marshaller_viam_app_v1_GetFragmentUsageResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.SetFragmentTagRequest, global::Viam.App.V1.SetFragmentTagResponse> __Method_SetFragmentTag = new grpc::Method<global::Viam.App.V1.SetFragmentTagRequest, global::Viam.App.V1.SetFragmentTagResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "SetFragmentTag",
+        __Marshaller_viam_app_v1_SetFragmentTagRequest,
+        __Marshaller_viam_app_v1_SetFragmentTagResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.DeleteFragmentTagRequest, global::Viam.App.V1.DeleteFragmentTagResponse> __Method_DeleteFragmentTag = new grpc::Method<global::Viam.App.V1.DeleteFragmentTagRequest, global::Viam.App.V1.DeleteFragmentTagResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "DeleteFragmentTag",
+        __Marshaller_viam_app_v1_DeleteFragmentTagRequest,
+        __Marshaller_viam_app_v1_DeleteFragmentTagResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.V1.AddRoleRequest, global::Viam.App.V1.AddRoleResponse> __Method_AddRole = new grpc::Method<global::Viam.App.V1.AddRoleRequest, global::Viam.App.V1.AddRoleResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
@@ -798,6 +1198,22 @@ namespace Viam.App.V1 {
         __Marshaller_viam_app_v1_DeleteRegistryItemResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.RenameRegistryItemRequest, global::Viam.App.V1.RenameRegistryItemResponse> __Method_RenameRegistryItem = new grpc::Method<global::Viam.App.V1.RenameRegistryItemRequest, global::Viam.App.V1.RenameRegistryItemResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "RenameRegistryItem",
+        __Marshaller_viam_app_v1_RenameRegistryItemRequest,
+        __Marshaller_viam_app_v1_RenameRegistryItemResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.TransferRegistryItemRequest, global::Viam.App.V1.TransferRegistryItemResponse> __Method_TransferRegistryItem = new grpc::Method<global::Viam.App.V1.TransferRegistryItemRequest, global::Viam.App.V1.TransferRegistryItemResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "TransferRegistryItem",
+        __Marshaller_viam_app_v1_TransferRegistryItemRequest,
+        __Marshaller_viam_app_v1_TransferRegistryItemResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.V1.CreateModuleRequest, global::Viam.App.V1.CreateModuleResponse> __Method_CreateModule = new grpc::Method<global::Viam.App.V1.CreateModuleRequest, global::Viam.App.V1.CreateModuleResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
@@ -862,6 +1278,14 @@ namespace Viam.App.V1 {
         __Marshaller_viam_app_v1_ListKeysResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.RenameKeyRequest, global::Viam.App.V1.RenameKeyResponse> __Method_RenameKey = new grpc::Method<global::Viam.App.V1.RenameKeyRequest, global::Viam.App.V1.RenameKeyResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "RenameKey",
+        __Marshaller_viam_app_v1_RenameKeyRequest,
+        __Marshaller_viam_app_v1_RenameKeyResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.V1.RotateKeyRequest, global::Viam.App.V1.RotateKeyResponse> __Method_RotateKey = new grpc::Method<global::Viam.App.V1.RotateKeyRequest, global::Viam.App.V1.RotateKeyResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
@@ -876,6 +1300,14 @@ namespace Viam.App.V1 {
         "CreateKeyFromExistingKeyAuthorizations",
         __Marshaller_viam_app_v1_CreateKeyFromExistingKeyAuthorizationsRequest,
         __Marshaller_viam_app_v1_CreateKeyFromExistingKeyAuthorizationsResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.GetAppContentRequest, global::Viam.App.V1.GetAppContentResponse> __Method_GetAppContent = new grpc::Method<global::Viam.App.V1.GetAppContentRequest, global::Viam.App.V1.GetAppContentResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetAppContent",
+        __Marshaller_viam_app_v1_GetAppContentRequest,
+        __Marshaller_viam_app_v1_GetAppContentResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -948,6 +1380,18 @@ namespace Viam.App.V1 {
       }
 
       /// <summary>
+      /// Search organizations by a couple fields
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.SearchOrganizationsResponse> SearchOrganizations(global::Viam.App.V1.SearchOrganizationsRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
       /// Get an organization
       /// </summary>
       /// <param name="request">The request received from the client.</param>
@@ -984,6 +1428,18 @@ namespace Viam.App.V1 {
       }
 
       /// <summary>
+      /// Update an organization's namespace if it's already been set.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.UpdateOrganizationNamespaceResponse> UpdateOrganizationNamespace(global::Viam.App.V1.UpdateOrganizationNamespaceRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
       /// Delete an organization
       /// </summary>
       /// <param name="request">The request received from the client.</param>
@@ -991,6 +1447,30 @@ namespace Viam.App.V1 {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.DeleteOrganizationResponse> DeleteOrganization(global::Viam.App.V1.DeleteOrganizationRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Get user-defined metadata for an organization
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.GetOrganizationMetadataResponse> GetOrganizationMetadata(global::Viam.App.V1.GetOrganizationMetadataRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Update user-defined metadata for an organization
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.UpdateOrganizationMetadataResponse> UpdateOrganizationMetadata(global::Viam.App.V1.UpdateOrganizationMetadataRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -1067,6 +1547,96 @@ namespace Viam.App.V1 {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.EnableBillingServiceResponse> EnableBillingService(global::Viam.App.V1.EnableBillingServiceRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.DisableBillingServiceResponse> DisableBillingService(global::Viam.App.V1.DisableBillingServiceRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.UpdateBillingServiceResponse> UpdateBillingService(global::Viam.App.V1.UpdateBillingServiceRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.GetBillingServiceConfigResponse> GetBillingServiceConfig(global::Viam.App.V1.GetBillingServiceConfigRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.OrganizationSetSupportEmailResponse> OrganizationSetSupportEmail(global::Viam.App.V1.OrganizationSetSupportEmailRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.OrganizationGetSupportEmailResponse> OrganizationGetSupportEmail(global::Viam.App.V1.OrganizationGetSupportEmailRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.OrganizationSetLogoResponse> OrganizationSetLogo(global::Viam.App.V1.OrganizationSetLogoRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.OrganizationGetLogoResponse> OrganizationGetLogo(global::Viam.App.V1.OrganizationGetLogoRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.EnableAuthServiceResponse> EnableAuthService(global::Viam.App.V1.EnableAuthServiceRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.DisableAuthServiceResponse> DisableAuthService(global::Viam.App.V1.DisableAuthServiceRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.CreateOAuthAppResponse> CreateOAuthApp(global::Viam.App.V1.CreateOAuthAppRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.ReadOAuthAppResponse> ReadOAuthApp(global::Viam.App.V1.ReadOAuthAppRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.UpdateOAuthAppResponse> UpdateOAuthApp(global::Viam.App.V1.UpdateOAuthAppRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.DeleteOAuthAppResponse> DeleteOAuthApp(global::Viam.App.V1.DeleteOAuthAppRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.ListOAuthAppsResponse> ListOAuthApps(global::Viam.App.V1.ListOAuthAppsRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
       /// <summary>
       /// Create a location
       /// </summary>
@@ -1111,6 +1681,30 @@ namespace Viam.App.V1 {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.DeleteLocationResponse> DeleteLocation(global::Viam.App.V1.DeleteLocationRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Get user-defined metadata for a location
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.GetLocationMetadataResponse> GetLocationMetadata(global::Viam.App.V1.GetLocationMetadataRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Update user-defined metadata for a location
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.UpdateLocationMetadataResponse> UpdateLocationMetadata(global::Viam.App.V1.UpdateLocationMetadataRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -1201,6 +1795,30 @@ namespace Viam.App.V1 {
       }
 
       /// <summary>
+      /// Get user-defined metadata for a robot
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.GetRobotMetadataResponse> GetRobotMetadata(global::Viam.App.V1.GetRobotMetadataRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Update user-defined metadata for an robot
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.UpdateRobotMetadataResponse> UpdateRobotMetadata(global::Viam.App.V1.UpdateRobotMetadataRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
       /// Get Rover Rental Location Robots
       /// </summary>
       /// <param name="request">The request received from the client.</param>
@@ -1286,6 +1904,30 @@ namespace Viam.App.V1 {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.DeleteRobotPartResponse> DeleteRobotPart(global::Viam.App.V1.DeleteRobotPartRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Get user-defined metadata for a robot part
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.GetRobotPartMetadataResponse> GetRobotPartMetadata(global::Viam.App.V1.GetRobotPartMetadataRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Update user-defined metadata for an robot part
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.UpdateRobotPartMetadataResponse> UpdateRobotPartMetadata(global::Viam.App.V1.UpdateRobotPartMetadataRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -1464,6 +2106,90 @@ namespace Viam.App.V1 {
       }
 
       /// <summary>
+      /// List nested fragments for a fragment
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.ListNestedFragmentsResponse> ListNestedFragments(global::Viam.App.V1.ListNestedFragmentsRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Gets top level and nested fragments for a machine, as well as any other specified fragment ids
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.ListMachineFragmentsResponse> ListMachineFragments(global::Viam.App.V1.ListMachineFragmentsRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// List all machines and their corresponding machine dashboard information
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.ListMachineSummariesResponse> ListMachineSummaries(global::Viam.App.V1.ListMachineSummariesRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Gets fragment history
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.GetFragmentHistoryResponse> GetFragmentHistory(global::Viam.App.V1.GetFragmentHistoryRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Gets usage for a fragment across versions
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.GetFragmentUsageResponse> GetFragmentUsage(global::Viam.App.V1.GetFragmentUsageRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Sets a fragment tag to a revision
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.SetFragmentTagResponse> SetFragmentTag(global::Viam.App.V1.SetFragmentTagRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Deletes a fragment tag
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.DeleteFragmentTagResponse> DeleteFragmentTag(global::Viam.App.V1.DeleteFragmentTagRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
       /// Creates an IdentityAuthorization
       /// </summary>
       /// <param name="request">The request received from the client.</param>
@@ -1554,6 +2280,18 @@ namespace Viam.App.V1 {
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.RenameRegistryItemResponse> RenameRegistryItem(global::Viam.App.V1.RenameRegistryItemRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.TransferRegistryItemResponse> TransferRegistryItem(global::Viam.App.V1.TransferRegistryItemRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.CreateModuleResponse> CreateModule(global::Viam.App.V1.CreateModuleRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
@@ -1602,6 +2340,12 @@ namespace Viam.App.V1 {
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.RenameKeyResponse> RenameKey(global::Viam.App.V1.RenameKeyRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.RotateKeyResponse> RotateKey(global::Viam.App.V1.RotateKeyRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
@@ -1609,6 +2353,12 @@ namespace Viam.App.V1 {
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.CreateKeyFromExistingKeyAuthorizationsResponse> CreateKeyFromExistingKeyAuthorizations(global::Viam.App.V1.CreateKeyFromExistingKeyAuthorizationsRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.GetAppContentResponse> GetAppContent(global::Viam.App.V1.GetAppContentRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -1883,6 +2633,54 @@ namespace Viam.App.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_ListOrganizationsByUser, null, options, request);
       }
       /// <summary>
+      /// Search organizations by a couple fields
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.SearchOrganizationsResponse SearchOrganizations(global::Viam.App.V1.SearchOrganizationsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SearchOrganizations(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Search organizations by a couple fields
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.SearchOrganizationsResponse SearchOrganizations(global::Viam.App.V1.SearchOrganizationsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SearchOrganizations, null, options, request);
+      }
+      /// <summary>
+      /// Search organizations by a couple fields
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.SearchOrganizationsResponse> SearchOrganizationsAsync(global::Viam.App.V1.SearchOrganizationsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SearchOrganizationsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Search organizations by a couple fields
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.SearchOrganizationsResponse> SearchOrganizationsAsync(global::Viam.App.V1.SearchOrganizationsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SearchOrganizations, null, options, request);
+      }
+      /// <summary>
       /// Get an organization
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -2027,6 +2825,54 @@ namespace Viam.App.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_UpdateOrganization, null, options, request);
       }
       /// <summary>
+      /// Update an organization's namespace if it's already been set.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateOrganizationNamespaceResponse UpdateOrganizationNamespace(global::Viam.App.V1.UpdateOrganizationNamespaceRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateOrganizationNamespace(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Update an organization's namespace if it's already been set.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateOrganizationNamespaceResponse UpdateOrganizationNamespace(global::Viam.App.V1.UpdateOrganizationNamespaceRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateOrganizationNamespace, null, options, request);
+      }
+      /// <summary>
+      /// Update an organization's namespace if it's already been set.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateOrganizationNamespaceResponse> UpdateOrganizationNamespaceAsync(global::Viam.App.V1.UpdateOrganizationNamespaceRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateOrganizationNamespaceAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Update an organization's namespace if it's already been set.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateOrganizationNamespaceResponse> UpdateOrganizationNamespaceAsync(global::Viam.App.V1.UpdateOrganizationNamespaceRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateOrganizationNamespace, null, options, request);
+      }
+      /// <summary>
       /// Delete an organization
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -2073,6 +2919,102 @@ namespace Viam.App.V1 {
       public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.DeleteOrganizationResponse> DeleteOrganizationAsync(global::Viam.App.V1.DeleteOrganizationRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_DeleteOrganization, null, options, request);
+      }
+      /// <summary>
+      /// Get user-defined metadata for an organization
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetOrganizationMetadataResponse GetOrganizationMetadata(global::Viam.App.V1.GetOrganizationMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetOrganizationMetadata(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Get user-defined metadata for an organization
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetOrganizationMetadataResponse GetOrganizationMetadata(global::Viam.App.V1.GetOrganizationMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetOrganizationMetadata, null, options, request);
+      }
+      /// <summary>
+      /// Get user-defined metadata for an organization
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetOrganizationMetadataResponse> GetOrganizationMetadataAsync(global::Viam.App.V1.GetOrganizationMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetOrganizationMetadataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Get user-defined metadata for an organization
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetOrganizationMetadataResponse> GetOrganizationMetadataAsync(global::Viam.App.V1.GetOrganizationMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetOrganizationMetadata, null, options, request);
+      }
+      /// <summary>
+      /// Update user-defined metadata for an organization
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateOrganizationMetadataResponse UpdateOrganizationMetadata(global::Viam.App.V1.UpdateOrganizationMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateOrganizationMetadata(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Update user-defined metadata for an organization
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateOrganizationMetadataResponse UpdateOrganizationMetadata(global::Viam.App.V1.UpdateOrganizationMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateOrganizationMetadata, null, options, request);
+      }
+      /// <summary>
+      /// Update user-defined metadata for an organization
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateOrganizationMetadataResponse> UpdateOrganizationMetadataAsync(global::Viam.App.V1.UpdateOrganizationMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateOrganizationMetadataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Update user-defined metadata for an organization
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateOrganizationMetadataResponse> UpdateOrganizationMetadataAsync(global::Viam.App.V1.UpdateOrganizationMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateOrganizationMetadata, null, options, request);
       }
       /// <summary>
       /// List all members of an organization and all invited members to the organization.
@@ -2362,6 +3304,306 @@ namespace Viam.App.V1 {
       {
         return CallInvoker.AsyncUnaryCall(__Method_ResendOrganizationInvite, null, options, request);
       }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.EnableBillingServiceResponse EnableBillingService(global::Viam.App.V1.EnableBillingServiceRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return EnableBillingService(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.EnableBillingServiceResponse EnableBillingService(global::Viam.App.V1.EnableBillingServiceRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_EnableBillingService, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.EnableBillingServiceResponse> EnableBillingServiceAsync(global::Viam.App.V1.EnableBillingServiceRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return EnableBillingServiceAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.EnableBillingServiceResponse> EnableBillingServiceAsync(global::Viam.App.V1.EnableBillingServiceRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_EnableBillingService, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.DisableBillingServiceResponse DisableBillingService(global::Viam.App.V1.DisableBillingServiceRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DisableBillingService(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.DisableBillingServiceResponse DisableBillingService(global::Viam.App.V1.DisableBillingServiceRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DisableBillingService, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.DisableBillingServiceResponse> DisableBillingServiceAsync(global::Viam.App.V1.DisableBillingServiceRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DisableBillingServiceAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.DisableBillingServiceResponse> DisableBillingServiceAsync(global::Viam.App.V1.DisableBillingServiceRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DisableBillingService, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateBillingServiceResponse UpdateBillingService(global::Viam.App.V1.UpdateBillingServiceRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateBillingService(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateBillingServiceResponse UpdateBillingService(global::Viam.App.V1.UpdateBillingServiceRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateBillingService, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateBillingServiceResponse> UpdateBillingServiceAsync(global::Viam.App.V1.UpdateBillingServiceRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateBillingServiceAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateBillingServiceResponse> UpdateBillingServiceAsync(global::Viam.App.V1.UpdateBillingServiceRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateBillingService, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetBillingServiceConfigResponse GetBillingServiceConfig(global::Viam.App.V1.GetBillingServiceConfigRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetBillingServiceConfig(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetBillingServiceConfigResponse GetBillingServiceConfig(global::Viam.App.V1.GetBillingServiceConfigRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetBillingServiceConfig, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetBillingServiceConfigResponse> GetBillingServiceConfigAsync(global::Viam.App.V1.GetBillingServiceConfigRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetBillingServiceConfigAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetBillingServiceConfigResponse> GetBillingServiceConfigAsync(global::Viam.App.V1.GetBillingServiceConfigRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetBillingServiceConfig, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.OrganizationSetSupportEmailResponse OrganizationSetSupportEmail(global::Viam.App.V1.OrganizationSetSupportEmailRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return OrganizationSetSupportEmail(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.OrganizationSetSupportEmailResponse OrganizationSetSupportEmail(global::Viam.App.V1.OrganizationSetSupportEmailRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_OrganizationSetSupportEmail, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.OrganizationSetSupportEmailResponse> OrganizationSetSupportEmailAsync(global::Viam.App.V1.OrganizationSetSupportEmailRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return OrganizationSetSupportEmailAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.OrganizationSetSupportEmailResponse> OrganizationSetSupportEmailAsync(global::Viam.App.V1.OrganizationSetSupportEmailRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_OrganizationSetSupportEmail, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.OrganizationGetSupportEmailResponse OrganizationGetSupportEmail(global::Viam.App.V1.OrganizationGetSupportEmailRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return OrganizationGetSupportEmail(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.OrganizationGetSupportEmailResponse OrganizationGetSupportEmail(global::Viam.App.V1.OrganizationGetSupportEmailRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_OrganizationGetSupportEmail, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.OrganizationGetSupportEmailResponse> OrganizationGetSupportEmailAsync(global::Viam.App.V1.OrganizationGetSupportEmailRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return OrganizationGetSupportEmailAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.OrganizationGetSupportEmailResponse> OrganizationGetSupportEmailAsync(global::Viam.App.V1.OrganizationGetSupportEmailRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_OrganizationGetSupportEmail, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.OrganizationSetLogoResponse OrganizationSetLogo(global::Viam.App.V1.OrganizationSetLogoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return OrganizationSetLogo(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.OrganizationSetLogoResponse OrganizationSetLogo(global::Viam.App.V1.OrganizationSetLogoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_OrganizationSetLogo, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.OrganizationSetLogoResponse> OrganizationSetLogoAsync(global::Viam.App.V1.OrganizationSetLogoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return OrganizationSetLogoAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.OrganizationSetLogoResponse> OrganizationSetLogoAsync(global::Viam.App.V1.OrganizationSetLogoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_OrganizationSetLogo, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.OrganizationGetLogoResponse OrganizationGetLogo(global::Viam.App.V1.OrganizationGetLogoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return OrganizationGetLogo(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.OrganizationGetLogoResponse OrganizationGetLogo(global::Viam.App.V1.OrganizationGetLogoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_OrganizationGetLogo, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.OrganizationGetLogoResponse> OrganizationGetLogoAsync(global::Viam.App.V1.OrganizationGetLogoRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return OrganizationGetLogoAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.OrganizationGetLogoResponse> OrganizationGetLogoAsync(global::Viam.App.V1.OrganizationGetLogoRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_OrganizationGetLogo, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.EnableAuthServiceResponse EnableAuthService(global::Viam.App.V1.EnableAuthServiceRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return EnableAuthService(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.EnableAuthServiceResponse EnableAuthService(global::Viam.App.V1.EnableAuthServiceRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_EnableAuthService, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.EnableAuthServiceResponse> EnableAuthServiceAsync(global::Viam.App.V1.EnableAuthServiceRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return EnableAuthServiceAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.EnableAuthServiceResponse> EnableAuthServiceAsync(global::Viam.App.V1.EnableAuthServiceRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_EnableAuthService, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.DisableAuthServiceResponse DisableAuthService(global::Viam.App.V1.DisableAuthServiceRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DisableAuthService(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.DisableAuthServiceResponse DisableAuthService(global::Viam.App.V1.DisableAuthServiceRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DisableAuthService, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.DisableAuthServiceResponse> DisableAuthServiceAsync(global::Viam.App.V1.DisableAuthServiceRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DisableAuthServiceAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.DisableAuthServiceResponse> DisableAuthServiceAsync(global::Viam.App.V1.DisableAuthServiceRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DisableAuthService, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.CreateOAuthAppResponse CreateOAuthApp(global::Viam.App.V1.CreateOAuthAppRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CreateOAuthApp(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.CreateOAuthAppResponse CreateOAuthApp(global::Viam.App.V1.CreateOAuthAppRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_CreateOAuthApp, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.CreateOAuthAppResponse> CreateOAuthAppAsync(global::Viam.App.V1.CreateOAuthAppRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return CreateOAuthAppAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.CreateOAuthAppResponse> CreateOAuthAppAsync(global::Viam.App.V1.CreateOAuthAppRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_CreateOAuthApp, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.ReadOAuthAppResponse ReadOAuthApp(global::Viam.App.V1.ReadOAuthAppRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ReadOAuthApp(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.ReadOAuthAppResponse ReadOAuthApp(global::Viam.App.V1.ReadOAuthAppRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ReadOAuthApp, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.ReadOAuthAppResponse> ReadOAuthAppAsync(global::Viam.App.V1.ReadOAuthAppRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ReadOAuthAppAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.ReadOAuthAppResponse> ReadOAuthAppAsync(global::Viam.App.V1.ReadOAuthAppRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ReadOAuthApp, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateOAuthAppResponse UpdateOAuthApp(global::Viam.App.V1.UpdateOAuthAppRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateOAuthApp(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateOAuthAppResponse UpdateOAuthApp(global::Viam.App.V1.UpdateOAuthAppRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateOAuthApp, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateOAuthAppResponse> UpdateOAuthAppAsync(global::Viam.App.V1.UpdateOAuthAppRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateOAuthAppAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateOAuthAppResponse> UpdateOAuthAppAsync(global::Viam.App.V1.UpdateOAuthAppRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateOAuthApp, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.DeleteOAuthAppResponse DeleteOAuthApp(global::Viam.App.V1.DeleteOAuthAppRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteOAuthApp(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.DeleteOAuthAppResponse DeleteOAuthApp(global::Viam.App.V1.DeleteOAuthAppRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DeleteOAuthApp, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.DeleteOAuthAppResponse> DeleteOAuthAppAsync(global::Viam.App.V1.DeleteOAuthAppRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteOAuthAppAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.DeleteOAuthAppResponse> DeleteOAuthAppAsync(global::Viam.App.V1.DeleteOAuthAppRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DeleteOAuthApp, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.ListOAuthAppsResponse ListOAuthApps(global::Viam.App.V1.ListOAuthAppsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListOAuthApps(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.ListOAuthAppsResponse ListOAuthApps(global::Viam.App.V1.ListOAuthAppsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ListOAuthApps, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.ListOAuthAppsResponse> ListOAuthAppsAsync(global::Viam.App.V1.ListOAuthAppsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListOAuthAppsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.ListOAuthAppsResponse> ListOAuthAppsAsync(global::Viam.App.V1.ListOAuthAppsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ListOAuthApps, null, options, request);
+      }
       /// <summary>
       /// Create a location
       /// </summary>
@@ -2553,6 +3795,102 @@ namespace Viam.App.V1 {
       public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.DeleteLocationResponse> DeleteLocationAsync(global::Viam.App.V1.DeleteLocationRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_DeleteLocation, null, options, request);
+      }
+      /// <summary>
+      /// Get user-defined metadata for a location
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetLocationMetadataResponse GetLocationMetadata(global::Viam.App.V1.GetLocationMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetLocationMetadata(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Get user-defined metadata for a location
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetLocationMetadataResponse GetLocationMetadata(global::Viam.App.V1.GetLocationMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetLocationMetadata, null, options, request);
+      }
+      /// <summary>
+      /// Get user-defined metadata for a location
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetLocationMetadataResponse> GetLocationMetadataAsync(global::Viam.App.V1.GetLocationMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetLocationMetadataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Get user-defined metadata for a location
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetLocationMetadataResponse> GetLocationMetadataAsync(global::Viam.App.V1.GetLocationMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetLocationMetadata, null, options, request);
+      }
+      /// <summary>
+      /// Update user-defined metadata for a location
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateLocationMetadataResponse UpdateLocationMetadata(global::Viam.App.V1.UpdateLocationMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateLocationMetadata(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Update user-defined metadata for a location
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateLocationMetadataResponse UpdateLocationMetadata(global::Viam.App.V1.UpdateLocationMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateLocationMetadata, null, options, request);
+      }
+      /// <summary>
+      /// Update user-defined metadata for a location
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateLocationMetadataResponse> UpdateLocationMetadataAsync(global::Viam.App.V1.UpdateLocationMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateLocationMetadataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Update user-defined metadata for a location
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateLocationMetadataResponse> UpdateLocationMetadataAsync(global::Viam.App.V1.UpdateLocationMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateLocationMetadata, null, options, request);
       }
       /// <summary>
       /// Get a list of locations
@@ -2895,6 +4233,102 @@ namespace Viam.App.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_GetRobot, null, options, request);
       }
       /// <summary>
+      /// Get user-defined metadata for a robot
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetRobotMetadataResponse GetRobotMetadata(global::Viam.App.V1.GetRobotMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetRobotMetadata(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Get user-defined metadata for a robot
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetRobotMetadataResponse GetRobotMetadata(global::Viam.App.V1.GetRobotMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetRobotMetadata, null, options, request);
+      }
+      /// <summary>
+      /// Get user-defined metadata for a robot
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetRobotMetadataResponse> GetRobotMetadataAsync(global::Viam.App.V1.GetRobotMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetRobotMetadataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Get user-defined metadata for a robot
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetRobotMetadataResponse> GetRobotMetadataAsync(global::Viam.App.V1.GetRobotMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetRobotMetadata, null, options, request);
+      }
+      /// <summary>
+      /// Update user-defined metadata for an robot
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateRobotMetadataResponse UpdateRobotMetadata(global::Viam.App.V1.UpdateRobotMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateRobotMetadata(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Update user-defined metadata for an robot
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateRobotMetadataResponse UpdateRobotMetadata(global::Viam.App.V1.UpdateRobotMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateRobotMetadata, null, options, request);
+      }
+      /// <summary>
+      /// Update user-defined metadata for an robot
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateRobotMetadataResponse> UpdateRobotMetadataAsync(global::Viam.App.V1.UpdateRobotMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateRobotMetadataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Update user-defined metadata for an robot
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateRobotMetadataResponse> UpdateRobotMetadataAsync(global::Viam.App.V1.UpdateRobotMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateRobotMetadata, null, options, request);
+      }
+      /// <summary>
       /// Get Rover Rental Location Robots
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -3231,6 +4665,102 @@ namespace Viam.App.V1 {
       public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.DeleteRobotPartResponse> DeleteRobotPartAsync(global::Viam.App.V1.DeleteRobotPartRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_DeleteRobotPart, null, options, request);
+      }
+      /// <summary>
+      /// Get user-defined metadata for a robot part
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetRobotPartMetadataResponse GetRobotPartMetadata(global::Viam.App.V1.GetRobotPartMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetRobotPartMetadata(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Get user-defined metadata for a robot part
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetRobotPartMetadataResponse GetRobotPartMetadata(global::Viam.App.V1.GetRobotPartMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetRobotPartMetadata, null, options, request);
+      }
+      /// <summary>
+      /// Get user-defined metadata for a robot part
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetRobotPartMetadataResponse> GetRobotPartMetadataAsync(global::Viam.App.V1.GetRobotPartMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetRobotPartMetadataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Get user-defined metadata for a robot part
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetRobotPartMetadataResponse> GetRobotPartMetadataAsync(global::Viam.App.V1.GetRobotPartMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetRobotPartMetadata, null, options, request);
+      }
+      /// <summary>
+      /// Update user-defined metadata for an robot part
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateRobotPartMetadataResponse UpdateRobotPartMetadata(global::Viam.App.V1.UpdateRobotPartMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateRobotPartMetadata(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Update user-defined metadata for an robot part
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.UpdateRobotPartMetadataResponse UpdateRobotPartMetadata(global::Viam.App.V1.UpdateRobotPartMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_UpdateRobotPartMetadata, null, options, request);
+      }
+      /// <summary>
+      /// Update user-defined metadata for an robot part
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateRobotPartMetadataResponse> UpdateRobotPartMetadataAsync(global::Viam.App.V1.UpdateRobotPartMetadataRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return UpdateRobotPartMetadataAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Update user-defined metadata for an robot part
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateRobotPartMetadataResponse> UpdateRobotPartMetadataAsync(global::Viam.App.V1.UpdateRobotPartMetadataRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_UpdateRobotPartMetadata, null, options, request);
       }
       /// <summary>
       /// Gets the Robot API Keys for the robot
@@ -3925,6 +5455,342 @@ namespace Viam.App.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_DeleteFragment, null, options, request);
       }
       /// <summary>
+      /// List nested fragments for a fragment
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.ListNestedFragmentsResponse ListNestedFragments(global::Viam.App.V1.ListNestedFragmentsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListNestedFragments(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// List nested fragments for a fragment
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.ListNestedFragmentsResponse ListNestedFragments(global::Viam.App.V1.ListNestedFragmentsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ListNestedFragments, null, options, request);
+      }
+      /// <summary>
+      /// List nested fragments for a fragment
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.ListNestedFragmentsResponse> ListNestedFragmentsAsync(global::Viam.App.V1.ListNestedFragmentsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListNestedFragmentsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// List nested fragments for a fragment
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.ListNestedFragmentsResponse> ListNestedFragmentsAsync(global::Viam.App.V1.ListNestedFragmentsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ListNestedFragments, null, options, request);
+      }
+      /// <summary>
+      /// Gets top level and nested fragments for a machine, as well as any other specified fragment ids
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.ListMachineFragmentsResponse ListMachineFragments(global::Viam.App.V1.ListMachineFragmentsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListMachineFragments(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Gets top level and nested fragments for a machine, as well as any other specified fragment ids
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.ListMachineFragmentsResponse ListMachineFragments(global::Viam.App.V1.ListMachineFragmentsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ListMachineFragments, null, options, request);
+      }
+      /// <summary>
+      /// Gets top level and nested fragments for a machine, as well as any other specified fragment ids
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.ListMachineFragmentsResponse> ListMachineFragmentsAsync(global::Viam.App.V1.ListMachineFragmentsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListMachineFragmentsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Gets top level and nested fragments for a machine, as well as any other specified fragment ids
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.ListMachineFragmentsResponse> ListMachineFragmentsAsync(global::Viam.App.V1.ListMachineFragmentsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ListMachineFragments, null, options, request);
+      }
+      /// <summary>
+      /// List all machines and their corresponding machine dashboard information
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.ListMachineSummariesResponse ListMachineSummaries(global::Viam.App.V1.ListMachineSummariesRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListMachineSummaries(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// List all machines and their corresponding machine dashboard information
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.ListMachineSummariesResponse ListMachineSummaries(global::Viam.App.V1.ListMachineSummariesRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ListMachineSummaries, null, options, request);
+      }
+      /// <summary>
+      /// List all machines and their corresponding machine dashboard information
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.ListMachineSummariesResponse> ListMachineSummariesAsync(global::Viam.App.V1.ListMachineSummariesRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ListMachineSummariesAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// List all machines and their corresponding machine dashboard information
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.ListMachineSummariesResponse> ListMachineSummariesAsync(global::Viam.App.V1.ListMachineSummariesRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ListMachineSummaries, null, options, request);
+      }
+      /// <summary>
+      /// Gets fragment history
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetFragmentHistoryResponse GetFragmentHistory(global::Viam.App.V1.GetFragmentHistoryRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetFragmentHistory(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Gets fragment history
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetFragmentHistoryResponse GetFragmentHistory(global::Viam.App.V1.GetFragmentHistoryRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetFragmentHistory, null, options, request);
+      }
+      /// <summary>
+      /// Gets fragment history
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetFragmentHistoryResponse> GetFragmentHistoryAsync(global::Viam.App.V1.GetFragmentHistoryRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetFragmentHistoryAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Gets fragment history
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetFragmentHistoryResponse> GetFragmentHistoryAsync(global::Viam.App.V1.GetFragmentHistoryRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetFragmentHistory, null, options, request);
+      }
+      /// <summary>
+      /// Gets usage for a fragment across versions
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetFragmentUsageResponse GetFragmentUsage(global::Viam.App.V1.GetFragmentUsageRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetFragmentUsage(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Gets usage for a fragment across versions
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetFragmentUsageResponse GetFragmentUsage(global::Viam.App.V1.GetFragmentUsageRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetFragmentUsage, null, options, request);
+      }
+      /// <summary>
+      /// Gets usage for a fragment across versions
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetFragmentUsageResponse> GetFragmentUsageAsync(global::Viam.App.V1.GetFragmentUsageRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetFragmentUsageAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Gets usage for a fragment across versions
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetFragmentUsageResponse> GetFragmentUsageAsync(global::Viam.App.V1.GetFragmentUsageRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetFragmentUsage, null, options, request);
+      }
+      /// <summary>
+      /// Sets a fragment tag to a revision
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.SetFragmentTagResponse SetFragmentTag(global::Viam.App.V1.SetFragmentTagRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SetFragmentTag(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Sets a fragment tag to a revision
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.SetFragmentTagResponse SetFragmentTag(global::Viam.App.V1.SetFragmentTagRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetFragmentTag, null, options, request);
+      }
+      /// <summary>
+      /// Sets a fragment tag to a revision
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.SetFragmentTagResponse> SetFragmentTagAsync(global::Viam.App.V1.SetFragmentTagRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SetFragmentTagAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Sets a fragment tag to a revision
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.SetFragmentTagResponse> SetFragmentTagAsync(global::Viam.App.V1.SetFragmentTagRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetFragmentTag, null, options, request);
+      }
+      /// <summary>
+      /// Deletes a fragment tag
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.DeleteFragmentTagResponse DeleteFragmentTag(global::Viam.App.V1.DeleteFragmentTagRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteFragmentTag(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Deletes a fragment tag
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.DeleteFragmentTagResponse DeleteFragmentTag(global::Viam.App.V1.DeleteFragmentTagRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_DeleteFragmentTag, null, options, request);
+      }
+      /// <summary>
+      /// Deletes a fragment tag
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.DeleteFragmentTagResponse> DeleteFragmentTagAsync(global::Viam.App.V1.DeleteFragmentTagRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteFragmentTagAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Deletes a fragment tag
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.DeleteFragmentTagResponse> DeleteFragmentTagAsync(global::Viam.App.V1.DeleteFragmentTagRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_DeleteFragmentTag, null, options, request);
+      }
+      /// <summary>
       /// Creates an IdentityAuthorization
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -4265,6 +6131,46 @@ namespace Viam.App.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_DeleteRegistryItem, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.RenameRegistryItemResponse RenameRegistryItem(global::Viam.App.V1.RenameRegistryItemRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RenameRegistryItem(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.RenameRegistryItemResponse RenameRegistryItem(global::Viam.App.V1.RenameRegistryItemRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_RenameRegistryItem, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.RenameRegistryItemResponse> RenameRegistryItemAsync(global::Viam.App.V1.RenameRegistryItemRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RenameRegistryItemAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.RenameRegistryItemResponse> RenameRegistryItemAsync(global::Viam.App.V1.RenameRegistryItemRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_RenameRegistryItem, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.TransferRegistryItemResponse TransferRegistryItem(global::Viam.App.V1.TransferRegistryItemRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return TransferRegistryItem(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.TransferRegistryItemResponse TransferRegistryItem(global::Viam.App.V1.TransferRegistryItemRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_TransferRegistryItem, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.TransferRegistryItemResponse> TransferRegistryItemAsync(global::Viam.App.V1.TransferRegistryItemRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return TransferRegistryItemAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.TransferRegistryItemResponse> TransferRegistryItemAsync(global::Viam.App.V1.TransferRegistryItemRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_TransferRegistryItem, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::Viam.App.V1.CreateModuleResponse CreateModule(global::Viam.App.V1.CreateModuleRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return CreateModule(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -4415,6 +6321,26 @@ namespace Viam.App.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_ListKeys, null, options, request);
       }
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.RenameKeyResponse RenameKey(global::Viam.App.V1.RenameKeyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RenameKey(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.RenameKeyResponse RenameKey(global::Viam.App.V1.RenameKeyRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_RenameKey, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.RenameKeyResponse> RenameKeyAsync(global::Viam.App.V1.RenameKeyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return RenameKeyAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.RenameKeyResponse> RenameKeyAsync(global::Viam.App.V1.RenameKeyRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_RenameKey, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::Viam.App.V1.RotateKeyResponse RotateKey(global::Viam.App.V1.RotateKeyRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return RotateKey(request, new grpc::CallOptions(headers, deadline, cancellationToken));
@@ -4454,6 +6380,26 @@ namespace Viam.App.V1 {
       {
         return CallInvoker.AsyncUnaryCall(__Method_CreateKeyFromExistingKeyAuthorizations, null, options, request);
       }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetAppContentResponse GetAppContent(global::Viam.App.V1.GetAppContentRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAppContent(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetAppContentResponse GetAppContent(global::Viam.App.V1.GetAppContentRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetAppContent, null, options, request);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetAppContentResponse> GetAppContentAsync(global::Viam.App.V1.GetAppContentRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAppContentAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetAppContentResponse> GetAppContentAsync(global::Viam.App.V1.GetAppContentRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetAppContent, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override AppServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -4473,20 +6419,41 @@ namespace Viam.App.V1 {
           .AddMethod(__Method_ListOrganizations, serviceImpl.ListOrganizations)
           .AddMethod(__Method_GetOrganizationsWithAccessToLocation, serviceImpl.GetOrganizationsWithAccessToLocation)
           .AddMethod(__Method_ListOrganizationsByUser, serviceImpl.ListOrganizationsByUser)
+          .AddMethod(__Method_SearchOrganizations, serviceImpl.SearchOrganizations)
           .AddMethod(__Method_GetOrganization, serviceImpl.GetOrganization)
           .AddMethod(__Method_GetOrganizationNamespaceAvailability, serviceImpl.GetOrganizationNamespaceAvailability)
           .AddMethod(__Method_UpdateOrganization, serviceImpl.UpdateOrganization)
+          .AddMethod(__Method_UpdateOrganizationNamespace, serviceImpl.UpdateOrganizationNamespace)
           .AddMethod(__Method_DeleteOrganization, serviceImpl.DeleteOrganization)
+          .AddMethod(__Method_GetOrganizationMetadata, serviceImpl.GetOrganizationMetadata)
+          .AddMethod(__Method_UpdateOrganizationMetadata, serviceImpl.UpdateOrganizationMetadata)
           .AddMethod(__Method_ListOrganizationMembers, serviceImpl.ListOrganizationMembers)
           .AddMethod(__Method_CreateOrganizationInvite, serviceImpl.CreateOrganizationInvite)
           .AddMethod(__Method_UpdateOrganizationInviteAuthorizations, serviceImpl.UpdateOrganizationInviteAuthorizations)
           .AddMethod(__Method_DeleteOrganizationMember, serviceImpl.DeleteOrganizationMember)
           .AddMethod(__Method_DeleteOrganizationInvite, serviceImpl.DeleteOrganizationInvite)
           .AddMethod(__Method_ResendOrganizationInvite, serviceImpl.ResendOrganizationInvite)
+          .AddMethod(__Method_EnableBillingService, serviceImpl.EnableBillingService)
+          .AddMethod(__Method_DisableBillingService, serviceImpl.DisableBillingService)
+          .AddMethod(__Method_UpdateBillingService, serviceImpl.UpdateBillingService)
+          .AddMethod(__Method_GetBillingServiceConfig, serviceImpl.GetBillingServiceConfig)
+          .AddMethod(__Method_OrganizationSetSupportEmail, serviceImpl.OrganizationSetSupportEmail)
+          .AddMethod(__Method_OrganizationGetSupportEmail, serviceImpl.OrganizationGetSupportEmail)
+          .AddMethod(__Method_OrganizationSetLogo, serviceImpl.OrganizationSetLogo)
+          .AddMethod(__Method_OrganizationGetLogo, serviceImpl.OrganizationGetLogo)
+          .AddMethod(__Method_EnableAuthService, serviceImpl.EnableAuthService)
+          .AddMethod(__Method_DisableAuthService, serviceImpl.DisableAuthService)
+          .AddMethod(__Method_CreateOAuthApp, serviceImpl.CreateOAuthApp)
+          .AddMethod(__Method_ReadOAuthApp, serviceImpl.ReadOAuthApp)
+          .AddMethod(__Method_UpdateOAuthApp, serviceImpl.UpdateOAuthApp)
+          .AddMethod(__Method_DeleteOAuthApp, serviceImpl.DeleteOAuthApp)
+          .AddMethod(__Method_ListOAuthApps, serviceImpl.ListOAuthApps)
           .AddMethod(__Method_CreateLocation, serviceImpl.CreateLocation)
           .AddMethod(__Method_GetLocation, serviceImpl.GetLocation)
           .AddMethod(__Method_UpdateLocation, serviceImpl.UpdateLocation)
           .AddMethod(__Method_DeleteLocation, serviceImpl.DeleteLocation)
+          .AddMethod(__Method_GetLocationMetadata, serviceImpl.GetLocationMetadata)
+          .AddMethod(__Method_UpdateLocationMetadata, serviceImpl.UpdateLocationMetadata)
           .AddMethod(__Method_ListLocations, serviceImpl.ListLocations)
           .AddMethod(__Method_ShareLocation, serviceImpl.ShareLocation)
           .AddMethod(__Method_UnshareLocation, serviceImpl.UnshareLocation)
@@ -4494,6 +6461,8 @@ namespace Viam.App.V1 {
           .AddMethod(__Method_CreateLocationSecret, serviceImpl.CreateLocationSecret)
           .AddMethod(__Method_DeleteLocationSecret, serviceImpl.DeleteLocationSecret)
           .AddMethod(__Method_GetRobot, serviceImpl.GetRobot)
+          .AddMethod(__Method_GetRobotMetadata, serviceImpl.GetRobotMetadata)
+          .AddMethod(__Method_UpdateRobotMetadata, serviceImpl.UpdateRobotMetadata)
           .AddMethod(__Method_GetRoverRentalRobots, serviceImpl.GetRoverRentalRobots)
           .AddMethod(__Method_GetRobotParts, serviceImpl.GetRobotParts)
           .AddMethod(__Method_GetRobotPart, serviceImpl.GetRobotPart)
@@ -4503,6 +6472,8 @@ namespace Viam.App.V1 {
           .AddMethod(__Method_UpdateRobotPart, serviceImpl.UpdateRobotPart)
           .AddMethod(__Method_NewRobotPart, serviceImpl.NewRobotPart)
           .AddMethod(__Method_DeleteRobotPart, serviceImpl.DeleteRobotPart)
+          .AddMethod(__Method_GetRobotPartMetadata, serviceImpl.GetRobotPartMetadata)
+          .AddMethod(__Method_UpdateRobotPartMetadata, serviceImpl.UpdateRobotPartMetadata)
           .AddMethod(__Method_GetRobotAPIKeys, serviceImpl.GetRobotAPIKeys)
           .AddMethod(__Method_MarkPartAsMain, serviceImpl.MarkPartAsMain)
           .AddMethod(__Method_MarkPartForRestart, serviceImpl.MarkPartForRestart)
@@ -4517,6 +6488,13 @@ namespace Viam.App.V1 {
           .AddMethod(__Method_CreateFragment, serviceImpl.CreateFragment)
           .AddMethod(__Method_UpdateFragment, serviceImpl.UpdateFragment)
           .AddMethod(__Method_DeleteFragment, serviceImpl.DeleteFragment)
+          .AddMethod(__Method_ListNestedFragments, serviceImpl.ListNestedFragments)
+          .AddMethod(__Method_ListMachineFragments, serviceImpl.ListMachineFragments)
+          .AddMethod(__Method_ListMachineSummaries, serviceImpl.ListMachineSummaries)
+          .AddMethod(__Method_GetFragmentHistory, serviceImpl.GetFragmentHistory)
+          .AddMethod(__Method_GetFragmentUsage, serviceImpl.GetFragmentUsage)
+          .AddMethod(__Method_SetFragmentTag, serviceImpl.SetFragmentTag)
+          .AddMethod(__Method_DeleteFragmentTag, serviceImpl.DeleteFragmentTag)
           .AddMethod(__Method_AddRole, serviceImpl.AddRole)
           .AddMethod(__Method_RemoveRole, serviceImpl.RemoveRole)
           .AddMethod(__Method_ChangeRole, serviceImpl.ChangeRole)
@@ -4527,6 +6505,8 @@ namespace Viam.App.V1 {
           .AddMethod(__Method_UpdateRegistryItem, serviceImpl.UpdateRegistryItem)
           .AddMethod(__Method_ListRegistryItems, serviceImpl.ListRegistryItems)
           .AddMethod(__Method_DeleteRegistryItem, serviceImpl.DeleteRegistryItem)
+          .AddMethod(__Method_RenameRegistryItem, serviceImpl.RenameRegistryItem)
+          .AddMethod(__Method_TransferRegistryItem, serviceImpl.TransferRegistryItem)
           .AddMethod(__Method_CreateModule, serviceImpl.CreateModule)
           .AddMethod(__Method_UpdateModule, serviceImpl.UpdateModule)
           .AddMethod(__Method_UploadModuleFile, serviceImpl.UploadModuleFile)
@@ -4535,8 +6515,10 @@ namespace Viam.App.V1 {
           .AddMethod(__Method_CreateKey, serviceImpl.CreateKey)
           .AddMethod(__Method_DeleteKey, serviceImpl.DeleteKey)
           .AddMethod(__Method_ListKeys, serviceImpl.ListKeys)
+          .AddMethod(__Method_RenameKey, serviceImpl.RenameKey)
           .AddMethod(__Method_RotateKey, serviceImpl.RotateKey)
-          .AddMethod(__Method_CreateKeyFromExistingKeyAuthorizations, serviceImpl.CreateKeyFromExistingKeyAuthorizations).Build();
+          .AddMethod(__Method_CreateKeyFromExistingKeyAuthorizations, serviceImpl.CreateKeyFromExistingKeyAuthorizations)
+          .AddMethod(__Method_GetAppContent, serviceImpl.GetAppContent).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -4551,20 +6533,41 @@ namespace Viam.App.V1 {
       serviceBinder.AddMethod(__Method_ListOrganizations, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.ListOrganizationsRequest, global::Viam.App.V1.ListOrganizationsResponse>(serviceImpl.ListOrganizations));
       serviceBinder.AddMethod(__Method_GetOrganizationsWithAccessToLocation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetOrganizationsWithAccessToLocationRequest, global::Viam.App.V1.GetOrganizationsWithAccessToLocationResponse>(serviceImpl.GetOrganizationsWithAccessToLocation));
       serviceBinder.AddMethod(__Method_ListOrganizationsByUser, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.ListOrganizationsByUserRequest, global::Viam.App.V1.ListOrganizationsByUserResponse>(serviceImpl.ListOrganizationsByUser));
+      serviceBinder.AddMethod(__Method_SearchOrganizations, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.SearchOrganizationsRequest, global::Viam.App.V1.SearchOrganizationsResponse>(serviceImpl.SearchOrganizations));
       serviceBinder.AddMethod(__Method_GetOrganization, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetOrganizationRequest, global::Viam.App.V1.GetOrganizationResponse>(serviceImpl.GetOrganization));
       serviceBinder.AddMethod(__Method_GetOrganizationNamespaceAvailability, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetOrganizationNamespaceAvailabilityRequest, global::Viam.App.V1.GetOrganizationNamespaceAvailabilityResponse>(serviceImpl.GetOrganizationNamespaceAvailability));
       serviceBinder.AddMethod(__Method_UpdateOrganization, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateOrganizationRequest, global::Viam.App.V1.UpdateOrganizationResponse>(serviceImpl.UpdateOrganization));
+      serviceBinder.AddMethod(__Method_UpdateOrganizationNamespace, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateOrganizationNamespaceRequest, global::Viam.App.V1.UpdateOrganizationNamespaceResponse>(serviceImpl.UpdateOrganizationNamespace));
       serviceBinder.AddMethod(__Method_DeleteOrganization, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.DeleteOrganizationRequest, global::Viam.App.V1.DeleteOrganizationResponse>(serviceImpl.DeleteOrganization));
+      serviceBinder.AddMethod(__Method_GetOrganizationMetadata, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetOrganizationMetadataRequest, global::Viam.App.V1.GetOrganizationMetadataResponse>(serviceImpl.GetOrganizationMetadata));
+      serviceBinder.AddMethod(__Method_UpdateOrganizationMetadata, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateOrganizationMetadataRequest, global::Viam.App.V1.UpdateOrganizationMetadataResponse>(serviceImpl.UpdateOrganizationMetadata));
       serviceBinder.AddMethod(__Method_ListOrganizationMembers, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.ListOrganizationMembersRequest, global::Viam.App.V1.ListOrganizationMembersResponse>(serviceImpl.ListOrganizationMembers));
       serviceBinder.AddMethod(__Method_CreateOrganizationInvite, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.CreateOrganizationInviteRequest, global::Viam.App.V1.CreateOrganizationInviteResponse>(serviceImpl.CreateOrganizationInvite));
       serviceBinder.AddMethod(__Method_UpdateOrganizationInviteAuthorizations, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateOrganizationInviteAuthorizationsRequest, global::Viam.App.V1.UpdateOrganizationInviteAuthorizationsResponse>(serviceImpl.UpdateOrganizationInviteAuthorizations));
       serviceBinder.AddMethod(__Method_DeleteOrganizationMember, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.DeleteOrganizationMemberRequest, global::Viam.App.V1.DeleteOrganizationMemberResponse>(serviceImpl.DeleteOrganizationMember));
       serviceBinder.AddMethod(__Method_DeleteOrganizationInvite, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.DeleteOrganizationInviteRequest, global::Viam.App.V1.DeleteOrganizationInviteResponse>(serviceImpl.DeleteOrganizationInvite));
       serviceBinder.AddMethod(__Method_ResendOrganizationInvite, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.ResendOrganizationInviteRequest, global::Viam.App.V1.ResendOrganizationInviteResponse>(serviceImpl.ResendOrganizationInvite));
+      serviceBinder.AddMethod(__Method_EnableBillingService, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.EnableBillingServiceRequest, global::Viam.App.V1.EnableBillingServiceResponse>(serviceImpl.EnableBillingService));
+      serviceBinder.AddMethod(__Method_DisableBillingService, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.DisableBillingServiceRequest, global::Viam.App.V1.DisableBillingServiceResponse>(serviceImpl.DisableBillingService));
+      serviceBinder.AddMethod(__Method_UpdateBillingService, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateBillingServiceRequest, global::Viam.App.V1.UpdateBillingServiceResponse>(serviceImpl.UpdateBillingService));
+      serviceBinder.AddMethod(__Method_GetBillingServiceConfig, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetBillingServiceConfigRequest, global::Viam.App.V1.GetBillingServiceConfigResponse>(serviceImpl.GetBillingServiceConfig));
+      serviceBinder.AddMethod(__Method_OrganizationSetSupportEmail, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.OrganizationSetSupportEmailRequest, global::Viam.App.V1.OrganizationSetSupportEmailResponse>(serviceImpl.OrganizationSetSupportEmail));
+      serviceBinder.AddMethod(__Method_OrganizationGetSupportEmail, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.OrganizationGetSupportEmailRequest, global::Viam.App.V1.OrganizationGetSupportEmailResponse>(serviceImpl.OrganizationGetSupportEmail));
+      serviceBinder.AddMethod(__Method_OrganizationSetLogo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.OrganizationSetLogoRequest, global::Viam.App.V1.OrganizationSetLogoResponse>(serviceImpl.OrganizationSetLogo));
+      serviceBinder.AddMethod(__Method_OrganizationGetLogo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.OrganizationGetLogoRequest, global::Viam.App.V1.OrganizationGetLogoResponse>(serviceImpl.OrganizationGetLogo));
+      serviceBinder.AddMethod(__Method_EnableAuthService, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.EnableAuthServiceRequest, global::Viam.App.V1.EnableAuthServiceResponse>(serviceImpl.EnableAuthService));
+      serviceBinder.AddMethod(__Method_DisableAuthService, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.DisableAuthServiceRequest, global::Viam.App.V1.DisableAuthServiceResponse>(serviceImpl.DisableAuthService));
+      serviceBinder.AddMethod(__Method_CreateOAuthApp, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.CreateOAuthAppRequest, global::Viam.App.V1.CreateOAuthAppResponse>(serviceImpl.CreateOAuthApp));
+      serviceBinder.AddMethod(__Method_ReadOAuthApp, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.ReadOAuthAppRequest, global::Viam.App.V1.ReadOAuthAppResponse>(serviceImpl.ReadOAuthApp));
+      serviceBinder.AddMethod(__Method_UpdateOAuthApp, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateOAuthAppRequest, global::Viam.App.V1.UpdateOAuthAppResponse>(serviceImpl.UpdateOAuthApp));
+      serviceBinder.AddMethod(__Method_DeleteOAuthApp, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.DeleteOAuthAppRequest, global::Viam.App.V1.DeleteOAuthAppResponse>(serviceImpl.DeleteOAuthApp));
+      serviceBinder.AddMethod(__Method_ListOAuthApps, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.ListOAuthAppsRequest, global::Viam.App.V1.ListOAuthAppsResponse>(serviceImpl.ListOAuthApps));
       serviceBinder.AddMethod(__Method_CreateLocation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.CreateLocationRequest, global::Viam.App.V1.CreateLocationResponse>(serviceImpl.CreateLocation));
       serviceBinder.AddMethod(__Method_GetLocation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetLocationRequest, global::Viam.App.V1.GetLocationResponse>(serviceImpl.GetLocation));
       serviceBinder.AddMethod(__Method_UpdateLocation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateLocationRequest, global::Viam.App.V1.UpdateLocationResponse>(serviceImpl.UpdateLocation));
       serviceBinder.AddMethod(__Method_DeleteLocation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.DeleteLocationRequest, global::Viam.App.V1.DeleteLocationResponse>(serviceImpl.DeleteLocation));
+      serviceBinder.AddMethod(__Method_GetLocationMetadata, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetLocationMetadataRequest, global::Viam.App.V1.GetLocationMetadataResponse>(serviceImpl.GetLocationMetadata));
+      serviceBinder.AddMethod(__Method_UpdateLocationMetadata, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateLocationMetadataRequest, global::Viam.App.V1.UpdateLocationMetadataResponse>(serviceImpl.UpdateLocationMetadata));
       serviceBinder.AddMethod(__Method_ListLocations, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.ListLocationsRequest, global::Viam.App.V1.ListLocationsResponse>(serviceImpl.ListLocations));
       serviceBinder.AddMethod(__Method_ShareLocation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.ShareLocationRequest, global::Viam.App.V1.ShareLocationResponse>(serviceImpl.ShareLocation));
       serviceBinder.AddMethod(__Method_UnshareLocation, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UnshareLocationRequest, global::Viam.App.V1.UnshareLocationResponse>(serviceImpl.UnshareLocation));
@@ -4572,6 +6575,8 @@ namespace Viam.App.V1 {
       serviceBinder.AddMethod(__Method_CreateLocationSecret, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.CreateLocationSecretRequest, global::Viam.App.V1.CreateLocationSecretResponse>(serviceImpl.CreateLocationSecret));
       serviceBinder.AddMethod(__Method_DeleteLocationSecret, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.DeleteLocationSecretRequest, global::Viam.App.V1.DeleteLocationSecretResponse>(serviceImpl.DeleteLocationSecret));
       serviceBinder.AddMethod(__Method_GetRobot, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetRobotRequest, global::Viam.App.V1.GetRobotResponse>(serviceImpl.GetRobot));
+      serviceBinder.AddMethod(__Method_GetRobotMetadata, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetRobotMetadataRequest, global::Viam.App.V1.GetRobotMetadataResponse>(serviceImpl.GetRobotMetadata));
+      serviceBinder.AddMethod(__Method_UpdateRobotMetadata, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateRobotMetadataRequest, global::Viam.App.V1.UpdateRobotMetadataResponse>(serviceImpl.UpdateRobotMetadata));
       serviceBinder.AddMethod(__Method_GetRoverRentalRobots, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetRoverRentalRobotsRequest, global::Viam.App.V1.GetRoverRentalRobotsResponse>(serviceImpl.GetRoverRentalRobots));
       serviceBinder.AddMethod(__Method_GetRobotParts, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetRobotPartsRequest, global::Viam.App.V1.GetRobotPartsResponse>(serviceImpl.GetRobotParts));
       serviceBinder.AddMethod(__Method_GetRobotPart, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetRobotPartRequest, global::Viam.App.V1.GetRobotPartResponse>(serviceImpl.GetRobotPart));
@@ -4581,6 +6586,8 @@ namespace Viam.App.V1 {
       serviceBinder.AddMethod(__Method_UpdateRobotPart, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateRobotPartRequest, global::Viam.App.V1.UpdateRobotPartResponse>(serviceImpl.UpdateRobotPart));
       serviceBinder.AddMethod(__Method_NewRobotPart, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.NewRobotPartRequest, global::Viam.App.V1.NewRobotPartResponse>(serviceImpl.NewRobotPart));
       serviceBinder.AddMethod(__Method_DeleteRobotPart, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.DeleteRobotPartRequest, global::Viam.App.V1.DeleteRobotPartResponse>(serviceImpl.DeleteRobotPart));
+      serviceBinder.AddMethod(__Method_GetRobotPartMetadata, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetRobotPartMetadataRequest, global::Viam.App.V1.GetRobotPartMetadataResponse>(serviceImpl.GetRobotPartMetadata));
+      serviceBinder.AddMethod(__Method_UpdateRobotPartMetadata, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateRobotPartMetadataRequest, global::Viam.App.V1.UpdateRobotPartMetadataResponse>(serviceImpl.UpdateRobotPartMetadata));
       serviceBinder.AddMethod(__Method_GetRobotAPIKeys, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetRobotAPIKeysRequest, global::Viam.App.V1.GetRobotAPIKeysResponse>(serviceImpl.GetRobotAPIKeys));
       serviceBinder.AddMethod(__Method_MarkPartAsMain, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.MarkPartAsMainRequest, global::Viam.App.V1.MarkPartAsMainResponse>(serviceImpl.MarkPartAsMain));
       serviceBinder.AddMethod(__Method_MarkPartForRestart, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.MarkPartForRestartRequest, global::Viam.App.V1.MarkPartForRestartResponse>(serviceImpl.MarkPartForRestart));
@@ -4595,6 +6602,13 @@ namespace Viam.App.V1 {
       serviceBinder.AddMethod(__Method_CreateFragment, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.CreateFragmentRequest, global::Viam.App.V1.CreateFragmentResponse>(serviceImpl.CreateFragment));
       serviceBinder.AddMethod(__Method_UpdateFragment, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateFragmentRequest, global::Viam.App.V1.UpdateFragmentResponse>(serviceImpl.UpdateFragment));
       serviceBinder.AddMethod(__Method_DeleteFragment, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.DeleteFragmentRequest, global::Viam.App.V1.DeleteFragmentResponse>(serviceImpl.DeleteFragment));
+      serviceBinder.AddMethod(__Method_ListNestedFragments, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.ListNestedFragmentsRequest, global::Viam.App.V1.ListNestedFragmentsResponse>(serviceImpl.ListNestedFragments));
+      serviceBinder.AddMethod(__Method_ListMachineFragments, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.ListMachineFragmentsRequest, global::Viam.App.V1.ListMachineFragmentsResponse>(serviceImpl.ListMachineFragments));
+      serviceBinder.AddMethod(__Method_ListMachineSummaries, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.ListMachineSummariesRequest, global::Viam.App.V1.ListMachineSummariesResponse>(serviceImpl.ListMachineSummaries));
+      serviceBinder.AddMethod(__Method_GetFragmentHistory, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetFragmentHistoryRequest, global::Viam.App.V1.GetFragmentHistoryResponse>(serviceImpl.GetFragmentHistory));
+      serviceBinder.AddMethod(__Method_GetFragmentUsage, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetFragmentUsageRequest, global::Viam.App.V1.GetFragmentUsageResponse>(serviceImpl.GetFragmentUsage));
+      serviceBinder.AddMethod(__Method_SetFragmentTag, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.SetFragmentTagRequest, global::Viam.App.V1.SetFragmentTagResponse>(serviceImpl.SetFragmentTag));
+      serviceBinder.AddMethod(__Method_DeleteFragmentTag, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.DeleteFragmentTagRequest, global::Viam.App.V1.DeleteFragmentTagResponse>(serviceImpl.DeleteFragmentTag));
       serviceBinder.AddMethod(__Method_AddRole, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.AddRoleRequest, global::Viam.App.V1.AddRoleResponse>(serviceImpl.AddRole));
       serviceBinder.AddMethod(__Method_RemoveRole, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.RemoveRoleRequest, global::Viam.App.V1.RemoveRoleResponse>(serviceImpl.RemoveRole));
       serviceBinder.AddMethod(__Method_ChangeRole, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.ChangeRoleRequest, global::Viam.App.V1.ChangeRoleResponse>(serviceImpl.ChangeRole));
@@ -4605,6 +6619,8 @@ namespace Viam.App.V1 {
       serviceBinder.AddMethod(__Method_UpdateRegistryItem, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateRegistryItemRequest, global::Viam.App.V1.UpdateRegistryItemResponse>(serviceImpl.UpdateRegistryItem));
       serviceBinder.AddMethod(__Method_ListRegistryItems, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.ListRegistryItemsRequest, global::Viam.App.V1.ListRegistryItemsResponse>(serviceImpl.ListRegistryItems));
       serviceBinder.AddMethod(__Method_DeleteRegistryItem, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.DeleteRegistryItemRequest, global::Viam.App.V1.DeleteRegistryItemResponse>(serviceImpl.DeleteRegistryItem));
+      serviceBinder.AddMethod(__Method_RenameRegistryItem, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.RenameRegistryItemRequest, global::Viam.App.V1.RenameRegistryItemResponse>(serviceImpl.RenameRegistryItem));
+      serviceBinder.AddMethod(__Method_TransferRegistryItem, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.TransferRegistryItemRequest, global::Viam.App.V1.TransferRegistryItemResponse>(serviceImpl.TransferRegistryItem));
       serviceBinder.AddMethod(__Method_CreateModule, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.CreateModuleRequest, global::Viam.App.V1.CreateModuleResponse>(serviceImpl.CreateModule));
       serviceBinder.AddMethod(__Method_UpdateModule, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateModuleRequest, global::Viam.App.V1.UpdateModuleResponse>(serviceImpl.UpdateModule));
       serviceBinder.AddMethod(__Method_UploadModuleFile, serviceImpl == null ? null : new grpc::ClientStreamingServerMethod<global::Viam.App.V1.UploadModuleFileRequest, global::Viam.App.V1.UploadModuleFileResponse>(serviceImpl.UploadModuleFile));
@@ -4613,8 +6629,10 @@ namespace Viam.App.V1 {
       serviceBinder.AddMethod(__Method_CreateKey, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.CreateKeyRequest, global::Viam.App.V1.CreateKeyResponse>(serviceImpl.CreateKey));
       serviceBinder.AddMethod(__Method_DeleteKey, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.DeleteKeyRequest, global::Viam.App.V1.DeleteKeyResponse>(serviceImpl.DeleteKey));
       serviceBinder.AddMethod(__Method_ListKeys, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.ListKeysRequest, global::Viam.App.V1.ListKeysResponse>(serviceImpl.ListKeys));
+      serviceBinder.AddMethod(__Method_RenameKey, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.RenameKeyRequest, global::Viam.App.V1.RenameKeyResponse>(serviceImpl.RenameKey));
       serviceBinder.AddMethod(__Method_RotateKey, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.RotateKeyRequest, global::Viam.App.V1.RotateKeyResponse>(serviceImpl.RotateKey));
       serviceBinder.AddMethod(__Method_CreateKeyFromExistingKeyAuthorizations, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.CreateKeyFromExistingKeyAuthorizationsRequest, global::Viam.App.V1.CreateKeyFromExistingKeyAuthorizationsResponse>(serviceImpl.CreateKeyFromExistingKeyAuthorizations));
+      serviceBinder.AddMethod(__Method_GetAppContent, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetAppContentRequest, global::Viam.App.V1.GetAppContentResponse>(serviceImpl.GetAppContent));
     }
 
   }

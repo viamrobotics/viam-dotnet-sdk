@@ -1,11 +1,10 @@
-﻿using System.IO;
+﻿using Microsoft.Extensions.Logging;
+using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Microsoft.Extensions.Logging;
 
 namespace Viam.Core.Grpc
 {
@@ -13,7 +12,7 @@ namespace Viam.Core.Grpc
     public record UnixDomainSocketsConnectionFactory(EndPoint endPoint, ILogger logger)
     {
         public async ValueTask<Stream> ConnectAsync(SocketsHttpConnectionContext ctx,
-                                                    CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default)
         {
             var socket = new Socket(AddressFamily.Unix, SocketType.Stream, ProtocolType.Unspecified);
 

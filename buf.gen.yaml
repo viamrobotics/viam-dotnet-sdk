@@ -1,8 +1,18 @@
-version: v1
+version: v2
+managed:
+  enabled: true
+  override:
+    - file_option: csharp_namespace
+      path: stream/v1/stream.proto
+      value: Viam.Core.Proto
+    - file_option: csharp_namespace
+      path: tagger/v1/tagger.proto
+      value: Viam.Core.Proto
+
 plugins:
-  - plugin: buf.build/protocolbuffers/csharp
+  - remote: buf.build/protocolbuffers/csharp
     out: src/Viam.Core/Proto
     opt: base_namespace=Viam
-  - plugin: buf.build/grpc/csharp:v1.62.1
+  - remote: buf.build/grpc/csharp
     out: src/Viam.Core/Proto
     opt: base_namespace=Viam

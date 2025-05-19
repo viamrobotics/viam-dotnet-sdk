@@ -1,16 +1,9 @@
-﻿using Microsoft.AspNetCore.Server.Kestrel.Core;
-
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.InteropServices;
-
-using Viam.Core;
-using Viam.Core.Resources;
-
-namespace Viam.ModularResources
+﻿namespace Viam.ModularResources
 {
     public class Module(IHost host)
     {
-        private readonly ILogger<Module> _logger = host.Services.GetRequiredService<ILoggerFactory>().CreateLogger<Module>();
+        private readonly ILogger<Module> _logger =
+            host.Services.GetRequiredService<ILoggerFactory>().CreateLogger<Module>();
 
         public async ValueTask Start(CancellationToken cancellationToken = default)
         {

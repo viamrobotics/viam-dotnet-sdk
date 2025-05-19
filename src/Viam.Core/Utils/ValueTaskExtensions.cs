@@ -3,7 +3,6 @@ using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace Viam.Core.Utils
 {
@@ -33,7 +32,7 @@ namespace Viam.Core.Utils
                         try
                         {
                             results[i] = await internalArray[i]
-                                             ;
+                                ;
                         }
                         catch (Exception ex)
                         {
@@ -44,8 +43,8 @@ namespace Viam.Core.Utils
                 }
 
                 return exceptions is null
-                           ? results
-                           : throw new AggregateException(exceptions);
+                    ? results
+                    : throw new AggregateException(exceptions);
             }
             finally
             {

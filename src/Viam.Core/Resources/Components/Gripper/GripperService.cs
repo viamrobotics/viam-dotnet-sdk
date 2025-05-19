@@ -1,9 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-
-using Grpc.Core;
-
+﻿using Grpc.Core;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
 using Viam.Common.V1;
 using Viam.Component.Gripper.V1;
 using Viam.Core.Logging;
@@ -11,7 +9,8 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.Gripper
 {
-    internal class GripperService(ILogger<GripperService> logger) : Component.Gripper.V1.GripperService.GripperServiceBase, IServiceBase
+    internal class GripperService(ILogger<GripperService> logger)
+        : Component.Gripper.V1.GripperService.GripperServiceBase, IServiceBase
     {
         public static Service ServiceName => Service.GripperService;
         public static SubType SubType { get; } = SubType.Gripper;
@@ -23,8 +22,8 @@ namespace Viam.Core.Resources.Components.Gripper
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGripper)context.UserState["resource"];
                 var res = await resource.DoCommand(request.Command.ToDictionary(),
-                                                   context.Deadline.ToTimeout(),
-                                                   context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new DoCommandResponse() { Result = res.ToStruct() };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -43,7 +42,9 @@ namespace Viam.Core.Resources.Components.Gripper
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGripper)context.UserState["resource"];
-                await resource.Stop(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                await resource
+                    .Stop(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken)
+                    .ConfigureAwait(false);
                 var response = new StopResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -54,7 +55,9 @@ namespace Viam.Core.Resources.Components.Gripper
                 throw;
             }
         }
-        public override Task<GetGeometriesResponse> GetGeometries(GetGeometriesRequest request, ServerCallContext context)
+
+        public override Task<GetGeometriesResponse> GetGeometries(GetGeometriesRequest request,
+            ServerCallContext context)
         {
             try
             {
@@ -68,13 +71,15 @@ namespace Viam.Core.Resources.Components.Gripper
                 throw;
             }
         }
+
         public override async Task<IsMovingResponse> IsMoving(IsMovingRequest request, ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGripper)context.UserState["resource"];
-                var res = await resource.IsMoving(context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                var res = await resource.IsMoving(context.Deadline.ToTimeout(), context.CancellationToken)
+                    .ConfigureAwait(false);
                 var response = new IsMovingResponse() { IsMoving = res };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -85,13 +90,16 @@ namespace Viam.Core.Resources.Components.Gripper
                 throw;
             }
         }
+
         public override async Task<GrabResponse> Grab(GrabRequest request, ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGripper)context.UserState["resource"];
-                await resource.Grab(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                await resource
+                    .Grab(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken)
+                    .ConfigureAwait(false);
                 var response = new GrabResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -102,13 +110,16 @@ namespace Viam.Core.Resources.Components.Gripper
                 throw;
             }
         }
+
         public override async Task<OpenResponse> Open(OpenRequest request, ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGripper)context.UserState["resource"];
-                await resource.Open(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                await resource
+                    .Open(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken)
+                    .ConfigureAwait(false);
                 var response = new OpenResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;

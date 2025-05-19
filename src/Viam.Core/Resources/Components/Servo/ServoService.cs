@@ -1,18 +1,16 @@
-﻿using System;
-using System.Threading.Tasks;
-
-using Grpc.Core;
-
+﻿using Grpc.Core;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
 using Viam.Common.V1;
 using Viam.Component.Servo.V1;
 using Viam.Core.Logging;
-using Viam.Core.Resources.Components;
 using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.Servo
 {
-    internal class ServoService(ILogger<ServoService> logger) : Component.Servo.V1.ServoService.ServoServiceBase, IServiceBase
+    internal class ServoService(ILogger<ServoService> logger)
+        : Component.Servo.V1.ServoService.ServoServiceBase, IServiceBase
     {
         public static Service ServiceName => Service.ServoService;
         public static SubType SubType { get; } = SubType.Servo;
@@ -24,8 +22,8 @@ namespace Viam.Core.Resources.Components.Servo
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
                 var res = await resource.DoCommand(request.Command.ToDictionary(),
-                                                   context.Deadline.ToTimeout(),
-                                                   context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new DoCommandResponse() { Result = res.ToStruct() };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -39,15 +37,15 @@ namespace Viam.Core.Resources.Components.Servo
         }
 
         public override async Task<GetGeometriesResponse> GetGeometries(GetGeometriesRequest request,
-                                                                        ServerCallContext context)
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
                 var res = await resource.GetGeometries(request.Extra?.ToDictionary(),
-                                                       context.Deadline.ToTimeout(),
-                                                       context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetGeometriesResponse() { Geometries = { res } };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -66,7 +64,9 @@ namespace Viam.Core.Resources.Components.Servo
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
-                await resource.Stop(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                await resource
+                    .Stop(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken)
+                    .ConfigureAwait(false);
                 var response = new StopResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -84,7 +84,8 @@ namespace Viam.Core.Resources.Components.Servo
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
-                var res = await resource.IsMoving(context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                var res = await resource.IsMoving(context.Deadline.ToTimeout(), context.CancellationToken)
+                    .ConfigureAwait(false);
                 var response = new IsMovingResponse() { IsMoving = res };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -97,15 +98,15 @@ namespace Viam.Core.Resources.Components.Servo
         }
 
         public override async Task<GetPositionResponse> GetPosition(GetPositionRequest request,
-                                                                    ServerCallContext context)
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
                 var res = await resource.GetPosition(request.Extra?.ToDictionary(),
-                                                     context.Deadline.ToTimeout(),
-                                                     context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetPositionResponse() { PositionDeg = res };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -125,9 +126,9 @@ namespace Viam.Core.Resources.Components.Servo
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
                 await resource.Move(request.AngleDeg,
-                                    request.Extra?.ToDictionary(),
-                                    context.Deadline.ToTimeout(),
-                                    context.CancellationToken).ConfigureAwait(false);
+                    request.Extra?.ToDictionary(),
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new MoveResponse();
                 logger.LogMethodInvocationSuccess(results: response);

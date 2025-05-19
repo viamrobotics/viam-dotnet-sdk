@@ -53,8 +53,12 @@ namespace Viam.Service.Sensors.V1 {
             "ZGluZ3MSiwEKCURvQ29tbWFuZBIgLnZpYW0uY29tbW9uLnYxLkRvQ29tbWFu",
             "ZFJlcXVlc3QaIS52aWFtLmNvbW1vbi52MS5Eb0NvbW1hbmRSZXNwb25zZSI5",
             "iAIBgtPkkwIwIi4vdmlhbS9hcGkvdjEvc2VydmljZS9zZW5zb3JzL3tuYW1l",
-            "fS9kb19jb21tYW5kQkQKG2NvbS52aWFtLnNlcnZpY2Uuc2Vuc29ycy52MVoi",
-            "Z28udmlhbS5jb20vYXBpL3NlcnZpY2Uvc2Vuc29ycy92MbgBAWIGcHJvdG8z"));
+            "fS9kb19jb21tYW5kQtEBChtjb20udmlhbS5zZXJ2aWNlLnNlbnNvcnMudjFC",
+            "DFNlbnNvcnNQcm90b1ABWiJnby52aWFtLmNvbS9hcGkvc2VydmljZS9zZW5z",
+            "b3JzL3YxuAEBogIDVlNTqgIXVmlhbS5TZXJ2aWNlLlNlbnNvcnMuVjHKAhdW",
+            "aWFtXFNlcnZpY2VcU2Vuc29yc1xWMeICI1ZpYW1cU2VydmljZVxTZW5zb3Jz",
+            "XFYxXEdQQk1ldGFkYXRh6gIaVmlhbTo6U2VydmljZTo6U2Vuc29yczo6VjFi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -266,7 +270,11 @@ namespace Viam.Service.Sensors.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -292,7 +300,11 @@ namespace Viam.Service.Sensors.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -461,7 +473,11 @@ namespace Viam.Service.Sensors.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -480,7 +496,11 @@ namespace Viam.Service.Sensors.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -708,7 +728,11 @@ namespace Viam.Service.Sensors.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -738,7 +762,11 @@ namespace Viam.Service.Sensors.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -944,7 +972,11 @@ namespace Viam.Service.Sensors.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -970,7 +1002,11 @@ namespace Viam.Service.Sensors.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1139,7 +1175,11 @@ namespace Viam.Service.Sensors.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1158,7 +1198,11 @@ namespace Viam.Service.Sensors.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

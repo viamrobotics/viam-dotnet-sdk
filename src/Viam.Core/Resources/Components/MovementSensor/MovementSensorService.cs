@@ -1,9 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-
-using Grpc.Core;
-
+﻿using Grpc.Core;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
 using Viam.Common.V1;
 using Viam.Component.Movementsensor.V1;
 using Viam.Core.Logging;
@@ -11,21 +9,22 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.MovementSensor
 {
-    internal class MovementSensorService(ILogger<MovementSensorService> logger) : Component.Movementsensor.V1.MovementSensorService.MovementSensorServiceBase, IServiceBase
+    internal class MovementSensorService(ILogger<MovementSensorService> logger)
+        : Component.Movementsensor.V1.MovementSensorService.MovementSensorServiceBase, IServiceBase
     {
         public static Service ServiceName => Service.MovementSensorService;
         public static SubType SubType { get; } = SubType.MovementSensor;
 
         public override async Task<GetPropertiesResponse> GetProperties(GetPropertiesRequest request,
-                                                                        ServerCallContext context)
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
                 var res = await resource.GetProperties(request.Extra?.ToDictionary(),
-                                                       context.Deadline.ToTimeout(),
-                                                       context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetPropertiesResponse()
                 {
@@ -45,6 +44,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
                 throw;
             }
         }
+
         public override async Task<DoCommandResponse> DoCommand(DoCommandRequest request, ServerCallContext context)
         {
             try
@@ -52,8 +52,8 @@ namespace Viam.Core.Resources.Components.MovementSensor
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
                 var res = await resource.DoCommand(request.Command.ToDictionary(),
-                                                   context.Deadline.ToTimeout(),
-                                                   context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new DoCommandResponse() { Result = res.ToStruct() };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -67,15 +67,15 @@ namespace Viam.Core.Resources.Components.MovementSensor
         }
 
         public override async Task<GetGeometriesResponse> GetGeometries(GetGeometriesRequest request,
-                                                                        ServerCallContext context)
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
                 var res = await resource.GetGeometries(request.Extra?.ToDictionary(),
-                                                       context.Deadline.ToTimeout(),
-                                                       context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetGeometriesResponse() { Geometries = { res } };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -87,15 +87,17 @@ namespace Viam.Core.Resources.Components.MovementSensor
                 throw;
             }
         }
-        public override async Task<GetPositionResponse> GetPosition(GetPositionRequest request, ServerCallContext context)
+
+        public override async Task<GetPositionResponse> GetPosition(GetPositionRequest request,
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
                 var res = await resource.GetPosition(request.Extra?.ToDictionary(),
-                                                     context.Deadline.ToTimeout(),
-                                                     context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetPositionResponse() { AltitudeM = res.Item2, Coordinate = res.Item1 };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -107,15 +109,17 @@ namespace Viam.Core.Resources.Components.MovementSensor
                 throw;
             }
         }
-        public override async Task<GetReadingsResponse> GetReadings(GetReadingsRequest request, ServerCallContext context)
+
+        public override async Task<GetReadingsResponse> GetReadings(GetReadingsRequest request,
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
                 var res = await resource.GetReadings(request.Extra?.ToDictionary(),
-                                                     context.Deadline.ToTimeout(),
-                                                     context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetReadingsResponse();
                 response.Readings.Add(res);
@@ -128,13 +132,16 @@ namespace Viam.Core.Resources.Components.MovementSensor
                 throw;
             }
         }
-        public override async Task<GetAccuracyResponse> GetAccuracy(GetAccuracyRequest request, ServerCallContext context)
+
+        public override async Task<GetAccuracyResponse> GetAccuracy(GetAccuracyRequest request,
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetAccuracy(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                var res = await resource.GetAccuracy(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
                 var response = new GetAccuracyResponse()
                 {
                     CompassDegreesError = res.CompassDegreesError,
@@ -152,15 +159,17 @@ namespace Viam.Core.Resources.Components.MovementSensor
                 throw;
             }
         }
-        public override async Task<GetAngularVelocityResponse> GetAngularVelocity(GetAngularVelocityRequest request, ServerCallContext context)
+
+        public override async Task<GetAngularVelocityResponse> GetAngularVelocity(GetAngularVelocityRequest request,
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
                 var res = await resource.GetAngularVelocity(request.Extra?.ToDictionary(),
-                                                            context.Deadline.ToTimeout(),
-                                                            context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetAngularVelocityResponse() { AngularVelocity = res };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -172,15 +181,17 @@ namespace Viam.Core.Resources.Components.MovementSensor
                 throw;
             }
         }
-        public override async Task<GetCompassHeadingResponse> GetCompassHeading(GetCompassHeadingRequest request, ServerCallContext context)
+
+        public override async Task<GetCompassHeadingResponse> GetCompassHeading(GetCompassHeadingRequest request,
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
                 var res = await resource.GetCompassHeading(request.Extra?.ToDictionary(),
-                                                           context.Deadline.ToTimeout(),
-                                                           context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetCompassHeadingResponse() { Value = res };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -192,15 +203,17 @@ namespace Viam.Core.Resources.Components.MovementSensor
                 throw;
             }
         }
-        public override async Task<GetLinearAccelerationResponse> GetLinearAcceleration(GetLinearAccelerationRequest request, ServerCallContext context)
+
+        public override async Task<GetLinearAccelerationResponse> GetLinearAcceleration(
+            GetLinearAccelerationRequest request, ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
                 var res = await resource.GetLinearAcceleration(request.Extra?.ToDictionary(),
-                                                               context.Deadline.ToTimeout(),
-                                                               context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetLinearAccelerationResponse() { LinearAcceleration = res };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -212,15 +225,17 @@ namespace Viam.Core.Resources.Components.MovementSensor
                 throw;
             }
         }
-        public override async Task<GetLinearVelocityResponse> GetLinearVelocity(GetLinearVelocityRequest request, ServerCallContext context)
+
+        public override async Task<GetLinearVelocityResponse> GetLinearVelocity(GetLinearVelocityRequest request,
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
                 var res = await resource.GetLinearVelocity(request.Extra?.ToDictionary(),
-                                                           context.Deadline.ToTimeout(),
-                                                           context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetLinearVelocityResponse() { LinearVelocity = res };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -232,15 +247,17 @@ namespace Viam.Core.Resources.Components.MovementSensor
                 throw;
             }
         }
-        public override async Task<GetOrientationResponse> GetOrientation(GetOrientationRequest request, ServerCallContext context)
+
+        public override async Task<GetOrientationResponse> GetOrientation(GetOrientationRequest request,
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
                 var res = await resource.GetOrientation(request.Extra?.ToDictionary(),
-                                                        context.Deadline.ToTimeout(),
-                                                        context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetOrientationResponse() { Orientation = res };
                 logger.LogMethodInvocationSuccess(results: response);

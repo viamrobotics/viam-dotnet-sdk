@@ -1,9 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-
-using Grpc.Core;
-
+﻿using Grpc.Core;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
 using Viam.Common.V1;
 using Viam.Component.Arm.V1;
 using Viam.Core.Logging;
@@ -23,9 +21,9 @@ namespace Viam.Core.Resources.Components.Arm
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IArm)context.UserState["resource"];
                 var res = await resource.DoCommand(request.Command.ToDictionary(),
-                                                   context.Deadline - DateTime.UtcNow,
-                                                   context.CancellationToken)
-                                        .ConfigureAwait(false);
+                        context.Deadline - DateTime.UtcNow,
+                        context.CancellationToken)
+                    .ConfigureAwait(false);
                 var response = new DoCommandResponse() { Result = res.ToStruct() };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -37,7 +35,8 @@ namespace Viam.Core.Resources.Components.Arm
             }
         }
 
-        public override async Task<GetEndPositionResponse> GetEndPosition(GetEndPositionRequest request, ServerCallContext context)
+        public override async Task<GetEndPositionResponse> GetEndPosition(GetEndPositionRequest request,
+            ServerCallContext context)
         {
             try
             {
@@ -45,10 +44,10 @@ namespace Viam.Core.Resources.Components.Arm
                 var resource = (IArm)context.UserState["resource"];
                 // TODO: This deadline math is probably wrong.
                 var pose = await resource
-                                 .GetEndPosition(request.Extra?.ToDictionary(),
-                                                 context.Deadline - DateTime.UtcNow,
-                                                 context.CancellationToken)
-                                 .ConfigureAwait(false);
+                    .GetEndPosition(request.Extra?.ToDictionary(),
+                        context.Deadline - DateTime.UtcNow,
+                        context.CancellationToken)
+                    .ConfigureAwait(false);
                 var response = new GetEndPositionResponse() { Pose = pose };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -60,17 +59,18 @@ namespace Viam.Core.Resources.Components.Arm
             }
         }
 
-        public override async Task<GetGeometriesResponse> GetGeometries(GetGeometriesRequest request, ServerCallContext context)
+        public override async Task<GetGeometriesResponse> GetGeometries(GetGeometriesRequest request,
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IArm)context.UserState["resource"];
                 var geometries = await resource
-                                       .GetGeometries(request.Extra?.ToDictionary(),
-                                                      context.Deadline - DateTime.UtcNow,
-                                                      context.CancellationToken)
-                                       .ConfigureAwait(false);
+                    .GetGeometries(request.Extra?.ToDictionary(),
+                        context.Deadline - DateTime.UtcNow,
+                        context.CancellationToken)
+                    .ConfigureAwait(false);
                 var response = new GetGeometriesResponse() { Geometries = { geometries } };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -82,17 +82,18 @@ namespace Viam.Core.Resources.Components.Arm
             }
         }
 
-        public override async Task<GetJointPositionsResponse> GetJointPositions(GetJointPositionsRequest request, ServerCallContext context)
+        public override async Task<GetJointPositionsResponse> GetJointPositions(GetJointPositionsRequest request,
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IArm)context.UserState["resource"];
                 var jointPositions = await resource
-                                           .GetJointPositions(request.Extra?.ToDictionary(),
-                                                              context.Deadline - DateTime.UtcNow,
-                                                              context.CancellationToken)
-                                           .ConfigureAwait(false);
+                    .GetJointPositions(request.Extra?.ToDictionary(),
+                        context.Deadline - DateTime.UtcNow,
+                        context.CancellationToken)
+                    .ConfigureAwait(false);
                 var response = new GetJointPositionsResponse() { Positions = jointPositions };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -104,13 +105,15 @@ namespace Viam.Core.Resources.Components.Arm
             }
         }
 
-        public override async Task<GetKinematicsResponse> GetKinematics(GetKinematicsRequest request, ServerCallContext context)
+        public override async Task<GetKinematicsResponse> GetKinematics(GetKinematicsRequest request,
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IArm)context.UserState["resource"];
-                var (format, data) = await resource.GetKinematics(request.Extra?.ToDictionary(), context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
+                var (format, data) = await resource.GetKinematics(request.Extra?.ToDictionary(),
+                    context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
                 var response = new GetKinematicsResponse() { Format = format, KinematicsData = data };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -128,7 +131,8 @@ namespace Viam.Core.Resources.Components.Arm
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IArm)context.UserState["resource"];
-                var isMoving = await resource.IsMoving(context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
+                var isMoving = await resource.IsMoving(context.Deadline - DateTime.UtcNow, context.CancellationToken)
+                    .ConfigureAwait(false);
                 var response = new IsMovingResponse() { IsMoving = isMoving };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -140,13 +144,15 @@ namespace Viam.Core.Resources.Components.Arm
             }
         }
 
-        public override async Task<MoveToJointPositionsResponse> MoveToJointPositions(MoveToJointPositionsRequest request, ServerCallContext context)
+        public override async Task<MoveToJointPositionsResponse> MoveToJointPositions(
+            MoveToJointPositionsRequest request, ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IArm)context.UserState["resource"];
-                await resource.MoveToJoinPositions(request.Positions, request.Extra?.ToDictionary(), context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
+                await resource.MoveToJoinPositions(request.Positions, request.Extra?.ToDictionary(),
+                    context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
                 var response = new MoveToJointPositionsResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -158,13 +164,15 @@ namespace Viam.Core.Resources.Components.Arm
             }
         }
 
-        public override async Task<MoveToPositionResponse> MoveToPosition(MoveToPositionRequest request, ServerCallContext context)
+        public override async Task<MoveToPositionResponse> MoveToPosition(MoveToPositionRequest request,
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IArm)context.UserState["resource"];
-                await resource.MoveToPosition(request.To, request.Extra?.ToDictionary(), context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
+                await resource.MoveToPosition(request.To, request.Extra?.ToDictionary(),
+                    context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
                 var response = new MoveToPositionResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -182,7 +190,8 @@ namespace Viam.Core.Resources.Components.Arm
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IArm)context.UserState["resource"];
-                await resource.Stop(request.Extra?.ToDictionary(), context.Deadline - DateTime.UtcNow, context.CancellationToken).ConfigureAwait(false);
+                await resource.Stop(request.Extra?.ToDictionary(), context.Deadline - DateTime.UtcNow,
+                    context.CancellationToken).ConfigureAwait(false);
                 var response = new StopResponse();
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;

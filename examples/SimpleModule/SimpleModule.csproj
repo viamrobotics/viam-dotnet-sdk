@@ -8,9 +8,10 @@
 		<Nullable>enable</Nullable>
 		<LangVersion>latest</LangVersion>
 		<PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>true</PublishTrimmed>
+    <EnableTrimAnalyzer>true</EnableTrimAnalyzer>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
 		<Platforms>AnyCPU</Platforms>
-	</PropertyGroup>
-	<PropertyGroup>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 		<CompilerGeneratedFilesOutputPath>obj\$(Configuration)\$(TargetFramework)\Generated</CompilerGeneratedFilesOutputPath>
 	</PropertyGroup>
@@ -38,9 +39,7 @@
 		<ProjectReference Include="..\..\src\Viam.Core\Viam.Core.csproj" />
 		<ProjectReference Include="..\..\src\Viam.ModularResources\Viam.ModularResources.csproj" />
 		<ProjectReference Include="..\..\src\Viam.Serialization\Viam.Serialization.csproj" />
-	</ItemGroup>
-	<ItemGroup>
-		<Analyzer Include="..\..\src\Viam.Serialization\bin\$(Configuration)\netstandard2.0\Viam.Serialization.dll" />
+    <ProjectReference Include="..\..\src\Viam.Serialization.Analyzer\Viam.Serialization.Analyzer.csproj" OutputItemType="Analyzer" />
 	</ItemGroup>
 
 </Project>

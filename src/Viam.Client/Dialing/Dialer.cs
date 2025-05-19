@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
-
-using Viam.Core.Grpc;
 using Viam.Client.WebRTC;
 using Viam.Core;
+using Viam.Core.Grpc;
 
 namespace Viam.Client.Dialing
 {
@@ -22,10 +21,12 @@ namespace Viam.Client.Dialing
             _webRtcDialer = new WebRtcDialer(loggerFactory.CreateLogger<WebRtcDialer>(), loggerFactory);
         }
 
-        public ValueTask<ViamChannel> DialGrpcDirectAsync(GrpcDialOptions dialOptions, CancellationToken cancellationToken = default) =>
+        public ValueTask<ViamChannel> DialGrpcDirectAsync(GrpcDialOptions dialOptions,
+            CancellationToken cancellationToken = default) =>
             _grpcDialer.DialDirectAsync(dialOptions, cancellationToken);
 
-        public ValueTask<ViamChannel> DialWebRtcDirectAsync(WebRtcDialOptions dialOptions, CancellationToken cancellationToken = default) =>
+        public ValueTask<ViamChannel> DialWebRtcDirectAsync(WebRtcDialOptions dialOptions,
+            CancellationToken cancellationToken = default) =>
             _webRtcDialer.DialDirectAsync(dialOptions, cancellationToken);
     }
 }

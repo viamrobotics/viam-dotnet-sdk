@@ -27,112 +27,115 @@ namespace Viam.Component.Board.V1 {
             "Ch5jb21wb25lbnQvYm9hcmQvdjEvYm9hcmQucHJvdG8SF3ZpYW0uY29tcG9u",
             "ZW50LmJvYXJkLnYxGhZjb21tb24vdjEvY29tbW9uLnByb3RvGhxnb29nbGUv",
             "YXBpL2Fubm90YXRpb25zLnByb3RvGh5nb29nbGUvcHJvdG9idWYvZHVyYXRp",
-            "b24ucHJvdG8aHGdvb2dsZS9wcm90b2J1Zi9zdHJ1Y3QucHJvdG8i/wIKBlN0",
+            "b24ucHJvdG8aHGdvb2dsZS9wcm90b2J1Zi9zdHJ1Y3QucHJvdG8iuQIKBlN0",
             "YXR1cxJGCgdhbmFsb2dzGAEgAygLMiwudmlhbS5jb21wb25lbnQuYm9hcmQu",
             "djEuU3RhdHVzLkFuYWxvZ3NFbnRyeVIHYW5hbG9ncxJlChJkaWdpdGFsX2lu",
             "dGVycnVwdHMYAiADKAsyNi52aWFtLmNvbXBvbmVudC5ib2FyZC52MS5TdGF0",
             "dXMuRGlnaXRhbEludGVycnVwdHNFbnRyeVIRZGlnaXRhbEludGVycnVwdHMa",
-            "WAoMQW5hbG9nc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EjIKBXZhbHVlGAIg",
-            "ASgLMhwudmlhbS5jb21tb24udjEuQW5hbG9nU3RhdHVzUgV2YWx1ZToCOAEa",
-            "bAoWRGlnaXRhbEludGVycnVwdHNFbnRyeRIQCgNrZXkYASABKAlSA2tleRI8",
-            "CgV2YWx1ZRgCIAEoCzImLnZpYW0uY29tbW9uLnYxLkRpZ2l0YWxJbnRlcnJ1",
-            "cHRTdGF0dXNSBXZhbHVlOgI4ASJ5Cg5TZXRHUElPUmVxdWVzdBISCgRuYW1l",
-            "GAEgASgJUgRuYW1lEhAKA3BpbhgCIAEoCVIDcGluEhIKBGhpZ2gYAyABKAhS",
-            "BGhpZ2gSLQoFZXh0cmEYYyABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0",
-            "UgVleHRyYSIRCg9TZXRHUElPUmVzcG9uc2UiZQoOR2V0R1BJT1JlcXVlc3QS",
-            "EgoEbmFtZRgBIAEoCVIEbmFtZRIQCgNwaW4YAiABKAlSA3BpbhItCgVleHRy",
-            "YRhjIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4dHJhIiUKD0dl",
-            "dEdQSU9SZXNwb25zZRISCgRoaWdoGAEgASgIUgRoaWdoImEKClBXTVJlcXVl",
-            "c3QSEgoEbmFtZRgBIAEoCVIEbmFtZRIQCgNwaW4YAiABKAlSA3BpbhItCgVl",
-            "eHRyYRhjIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4dHJhIjMK",
-            "C1BXTVJlc3BvbnNlEiQKDmR1dHlfY3ljbGVfcGN0GAEgASgBUgxkdXR5Q3lj",
-            "bGVQY3QiigEKDVNldFBXTVJlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZRIQ",
-            "CgNwaW4YAiABKAlSA3BpbhIkCg5kdXR5X2N5Y2xlX3BjdBgDIAEoAVIMZHV0",
-            "eUN5Y2xlUGN0Ei0KBWV4dHJhGGMgASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0",
-            "cnVjdFIFZXh0cmEiEAoOU2V0UFdNUmVzcG9uc2UiagoTUFdNRnJlcXVlbmN5",
-            "UmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEhAKA3BpbhgCIAEoCVIDcGlu",
+            "OgoMQW5hbG9nc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EhQKBXZhbHVlGAIg",
+            "ASgFUgV2YWx1ZToCOAEaRAoWRGlnaXRhbEludGVycnVwdHNFbnRyeRIQCgNr",
+            "ZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoA1IFdmFsdWU6AjgBInkKDlNl",
+            "dEdQSU9SZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUSEAoDcGluGAIgASgJ",
+            "UgNwaW4SEgoEaGlnaBgDIAEoCFIEaGlnaBItCgVleHRyYRhjIAEoCzIXLmdv",
+            "b2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4dHJhIhEKD1NldEdQSU9SZXNwb25z",
+            "ZSJlCg5HZXRHUElPUmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEhAKA3Bp",
+            "bhgCIAEoCVIDcGluEi0KBWV4dHJhGGMgASgLMhcuZ29vZ2xlLnByb3RvYnVm",
+            "LlN0cnVjdFIFZXh0cmEiJQoPR2V0R1BJT1Jlc3BvbnNlEhIKBGhpZ2gYASAB",
+            "KAhSBGhpZ2giYQoKUFdNUmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEhAK",
+            "A3BpbhgCIAEoCVIDcGluEi0KBWV4dHJhGGMgASgLMhcuZ29vZ2xlLnByb3Rv",
+            "YnVmLlN0cnVjdFIFZXh0cmEiMwoLUFdNUmVzcG9uc2USJAoOZHV0eV9jeWNs",
+            "ZV9wY3QYASABKAFSDGR1dHlDeWNsZVBjdCKKAQoNU2V0UFdNUmVxdWVzdBIS",
+            "CgRuYW1lGAEgASgJUgRuYW1lEhAKA3BpbhgCIAEoCVIDcGluEiQKDmR1dHlf",
+            "Y3ljbGVfcGN0GAMgASgBUgxkdXR5Q3ljbGVQY3QSLQoFZXh0cmEYYyABKAsy",
+            "Fy5nb29nbGUucHJvdG9idWYuU3RydWN0UgVleHRyYSIQCg5TZXRQV01SZXNw",
+            "b25zZSJqChNQV01GcmVxdWVuY3lSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5h",
+            "bWUSEAoDcGluGAIgASgJUgNwaW4SLQoFZXh0cmEYYyABKAsyFy5nb29nbGUu",
+            "cHJvdG9idWYuU3RydWN0UgVleHRyYSI5ChRQV01GcmVxdWVuY3lSZXNwb25z",
+            "ZRIhCgxmcmVxdWVuY3lfaHoYASABKARSC2ZyZXF1ZW5jeUh6IpABChZTZXRQ",
+            "V01GcmVxdWVuY3lSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUSEAoDcGlu",
+            "GAIgASgJUgNwaW4SIQoMZnJlcXVlbmN5X2h6GAMgASgEUgtmcmVxdWVuY3lI",
+            "ehItCgVleHRyYRhjIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4",
+            "dHJhIhkKF1NldFBXTUZyZXF1ZW5jeVJlc3BvbnNlIpUBChdSZWFkQW5hbG9n",
+            "UmVhZGVyUmVxdWVzdBIdCgpib2FyZF9uYW1lGAEgASgJUglib2FyZE5hbWUS",
+            "LAoSYW5hbG9nX3JlYWRlcl9uYW1lGAIgASgJUhBhbmFsb2dSZWFkZXJOYW1l",
             "Ei0KBWV4dHJhGGMgASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFIFZXh0",
-            "cmEiOQoUUFdNRnJlcXVlbmN5UmVzcG9uc2USIQoMZnJlcXVlbmN5X2h6GAEg",
-            "ASgEUgtmcmVxdWVuY3lIeiKQAQoWU2V0UFdNRnJlcXVlbmN5UmVxdWVzdBIS",
-            "CgRuYW1lGAEgASgJUgRuYW1lEhAKA3BpbhgCIAEoCVIDcGluEiEKDGZyZXF1",
-            "ZW5jeV9oehgDIAEoBFILZnJlcXVlbmN5SHoSLQoFZXh0cmEYYyABKAsyFy5n",
-            "b29nbGUucHJvdG9idWYuU3RydWN0UgVleHRyYSIZChdTZXRQV01GcmVxdWVu",
-            "Y3lSZXNwb25zZSKVAQoXUmVhZEFuYWxvZ1JlYWRlclJlcXVlc3QSHQoKYm9h",
-            "cmRfbmFtZRgBIAEoCVIJYm9hcmROYW1lEiwKEmFuYWxvZ19yZWFkZXJfbmFt",
-            "ZRgCIAEoCVIQYW5hbG9nUmVhZGVyTmFtZRItCgVleHRyYRhjIAEoCzIXLmdv",
-            "b2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4dHJhIjAKGFJlYWRBbmFsb2dSZWFk",
-            "ZXJSZXNwb25zZRIUCgV2YWx1ZRgBIAEoBVIFdmFsdWUifwoSV3JpdGVBbmFs",
-            "b2dSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUSEAoDcGluGAIgASgJUgNw",
-            "aW4SFAoFdmFsdWUYAyABKAVSBXZhbHVlEi0KBWV4dHJhGGMgASgLMhcuZ29v",
-            "Z2xlLnByb3RvYnVmLlN0cnVjdFIFZXh0cmEiFQoTV3JpdGVBbmFsb2dSZXNw",
-            "b25zZSKlAQofR2V0RGlnaXRhbEludGVycnVwdFZhbHVlUmVxdWVzdBIdCgpi",
-            "b2FyZF9uYW1lGAEgASgJUglib2FyZE5hbWUSNAoWZGlnaXRhbF9pbnRlcnJ1",
-            "cHRfbmFtZRgCIAEoCVIUZGlnaXRhbEludGVycnVwdE5hbWUSLQoFZXh0cmEY",
-            "YyABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0UgVleHRyYSI4CiBHZXRE",
-            "aWdpdGFsSW50ZXJydXB0VmFsdWVSZXNwb25zZRIUCgV2YWx1ZRgBIAEoA1IF",
-            "dmFsdWUidAoSU3RyZWFtVGlja3NSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5h",
-            "bWUSGwoJcGluX25hbWVzGAIgAygJUghwaW5OYW1lcxItCgVleHRyYRhjIAEo",
-            "CzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4dHJhIlgKE1N0cmVhbVRp",
-            "Y2tzUmVzcG9uc2USGQoIcGluX25hbWUYASABKAlSB3Bpbk5hbWUSEgoEdGlt",
-            "ZRgCIAEoBFIEdGltZRISCgRoaWdoGAMgASgIUgRoaWdoIuQBChNTZXRQb3dl",
-            "ck1vZGVSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUSQQoKcG93ZXJfbW9k",
-            "ZRgCIAEoDjIiLnZpYW0uY29tcG9uZW50LmJvYXJkLnYxLlBvd2VyTW9kZVIJ",
-            "cG93ZXJNb2RlEjoKCGR1cmF0aW9uGAMgASgLMhkuZ29vZ2xlLnByb3RvYnVm",
-            "LkR1cmF0aW9uSABSCGR1cmF0aW9uiAEBEi0KBWV4dHJhGGMgASgLMhcuZ29v",
-            "Z2xlLnByb3RvYnVmLlN0cnVjdFIFZXh0cmFCCwoJX2R1cmF0aW9uIhYKFFNl",
-            "dFBvd2VyTW9kZVJlc3BvbnNlKlsKCVBvd2VyTW9kZRIaChZQT1dFUl9NT0RF",
-            "X1VOU1BFQ0lGSUVEEAASFQoRUE9XRVJfTU9ERV9OT1JNQUwQARIbChdQT1dF",
-            "Ul9NT0RFX09GRkxJTkVfREVFUBACMvAQCgxCb2FyZFNlcnZpY2USjgEKB1Nl",
-            "dEdQSU8SJy52aWFtLmNvbXBvbmVudC5ib2FyZC52MS5TZXRHUElPUmVxdWVz",
-            "dBooLnZpYW0uY29tcG9uZW50LmJvYXJkLnYxLlNldEdQSU9SZXNwb25zZSIw",
-            "gtPkkwIqGigvdmlhbS9hcGkvdjEvY29tcG9uZW50L2JvYXJkL3tuYW1lfS9n",
-            "cGlvEo4BCgdHZXRHUElPEicudmlhbS5jb21wb25lbnQuYm9hcmQudjEuR2V0",
-            "R1BJT1JlcXVlc3QaKC52aWFtLmNvbXBvbmVudC5ib2FyZC52MS5HZXRHUElP",
-            "UmVzcG9uc2UiMILT5JMCKhIoL3ZpYW0vYXBpL3YxL2NvbXBvbmVudC9ib2Fy",
-            "ZC97bmFtZX0vZ3BpbxKBAQoDUFdNEiMudmlhbS5jb21wb25lbnQuYm9hcmQu",
-            "djEuUFdNUmVxdWVzdBokLnZpYW0uY29tcG9uZW50LmJvYXJkLnYxLlBXTVJl",
-            "c3BvbnNlIi+C0+STAikSJy92aWFtL2FwaS92MS9jb21wb25lbnQvYm9hcmQv",
-            "e25hbWV9L3B3bRKKAQoGU2V0UFdNEiYudmlhbS5jb21wb25lbnQuYm9hcmQu",
-            "djEuU2V0UFdNUmVxdWVzdBonLnZpYW0uY29tcG9uZW50LmJvYXJkLnYxLlNl",
-            "dFBXTVJlc3BvbnNlIi+C0+STAikaJy92aWFtL2FwaS92MS9jb21wb25lbnQv",
-            "Ym9hcmQve25hbWV9L3B3bRKhAQoMUFdNRnJlcXVlbmN5EiwudmlhbS5jb21w",
-            "b25lbnQuYm9hcmQudjEuUFdNRnJlcXVlbmN5UmVxdWVzdBotLnZpYW0uY29t",
-            "cG9uZW50LmJvYXJkLnYxLlBXTUZyZXF1ZW5jeVJlc3BvbnNlIjSC0+STAi4S",
-            "LC92aWFtL2FwaS92MS9jb21wb25lbnQvYm9hcmQve25hbWV9L3B3bV9mcmVx",
-            "EqoBCg9TZXRQV01GcmVxdWVuY3kSLy52aWFtLmNvbXBvbmVudC5ib2FyZC52",
-            "MS5TZXRQV01GcmVxdWVuY3lSZXF1ZXN0GjAudmlhbS5jb21wb25lbnQuYm9h",
-            "cmQudjEuU2V0UFdNRnJlcXVlbmN5UmVzcG9uc2UiNILT5JMCLhosL3ZpYW0v",
-            "YXBpL3YxL2NvbXBvbmVudC9ib2FyZC97bmFtZX0vcHdtX2ZyZXESiAEKCURv",
-            "Q29tbWFuZBIgLnZpYW0uY29tbW9uLnYxLkRvQ29tbWFuZFJlcXVlc3QaIS52",
-            "aWFtLmNvbW1vbi52MS5Eb0NvbW1hbmRSZXNwb25zZSI2gtPkkwIwIi4vdmlh",
-            "bS9hcGkvdjEvY29tcG9uZW50L2JvYXJkL3tuYW1lfS9kb19jb21tYW5kEtIB",
-            "ChBSZWFkQW5hbG9nUmVhZGVyEjAudmlhbS5jb21wb25lbnQuYm9hcmQudjEu",
-            "UmVhZEFuYWxvZ1JlYWRlclJlcXVlc3QaMS52aWFtLmNvbXBvbmVudC5ib2Fy",
-            "ZC52MS5SZWFkQW5hbG9nUmVhZGVyUmVzcG9uc2UiWYLT5JMCUxJRL3ZpYW0v",
-            "YXBpL3YxL2NvbXBvbmVudC9ib2FyZC97Ym9hcmRfbmFtZX0vYW5hbG9nX3Jl",
-            "YWRlci97YW5hbG9nX3JlYWRlcl9uYW1lfS9yZWFkEqIBCgtXcml0ZUFuYWxv",
-            "ZxIrLnZpYW0uY29tcG9uZW50LmJvYXJkLnYxLldyaXRlQW5hbG9nUmVxdWVz",
-            "dBosLnZpYW0uY29tcG9uZW50LmJvYXJkLnYxLldyaXRlQW5hbG9nUmVzcG9u",
-            "c2UiOILT5JMCMhowL3ZpYW0vYXBpL3YxL2NvbXBvbmVudC9ib2FyZC97bmFt",
-            "ZX0vYW5hbG9nX3dyaXRlEvMBChhHZXREaWdpdGFsSW50ZXJydXB0VmFsdWUS",
-            "OC52aWFtLmNvbXBvbmVudC5ib2FyZC52MS5HZXREaWdpdGFsSW50ZXJydXB0",
-            "VmFsdWVSZXF1ZXN0GjkudmlhbS5jb21wb25lbnQuYm9hcmQudjEuR2V0RGln",
-            "aXRhbEludGVycnVwdFZhbHVlUmVzcG9uc2UiYoLT5JMCXBJaL3ZpYW0vYXBp",
-            "L3YxL2NvbXBvbmVudC9ib2FyZC97Ym9hcmRfbmFtZX0vZGlnaXRhbF9pbnRl",
-            "cnJ1cHQve2RpZ2l0YWxfaW50ZXJydXB0X25hbWV9L3ZhbHVlEqMBCgtTdHJl",
-            "YW1UaWNrcxIrLnZpYW0uY29tcG9uZW50LmJvYXJkLnYxLlN0cmVhbVRpY2tz",
-            "UmVxdWVzdBosLnZpYW0uY29tcG9uZW50LmJvYXJkLnYxLlN0cmVhbVRpY2tz",
-            "UmVzcG9uc2UiN4LT5JMCMRIvL3ZpYW0vYXBpL3YxL2NvbXBvbmVudC9ib2Fy",
-            "ZC97bmFtZX0vdGlja19zdHJlYW0wARKjAQoMU2V0UG93ZXJNb2RlEiwudmlh",
-            "bS5jb21wb25lbnQuYm9hcmQudjEuU2V0UG93ZXJNb2RlUmVxdWVzdBotLnZp",
-            "YW0uY29tcG9uZW50LmJvYXJkLnYxLlNldFBvd2VyTW9kZVJlc3BvbnNlIjaC",
-            "0+STAjAaLi92aWFtL2FwaS92MS9jb21wb25lbnQvYm9hcmQve25hbWV9L3Bv",
-            "d2VyX21vZGUSlAEKDUdldEdlb21ldHJpZXMSJC52aWFtLmNvbW1vbi52MS5H",
-            "ZXRHZW9tZXRyaWVzUmVxdWVzdBolLnZpYW0uY29tbW9uLnYxLkdldEdlb21l",
-            "dHJpZXNSZXNwb25zZSI2gtPkkwIwEi4vdmlhbS9hcGkvdjEvY29tcG9uZW50",
-            "L2JvYXJkL3tuYW1lfS9nZW9tZXRyaWVzQkEKG2NvbS52aWFtLmNvbXBvbmVu",
-            "dC5ib2FyZC52MVoiZ28udmlhbS5jb20vYXBpL2NvbXBvbmVudC9ib2FyZC92",
-            "MWIGcHJvdG8z"));
+            "cmEihwEKGFJlYWRBbmFsb2dSZWFkZXJSZXNwb25zZRIUCgV2YWx1ZRgBIAEo",
+            "BVIFdmFsdWUSGwoJbWluX3JhbmdlGAIgASgCUghtaW5SYW5nZRIbCgltYXhf",
+            "cmFuZ2UYAyABKAJSCG1heFJhbmdlEhsKCXN0ZXBfc2l6ZRgEIAEoAlIIc3Rl",
+            "cFNpemUifwoSV3JpdGVBbmFsb2dSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5h",
+            "bWUSEAoDcGluGAIgASgJUgNwaW4SFAoFdmFsdWUYAyABKAVSBXZhbHVlEi0K",
+            "BWV4dHJhGGMgASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFIFZXh0cmEi",
+            "FQoTV3JpdGVBbmFsb2dSZXNwb25zZSKlAQofR2V0RGlnaXRhbEludGVycnVw",
+            "dFZhbHVlUmVxdWVzdBIdCgpib2FyZF9uYW1lGAEgASgJUglib2FyZE5hbWUS",
+            "NAoWZGlnaXRhbF9pbnRlcnJ1cHRfbmFtZRgCIAEoCVIUZGlnaXRhbEludGVy",
+            "cnVwdE5hbWUSLQoFZXh0cmEYYyABKAsyFy5nb29nbGUucHJvdG9idWYuU3Ry",
+            "dWN0UgVleHRyYSI4CiBHZXREaWdpdGFsSW50ZXJydXB0VmFsdWVSZXNwb25z",
+            "ZRIUCgV2YWx1ZRgBIAEoA1IFdmFsdWUidAoSU3RyZWFtVGlja3NSZXF1ZXN0",
+            "EhIKBG5hbWUYASABKAlSBG5hbWUSGwoJcGluX25hbWVzGAIgAygJUghwaW5O",
+            "YW1lcxItCgVleHRyYRhjIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RS",
+            "BWV4dHJhIlgKE1N0cmVhbVRpY2tzUmVzcG9uc2USGQoIcGluX25hbWUYASAB",
+            "KAlSB3Bpbk5hbWUSEgoEdGltZRgCIAEoBFIEdGltZRISCgRoaWdoGAMgASgI",
+            "UgRoaWdoIuQBChNTZXRQb3dlck1vZGVSZXF1ZXN0EhIKBG5hbWUYASABKAlS",
+            "BG5hbWUSQQoKcG93ZXJfbW9kZRgCIAEoDjIiLnZpYW0uY29tcG9uZW50LmJv",
+            "YXJkLnYxLlBvd2VyTW9kZVIJcG93ZXJNb2RlEjoKCGR1cmF0aW9uGAMgASgL",
+            "MhkuZ29vZ2xlLnByb3RvYnVmLkR1cmF0aW9uSABSCGR1cmF0aW9uiAEBEi0K",
+            "BWV4dHJhGGMgASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFIFZXh0cmFC",
+            "CwoJX2R1cmF0aW9uIhYKFFNldFBvd2VyTW9kZVJlc3BvbnNlKlsKCVBvd2Vy",
+            "TW9kZRIaChZQT1dFUl9NT0RFX1VOU1BFQ0lGSUVEEAASFQoRUE9XRVJfTU9E",
+            "RV9OT1JNQUwQARIbChdQT1dFUl9NT0RFX09GRkxJTkVfREVFUBACMvAQCgxC",
+            "b2FyZFNlcnZpY2USjgEKB1NldEdQSU8SJy52aWFtLmNvbXBvbmVudC5ib2Fy",
+            "ZC52MS5TZXRHUElPUmVxdWVzdBooLnZpYW0uY29tcG9uZW50LmJvYXJkLnYx",
+            "LlNldEdQSU9SZXNwb25zZSIwgtPkkwIqGigvdmlhbS9hcGkvdjEvY29tcG9u",
+            "ZW50L2JvYXJkL3tuYW1lfS9ncGlvEo4BCgdHZXRHUElPEicudmlhbS5jb21w",
+            "b25lbnQuYm9hcmQudjEuR2V0R1BJT1JlcXVlc3QaKC52aWFtLmNvbXBvbmVu",
+            "dC5ib2FyZC52MS5HZXRHUElPUmVzcG9uc2UiMILT5JMCKhIoL3ZpYW0vYXBp",
+            "L3YxL2NvbXBvbmVudC9ib2FyZC97bmFtZX0vZ3BpbxKBAQoDUFdNEiMudmlh",
+            "bS5jb21wb25lbnQuYm9hcmQudjEuUFdNUmVxdWVzdBokLnZpYW0uY29tcG9u",
+            "ZW50LmJvYXJkLnYxLlBXTVJlc3BvbnNlIi+C0+STAikSJy92aWFtL2FwaS92",
+            "MS9jb21wb25lbnQvYm9hcmQve25hbWV9L3B3bRKKAQoGU2V0UFdNEiYudmlh",
+            "bS5jb21wb25lbnQuYm9hcmQudjEuU2V0UFdNUmVxdWVzdBonLnZpYW0uY29t",
+            "cG9uZW50LmJvYXJkLnYxLlNldFBXTVJlc3BvbnNlIi+C0+STAikaJy92aWFt",
+            "L2FwaS92MS9jb21wb25lbnQvYm9hcmQve25hbWV9L3B3bRKhAQoMUFdNRnJl",
+            "cXVlbmN5EiwudmlhbS5jb21wb25lbnQuYm9hcmQudjEuUFdNRnJlcXVlbmN5",
+            "UmVxdWVzdBotLnZpYW0uY29tcG9uZW50LmJvYXJkLnYxLlBXTUZyZXF1ZW5j",
+            "eVJlc3BvbnNlIjSC0+STAi4SLC92aWFtL2FwaS92MS9jb21wb25lbnQvYm9h",
+            "cmQve25hbWV9L3B3bV9mcmVxEqoBCg9TZXRQV01GcmVxdWVuY3kSLy52aWFt",
+            "LmNvbXBvbmVudC5ib2FyZC52MS5TZXRQV01GcmVxdWVuY3lSZXF1ZXN0GjAu",
+            "dmlhbS5jb21wb25lbnQuYm9hcmQudjEuU2V0UFdNRnJlcXVlbmN5UmVzcG9u",
+            "c2UiNILT5JMCLhosL3ZpYW0vYXBpL3YxL2NvbXBvbmVudC9ib2FyZC97bmFt",
+            "ZX0vcHdtX2ZyZXESiAEKCURvQ29tbWFuZBIgLnZpYW0uY29tbW9uLnYxLkRv",
+            "Q29tbWFuZFJlcXVlc3QaIS52aWFtLmNvbW1vbi52MS5Eb0NvbW1hbmRSZXNw",
+            "b25zZSI2gtPkkwIwIi4vdmlhbS9hcGkvdjEvY29tcG9uZW50L2JvYXJkL3tu",
+            "YW1lfS9kb19jb21tYW5kEtIBChBSZWFkQW5hbG9nUmVhZGVyEjAudmlhbS5j",
+            "b21wb25lbnQuYm9hcmQudjEuUmVhZEFuYWxvZ1JlYWRlclJlcXVlc3QaMS52",
+            "aWFtLmNvbXBvbmVudC5ib2FyZC52MS5SZWFkQW5hbG9nUmVhZGVyUmVzcG9u",
+            "c2UiWYLT5JMCUxJRL3ZpYW0vYXBpL3YxL2NvbXBvbmVudC9ib2FyZC97Ym9h",
+            "cmRfbmFtZX0vYW5hbG9nX3JlYWRlci97YW5hbG9nX3JlYWRlcl9uYW1lfS9y",
+            "ZWFkEqIBCgtXcml0ZUFuYWxvZxIrLnZpYW0uY29tcG9uZW50LmJvYXJkLnYx",
+            "LldyaXRlQW5hbG9nUmVxdWVzdBosLnZpYW0uY29tcG9uZW50LmJvYXJkLnYx",
+            "LldyaXRlQW5hbG9nUmVzcG9uc2UiOILT5JMCMhowL3ZpYW0vYXBpL3YxL2Nv",
+            "bXBvbmVudC9ib2FyZC97bmFtZX0vYW5hbG9nX3dyaXRlEvMBChhHZXREaWdp",
+            "dGFsSW50ZXJydXB0VmFsdWUSOC52aWFtLmNvbXBvbmVudC5ib2FyZC52MS5H",
+            "ZXREaWdpdGFsSW50ZXJydXB0VmFsdWVSZXF1ZXN0GjkudmlhbS5jb21wb25l",
+            "bnQuYm9hcmQudjEuR2V0RGlnaXRhbEludGVycnVwdFZhbHVlUmVzcG9uc2Ui",
+            "YoLT5JMCXBJaL3ZpYW0vYXBpL3YxL2NvbXBvbmVudC9ib2FyZC97Ym9hcmRf",
+            "bmFtZX0vZGlnaXRhbF9pbnRlcnJ1cHQve2RpZ2l0YWxfaW50ZXJydXB0X25h",
+            "bWV9L3ZhbHVlEqMBCgtTdHJlYW1UaWNrcxIrLnZpYW0uY29tcG9uZW50LmJv",
+            "YXJkLnYxLlN0cmVhbVRpY2tzUmVxdWVzdBosLnZpYW0uY29tcG9uZW50LmJv",
+            "YXJkLnYxLlN0cmVhbVRpY2tzUmVzcG9uc2UiN4LT5JMCMRIvL3ZpYW0vYXBp",
+            "L3YxL2NvbXBvbmVudC9ib2FyZC97bmFtZX0vdGlja19zdHJlYW0wARKjAQoM",
+            "U2V0UG93ZXJNb2RlEiwudmlhbS5jb21wb25lbnQuYm9hcmQudjEuU2V0UG93",
+            "ZXJNb2RlUmVxdWVzdBotLnZpYW0uY29tcG9uZW50LmJvYXJkLnYxLlNldFBv",
+            "d2VyTW9kZVJlc3BvbnNlIjaC0+STAjAaLi92aWFtL2FwaS92MS9jb21wb25l",
+            "bnQvYm9hcmQve25hbWV9L3Bvd2VyX21vZGUSlAEKDUdldEdlb21ldHJpZXMS",
+            "JC52aWFtLmNvbW1vbi52MS5HZXRHZW9tZXRyaWVzUmVxdWVzdBolLnZpYW0u",
+            "Y29tbW9uLnYxLkdldEdlb21ldHJpZXNSZXNwb25zZSI2gtPkkwIwEi4vdmlh",
+            "bS9hcGkvdjEvY29tcG9uZW50L2JvYXJkL3tuYW1lfS9nZW9tZXRyaWVzQswB",
+            "Chtjb20udmlhbS5jb21wb25lbnQuYm9hcmQudjFCCkJvYXJkUHJvdG9QAVoi",
+            "Z28udmlhbS5jb20vYXBpL2NvbXBvbmVudC9ib2FyZC92MaICA1ZDQqoCF1Zp",
+            "YW0uQ29tcG9uZW50LkJvYXJkLlYxygIXVmlhbVxDb21wb25lbnRcQm9hcmRc",
+            "VjHiAiNWaWFtXENvbXBvbmVudFxCb2FyZFxWMVxHUEJNZXRhZGF0YeoCGlZp",
+            "YW06OkNvbXBvbmVudDo6Qm9hcmQ6OlYxYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Viam.Component.Board.V1.PowerMode), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -150,7 +153,7 @@ namespace Viam.Component.Board.V1 {
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Board.V1.SetPWMFrequencyRequest), global::Viam.Component.Board.V1.SetPWMFrequencyRequest.Parser, new[]{ "Name", "Pin", "FrequencyHz", "Extra" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Board.V1.SetPWMFrequencyResponse), global::Viam.Component.Board.V1.SetPWMFrequencyResponse.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Board.V1.ReadAnalogReaderRequest), global::Viam.Component.Board.V1.ReadAnalogReaderRequest.Parser, new[]{ "BoardName", "AnalogReaderName", "Extra" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Board.V1.ReadAnalogReaderResponse), global::Viam.Component.Board.V1.ReadAnalogReaderResponse.Parser, new[]{ "Value" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Board.V1.ReadAnalogReaderResponse), global::Viam.Component.Board.V1.ReadAnalogReaderResponse.Parser, new[]{ "Value", "MinRange", "MaxRange", "StepSize" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Board.V1.WriteAnalogRequest), global::Viam.Component.Board.V1.WriteAnalogRequest.Parser, new[]{ "Name", "Pin", "Value", "Extra" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Board.V1.WriteAnalogResponse), global::Viam.Component.Board.V1.WriteAnalogResponse.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Board.V1.GetDigitalInterruptValueRequest), global::Viam.Component.Board.V1.GetDigitalInterruptValueRequest.Parser, new[]{ "BoardName", "DigitalInterruptName", "Extra" }, null, null, null, null),
@@ -222,23 +225,23 @@ namespace Viam.Component.Board.V1 {
 
     /// <summary>Field number for the "analogs" field.</summary>
     public const int AnalogsFieldNumber = 1;
-    private static readonly pbc::MapField<string, global::Viam.Common.V1.AnalogStatus>.Codec _map_analogs_codec
-        = new pbc::MapField<string, global::Viam.Common.V1.AnalogStatus>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::Viam.Common.V1.AnalogStatus.Parser), 10);
-    private readonly pbc::MapField<string, global::Viam.Common.V1.AnalogStatus> analogs_ = new pbc::MapField<string, global::Viam.Common.V1.AnalogStatus>();
+    private static readonly pbc::MapField<string, int>.Codec _map_analogs_codec
+        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 10);
+    private readonly pbc::MapField<string, int> analogs_ = new pbc::MapField<string, int>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::Viam.Common.V1.AnalogStatus> Analogs {
+    public pbc::MapField<string, int> Analogs {
       get { return analogs_; }
     }
 
     /// <summary>Field number for the "digital_interrupts" field.</summary>
     public const int DigitalInterruptsFieldNumber = 2;
-    private static readonly pbc::MapField<string, global::Viam.Common.V1.DigitalInterruptStatus>.Codec _map_digitalInterrupts_codec
-        = new pbc::MapField<string, global::Viam.Common.V1.DigitalInterruptStatus>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::Viam.Common.V1.DigitalInterruptStatus.Parser), 18);
-    private readonly pbc::MapField<string, global::Viam.Common.V1.DigitalInterruptStatus> digitalInterrupts_ = new pbc::MapField<string, global::Viam.Common.V1.DigitalInterruptStatus>();
+    private static readonly pbc::MapField<string, long>.Codec _map_digitalInterrupts_codec
+        = new pbc::MapField<string, long>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt64(16, 0L), 18);
+    private readonly pbc::MapField<string, long> digitalInterrupts_ = new pbc::MapField<string, long>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::Viam.Common.V1.DigitalInterruptStatus> DigitalInterrupts {
+    public pbc::MapField<string, long> DigitalInterrupts {
       get { return digitalInterrupts_; }
     }
 
@@ -337,7 +340,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -360,7 +367,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -628,7 +639,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -662,7 +677,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -819,7 +838,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -834,7 +857,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1065,7 +1092,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1095,7 +1126,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1277,7 +1312,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1296,7 +1335,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1531,7 +1574,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1561,7 +1608,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1746,7 +1797,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1765,7 +1820,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2032,7 +2091,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2066,7 +2129,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2223,7 +2290,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2238,7 +2309,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2469,7 +2544,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2499,7 +2578,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2681,7 +2764,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2700,7 +2787,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2964,7 +3055,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2998,7 +3093,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3155,7 +3254,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3170,7 +3273,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3401,7 +3508,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3431,7 +3542,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3493,6 +3608,9 @@ namespace Viam.Component.Board.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public ReadAnalogReaderResponse(ReadAnalogReaderResponse other) : this() {
       value_ = other.value_;
+      minRange_ = other.minRange_;
+      maxRange_ = other.maxRange_;
+      stepSize_ = other.stepSize_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3514,6 +3632,42 @@ namespace Viam.Component.Board.V1 {
       }
     }
 
+    /// <summary>Field number for the "min_range" field.</summary>
+    public const int MinRangeFieldNumber = 2;
+    private float minRange_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float MinRange {
+      get { return minRange_; }
+      set {
+        minRange_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "max_range" field.</summary>
+    public const int MaxRangeFieldNumber = 3;
+    private float maxRange_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float MaxRange {
+      get { return maxRange_; }
+      set {
+        maxRange_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "step_size" field.</summary>
+    public const int StepSizeFieldNumber = 4;
+    private float stepSize_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float StepSize {
+      get { return stepSize_; }
+      set {
+        stepSize_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -3530,6 +3684,9 @@ namespace Viam.Component.Board.V1 {
         return true;
       }
       if (Value != other.Value) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MinRange, other.MinRange)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MaxRange, other.MaxRange)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(StepSize, other.StepSize)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3538,6 +3695,9 @@ namespace Viam.Component.Board.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (Value != 0) hash ^= Value.GetHashCode();
+      if (MinRange != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MinRange);
+      if (MaxRange != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MaxRange);
+      if (StepSize != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(StepSize);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3560,6 +3720,18 @@ namespace Viam.Component.Board.V1 {
         output.WriteRawTag(8);
         output.WriteInt32(Value);
       }
+      if (MinRange != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(MinRange);
+      }
+      if (MaxRange != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(MaxRange);
+      }
+      if (StepSize != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(StepSize);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3574,6 +3746,18 @@ namespace Viam.Component.Board.V1 {
         output.WriteRawTag(8);
         output.WriteInt32(Value);
       }
+      if (MinRange != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(MinRange);
+      }
+      if (MaxRange != 0F) {
+        output.WriteRawTag(29);
+        output.WriteFloat(MaxRange);
+      }
+      if (StepSize != 0F) {
+        output.WriteRawTag(37);
+        output.WriteFloat(StepSize);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -3586,6 +3770,15 @@ namespace Viam.Component.Board.V1 {
       int size = 0;
       if (Value != 0) {
         size += 1 + pb::CodedOutputStream.ComputeInt32Size(Value);
+      }
+      if (MinRange != 0F) {
+        size += 1 + 4;
+      }
+      if (MaxRange != 0F) {
+        size += 1 + 4;
+      }
+      if (StepSize != 0F) {
+        size += 1 + 4;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3602,6 +3795,15 @@ namespace Viam.Component.Board.V1 {
       if (other.Value != 0) {
         Value = other.Value;
       }
+      if (other.MinRange != 0F) {
+        MinRange = other.MinRange;
+      }
+      if (other.MaxRange != 0F) {
+        MaxRange = other.MaxRange;
+      }
+      if (other.StepSize != 0F) {
+        StepSize = other.StepSize;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -3613,12 +3815,28 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 8: {
             Value = input.ReadInt32();
+            break;
+          }
+          case 21: {
+            MinRange = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            MaxRange = input.ReadFloat();
+            break;
+          }
+          case 37: {
+            StepSize = input.ReadFloat();
             break;
           }
         }
@@ -3632,12 +3850,28 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
             Value = input.ReadInt32();
+            break;
+          }
+          case 21: {
+            MinRange = input.ReadFloat();
+            break;
+          }
+          case 29: {
+            MaxRange = input.ReadFloat();
+            break;
+          }
+          case 37: {
+            StepSize = input.ReadFloat();
             break;
           }
         }
@@ -3896,7 +4130,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3930,7 +4168,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4087,7 +4329,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4102,7 +4348,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4333,7 +4583,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4363,7 +4617,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4545,7 +4803,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4564,7 +4826,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4794,7 +5060,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4824,7 +5094,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -5073,7 +5347,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -5100,7 +5378,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -5384,7 +5666,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -5421,7 +5707,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -5581,7 +5871,11 @@ namespace Viam.Component.Board.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -5596,7 +5890,11 @@ namespace Viam.Component.Board.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

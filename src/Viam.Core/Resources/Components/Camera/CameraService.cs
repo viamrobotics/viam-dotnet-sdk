@@ -1,12 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-
-using Google.Api;
+﻿using Google.Api;
 using Google.Protobuf;
 using Grpc.Core;
-
 using Microsoft.Extensions.Logging;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Viam.Common.V1;
 using Viam.Component.Camera.V1;
 using Viam.Core.Logging;
@@ -14,7 +12,8 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.Camera
 {
-    internal class CameraService(ILogger<CameraService> logger) : Component.Camera.V1.CameraService.CameraServiceBase, IServiceBase
+    internal class CameraService(ILogger<CameraService> logger)
+        : Component.Camera.V1.CameraService.CameraServiceBase, IServiceBase
     {
         public static Service ServiceName => Service.CameraService;
         public static SubType SubType { get; } = SubType.Camera;
@@ -26,8 +25,8 @@ namespace Viam.Core.Resources.Components.Camera
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ICamera)context.UserState["resource"];
                 var resp = await resource.DoCommand(request.Command.ToDictionary(),
-                                                    context.Deadline.ToTimeout(),
-                                                    context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new DoCommandResponse() { Result = resp.ToStruct() };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -41,15 +40,15 @@ namespace Viam.Core.Resources.Components.Camera
         }
 
         public override async Task<GetGeometriesResponse> GetGeometries(GetGeometriesRequest request,
-                                                                        ServerCallContext context)
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ICamera)context.UserState["resource"];
                 var resp = await resource.GetGeometries(request.Extra?.ToDictionary(),
-                                                        context.Deadline.ToTimeout(),
-                                                        context.CancellationToken).ConfigureAwait(false);
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetGeometriesResponse() { Geometries = { resp } };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -63,13 +62,14 @@ namespace Viam.Core.Resources.Components.Camera
         }
 
         public override async Task<GetPropertiesResponse> GetProperties(GetPropertiesRequest request,
-                                                                        ServerCallContext context)
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ICamera)context.UserState["resource"];
-                var resp = await resource.GetProperties(context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                var resp = await resource.GetProperties(context.Deadline.ToTimeout(), context.CancellationToken)
+                    .ConfigureAwait(false);
                 var response = new GetPropertiesResponse()
                 {
                     DistortionParameters = resp.DistortionParameters.ToGrpc(),
@@ -94,10 +94,10 @@ namespace Viam.Core.Resources.Components.Camera
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ICamera)context.UserState["resource"];
                 var resp = await resource.GetImage(
-                               MimeTypeExtensions.FromGrpc(request.MimeType),
-                               request.Extra?.ToDictionary(),
-                               context.Deadline.ToTimeout(),
-                               context.CancellationToken).ConfigureAwait(false);
+                    MimeTypeExtensions.FromGrpc(request.MimeType),
+                    request.Extra?.ToDictionary(),
+                    context.Deadline.ToTimeout(),
+                    context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetImageResponse()
                 {
@@ -120,7 +120,8 @@ namespace Viam.Core.Resources.Components.Camera
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ICamera)context.UserState["resource"];
-                var resp = await resource.GetImages(context.Deadline.ToTimeout(), context.CancellationToken).ConfigureAwait(false);
+                var resp = await resource.GetImages(context.Deadline.ToTimeout(), context.CancellationToken)
+                    .ConfigureAwait(false);
                 var response = new GetImagesResponse();
                 response.Images.AddRange(resp.Select(image => new Image()
                 {
@@ -138,18 +139,18 @@ namespace Viam.Core.Resources.Components.Camera
         }
 
         public override async Task<GetPointCloudResponse> GetPointCloud(GetPointCloudRequest request,
-                                                                        ServerCallContext context)
+            ServerCallContext context)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ICamera)context.UserState["resource"];
                 var resp = await resource.GetPointCloud(
-                                             MimeTypeExtensions.FromGrpc(request.MimeType),
-                                             request.Extra?.ToDictionary(),
-                                             context.Deadline.ToTimeout(),
-                                             context.CancellationToken)
-                                         .ConfigureAwait(false);
+                        MimeTypeExtensions.FromGrpc(request.MimeType),
+                        request.Extra?.ToDictionary(),
+                        context.Deadline.ToTimeout(),
+                        context.CancellationToken)
+                    .ConfigureAwait(false);
 
                 var response = new GetPointCloudResponse()
                 {

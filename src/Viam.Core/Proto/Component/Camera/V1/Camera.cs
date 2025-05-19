@@ -47,56 +47,61 @@ namespace Viam.Component.Camera.V1 {
             "YnVmLlN0cnVjdFIFZXh0cmEiVQoVR2V0UG9pbnRDbG91ZFJlc3BvbnNlEhsK",
             "CW1pbWVfdHlwZRgBIAEoCVIIbWltZVR5cGUSHwoLcG9pbnRfY2xvdWQYAiAB",
             "KAxSCnBvaW50Q2xvdWQiKgoUR2V0UHJvcGVydGllc1JlcXVlc3QSEgoEbmFt",
-            "ZRgBIAEoCVIEbmFtZSKgAgoVR2V0UHJvcGVydGllc1Jlc3BvbnNlEiEKDHN1",
+            "ZRgBIAEoCVIEbmFtZSLTAgoVR2V0UHJvcGVydGllc1Jlc3BvbnNlEiEKDHN1",
             "cHBvcnRzX3BjZBgBIAEoCFILc3VwcG9ydHNQY2QSYAoUaW50cmluc2ljX3Bh",
             "cmFtZXRlcnMYAiABKAsyLS52aWFtLmNvbXBvbmVudC5jYW1lcmEudjEuSW50",
             "cmluc2ljUGFyYW1ldGVyc1ITaW50cmluc2ljUGFyYW1ldGVycxJjChVkaXN0",
             "b3J0aW9uX3BhcmFtZXRlcnMYAyABKAsyLi52aWFtLmNvbXBvbmVudC5jYW1l",
             "cmEudjEuRGlzdG9ydGlvblBhcmFtZXRlcnNSFGRpc3RvcnRpb25QYXJhbWV0",
-            "ZXJzEh0KCm1pbWVfdHlwZXMYBCADKAlSCW1pbWVUeXBlcyJFCgdXZWJjYW1z",
-            "EjoKB3dlYmNhbXMYASADKAsyIC52aWFtLmNvbXBvbmVudC5jYW1lcmEudjEu",
-            "V2ViY2FtUgd3ZWJjYW1zIp4BCgZXZWJjYW0SFAoFbGFiZWwYASABKAlSBWxh",
-            "YmVsEhYKBnN0YXR1cxgCIAEoCVIGc3RhdHVzEkIKCnByb3BlcnRpZXMYAyAD",
-            "KAsyIi52aWFtLmNvbXBvbmVudC5jYW1lcmEudjEuUHJvcGVydHlSCnByb3Bl",
-            "cnRpZXMSEgoEbmFtZRgEIAEoCVIEbmFtZRIOCgJpZBgFIAEoCVICaWQihAEK",
-            "CFByb3BlcnR5EhkKCHdpZHRoX3B4GAEgASgFUgd3aWR0aFB4EhsKCWhlaWdo",
-            "dF9weBgCIAEoBVIIaGVpZ2h0UHgSIQoMZnJhbWVfZm9ybWF0GAMgASgJUgtm",
-            "cmFtZUZvcm1hdBIdCgpmcmFtZV9yYXRlGAQgASgCUglmcmFtZVJhdGUiyQEK",
-            "E0ludHJpbnNpY1BhcmFtZXRlcnMSGQoId2lkdGhfcHgYASABKA1SB3dpZHRo",
-            "UHgSGwoJaGVpZ2h0X3B4GAIgASgNUghoZWlnaHRQeBIcCgpmb2NhbF94X3B4",
-            "GAMgASgBUghmb2NhbFhQeBIcCgpmb2NhbF95X3B4GAQgASgBUghmb2NhbFlQ",
-            "eBIeCgtjZW50ZXJfeF9weBgFIAEoAVIJY2VudGVyWFB4Eh4KC2NlbnRlcl95",
-            "X3B4GAYgASgBUgljZW50ZXJZUHgiTAoURGlzdG9ydGlvblBhcmFtZXRlcnMS",
-            "FAoFbW9kZWwYASABKAlSBW1vZGVsEh4KCnBhcmFtZXRlcnMYAiADKAFSCnBh",
-            "cmFtZXRlcnMqbAoGRm9ybWF0EhYKEkZPUk1BVF9VTlNQRUNJRklFRBAAEhMK",
-            "D0ZPUk1BVF9SQVdfUkdCQRABEhQKEEZPUk1BVF9SQVdfREVQVEgQAhIPCgtG",
-            "T1JNQVRfSlBFRxADEg4KCkZPUk1BVF9QTkcQBDLPCAoNQ2FtZXJhU2Vydmlj",
-            "ZRKVAQoIR2V0SW1hZ2USKS52aWFtLmNvbXBvbmVudC5jYW1lcmEudjEuR2V0",
-            "SW1hZ2VSZXF1ZXN0GioudmlhbS5jb21wb25lbnQuY2FtZXJhLnYxLkdldElt",
-            "YWdlUmVzcG9uc2UiMoLT5JMCLBIqL3ZpYW0vYXBpL3YxL2NvbXBvbmVudC9j",
-            "YW1lcmEve25hbWV9L2ltYWdlEpkBCglHZXRJbWFnZXMSKi52aWFtLmNvbXBv",
-            "bmVudC5jYW1lcmEudjEuR2V0SW1hZ2VzUmVxdWVzdBorLnZpYW0uY29tcG9u",
-            "ZW50LmNhbWVyYS52MS5HZXRJbWFnZXNSZXNwb25zZSIzgtPkkwItEisvdmlh",
-            "bS9hcGkvdjEvY29tcG9uZW50L2NhbWVyYS97bmFtZX0vaW1hZ2VzEowBCgtS",
-            "ZW5kZXJGcmFtZRIsLnZpYW0uY29tcG9uZW50LmNhbWVyYS52MS5SZW5kZXJG",
-            "cmFtZVJlcXVlc3QaFC5nb29nbGUuYXBpLkh0dHBCb2R5IjmC0+STAjMSMS92",
-            "aWFtL2FwaS92MS9jb21wb25lbnQvY2FtZXJhL3tuYW1lfS9yZW5kZXJfZnJh",
-            "bWUSqgEKDUdldFBvaW50Q2xvdWQSLi52aWFtLmNvbXBvbmVudC5jYW1lcmEu",
-            "djEuR2V0UG9pbnRDbG91ZFJlcXVlc3QaLy52aWFtLmNvbXBvbmVudC5jYW1l",
-            "cmEudjEuR2V0UG9pbnRDbG91ZFJlc3BvbnNlIjiC0+STAjISMC92aWFtL2Fw",
-            "aS92MS9jb21wb25lbnQvY2FtZXJhL3tuYW1lfS9wb2ludF9jbG91ZBKpAQoN",
-            "R2V0UHJvcGVydGllcxIuLnZpYW0uY29tcG9uZW50LmNhbWVyYS52MS5HZXRQ",
-            "cm9wZXJ0aWVzUmVxdWVzdBovLnZpYW0uY29tcG9uZW50LmNhbWVyYS52MS5H",
-            "ZXRQcm9wZXJ0aWVzUmVzcG9uc2UiN4LT5JMCMRIvL3ZpYW0vYXBpL3YxL2Nv",
-            "bXBvbmVudC9jYW1lcmEve25hbWV9L3Byb3BlcnRpZXMSiQEKCURvQ29tbWFu",
-            "ZBIgLnZpYW0uY29tbW9uLnYxLkRvQ29tbWFuZFJlcXVlc3QaIS52aWFtLmNv",
-            "bW1vbi52MS5Eb0NvbW1hbmRSZXNwb25zZSI3gtPkkwIxIi8vdmlhbS9hcGkv",
-            "djEvY29tcG9uZW50L2NhbWVyYS97bmFtZX0vZG9fY29tbWFuZBKVAQoNR2V0",
-            "R2VvbWV0cmllcxIkLnZpYW0uY29tbW9uLnYxLkdldEdlb21ldHJpZXNSZXF1",
-            "ZXN0GiUudmlhbS5jb21tb24udjEuR2V0R2VvbWV0cmllc1Jlc3BvbnNlIjeC",
-            "0+STAjESLy92aWFtL2FwaS92MS9jb21wb25lbnQvY2FtZXJhL3tuYW1lfS9n",
-            "ZW9tZXRyaWVzQkMKHGNvbS52aWFtLmNvbXBvbmVudC5jYW1lcmEudjFaI2dv",
-            "LnZpYW0uY29tL2FwaS9jb21wb25lbnQvY2FtZXJhL3YxYgZwcm90bzM="));
+            "ZXJzEh0KCm1pbWVfdHlwZXMYBCADKAlSCW1pbWVUeXBlcxIiCgpmcmFtZV9y",
+            "YXRlGAUgASgCSABSCWZyYW1lUmF0ZYgBAUINCgtfZnJhbWVfcmF0ZSJFCgdX",
+            "ZWJjYW1zEjoKB3dlYmNhbXMYASADKAsyIC52aWFtLmNvbXBvbmVudC5jYW1l",
+            "cmEudjEuV2ViY2FtUgd3ZWJjYW1zIp4BCgZXZWJjYW0SFAoFbGFiZWwYASAB",
+            "KAlSBWxhYmVsEhYKBnN0YXR1cxgCIAEoCVIGc3RhdHVzEkIKCnByb3BlcnRp",
+            "ZXMYAyADKAsyIi52aWFtLmNvbXBvbmVudC5jYW1lcmEudjEuUHJvcGVydHlS",
+            "CnByb3BlcnRpZXMSEgoEbmFtZRgEIAEoCVIEbmFtZRIOCgJpZBgFIAEoCVIC",
+            "aWQihAEKCFByb3BlcnR5EhkKCHdpZHRoX3B4GAEgASgFUgd3aWR0aFB4EhsK",
+            "CWhlaWdodF9weBgCIAEoBVIIaGVpZ2h0UHgSIQoMZnJhbWVfZm9ybWF0GAMg",
+            "ASgJUgtmcmFtZUZvcm1hdBIdCgpmcmFtZV9yYXRlGAQgASgCUglmcmFtZVJh",
+            "dGUiyQEKE0ludHJpbnNpY1BhcmFtZXRlcnMSGQoId2lkdGhfcHgYASABKA1S",
+            "B3dpZHRoUHgSGwoJaGVpZ2h0X3B4GAIgASgNUghoZWlnaHRQeBIcCgpmb2Nh",
+            "bF94X3B4GAMgASgBUghmb2NhbFhQeBIcCgpmb2NhbF95X3B4GAQgASgBUghm",
+            "b2NhbFlQeBIeCgtjZW50ZXJfeF9weBgFIAEoAVIJY2VudGVyWFB4Eh4KC2Nl",
+            "bnRlcl95X3B4GAYgASgBUgljZW50ZXJZUHgiTAoURGlzdG9ydGlvblBhcmFt",
+            "ZXRlcnMSFAoFbW9kZWwYASABKAlSBW1vZGVsEh4KCnBhcmFtZXRlcnMYAiAD",
+            "KAFSCnBhcmFtZXRlcnMqbAoGRm9ybWF0EhYKEkZPUk1BVF9VTlNQRUNJRklF",
+            "RBAAEhMKD0ZPUk1BVF9SQVdfUkdCQRABEhQKEEZPUk1BVF9SQVdfREVQVEgQ",
+            "AhIPCgtGT1JNQVRfSlBFRxADEg4KCkZPUk1BVF9QTkcQBDLPCAoNQ2FtZXJh",
+            "U2VydmljZRKVAQoIR2V0SW1hZ2USKS52aWFtLmNvbXBvbmVudC5jYW1lcmEu",
+            "djEuR2V0SW1hZ2VSZXF1ZXN0GioudmlhbS5jb21wb25lbnQuY2FtZXJhLnYx",
+            "LkdldEltYWdlUmVzcG9uc2UiMoLT5JMCLBIqL3ZpYW0vYXBpL3YxL2NvbXBv",
+            "bmVudC9jYW1lcmEve25hbWV9L2ltYWdlEpkBCglHZXRJbWFnZXMSKi52aWFt",
+            "LmNvbXBvbmVudC5jYW1lcmEudjEuR2V0SW1hZ2VzUmVxdWVzdBorLnZpYW0u",
+            "Y29tcG9uZW50LmNhbWVyYS52MS5HZXRJbWFnZXNSZXNwb25zZSIzgtPkkwIt",
+            "EisvdmlhbS9hcGkvdjEvY29tcG9uZW50L2NhbWVyYS97bmFtZX0vaW1hZ2Vz",
+            "EowBCgtSZW5kZXJGcmFtZRIsLnZpYW0uY29tcG9uZW50LmNhbWVyYS52MS5S",
+            "ZW5kZXJGcmFtZVJlcXVlc3QaFC5nb29nbGUuYXBpLkh0dHBCb2R5IjmC0+ST",
+            "AjMSMS92aWFtL2FwaS92MS9jb21wb25lbnQvY2FtZXJhL3tuYW1lfS9yZW5k",
+            "ZXJfZnJhbWUSqgEKDUdldFBvaW50Q2xvdWQSLi52aWFtLmNvbXBvbmVudC5j",
+            "YW1lcmEudjEuR2V0UG9pbnRDbG91ZFJlcXVlc3QaLy52aWFtLmNvbXBvbmVu",
+            "dC5jYW1lcmEudjEuR2V0UG9pbnRDbG91ZFJlc3BvbnNlIjiC0+STAjISMC92",
+            "aWFtL2FwaS92MS9jb21wb25lbnQvY2FtZXJhL3tuYW1lfS9wb2ludF9jbG91",
+            "ZBKpAQoNR2V0UHJvcGVydGllcxIuLnZpYW0uY29tcG9uZW50LmNhbWVyYS52",
+            "MS5HZXRQcm9wZXJ0aWVzUmVxdWVzdBovLnZpYW0uY29tcG9uZW50LmNhbWVy",
+            "YS52MS5HZXRQcm9wZXJ0aWVzUmVzcG9uc2UiN4LT5JMCMRIvL3ZpYW0vYXBp",
+            "L3YxL2NvbXBvbmVudC9jYW1lcmEve25hbWV9L3Byb3BlcnRpZXMSiQEKCURv",
+            "Q29tbWFuZBIgLnZpYW0uY29tbW9uLnYxLkRvQ29tbWFuZFJlcXVlc3QaIS52",
+            "aWFtLmNvbW1vbi52MS5Eb0NvbW1hbmRSZXNwb25zZSI3gtPkkwIxIi8vdmlh",
+            "bS9hcGkvdjEvY29tcG9uZW50L2NhbWVyYS97bmFtZX0vZG9fY29tbWFuZBKV",
+            "AQoNR2V0R2VvbWV0cmllcxIkLnZpYW0uY29tbW9uLnYxLkdldEdlb21ldHJp",
+            "ZXNSZXF1ZXN0GiUudmlhbS5jb21tb24udjEuR2V0R2VvbWV0cmllc1Jlc3Bv",
+            "bnNlIjeC0+STAjESLy92aWFtL2FwaS92MS9jb21wb25lbnQvY2FtZXJhL3tu",
+            "YW1lfS9nZW9tZXRyaWVzQtMBChxjb20udmlhbS5jb21wb25lbnQuY2FtZXJh",
+            "LnYxQgtDYW1lcmFQcm90b1ABWiNnby52aWFtLmNvbS9hcGkvY29tcG9uZW50",
+            "L2NhbWVyYS92MaICA1ZDQ6oCGFZpYW0uQ29tcG9uZW50LkNhbWVyYS5WMcoC",
+            "GFZpYW1cQ29tcG9uZW50XENhbWVyYVxWMeICJFZpYW1cQ29tcG9uZW50XENh",
+            "bWVyYVxWMVxHUEJNZXRhZGF0YeoCG1ZpYW06OkNvbXBvbmVudDo6Q2FtZXJh",
+            "OjpWMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Api.HttpbodyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Viam.Component.Camera.V1.Format), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -109,7 +114,7 @@ namespace Viam.Component.Camera.V1 {
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Camera.V1.GetPointCloudRequest), global::Viam.Component.Camera.V1.GetPointCloudRequest.Parser, new[]{ "Name", "MimeType", "Extra" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Camera.V1.GetPointCloudResponse), global::Viam.Component.Camera.V1.GetPointCloudResponse.Parser, new[]{ "MimeType", "PointCloud" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Camera.V1.GetPropertiesRequest), global::Viam.Component.Camera.V1.GetPropertiesRequest.Parser, new[]{ "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Camera.V1.GetPropertiesResponse), global::Viam.Component.Camera.V1.GetPropertiesResponse.Parser, new[]{ "SupportsPcd", "IntrinsicParameters", "DistortionParameters", "MimeTypes" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Camera.V1.GetPropertiesResponse), global::Viam.Component.Camera.V1.GetPropertiesResponse.Parser, new[]{ "SupportsPcd", "IntrinsicParameters", "DistortionParameters", "MimeTypes", "FrameRate" }, new[]{ "FrameRate" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Camera.V1.Webcams), global::Viam.Component.Camera.V1.Webcams.Parser, new[]{ "Webcams_" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Camera.V1.Webcam), global::Viam.Component.Camera.V1.Webcam.Parser, new[]{ "Label", "Status", "Properties", "Name", "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Camera.V1.Property), global::Viam.Component.Camera.V1.Property.Parser, new[]{ "WidthPx", "HeightPx", "FrameFormat", "FrameRate" }, null, null, null, null),
@@ -358,7 +363,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -388,7 +397,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -605,7 +618,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -628,7 +645,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -806,7 +827,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -825,7 +850,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1023,7 +1052,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1049,7 +1082,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1294,7 +1331,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1321,7 +1362,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1570,7 +1615,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1600,7 +1649,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1852,7 +1905,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1882,7 +1939,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2099,7 +2160,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2122,7 +2187,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2300,7 +2369,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2319,7 +2392,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2342,6 +2419,7 @@ namespace Viam.Component.Camera.V1 {
   {
     private static readonly pb::MessageParser<GetPropertiesResponse> _parser = new pb::MessageParser<GetPropertiesResponse>(() => new GetPropertiesResponse());
     private pb::UnknownFieldSet _unknownFields;
+    private int _hasBits0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<GetPropertiesResponse> Parser { get { return _parser; } }
@@ -2369,10 +2447,12 @@ namespace Viam.Component.Camera.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public GetPropertiesResponse(GetPropertiesResponse other) : this() {
+      _hasBits0 = other._hasBits0;
       supportsPcd_ = other.supportsPcd_;
       intrinsicParameters_ = other.intrinsicParameters_ != null ? other.intrinsicParameters_.Clone() : null;
       distortionParameters_ = other.distortionParameters_ != null ? other.distortionParameters_.Clone() : null;
       mimeTypes_ = other.mimeTypes_.Clone();
+      frameRate_ = other.frameRate_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2445,6 +2525,36 @@ namespace Viam.Component.Camera.V1 {
       get { return mimeTypes_; }
     }
 
+    /// <summary>Field number for the "frame_rate" field.</summary>
+    public const int FrameRateFieldNumber = 5;
+    private readonly static float FrameRateDefaultValue = 0F;
+
+    private float frameRate_;
+    /// <summary>
+    /// Optional camera frame rate for image capture timing
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float FrameRate {
+      get { if ((_hasBits0 & 1) != 0) { return frameRate_; } else { return FrameRateDefaultValue; } }
+      set {
+        _hasBits0 |= 1;
+        frameRate_ = value;
+      }
+    }
+    /// <summary>Gets whether the "frame_rate" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasFrameRate {
+      get { return (_hasBits0 & 1) != 0; }
+    }
+    /// <summary>Clears the value of the "frame_rate" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearFrameRate() {
+      _hasBits0 &= ~1;
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -2464,6 +2574,7 @@ namespace Viam.Component.Camera.V1 {
       if (!object.Equals(IntrinsicParameters, other.IntrinsicParameters)) return false;
       if (!object.Equals(DistortionParameters, other.DistortionParameters)) return false;
       if(!mimeTypes_.Equals(other.mimeTypes_)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FrameRate, other.FrameRate)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2475,6 +2586,7 @@ namespace Viam.Component.Camera.V1 {
       if (intrinsicParameters_ != null) hash ^= IntrinsicParameters.GetHashCode();
       if (distortionParameters_ != null) hash ^= DistortionParameters.GetHashCode();
       hash ^= mimeTypes_.GetHashCode();
+      if (HasFrameRate) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FrameRate);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2506,6 +2618,10 @@ namespace Viam.Component.Camera.V1 {
         output.WriteMessage(DistortionParameters);
       }
       mimeTypes_.WriteTo(output, _repeated_mimeTypes_codec);
+      if (HasFrameRate) {
+        output.WriteRawTag(45);
+        output.WriteFloat(FrameRate);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2529,6 +2645,10 @@ namespace Viam.Component.Camera.V1 {
         output.WriteMessage(DistortionParameters);
       }
       mimeTypes_.WriteTo(ref output, _repeated_mimeTypes_codec);
+      if (HasFrameRate) {
+        output.WriteRawTag(45);
+        output.WriteFloat(FrameRate);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2549,6 +2669,9 @@ namespace Viam.Component.Camera.V1 {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(DistortionParameters);
       }
       size += mimeTypes_.CalculateSize(_repeated_mimeTypes_codec);
+      if (HasFrameRate) {
+        size += 1 + 4;
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -2577,6 +2700,9 @@ namespace Viam.Component.Camera.V1 {
         DistortionParameters.MergeFrom(other.DistortionParameters);
       }
       mimeTypes_.Add(other.mimeTypes_);
+      if (other.HasFrameRate) {
+        FrameRate = other.FrameRate;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2588,7 +2714,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2614,6 +2744,10 @@ namespace Viam.Component.Camera.V1 {
             mimeTypes_.AddEntriesFrom(input, _repeated_mimeTypes_codec);
             break;
           }
+          case 45: {
+            FrameRate = input.ReadFloat();
+            break;
+          }
         }
       }
     #endif
@@ -2625,7 +2759,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2649,6 +2787,10 @@ namespace Viam.Component.Camera.V1 {
           }
           case 34: {
             mimeTypes_.AddEntriesFrom(ref input, _repeated_mimeTypes_codec);
+            break;
+          }
+          case 45: {
+            FrameRate = input.ReadFloat();
             break;
           }
         }
@@ -2803,7 +2945,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2822,7 +2968,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3113,7 +3263,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3148,7 +3302,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3434,7 +3592,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3465,7 +3627,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3793,7 +3959,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3832,7 +4002,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4041,7 +4215,11 @@ namespace Viam.Component.Camera.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4065,7 +4243,11 @@ namespace Viam.Component.Camera.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

@@ -168,8 +168,8 @@ namespace Viam.Module.V1 {
       }
 
       /// <summary>
-      /// ValidateConfig determines whether the given config is valid and registers/returns implicit
-      /// dependencies.
+      /// ValidateConfig determines whether the given config is valid and registers/returns
+      /// both required and optional implicit dependencies.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -402,8 +402,8 @@ namespace Viam.Module.V1 {
         return CallInvoker.AsyncUnaryCall(__Method_Ready, null, options, request);
       }
       /// <summary>
-      /// ValidateConfig determines whether the given config is valid and registers/returns implicit
-      /// dependencies.
+      /// ValidateConfig determines whether the given config is valid and registers/returns
+      /// both required and optional implicit dependencies.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -416,8 +416,8 @@ namespace Viam.Module.V1 {
         return ValidateConfig(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// ValidateConfig determines whether the given config is valid and registers/returns implicit
-      /// dependencies.
+      /// ValidateConfig determines whether the given config is valid and registers/returns
+      /// both required and optional implicit dependencies.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -428,8 +428,8 @@ namespace Viam.Module.V1 {
         return CallInvoker.BlockingUnaryCall(__Method_ValidateConfig, null, options, request);
       }
       /// <summary>
-      /// ValidateConfig determines whether the given config is valid and registers/returns implicit
-      /// dependencies.
+      /// ValidateConfig determines whether the given config is valid and registers/returns
+      /// both required and optional implicit dependencies.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -442,8 +442,8 @@ namespace Viam.Module.V1 {
         return ValidateConfigAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// ValidateConfig determines whether the given config is valid and registers/returns implicit
-      /// dependencies.
+      /// ValidateConfig determines whether the given config is valid and registers/returns
+      /// both required and optional implicit dependencies.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>

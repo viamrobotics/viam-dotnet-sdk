@@ -1,34 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
-
-using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-
-using Viam.App.V1;
-using Viam.Core.Logging;
-using Viam.Core.Resources.Components;
-using Viam.Core.Resources.Components.Arm;
-using Viam.Core.Resources.Components.Base;
-using Viam.Core.Resources.Components.Board;
-using Viam.Core.Resources.Components.Camera;
-using Viam.Core.Resources.Components.Encoder;
-using Viam.Core.Resources.Components.Gantry;
-using Viam.Core.Resources.Components.Generic;
-using Viam.Core.Resources.Components.Gripper;
-using Viam.Core.Resources.Components.InputController;
-using Viam.Core.Resources.Components.Motor;
-using Viam.Core.Resources.Components.MovementSensor;
-using Viam.Core.Resources.Components.PowerSensor;
-using Viam.Core.Resources.Components.Sensor;
-using Viam.Core.Resources.Components.Servo;
+﻿using System;
 
 namespace Viam.Core.Resources
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "C# is dumb sometimes")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles",
+        Justification = "C# is dumb sometimes")]
     public record struct SubType(string Namespace, string ResourceType, string ResourceSubType)
     {
         public override string ToString() => $"{Namespace}:{ResourceType}:{ResourceSubType}";
@@ -51,7 +26,8 @@ namespace Viam.Core.Resources
         public static SubType Servo = FromRdkComponent("servo");
 
         public static SubType FromResourceName(ViamResourceName resourceName) =>
-            new(resourceName.SubType.Namespace, resourceName.SubType.ResourceType, resourceName.SubType.ResourceSubType);
+            new(resourceName.SubType.Namespace, resourceName.SubType.ResourceType,
+                resourceName.SubType.ResourceSubType);
 
         public static SubType FromString(string str)
         {
@@ -60,6 +36,7 @@ namespace Viam.Core.Resources
             {
                 throw new ArgumentException($"{str} is not a valid SubType");
             }
+
             var @namespace = parts[0];
             var resourceType = parts[1];
             var resourceSubType = parts[2];
@@ -74,7 +51,10 @@ namespace Viam.Core.Resources
 
     public record struct Model(ModelFamily Family, string Name)
     {
-        public Model(string @namespace, string family, string name) : this(new ModelFamily(@namespace, family), name) { }
+        public Model(string @namespace, string family, string name) : this(new ModelFamily(@namespace, family), name)
+        {
+        }
+
         public override string ToString() => $"{Family}:{Name}";
 
         public static Model FromString(string str)
@@ -84,6 +64,7 @@ namespace Viam.Core.Resources
             {
                 throw new ArgumentException($"{str} is not a valid Model");
             }
+
             return new Model(new ModelFamily(parts[0], parts[1]), parts[2]);
         }
     }

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Viam.Serialization
+﻿namespace Viam.Serialization
 {
-    [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = false)]
+    [AttributeUsage(AttributeTargets.Class|AttributeTargets.Struct, Inherited = false, AllowMultiple = false)]
     public sealed class StructMappableAttribute : Attribute
     {
     }

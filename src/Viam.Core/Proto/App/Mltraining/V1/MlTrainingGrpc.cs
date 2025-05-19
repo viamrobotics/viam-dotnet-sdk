@@ -69,6 +69,10 @@ namespace Viam.App.Mltraining.V1 {
     static readonly grpc::Marshaller<global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobRequest> __Marshaller_viam_app_mltraining_v1_DeleteCompletedTrainingJobRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobResponse> __Marshaller_viam_app_mltraining_v1_DeleteCompletedTrainingJobResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Mltraining.V1.GetTrainingJobLogsRequest> __Marshaller_viam_app_mltraining_v1_GetTrainingJobLogsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Mltraining.V1.GetTrainingJobLogsRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.Mltraining.V1.GetTrainingJobLogsResponse> __Marshaller_viam_app_mltraining_v1_GetTrainingJobLogsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.Mltraining.V1.GetTrainingJobLogsResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.Mltraining.V1.SubmitTrainingJobRequest, global::Viam.App.Mltraining.V1.SubmitTrainingJobResponse> __Method_SubmitTrainingJob = new grpc::Method<global::Viam.App.Mltraining.V1.SubmitTrainingJobRequest, global::Viam.App.Mltraining.V1.SubmitTrainingJobResponse>(
@@ -117,6 +121,14 @@ namespace Viam.App.Mltraining.V1 {
         "DeleteCompletedTrainingJob",
         __Marshaller_viam_app_mltraining_v1_DeleteCompletedTrainingJobRequest,
         __Marshaller_viam_app_mltraining_v1_DeleteCompletedTrainingJobResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.Mltraining.V1.GetTrainingJobLogsRequest, global::Viam.App.Mltraining.V1.GetTrainingJobLogsResponse> __Method_GetTrainingJobLogs = new grpc::Method<global::Viam.App.Mltraining.V1.GetTrainingJobLogsRequest, global::Viam.App.Mltraining.V1.GetTrainingJobLogsResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetTrainingJobLogs",
+        __Marshaller_viam_app_mltraining_v1_GetTrainingJobLogsRequest,
+        __Marshaller_viam_app_mltraining_v1_GetTrainingJobLogsResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -196,6 +208,18 @@ namespace Viam.App.Mltraining.V1 {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobResponse> DeleteCompletedTrainingJob(global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// GetTrainingJobLogs gets the logs for a given custom training job.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.Mltraining.V1.GetTrainingJobLogsResponse> GetTrainingJobLogs(global::Viam.App.Mltraining.V1.GetTrainingJobLogsRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -517,6 +541,54 @@ namespace Viam.App.Mltraining.V1 {
       {
         return CallInvoker.AsyncUnaryCall(__Method_DeleteCompletedTrainingJob, null, options, request);
       }
+      /// <summary>
+      /// GetTrainingJobLogs gets the logs for a given custom training job.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Mltraining.V1.GetTrainingJobLogsResponse GetTrainingJobLogs(global::Viam.App.Mltraining.V1.GetTrainingJobLogsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetTrainingJobLogs(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// GetTrainingJobLogs gets the logs for a given custom training job.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.Mltraining.V1.GetTrainingJobLogsResponse GetTrainingJobLogs(global::Viam.App.Mltraining.V1.GetTrainingJobLogsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetTrainingJobLogs, null, options, request);
+      }
+      /// <summary>
+      /// GetTrainingJobLogs gets the logs for a given custom training job.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Mltraining.V1.GetTrainingJobLogsResponse> GetTrainingJobLogsAsync(global::Viam.App.Mltraining.V1.GetTrainingJobLogsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetTrainingJobLogsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// GetTrainingJobLogs gets the logs for a given custom training job.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.Mltraining.V1.GetTrainingJobLogsResponse> GetTrainingJobLogsAsync(global::Viam.App.Mltraining.V1.GetTrainingJobLogsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetTrainingJobLogs, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override MLTrainingServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -536,7 +608,8 @@ namespace Viam.App.Mltraining.V1 {
           .AddMethod(__Method_GetTrainingJob, serviceImpl.GetTrainingJob)
           .AddMethod(__Method_ListTrainingJobs, serviceImpl.ListTrainingJobs)
           .AddMethod(__Method_CancelTrainingJob, serviceImpl.CancelTrainingJob)
-          .AddMethod(__Method_DeleteCompletedTrainingJob, serviceImpl.DeleteCompletedTrainingJob).Build();
+          .AddMethod(__Method_DeleteCompletedTrainingJob, serviceImpl.DeleteCompletedTrainingJob)
+          .AddMethod(__Method_GetTrainingJobLogs, serviceImpl.GetTrainingJobLogs).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -552,6 +625,7 @@ namespace Viam.App.Mltraining.V1 {
       serviceBinder.AddMethod(__Method_ListTrainingJobs, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Mltraining.V1.ListTrainingJobsRequest, global::Viam.App.Mltraining.V1.ListTrainingJobsResponse>(serviceImpl.ListTrainingJobs));
       serviceBinder.AddMethod(__Method_CancelTrainingJob, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Mltraining.V1.CancelTrainingJobRequest, global::Viam.App.Mltraining.V1.CancelTrainingJobResponse>(serviceImpl.CancelTrainingJob));
       serviceBinder.AddMethod(__Method_DeleteCompletedTrainingJob, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobRequest, global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobResponse>(serviceImpl.DeleteCompletedTrainingJob));
+      serviceBinder.AddMethod(__Method_GetTrainingJobLogs, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.Mltraining.V1.GetTrainingJobLogsRequest, global::Viam.App.Mltraining.V1.GetTrainingJobLogsResponse>(serviceImpl.GetTrainingJobLogs));
     }
 
   }

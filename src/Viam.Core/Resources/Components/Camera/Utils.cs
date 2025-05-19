@@ -47,7 +47,6 @@ namespace Viam.Core.Resources.Components.Camera
 
         public static (int width, int height) GetJpegImageDimensions(ReadOnlySpan<byte> bytes)
         {
-
             if (bytes[0] != 0xFF || bytes[1] != 0xD8) // check for SOI marker
                 throw new ArgumentException("Not a valid JPEG image.", nameof(bytes));
 

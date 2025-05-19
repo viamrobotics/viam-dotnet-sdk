@@ -1,17 +1,13 @@
-﻿using System;
+﻿using Grpc.Core;
+using Grpc.Net.Client;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Net.Http;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Grpc.Core;
-using Grpc.Net.Client;
-
-using Microsoft.Extensions.Logging;
-
 using Proto.Rpc.V1;
-
 using Viam.Core.Logging;
 
 namespace Viam.Core.Grpc
@@ -22,7 +18,8 @@ namespace Viam.Core.Grpc
         Credentials? Credentials = null,
         int Port = 8080)
     {
-        public override string ToString() => $"Address: {MachineAddress}, Insecure: {Insecure}, Credentials: {Credentials}, Port: {Port}";
+        public override string ToString() =>
+            $"Address: {MachineAddress}, Insecure: {Insecure}, Credentials: {Credentials}, Port: {Port}";
     }
 
     /// <summary>
@@ -31,21 +28,21 @@ namespace Viam.Core.Grpc
     /// <param name="logger">The <see cref="ILogger{GrpcDialer}"/> to use for state logging</param>
     internal class GrpcDialer(ILogger<GrpcDialer> logger, ILoggerFactory loggerFactory)
     {
-        
-        public ValueTask<ViamChannel> DialDirectAsync(GrpcDialOptions dialOptions, CancellationToken cancellationToken = default, [CallerMemberName] string? caller = null)
+        public ValueTask<ViamChannel> DialDirectAsync(GrpcDialOptions dialOptions,
+            CancellationToken cancellationToken = default, [CallerMemberName] string? caller = null)
         {
             logger.LogDialDirect(dialOptions);
             var channelCredentialSecurity = dialOptions.Insecure
-                                                ? ChannelCredentials.Insecure
-                                                : ChannelCredentials.SecureSsl;
+                ? ChannelCredentials.Insecure
+                : ChannelCredentials.SecureSsl;
 
             var channelOptions = new GrpcChannelOptions()
-                                 {
-                                     //Credentials = channelCredentialSecurity,
-                                     LoggerFactory = loggerFactory
-                                 };
+            {
+                //Credentials = channelCredentialSecurity,
+                LoggerFactory = loggerFactory
+            };
             var address = dialOptions.MachineAddress;
-            
+
             // Custom transport implementation for UnixDomainSockets
             if (dialOptions.MachineAddress.IsFile)
             {
@@ -59,11 +56,11 @@ namespace Viam.Core.Grpc
                 var endpoint = new UnixDomainSocketEndPoint(socketPath);
                 var factory = new UnixDomainSocketsConnectionFactory(endpoint, logger);
                 HttpMessageHandler handler = new SocketsHttpHandler()
-                                             {
-                                                 ConnectCallback = factory.ConnectAsync,
-                                                 UseProxy = false,
-                                                 AllowAutoRedirect = false
-                                             };
+                {
+                    ConnectCallback = factory.ConnectAsync,
+                    UseProxy = false,
+                    AllowAutoRedirect = false
+                };
                 channelOptions.HttpHandler = handler;
                 // This is needed to stop the GrpcChannel from trying to dial the actual file, which will fail
                 address = new Uri($"http://localhost:9090");
@@ -87,18 +84,17 @@ namespace Viam.Core.Grpc
                         logger.LogDialCreateAuthClient();
                         var authClient = new AuthService.AuthServiceClient(channel);
                         logger.LogDialCreateAuthClientSuccess();
-
                         logger.LogDialAuthStart(dialOptions.Credentials.AuthEntity);
                         var authResponse = await authClient.AuthenticateAsync(
-                                               new AuthenticateRequest()
-                                               {
-                                                   Entity = dialOptions.Credentials.AuthEntity,
-                                                   Credentials = new Proto.Rpc.V1.Credentials()
-                                                   {
-                                                       Payload = dialOptions.Credentials.Payload,
-                                                       Type = dialOptions.Credentials.Type
-                                                   }
-                                               });
+                            new AuthenticateRequest()
+                            {
+                                Entity = dialOptions.Credentials.AuthEntity,
+                                Credentials = new global::Proto.Rpc.V1.Credentials()
+                                {
+                                    Payload = dialOptions.Credentials.Payload,
+                                    Type = dialOptions.Credentials.Type
+                                }
+                            });
 
                         logger.LogDialAuthSuccess(dialOptions.Credentials.AuthEntity);
                         metadata.Add("Authorization", $"Bearer {authResponse.AccessToken}");
@@ -108,7 +104,8 @@ namespace Viam.Core.Grpc
                 channelOptions.Credentials = ChannelCredentials.Create(channelCredentialSecurity, callCredentials);
             }
 
-            var channel = new GrpcChannel(global::Grpc.Net.Client.GrpcChannel.ForAddress(address, channelOptions), address.ToString());
+            var channel = new GrpcChannel(global::Grpc.Net.Client.GrpcChannel.ForAddress(address, channelOptions),
+                address.ToString());
             logger.LogDialComplete();
             return new ValueTask<ViamChannel>(channel);
         }

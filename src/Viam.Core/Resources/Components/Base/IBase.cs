@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 
 namespace Viam.Core.Resources.Components.Base
@@ -21,10 +18,10 @@ namespace Viam.Core.Resources.Components.Base
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         ValueTask MoveStraight(long distance,
-                               double velocity,
-                               IDictionary<string, object?>? extra = null,
-                               TimeSpan? timeout = null,
-                               CancellationToken cancellationToken = default);
+            double velocity,
+            IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Spin the base
@@ -36,10 +33,10 @@ namespace Viam.Core.Resources.Components.Base
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         ValueTask Spin(double angle,
-                       double velocity,
-                       IDictionary<string, object?>? extra = null,
-                       TimeSpan? timeout = null,
-                       CancellationToken cancellationToken = default);
+            double velocity,
+            IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Set the power of all motors on the base
@@ -51,30 +48,30 @@ namespace Viam.Core.Resources.Components.Base
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         ValueTask SetPower(Vector3 linear,
-                           Vector3 angular,
-                           IDictionary<string, object?>? extra = null,
-                           TimeSpan? timeout = null,
-                           CancellationToken cancellationToken = default);
+            Vector3 angular,
+            IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default);
 
         ValueTask SetVelocity(Vector3 linear,
-                              Vector3 angular,
-                              IDictionary<string, object?>? extra = null,
-                              TimeSpan? timeout = null,
-                              CancellationToken cancellationToken = default);
+            Vector3 angular,
+            IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default);
 
         ValueTask Stop(IDictionary<string, object?>? extra = null,
-                       TimeSpan? timeout = null,
-                       CancellationToken cancellationToken = default);
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default);
 
         ValueTask<bool> IsMoving(TimeSpan? timeout = null,
-                                 CancellationToken cancellationToken = default);
+            CancellationToken cancellationToken = default);
 
         ValueTask<BaseProperties> GetProperties(IDictionary<string, object?>? extra = null,
-                                            TimeSpan? timeout = null,
-                                            CancellationToken cancellationToken = default);
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default);
 
         ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
-                                            TimeSpan? timeout = null,
-                                            CancellationToken cancellationToken = default);
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default);
     }
 }

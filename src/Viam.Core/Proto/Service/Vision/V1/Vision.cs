@@ -25,88 +25,131 @@ namespace Viam.Service.Vision.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch5zZXJ2aWNlL3Zpc2lvbi92MS92aXNpb24ucHJvdG8SFnZpYW0uc2Vydmlj",
-            "ZS52aXNpb24udjEaFmNvbW1vbi92MS9jb21tb24ucHJvdG8aHGdvb2dsZS9h",
-            "cGkvYW5ub3RhdGlvbnMucHJvdG8aHGdvb2dsZS9wcm90b2J1Zi9zdHJ1Y3Qu",
-            "cHJvdG8iugEKFEdldERldGVjdGlvbnNSZXF1ZXN0EhIKBG5hbWUYASABKAlS",
-            "BG5hbWUSFAoFaW1hZ2UYAiABKAxSBWltYWdlEhQKBXdpZHRoGAMgASgDUgV3",
-            "aWR0aBIWCgZoZWlnaHQYBCABKANSBmhlaWdodBIbCgltaW1lX3R5cGUYBSAB",
-            "KAlSCG1pbWVUeXBlEi0KBWV4dHJhGGMgASgLMhcuZ29vZ2xlLnByb3RvYnVm",
-            "LlN0cnVjdFIFZXh0cmEiWgoVR2V0RGV0ZWN0aW9uc1Jlc3BvbnNlEkEKCmRl",
-            "dGVjdGlvbnMYASADKAsyIS52aWFtLnNlcnZpY2UudmlzaW9uLnYxLkRldGVj",
-            "dGlvblIKZGV0ZWN0aW9ucyKEAQoeR2V0RGV0ZWN0aW9uc0Zyb21DYW1lcmFS",
-            "ZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUSHwoLY2FtZXJhX25hbWUYAiAB",
-            "KAlSCmNhbWVyYU5hbWUSLQoFZXh0cmEYYyABKAsyFy5nb29nbGUucHJvdG9i",
-            "dWYuU3RydWN0UgVleHRyYSJkCh9HZXREZXRlY3Rpb25zRnJvbUNhbWVyYVJl",
-            "c3BvbnNlEkEKCmRldGVjdGlvbnMYASADKAsyIS52aWFtLnNlcnZpY2Uudmlz",
-            "aW9uLnYxLkRldGVjdGlvblIKZGV0ZWN0aW9ucyLaAQoJRGV0ZWN0aW9uEhgK",
-            "BXhfbWluGAEgASgDSABSBHhNaW6IAQESGAoFeV9taW4YAiABKANIAVIEeU1p",
-            "bogBARIYCgV4X21heBgDIAEoA0gCUgR4TWF4iAEBEhgKBXlfbWF4GAQgASgD",
-            "SANSBHlNYXiIAQESHgoKY29uZmlkZW5jZRgFIAEoAVIKY29uZmlkZW5jZRId",
-            "CgpjbGFzc19uYW1lGAYgASgJUgljbGFzc05hbWVCCAoGX3hfbWluQggKBl95",
-            "X21pbkIICgZfeF9tYXhCCAoGX3lfbWF4Is0BChlHZXRDbGFzc2lmaWNhdGlv",
-            "bnNSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUSFAoFaW1hZ2UYAiABKAxS",
-            "BWltYWdlEhQKBXdpZHRoGAMgASgFUgV3aWR0aBIWCgZoZWlnaHQYBCABKAVS",
-            "BmhlaWdodBIbCgltaW1lX3R5cGUYBSABKAlSCG1pbWVUeXBlEgwKAW4YBiAB",
-            "KAVSAW4SLQoFZXh0cmEYYyABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0",
-            "UgVleHRyYSJuChpHZXRDbGFzc2lmaWNhdGlvbnNSZXNwb25zZRJQCg9jbGFz",
-            "c2lmaWNhdGlvbnMYASADKAsyJi52aWFtLnNlcnZpY2UudmlzaW9uLnYxLkNs",
-            "YXNzaWZpY2F0aW9uUg9jbGFzc2lmaWNhdGlvbnMilwEKI0dldENsYXNzaWZp",
-            "Y2F0aW9uc0Zyb21DYW1lcmFSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUS",
-            "HwoLY2FtZXJhX25hbWUYAiABKAlSCmNhbWVyYU5hbWUSDAoBbhgDIAEoBVIB",
-            "bhItCgVleHRyYRhjIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4",
-            "dHJhIngKJEdldENsYXNzaWZpY2F0aW9uc0Zyb21DYW1lcmFSZXNwb25zZRJQ",
-            "Cg9jbGFzc2lmaWNhdGlvbnMYASADKAsyJi52aWFtLnNlcnZpY2UudmlzaW9u",
-            "LnYxLkNsYXNzaWZpY2F0aW9uUg9jbGFzc2lmaWNhdGlvbnMiTwoOQ2xhc3Np",
-            "ZmljYXRpb24SHQoKY2xhc3NfbmFtZRgBIAEoCVIJY2xhc3NOYW1lEh4KCmNv",
-            "bmZpZGVuY2UYAiABKAFSCmNvbmZpZGVuY2UingEKG0dldE9iamVjdFBvaW50",
-            "Q2xvdWRzUmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEh8KC2NhbWVyYV9u",
-            "YW1lGAIgASgJUgpjYW1lcmFOYW1lEhsKCW1pbWVfdHlwZRgDIAEoCVIIbWlt",
-            "ZVR5cGUSLQoFZXh0cmEYYyABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0",
-            "UgVleHRyYSJ3ChxHZXRPYmplY3RQb2ludENsb3Vkc1Jlc3BvbnNlEhsKCW1p",
-            "bWVfdHlwZRgBIAEoCVIIbWltZVR5cGUSOgoHb2JqZWN0cxgCIAMoCzIgLnZp",
-            "YW0uY29tbW9uLnYxLlBvaW50Q2xvdWRPYmplY3RSB29iamVjdHMy5wgKDVZp",
-            "c2lvblNlcnZpY2USyAEKF0dldERldGVjdGlvbnNGcm9tQ2FtZXJhEjYudmlh",
-            "bS5zZXJ2aWNlLnZpc2lvbi52MS5HZXREZXRlY3Rpb25zRnJvbUNhbWVyYVJl",
-            "cXVlc3QaNy52aWFtLnNlcnZpY2UudmlzaW9uLnYxLkdldERldGVjdGlvbnNG",
-            "cm9tQ2FtZXJhUmVzcG9uc2UiPILT5JMCNiI0L3ZpYW0vYXBpL3YxL3NlcnZp",
-            "Y2UvdmlzaW9uL3tuYW1lfS9jYW1lcmFfZGV0ZWN0aW9ucxKjAQoNR2V0RGV0",
-            "ZWN0aW9ucxIsLnZpYW0uc2VydmljZS52aXNpb24udjEuR2V0RGV0ZWN0aW9u",
-            "c1JlcXVlc3QaLS52aWFtLnNlcnZpY2UudmlzaW9uLnYxLkdldERldGVjdGlv",
-            "bnNSZXNwb25zZSI1gtPkkwIvIi0vdmlhbS9hcGkvdjEvc2VydmljZS92aXNp",
-            "b24ve25hbWV9L2RldGVjdGlvbnMS3AEKHEdldENsYXNzaWZpY2F0aW9uc0Zy",
-            "b21DYW1lcmESOy52aWFtLnNlcnZpY2UudmlzaW9uLnYxLkdldENsYXNzaWZp",
-            "Y2F0aW9uc0Zyb21DYW1lcmFSZXF1ZXN0GjwudmlhbS5zZXJ2aWNlLnZpc2lv",
-            "bi52MS5HZXRDbGFzc2lmaWNhdGlvbnNGcm9tQ2FtZXJhUmVzcG9uc2UiQYLT",
-            "5JMCOyI5L3ZpYW0vYXBpL3YxL3NlcnZpY2UvdmlzaW9uL3tuYW1lfS9jYW1l",
-            "cmFfY2xhc3NpZmljYXRpb25zErcBChJHZXRDbGFzc2lmaWNhdGlvbnMSMS52",
-            "aWFtLnNlcnZpY2UudmlzaW9uLnYxLkdldENsYXNzaWZpY2F0aW9uc1JlcXVl",
-            "c3QaMi52aWFtLnNlcnZpY2UudmlzaW9uLnYxLkdldENsYXNzaWZpY2F0aW9u",
-            "c1Jlc3BvbnNlIjqC0+STAjQiMi92aWFtL2FwaS92MS9zZXJ2aWNlL3Zpc2lv",
-            "bi97bmFtZX0vY2xhc3NpZmljYXRpb25zEsEBChRHZXRPYmplY3RQb2ludENs",
-            "b3VkcxIzLnZpYW0uc2VydmljZS52aXNpb24udjEuR2V0T2JqZWN0UG9pbnRD",
-            "bG91ZHNSZXF1ZXN0GjQudmlhbS5zZXJ2aWNlLnZpc2lvbi52MS5HZXRPYmpl",
-            "Y3RQb2ludENsb3Vkc1Jlc3BvbnNlIj6C0+STAjgiNi92aWFtL2FwaS92MS9z",
-            "ZXJ2aWNlL3Zpc2lvbi97bmFtZX0vb2JqZWN0X3BvaW50X2Nsb3VkcxKHAQoJ",
-            "RG9Db21tYW5kEiAudmlhbS5jb21tb24udjEuRG9Db21tYW5kUmVxdWVzdBoh",
-            "LnZpYW0uY29tbW9uLnYxLkRvQ29tbWFuZFJlc3BvbnNlIjWC0+STAi8iLS92",
-            "aWFtL2FwaS92MS9zZXJ2aWNlL3Zpc2lvbi97bmFtZX0vZG9fY29tbWFuZEI/",
-            "Chpjb20udmlhbS5zZXJ2aWNlLnZpc2lvbi52MVohZ28udmlhbS5jb20vYXBp",
-            "L3NlcnZpY2UvdmlzaW9uL3YxYgZwcm90bzM="));
+            "ZS52aXNpb24udjEaFmNvbW1vbi92MS9jb21tb24ucHJvdG8aIGNvbXBvbmVu",
+            "dC9jYW1lcmEvdjEvY2FtZXJhLnByb3RvGhxnb29nbGUvYXBpL2Fubm90YXRp",
+            "b25zLnByb3RvGhxnb29nbGUvcHJvdG9idWYvc3RydWN0LnByb3RvIroBChRH",
+            "ZXREZXRlY3Rpb25zUmVxdWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEhQKBWlt",
+            "YWdlGAIgASgMUgVpbWFnZRIUCgV3aWR0aBgDIAEoA1IFd2lkdGgSFgoGaGVp",
+            "Z2h0GAQgASgDUgZoZWlnaHQSGwoJbWltZV90eXBlGAUgASgJUghtaW1lVHlw",
+            "ZRItCgVleHRyYRhjIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4",
+            "dHJhIloKFUdldERldGVjdGlvbnNSZXNwb25zZRJBCgpkZXRlY3Rpb25zGAEg",
+            "AygLMiEudmlhbS5zZXJ2aWNlLnZpc2lvbi52MS5EZXRlY3Rpb25SCmRldGVj",
+            "dGlvbnMihAEKHkdldERldGVjdGlvbnNGcm9tQ2FtZXJhUmVxdWVzdBISCgRu",
+            "YW1lGAEgASgJUgRuYW1lEh8KC2NhbWVyYV9uYW1lGAIgASgJUgpjYW1lcmFO",
+            "YW1lEi0KBWV4dHJhGGMgASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFIF",
+            "ZXh0cmEiZAofR2V0RGV0ZWN0aW9uc0Zyb21DYW1lcmFSZXNwb25zZRJBCgpk",
+            "ZXRlY3Rpb25zGAEgAygLMiEudmlhbS5zZXJ2aWNlLnZpc2lvbi52MS5EZXRl",
+            "Y3Rpb25SCmRldGVjdGlvbnMi6gMKCURldGVjdGlvbhIYCgV4X21pbhgBIAEo",
+            "A0gAUgR4TWluiAEBEhgKBXlfbWluGAIgASgDSAFSBHlNaW6IAQESGAoFeF9t",
+            "YXgYAyABKANIAlIEeE1heIgBARIYCgV5X21heBgEIAEoA0gDUgR5TWF4iAEB",
+            "Eh4KCmNvbmZpZGVuY2UYBSABKAFSCmNvbmZpZGVuY2USHQoKY2xhc3NfbmFt",
+            "ZRgGIAEoCVIJY2xhc3NOYW1lEi0KEHhfbWluX25vcm1hbGl6ZWQYByABKAFI",
+            "BFIOeE1pbk5vcm1hbGl6ZWSIAQESLQoQeV9taW5fbm9ybWFsaXplZBgIIAEo",
+            "AUgFUg55TWluTm9ybWFsaXplZIgBARItChB4X21heF9ub3JtYWxpemVkGAkg",
+            "ASgBSAZSDnhNYXhOb3JtYWxpemVkiAEBEi0KEHlfbWF4X25vcm1hbGl6ZWQY",
+            "CiABKAFIB1IOeU1heE5vcm1hbGl6ZWSIAQFCCAoGX3hfbWluQggKBl95X21p",
+            "bkIICgZfeF9tYXhCCAoGX3lfbWF4QhMKEV94X21pbl9ub3JtYWxpemVkQhMK",
+            "EV95X21pbl9ub3JtYWxpemVkQhMKEV94X21heF9ub3JtYWxpemVkQhMKEV95",
+            "X21heF9ub3JtYWxpemVkIs0BChlHZXRDbGFzc2lmaWNhdGlvbnNSZXF1ZXN0",
+            "EhIKBG5hbWUYASABKAlSBG5hbWUSFAoFaW1hZ2UYAiABKAxSBWltYWdlEhQK",
+            "BXdpZHRoGAMgASgFUgV3aWR0aBIWCgZoZWlnaHQYBCABKAVSBmhlaWdodBIb",
+            "CgltaW1lX3R5cGUYBSABKAlSCG1pbWVUeXBlEgwKAW4YBiABKAVSAW4SLQoF",
+            "ZXh0cmEYYyABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0UgVleHRyYSJu",
+            "ChpHZXRDbGFzc2lmaWNhdGlvbnNSZXNwb25zZRJQCg9jbGFzc2lmaWNhdGlv",
+            "bnMYASADKAsyJi52aWFtLnNlcnZpY2UudmlzaW9uLnYxLkNsYXNzaWZpY2F0",
+            "aW9uUg9jbGFzc2lmaWNhdGlvbnMilwEKI0dldENsYXNzaWZpY2F0aW9uc0Zy",
+            "b21DYW1lcmFSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUSHwoLY2FtZXJh",
+            "X25hbWUYAiABKAlSCmNhbWVyYU5hbWUSDAoBbhgDIAEoBVIBbhItCgVleHRy",
+            "YRhjIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4dHJhIngKJEdl",
+            "dENsYXNzaWZpY2F0aW9uc0Zyb21DYW1lcmFSZXNwb25zZRJQCg9jbGFzc2lm",
+            "aWNhdGlvbnMYASADKAsyJi52aWFtLnNlcnZpY2UudmlzaW9uLnYxLkNsYXNz",
+            "aWZpY2F0aW9uUg9jbGFzc2lmaWNhdGlvbnMiTwoOQ2xhc3NpZmljYXRpb24S",
+            "HQoKY2xhc3NfbmFtZRgBIAEoCVIJY2xhc3NOYW1lEh4KCmNvbmZpZGVuY2UY",
+            "AiABKAFSCmNvbmZpZGVuY2UingEKG0dldE9iamVjdFBvaW50Q2xvdWRzUmVx",
+            "dWVzdBISCgRuYW1lGAEgASgJUgRuYW1lEh8KC2NhbWVyYV9uYW1lGAIgASgJ",
+            "UgpjYW1lcmFOYW1lEhsKCW1pbWVfdHlwZRgDIAEoCVIIbWltZVR5cGUSLQoF",
+            "ZXh0cmEYYyABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0UgVleHRyYSJ3",
+            "ChxHZXRPYmplY3RQb2ludENsb3Vkc1Jlc3BvbnNlEhsKCW1pbWVfdHlwZRgB",
+            "IAEoCVIIbWltZVR5cGUSOgoHb2JqZWN0cxgCIAMoCzIgLnZpYW0uY29tbW9u",
+            "LnYxLlBvaW50Q2xvdWRPYmplY3RSB29iamVjdHMiWQoUR2V0UHJvcGVydGll",
+            "c1JlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZRItCgVleHRyYRhjIAEoCzIX",
+            "Lmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4dHJhIsUCChtDYXB0dXJlQWxs",
+            "RnJvbUNhbWVyYVJlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZRIfCgtjYW1l",
+            "cmFfbmFtZRgCIAEoCVIKY2FtZXJhTmFtZRIhCgxyZXR1cm5faW1hZ2UYAyAB",
+            "KAhSC3JldHVybkltYWdlEjUKFnJldHVybl9jbGFzc2lmaWNhdGlvbnMYBCAB",
+            "KAhSFXJldHVybkNsYXNzaWZpY2F0aW9ucxIrChFyZXR1cm5fZGV0ZWN0aW9u",
+            "cxgFIAEoCFIQcmV0dXJuRGV0ZWN0aW9ucxI7ChpyZXR1cm5fb2JqZWN0X3Bv",
+            "aW50X2Nsb3VkcxgGIAEoCFIXcmV0dXJuT2JqZWN0UG9pbnRDbG91ZHMSLQoF",
+            "ZXh0cmEYYyABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0UgVleHRyYSLV",
+            "AgocQ2FwdHVyZUFsbEZyb21DYW1lcmFSZXNwb25zZRI1CgVpbWFnZRgBIAEo",
+            "CzIfLnZpYW0uY29tcG9uZW50LmNhbWVyYS52MS5JbWFnZVIFaW1hZ2USQQoK",
+            "ZGV0ZWN0aW9ucxgCIAMoCzIhLnZpYW0uc2VydmljZS52aXNpb24udjEuRGV0",
+            "ZWN0aW9uUgpkZXRlY3Rpb25zElAKD2NsYXNzaWZpY2F0aW9ucxgDIAMoCzIm",
+            "LnZpYW0uc2VydmljZS52aXNpb24udjEuQ2xhc3NpZmljYXRpb25SD2NsYXNz",
+            "aWZpY2F0aW9ucxI6CgdvYmplY3RzGAQgAygLMiAudmlhbS5jb21tb24udjEu",
+            "UG9pbnRDbG91ZE9iamVjdFIHb2JqZWN0cxItCgVleHRyYRhjIAEoCzIXLmdv",
+            "b2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4dHJhIsoBChVHZXRQcm9wZXJ0aWVz",
+            "UmVzcG9uc2USOwoZY2xhc3NpZmljYXRpb25zX3N1cHBvcnRlZBgBIAEoCFIY",
+            "Y2xhc3NpZmljYXRpb25zU3VwcG9ydGVkEjEKFGRldGVjdGlvbnNfc3VwcG9y",
+            "dGVkGAIgASgIUhNkZXRlY3Rpb25zU3VwcG9ydGVkEkEKHW9iamVjdF9wb2lu",
+            "dF9jbG91ZHNfc3VwcG9ydGVkGAMgASgIUhpvYmplY3RQb2ludENsb3Vkc1N1",
+            "cHBvcnRlZDLNCwoNVmlzaW9uU2VydmljZRLIAQoXR2V0RGV0ZWN0aW9uc0Zy",
+            "b21DYW1lcmESNi52aWFtLnNlcnZpY2UudmlzaW9uLnYxLkdldERldGVjdGlv",
+            "bnNGcm9tQ2FtZXJhUmVxdWVzdBo3LnZpYW0uc2VydmljZS52aXNpb24udjEu",
+            "R2V0RGV0ZWN0aW9uc0Zyb21DYW1lcmFSZXNwb25zZSI8gtPkkwI2IjQvdmlh",
+            "bS9hcGkvdjEvc2VydmljZS92aXNpb24ve25hbWV9L2NhbWVyYV9kZXRlY3Rp",
+            "b25zEqMBCg1HZXREZXRlY3Rpb25zEiwudmlhbS5zZXJ2aWNlLnZpc2lvbi52",
+            "MS5HZXREZXRlY3Rpb25zUmVxdWVzdBotLnZpYW0uc2VydmljZS52aXNpb24u",
+            "djEuR2V0RGV0ZWN0aW9uc1Jlc3BvbnNlIjWC0+STAi8iLS92aWFtL2FwaS92",
+            "MS9zZXJ2aWNlL3Zpc2lvbi97bmFtZX0vZGV0ZWN0aW9ucxLcAQocR2V0Q2xh",
+            "c3NpZmljYXRpb25zRnJvbUNhbWVyYRI7LnZpYW0uc2VydmljZS52aXNpb24u",
+            "djEuR2V0Q2xhc3NpZmljYXRpb25zRnJvbUNhbWVyYVJlcXVlc3QaPC52aWFt",
+            "LnNlcnZpY2UudmlzaW9uLnYxLkdldENsYXNzaWZpY2F0aW9uc0Zyb21DYW1l",
+            "cmFSZXNwb25zZSJBgtPkkwI7IjkvdmlhbS9hcGkvdjEvc2VydmljZS92aXNp",
+            "b24ve25hbWV9L2NhbWVyYV9jbGFzc2lmaWNhdGlvbnMStwEKEkdldENsYXNz",
+            "aWZpY2F0aW9ucxIxLnZpYW0uc2VydmljZS52aXNpb24udjEuR2V0Q2xhc3Np",
+            "ZmljYXRpb25zUmVxdWVzdBoyLnZpYW0uc2VydmljZS52aXNpb24udjEuR2V0",
+            "Q2xhc3NpZmljYXRpb25zUmVzcG9uc2UiOoLT5JMCNCIyL3ZpYW0vYXBpL3Yx",
+            "L3NlcnZpY2UvdmlzaW9uL3tuYW1lfS9jbGFzc2lmaWNhdGlvbnMSwQEKFEdl",
+            "dE9iamVjdFBvaW50Q2xvdWRzEjMudmlhbS5zZXJ2aWNlLnZpc2lvbi52MS5H",
+            "ZXRPYmplY3RQb2ludENsb3Vkc1JlcXVlc3QaNC52aWFtLnNlcnZpY2Uudmlz",
+            "aW9uLnYxLkdldE9iamVjdFBvaW50Q2xvdWRzUmVzcG9uc2UiPoLT5JMCOCI2",
+            "L3ZpYW0vYXBpL3YxL3NlcnZpY2UvdmlzaW9uL3tuYW1lfS9vYmplY3RfcG9p",
+            "bnRfY2xvdWRzEqcBCg1HZXRQcm9wZXJ0aWVzEiwudmlhbS5zZXJ2aWNlLnZp",
+            "c2lvbi52MS5HZXRQcm9wZXJ0aWVzUmVxdWVzdBotLnZpYW0uc2VydmljZS52",
+            "aXNpb24udjEuR2V0UHJvcGVydGllc1Jlc3BvbnNlIjmC0+STAjMiMS92aWFt",
+            "L2FwaS92MS9zZXJ2aWNlL3Zpc2lvbi97bmFtZX0vZ2V0X3Byb3BlcnRpZXMS",
+            "uQEKFENhcHR1cmVBbGxGcm9tQ2FtZXJhEjMudmlhbS5zZXJ2aWNlLnZpc2lv",
+            "bi52MS5DYXB0dXJlQWxsRnJvbUNhbWVyYVJlcXVlc3QaNC52aWFtLnNlcnZp",
+            "Y2UudmlzaW9uLnYxLkNhcHR1cmVBbGxGcm9tQ2FtZXJhUmVzcG9uc2UiNoLT",
+            "5JMCMCIuL3ZpYW0vYXBpL3YxL3NlcnZpY2UvdmlzaW9uL3tuYW1lfS9jYXB0",
+            "dXJlX2FsbBKHAQoJRG9Db21tYW5kEiAudmlhbS5jb21tb24udjEuRG9Db21t",
+            "YW5kUmVxdWVzdBohLnZpYW0uY29tbW9uLnYxLkRvQ29tbWFuZFJlc3BvbnNl",
+            "IjWC0+STAi8iLS92aWFtL2FwaS92MS9zZXJ2aWNlL3Zpc2lvbi97bmFtZX0v",
+            "ZG9fY29tbWFuZELHAQoaY29tLnZpYW0uc2VydmljZS52aXNpb24udjFCC1Zp",
+            "c2lvblByb3RvUAFaIWdvLnZpYW0uY29tL2FwaS9zZXJ2aWNlL3Zpc2lvbi92",
+            "MaICA1ZTVqoCFlZpYW0uU2VydmljZS5WaXNpb24uVjHKAhZWaWFtXFNlcnZp",
+            "Y2VcVmlzaW9uXFYx4gIiVmlhbVxTZXJ2aWNlXFZpc2lvblxWMVxHUEJNZXRh",
+            "ZGF0YeoCGVZpYW06OlNlcnZpY2U6OlZpc2lvbjo6VjFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Viam.Component.Camera.V1.CameraReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.GetDetectionsRequest), global::Viam.Service.Vision.V1.GetDetectionsRequest.Parser, new[]{ "Name", "Image", "Width", "Height", "MimeType", "Extra" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.GetDetectionsResponse), global::Viam.Service.Vision.V1.GetDetectionsResponse.Parser, new[]{ "Detections" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.GetDetectionsFromCameraRequest), global::Viam.Service.Vision.V1.GetDetectionsFromCameraRequest.Parser, new[]{ "Name", "CameraName", "Extra" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.GetDetectionsFromCameraResponse), global::Viam.Service.Vision.V1.GetDetectionsFromCameraResponse.Parser, new[]{ "Detections" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.Detection), global::Viam.Service.Vision.V1.Detection.Parser, new[]{ "XMin", "YMin", "XMax", "YMax", "Confidence", "ClassName" }, new[]{ "XMin", "YMin", "XMax", "YMax" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.Detection), global::Viam.Service.Vision.V1.Detection.Parser, new[]{ "XMin", "YMin", "XMax", "YMax", "Confidence", "ClassName", "XMinNormalized", "YMinNormalized", "XMaxNormalized", "YMaxNormalized" }, new[]{ "XMin", "YMin", "XMax", "YMax", "XMinNormalized", "YMinNormalized", "XMaxNormalized", "YMaxNormalized" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.GetClassificationsRequest), global::Viam.Service.Vision.V1.GetClassificationsRequest.Parser, new[]{ "Name", "Image", "Width", "Height", "MimeType", "N", "Extra" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.GetClassificationsResponse), global::Viam.Service.Vision.V1.GetClassificationsResponse.Parser, new[]{ "Classifications" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.GetClassificationsFromCameraRequest), global::Viam.Service.Vision.V1.GetClassificationsFromCameraRequest.Parser, new[]{ "Name", "CameraName", "N", "Extra" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.GetClassificationsFromCameraResponse), global::Viam.Service.Vision.V1.GetClassificationsFromCameraResponse.Parser, new[]{ "Classifications" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.Classification), global::Viam.Service.Vision.V1.Classification.Parser, new[]{ "ClassName", "Confidence" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.GetObjectPointCloudsRequest), global::Viam.Service.Vision.V1.GetObjectPointCloudsRequest.Parser, new[]{ "Name", "CameraName", "MimeType", "Extra" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.GetObjectPointCloudsResponse), global::Viam.Service.Vision.V1.GetObjectPointCloudsResponse.Parser, new[]{ "MimeType", "Objects" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.GetObjectPointCloudsResponse), global::Viam.Service.Vision.V1.GetObjectPointCloudsResponse.Parser, new[]{ "MimeType", "Objects" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.GetPropertiesRequest), global::Viam.Service.Vision.V1.GetPropertiesRequest.Parser, new[]{ "Name", "Extra" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.CaptureAllFromCameraRequest), global::Viam.Service.Vision.V1.CaptureAllFromCameraRequest.Parser, new[]{ "Name", "CameraName", "ReturnImage", "ReturnClassifications", "ReturnDetections", "ReturnObjectPointClouds", "Extra" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.CaptureAllFromCameraResponse), global::Viam.Service.Vision.V1.CaptureAllFromCameraResponse.Parser, new[]{ "Image", "Detections", "Classifications", "Objects", "Extra" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Service.Vision.V1.GetPropertiesResponse), global::Viam.Service.Vision.V1.GetPropertiesResponse.Parser, new[]{ "ClassificationsSupported", "DetectionsSupported", "ObjectPointCloudsSupported" }, null, null, null, null)
           }));
     }
     #endregion
@@ -435,7 +478,11 @@ namespace Viam.Service.Vision.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -477,7 +524,11 @@ namespace Viam.Service.Vision.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -663,7 +714,11 @@ namespace Viam.Service.Vision.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -682,7 +737,11 @@ namespace Viam.Service.Vision.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -920,7 +979,11 @@ namespace Viam.Service.Vision.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -950,7 +1013,11 @@ namespace Viam.Service.Vision.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1124,7 +1191,11 @@ namespace Viam.Service.Vision.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1143,7 +1214,11 @@ namespace Viam.Service.Vision.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1201,6 +1276,10 @@ namespace Viam.Service.Vision.V1 {
       yMax_ = other.yMax_;
       confidence_ = other.confidence_;
       className_ = other.className_;
+      xMinNormalized_ = other.xMinNormalized_;
+      yMinNormalized_ = other.yMinNormalized_;
+      xMaxNormalized_ = other.xMaxNormalized_;
+      yMaxNormalized_ = other.yMaxNormalized_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1351,6 +1430,117 @@ namespace Viam.Service.Vision.V1 {
       }
     }
 
+    /// <summary>Field number for the "x_min_normalized" field.</summary>
+    public const int XMinNormalizedFieldNumber = 7;
+    private readonly static double XMinNormalizedDefaultValue = 0D;
+
+    private double xMinNormalized_;
+    /// <summary>
+    /// the four corners of the box, in proportion to the respective image dimension
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double XMinNormalized {
+      get { if ((_hasBits0 & 16) != 0) { return xMinNormalized_; } else { return XMinNormalizedDefaultValue; } }
+      set {
+        _hasBits0 |= 16;
+        xMinNormalized_ = value;
+      }
+    }
+    /// <summary>Gets whether the "x_min_normalized" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasXMinNormalized {
+      get { return (_hasBits0 & 16) != 0; }
+    }
+    /// <summary>Clears the value of the "x_min_normalized" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearXMinNormalized() {
+      _hasBits0 &= ~16;
+    }
+
+    /// <summary>Field number for the "y_min_normalized" field.</summary>
+    public const int YMinNormalizedFieldNumber = 8;
+    private readonly static double YMinNormalizedDefaultValue = 0D;
+
+    private double yMinNormalized_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double YMinNormalized {
+      get { if ((_hasBits0 & 32) != 0) { return yMinNormalized_; } else { return YMinNormalizedDefaultValue; } }
+      set {
+        _hasBits0 |= 32;
+        yMinNormalized_ = value;
+      }
+    }
+    /// <summary>Gets whether the "y_min_normalized" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasYMinNormalized {
+      get { return (_hasBits0 & 32) != 0; }
+    }
+    /// <summary>Clears the value of the "y_min_normalized" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearYMinNormalized() {
+      _hasBits0 &= ~32;
+    }
+
+    /// <summary>Field number for the "x_max_normalized" field.</summary>
+    public const int XMaxNormalizedFieldNumber = 9;
+    private readonly static double XMaxNormalizedDefaultValue = 0D;
+
+    private double xMaxNormalized_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double XMaxNormalized {
+      get { if ((_hasBits0 & 64) != 0) { return xMaxNormalized_; } else { return XMaxNormalizedDefaultValue; } }
+      set {
+        _hasBits0 |= 64;
+        xMaxNormalized_ = value;
+      }
+    }
+    /// <summary>Gets whether the "x_max_normalized" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasXMaxNormalized {
+      get { return (_hasBits0 & 64) != 0; }
+    }
+    /// <summary>Clears the value of the "x_max_normalized" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearXMaxNormalized() {
+      _hasBits0 &= ~64;
+    }
+
+    /// <summary>Field number for the "y_max_normalized" field.</summary>
+    public const int YMaxNormalizedFieldNumber = 10;
+    private readonly static double YMaxNormalizedDefaultValue = 0D;
+
+    private double yMaxNormalized_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double YMaxNormalized {
+      get { if ((_hasBits0 & 128) != 0) { return yMaxNormalized_; } else { return YMaxNormalizedDefaultValue; } }
+      set {
+        _hasBits0 |= 128;
+        yMaxNormalized_ = value;
+      }
+    }
+    /// <summary>Gets whether the "y_max_normalized" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasYMaxNormalized {
+      get { return (_hasBits0 & 128) != 0; }
+    }
+    /// <summary>Clears the value of the "y_max_normalized" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearYMaxNormalized() {
+      _hasBits0 &= ~128;
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -1372,6 +1562,10 @@ namespace Viam.Service.Vision.V1 {
       if (YMax != other.YMax) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(Confidence, other.Confidence)) return false;
       if (ClassName != other.ClassName) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(XMinNormalized, other.XMinNormalized)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(YMinNormalized, other.YMinNormalized)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(XMaxNormalized, other.XMaxNormalized)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(YMaxNormalized, other.YMaxNormalized)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1385,6 +1579,10 @@ namespace Viam.Service.Vision.V1 {
       if (HasYMax) hash ^= YMax.GetHashCode();
       if (Confidence != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(Confidence);
       if (ClassName.Length != 0) hash ^= ClassName.GetHashCode();
+      if (HasXMinNormalized) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(XMinNormalized);
+      if (HasYMinNormalized) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(YMinNormalized);
+      if (HasXMaxNormalized) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(XMaxNormalized);
+      if (HasYMaxNormalized) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(YMaxNormalized);
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1427,6 +1625,22 @@ namespace Viam.Service.Vision.V1 {
         output.WriteRawTag(50);
         output.WriteString(ClassName);
       }
+      if (HasXMinNormalized) {
+        output.WriteRawTag(57);
+        output.WriteDouble(XMinNormalized);
+      }
+      if (HasYMinNormalized) {
+        output.WriteRawTag(65);
+        output.WriteDouble(YMinNormalized);
+      }
+      if (HasXMaxNormalized) {
+        output.WriteRawTag(73);
+        output.WriteDouble(XMaxNormalized);
+      }
+      if (HasYMaxNormalized) {
+        output.WriteRawTag(81);
+        output.WriteDouble(YMaxNormalized);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1461,6 +1675,22 @@ namespace Viam.Service.Vision.V1 {
         output.WriteRawTag(50);
         output.WriteString(ClassName);
       }
+      if (HasXMinNormalized) {
+        output.WriteRawTag(57);
+        output.WriteDouble(XMinNormalized);
+      }
+      if (HasYMinNormalized) {
+        output.WriteRawTag(65);
+        output.WriteDouble(YMinNormalized);
+      }
+      if (HasXMaxNormalized) {
+        output.WriteRawTag(73);
+        output.WriteDouble(XMaxNormalized);
+      }
+      if (HasYMaxNormalized) {
+        output.WriteRawTag(81);
+        output.WriteDouble(YMaxNormalized);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1488,6 +1718,18 @@ namespace Viam.Service.Vision.V1 {
       }
       if (ClassName.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(ClassName);
+      }
+      if (HasXMinNormalized) {
+        size += 1 + 8;
+      }
+      if (HasYMinNormalized) {
+        size += 1 + 8;
+      }
+      if (HasXMaxNormalized) {
+        size += 1 + 8;
+      }
+      if (HasYMaxNormalized) {
+        size += 1 + 8;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1519,6 +1761,18 @@ namespace Viam.Service.Vision.V1 {
       if (other.ClassName.Length != 0) {
         ClassName = other.ClassName;
       }
+      if (other.HasXMinNormalized) {
+        XMinNormalized = other.XMinNormalized;
+      }
+      if (other.HasYMinNormalized) {
+        YMinNormalized = other.YMinNormalized;
+      }
+      if (other.HasXMaxNormalized) {
+        XMaxNormalized = other.XMaxNormalized;
+      }
+      if (other.HasYMaxNormalized) {
+        YMaxNormalized = other.YMaxNormalized;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1530,7 +1784,11 @@ namespace Viam.Service.Vision.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1558,6 +1816,22 @@ namespace Viam.Service.Vision.V1 {
             ClassName = input.ReadString();
             break;
           }
+          case 57: {
+            XMinNormalized = input.ReadDouble();
+            break;
+          }
+          case 65: {
+            YMinNormalized = input.ReadDouble();
+            break;
+          }
+          case 73: {
+            XMaxNormalized = input.ReadDouble();
+            break;
+          }
+          case 81: {
+            YMaxNormalized = input.ReadDouble();
+            break;
+          }
         }
       }
     #endif
@@ -1569,7 +1843,11 @@ namespace Viam.Service.Vision.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1595,6 +1873,22 @@ namespace Viam.Service.Vision.V1 {
           }
           case 50: {
             ClassName = input.ReadString();
+            break;
+          }
+          case 57: {
+            XMinNormalized = input.ReadDouble();
+            break;
+          }
+          case 65: {
+            YMinNormalized = input.ReadDouble();
+            break;
+          }
+          case 73: {
+            XMaxNormalized = input.ReadDouble();
+            break;
+          }
+          case 81: {
+            YMaxNormalized = input.ReadDouble();
             break;
           }
         }
@@ -1958,7 +2252,11 @@ namespace Viam.Service.Vision.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2004,7 +2302,11 @@ namespace Viam.Service.Vision.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2191,7 +2493,11 @@ namespace Viam.Service.Vision.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2210,7 +2516,11 @@ namespace Viam.Service.Vision.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2483,7 +2793,11 @@ namespace Viam.Service.Vision.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2517,7 +2831,11 @@ namespace Viam.Service.Vision.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2692,7 +3010,11 @@ namespace Viam.Service.Vision.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2711,7 +3033,11 @@ namespace Viam.Service.Vision.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2920,7 +3246,11 @@ namespace Viam.Service.Vision.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2943,7 +3273,11 @@ namespace Viam.Service.Vision.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3217,7 +3551,11 @@ namespace Viam.Service.Vision.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3251,7 +3589,11 @@ namespace Viam.Service.Vision.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3461,7 +3803,11 @@ namespace Viam.Service.Vision.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3484,7 +3830,11 @@ namespace Viam.Service.Vision.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3494,6 +3844,1315 @@ namespace Viam.Service.Vision.V1 {
           }
           case 18: {
             objects_.AddEntriesFrom(ref input, _repeated_objects_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class GetPropertiesRequest : pb::IMessage<GetPropertiesRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<GetPropertiesRequest> _parser = new pb::MessageParser<GetPropertiesRequest>(() => new GetPropertiesRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<GetPropertiesRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Viam.Service.Vision.V1.VisionReflection.Descriptor.MessageTypes[12]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetPropertiesRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetPropertiesRequest(GetPropertiesRequest other) : this() {
+      name_ = other.name_;
+      extra_ = other.extra_ != null ? other.extra_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetPropertiesRequest Clone() {
+      return new GetPropertiesRequest(this);
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
+    /// <summary>
+    /// name of the vision service
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "extra" field.</summary>
+    public const int ExtraFieldNumber = 99;
+    private global::Google.Protobuf.WellKnownTypes.Struct extra_;
+    /// <summary>
+    /// Additional arguments to the method
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Struct Extra {
+      get { return extra_; }
+      set {
+        extra_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as GetPropertiesRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(GetPropertiesRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Name != other.Name) return false;
+      if (!object.Equals(Extra, other.Extra)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (extra_ != null) hash ^= Extra.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (extra_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Extra);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (extra_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Extra);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (extra_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Extra);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(GetPropertiesRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.extra_ != null) {
+        if (extra_ == null) {
+          Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
+        }
+        Extra.MergeFrom(other.Extra);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 794: {
+            if (extra_ == null) {
+              Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(Extra);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 794: {
+            if (extra_ == null) {
+              Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(Extra);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class CaptureAllFromCameraRequest : pb::IMessage<CaptureAllFromCameraRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<CaptureAllFromCameraRequest> _parser = new pb::MessageParser<CaptureAllFromCameraRequest>(() => new CaptureAllFromCameraRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<CaptureAllFromCameraRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Viam.Service.Vision.V1.VisionReflection.Descriptor.MessageTypes[13]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public CaptureAllFromCameraRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public CaptureAllFromCameraRequest(CaptureAllFromCameraRequest other) : this() {
+      name_ = other.name_;
+      cameraName_ = other.cameraName_;
+      returnImage_ = other.returnImage_;
+      returnClassifications_ = other.returnClassifications_;
+      returnDetections_ = other.returnDetections_;
+      returnObjectPointClouds_ = other.returnObjectPointClouds_;
+      extra_ = other.extra_ != null ? other.extra_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public CaptureAllFromCameraRequest Clone() {
+      return new CaptureAllFromCameraRequest(this);
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
+    /// <summary>
+    /// name of the vision service
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "camera_name" field.</summary>
+    public const int CameraNameFieldNumber = 2;
+    private string cameraName_ = "";
+    /// <summary>
+    /// name of camera source to use as input
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string CameraName {
+      get { return cameraName_; }
+      set {
+        cameraName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "return_image" field.</summary>
+    public const int ReturnImageFieldNumber = 3;
+    private bool returnImage_;
+    /// <summary>
+    /// whether or not including the image in the response
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool ReturnImage {
+      get { return returnImage_; }
+      set {
+        returnImage_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "return_classifications" field.</summary>
+    public const int ReturnClassificationsFieldNumber = 4;
+    private bool returnClassifications_;
+    /// <summary>
+    /// whether or not including classifications in the response
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool ReturnClassifications {
+      get { return returnClassifications_; }
+      set {
+        returnClassifications_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "return_detections" field.</summary>
+    public const int ReturnDetectionsFieldNumber = 5;
+    private bool returnDetections_;
+    /// <summary>
+    /// whether or not including detections in the response
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool ReturnDetections {
+      get { return returnDetections_; }
+      set {
+        returnDetections_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "return_object_point_clouds" field.</summary>
+    public const int ReturnObjectPointCloudsFieldNumber = 6;
+    private bool returnObjectPointClouds_;
+    /// <summary>
+    /// whether or not including pcd in the response
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool ReturnObjectPointClouds {
+      get { return returnObjectPointClouds_; }
+      set {
+        returnObjectPointClouds_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extra" field.</summary>
+    public const int ExtraFieldNumber = 99;
+    private global::Google.Protobuf.WellKnownTypes.Struct extra_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Struct Extra {
+      get { return extra_; }
+      set {
+        extra_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as CaptureAllFromCameraRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(CaptureAllFromCameraRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Name != other.Name) return false;
+      if (CameraName != other.CameraName) return false;
+      if (ReturnImage != other.ReturnImage) return false;
+      if (ReturnClassifications != other.ReturnClassifications) return false;
+      if (ReturnDetections != other.ReturnDetections) return false;
+      if (ReturnObjectPointClouds != other.ReturnObjectPointClouds) return false;
+      if (!object.Equals(Extra, other.Extra)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      if (CameraName.Length != 0) hash ^= CameraName.GetHashCode();
+      if (ReturnImage != false) hash ^= ReturnImage.GetHashCode();
+      if (ReturnClassifications != false) hash ^= ReturnClassifications.GetHashCode();
+      if (ReturnDetections != false) hash ^= ReturnDetections.GetHashCode();
+      if (ReturnObjectPointClouds != false) hash ^= ReturnObjectPointClouds.GetHashCode();
+      if (extra_ != null) hash ^= Extra.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (CameraName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(CameraName);
+      }
+      if (ReturnImage != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(ReturnImage);
+      }
+      if (ReturnClassifications != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(ReturnClassifications);
+      }
+      if (ReturnDetections != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(ReturnDetections);
+      }
+      if (ReturnObjectPointClouds != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(ReturnObjectPointClouds);
+      }
+      if (extra_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Extra);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      if (CameraName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(CameraName);
+      }
+      if (ReturnImage != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(ReturnImage);
+      }
+      if (ReturnClassifications != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(ReturnClassifications);
+      }
+      if (ReturnDetections != false) {
+        output.WriteRawTag(40);
+        output.WriteBool(ReturnDetections);
+      }
+      if (ReturnObjectPointClouds != false) {
+        output.WriteRawTag(48);
+        output.WriteBool(ReturnObjectPointClouds);
+      }
+      if (extra_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Extra);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      if (CameraName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(CameraName);
+      }
+      if (ReturnImage != false) {
+        size += 1 + 1;
+      }
+      if (ReturnClassifications != false) {
+        size += 1 + 1;
+      }
+      if (ReturnDetections != false) {
+        size += 1 + 1;
+      }
+      if (ReturnObjectPointClouds != false) {
+        size += 1 + 1;
+      }
+      if (extra_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Extra);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(CaptureAllFromCameraRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      if (other.CameraName.Length != 0) {
+        CameraName = other.CameraName;
+      }
+      if (other.ReturnImage != false) {
+        ReturnImage = other.ReturnImage;
+      }
+      if (other.ReturnClassifications != false) {
+        ReturnClassifications = other.ReturnClassifications;
+      }
+      if (other.ReturnDetections != false) {
+        ReturnDetections = other.ReturnDetections;
+      }
+      if (other.ReturnObjectPointClouds != false) {
+        ReturnObjectPointClouds = other.ReturnObjectPointClouds;
+      }
+      if (other.extra_ != null) {
+        if (extra_ == null) {
+          Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
+        }
+        Extra.MergeFrom(other.Extra);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            CameraName = input.ReadString();
+            break;
+          }
+          case 24: {
+            ReturnImage = input.ReadBool();
+            break;
+          }
+          case 32: {
+            ReturnClassifications = input.ReadBool();
+            break;
+          }
+          case 40: {
+            ReturnDetections = input.ReadBool();
+            break;
+          }
+          case 48: {
+            ReturnObjectPointClouds = input.ReadBool();
+            break;
+          }
+          case 794: {
+            if (extra_ == null) {
+              Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(Extra);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            CameraName = input.ReadString();
+            break;
+          }
+          case 24: {
+            ReturnImage = input.ReadBool();
+            break;
+          }
+          case 32: {
+            ReturnClassifications = input.ReadBool();
+            break;
+          }
+          case 40: {
+            ReturnDetections = input.ReadBool();
+            break;
+          }
+          case 48: {
+            ReturnObjectPointClouds = input.ReadBool();
+            break;
+          }
+          case 794: {
+            if (extra_ == null) {
+              Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(Extra);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class CaptureAllFromCameraResponse : pb::IMessage<CaptureAllFromCameraResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<CaptureAllFromCameraResponse> _parser = new pb::MessageParser<CaptureAllFromCameraResponse>(() => new CaptureAllFromCameraResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<CaptureAllFromCameraResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Viam.Service.Vision.V1.VisionReflection.Descriptor.MessageTypes[14]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public CaptureAllFromCameraResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public CaptureAllFromCameraResponse(CaptureAllFromCameraResponse other) : this() {
+      image_ = other.image_ != null ? other.image_.Clone() : null;
+      detections_ = other.detections_.Clone();
+      classifications_ = other.classifications_.Clone();
+      objects_ = other.objects_.Clone();
+      extra_ = other.extra_ != null ? other.extra_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public CaptureAllFromCameraResponse Clone() {
+      return new CaptureAllFromCameraResponse(this);
+    }
+
+    /// <summary>Field number for the "image" field.</summary>
+    public const int ImageFieldNumber = 1;
+    private global::Viam.Component.Camera.V1.Image image_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Viam.Component.Camera.V1.Image Image {
+      get { return image_; }
+      set {
+        image_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "detections" field.</summary>
+    public const int DetectionsFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::Viam.Service.Vision.V1.Detection> _repeated_detections_codec
+        = pb::FieldCodec.ForMessage(18, global::Viam.Service.Vision.V1.Detection.Parser);
+    private readonly pbc::RepeatedField<global::Viam.Service.Vision.V1.Detection> detections_ = new pbc::RepeatedField<global::Viam.Service.Vision.V1.Detection>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Viam.Service.Vision.V1.Detection> Detections {
+      get { return detections_; }
+    }
+
+    /// <summary>Field number for the "classifications" field.</summary>
+    public const int ClassificationsFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Viam.Service.Vision.V1.Classification> _repeated_classifications_codec
+        = pb::FieldCodec.ForMessage(26, global::Viam.Service.Vision.V1.Classification.Parser);
+    private readonly pbc::RepeatedField<global::Viam.Service.Vision.V1.Classification> classifications_ = new pbc::RepeatedField<global::Viam.Service.Vision.V1.Classification>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Viam.Service.Vision.V1.Classification> Classifications {
+      get { return classifications_; }
+    }
+
+    /// <summary>Field number for the "objects" field.</summary>
+    public const int ObjectsFieldNumber = 4;
+    private static readonly pb::FieldCodec<global::Viam.Common.V1.PointCloudObject> _repeated_objects_codec
+        = pb::FieldCodec.ForMessage(34, global::Viam.Common.V1.PointCloudObject.Parser);
+    private readonly pbc::RepeatedField<global::Viam.Common.V1.PointCloudObject> objects_ = new pbc::RepeatedField<global::Viam.Common.V1.PointCloudObject>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Viam.Common.V1.PointCloudObject> Objects {
+      get { return objects_; }
+    }
+
+    /// <summary>Field number for the "extra" field.</summary>
+    public const int ExtraFieldNumber = 99;
+    private global::Google.Protobuf.WellKnownTypes.Struct extra_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Struct Extra {
+      get { return extra_; }
+      set {
+        extra_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as CaptureAllFromCameraResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(CaptureAllFromCameraResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Image, other.Image)) return false;
+      if(!detections_.Equals(other.detections_)) return false;
+      if(!classifications_.Equals(other.classifications_)) return false;
+      if(!objects_.Equals(other.objects_)) return false;
+      if (!object.Equals(Extra, other.Extra)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (image_ != null) hash ^= Image.GetHashCode();
+      hash ^= detections_.GetHashCode();
+      hash ^= classifications_.GetHashCode();
+      hash ^= objects_.GetHashCode();
+      if (extra_ != null) hash ^= Extra.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (image_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Image);
+      }
+      detections_.WriteTo(output, _repeated_detections_codec);
+      classifications_.WriteTo(output, _repeated_classifications_codec);
+      objects_.WriteTo(output, _repeated_objects_codec);
+      if (extra_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Extra);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (image_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Image);
+      }
+      detections_.WriteTo(ref output, _repeated_detections_codec);
+      classifications_.WriteTo(ref output, _repeated_classifications_codec);
+      objects_.WriteTo(ref output, _repeated_objects_codec);
+      if (extra_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Extra);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (image_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Image);
+      }
+      size += detections_.CalculateSize(_repeated_detections_codec);
+      size += classifications_.CalculateSize(_repeated_classifications_codec);
+      size += objects_.CalculateSize(_repeated_objects_codec);
+      if (extra_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Extra);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(CaptureAllFromCameraResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.image_ != null) {
+        if (image_ == null) {
+          Image = new global::Viam.Component.Camera.V1.Image();
+        }
+        Image.MergeFrom(other.Image);
+      }
+      detections_.Add(other.detections_);
+      classifications_.Add(other.classifications_);
+      objects_.Add(other.objects_);
+      if (other.extra_ != null) {
+        if (extra_ == null) {
+          Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
+        }
+        Extra.MergeFrom(other.Extra);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (image_ == null) {
+              Image = new global::Viam.Component.Camera.V1.Image();
+            }
+            input.ReadMessage(Image);
+            break;
+          }
+          case 18: {
+            detections_.AddEntriesFrom(input, _repeated_detections_codec);
+            break;
+          }
+          case 26: {
+            classifications_.AddEntriesFrom(input, _repeated_classifications_codec);
+            break;
+          }
+          case 34: {
+            objects_.AddEntriesFrom(input, _repeated_objects_codec);
+            break;
+          }
+          case 794: {
+            if (extra_ == null) {
+              Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(Extra);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            if (image_ == null) {
+              Image = new global::Viam.Component.Camera.V1.Image();
+            }
+            input.ReadMessage(Image);
+            break;
+          }
+          case 18: {
+            detections_.AddEntriesFrom(ref input, _repeated_detections_codec);
+            break;
+          }
+          case 26: {
+            classifications_.AddEntriesFrom(ref input, _repeated_classifications_codec);
+            break;
+          }
+          case 34: {
+            objects_.AddEntriesFrom(ref input, _repeated_objects_codec);
+            break;
+          }
+          case 794: {
+            if (extra_ == null) {
+              Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(Extra);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class GetPropertiesResponse : pb::IMessage<GetPropertiesResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<GetPropertiesResponse> _parser = new pb::MessageParser<GetPropertiesResponse>(() => new GetPropertiesResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<GetPropertiesResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Viam.Service.Vision.V1.VisionReflection.Descriptor.MessageTypes[15]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetPropertiesResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetPropertiesResponse(GetPropertiesResponse other) : this() {
+      classificationsSupported_ = other.classificationsSupported_;
+      detectionsSupported_ = other.detectionsSupported_;
+      objectPointCloudsSupported_ = other.objectPointCloudsSupported_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public GetPropertiesResponse Clone() {
+      return new GetPropertiesResponse(this);
+    }
+
+    /// <summary>Field number for the "classifications_supported" field.</summary>
+    public const int ClassificationsSupportedFieldNumber = 1;
+    private bool classificationsSupported_;
+    /// <summary>
+    /// whether or not classifactions are supported by the vision service
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool ClassificationsSupported {
+      get { return classificationsSupported_; }
+      set {
+        classificationsSupported_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "detections_supported" field.</summary>
+    public const int DetectionsSupportedFieldNumber = 2;
+    private bool detectionsSupported_;
+    /// <summary>
+    /// whether or not detections are supported by the vision service
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool DetectionsSupported {
+      get { return detectionsSupported_; }
+      set {
+        detectionsSupported_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "object_point_clouds_supported" field.</summary>
+    public const int ObjectPointCloudsSupportedFieldNumber = 3;
+    private bool objectPointCloudsSupported_;
+    /// <summary>
+    /// whether or not 3d segmentation is supported by the vision service
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool ObjectPointCloudsSupported {
+      get { return objectPointCloudsSupported_; }
+      set {
+        objectPointCloudsSupported_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as GetPropertiesResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(GetPropertiesResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ClassificationsSupported != other.ClassificationsSupported) return false;
+      if (DetectionsSupported != other.DetectionsSupported) return false;
+      if (ObjectPointCloudsSupported != other.ObjectPointCloudsSupported) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ClassificationsSupported != false) hash ^= ClassificationsSupported.GetHashCode();
+      if (DetectionsSupported != false) hash ^= DetectionsSupported.GetHashCode();
+      if (ObjectPointCloudsSupported != false) hash ^= ObjectPointCloudsSupported.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (ClassificationsSupported != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(ClassificationsSupported);
+      }
+      if (DetectionsSupported != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(DetectionsSupported);
+      }
+      if (ObjectPointCloudsSupported != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(ObjectPointCloudsSupported);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (ClassificationsSupported != false) {
+        output.WriteRawTag(8);
+        output.WriteBool(ClassificationsSupported);
+      }
+      if (DetectionsSupported != false) {
+        output.WriteRawTag(16);
+        output.WriteBool(DetectionsSupported);
+      }
+      if (ObjectPointCloudsSupported != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(ObjectPointCloudsSupported);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (ClassificationsSupported != false) {
+        size += 1 + 1;
+      }
+      if (DetectionsSupported != false) {
+        size += 1 + 1;
+      }
+      if (ObjectPointCloudsSupported != false) {
+        size += 1 + 1;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(GetPropertiesResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ClassificationsSupported != false) {
+        ClassificationsSupported = other.ClassificationsSupported;
+      }
+      if (other.DetectionsSupported != false) {
+        DetectionsSupported = other.DetectionsSupported;
+      }
+      if (other.ObjectPointCloudsSupported != false) {
+        ObjectPointCloudsSupported = other.ObjectPointCloudsSupported;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            ClassificationsSupported = input.ReadBool();
+            break;
+          }
+          case 16: {
+            DetectionsSupported = input.ReadBool();
+            break;
+          }
+          case 24: {
+            ObjectPointCloudsSupported = input.ReadBool();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            ClassificationsSupported = input.ReadBool();
+            break;
+          }
+          case 16: {
+            DetectionsSupported = input.ReadBool();
+            break;
+          }
+          case 24: {
+            ObjectPointCloudsSupported = input.ReadBool();
             break;
           }
         }

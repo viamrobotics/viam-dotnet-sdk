@@ -61,6 +61,10 @@ namespace Viam.Component.Motor.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Component.Motor.V1.GoToResponse> __Marshaller_viam_component_motor_v1_GoToResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Component.Motor.V1.GoToResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Component.Motor.V1.SetRPMRequest> __Marshaller_viam_component_motor_v1_SetRPMRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Component.Motor.V1.SetRPMRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Component.Motor.V1.SetRPMResponse> __Marshaller_viam_component_motor_v1_SetRPMResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Component.Motor.V1.SetRPMResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Component.Motor.V1.ResetZeroPositionRequest> __Marshaller_viam_component_motor_v1_ResetZeroPositionRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Component.Motor.V1.ResetZeroPositionRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Component.Motor.V1.ResetZeroPositionResponse> __Marshaller_viam_component_motor_v1_ResetZeroPositionResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Component.Motor.V1.ResetZeroPositionResponse.Parser));
@@ -116,6 +120,14 @@ namespace Viam.Component.Motor.V1 {
         "GoTo",
         __Marshaller_viam_component_motor_v1_GoToRequest,
         __Marshaller_viam_component_motor_v1_GoToResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.Component.Motor.V1.SetRPMRequest, global::Viam.Component.Motor.V1.SetRPMResponse> __Method_SetRPM = new grpc::Method<global::Viam.Component.Motor.V1.SetRPMRequest, global::Viam.Component.Motor.V1.SetRPMResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "SetRPM",
+        __Marshaller_viam_component_motor_v1_SetRPMRequest,
+        __Marshaller_viam_component_motor_v1_SetRPMResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.Component.Motor.V1.ResetZeroPositionRequest, global::Viam.Component.Motor.V1.ResetZeroPositionResponse> __Method_ResetZeroPosition = new grpc::Method<global::Viam.Component.Motor.V1.ResetZeroPositionRequest, global::Viam.Component.Motor.V1.ResetZeroPositionResponse>(
@@ -209,8 +221,8 @@ namespace Viam.Component.Motor.V1 {
       /// GoFor instructs the motor to turn at a specified speed, which is expressed in RPM,
       /// for a specified number of rotations relative to its starting position
       /// This method will return an error if position reporting is not supported
-      /// If revolutions is 0, this will run the motor at rpm indefinitely
       /// If revolutions != 0, this will block until the number of revolutions has been completed or another operation comes in.
+      /// Deprecated: If revolutions is 0, this will run the motor at rpm indefinitely.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -231,6 +243,18 @@ namespace Viam.Component.Motor.V1 {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.Component.Motor.V1.GoToResponse> GoTo(global::Viam.Component.Motor.V1.GoToRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// SetRPM instructs the motor to move at the specified RPM indefinitely.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.Component.Motor.V1.SetRPMResponse> SetRPM(global::Viam.Component.Motor.V1.SetRPMRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -422,8 +446,8 @@ namespace Viam.Component.Motor.V1 {
       /// GoFor instructs the motor to turn at a specified speed, which is expressed in RPM,
       /// for a specified number of rotations relative to its starting position
       /// This method will return an error if position reporting is not supported
-      /// If revolutions is 0, this will run the motor at rpm indefinitely
       /// If revolutions != 0, this will block until the number of revolutions has been completed or another operation comes in.
+      /// Deprecated: If revolutions is 0, this will run the motor at rpm indefinitely.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -439,8 +463,8 @@ namespace Viam.Component.Motor.V1 {
       /// GoFor instructs the motor to turn at a specified speed, which is expressed in RPM,
       /// for a specified number of rotations relative to its starting position
       /// This method will return an error if position reporting is not supported
-      /// If revolutions is 0, this will run the motor at rpm indefinitely
       /// If revolutions != 0, this will block until the number of revolutions has been completed or another operation comes in.
+      /// Deprecated: If revolutions is 0, this will run the motor at rpm indefinitely.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -454,8 +478,8 @@ namespace Viam.Component.Motor.V1 {
       /// GoFor instructs the motor to turn at a specified speed, which is expressed in RPM,
       /// for a specified number of rotations relative to its starting position
       /// This method will return an error if position reporting is not supported
-      /// If revolutions is 0, this will run the motor at rpm indefinitely
       /// If revolutions != 0, this will block until the number of revolutions has been completed or another operation comes in.
+      /// Deprecated: If revolutions is 0, this will run the motor at rpm indefinitely.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -471,8 +495,8 @@ namespace Viam.Component.Motor.V1 {
       /// GoFor instructs the motor to turn at a specified speed, which is expressed in RPM,
       /// for a specified number of rotations relative to its starting position
       /// This method will return an error if position reporting is not supported
-      /// If revolutions is 0, this will run the motor at rpm indefinitely
       /// If revolutions != 0, this will block until the number of revolutions has been completed or another operation comes in.
+      /// Deprecated: If revolutions is 0, this will run the motor at rpm indefinitely.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -537,6 +561,54 @@ namespace Viam.Component.Motor.V1 {
       public virtual grpc::AsyncUnaryCall<global::Viam.Component.Motor.V1.GoToResponse> GoToAsync(global::Viam.Component.Motor.V1.GoToRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_GoTo, null, options, request);
+      }
+      /// <summary>
+      /// SetRPM instructs the motor to move at the specified RPM indefinitely.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Component.Motor.V1.SetRPMResponse SetRPM(global::Viam.Component.Motor.V1.SetRPMRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SetRPM(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// SetRPM instructs the motor to move at the specified RPM indefinitely.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Component.Motor.V1.SetRPMResponse SetRPM(global::Viam.Component.Motor.V1.SetRPMRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_SetRPM, null, options, request);
+      }
+      /// <summary>
+      /// SetRPM instructs the motor to move at the specified RPM indefinitely.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Component.Motor.V1.SetRPMResponse> SetRPMAsync(global::Viam.Component.Motor.V1.SetRPMRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return SetRPMAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// SetRPM instructs the motor to move at the specified RPM indefinitely.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Component.Motor.V1.SetRPMResponse> SetRPMAsync(global::Viam.Component.Motor.V1.SetRPMRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_SetRPM, null, options, request);
       }
       /// <summary>
       /// ResetZeroPosition sets the current position of the motor as the new zero position
@@ -947,6 +1019,7 @@ namespace Viam.Component.Motor.V1 {
           .AddMethod(__Method_SetPower, serviceImpl.SetPower)
           .AddMethod(__Method_GoFor, serviceImpl.GoFor)
           .AddMethod(__Method_GoTo, serviceImpl.GoTo)
+          .AddMethod(__Method_SetRPM, serviceImpl.SetRPM)
           .AddMethod(__Method_ResetZeroPosition, serviceImpl.ResetZeroPosition)
           .AddMethod(__Method_GetPosition, serviceImpl.GetPosition)
           .AddMethod(__Method_GetProperties, serviceImpl.GetProperties)
@@ -967,6 +1040,7 @@ namespace Viam.Component.Motor.V1 {
       serviceBinder.AddMethod(__Method_SetPower, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Component.Motor.V1.SetPowerRequest, global::Viam.Component.Motor.V1.SetPowerResponse>(serviceImpl.SetPower));
       serviceBinder.AddMethod(__Method_GoFor, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Component.Motor.V1.GoForRequest, global::Viam.Component.Motor.V1.GoForResponse>(serviceImpl.GoFor));
       serviceBinder.AddMethod(__Method_GoTo, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Component.Motor.V1.GoToRequest, global::Viam.Component.Motor.V1.GoToResponse>(serviceImpl.GoTo));
+      serviceBinder.AddMethod(__Method_SetRPM, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Component.Motor.V1.SetRPMRequest, global::Viam.Component.Motor.V1.SetRPMResponse>(serviceImpl.SetRPM));
       serviceBinder.AddMethod(__Method_ResetZeroPosition, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Component.Motor.V1.ResetZeroPositionRequest, global::Viam.Component.Motor.V1.ResetZeroPositionResponse>(serviceImpl.ResetZeroPosition));
       serviceBinder.AddMethod(__Method_GetPosition, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Component.Motor.V1.GetPositionRequest, global::Viam.Component.Motor.V1.GetPositionResponse>(serviceImpl.GetPosition));
       serviceBinder.AddMethod(__Method_GetProperties, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Component.Motor.V1.GetPropertiesRequest, global::Viam.Component.Motor.V1.GetPropertiesResponse>(serviceImpl.GetProperties));

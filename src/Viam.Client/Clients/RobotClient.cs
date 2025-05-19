@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-
 using Viam.Client.Dialing;
 using Viam.Core;
 using Viam.Core.Clients;
@@ -20,8 +19,8 @@ namespace Viam.Client.Clients
         {
             var dialer = new Dialer(options.LoggerFactory);
             var channel = options.DisableWebRtc
-                              ? await dialer.DialGrpcDirectAsync(options.ToGrpcDialOptions())
-                              : await dialer.DialWebRtcDirectAsync(options.ToWebRtcDialOptions());
+                ? await dialer.DialGrpcDirectAsync(options.ToGrpcDialOptions())
+                : await dialer.DialWebRtcDirectAsync(options.ToWebRtcDialOptions());
             var client = new RobotClient(options.LoggerFactory, channel);
             await client.RefreshAsync();
             return client;

@@ -25,86 +25,99 @@ namespace Viam.App.Datasync.V1 {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Ch9hcHAvZGF0YXN5bmMvdjEvZGF0YV9zeW5jLnByb3RvEhR2aWFtLmFwcC5k",
-            "YXRhc3luYy52MRocZ29vZ2xlL2FwaS9hbm5vdGF0aW9ucy5wcm90bxoZZ29v",
-            "Z2xlL3Byb3RvYnVmL2FueS5wcm90bxocZ29vZ2xlL3Byb3RvYnVmL3N0cnVj",
-            "dC5wcm90bxofZ29vZ2xlL3Byb3RvYnVmL3RpbWVzdGFtcC5wcm90byKnAQoY",
-            "RGF0YUNhcHR1cmVVcGxvYWRSZXF1ZXN0EkAKCG1ldGFkYXRhGAEgASgLMiQu",
-            "dmlhbS5hcHAuZGF0YXN5bmMudjEuVXBsb2FkTWV0YWRhdGFSCG1ldGFkYXRh",
-            "EkkKD3NlbnNvcl9jb250ZW50cxgCIAMoCzIgLnZpYW0uYXBwLmRhdGFzeW5j",
-            "LnYxLlNlbnNvckRhdGFSDnNlbnNvckNvbnRlbnRzIjQKGURhdGFDYXB0dXJl",
-            "VXBsb2FkUmVzcG9uc2USFwoHZmlsZV9pZBgBIAEoCVIGZmlsZUlkIq8BChFG",
-            "aWxlVXBsb2FkUmVxdWVzdBJCCghtZXRhZGF0YRgBIAEoCzIkLnZpYW0uYXBw",
-            "LmRhdGFzeW5jLnYxLlVwbG9hZE1ldGFkYXRhSABSCG1ldGFkYXRhEkUKDWZp",
-            "bGVfY29udGVudHMYAiABKAsyHi52aWFtLmFwcC5kYXRhc3luYy52MS5GaWxl",
-            "RGF0YUgAUgxmaWxlQ29udGVudHNCDwoNdXBsb2FkX3BhY2tldCItChJGaWxl",
-            "VXBsb2FkUmVzcG9uc2USFwoHZmlsZV9pZBgBIAEoCVIGZmlsZUlkIpkBCiFT",
-            "dHJlYW1pbmdEYXRhQ2FwdHVyZVVwbG9hZFJlcXVlc3QSTQoIbWV0YWRhdGEY",
-            "ASABKAsyLy52aWFtLmFwcC5kYXRhc3luYy52MS5EYXRhQ2FwdHVyZVVwbG9h",
-            "ZE1ldGFkYXRhSABSCG1ldGFkYXRhEhQKBGRhdGEYAiABKAxIAFIEZGF0YUIP",
-            "Cg11cGxvYWRfcGFja2V0Ij0KIlN0cmVhbWluZ0RhdGFDYXB0dXJlVXBsb2Fk",
-            "UmVzcG9uc2USFwoHZmlsZV9pZBgBIAEoCVIGZmlsZUlkIpQBCg5TZW5zb3JN",
-            "ZXRhZGF0YRJBCg50aW1lX3JlcXVlc3RlZBgBIAEoCzIaLmdvb2dsZS5wcm90",
-            "b2J1Zi5UaW1lc3RhbXBSDXRpbWVSZXF1ZXN0ZWQSPwoNdGltZV9yZWNlaXZl",
-            "ZBgCIAEoCzIaLmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSDHRpbWVSZWNl",
-            "aXZlZCKjAQoKU2Vuc29yRGF0YRJACghtZXRhZGF0YRgBIAEoCzIkLnZpYW0u",
-            "YXBwLmRhdGFzeW5jLnYxLlNlbnNvck1ldGFkYXRhUghtZXRhZGF0YRIxCgZz",
-            "dHJ1Y3QYAiABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0SABSBnN0cnVj",
-            "dBIYCgZiaW5hcnkYAyABKAxIAFIGYmluYXJ5QgYKBGRhdGEiHgoIRmlsZURh",
-            "dGESEgoEZGF0YRgBIAEoDFIEZGF0YSKRBAoOVXBsb2FkTWV0YWRhdGESFwoH",
-            "cGFydF9pZBgBIAEoCVIGcGFydElkEiUKDmNvbXBvbmVudF90eXBlGAIgASgJ",
-            "Ug1jb21wb25lbnRUeXBlEiUKDmNvbXBvbmVudF9uYW1lGAMgASgJUg1jb21w",
-            "b25lbnROYW1lEh8KC21ldGhvZF9uYW1lGAUgASgJUgptZXRob2ROYW1lEjIK",
-            "BHR5cGUYBiABKA4yHi52aWFtLmFwcC5kYXRhc3luYy52MS5EYXRhVHlwZVIE",
-            "dHlwZRIbCglmaWxlX25hbWUYByABKAlSCGZpbGVOYW1lEmcKEW1ldGhvZF9w",
-            "YXJhbWV0ZXJzGAggAygLMjoudmlhbS5hcHAuZGF0YXN5bmMudjEuVXBsb2Fk",
-            "TWV0YWRhdGEuTWV0aG9kUGFyYW1ldGVyc0VudHJ5UhBtZXRob2RQYXJhbWV0",
-            "ZXJzEiUKDmZpbGVfZXh0ZW5zaW9uGAkgASgJUg1maWxlRXh0ZW5zaW9uEhIK",
-            "BHRhZ3MYCiADKAlSBHRhZ3MaWQoVTWV0aG9kUGFyYW1ldGVyc0VudHJ5EhAK",
-            "A2tleRgBIAEoCVIDa2V5EioKBXZhbHVlGAIgASgLMhQuZ29vZ2xlLnByb3Rv",
-            "YnVmLkFueVIFdmFsdWU6AjgBSgQIBBAFSgQICxAMUg9jb21wb25lbnRfbW9k",
-            "ZWxSCnNlc3Npb25faWQicQoPQ2FwdHVyZUludGVydmFsEjAKBXN0YXJ0GAEg",
-            "ASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIFc3RhcnQSLAoDZW5k",
-            "GAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIDZW5kIuUDChNE",
-            "YXRhQ2FwdHVyZU1ldGFkYXRhEiUKDmNvbXBvbmVudF90eXBlGAEgASgJUg1j",
-            "b21wb25lbnRUeXBlEiUKDmNvbXBvbmVudF9uYW1lGAIgASgJUg1jb21wb25l",
-            "bnROYW1lEh8KC21ldGhvZF9uYW1lGAQgASgJUgptZXRob2ROYW1lEjIKBHR5",
-            "cGUYBSABKA4yHi52aWFtLmFwcC5kYXRhc3luYy52MS5EYXRhVHlwZVIEdHlw",
-            "ZRJsChFtZXRob2RfcGFyYW1ldGVycxgGIAMoCzI/LnZpYW0uYXBwLmRhdGFz",
-            "eW5jLnYxLkRhdGFDYXB0dXJlTWV0YWRhdGEuTWV0aG9kUGFyYW1ldGVyc0Vu",
-            "dHJ5UhBtZXRob2RQYXJhbWV0ZXJzEiUKDmZpbGVfZXh0ZW5zaW9uGAcgASgJ",
-            "Ug1maWxlRXh0ZW5zaW9uEhIKBHRhZ3MYCCADKAlSBHRhZ3MaWQoVTWV0aG9k",
-            "UGFyYW1ldGVyc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EioKBXZhbHVlGAIg",
-            "ASgLMhQuZ29vZ2xlLnByb3RvYnVmLkFueVIFdmFsdWU6AjgBSgQIAxAESgQI",
-            "CRAKUg9jb21wb25lbnRfbW9kZWxSCnNlc3Npb25faWQiuQEKGURhdGFDYXB0",
-            "dXJlVXBsb2FkTWV0YWRhdGESTQoPdXBsb2FkX21ldGFkYXRhGAEgASgLMiQu",
-            "dmlhbS5hcHAuZGF0YXN5bmMudjEuVXBsb2FkTWV0YWRhdGFSDnVwbG9hZE1l",
-            "dGFkYXRhEk0KD3NlbnNvcl9tZXRhZGF0YRgCIAEoCzIkLnZpYW0uYXBwLmRh",
-            "dGFzeW5jLnYxLlNlbnNvck1ldGFkYXRhUg5zZW5zb3JNZXRhZGF0YSp0CghE",
-            "YXRhVHlwZRIZChVEQVRBX1RZUEVfVU5TUEVDSUZJRUQQABIbChdEQVRBX1RZ",
-            "UEVfQklOQVJZX1NFTlNPUhABEhwKGERBVEFfVFlQRV9UQUJVTEFSX1NFTlNP",
-            "UhACEhIKDkRBVEFfVFlQRV9GSUxFEAMygAQKD0RhdGFTeW5jU2VydmljZRKe",
-            "AQoRRGF0YUNhcHR1cmVVcGxvYWQSLi52aWFtLmFwcC5kYXRhc3luYy52MS5E",
-            "YXRhQ2FwdHVyZVVwbG9hZFJlcXVlc3QaLy52aWFtLmFwcC5kYXRhc3luYy52",
-            "MS5EYXRhQ2FwdHVyZVVwbG9hZFJlc3BvbnNlIiiC0+STAiIiIC9kYXRhc3lu",
-            "Yy92MS9kYXRhX2NhcHR1cmVfdXBsb2FkEoMBCgpGaWxlVXBsb2FkEicudmlh",
-            "bS5hcHAuZGF0YXN5bmMudjEuRmlsZVVwbG9hZFJlcXVlc3QaKC52aWFtLmFw",
-            "cC5kYXRhc3luYy52MS5GaWxlVXBsb2FkUmVzcG9uc2UiIILT5JMCGiIYL2Rh",
-            "dGFzeW5jL3YxL2ZpbGVfdXBsb2FkKAESxQEKGlN0cmVhbWluZ0RhdGFDYXB0",
-            "dXJlVXBsb2FkEjcudmlhbS5hcHAuZGF0YXN5bmMudjEuU3RyZWFtaW5nRGF0",
-            "YUNhcHR1cmVVcGxvYWRSZXF1ZXN0GjgudmlhbS5hcHAuZGF0YXN5bmMudjEu",
-            "U3RyZWFtaW5nRGF0YUNhcHR1cmVVcGxvYWRSZXNwb25zZSIygtPkkwIsIiov",
-            "ZGF0YXN5bmMvdjEvc3RyZWFtaW5nX2RhdGFfY2FwdHVyZV91cGxvYWQoAUIh",
-            "Wh9nby52aWFtLmNvbS9hcGkvYXBwL2RhdGFzeW5jL3YxYgZwcm90bzM="));
+            "YXRhc3luYy52MRoWYXBwL2RhdGEvdjEvZGF0YS5wcm90bxocZ29vZ2xlL2Fw",
+            "aS9hbm5vdGF0aW9ucy5wcm90bxoZZ29vZ2xlL3Byb3RvYnVmL2FueS5wcm90",
+            "bxocZ29vZ2xlL3Byb3RvYnVmL3N0cnVjdC5wcm90bxofZ29vZ2xlL3Byb3Rv",
+            "YnVmL3RpbWVzdGFtcC5wcm90byKnAQoYRGF0YUNhcHR1cmVVcGxvYWRSZXF1",
+            "ZXN0EkAKCG1ldGFkYXRhGAEgASgLMiQudmlhbS5hcHAuZGF0YXN5bmMudjEu",
+            "VXBsb2FkTWV0YWRhdGFSCG1ldGFkYXRhEkkKD3NlbnNvcl9jb250ZW50cxgC",
+            "IAMoCzIgLnZpYW0uYXBwLmRhdGFzeW5jLnYxLlNlbnNvckRhdGFSDnNlbnNv",
+            "ckNvbnRlbnRzIloKGURhdGFDYXB0dXJlVXBsb2FkUmVzcG9uc2USFwoHZmls",
+            "ZV9pZBgBIAEoCVIGZmlsZUlkEiQKDmJpbmFyeV9kYXRhX2lkGAIgASgJUgxi",
+            "aW5hcnlEYXRhSWQirwEKEUZpbGVVcGxvYWRSZXF1ZXN0EkIKCG1ldGFkYXRh",
+            "GAEgASgLMiQudmlhbS5hcHAuZGF0YXN5bmMudjEuVXBsb2FkTWV0YWRhdGFI",
+            "AFIIbWV0YWRhdGESRQoNZmlsZV9jb250ZW50cxgCIAEoCzIeLnZpYW0uYXBw",
+            "LmRhdGFzeW5jLnYxLkZpbGVEYXRhSABSDGZpbGVDb250ZW50c0IPCg11cGxv",
+            "YWRfcGFja2V0IlcKEkZpbGVVcGxvYWRSZXNwb25zZRIbCgdmaWxlX2lkGAEg",
+            "ASgJQgIYAVIGZmlsZUlkEiQKDmJpbmFyeV9kYXRhX2lkGAIgASgJUgxiaW5h",
+            "cnlEYXRhSWQimQEKIVN0cmVhbWluZ0RhdGFDYXB0dXJlVXBsb2FkUmVxdWVz",
+            "dBJNCghtZXRhZGF0YRgBIAEoCzIvLnZpYW0uYXBwLmRhdGFzeW5jLnYxLkRh",
+            "dGFDYXB0dXJlVXBsb2FkTWV0YWRhdGFIAFIIbWV0YWRhdGESFAoEZGF0YRgC",
+            "IAEoDEgAUgRkYXRhQg8KDXVwbG9hZF9wYWNrZXQiZwoiU3RyZWFtaW5nRGF0",
+            "YUNhcHR1cmVVcGxvYWRSZXNwb25zZRIbCgdmaWxlX2lkGAEgASgJQgIYAVIG",
+            "ZmlsZUlkEiQKDmJpbmFyeV9kYXRhX2lkGAIgASgJUgxiaW5hcnlEYXRhSWQi",
+            "kgIKDlNlbnNvck1ldGFkYXRhEkEKDnRpbWVfcmVxdWVzdGVkGAEgASgLMhou",
+            "Z29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFINdGltZVJlcXVlc3RlZBI/Cg10",
+            "aW1lX3JlY2VpdmVkGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFt",
+            "cFIMdGltZVJlY2VpdmVkEjsKCW1pbWVfdHlwZRgDIAEoDjIeLnZpYW0uYXBw",
+            "LmRhdGFzeW5jLnYxLk1pbWVUeXBlUghtaW1lVHlwZRI/Cgthbm5vdGF0aW9u",
+            "cxgEIAEoCzIdLnZpYW0uYXBwLmRhdGEudjEuQW5ub3RhdGlvbnNSC2Fubm90",
+            "YXRpb25zIqMBCgpTZW5zb3JEYXRhEkAKCG1ldGFkYXRhGAEgASgLMiQudmlh",
+            "bS5hcHAuZGF0YXN5bmMudjEuU2Vuc29yTWV0YWRhdGFSCG1ldGFkYXRhEjEK",
+            "BnN0cnVjdBgCIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RIAFIGc3Ry",
+            "dWN0EhgKBmJpbmFyeRgDIAEoDEgAUgZiaW5hcnlCBgoEZGF0YSIeCghGaWxl",
+            "RGF0YRISCgRkYXRhGAEgASgMUgRkYXRhIpEECg5VcGxvYWRNZXRhZGF0YRIX",
+            "CgdwYXJ0X2lkGAEgASgJUgZwYXJ0SWQSJQoOY29tcG9uZW50X3R5cGUYAiAB",
+            "KAlSDWNvbXBvbmVudFR5cGUSJQoOY29tcG9uZW50X25hbWUYAyABKAlSDWNv",
+            "bXBvbmVudE5hbWUSHwoLbWV0aG9kX25hbWUYBSABKAlSCm1ldGhvZE5hbWUS",
+            "MgoEdHlwZRgGIAEoDjIeLnZpYW0uYXBwLmRhdGFzeW5jLnYxLkRhdGFUeXBl",
+            "UgR0eXBlEhsKCWZpbGVfbmFtZRgHIAEoCVIIZmlsZU5hbWUSZwoRbWV0aG9k",
+            "X3BhcmFtZXRlcnMYCCADKAsyOi52aWFtLmFwcC5kYXRhc3luYy52MS5VcGxv",
+            "YWRNZXRhZGF0YS5NZXRob2RQYXJhbWV0ZXJzRW50cnlSEG1ldGhvZFBhcmFt",
+            "ZXRlcnMSJQoOZmlsZV9leHRlbnNpb24YCSABKAlSDWZpbGVFeHRlbnNpb24S",
+            "EgoEdGFncxgKIAMoCVIEdGFncxpZChVNZXRob2RQYXJhbWV0ZXJzRW50cnkS",
+            "EAoDa2V5GAEgASgJUgNrZXkSKgoFdmFsdWUYAiABKAsyFC5nb29nbGUucHJv",
+            "dG9idWYuQW55UgV2YWx1ZToCOAFKBAgEEAVKBAgLEAxSD2NvbXBvbmVudF9t",
+            "b2RlbFIKc2Vzc2lvbl9pZCJxCg9DYXB0dXJlSW50ZXJ2YWwSMAoFc3RhcnQY",
+            "ASABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgVzdGFydBIsCgNl",
+            "bmQYAiABKAsyGi5nb29nbGUucHJvdG9idWYuVGltZXN0YW1wUgNlbmQi5QMK",
+            "E0RhdGFDYXB0dXJlTWV0YWRhdGESJQoOY29tcG9uZW50X3R5cGUYASABKAlS",
+            "DWNvbXBvbmVudFR5cGUSJQoOY29tcG9uZW50X25hbWUYAiABKAlSDWNvbXBv",
+            "bmVudE5hbWUSHwoLbWV0aG9kX25hbWUYBCABKAlSCm1ldGhvZE5hbWUSMgoE",
+            "dHlwZRgFIAEoDjIeLnZpYW0uYXBwLmRhdGFzeW5jLnYxLkRhdGFUeXBlUgR0",
+            "eXBlEmwKEW1ldGhvZF9wYXJhbWV0ZXJzGAYgAygLMj8udmlhbS5hcHAuZGF0",
+            "YXN5bmMudjEuRGF0YUNhcHR1cmVNZXRhZGF0YS5NZXRob2RQYXJhbWV0ZXJz",
+            "RW50cnlSEG1ldGhvZFBhcmFtZXRlcnMSJQoOZmlsZV9leHRlbnNpb24YByAB",
+            "KAlSDWZpbGVFeHRlbnNpb24SEgoEdGFncxgIIAMoCVIEdGFncxpZChVNZXRo",
+            "b2RQYXJhbWV0ZXJzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSKgoFdmFsdWUY",
+            "AiABKAsyFC5nb29nbGUucHJvdG9idWYuQW55UgV2YWx1ZToCOAFKBAgDEARK",
+            "BAgJEApSD2NvbXBvbmVudF9tb2RlbFIKc2Vzc2lvbl9pZCK5AQoZRGF0YUNh",
+            "cHR1cmVVcGxvYWRNZXRhZGF0YRJNCg91cGxvYWRfbWV0YWRhdGEYASABKAsy",
+            "JC52aWFtLmFwcC5kYXRhc3luYy52MS5VcGxvYWRNZXRhZGF0YVIOdXBsb2Fk",
+            "TWV0YWRhdGESTQoPc2Vuc29yX21ldGFkYXRhGAIgASgLMiQudmlhbS5hcHAu",
+            "ZGF0YXN5bmMudjEuU2Vuc29yTWV0YWRhdGFSDnNlbnNvck1ldGFkYXRhKncK",
+            "CE1pbWVUeXBlEhkKFU1JTUVfVFlQRV9VTlNQRUNJRklFRBAAEhgKFE1JTUVf",
+            "VFlQRV9JTUFHRV9KUEVHEAESFwoTTUlNRV9UWVBFX0lNQUdFX1BORxACEh0K",
+            "GU1JTUVfVFlQRV9BUFBMSUNBVElPTl9QQ0QQAyp0CghEYXRhVHlwZRIZChVE",
+            "QVRBX1RZUEVfVU5TUEVDSUZJRUQQABIbChdEQVRBX1RZUEVfQklOQVJZX1NF",
+            "TlNPUhABEhwKGERBVEFfVFlQRV9UQUJVTEFSX1NFTlNPUhACEhIKDkRBVEFf",
+            "VFlQRV9GSUxFEAMygAQKD0RhdGFTeW5jU2VydmljZRKeAQoRRGF0YUNhcHR1",
+            "cmVVcGxvYWQSLi52aWFtLmFwcC5kYXRhc3luYy52MS5EYXRhQ2FwdHVyZVVw",
+            "bG9hZFJlcXVlc3QaLy52aWFtLmFwcC5kYXRhc3luYy52MS5EYXRhQ2FwdHVy",
+            "ZVVwbG9hZFJlc3BvbnNlIiiC0+STAiIiIC9kYXRhc3luYy92MS9kYXRhX2Nh",
+            "cHR1cmVfdXBsb2FkEoMBCgpGaWxlVXBsb2FkEicudmlhbS5hcHAuZGF0YXN5",
+            "bmMudjEuRmlsZVVwbG9hZFJlcXVlc3QaKC52aWFtLmFwcC5kYXRhc3luYy52",
+            "MS5GaWxlVXBsb2FkUmVzcG9uc2UiIILT5JMCGiIYL2RhdGFzeW5jL3YxL2Zp",
+            "bGVfdXBsb2FkKAESxQEKGlN0cmVhbWluZ0RhdGFDYXB0dXJlVXBsb2FkEjcu",
+            "dmlhbS5hcHAuZGF0YXN5bmMudjEuU3RyZWFtaW5nRGF0YUNhcHR1cmVVcGxv",
+            "YWRSZXF1ZXN0GjgudmlhbS5hcHAuZGF0YXN5bmMudjEuU3RyZWFtaW5nRGF0",
+            "YUNhcHR1cmVVcGxvYWRSZXNwb25zZSIygtPkkwIsIiovZGF0YXN5bmMvdjEv",
+            "c3RyZWFtaW5nX2RhdGFfY2FwdHVyZV91cGxvYWQoAUK9AQoYY29tLnZpYW0u",
+            "YXBwLmRhdGFzeW5jLnYxQg1EYXRhU3luY1Byb3RvUAFaH2dvLnZpYW0uY29t",
+            "L2FwaS9hcHAvZGF0YXN5bmMvdjGiAgNWQUSqAhRWaWFtLkFwcC5EYXRhc3lu",
+            "Yy5WMcoCFFZpYW1cQXBwXERhdGFzeW5jXFYx4gIgVmlhbVxBcHBcRGF0YXN5",
+            "bmNcVjFcR1BCTWV0YWRhdGHqAhdWaWFtOjpBcHA6OkRhdGFzeW5jOjpWMWIG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Viam.App.Datasync.V1.DataType), }, null, new pbr::GeneratedClrTypeInfo[] {
+          new pbr::FileDescriptor[] { global::Viam.App.Data.V1.DataReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, },
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Viam.App.Datasync.V1.MimeType), typeof(global::Viam.App.Datasync.V1.DataType), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Datasync.V1.DataCaptureUploadRequest), global::Viam.App.Datasync.V1.DataCaptureUploadRequest.Parser, new[]{ "Metadata", "SensorContents" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Datasync.V1.DataCaptureUploadResponse), global::Viam.App.Datasync.V1.DataCaptureUploadResponse.Parser, new[]{ "FileId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Datasync.V1.DataCaptureUploadResponse), global::Viam.App.Datasync.V1.DataCaptureUploadResponse.Parser, new[]{ "FileId", "BinaryDataId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Datasync.V1.FileUploadRequest), global::Viam.App.Datasync.V1.FileUploadRequest.Parser, new[]{ "Metadata", "FileContents" }, new[]{ "UploadPacket" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Datasync.V1.FileUploadResponse), global::Viam.App.Datasync.V1.FileUploadResponse.Parser, new[]{ "FileId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Datasync.V1.FileUploadResponse), global::Viam.App.Datasync.V1.FileUploadResponse.Parser, new[]{ "FileId", "BinaryDataId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Datasync.V1.StreamingDataCaptureUploadRequest), global::Viam.App.Datasync.V1.StreamingDataCaptureUploadRequest.Parser, new[]{ "Metadata", "Data" }, new[]{ "UploadPacket" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Datasync.V1.StreamingDataCaptureUploadResponse), global::Viam.App.Datasync.V1.StreamingDataCaptureUploadResponse.Parser, new[]{ "FileId" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Datasync.V1.SensorMetadata), global::Viam.App.Datasync.V1.SensorMetadata.Parser, new[]{ "TimeRequested", "TimeReceived" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Datasync.V1.StreamingDataCaptureUploadResponse), global::Viam.App.Datasync.V1.StreamingDataCaptureUploadResponse.Parser, new[]{ "FileId", "BinaryDataId" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Datasync.V1.SensorMetadata), global::Viam.App.Datasync.V1.SensorMetadata.Parser, new[]{ "TimeRequested", "TimeReceived", "MimeType", "Annotations" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Datasync.V1.SensorData), global::Viam.App.Datasync.V1.SensorData.Parser, new[]{ "Metadata", "Struct", "Binary" }, new[]{ "Data" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Datasync.V1.FileData), global::Viam.App.Datasync.V1.FileData.Parser, new[]{ "Data" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Datasync.V1.UploadMetadata), global::Viam.App.Datasync.V1.UploadMetadata.Parser, new[]{ "PartId", "ComponentType", "ComponentName", "MethodName", "Type", "FileName", "MethodParameters", "FileExtension", "Tags" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
@@ -117,6 +130,13 @@ namespace Viam.App.Datasync.V1 {
 
   }
   #region Enums
+  public enum MimeType {
+    [pbr::OriginalName("MIME_TYPE_UNSPECIFIED")] Unspecified = 0,
+    [pbr::OriginalName("MIME_TYPE_IMAGE_JPEG")] ImageJpeg = 1,
+    [pbr::OriginalName("MIME_TYPE_IMAGE_PNG")] ImagePng = 2,
+    [pbr::OriginalName("MIME_TYPE_APPLICATION_PCD")] ApplicationPcd = 3,
+  }
+
   /// <summary>
   /// DataType specifies the type of data uploaded.
   /// </summary>
@@ -310,7 +330,11 @@ namespace Viam.App.Datasync.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -336,7 +360,11 @@ namespace Viam.App.Datasync.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -397,6 +425,7 @@ namespace Viam.App.Datasync.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DataCaptureUploadResponse(DataCaptureUploadResponse other) : this() {
       fileId_ = other.fileId_;
+      binaryDataId_ = other.binaryDataId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -418,6 +447,18 @@ namespace Viam.App.Datasync.V1 {
       }
     }
 
+    /// <summary>Field number for the "binary_data_id" field.</summary>
+    public const int BinaryDataIdFieldNumber = 2;
+    private string binaryDataId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string BinaryDataId {
+      get { return binaryDataId_; }
+      set {
+        binaryDataId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -434,6 +475,7 @@ namespace Viam.App.Datasync.V1 {
         return true;
       }
       if (FileId != other.FileId) return false;
+      if (BinaryDataId != other.BinaryDataId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -442,6 +484,7 @@ namespace Viam.App.Datasync.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (FileId.Length != 0) hash ^= FileId.GetHashCode();
+      if (BinaryDataId.Length != 0) hash ^= BinaryDataId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -464,6 +507,10 @@ namespace Viam.App.Datasync.V1 {
         output.WriteRawTag(10);
         output.WriteString(FileId);
       }
+      if (BinaryDataId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(BinaryDataId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -478,6 +525,10 @@ namespace Viam.App.Datasync.V1 {
         output.WriteRawTag(10);
         output.WriteString(FileId);
       }
+      if (BinaryDataId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(BinaryDataId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -490,6 +541,9 @@ namespace Viam.App.Datasync.V1 {
       int size = 0;
       if (FileId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(FileId);
+      }
+      if (BinaryDataId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BinaryDataId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -506,6 +560,9 @@ namespace Viam.App.Datasync.V1 {
       if (other.FileId.Length != 0) {
         FileId = other.FileId;
       }
+      if (other.BinaryDataId.Length != 0) {
+        BinaryDataId = other.BinaryDataId;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -517,12 +574,20 @@ namespace Viam.App.Datasync.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
             FileId = input.ReadString();
+            break;
+          }
+          case 18: {
+            BinaryDataId = input.ReadString();
             break;
           }
         }
@@ -536,12 +601,20 @@ namespace Viam.App.Datasync.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
             FileId = input.ReadString();
+            break;
+          }
+          case 18: {
+            BinaryDataId = input.ReadString();
             break;
           }
         }
@@ -779,7 +852,11 @@ namespace Viam.App.Datasync.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -812,7 +889,11 @@ namespace Viam.App.Datasync.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -880,6 +961,7 @@ namespace Viam.App.Datasync.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public FileUploadResponse(FileUploadResponse other) : this() {
       fileId_ = other.fileId_;
+      binaryDataId_ = other.binaryDataId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -892,12 +974,25 @@ namespace Viam.App.Datasync.V1 {
     /// <summary>Field number for the "file_id" field.</summary>
     public const int FileIdFieldNumber = 1;
     private string fileId_ = "";
+    [global::System.ObsoleteAttribute]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string FileId {
       get { return fileId_; }
       set {
         fileId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "binary_data_id" field.</summary>
+    public const int BinaryDataIdFieldNumber = 2;
+    private string binaryDataId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string BinaryDataId {
+      get { return binaryDataId_; }
+      set {
+        binaryDataId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -917,6 +1012,7 @@ namespace Viam.App.Datasync.V1 {
         return true;
       }
       if (FileId != other.FileId) return false;
+      if (BinaryDataId != other.BinaryDataId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -925,6 +1021,7 @@ namespace Viam.App.Datasync.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (FileId.Length != 0) hash ^= FileId.GetHashCode();
+      if (BinaryDataId.Length != 0) hash ^= BinaryDataId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -947,6 +1044,10 @@ namespace Viam.App.Datasync.V1 {
         output.WriteRawTag(10);
         output.WriteString(FileId);
       }
+      if (BinaryDataId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(BinaryDataId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -961,6 +1062,10 @@ namespace Viam.App.Datasync.V1 {
         output.WriteRawTag(10);
         output.WriteString(FileId);
       }
+      if (BinaryDataId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(BinaryDataId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -973,6 +1078,9 @@ namespace Viam.App.Datasync.V1 {
       int size = 0;
       if (FileId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(FileId);
+      }
+      if (BinaryDataId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BinaryDataId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -989,6 +1097,9 @@ namespace Viam.App.Datasync.V1 {
       if (other.FileId.Length != 0) {
         FileId = other.FileId;
       }
+      if (other.BinaryDataId.Length != 0) {
+        BinaryDataId = other.BinaryDataId;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1000,12 +1111,20 @@ namespace Viam.App.Datasync.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
             FileId = input.ReadString();
+            break;
+          }
+          case 18: {
+            BinaryDataId = input.ReadString();
             break;
           }
         }
@@ -1019,12 +1138,20 @@ namespace Viam.App.Datasync.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
             FileId = input.ReadString();
+            break;
+          }
+          case 18: {
+            BinaryDataId = input.ReadString();
             break;
           }
         }
@@ -1273,7 +1400,11 @@ namespace Viam.App.Datasync.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1301,7 +1432,11 @@ namespace Viam.App.Datasync.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1364,6 +1499,7 @@ namespace Viam.App.Datasync.V1 {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public StreamingDataCaptureUploadResponse(StreamingDataCaptureUploadResponse other) : this() {
       fileId_ = other.fileId_;
+      binaryDataId_ = other.binaryDataId_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1376,12 +1512,25 @@ namespace Viam.App.Datasync.V1 {
     /// <summary>Field number for the "file_id" field.</summary>
     public const int FileIdFieldNumber = 1;
     private string fileId_ = "";
+    [global::System.ObsoleteAttribute]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public string FileId {
       get { return fileId_; }
       set {
         fileId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "binary_data_id" field.</summary>
+    public const int BinaryDataIdFieldNumber = 2;
+    private string binaryDataId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string BinaryDataId {
+      get { return binaryDataId_; }
+      set {
+        binaryDataId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1401,6 +1550,7 @@ namespace Viam.App.Datasync.V1 {
         return true;
       }
       if (FileId != other.FileId) return false;
+      if (BinaryDataId != other.BinaryDataId) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1409,6 +1559,7 @@ namespace Viam.App.Datasync.V1 {
     public override int GetHashCode() {
       int hash = 1;
       if (FileId.Length != 0) hash ^= FileId.GetHashCode();
+      if (BinaryDataId.Length != 0) hash ^= BinaryDataId.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1431,6 +1582,10 @@ namespace Viam.App.Datasync.V1 {
         output.WriteRawTag(10);
         output.WriteString(FileId);
       }
+      if (BinaryDataId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(BinaryDataId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1445,6 +1600,10 @@ namespace Viam.App.Datasync.V1 {
         output.WriteRawTag(10);
         output.WriteString(FileId);
       }
+      if (BinaryDataId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(BinaryDataId);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1457,6 +1616,9 @@ namespace Viam.App.Datasync.V1 {
       int size = 0;
       if (FileId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(FileId);
+      }
+      if (BinaryDataId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BinaryDataId);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1473,6 +1635,9 @@ namespace Viam.App.Datasync.V1 {
       if (other.FileId.Length != 0) {
         FileId = other.FileId;
       }
+      if (other.BinaryDataId.Length != 0) {
+        BinaryDataId = other.BinaryDataId;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1484,12 +1649,20 @@ namespace Viam.App.Datasync.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
             FileId = input.ReadString();
+            break;
+          }
+          case 18: {
+            BinaryDataId = input.ReadString();
             break;
           }
         }
@@ -1503,12 +1676,20 @@ namespace Viam.App.Datasync.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
             FileId = input.ReadString();
+            break;
+          }
+          case 18: {
+            BinaryDataId = input.ReadString();
             break;
           }
         }
@@ -1519,7 +1700,8 @@ namespace Viam.App.Datasync.V1 {
   }
 
   /// <summary>
-  /// SensorMetadata contains the time the sensor data was requested and was received.
+  /// SensorMetadata contains the time the sensor data was requested and was
+  /// received.
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class SensorMetadata : pb::IMessage<SensorMetadata>
@@ -1558,6 +1740,8 @@ namespace Viam.App.Datasync.V1 {
     public SensorMetadata(SensorMetadata other) : this() {
       timeRequested_ = other.timeRequested_ != null ? other.timeRequested_.Clone() : null;
       timeReceived_ = other.timeReceived_ != null ? other.timeReceived_.Clone() : null;
+      mimeType_ = other.mimeType_;
+      annotations_ = other.annotations_ != null ? other.annotations_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1591,6 +1775,30 @@ namespace Viam.App.Datasync.V1 {
       }
     }
 
+    /// <summary>Field number for the "mime_type" field.</summary>
+    public const int MimeTypeFieldNumber = 3;
+    private global::Viam.App.Datasync.V1.MimeType mimeType_ = global::Viam.App.Datasync.V1.MimeType.Unspecified;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Viam.App.Datasync.V1.MimeType MimeType {
+      get { return mimeType_; }
+      set {
+        mimeType_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "annotations" field.</summary>
+    public const int AnnotationsFieldNumber = 4;
+    private global::Viam.App.Data.V1.Annotations annotations_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Viam.App.Data.V1.Annotations Annotations {
+      get { return annotations_; }
+      set {
+        annotations_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -1608,6 +1816,8 @@ namespace Viam.App.Datasync.V1 {
       }
       if (!object.Equals(TimeRequested, other.TimeRequested)) return false;
       if (!object.Equals(TimeReceived, other.TimeReceived)) return false;
+      if (MimeType != other.MimeType) return false;
+      if (!object.Equals(Annotations, other.Annotations)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1617,6 +1827,8 @@ namespace Viam.App.Datasync.V1 {
       int hash = 1;
       if (timeRequested_ != null) hash ^= TimeRequested.GetHashCode();
       if (timeReceived_ != null) hash ^= TimeReceived.GetHashCode();
+      if (MimeType != global::Viam.App.Datasync.V1.MimeType.Unspecified) hash ^= MimeType.GetHashCode();
+      if (annotations_ != null) hash ^= Annotations.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1643,6 +1855,14 @@ namespace Viam.App.Datasync.V1 {
         output.WriteRawTag(18);
         output.WriteMessage(TimeReceived);
       }
+      if (MimeType != global::Viam.App.Datasync.V1.MimeType.Unspecified) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) MimeType);
+      }
+      if (annotations_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Annotations);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1661,6 +1881,14 @@ namespace Viam.App.Datasync.V1 {
         output.WriteRawTag(18);
         output.WriteMessage(TimeReceived);
       }
+      if (MimeType != global::Viam.App.Datasync.V1.MimeType.Unspecified) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) MimeType);
+      }
+      if (annotations_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(Annotations);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1676,6 +1904,12 @@ namespace Viam.App.Datasync.V1 {
       }
       if (timeReceived_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(TimeReceived);
+      }
+      if (MimeType != global::Viam.App.Datasync.V1.MimeType.Unspecified) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) MimeType);
+      }
+      if (annotations_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Annotations);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1701,6 +1935,15 @@ namespace Viam.App.Datasync.V1 {
         }
         TimeReceived.MergeFrom(other.TimeReceived);
       }
+      if (other.MimeType != global::Viam.App.Datasync.V1.MimeType.Unspecified) {
+        MimeType = other.MimeType;
+      }
+      if (other.annotations_ != null) {
+        if (annotations_ == null) {
+          Annotations = new global::Viam.App.Data.V1.Annotations();
+        }
+        Annotations.MergeFrom(other.Annotations);
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1712,7 +1955,11 @@ namespace Viam.App.Datasync.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1730,6 +1977,17 @@ namespace Viam.App.Datasync.V1 {
             input.ReadMessage(TimeReceived);
             break;
           }
+          case 24: {
+            MimeType = (global::Viam.App.Datasync.V1.MimeType) input.ReadEnum();
+            break;
+          }
+          case 34: {
+            if (annotations_ == null) {
+              Annotations = new global::Viam.App.Data.V1.Annotations();
+            }
+            input.ReadMessage(Annotations);
+            break;
+          }
         }
       }
     #endif
@@ -1741,7 +1999,11 @@ namespace Viam.App.Datasync.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1757,6 +2019,17 @@ namespace Viam.App.Datasync.V1 {
               TimeReceived = new global::Google.Protobuf.WellKnownTypes.Timestamp();
             }
             input.ReadMessage(TimeReceived);
+            break;
+          }
+          case 24: {
+            MimeType = (global::Viam.App.Datasync.V1.MimeType) input.ReadEnum();
+            break;
+          }
+          case 34: {
+            if (annotations_ == null) {
+              Annotations = new global::Viam.App.Data.V1.Annotations();
+            }
+            input.ReadMessage(Annotations);
             break;
           }
         }
@@ -2036,7 +2309,11 @@ namespace Viam.App.Datasync.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2071,7 +2348,11 @@ namespace Viam.App.Datasync.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2261,7 +2542,11 @@ namespace Viam.App.Datasync.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2280,7 +2565,11 @@ namespace Viam.App.Datasync.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2664,7 +2953,11 @@ namespace Viam.App.Datasync.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2715,7 +3008,11 @@ namespace Viam.App.Datasync.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2956,7 +3253,11 @@ namespace Viam.App.Datasync.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2985,7 +3286,11 @@ namespace Viam.App.Datasync.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3321,7 +3626,11 @@ namespace Viam.App.Datasync.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3364,7 +3673,11 @@ namespace Viam.App.Datasync.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3597,7 +3910,11 @@ namespace Viam.App.Datasync.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3626,7 +3943,11 @@ namespace Viam.App.Datasync.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

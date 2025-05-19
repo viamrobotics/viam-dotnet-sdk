@@ -1,7 +1,5 @@
 ﻿using Grpc.Core;
 using Grpc.Core.Interceptors;
-
-using Viam.Core.Resources;
 using Viam.Core.Resources.Components.Generic;
 using Viam.Core.Resources.Components.Gripper;
 using Viam.Core.Resources.Components.InputController;
@@ -11,7 +9,6 @@ using Viam.Core.Resources.Components.PowerSensor;
 using Viam.Core.Resources.Components.Sensor;
 using Viam.Core.Resources.Components.Servo;
 using Viam.ModularResources.Services;
-
 using ArmService = Viam.Core.Resources.Components.Arm.ArmService;
 using BaseService = Viam.Core.Resources.Components.Base.BaseService;
 using BoardService = Viam.Core.Resources.Components.Board.BoardService;
@@ -89,7 +86,9 @@ namespace Viam.ModularResources
         }
     }
 
-    internal class PopulateResourceByNameInterceptor(ILogger<PopulateResourceByNameInterceptor> logger, ResourceManager resourceManager) : Interceptor
+    internal class PopulateResourceByNameInterceptor(
+        ILogger<PopulateResourceByNameInterceptor> logger,
+        ResourceManager resourceManager) : Interceptor
     {
         public override async Task ServerStreamingServerHandler<TRequest, TResponse>(TRequest request,
             IServerStreamWriter<TResponse> responseStream,
@@ -117,7 +116,7 @@ namespace Viam.ModularResources
 
             await continuation(request, responseStream, context);
         }
-        
+
         public override async Task<TResponse> UnaryServerHandler<TRequest, TResponse>(TRequest request,
             ServerCallContext context,
             UnaryServerMethod<TRequest, TResponse> continuation)
@@ -156,6 +155,7 @@ namespace Viam.ModularResources
             {
                 return null;
             }
+
             return property.GetValue(request) as string;
         }
 
@@ -171,6 +171,7 @@ namespace Viam.ModularResources
             {
                 return null;
             }
+
             return property.GetValue(request) as string;
         }
     }

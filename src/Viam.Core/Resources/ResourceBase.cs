@@ -12,19 +12,25 @@ namespace Viam.Core.Resources
         public abstract DateTime? LastReconfigured { get; }
         public virtual ResourceStatus GetStatus() => ResourceStatus.DefaultCreator(this);
         public abstract ValueTask StopResource();
+
         public abstract ValueTask<IDictionary<string, object?>> DoCommand(
             IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
-        public void Dispose() { }
+
+        public void Dispose()
+        {
+        }
     }
 
     public interface IResourceBase : IDisposable
     {
         public ViamResourceName ResourceName { get; }
+
         public ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
-                                                                 TimeSpan? timeout = null,
-                                                                 CancellationToken cancellationToken = default);
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default);
+
         public ValueTask StopResource();
         public ResourceStatus GetStatus();
     }

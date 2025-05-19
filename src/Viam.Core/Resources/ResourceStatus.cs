@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Viam.Core.Resources
 {
@@ -11,10 +8,13 @@ namespace Viam.Core.Resources
         public readonly ViamResourceName ResourceName = resourceName;
         public abstract DateTime? LastReconfigured { get; protected set; }
         public abstract IDictionary<string, object?> Details { get; }
-        public static Func<ResourceBase, ResourceStatus> DefaultCreator => @base => new DefaultResourceStatus(@base.ResourceName, @base.LastReconfigured);
+
+        public static Func<ResourceBase, ResourceStatus> DefaultCreator => @base =>
+            new DefaultResourceStatus(@base.ResourceName, @base.LastReconfigured);
     }
 
-    internal sealed class DefaultResourceStatus(ViamResourceName resourceName, DateTime? lastReconfigured) : ResourceStatus(resourceName)
+    internal sealed class DefaultResourceStatus(ViamResourceName resourceName, DateTime? lastReconfigured)
+        : ResourceStatus(resourceName)
     {
         public override DateTime? LastReconfigured { get; protected set; } = lastReconfigured;
         public override IDictionary<string, object?> Details { get; } = new Dictionary<string, object?>();

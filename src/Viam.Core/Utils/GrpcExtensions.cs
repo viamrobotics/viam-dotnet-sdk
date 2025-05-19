@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Google.Protobuf.Collections;
+using Google.Protobuf.WellKnownTypes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using Google.Protobuf.Collections;
-using Google.Protobuf.WellKnownTypes;
 using Viam.Core.Resources;
 
 namespace Viam.Core.Utils
@@ -17,6 +16,7 @@ namespace Viam.Core.Utils
             {
                 return @struct;
             }
+
             foreach (var kvp in dict)
             {
                 @struct.Fields[kvp.Key] = ConvertToValue(kvp.Value);
@@ -33,22 +33,25 @@ namespace Viam.Core.Utils
                 bool val => Value.ForBool(val),
                 double val => Value.ForNumber(val),
                 float val => Value.ForNumber(val),
+                short val => Value.ForNumber(val),
+                ushort val => Value.ForNumber(val),
                 int val => Value.ForNumber(val),
-                long val => Value.ForNumber(val),
                 uint val => Value.ForNumber(val),
+                long val => Value.ForNumber(val),
                 ulong val => Value.ForNumber(val),
+                System.Enum val => Value.ForString(val.ToString()),
                 Value val => val,
                 IDictionary<string, object?> val => Value.ForStruct(val.ToStruct()),
                 IList<object> val => Value.ForList(val.Select(ConvertToValue)
-                                                      .ToArray()),
+                    .ToArray()),
                 null => Value.ForNull(),
                 _ => throw new ArgumentOutOfRangeException(nameof(value), value, null)
             };
         }
 
-        public static IDictionary<string, object?> ToDictionary(this Struct @struct)
+        public static ViamDictionary ToDictionary(this Struct @struct)
         {
-            return @struct.Fields.ToDictionary(x => x.Key, x => ConvertFromValue(x.Value));
+            return new ViamDictionary(@struct.Fields.ToDictionary(x => x.Key, x => ConvertFromValue(x.Value)));
         }
 
         public static object? ConvertFromValue(this Value value)
@@ -72,7 +75,7 @@ namespace Viam.Core.Utils
             return convertedValue as T;
         }
 
-        public static IDictionary<string, object?> ToDictionary(this MapField<string, Value> map)
+        public static Dictionary<string, object?> ToDictionary(this MapField<string, Value> map)
         {
             return map.ToDictionary(x => x.Key, x => ConvertFromValue(x.Value));
         }

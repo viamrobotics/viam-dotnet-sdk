@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		buf.gen.rpc.yaml = buf.gen.rpc.yaml
 		buf.gen.yaml = buf.gen.yaml
+		buf.yaml = buf.yaml
 		.config\dotnet-tools.json = .config\dotnet-tools.json
 		Makefile = Makefile
 		README.md = README.md
@@ -30,9 +31,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleWeb", "examples\Simpl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAuth", "examples\SimpleAuth\Client\SimpleAuth.csproj", "{BA811175-8162-4957-A0FD-3E8B08B22F38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viam.Serialization", "src\Viam.Serialization\Viam.Serialization.csproj", "{D57D9532-3912-471A-9914-9519DD305318}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viam.Serialization.Analyzer", "src\Viam.Serialization.Analyzer\Viam.Serialization.Analyzer.csproj", "{D57D9532-3912-471A-9914-9519DD305318}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viam.ModularResources.Test", "test\Viam.ModularResources\Viam.ModularResources.Test.csproj", "{1177B290-59D2-4E0C-8E0B-F76AD11190E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viam.Serialization", "src\Viam.Serialization\Viam.Serialization.csproj", "{312337F0-BBE3-427A-BFFA-2FB9E915ED62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viam.Serialization.Test", "test\Viam.Serialization.Test\Viam.Serialization.Test.csproj", "{3B976BA2-6132-404D-8BD5-1176DAA4EC96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,6 +81,14 @@ Global
 		{1177B290-59D2-4E0C-8E0B-F76AD11190E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1177B290-59D2-4E0C-8E0B-F76AD11190E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1177B290-59D2-4E0C-8E0B-F76AD11190E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{312337F0-BBE3-427A-BFFA-2FB9E915ED62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{312337F0-BBE3-427A-BFFA-2FB9E915ED62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{312337F0-BBE3-427A-BFFA-2FB9E915ED62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{312337F0-BBE3-427A-BFFA-2FB9E915ED62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B976BA2-6132-404D-8BD5-1176DAA4EC96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B976BA2-6132-404D-8BD5-1176DAA4EC96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B976BA2-6132-404D-8BD5-1176DAA4EC96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B976BA2-6132-404D-8BD5-1176DAA4EC96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,6 +99,7 @@ Global
 		{F5FF19C6-6B91-4B33-9E9C-9323196E77FB} = {5B622FC1-136F-4C40-B653-9E9D478AAD34}
 		{BA811175-8162-4957-A0FD-3E8B08B22F38} = {5B622FC1-136F-4C40-B653-9E9D478AAD34}
 		{1177B290-59D2-4E0C-8E0B-F76AD11190E6} = {B466695F-9DB2-4A3C-9FA6-6DF4197FC61E}
+		{3B976BA2-6132-404D-8BD5-1176DAA4EC96} = {B466695F-9DB2-4A3C-9FA6-6DF4197FC61E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {835625CE-9D82-41F0-AFD1-17FDFABA1917}

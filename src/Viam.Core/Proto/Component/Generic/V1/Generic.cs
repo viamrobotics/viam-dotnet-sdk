@@ -33,9 +33,12 @@ namespace Viam.Component.Generic.V1 {
             "Y29tbWFuZBKWAQoNR2V0R2VvbWV0cmllcxIkLnZpYW0uY29tbW9uLnYxLkdl",
             "dEdlb21ldHJpZXNSZXF1ZXN0GiUudmlhbS5jb21tb24udjEuR2V0R2VvbWV0",
             "cmllc1Jlc3BvbnNlIjiC0+STAjISMC92aWFtL2FwaS92MS9jb21wb25lbnQv",
-            "Z2VuZXJpYy97bmFtZX0vZ2VvbWV0cmllc0JFCh1jb20udmlhbS5jb21wb25l",
-            "bnQuZ2VuZXJpYy52MVokZ28udmlhbS5jb20vYXBpL2NvbXBvbmVudC9nZW5l",
-            "cmljL3YxYgZwcm90bzM="));
+            "Z2VuZXJpYy97bmFtZX0vZ2VvbWV0cmllc0LaAQodY29tLnZpYW0uY29tcG9u",
+            "ZW50LmdlbmVyaWMudjFCDEdlbmVyaWNQcm90b1ABWiRnby52aWFtLmNvbS9h",
+            "cGkvY29tcG9uZW50L2dlbmVyaWMvdjGiAgNWQ0eqAhlWaWFtLkNvbXBvbmVu",
+            "dC5HZW5lcmljLlYxygIZVmlhbVxDb21wb25lbnRcR2VuZXJpY1xWMeICJVZp",
+            "YW1cQ29tcG9uZW50XEdlbmVyaWNcVjFcR1BCTWV0YWRhdGHqAhxWaWFtOjpD",
+            "b21wb25lbnQ6OkdlbmVyaWM6OlYxYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, null));

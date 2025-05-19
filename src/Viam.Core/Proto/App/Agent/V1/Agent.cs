@@ -26,83 +26,67 @@ namespace Viam.App.Agent.V1 {
           string.Concat(
             "ChhhcHAvYWdlbnQvdjEvYWdlbnQucHJvdG8SEXZpYW0uYXBwLmFnZW50LnYx",
             "Gh5nb29nbGUvcHJvdG9idWYvZHVyYXRpb24ucHJvdG8aHGdvb2dsZS9wcm90",
-            "b2J1Zi9zdHJ1Y3QucHJvdG8aFnRhZ2dlci92MS90YWdnZXIucHJvdG8iJwoV",
-            "R2V0QWdlbnRDb25maWdSZXF1ZXN0Eg4KAmlkGAEgASgJUgJpZCJeChZHZXRB",
-            "Z2VudENvbmZpZ1Jlc3BvbnNlEkQKDGFnZW50X2NvbmZpZxgBIAEoCzIhLnZp",
-            "YW0uYXBwLmFnZW50LnYxLkFwcEFnZW50Q29uZmlnUgthZ2VudENvbmZpZyJw",
-            "ChhVcGRhdGVBZ2VudENvbmZpZ1JlcXVlc3QSDgoCaWQYASABKAlSAmlkEkQK",
-            "DGFnZW50X2NvbmZpZxgCIAEoCzIhLnZpYW0uYXBwLmFnZW50LnYxLkFwcEFn",
-            "ZW50Q29uZmlnUgthZ2VudENvbmZpZyJhChlVcGRhdGVBZ2VudENvbmZpZ1Jl",
-            "c3BvbnNlEkQKDGFnZW50X2NvbmZpZxgBIAEoCzIhLnZpYW0uYXBwLmFnZW50",
-            "LnYxLkFwcEFnZW50Q29uZmlnUgthZ2VudENvbmZpZyKbAgoOQXBwQWdlbnRD",
-            "b25maWcSnAEKEXN1YnN5c3RlbV9jb25maWdzGAEgAygLMjcudmlhbS5hcHAu",
-            "YWdlbnQudjEuQXBwQWdlbnRDb25maWcuU3Vic3lzdGVtQ29uZmlnc0VudHJ5",
-            "QjaahJ4DMWJzb246InN1YnN5c3RlbV9jb25maWdzIiBqc29uOiJzdWJzeXN0",
-            "ZW1fY29uZmlncyJSEHN1YnN5c3RlbUNvbmZpZ3MaagoVU3Vic3lzdGVtQ29u",
-            "Zmlnc0VudHJ5EhAKA2tleRgBIAEoCVIDa2V5EjsKBXZhbHVlGAIgASgLMiUu",
-            "dmlhbS5hcHAuYWdlbnQudjEuQXBwU3Vic3lzdGVtQ29uZmlnUgV2YWx1ZToC",
-            "OAEiwwMKEkFwcFN1YnN5c3RlbUNvbmZpZxJbCg9yZWxlYXNlX2NoYW5uZWwY",
-            "ASABKAlCMpqEngMtYnNvbjoicmVsZWFzZV9jaGFubmVsIiBqc29uOiJyZWxl",
-            "YXNlX2NoYW5uZWwiUg5yZWxlYXNlQ2hhbm5lbBJLCgtwaW5fdmVyc2lvbhgC",
-            "IAEoCUIqmoSeAyVic29uOiJwaW5fdmVyc2lvbiIganNvbjoicGluX3ZlcnNp",
-            "b24iUgpwaW5WZXJzaW9uEjsKB3Bpbl91cmwYAyABKAlCIpqEngMdYnNvbjoi",
-            "cGluX3VybCIganNvbjoicGluX3VybCJSBnBpblVybBJjChFkaXNhYmxlX3N1",
-            "YnN5c3RlbRgEIAEoCEI2moSeAzFic29uOiJkaXNhYmxlX3N1YnN5c3RlbSIg",
-            "anNvbjoiZGlzYWJsZV9zdWJzeXN0ZW0iUhBkaXNhYmxlU3Vic3lzdGVtEmEK",
-            "CmF0dHJpYnV0ZXMYBSABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0Qiia",
-            "hJ4DI2Jzb246ImF0dHJpYnV0ZXMiIGpzb246ImF0dHJpYnV0ZXMiUgphdHRy",
-            "aWJ1dGVzIp0CChhEZXZpY2VBZ2VudENvbmZpZ1JlcXVlc3QSDgoCaWQYASAB",
-            "KAlSAmlkEjgKCWhvc3RfaW5mbxgCIAEoCzIbLnZpYW0uYXBwLmFnZW50LnYx",
-            "Lkhvc3RJbmZvUghob3N0SW5mbxJxChJzdWJzeXN0ZW1fdmVyc2lvbnMYAyAD",
-            "KAsyQi52aWFtLmFwcC5hZ2VudC52MS5EZXZpY2VBZ2VudENvbmZpZ1JlcXVl",
-            "c3QuU3Vic3lzdGVtVmVyc2lvbnNFbnRyeVIRc3Vic3lzdGVtVmVyc2lvbnMa",
-            "RAoWU3Vic3lzdGVtVmVyc2lvbnNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIU",
-            "CgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgBIr0CChlEZXZpY2VBZ2VudENvbmZp",
-            "Z1Jlc3BvbnNlEm8KEXN1YnN5c3RlbV9jb25maWdzGAEgAygLMkIudmlhbS5h",
-            "cHAuYWdlbnQudjEuRGV2aWNlQWdlbnRDb25maWdSZXNwb25zZS5TdWJzeXN0",
-            "ZW1Db25maWdzRW50cnlSEHN1YnN5c3RlbUNvbmZpZ3MSQAoOY2hlY2tfaW50",
-            "ZXJ2YWwYAiABKAsyGS5nb29nbGUucHJvdG9idWYuRHVyYXRpb25SDWNoZWNr",
-            "SW50ZXJ2YWwabQoVU3Vic3lzdGVtQ29uZmlnc0VudHJ5EhAKA2tleRgBIAEo",
-            "CVIDa2V5Ej4KBXZhbHVlGAIgASgLMigudmlhbS5hcHAuYWdlbnQudjEuRGV2",
-            "aWNlU3Vic3lzdGVtQ29uZmlnUgV2YWx1ZToCOAEi2AEKFURldmljZVN1YnN5",
-            "c3RlbUNvbmZpZxJHCgt1cGRhdGVfaW5mbxgBIAEoCzImLnZpYW0uYXBwLmFn",
-            "ZW50LnYxLlN1YnN5c3RlbVVwZGF0ZUluZm9SCnVwZGF0ZUluZm8SGAoHZGlz",
-            "YWJsZRgCIAEoCFIHZGlzYWJsZRIjCg1mb3JjZV9yZXN0YXJ0GAMgASgIUgxm",
-            "b3JjZVJlc3RhcnQSNwoKYXR0cmlidXRlcxgEIAEoCzIXLmdvb2dsZS5wcm90",
-            "b2J1Zi5TdHJ1Y3RSCmF0dHJpYnV0ZXMiUgoISG9zdEluZm8SGgoIcGxhdGZv",
-            "cm0YASABKAlSCHBsYXRmb3JtEhYKBmRpc3RybxgCIAEoCVIGZGlzdHJvEhIK",
-            "BHRhZ3MYAyADKAlSBHRhZ3MirwEKE1N1YnN5c3RlbVVwZGF0ZUluZm8SGgoI",
-            "ZmlsZW5hbWUYASABKAlSCGZpbGVuYW1lEhAKA3VybBgCIAEoCVIDdXJsEhgK",
-            "B3ZlcnNpb24YAyABKAlSB3ZlcnNpb24SFgoGc2hhMjU2GAQgASgMUgZzaGEy",
-            "NTYSOAoGZm9ybWF0GAUgASgOMiAudmlhbS5hcHAuYWdlbnQudjEuUGFja2Fn",
-            "ZUZvcm1hdFIGZm9ybWF0Kp8BCg1QYWNrYWdlRm9ybWF0Eh4KGlBBQ0tBR0Vf",
-            "Rk9STUFUX1VOU1BFQ0lGSUVEEAASFgoSUEFDS0FHRV9GT1JNQVRfUkFXEAES",
-            "FQoRUEFDS0FHRV9GT1JNQVRfWFoQAhIdChlQQUNLQUdFX0ZPUk1BVF9FWEVD",
-            "VVRBQkxFEAMSIAocUEFDS0FHRV9GT1JNQVRfWFpfRVhFQ1VUQUJMRRAEMugB",
-            "Cg9BZ2VudEFwcFNlcnZpY2USZQoOR2V0QWdlbnRDb25maWcSKC52aWFtLmFw",
-            "cC5hZ2VudC52MS5HZXRBZ2VudENvbmZpZ1JlcXVlc3QaKS52aWFtLmFwcC5h",
-            "Z2VudC52MS5HZXRBZ2VudENvbmZpZ1Jlc3BvbnNlEm4KEVVwZGF0ZUFnZW50",
-            "Q29uZmlnEisudmlhbS5hcHAuYWdlbnQudjEuVXBkYXRlQWdlbnRDb25maWdS",
-            "ZXF1ZXN0GiwudmlhbS5hcHAuYWdlbnQudjEuVXBkYXRlQWdlbnRDb25maWdS",
-            "ZXNwb25zZTKEAQoSQWdlbnREZXZpY2VTZXJ2aWNlEm4KEURldmljZUFnZW50",
-            "Q29uZmlnEisudmlhbS5hcHAuYWdlbnQudjEuRGV2aWNlQWdlbnRDb25maWdS",
-            "ZXF1ZXN0GiwudmlhbS5hcHAuYWdlbnQudjEuRGV2aWNlQWdlbnRDb25maWdS",
-            "ZXNwb25zZUIeWhxnby52aWFtLmNvbS9hcGkvYXBwL2FnZW50L3YxYgZwcm90",
-            "bzM="));
+            "b2J1Zi9zdHJ1Y3QucHJvdG8i5AIKGERldmljZUFnZW50Q29uZmlnUmVxdWVz",
+            "dBIOCgJpZBgBIAEoCVICaWQSOAoJaG9zdF9pbmZvGAIgASgLMhsudmlhbS5h",
+            "cHAuYWdlbnQudjEuSG9zdEluZm9SCGhvc3RJbmZvEnUKEnN1YnN5c3RlbV92",
+            "ZXJzaW9ucxgDIAMoCzJCLnZpYW0uYXBwLmFnZW50LnYxLkRldmljZUFnZW50",
+            "Q29uZmlnUmVxdWVzdC5TdWJzeXN0ZW1WZXJzaW9uc0VudHJ5QgIYAVIRc3Vi",
+            "c3lzdGVtVmVyc2lvbnMSQQoMdmVyc2lvbl9pbmZvGAQgASgLMh4udmlhbS5h",
+            "cHAuYWdlbnQudjEuVmVyc2lvbkluZm9SC3ZlcnNpb25JbmZvGkQKFlN1YnN5",
+            "c3RlbVZlcnNpb25zRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUY",
+            "AiABKAlSBXZhbHVlOgI4ASKMBgoZRGV2aWNlQWdlbnRDb25maWdSZXNwb25z",
+            "ZRJzChFzdWJzeXN0ZW1fY29uZmlncxgBIAMoCzJCLnZpYW0uYXBwLmFnZW50",
+            "LnYxLkRldmljZUFnZW50Q29uZmlnUmVzcG9uc2UuU3Vic3lzdGVtQ29uZmln",
+            "c0VudHJ5QgIYAVIQc3Vic3lzdGVtQ29uZmlncxJACg5jaGVja19pbnRlcnZh",
+            "bBgCIAEoCzIZLmdvb2dsZS5wcm90b2J1Zi5EdXJhdGlvblINY2hlY2tJbnRl",
+            "cnZhbBJJChFhZ2VudF91cGRhdGVfaW5mbxgDIAEoCzIdLnZpYW0uYXBwLmFn",
+            "ZW50LnYxLlVwZGF0ZUluZm9SD2FnZW50VXBkYXRlSW5mbxJUChd2aWFtX3Nl",
+            "cnZlcl91cGRhdGVfaW5mbxgEIAEoCzIdLnZpYW0uYXBwLmFnZW50LnYxLlVw",
+            "ZGF0ZUluZm9SFHZpYW1TZXJ2ZXJVcGRhdGVJbmZvEkQKEWFkdmFuY2VkX3Nl",
+            "dHRpbmdzGAUgASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFIQYWR2YW5j",
+            "ZWRTZXR0aW5ncxJMChVuZXR3b3JrX2NvbmZpZ3VyYXRpb24YBiABKAsyFy5n",
+            "b29nbGUucHJvdG9idWYuU3RydWN0UhRuZXR3b3JrQ29uZmlndXJhdGlvbhJI",
+            "ChNhZGRpdGlvbmFsX25ldHdvcmtzGAcgASgLMhcuZ29vZ2xlLnByb3RvYnVm",
+            "LlN0cnVjdFISYWRkaXRpb25hbE5ldHdvcmtzEkoKFHN5c3RlbV9jb25maWd1",
+            "cmF0aW9uGAggASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFITc3lzdGVt",
+            "Q29uZmlndXJhdGlvbhptChVTdWJzeXN0ZW1Db25maWdzRW50cnkSEAoDa2V5",
+            "GAEgASgJUgNrZXkSPgoFdmFsdWUYAiABKAsyKC52aWFtLmFwcC5hZ2VudC52",
+            "MS5EZXZpY2VTdWJzeXN0ZW1Db25maWdSBXZhbHVlOgI4ASLTAQoVRGV2aWNl",
+            "U3Vic3lzdGVtQ29uZmlnEj4KC3VwZGF0ZV9pbmZvGAEgASgLMh0udmlhbS5h",
+            "cHAuYWdlbnQudjEuVXBkYXRlSW5mb1IKdXBkYXRlSW5mbxIYCgdkaXNhYmxl",
+            "GAIgASgIUgdkaXNhYmxlEiMKDWZvcmNlX3Jlc3RhcnQYAyABKAhSDGZvcmNl",
+            "UmVzdGFydBI3CgphdHRyaWJ1dGVzGAQgASgLMhcuZ29vZ2xlLnByb3RvYnVm",
+            "LlN0cnVjdFIKYXR0cmlidXRlczoCGAEivwEKC1ZlcnNpb25JbmZvEiMKDWFn",
+            "ZW50X3J1bm5pbmcYASABKAlSDGFnZW50UnVubmluZxInCg9hZ2VudF9pbnN0",
+            "YWxsZWQYAiABKAlSDmFnZW50SW5zdGFsbGVkEi4KE3ZpYW1fc2VydmVyX3J1",
+            "bm5pbmcYAyABKAlSEXZpYW1TZXJ2ZXJSdW5uaW5nEjIKFXZpYW1fc2VydmVy",
+            "X2luc3RhbGxlZBgEIAEoCVITdmlhbVNlcnZlckluc3RhbGxlZCJSCghIb3N0",
+            "SW5mbxIaCghwbGF0Zm9ybRgBIAEoCVIIcGxhdGZvcm0SFgoGZGlzdHJvGAIg",
+            "ASgJUgZkaXN0cm8SEgoEdGFncxgDIAMoCVIEdGFncyKmAQoKVXBkYXRlSW5m",
+            "bxIaCghmaWxlbmFtZRgBIAEoCVIIZmlsZW5hbWUSEAoDdXJsGAIgASgJUgN1",
+            "cmwSGAoHdmVyc2lvbhgDIAEoCVIHdmVyc2lvbhIWCgZzaGEyNTYYBCABKAxS",
+            "BnNoYTI1NhI4CgZmb3JtYXQYBSABKA4yIC52aWFtLmFwcC5hZ2VudC52MS5Q",
+            "YWNrYWdlRm9ybWF0UgZmb3JtYXQqnwEKDVBhY2thZ2VGb3JtYXQSHgoaUEFD",
+            "S0FHRV9GT1JNQVRfVU5TUEVDSUZJRUQQABIWChJQQUNLQUdFX0ZPUk1BVF9S",
+            "QVcQARIVChFQQUNLQUdFX0ZPUk1BVF9YWhACEh0KGVBBQ0tBR0VfRk9STUFU",
+            "X0VYRUNVVEFCTEUQAxIgChxQQUNLQUdFX0ZPUk1BVF9YWl9FWEVDVVRBQkxF",
+            "EAQyhAEKEkFnZW50RGV2aWNlU2VydmljZRJuChFEZXZpY2VBZ2VudENvbmZp",
+            "ZxIrLnZpYW0uYXBwLmFnZW50LnYxLkRldmljZUFnZW50Q29uZmlnUmVxdWVz",
+            "dBosLnZpYW0uYXBwLmFnZW50LnYxLkRldmljZUFnZW50Q29uZmlnUmVzcG9u",
+            "c2VCqAEKFWNvbS52aWFtLmFwcC5hZ2VudC52MUIKQWdlbnRQcm90b1ABWhxn",
+            "by52aWFtLmNvbS9hcGkvYXBwL2FnZW50L3YxogIDVkFBqgIRVmlhbS5BcHAu",
+            "QWdlbnQuVjHKAhFWaWFtXEFwcFxBZ2VudFxWMeICHVZpYW1cQXBwXEFnZW50",
+            "XFYxXEdQQk1ldGFkYXRh6gIUVmlhbTo6QXBwOjpBZ2VudDo6VjFiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Tagger.V1.TaggerReflection.Descriptor, },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Viam.App.Agent.V1.PackageFormat), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.GetAgentConfigRequest), global::Viam.App.Agent.V1.GetAgentConfigRequest.Parser, new[]{ "Id" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.GetAgentConfigResponse), global::Viam.App.Agent.V1.GetAgentConfigResponse.Parser, new[]{ "AgentConfig" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.UpdateAgentConfigRequest), global::Viam.App.Agent.V1.UpdateAgentConfigRequest.Parser, new[]{ "Id", "AgentConfig" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.UpdateAgentConfigResponse), global::Viam.App.Agent.V1.UpdateAgentConfigResponse.Parser, new[]{ "AgentConfig" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.AppAgentConfig), global::Viam.App.Agent.V1.AppAgentConfig.Parser, new[]{ "SubsystemConfigs" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.AppSubsystemConfig), global::Viam.App.Agent.V1.AppSubsystemConfig.Parser, new[]{ "ReleaseChannel", "PinVersion", "PinUrl", "DisableSubsystem", "Attributes" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.DeviceAgentConfigRequest), global::Viam.App.Agent.V1.DeviceAgentConfigRequest.Parser, new[]{ "Id", "HostInfo", "SubsystemVersions" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.DeviceAgentConfigResponse), global::Viam.App.Agent.V1.DeviceAgentConfigResponse.Parser, new[]{ "SubsystemConfigs", "CheckInterval" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.DeviceAgentConfigRequest), global::Viam.App.Agent.V1.DeviceAgentConfigRequest.Parser, new[]{ "Id", "HostInfo", "SubsystemVersions", "VersionInfo" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.DeviceAgentConfigResponse), global::Viam.App.Agent.V1.DeviceAgentConfigResponse.Parser, new[]{ "SubsystemConfigs", "CheckInterval", "AgentUpdateInfo", "ViamServerUpdateInfo", "AdvancedSettings", "NetworkConfiguration", "AdditionalNetworks", "SystemConfiguration" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.DeviceSubsystemConfig), global::Viam.App.Agent.V1.DeviceSubsystemConfig.Parser, new[]{ "UpdateInfo", "Disable", "ForceRestart", "Attributes" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.VersionInfo), global::Viam.App.Agent.V1.VersionInfo.Parser, new[]{ "AgentRunning", "AgentInstalled", "ViamServerRunning", "ViamServerInstalled" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.HostInfo), global::Viam.App.Agent.V1.HostInfo.Parser, new[]{ "Platform", "Distro", "Tags" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.SubsystemUpdateInfo), global::Viam.App.Agent.V1.SubsystemUpdateInfo.Parser, new[]{ "Filename", "Url", "Version", "Sha256", "Format" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Agent.V1.UpdateInfo), global::Viam.App.Agent.V1.UpdateInfo.Parser, new[]{ "Filename", "Url", "Version", "Sha256", "Format" }, null, null, null, null)
           }));
     }
     #endregion
@@ -136,1359 +120,6 @@ namespace Viam.App.Agent.V1 {
 
   #region Messages
   /// <summary>
-  /// App side
-  /// </summary>
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class GetAgentConfigRequest : pb::IMessage<GetAgentConfigRequest>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<GetAgentConfigRequest> _parser = new pb::MessageParser<GetAgentConfigRequest>(() => new GetAgentConfigRequest());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<GetAgentConfigRequest> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[0]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GetAgentConfigRequest() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GetAgentConfigRequest(GetAgentConfigRequest other) : this() {
-      id_ = other.id_;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GetAgentConfigRequest Clone() {
-      return new GetAgentConfigRequest(this);
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private string id_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Id {
-      get { return id_; }
-      set {
-        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as GetAgentConfigRequest);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(GetAgentConfigRequest other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Id != other.Id) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Id.Length != 0) hash ^= Id.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (Id.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Id);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Id.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Id);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (Id.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(GetAgentConfigRequest other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Id.Length != 0) {
-        Id = other.Id;
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            Id = input.ReadString();
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            Id = input.ReadString();
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class GetAgentConfigResponse : pb::IMessage<GetAgentConfigResponse>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<GetAgentConfigResponse> _parser = new pb::MessageParser<GetAgentConfigResponse>(() => new GetAgentConfigResponse());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<GetAgentConfigResponse> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[1]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GetAgentConfigResponse() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GetAgentConfigResponse(GetAgentConfigResponse other) : this() {
-      agentConfig_ = other.agentConfig_ != null ? other.agentConfig_.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public GetAgentConfigResponse Clone() {
-      return new GetAgentConfigResponse(this);
-    }
-
-    /// <summary>Field number for the "agent_config" field.</summary>
-    public const int AgentConfigFieldNumber = 1;
-    private global::Viam.App.Agent.V1.AppAgentConfig agentConfig_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Viam.App.Agent.V1.AppAgentConfig AgentConfig {
-      get { return agentConfig_; }
-      set {
-        agentConfig_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as GetAgentConfigResponse);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(GetAgentConfigResponse other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (!object.Equals(AgentConfig, other.AgentConfig)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (agentConfig_ != null) hash ^= AgentConfig.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (agentConfig_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(AgentConfig);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (agentConfig_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(AgentConfig);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (agentConfig_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AgentConfig);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(GetAgentConfigResponse other) {
-      if (other == null) {
-        return;
-      }
-      if (other.agentConfig_ != null) {
-        if (agentConfig_ == null) {
-          AgentConfig = new global::Viam.App.Agent.V1.AppAgentConfig();
-        }
-        AgentConfig.MergeFrom(other.AgentConfig);
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            if (agentConfig_ == null) {
-              AgentConfig = new global::Viam.App.Agent.V1.AppAgentConfig();
-            }
-            input.ReadMessage(AgentConfig);
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            if (agentConfig_ == null) {
-              AgentConfig = new global::Viam.App.Agent.V1.AppAgentConfig();
-            }
-            input.ReadMessage(AgentConfig);
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class UpdateAgentConfigRequest : pb::IMessage<UpdateAgentConfigRequest>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<UpdateAgentConfigRequest> _parser = new pb::MessageParser<UpdateAgentConfigRequest>(() => new UpdateAgentConfigRequest());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<UpdateAgentConfigRequest> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[2]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public UpdateAgentConfigRequest() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public UpdateAgentConfigRequest(UpdateAgentConfigRequest other) : this() {
-      id_ = other.id_;
-      agentConfig_ = other.agentConfig_ != null ? other.agentConfig_.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public UpdateAgentConfigRequest Clone() {
-      return new UpdateAgentConfigRequest(this);
-    }
-
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private string id_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Id {
-      get { return id_; }
-      set {
-        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "agent_config" field.</summary>
-    public const int AgentConfigFieldNumber = 2;
-    private global::Viam.App.Agent.V1.AppAgentConfig agentConfig_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Viam.App.Agent.V1.AppAgentConfig AgentConfig {
-      get { return agentConfig_; }
-      set {
-        agentConfig_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as UpdateAgentConfigRequest);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(UpdateAgentConfigRequest other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (Id != other.Id) return false;
-      if (!object.Equals(AgentConfig, other.AgentConfig)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (Id.Length != 0) hash ^= Id.GetHashCode();
-      if (agentConfig_ != null) hash ^= AgentConfig.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (Id.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Id);
-      }
-      if (agentConfig_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(AgentConfig);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Id.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(Id);
-      }
-      if (agentConfig_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(AgentConfig);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (Id.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
-      }
-      if (agentConfig_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AgentConfig);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(UpdateAgentConfigRequest other) {
-      if (other == null) {
-        return;
-      }
-      if (other.Id.Length != 0) {
-        Id = other.Id;
-      }
-      if (other.agentConfig_ != null) {
-        if (agentConfig_ == null) {
-          AgentConfig = new global::Viam.App.Agent.V1.AppAgentConfig();
-        }
-        AgentConfig.MergeFrom(other.AgentConfig);
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            Id = input.ReadString();
-            break;
-          }
-          case 18: {
-            if (agentConfig_ == null) {
-              AgentConfig = new global::Viam.App.Agent.V1.AppAgentConfig();
-            }
-            input.ReadMessage(AgentConfig);
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            Id = input.ReadString();
-            break;
-          }
-          case 18: {
-            if (agentConfig_ == null) {
-              AgentConfig = new global::Viam.App.Agent.V1.AppAgentConfig();
-            }
-            input.ReadMessage(AgentConfig);
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class UpdateAgentConfigResponse : pb::IMessage<UpdateAgentConfigResponse>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<UpdateAgentConfigResponse> _parser = new pb::MessageParser<UpdateAgentConfigResponse>(() => new UpdateAgentConfigResponse());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<UpdateAgentConfigResponse> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[3]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public UpdateAgentConfigResponse() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public UpdateAgentConfigResponse(UpdateAgentConfigResponse other) : this() {
-      agentConfig_ = other.agentConfig_ != null ? other.agentConfig_.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public UpdateAgentConfigResponse Clone() {
-      return new UpdateAgentConfigResponse(this);
-    }
-
-    /// <summary>Field number for the "agent_config" field.</summary>
-    public const int AgentConfigFieldNumber = 1;
-    private global::Viam.App.Agent.V1.AppAgentConfig agentConfig_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Viam.App.Agent.V1.AppAgentConfig AgentConfig {
-      get { return agentConfig_; }
-      set {
-        agentConfig_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as UpdateAgentConfigResponse);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(UpdateAgentConfigResponse other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (!object.Equals(AgentConfig, other.AgentConfig)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (agentConfig_ != null) hash ^= AgentConfig.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (agentConfig_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(AgentConfig);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (agentConfig_ != null) {
-        output.WriteRawTag(10);
-        output.WriteMessage(AgentConfig);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (agentConfig_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AgentConfig);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(UpdateAgentConfigResponse other) {
-      if (other == null) {
-        return;
-      }
-      if (other.agentConfig_ != null) {
-        if (agentConfig_ == null) {
-          AgentConfig = new global::Viam.App.Agent.V1.AppAgentConfig();
-        }
-        AgentConfig.MergeFrom(other.AgentConfig);
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            if (agentConfig_ == null) {
-              AgentConfig = new global::Viam.App.Agent.V1.AppAgentConfig();
-            }
-            input.ReadMessage(AgentConfig);
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            if (agentConfig_ == null) {
-              AgentConfig = new global::Viam.App.Agent.V1.AppAgentConfig();
-            }
-            input.ReadMessage(AgentConfig);
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class AppAgentConfig : pb::IMessage<AppAgentConfig>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<AppAgentConfig> _parser = new pb::MessageParser<AppAgentConfig>(() => new AppAgentConfig());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<AppAgentConfig> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[4]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public AppAgentConfig() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public AppAgentConfig(AppAgentConfig other) : this() {
-      subsystemConfigs_ = other.subsystemConfigs_.Clone();
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public AppAgentConfig Clone() {
-      return new AppAgentConfig(this);
-    }
-
-    /// <summary>Field number for the "subsystem_configs" field.</summary>
-    public const int SubsystemConfigsFieldNumber = 1;
-    private static readonly pbc::MapField<string, global::Viam.App.Agent.V1.AppSubsystemConfig>.Codec _map_subsystemConfigs_codec
-        = new pbc::MapField<string, global::Viam.App.Agent.V1.AppSubsystemConfig>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::Viam.App.Agent.V1.AppSubsystemConfig.Parser), 10);
-    private readonly pbc::MapField<string, global::Viam.App.Agent.V1.AppSubsystemConfig> subsystemConfigs_ = new pbc::MapField<string, global::Viam.App.Agent.V1.AppSubsystemConfig>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::Viam.App.Agent.V1.AppSubsystemConfig> SubsystemConfigs {
-      get { return subsystemConfigs_; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as AppAgentConfig);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(AppAgentConfig other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (!SubsystemConfigs.Equals(other.SubsystemConfigs)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      hash ^= SubsystemConfigs.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      subsystemConfigs_.WriteTo(output, _map_subsystemConfigs_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      subsystemConfigs_.WriteTo(ref output, _map_subsystemConfigs_codec);
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      size += subsystemConfigs_.CalculateSize(_map_subsystemConfigs_codec);
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(AppAgentConfig other) {
-      if (other == null) {
-        return;
-      }
-      subsystemConfigs_.MergeFrom(other.subsystemConfigs_);
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            subsystemConfigs_.AddEntriesFrom(input, _map_subsystemConfigs_codec);
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            subsystemConfigs_.AddEntriesFrom(ref input, _map_subsystemConfigs_codec);
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class AppSubsystemConfig : pb::IMessage<AppSubsystemConfig>
-  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      , pb::IBufferMessage
-  #endif
-  {
-    private static readonly pb::MessageParser<AppSubsystemConfig> _parser = new pb::MessageParser<AppSubsystemConfig>(() => new AppSubsystemConfig());
-    private pb::UnknownFieldSet _unknownFields;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<AppSubsystemConfig> Parser { get { return _parser; } }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[5]; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    pbr::MessageDescriptor pb::IMessage.Descriptor {
-      get { return Descriptor; }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public AppSubsystemConfig() {
-      OnConstruction();
-    }
-
-    partial void OnConstruction();
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public AppSubsystemConfig(AppSubsystemConfig other) : this() {
-      releaseChannel_ = other.releaseChannel_;
-      pinVersion_ = other.pinVersion_;
-      pinUrl_ = other.pinUrl_;
-      disableSubsystem_ = other.disableSubsystem_;
-      attributes_ = other.attributes_ != null ? other.attributes_.Clone() : null;
-      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public AppSubsystemConfig Clone() {
-      return new AppSubsystemConfig(this);
-    }
-
-    /// <summary>Field number for the "release_channel" field.</summary>
-    public const int ReleaseChannelFieldNumber = 1;
-    private string releaseChannel_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string ReleaseChannel {
-      get { return releaseChannel_; }
-      set {
-        releaseChannel_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "pin_version" field.</summary>
-    public const int PinVersionFieldNumber = 2;
-    private string pinVersion_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string PinVersion {
-      get { return pinVersion_; }
-      set {
-        pinVersion_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "pin_url" field.</summary>
-    public const int PinUrlFieldNumber = 3;
-    private string pinUrl_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string PinUrl {
-      get { return pinUrl_; }
-      set {
-        pinUrl_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "disable_subsystem" field.</summary>
-    public const int DisableSubsystemFieldNumber = 4;
-    private bool disableSubsystem_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool DisableSubsystem {
-      get { return disableSubsystem_; }
-      set {
-        disableSubsystem_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "attributes" field.</summary>
-    public const int AttributesFieldNumber = 5;
-    private global::Google.Protobuf.WellKnownTypes.Struct attributes_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Google.Protobuf.WellKnownTypes.Struct Attributes {
-      get { return attributes_; }
-      set {
-        attributes_ = value;
-      }
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override bool Equals(object other) {
-      return Equals(other as AppSubsystemConfig);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(AppSubsystemConfig other) {
-      if (ReferenceEquals(other, null)) {
-        return false;
-      }
-      if (ReferenceEquals(other, this)) {
-        return true;
-      }
-      if (ReleaseChannel != other.ReleaseChannel) return false;
-      if (PinVersion != other.PinVersion) return false;
-      if (PinUrl != other.PinUrl) return false;
-      if (DisableSubsystem != other.DisableSubsystem) return false;
-      if (!object.Equals(Attributes, other.Attributes)) return false;
-      return Equals(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override int GetHashCode() {
-      int hash = 1;
-      if (ReleaseChannel.Length != 0) hash ^= ReleaseChannel.GetHashCode();
-      if (PinVersion.Length != 0) hash ^= PinVersion.GetHashCode();
-      if (PinUrl.Length != 0) hash ^= PinUrl.GetHashCode();
-      if (DisableSubsystem != false) hash ^= DisableSubsystem.GetHashCode();
-      if (attributes_ != null) hash ^= Attributes.GetHashCode();
-      if (_unknownFields != null) {
-        hash ^= _unknownFields.GetHashCode();
-      }
-      return hash;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public override string ToString() {
-      return pb::JsonFormatter.ToDiagnosticString(this);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void WriteTo(pb::CodedOutputStream output) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      output.WriteRawMessage(this);
-    #else
-      if (ReleaseChannel.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(ReleaseChannel);
-      }
-      if (PinVersion.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(PinVersion);
-      }
-      if (PinUrl.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(PinUrl);
-      }
-      if (DisableSubsystem != false) {
-        output.WriteRawTag(32);
-        output.WriteBool(DisableSubsystem);
-      }
-      if (attributes_ != null) {
-        output.WriteRawTag(42);
-        output.WriteMessage(Attributes);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(output);
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (ReleaseChannel.Length != 0) {
-        output.WriteRawTag(10);
-        output.WriteString(ReleaseChannel);
-      }
-      if (PinVersion.Length != 0) {
-        output.WriteRawTag(18);
-        output.WriteString(PinVersion);
-      }
-      if (PinUrl.Length != 0) {
-        output.WriteRawTag(26);
-        output.WriteString(PinUrl);
-      }
-      if (DisableSubsystem != false) {
-        output.WriteRawTag(32);
-        output.WriteBool(DisableSubsystem);
-      }
-      if (attributes_ != null) {
-        output.WriteRawTag(42);
-        output.WriteMessage(Attributes);
-      }
-      if (_unknownFields != null) {
-        _unknownFields.WriteTo(ref output);
-      }
-    }
-    #endif
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int CalculateSize() {
-      int size = 0;
-      if (ReleaseChannel.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(ReleaseChannel);
-      }
-      if (PinVersion.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(PinVersion);
-      }
-      if (PinUrl.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(PinUrl);
-      }
-      if (DisableSubsystem != false) {
-        size += 1 + 1;
-      }
-      if (attributes_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Attributes);
-      }
-      if (_unknownFields != null) {
-        size += _unknownFields.CalculateSize();
-      }
-      return size;
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(AppSubsystemConfig other) {
-      if (other == null) {
-        return;
-      }
-      if (other.ReleaseChannel.Length != 0) {
-        ReleaseChannel = other.ReleaseChannel;
-      }
-      if (other.PinVersion.Length != 0) {
-        PinVersion = other.PinVersion;
-      }
-      if (other.PinUrl.Length != 0) {
-        PinUrl = other.PinUrl;
-      }
-      if (other.DisableSubsystem != false) {
-        DisableSubsystem = other.DisableSubsystem;
-      }
-      if (other.attributes_ != null) {
-        if (attributes_ == null) {
-          Attributes = new global::Google.Protobuf.WellKnownTypes.Struct();
-        }
-        Attributes.MergeFrom(other.Attributes);
-      }
-      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-    }
-
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(pb::CodedInputStream input) {
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-      input.ReadRawMessage(this);
-    #else
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-            break;
-          case 10: {
-            ReleaseChannel = input.ReadString();
-            break;
-          }
-          case 18: {
-            PinVersion = input.ReadString();
-            break;
-          }
-          case 26: {
-            PinUrl = input.ReadString();
-            break;
-          }
-          case 32: {
-            DisableSubsystem = input.ReadBool();
-            break;
-          }
-          case 42: {
-            if (attributes_ == null) {
-              Attributes = new global::Google.Protobuf.WellKnownTypes.Struct();
-            }
-            input.ReadMessage(Attributes);
-            break;
-          }
-        }
-      }
-    #endif
-    }
-
-    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-      uint tag;
-      while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
-          default:
-            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-            break;
-          case 10: {
-            ReleaseChannel = input.ReadString();
-            break;
-          }
-          case 18: {
-            PinVersion = input.ReadString();
-            break;
-          }
-          case 26: {
-            PinUrl = input.ReadString();
-            break;
-          }
-          case 32: {
-            DisableSubsystem = input.ReadBool();
-            break;
-          }
-          case 42: {
-            if (attributes_ == null) {
-              Attributes = new global::Google.Protobuf.WellKnownTypes.Struct();
-            }
-            input.ReadMessage(Attributes);
-            break;
-          }
-        }
-      }
-    }
-    #endif
-
-  }
-
-  /// <summary>
   /// Device side
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
@@ -1506,7 +137,7 @@ namespace Viam.App.Agent.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[6]; }
+      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1529,6 +160,7 @@ namespace Viam.App.Agent.V1 {
       id_ = other.id_;
       hostInfo_ = other.hostInfo_ != null ? other.hostInfo_.Clone() : null;
       subsystemVersions_ = other.subsystemVersions_.Clone();
+      versionInfo_ = other.versionInfo_ != null ? other.versionInfo_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1575,11 +207,28 @@ namespace Viam.App.Agent.V1 {
     private readonly pbc::MapField<string, string> subsystemVersions_ = new pbc::MapField<string, string>();
     /// <summary>
     /// current subsystems and versions
+    /// DEPRECATED in favor of version_info
     /// </summary>
+    [global::System.ObsoleteAttribute]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::MapField<string, string> SubsystemVersions {
       get { return subsystemVersions_; }
+    }
+
+    /// <summary>Field number for the "version_info" field.</summary>
+    public const int VersionInfoFieldNumber = 4;
+    private global::Viam.App.Agent.V1.VersionInfo versionInfo_;
+    /// <summary>
+    /// Currently installed versions for agent and viam-server
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Viam.App.Agent.V1.VersionInfo VersionInfo {
+      get { return versionInfo_; }
+      set {
+        versionInfo_ = value;
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1600,6 +249,7 @@ namespace Viam.App.Agent.V1 {
       if (Id != other.Id) return false;
       if (!object.Equals(HostInfo, other.HostInfo)) return false;
       if (!SubsystemVersions.Equals(other.SubsystemVersions)) return false;
+      if (!object.Equals(VersionInfo, other.VersionInfo)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1610,6 +260,7 @@ namespace Viam.App.Agent.V1 {
       if (Id.Length != 0) hash ^= Id.GetHashCode();
       if (hostInfo_ != null) hash ^= HostInfo.GetHashCode();
       hash ^= SubsystemVersions.GetHashCode();
+      if (versionInfo_ != null) hash ^= VersionInfo.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1637,6 +288,10 @@ namespace Viam.App.Agent.V1 {
         output.WriteMessage(HostInfo);
       }
       subsystemVersions_.WriteTo(output, _map_subsystemVersions_codec);
+      if (versionInfo_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(VersionInfo);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1656,6 +311,10 @@ namespace Viam.App.Agent.V1 {
         output.WriteMessage(HostInfo);
       }
       subsystemVersions_.WriteTo(ref output, _map_subsystemVersions_codec);
+      if (versionInfo_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(VersionInfo);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1673,6 +332,9 @@ namespace Viam.App.Agent.V1 {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(HostInfo);
       }
       size += subsystemVersions_.CalculateSize(_map_subsystemVersions_codec);
+      if (versionInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(VersionInfo);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1695,6 +357,12 @@ namespace Viam.App.Agent.V1 {
         HostInfo.MergeFrom(other.HostInfo);
       }
       subsystemVersions_.MergeFrom(other.subsystemVersions_);
+      if (other.versionInfo_ != null) {
+        if (versionInfo_ == null) {
+          VersionInfo = new global::Viam.App.Agent.V1.VersionInfo();
+        }
+        VersionInfo.MergeFrom(other.VersionInfo);
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1706,7 +374,11 @@ namespace Viam.App.Agent.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1725,6 +397,13 @@ namespace Viam.App.Agent.V1 {
             subsystemVersions_.AddEntriesFrom(input, _map_subsystemVersions_codec);
             break;
           }
+          case 34: {
+            if (versionInfo_ == null) {
+              VersionInfo = new global::Viam.App.Agent.V1.VersionInfo();
+            }
+            input.ReadMessage(VersionInfo);
+            break;
+          }
         }
       }
     #endif
@@ -1736,7 +415,11 @@ namespace Viam.App.Agent.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1753,6 +436,13 @@ namespace Viam.App.Agent.V1 {
           }
           case 26: {
             subsystemVersions_.AddEntriesFrom(ref input, _map_subsystemVersions_codec);
+            break;
+          }
+          case 34: {
+            if (versionInfo_ == null) {
+              VersionInfo = new global::Viam.App.Agent.V1.VersionInfo();
+            }
+            input.ReadMessage(VersionInfo);
             break;
           }
         }
@@ -1777,7 +467,7 @@ namespace Viam.App.Agent.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[7]; }
+      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1799,6 +489,12 @@ namespace Viam.App.Agent.V1 {
     public DeviceAgentConfigResponse(DeviceAgentConfigResponse other) : this() {
       subsystemConfigs_ = other.subsystemConfigs_.Clone();
       checkInterval_ = other.checkInterval_ != null ? other.checkInterval_.Clone() : null;
+      agentUpdateInfo_ = other.agentUpdateInfo_ != null ? other.agentUpdateInfo_.Clone() : null;
+      viamServerUpdateInfo_ = other.viamServerUpdateInfo_ != null ? other.viamServerUpdateInfo_.Clone() : null;
+      advancedSettings_ = other.advancedSettings_ != null ? other.advancedSettings_.Clone() : null;
+      networkConfiguration_ = other.networkConfiguration_ != null ? other.networkConfiguration_.Clone() : null;
+      additionalNetworks_ = other.additionalNetworks_ != null ? other.additionalNetworks_.Clone() : null;
+      systemConfiguration_ = other.systemConfiguration_ != null ? other.systemConfiguration_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -1816,7 +512,9 @@ namespace Viam.App.Agent.V1 {
     /// <summary>
     /// subsystems to be installed/configured/updated
     /// note: previously installed subsystems will be removed from the system if removed from this list
+    /// DEPRECATED in favor of indidivual update_info and settings fields
     /// </summary>
+    [global::System.ObsoleteAttribute]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public pbc::MapField<string, global::Viam.App.Agent.V1.DeviceSubsystemConfig> SubsystemConfigs {
@@ -1838,6 +536,84 @@ namespace Viam.App.Agent.V1 {
       }
     }
 
+    /// <summary>Field number for the "agent_update_info" field.</summary>
+    public const int AgentUpdateInfoFieldNumber = 3;
+    private global::Viam.App.Agent.V1.UpdateInfo agentUpdateInfo_;
+    /// <summary>
+    /// update info for agent and viam-server, parsed/processed in App
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Viam.App.Agent.V1.UpdateInfo AgentUpdateInfo {
+      get { return agentUpdateInfo_; }
+      set {
+        agentUpdateInfo_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "viam_server_update_info" field.</summary>
+    public const int ViamServerUpdateInfoFieldNumber = 4;
+    private global::Viam.App.Agent.V1.UpdateInfo viamServerUpdateInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Viam.App.Agent.V1.UpdateInfo ViamServerUpdateInfo {
+      get { return viamServerUpdateInfo_; }
+      set {
+        viamServerUpdateInfo_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "advanced_settings" field.</summary>
+    public const int AdvancedSettingsFieldNumber = 5;
+    private global::Google.Protobuf.WellKnownTypes.Struct advancedSettings_;
+    /// <summary>
+    /// various settings that are passed directly to device Agent
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Struct AdvancedSettings {
+      get { return advancedSettings_; }
+      set {
+        advancedSettings_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "network_configuration" field.</summary>
+    public const int NetworkConfigurationFieldNumber = 6;
+    private global::Google.Protobuf.WellKnownTypes.Struct networkConfiguration_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Struct NetworkConfiguration {
+      get { return networkConfiguration_; }
+      set {
+        networkConfiguration_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "additional_networks" field.</summary>
+    public const int AdditionalNetworksFieldNumber = 7;
+    private global::Google.Protobuf.WellKnownTypes.Struct additionalNetworks_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Struct AdditionalNetworks {
+      get { return additionalNetworks_; }
+      set {
+        additionalNetworks_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "system_configuration" field.</summary>
+    public const int SystemConfigurationFieldNumber = 8;
+    private global::Google.Protobuf.WellKnownTypes.Struct systemConfiguration_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Struct SystemConfiguration {
+      get { return systemConfiguration_; }
+      set {
+        systemConfiguration_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -1855,6 +631,12 @@ namespace Viam.App.Agent.V1 {
       }
       if (!SubsystemConfigs.Equals(other.SubsystemConfigs)) return false;
       if (!object.Equals(CheckInterval, other.CheckInterval)) return false;
+      if (!object.Equals(AgentUpdateInfo, other.AgentUpdateInfo)) return false;
+      if (!object.Equals(ViamServerUpdateInfo, other.ViamServerUpdateInfo)) return false;
+      if (!object.Equals(AdvancedSettings, other.AdvancedSettings)) return false;
+      if (!object.Equals(NetworkConfiguration, other.NetworkConfiguration)) return false;
+      if (!object.Equals(AdditionalNetworks, other.AdditionalNetworks)) return false;
+      if (!object.Equals(SystemConfiguration, other.SystemConfiguration)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -1864,6 +646,12 @@ namespace Viam.App.Agent.V1 {
       int hash = 1;
       hash ^= SubsystemConfigs.GetHashCode();
       if (checkInterval_ != null) hash ^= CheckInterval.GetHashCode();
+      if (agentUpdateInfo_ != null) hash ^= AgentUpdateInfo.GetHashCode();
+      if (viamServerUpdateInfo_ != null) hash ^= ViamServerUpdateInfo.GetHashCode();
+      if (advancedSettings_ != null) hash ^= AdvancedSettings.GetHashCode();
+      if (networkConfiguration_ != null) hash ^= NetworkConfiguration.GetHashCode();
+      if (additionalNetworks_ != null) hash ^= AdditionalNetworks.GetHashCode();
+      if (systemConfiguration_ != null) hash ^= SystemConfiguration.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -1887,6 +675,30 @@ namespace Viam.App.Agent.V1 {
         output.WriteRawTag(18);
         output.WriteMessage(CheckInterval);
       }
+      if (agentUpdateInfo_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(AgentUpdateInfo);
+      }
+      if (viamServerUpdateInfo_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(ViamServerUpdateInfo);
+      }
+      if (advancedSettings_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(AdvancedSettings);
+      }
+      if (networkConfiguration_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(NetworkConfiguration);
+      }
+      if (additionalNetworks_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(AdditionalNetworks);
+      }
+      if (systemConfiguration_ != null) {
+        output.WriteRawTag(66);
+        output.WriteMessage(SystemConfiguration);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -1902,6 +714,30 @@ namespace Viam.App.Agent.V1 {
         output.WriteRawTag(18);
         output.WriteMessage(CheckInterval);
       }
+      if (agentUpdateInfo_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(AgentUpdateInfo);
+      }
+      if (viamServerUpdateInfo_ != null) {
+        output.WriteRawTag(34);
+        output.WriteMessage(ViamServerUpdateInfo);
+      }
+      if (advancedSettings_ != null) {
+        output.WriteRawTag(42);
+        output.WriteMessage(AdvancedSettings);
+      }
+      if (networkConfiguration_ != null) {
+        output.WriteRawTag(50);
+        output.WriteMessage(NetworkConfiguration);
+      }
+      if (additionalNetworks_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(AdditionalNetworks);
+      }
+      if (systemConfiguration_ != null) {
+        output.WriteRawTag(66);
+        output.WriteMessage(SystemConfiguration);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1915,6 +751,24 @@ namespace Viam.App.Agent.V1 {
       size += subsystemConfigs_.CalculateSize(_map_subsystemConfigs_codec);
       if (checkInterval_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(CheckInterval);
+      }
+      if (agentUpdateInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AgentUpdateInfo);
+      }
+      if (viamServerUpdateInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(ViamServerUpdateInfo);
+      }
+      if (advancedSettings_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AdvancedSettings);
+      }
+      if (networkConfiguration_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(NetworkConfiguration);
+      }
+      if (additionalNetworks_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(AdditionalNetworks);
+      }
+      if (systemConfiguration_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(SystemConfiguration);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1935,6 +789,42 @@ namespace Viam.App.Agent.V1 {
         }
         CheckInterval.MergeFrom(other.CheckInterval);
       }
+      if (other.agentUpdateInfo_ != null) {
+        if (agentUpdateInfo_ == null) {
+          AgentUpdateInfo = new global::Viam.App.Agent.V1.UpdateInfo();
+        }
+        AgentUpdateInfo.MergeFrom(other.AgentUpdateInfo);
+      }
+      if (other.viamServerUpdateInfo_ != null) {
+        if (viamServerUpdateInfo_ == null) {
+          ViamServerUpdateInfo = new global::Viam.App.Agent.V1.UpdateInfo();
+        }
+        ViamServerUpdateInfo.MergeFrom(other.ViamServerUpdateInfo);
+      }
+      if (other.advancedSettings_ != null) {
+        if (advancedSettings_ == null) {
+          AdvancedSettings = new global::Google.Protobuf.WellKnownTypes.Struct();
+        }
+        AdvancedSettings.MergeFrom(other.AdvancedSettings);
+      }
+      if (other.networkConfiguration_ != null) {
+        if (networkConfiguration_ == null) {
+          NetworkConfiguration = new global::Google.Protobuf.WellKnownTypes.Struct();
+        }
+        NetworkConfiguration.MergeFrom(other.NetworkConfiguration);
+      }
+      if (other.additionalNetworks_ != null) {
+        if (additionalNetworks_ == null) {
+          AdditionalNetworks = new global::Google.Protobuf.WellKnownTypes.Struct();
+        }
+        AdditionalNetworks.MergeFrom(other.AdditionalNetworks);
+      }
+      if (other.systemConfiguration_ != null) {
+        if (systemConfiguration_ == null) {
+          SystemConfiguration = new global::Google.Protobuf.WellKnownTypes.Struct();
+        }
+        SystemConfiguration.MergeFrom(other.SystemConfiguration);
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1946,7 +836,11 @@ namespace Viam.App.Agent.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1961,6 +855,48 @@ namespace Viam.App.Agent.V1 {
             input.ReadMessage(CheckInterval);
             break;
           }
+          case 26: {
+            if (agentUpdateInfo_ == null) {
+              AgentUpdateInfo = new global::Viam.App.Agent.V1.UpdateInfo();
+            }
+            input.ReadMessage(AgentUpdateInfo);
+            break;
+          }
+          case 34: {
+            if (viamServerUpdateInfo_ == null) {
+              ViamServerUpdateInfo = new global::Viam.App.Agent.V1.UpdateInfo();
+            }
+            input.ReadMessage(ViamServerUpdateInfo);
+            break;
+          }
+          case 42: {
+            if (advancedSettings_ == null) {
+              AdvancedSettings = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(AdvancedSettings);
+            break;
+          }
+          case 50: {
+            if (networkConfiguration_ == null) {
+              NetworkConfiguration = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(NetworkConfiguration);
+            break;
+          }
+          case 58: {
+            if (additionalNetworks_ == null) {
+              AdditionalNetworks = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(AdditionalNetworks);
+            break;
+          }
+          case 66: {
+            if (systemConfiguration_ == null) {
+              SystemConfiguration = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(SystemConfiguration);
+            break;
+          }
         }
       }
     #endif
@@ -1972,7 +908,11 @@ namespace Viam.App.Agent.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1987,6 +927,48 @@ namespace Viam.App.Agent.V1 {
             input.ReadMessage(CheckInterval);
             break;
           }
+          case 26: {
+            if (agentUpdateInfo_ == null) {
+              AgentUpdateInfo = new global::Viam.App.Agent.V1.UpdateInfo();
+            }
+            input.ReadMessage(AgentUpdateInfo);
+            break;
+          }
+          case 34: {
+            if (viamServerUpdateInfo_ == null) {
+              ViamServerUpdateInfo = new global::Viam.App.Agent.V1.UpdateInfo();
+            }
+            input.ReadMessage(ViamServerUpdateInfo);
+            break;
+          }
+          case 42: {
+            if (advancedSettings_ == null) {
+              AdvancedSettings = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(AdvancedSettings);
+            break;
+          }
+          case 50: {
+            if (networkConfiguration_ == null) {
+              NetworkConfiguration = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(NetworkConfiguration);
+            break;
+          }
+          case 58: {
+            if (additionalNetworks_ == null) {
+              AdditionalNetworks = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(AdditionalNetworks);
+            break;
+          }
+          case 66: {
+            if (systemConfiguration_ == null) {
+              SystemConfiguration = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(SystemConfiguration);
+            break;
+          }
         }
       }
     }
@@ -1994,6 +976,10 @@ namespace Viam.App.Agent.V1 {
 
   }
 
+  /// <summary>
+  /// DEPRECATED as of January 2025
+  /// </summary>
+  [global::System.ObsoleteAttribute]
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class DeviceSubsystemConfig : pb::IMessage<DeviceSubsystemConfig>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -2009,7 +995,7 @@ namespace Viam.App.Agent.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[8]; }
+      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2044,13 +1030,13 @@ namespace Viam.App.Agent.V1 {
 
     /// <summary>Field number for the "update_info" field.</summary>
     public const int UpdateInfoFieldNumber = 1;
-    private global::Viam.App.Agent.V1.SubsystemUpdateInfo updateInfo_;
+    private global::Viam.App.Agent.V1.UpdateInfo updateInfo_;
     /// <summary>
     /// data needed to download/validate the subsystem
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::Viam.App.Agent.V1.SubsystemUpdateInfo UpdateInfo {
+    public global::Viam.App.Agent.V1.UpdateInfo UpdateInfo {
       get { return updateInfo_; }
       set {
         updateInfo_ = value;
@@ -2228,7 +1214,7 @@ namespace Viam.App.Agent.V1 {
       }
       if (other.updateInfo_ != null) {
         if (updateInfo_ == null) {
-          UpdateInfo = new global::Viam.App.Agent.V1.SubsystemUpdateInfo();
+          UpdateInfo = new global::Viam.App.Agent.V1.UpdateInfo();
         }
         UpdateInfo.MergeFrom(other.UpdateInfo);
       }
@@ -2255,13 +1241,17 @@ namespace Viam.App.Agent.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
             if (updateInfo_ == null) {
-              UpdateInfo = new global::Viam.App.Agent.V1.SubsystemUpdateInfo();
+              UpdateInfo = new global::Viam.App.Agent.V1.UpdateInfo();
             }
             input.ReadMessage(UpdateInfo);
             break;
@@ -2292,13 +1282,17 @@ namespace Viam.App.Agent.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
             if (updateInfo_ == null) {
-              UpdateInfo = new global::Viam.App.Agent.V1.SubsystemUpdateInfo();
+              UpdateInfo = new global::Viam.App.Agent.V1.UpdateInfo();
             }
             input.ReadMessage(UpdateInfo);
             break;
@@ -2326,6 +1320,327 @@ namespace Viam.App.Agent.V1 {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class VersionInfo : pb::IMessage<VersionInfo>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<VersionInfo> _parser = new pb::MessageParser<VersionInfo>(() => new VersionInfo());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<VersionInfo> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public VersionInfo() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public VersionInfo(VersionInfo other) : this() {
+      agentRunning_ = other.agentRunning_;
+      agentInstalled_ = other.agentInstalled_;
+      viamServerRunning_ = other.viamServerRunning_;
+      viamServerInstalled_ = other.viamServerInstalled_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public VersionInfo Clone() {
+      return new VersionInfo(this);
+    }
+
+    /// <summary>Field number for the "agent_running" field.</summary>
+    public const int AgentRunningFieldNumber = 1;
+    private string agentRunning_ = "";
+    /// <summary>
+    /// the version of agent currently running and making the request
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string AgentRunning {
+      get { return agentRunning_; }
+      set {
+        agentRunning_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "agent_installed" field.</summary>
+    public const int AgentInstalledFieldNumber = 2;
+    private string agentInstalled_ = "";
+    /// <summary>
+    /// the version of agent installed (will run after restart if different)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string AgentInstalled {
+      get { return agentInstalled_; }
+      set {
+        agentInstalled_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "viam_server_running" field.</summary>
+    public const int ViamServerRunningFieldNumber = 3;
+    private string viamServerRunning_ = "";
+    /// <summary>
+    /// the version of viam-server currently running
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ViamServerRunning {
+      get { return viamServerRunning_; }
+      set {
+        viamServerRunning_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "viam_server_installed" field.</summary>
+    public const int ViamServerInstalledFieldNumber = 4;
+    private string viamServerInstalled_ = "";
+    /// <summary>
+    /// the version of viam-server installed (will run after restart if different)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string ViamServerInstalled {
+      get { return viamServerInstalled_; }
+      set {
+        viamServerInstalled_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as VersionInfo);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(VersionInfo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (AgentRunning != other.AgentRunning) return false;
+      if (AgentInstalled != other.AgentInstalled) return false;
+      if (ViamServerRunning != other.ViamServerRunning) return false;
+      if (ViamServerInstalled != other.ViamServerInstalled) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (AgentRunning.Length != 0) hash ^= AgentRunning.GetHashCode();
+      if (AgentInstalled.Length != 0) hash ^= AgentInstalled.GetHashCode();
+      if (ViamServerRunning.Length != 0) hash ^= ViamServerRunning.GetHashCode();
+      if (ViamServerInstalled.Length != 0) hash ^= ViamServerInstalled.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (AgentRunning.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(AgentRunning);
+      }
+      if (AgentInstalled.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(AgentInstalled);
+      }
+      if (ViamServerRunning.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(ViamServerRunning);
+      }
+      if (ViamServerInstalled.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(ViamServerInstalled);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (AgentRunning.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(AgentRunning);
+      }
+      if (AgentInstalled.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(AgentInstalled);
+      }
+      if (ViamServerRunning.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(ViamServerRunning);
+      }
+      if (ViamServerInstalled.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(ViamServerInstalled);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (AgentRunning.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(AgentRunning);
+      }
+      if (AgentInstalled.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(AgentInstalled);
+      }
+      if (ViamServerRunning.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ViamServerRunning);
+      }
+      if (ViamServerInstalled.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ViamServerInstalled);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(VersionInfo other) {
+      if (other == null) {
+        return;
+      }
+      if (other.AgentRunning.Length != 0) {
+        AgentRunning = other.AgentRunning;
+      }
+      if (other.AgentInstalled.Length != 0) {
+        AgentInstalled = other.AgentInstalled;
+      }
+      if (other.ViamServerRunning.Length != 0) {
+        ViamServerRunning = other.ViamServerRunning;
+      }
+      if (other.ViamServerInstalled.Length != 0) {
+        ViamServerInstalled = other.ViamServerInstalled;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            AgentRunning = input.ReadString();
+            break;
+          }
+          case 18: {
+            AgentInstalled = input.ReadString();
+            break;
+          }
+          case 26: {
+            ViamServerRunning = input.ReadString();
+            break;
+          }
+          case 34: {
+            ViamServerInstalled = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            AgentRunning = input.ReadString();
+            break;
+          }
+          case 18: {
+            AgentInstalled = input.ReadString();
+            break;
+          }
+          case 26: {
+            ViamServerRunning = input.ReadString();
+            break;
+          }
+          case 34: {
+            ViamServerInstalled = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class HostInfo : pb::IMessage<HostInfo>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -2340,7 +1655,7 @@ namespace Viam.App.Agent.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2538,7 +1853,11 @@ namespace Viam.App.Agent.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2565,7 +1884,11 @@ namespace Viam.App.Agent.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2589,21 +1912,21 @@ namespace Viam.App.Agent.V1 {
   }
 
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class SubsystemUpdateInfo : pb::IMessage<SubsystemUpdateInfo>
+  public sealed partial class UpdateInfo : pb::IMessage<UpdateInfo>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<SubsystemUpdateInfo> _parser = new pb::MessageParser<SubsystemUpdateInfo>(() => new SubsystemUpdateInfo());
+    private static readonly pb::MessageParser<UpdateInfo> _parser = new pb::MessageParser<UpdateInfo>(() => new UpdateInfo());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<SubsystemUpdateInfo> Parser { get { return _parser; } }
+    public static pb::MessageParser<UpdateInfo> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Viam.App.Agent.V1.AgentReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2614,7 +1937,7 @@ namespace Viam.App.Agent.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SubsystemUpdateInfo() {
+    public UpdateInfo() {
       OnConstruction();
     }
 
@@ -2622,7 +1945,7 @@ namespace Viam.App.Agent.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SubsystemUpdateInfo(SubsystemUpdateInfo other) : this() {
+    public UpdateInfo(UpdateInfo other) : this() {
       filename_ = other.filename_;
       url_ = other.url_;
       version_ = other.version_;
@@ -2633,8 +1956,8 @@ namespace Viam.App.Agent.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public SubsystemUpdateInfo Clone() {
-      return new SubsystemUpdateInfo(this);
+    public UpdateInfo Clone() {
+      return new UpdateInfo(this);
     }
 
     /// <summary>Field number for the "filename" field.</summary>
@@ -2715,12 +2038,12 @@ namespace Viam.App.Agent.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as SubsystemUpdateInfo);
+      return Equals(other as UpdateInfo);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(SubsystemUpdateInfo other) {
+    public bool Equals(UpdateInfo other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -2845,7 +2168,7 @@ namespace Viam.App.Agent.V1 {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(SubsystemUpdateInfo other) {
+    public void MergeFrom(UpdateInfo other) {
       if (other == null) {
         return;
       }
@@ -2875,7 +2198,11 @@ namespace Viam.App.Agent.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2910,7 +2237,11 @@ namespace Viam.App.Agent.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

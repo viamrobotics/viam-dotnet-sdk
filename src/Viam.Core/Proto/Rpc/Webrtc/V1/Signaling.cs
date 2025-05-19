@@ -59,42 +59,48 @@ namespace Proto.Rpc.Webrtc.V1 {
             "aWRhdGUYASABKAsyIS5wcm90by5ycGMud2VicnRjLnYxLklDRUNhbmRpZGF0",
             "ZVIJY2FuZGlkYXRlIhgKFkFuc3dlclJlcXVlc3REb25lU3RhZ2UiRQoXQW5z",
             "d2VyUmVxdWVzdEVycm9yU3RhZ2USKgoGc3RhdHVzGAEgASgLMhIuZ29vZ2xl",
-            "LnJwYy5TdGF0dXNSBnN0YXR1cyLBAgoNQW5zd2VyUmVxdWVzdBISCgR1dWlk",
-            "GAEgASgJUgR1dWlkEkEKBGluaXQYAiABKAsyKy5wcm90by5ycGMud2VicnRj",
-            "LnYxLkFuc3dlclJlcXVlc3RJbml0U3RhZ2VIAFIEaW5pdBJHCgZ1cGRhdGUY",
-            "AyABKAsyLS5wcm90by5ycGMud2VicnRjLnYxLkFuc3dlclJlcXVlc3RVcGRh",
-            "dGVTdGFnZUgAUgZ1cGRhdGUSQQoEZG9uZRgEIAEoCzIrLnByb3RvLnJwYy53",
-            "ZWJydGMudjEuQW5zd2VyUmVxdWVzdERvbmVTdGFnZUgAUgRkb25lEkQKBWVy",
-            "cm9yGAUgASgLMiwucHJvdG8ucnBjLndlYnJ0Yy52MS5BbnN3ZXJSZXF1ZXN0",
-            "RXJyb3JTdGFnZUgAUgVlcnJvckIHCgVzdGFnZSIrChdBbnN3ZXJSZXNwb25z",
-            "ZUluaXRTdGFnZRIQCgNzZHAYASABKAlSA3NkcCJcChlBbnN3ZXJSZXNwb25z",
-            "ZVVwZGF0ZVN0YWdlEj8KCWNhbmRpZGF0ZRgBIAEoCzIhLnByb3RvLnJwYy53",
-            "ZWJydGMudjEuSUNFQ2FuZGlkYXRlUgljYW5kaWRhdGUiGQoXQW5zd2VyUmVz",
-            "cG9uc2VEb25lU3RhZ2UiRgoYQW5zd2VyUmVzcG9uc2VFcnJvclN0YWdlEioK",
-            "BnN0YXR1cxgBIAEoCzISLmdvb2dsZS5ycGMuU3RhdHVzUgZzdGF0dXMixgIK",
-            "DkFuc3dlclJlc3BvbnNlEhIKBHV1aWQYASABKAlSBHV1aWQSQgoEaW5pdBgC",
-            "IAEoCzIsLnByb3RvLnJwYy53ZWJydGMudjEuQW5zd2VyUmVzcG9uc2VJbml0",
-            "U3RhZ2VIAFIEaW5pdBJICgZ1cGRhdGUYAyABKAsyLi5wcm90by5ycGMud2Vi",
-            "cnRjLnYxLkFuc3dlclJlc3BvbnNlVXBkYXRlU3RhZ2VIAFIGdXBkYXRlEkIK",
-            "BGRvbmUYBCABKAsyLC5wcm90by5ycGMud2VicnRjLnYxLkFuc3dlclJlc3Bv",
-            "bnNlRG9uZVN0YWdlSABSBGRvbmUSRQoFZXJyb3IYBSABKAsyLS5wcm90by5y",
-            "cGMud2VicnRjLnYxLkFuc3dlclJlc3BvbnNlRXJyb3JTdGFnZUgAUgVlcnJv",
-            "ckIHCgVzdGFnZSIdChtPcHRpb25hbFdlYlJUQ0NvbmZpZ1JlcXVlc3QiWQoc",
-            "T3B0aW9uYWxXZWJSVENDb25maWdSZXNwb25zZRI5CgZjb25maWcYASABKAsy",
-            "IS5wcm90by5ycGMud2VicnRjLnYxLldlYlJUQ0NvbmZpZ1IGY29uZmlnMoYE",
-            "ChBTaWduYWxpbmdTZXJ2aWNlEmoKBENhbGwSIC5wcm90by5ycGMud2VicnRj",
-            "LnYxLkNhbGxSZXF1ZXN0GiEucHJvdG8ucnBjLndlYnJ0Yy52MS5DYWxsUmVz",
-            "cG9uc2UiG4LT5JMCFSITL3JwYy93ZWJydGMvdjEvY2FsbDABEoEBCgpDYWxs",
-            "VXBkYXRlEiYucHJvdG8ucnBjLndlYnJ0Yy52MS5DYWxsVXBkYXRlUmVxdWVz",
-            "dBonLnByb3RvLnJwYy53ZWJydGMudjEuQ2FsbFVwZGF0ZVJlc3BvbnNlIiKC",
-            "0+STAhwaGi9ycGMvd2VicnRjL3YxL2NhbGxfdXBkYXRlElUKBkFuc3dlchIj",
-            "LnByb3RvLnJwYy53ZWJydGMudjEuQW5zd2VyUmVzcG9uc2UaIi5wcm90by5y",
-            "cGMud2VicnRjLnYxLkFuc3dlclJlcXVlc3QoATABEqoBChRPcHRpb25hbFdl",
-            "YlJUQ0NvbmZpZxIwLnByb3RvLnJwYy53ZWJydGMudjEuT3B0aW9uYWxXZWJS",
-            "VENDb25maWdSZXF1ZXN0GjEucHJvdG8ucnBjLndlYnJ0Yy52MS5PcHRpb25h",
-            "bFdlYlJUQ0NvbmZpZ1Jlc3BvbnNlIi2C0+STAicSJS9ycGMvd2VicnRjL3Yx",
-            "L29wdGlvbmFsX3dlYnJ0Y19jb25maWdCJ1olZ28udmlhbS5jb20vdXRpbHMv",
-            "cHJvdG8vcnBjL3dlYnJ0Yy92MWIGcHJvdG8z"));
+            "LnJwYy5TdGF0dXNSBnN0YXR1cyIdChtBbnN3ZXJSZXF1ZXN0SGVhcnRiZWF0",
+            "U3RhZ2UikwMKDUFuc3dlclJlcXVlc3QSEgoEdXVpZBgBIAEoCVIEdXVpZBJB",
+            "CgRpbml0GAIgASgLMisucHJvdG8ucnBjLndlYnJ0Yy52MS5BbnN3ZXJSZXF1",
+            "ZXN0SW5pdFN0YWdlSABSBGluaXQSRwoGdXBkYXRlGAMgASgLMi0ucHJvdG8u",
+            "cnBjLndlYnJ0Yy52MS5BbnN3ZXJSZXF1ZXN0VXBkYXRlU3RhZ2VIAFIGdXBk",
+            "YXRlEkEKBGRvbmUYBCABKAsyKy5wcm90by5ycGMud2VicnRjLnYxLkFuc3dl",
+            "clJlcXVlc3REb25lU3RhZ2VIAFIEZG9uZRJECgVlcnJvchgFIAEoCzIsLnBy",
+            "b3RvLnJwYy53ZWJydGMudjEuQW5zd2VyUmVxdWVzdEVycm9yU3RhZ2VIAFIF",
+            "ZXJyb3ISUAoJaGVhcnRiZWF0GAYgASgLMjAucHJvdG8ucnBjLndlYnJ0Yy52",
+            "MS5BbnN3ZXJSZXF1ZXN0SGVhcnRiZWF0U3RhZ2VIAFIJaGVhcnRiZWF0QgcK",
+            "BXN0YWdlIisKF0Fuc3dlclJlc3BvbnNlSW5pdFN0YWdlEhAKA3NkcBgBIAEo",
+            "CVIDc2RwIlwKGUFuc3dlclJlc3BvbnNlVXBkYXRlU3RhZ2USPwoJY2FuZGlk",
+            "YXRlGAEgASgLMiEucHJvdG8ucnBjLndlYnJ0Yy52MS5JQ0VDYW5kaWRhdGVS",
+            "CWNhbmRpZGF0ZSIZChdBbnN3ZXJSZXNwb25zZURvbmVTdGFnZSJGChhBbnN3",
+            "ZXJSZXNwb25zZUVycm9yU3RhZ2USKgoGc3RhdHVzGAEgASgLMhIuZ29vZ2xl",
+            "LnJwYy5TdGF0dXNSBnN0YXR1cyLGAgoOQW5zd2VyUmVzcG9uc2USEgoEdXVp",
+            "ZBgBIAEoCVIEdXVpZBJCCgRpbml0GAIgASgLMiwucHJvdG8ucnBjLndlYnJ0",
+            "Yy52MS5BbnN3ZXJSZXNwb25zZUluaXRTdGFnZUgAUgRpbml0EkgKBnVwZGF0",
+            "ZRgDIAEoCzIuLnByb3RvLnJwYy53ZWJydGMudjEuQW5zd2VyUmVzcG9uc2VV",
+            "cGRhdGVTdGFnZUgAUgZ1cGRhdGUSQgoEZG9uZRgEIAEoCzIsLnByb3RvLnJw",
+            "Yy53ZWJydGMudjEuQW5zd2VyUmVzcG9uc2VEb25lU3RhZ2VIAFIEZG9uZRJF",
+            "CgVlcnJvchgFIAEoCzItLnByb3RvLnJwYy53ZWJydGMudjEuQW5zd2VyUmVz",
+            "cG9uc2VFcnJvclN0YWdlSABSBWVycm9yQgcKBXN0YWdlIh0KG09wdGlvbmFs",
+            "V2ViUlRDQ29uZmlnUmVxdWVzdCJZChxPcHRpb25hbFdlYlJUQ0NvbmZpZ1Jl",
+            "c3BvbnNlEjkKBmNvbmZpZxgBIAEoCzIhLnByb3RvLnJwYy53ZWJydGMudjEu",
+            "V2ViUlRDQ29uZmlnUgZjb25maWcyhgQKEFNpZ25hbGluZ1NlcnZpY2USagoE",
+            "Q2FsbBIgLnByb3RvLnJwYy53ZWJydGMudjEuQ2FsbFJlcXVlc3QaIS5wcm90",
+            "by5ycGMud2VicnRjLnYxLkNhbGxSZXNwb25zZSIbgtPkkwIVIhMvcnBjL3dl",
+            "YnJ0Yy92MS9jYWxsMAESgQEKCkNhbGxVcGRhdGUSJi5wcm90by5ycGMud2Vi",
+            "cnRjLnYxLkNhbGxVcGRhdGVSZXF1ZXN0GicucHJvdG8ucnBjLndlYnJ0Yy52",
+            "MS5DYWxsVXBkYXRlUmVzcG9uc2UiIoLT5JMCHBoaL3JwYy93ZWJydGMvdjEv",
+            "Y2FsbF91cGRhdGUSVQoGQW5zd2VyEiMucHJvdG8ucnBjLndlYnJ0Yy52MS5B",
+            "bnN3ZXJSZXNwb25zZRoiLnByb3RvLnJwYy53ZWJydGMudjEuQW5zd2VyUmVx",
+            "dWVzdCgBMAESqgEKFE9wdGlvbmFsV2ViUlRDQ29uZmlnEjAucHJvdG8ucnBj",
+            "LndlYnJ0Yy52MS5PcHRpb25hbFdlYlJUQ0NvbmZpZ1JlcXVlc3QaMS5wcm90",
+            "by5ycGMud2VicnRjLnYxLk9wdGlvbmFsV2ViUlRDQ29uZmlnUmVzcG9uc2Ui",
+            "LYLT5JMCJxIlL3JwYy93ZWJydGMvdjEvb3B0aW9uYWxfd2VicnRjX2NvbmZp",
+            "Z0K/AQoXY29tLnByb3RvLnJwYy53ZWJydGMudjFCDlNpZ25hbGluZ1Byb3Rv",
+            "UAFaJWdvLnZpYW0uY29tL3V0aWxzL3Byb3RvL3JwYy93ZWJydGMvdjGiAgNQ",
+            "UleqAhNQcm90by5ScGMuV2VicnRjLlYxygITUHJvdG9cUnBjXFdlYnJ0Y1xW",
+            "MeICH1Byb3RvXFJwY1xXZWJydGNcVjFcR1BCTWV0YWRhdGHqAhZQcm90bzo6",
+            "UnBjOjpXZWJydGM6OlYxYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Rpc.StatusReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -111,7 +117,8 @@ namespace Proto.Rpc.Webrtc.V1 {
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.AnswerRequestUpdateStage), global::Proto.Rpc.Webrtc.V1.AnswerRequestUpdateStage.Parser, new[]{ "Candidate" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.AnswerRequestDoneStage), global::Proto.Rpc.Webrtc.V1.AnswerRequestDoneStage.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.AnswerRequestErrorStage), global::Proto.Rpc.Webrtc.V1.AnswerRequestErrorStage.Parser, new[]{ "Status" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.AnswerRequest), global::Proto.Rpc.Webrtc.V1.AnswerRequest.Parser, new[]{ "Uuid", "Init", "Update", "Done", "Error" }, new[]{ "Stage" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.AnswerRequestHeartbeatStage), global::Proto.Rpc.Webrtc.V1.AnswerRequestHeartbeatStage.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.AnswerRequest), global::Proto.Rpc.Webrtc.V1.AnswerRequest.Parser, new[]{ "Uuid", "Init", "Update", "Done", "Error", "Heartbeat" }, new[]{ "Stage" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.AnswerResponseInitStage), global::Proto.Rpc.Webrtc.V1.AnswerResponseInitStage.Parser, new[]{ "Sdp" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.AnswerResponseUpdateStage), global::Proto.Rpc.Webrtc.V1.AnswerResponseUpdateStage.Parser, new[]{ "Candidate" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Proto.Rpc.Webrtc.V1.AnswerResponseDoneStage), global::Proto.Rpc.Webrtc.V1.AnswerResponseDoneStage.Parser, null, null, null, null, null),
@@ -417,7 +424,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -448,7 +459,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -668,7 +683,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -691,7 +710,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -870,7 +893,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -889,7 +916,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1067,7 +1098,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1089,7 +1124,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1363,7 +1402,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1400,7 +1443,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1735,7 +1782,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1776,7 +1827,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1943,7 +1998,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1958,7 +2017,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2175,7 +2238,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2202,7 +2269,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2406,7 +2477,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2429,7 +2504,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2672,7 +2751,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2705,7 +2788,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2897,7 +2984,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2919,7 +3010,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3067,7 +3162,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3082,7 +3181,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3255,7 +3358,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3277,7 +3384,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3288,6 +3399,170 @@ namespace Proto.Rpc.Webrtc.V1 {
             input.ReadMessage(Status);
             break;
           }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// AnswerRequestHeartbeatStage is sent periodically to verify liveness of answerer.
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class AnswerRequestHeartbeatStage : pb::IMessage<AnswerRequestHeartbeatStage>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<AnswerRequestHeartbeatStage> _parser = new pb::MessageParser<AnswerRequestHeartbeatStage>(() => new AnswerRequestHeartbeatStage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<AnswerRequestHeartbeatStage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[13]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public AnswerRequestHeartbeatStage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public AnswerRequestHeartbeatStage(AnswerRequestHeartbeatStage other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public AnswerRequestHeartbeatStage Clone() {
+      return new AnswerRequestHeartbeatStage(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as AnswerRequestHeartbeatStage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(AnswerRequestHeartbeatStage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(AnswerRequestHeartbeatStage other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
         }
       }
     }
@@ -3314,7 +3589,7 @@ namespace Proto.Rpc.Webrtc.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3347,6 +3622,9 @@ namespace Proto.Rpc.Webrtc.V1 {
           break;
         case StageOneofCase.Error:
           Error = other.Error.Clone();
+          break;
+        case StageOneofCase.Heartbeat:
+          Heartbeat = other.Heartbeat.Clone();
           break;
       }
 
@@ -3425,6 +3703,21 @@ namespace Proto.Rpc.Webrtc.V1 {
       }
     }
 
+    /// <summary>Field number for the "heartbeat" field.</summary>
+    public const int HeartbeatFieldNumber = 6;
+    /// <summary>
+    /// heartbeat is sent periodically to verify liveness of answerer
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Proto.Rpc.Webrtc.V1.AnswerRequestHeartbeatStage Heartbeat {
+      get { return stageCase_ == StageOneofCase.Heartbeat ? (global::Proto.Rpc.Webrtc.V1.AnswerRequestHeartbeatStage) stage_ : null; }
+      set {
+        stage_ = value;
+        stageCase_ = value == null ? StageOneofCase.None : StageOneofCase.Heartbeat;
+      }
+    }
+
     private object stage_;
     /// <summary>Enum of possible cases for the "stage" oneof.</summary>
     public enum StageOneofCase {
@@ -3433,6 +3726,7 @@ namespace Proto.Rpc.Webrtc.V1 {
       Update = 3,
       Done = 4,
       Error = 5,
+      Heartbeat = 6,
     }
     private StageOneofCase stageCase_ = StageOneofCase.None;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3468,6 +3762,7 @@ namespace Proto.Rpc.Webrtc.V1 {
       if (!object.Equals(Update, other.Update)) return false;
       if (!object.Equals(Done, other.Done)) return false;
       if (!object.Equals(Error, other.Error)) return false;
+      if (!object.Equals(Heartbeat, other.Heartbeat)) return false;
       if (StageCase != other.StageCase) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
@@ -3481,6 +3776,7 @@ namespace Proto.Rpc.Webrtc.V1 {
       if (stageCase_ == StageOneofCase.Update) hash ^= Update.GetHashCode();
       if (stageCase_ == StageOneofCase.Done) hash ^= Done.GetHashCode();
       if (stageCase_ == StageOneofCase.Error) hash ^= Error.GetHashCode();
+      if (stageCase_ == StageOneofCase.Heartbeat) hash ^= Heartbeat.GetHashCode();
       hash ^= (int) stageCase_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
@@ -3520,6 +3816,10 @@ namespace Proto.Rpc.Webrtc.V1 {
         output.WriteRawTag(42);
         output.WriteMessage(Error);
       }
+      if (stageCase_ == StageOneofCase.Heartbeat) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Heartbeat);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3550,6 +3850,10 @@ namespace Proto.Rpc.Webrtc.V1 {
         output.WriteRawTag(42);
         output.WriteMessage(Error);
       }
+      if (stageCase_ == StageOneofCase.Heartbeat) {
+        output.WriteRawTag(50);
+        output.WriteMessage(Heartbeat);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -3574,6 +3878,9 @@ namespace Proto.Rpc.Webrtc.V1 {
       }
       if (stageCase_ == StageOneofCase.Error) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Error);
+      }
+      if (stageCase_ == StageOneofCase.Heartbeat) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Heartbeat);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -3615,6 +3922,12 @@ namespace Proto.Rpc.Webrtc.V1 {
           }
           Error.MergeFrom(other.Error);
           break;
+        case StageOneofCase.Heartbeat:
+          if (Heartbeat == null) {
+            Heartbeat = new global::Proto.Rpc.Webrtc.V1.AnswerRequestHeartbeatStage();
+          }
+          Heartbeat.MergeFrom(other.Heartbeat);
+          break;
       }
 
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
@@ -3628,7 +3941,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3672,6 +3989,15 @@ namespace Proto.Rpc.Webrtc.V1 {
             Error = subBuilder;
             break;
           }
+          case 50: {
+            global::Proto.Rpc.Webrtc.V1.AnswerRequestHeartbeatStage subBuilder = new global::Proto.Rpc.Webrtc.V1.AnswerRequestHeartbeatStage();
+            if (stageCase_ == StageOneofCase.Heartbeat) {
+              subBuilder.MergeFrom(Heartbeat);
+            }
+            input.ReadMessage(subBuilder);
+            Heartbeat = subBuilder;
+            break;
+          }
         }
       }
     #endif
@@ -3683,7 +4009,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3727,6 +4057,15 @@ namespace Proto.Rpc.Webrtc.V1 {
             Error = subBuilder;
             break;
           }
+          case 50: {
+            global::Proto.Rpc.Webrtc.V1.AnswerRequestHeartbeatStage subBuilder = new global::Proto.Rpc.Webrtc.V1.AnswerRequestHeartbeatStage();
+            if (stageCase_ == StageOneofCase.Heartbeat) {
+              subBuilder.MergeFrom(Heartbeat);
+            }
+            input.ReadMessage(subBuilder);
+            Heartbeat = subBuilder;
+            break;
+          }
         }
       }
     }
@@ -3753,7 +4092,7 @@ namespace Proto.Rpc.Webrtc.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3894,7 +4233,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3913,7 +4256,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -3947,7 +4294,7 @@ namespace Proto.Rpc.Webrtc.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[15]; }
+      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4091,7 +4438,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4113,7 +4464,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4149,7 +4504,7 @@ namespace Proto.Rpc.Webrtc.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[16]; }
+      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4261,7 +4616,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4276,7 +4635,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4305,7 +4668,7 @@ namespace Proto.Rpc.Webrtc.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[17]; }
+      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4449,7 +4812,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4471,7 +4838,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4507,7 +4878,7 @@ namespace Proto.Rpc.Webrtc.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[18]; }
+      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4821,7 +5192,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -4876,7 +5251,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -4946,7 +5325,7 @@ namespace Proto.Rpc.Webrtc.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[19]; }
+      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5058,7 +5437,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -5073,7 +5456,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -5103,7 +5490,7 @@ namespace Proto.Rpc.Webrtc.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[20]; }
+      get { return global::Proto.Rpc.Webrtc.V1.SignalingReflection.Descriptor.MessageTypes[21]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5247,7 +5634,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -5269,7 +5660,11 @@ namespace Proto.Rpc.Webrtc.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

@@ -1,15 +1,10 @@
 ﻿using Fody;
-
-using Microsoft.Extensions.Logging;
-
-using Viam.Client.Dialing;
-using Viam.Core.Grpc;
-using Viam.Core;
-using System.Runtime.InteropServices;
-using Grpc.Net.Client;
-using Viam.Core.Logging;
 using Grpc.Core;
-using System;
+using Grpc.Net.Client;
+using Microsoft.Extensions.Logging;
+using Viam.Core;
+using Viam.Core.Grpc;
+using Viam.Core.Logging;
 
 namespace Viam.Client.WebRTC
 {
@@ -41,16 +36,22 @@ namespace Viam.Client.WebRTC
         /// <param name="dialOptions">The <see cref="WebRtcDialOptions"/> to use when dialing the smart machine</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> to cancel the operation</param>
         /// <returns>A <see cref="ValueTask{ViamChannel}"/></returns>
-        public ValueTask<ViamChannel> DialDirectAsync(WebRtcDialOptions dialOptions, CancellationToken cancellationToken = default)
+        public ValueTask<ViamChannel> DialDirectAsync(WebRtcDialOptions dialOptions,
+            CancellationToken cancellationToken = default)
         {
-            logger.LogDebug("Dialing WebRTC to {address} with signaling server {signalingServer}", dialOptions.machineAddress, dialOptions.signalingAddress);
-            var allowInsecure = dialOptions.insecureSignaling || dialOptions.signalingOptions.Insecure || (dialOptions.credentials?.Type == null || dialOptions.credentials?.Payload == null && dialOptions.allowInsecureDowngrade);
+            logger.LogDebug("Dialing WebRTC to {address} with signaling server {signalingServer}",
+                dialOptions.machineAddress, dialOptions.signalingAddress);
+            var allowInsecure = dialOptions.insecureSignaling || dialOptions.signalingOptions.Insecure ||
+                                (dialOptions.credentials?.Type == null || dialOptions.credentials?.Payload == null &&
+                                    dialOptions.allowInsecureDowngrade);
             logger.LogTrace("Initializing Rust runtime");
-            var runtimePointer = RustRTC.InitRustRuntime();
+            var runtimePointer = ViamRustUtils.InitRustRuntime();
             try
             {
                 logger.LogTrace("Rust runtime initialized");
-                var proxyPath = RustRTC.Dial(dialOptions.machineAddress, dialOptions.credentials?.AuthEntity, dialOptions.credentials?.Type, dialOptions.credentials?.Payload, allowInsecure, dialOptions.timeout, runtimePointer);
+                var proxyPath = ViamRustUtils.Dial(dialOptions.machineAddress, dialOptions.credentials?.AuthEntity,
+                    dialOptions.credentials?.Type, dialOptions.credentials?.Payload, allowInsecure, dialOptions.timeout,
+                    runtimePointer);
                 logger.LogTrace("Dialed successfully, got proxy pointer");
                 try
                 {
@@ -61,6 +62,7 @@ namespace Viam.Client.WebRTC
                         var proxyAddress = proxyPath.Replace("tcp://", "");
                         uri = new Uri($"http://{proxyAddress}");
                     }
+
                     if (proxyPath.StartsWith("unix://"))
                     {
                         //var proxyAddress = path.Replace("unix://", "");
@@ -72,7 +74,9 @@ namespace Viam.Client.WebRTC
                     {
                         LoggerFactory = loggerFactory
                     };
-                    var channel = new WebRTCViamChannel(runtimePointer, global::Grpc.Net.Client.GrpcChannel.ForAddress(uri, channelOptions), dialOptions.machineAddress);
+                    var channel = new WebRTCViamChannel(runtimePointer,
+                        global::Grpc.Net.Client.GrpcChannel.ForAddress(uri, channelOptions),
+                        dialOptions.machineAddress);
                     logger.LogDialComplete();
                     return new ValueTask<ViamChannel>(channel);
                 }
@@ -85,18 +89,20 @@ namespace Viam.Client.WebRTC
             catch (Exception ex)
             {
                 logger.LogError(ex, "Failed to dial WebRTC");
-                RustRTC.FreeRustRuntime(runtimePointer);
+                ViamRustUtils.FreeRustRuntime(runtimePointer);
             }
+
             throw new Exception("Failed to dial WebRTC");
         }
     }
 
-    public class WebRTCViamChannel(IntPtr rustRuntime, global::Grpc.Net.Client.GrpcChannel channel, string remote) : ViamChannel(remote)
+    public class WebRTCViamChannel(IntPtr rustRuntime, global::Grpc.Net.Client.GrpcChannel channel, string remote)
+        : ViamChannel(remote)
     {
         public override void Dispose()
         {
             channel.Dispose();
-            RustRTC.FreeRustRuntime(rustRuntime);
+            ViamRustUtils.FreeRustRuntime(rustRuntime);
         }
 
         protected override CallInvoker GetCallInvoker() => channel.CreateCallInvoker();

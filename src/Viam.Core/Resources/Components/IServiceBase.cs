@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Viam.Core.Resources.Components
+﻿namespace Viam.Core.Resources.Components
 {
     public interface IServiceBase
     {

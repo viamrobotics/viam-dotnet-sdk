@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
-
 using Viam.Component.Camera.V1;
 
 namespace Viam.Core.Resources
@@ -13,7 +12,8 @@ namespace Viam.Core.Resources
         string MachinePartId,
         string RobotPartId)
     {
-        public override string ToString() => $"{nameof(PrimaryOrgId)}:{PrimaryOrgId}, {nameof(LocationId)}:{LocationId}, {nameof(MachineId)}:{MachineId}, {nameof(MachinePartId)}:{MachinePartId}, {nameof(RobotPartId)}:{RobotPartId}";
+        public override string ToString() =>
+            $"{nameof(PrimaryOrgId)}:{PrimaryOrgId}, {nameof(LocationId)}:{LocationId}, {nameof(MachineId)}:{MachineId}, {nameof(MachinePartId)}:{MachinePartId}, {nameof(RobotPartId)}:{RobotPartId}";
     }
 
     public record DistortionParameters(string model, double[] parameters)
@@ -22,7 +22,8 @@ namespace Viam.Core.Resources
             FromGrpc(Viam.Component.Camera.V1.DistortionParameters distortionParameters) =>
             new(distortionParameters.Model, distortionParameters.Parameters.ToArray());
 
-        public Viam.Component.Camera.V1.DistortionParameters ToGrpc() => new() { Model = model, Parameters = { parameters } };
+        public Viam.Component.Camera.V1.DistortionParameters ToGrpc() =>
+            new() { Model = model, Parameters = { parameters } };
     }
 
     public record IntrinsicParameters(
@@ -60,20 +61,13 @@ namespace Viam.Core.Resources
 
     public enum MimeType
     {
-        [Description("unsupported")]
-        Unsupported,
-        [Description("unspecified")]
-        Unspecified,
-        [Description("image/vnd.viam.rgba")]
-        ViamRgba,
-        [Description("image/vnd.viam.dep")]
-        ViamRawDepth,
-        [Description("image/jpeg")]
-        Jpeg,
-        [Description("image/png")]
-        Png,
-        [Description("pointcloud/pcd")]
-        Pcd
+        [Description("unsupported")] Unsupported,
+        [Description("unspecified")] Unspecified,
+        [Description("image/vnd.viam.rgba")] ViamRgba,
+        [Description("image/vnd.viam.dep")] ViamRawDepth,
+        [Description("image/jpeg")] Jpeg,
+        [Description("image/png")] Png,
+        [Description("pointcloud/pcd")] Pcd
     }
 
     public static class MimeTypeExtensions
@@ -111,6 +105,7 @@ namespace Viam.Core.Resources
             MimeType.Pcd => "pointcloud/pcd",
             _ => throw new ArgumentOutOfRangeException(nameof(mimeType), mimeType, "Unknown MimeType")
         };
+
         public static Format ToGrpcFormat(this MimeType mimeType) => mimeType switch
         {
             MimeType.Png => Format.Png,
@@ -122,7 +117,12 @@ namespace Viam.Core.Resources
         };
     }
 
-    public record ViamImage(ReadOnlyMemory<byte> bytes, MimeType mimeType, int width, int height, string? sourceName = null);
+    public record ViamImage(
+        ReadOnlyMemory<byte> bytes,
+        MimeType mimeType,
+        int width,
+        int height,
+        string? sourceName = null);
 
     /// <summary>
     /// Various dimensions of the base
@@ -132,7 +132,8 @@ namespace Viam.Core.Resources
     /// <param name="Width">The width of the base, in meters</param>
     public record BaseProperties(double TurningRadius, double WheelCircumference, double Width)
     {
-        public override string ToString() => $"{nameof(TurningRadius)}: {TurningRadius}, {nameof(WheelCircumference)}: {WheelCircumference}, {nameof(Width)}: {Width}";
+        public override string ToString() =>
+            $"{nameof(TurningRadius)}: {TurningRadius}, {nameof(WheelCircumference)}: {WheelCircumference}, {nameof(Width)}: {Width}";
     }
 
     public record EncoderProperties(bool AngleDegreesSupported, bool TicksCountSupported);

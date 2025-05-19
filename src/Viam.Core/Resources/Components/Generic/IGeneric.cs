@@ -9,7 +9,7 @@ namespace Viam.Core.Resources.Components.Generic
     public interface IGeneric : IResourceBase
     {
         ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
-                                            TimeSpan? timeout = null,
-                                            CancellationToken cancellationToken = default);
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default);
     }
 }

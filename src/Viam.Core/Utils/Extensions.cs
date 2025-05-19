@@ -10,9 +10,9 @@ namespace Viam.Core.Utils
             obj switch
             {
                 IDictionary<string, object?> dict => $"dict: [{dict.ToLogFormat()}]",
-                IEnumerable<object> objects       => ToLogFormat(objects),
-                not null                          => $"{obj.GetType().Name}: [{obj}]",
-                _                                 => "null"
+                IEnumerable<object> objects => ToLogFormat(objects),
+                not null => $"{obj.GetType().Name}: [{obj}]",
+                _ => "null"
             };
 
         private static string ToLogFormat(this IEnumerable<object?>? objects) =>
@@ -34,9 +34,10 @@ namespace Viam.Core.Utils
                     arr[i] = o.ToLogFormat();
                     i++;
                 }
+
                 return i == 0
-                           ? "{}"
-                           : string.Join(", ", arr[..i]);
+                    ? "{}"
+                    : string.Join(", ", arr[..i]);
             }
             finally
             {

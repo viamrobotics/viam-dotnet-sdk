@@ -21,8 +21,8 @@ namespace Viam.Client.Clients
         {
             var dialer = new Dialer(options.LoggerFactory);
             var channel = options.DisableWebRtc
-                              ? await dialer.DialGrpcDirectAsync(options.ToGrpcDialOptions())
-                              : await dialer.DialWebRtcDirectAsync(options.ToWebRtcDialOptions());
+                ? await dialer.DialGrpcDirectAsync(options.ToGrpcDialOptions())
+                : await dialer.DialWebRtcDirectAsync(options.ToWebRtcDialOptions());
             var client = new ViamClient(options.LoggerFactory, channel);
             return client;
         }

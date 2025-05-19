@@ -61,6 +61,10 @@ namespace Viam.App.V1 {
     static readonly grpc::Marshaller<global::Viam.App.V1.UpdateAuthApplicationRequest> __Marshaller_viam_app_v1_UpdateAuthApplicationRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateAuthApplicationRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.App.V1.UpdateAuthApplicationResponse> __Marshaller_viam_app_v1_UpdateAuthApplicationResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.UpdateAuthApplicationResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetAuthApplicationRequest> __Marshaller_viam_app_v1_GetAuthApplicationRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetAuthApplicationRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.App.V1.GetAuthApplicationResponse> __Marshaller_viam_app_v1_GetAuthApplicationResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.App.V1.GetAuthApplicationResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.App.V1.IsLegalAcceptedRequest, global::Viam.App.V1.IsLegalAcceptedResponse> __Method_IsLegalAccepted = new grpc::Method<global::Viam.App.V1.IsLegalAcceptedRequest, global::Viam.App.V1.IsLegalAcceptedResponse>(
@@ -93,6 +97,14 @@ namespace Viam.App.V1 {
         "UpdateAuthApplication",
         __Marshaller_viam_app_v1_UpdateAuthApplicationRequest,
         __Marshaller_viam_app_v1_UpdateAuthApplicationResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.App.V1.GetAuthApplicationRequest, global::Viam.App.V1.GetAuthApplicationResponse> __Method_GetAuthApplication = new grpc::Method<global::Viam.App.V1.GetAuthApplicationRequest, global::Viam.App.V1.GetAuthApplicationResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetAuthApplication",
+        __Marshaller_viam_app_v1_GetAuthApplicationRequest,
+        __Marshaller_viam_app_v1_GetAuthApplicationResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -135,6 +147,7 @@ namespace Viam.App.V1 {
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.RegisterAuthApplicationResponse> RegisterAuthApplication(global::Viam.App.V1.RegisterAuthApplicationRequest request, grpc::ServerCallContext context)
       {
@@ -147,8 +160,22 @@ namespace Viam.App.V1 {
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.UpdateAuthApplicationResponse> UpdateAuthApplication(global::Viam.App.V1.UpdateAuthApplicationRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Allows users to get the config for their third party auth applications
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.ObsoleteAttribute]
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.App.V1.GetAuthApplicationResponse> GetAuthApplication(global::Viam.App.V1.GetAuthApplicationRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -290,6 +317,7 @@ namespace Viam.App.V1 {
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The response received from the server.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::Viam.App.V1.RegisterAuthApplicationResponse RegisterAuthApplication(global::Viam.App.V1.RegisterAuthApplicationRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -301,6 +329,7 @@ namespace Viam.App.V1 {
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The response received from the server.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::Viam.App.V1.RegisterAuthApplicationResponse RegisterAuthApplication(global::Viam.App.V1.RegisterAuthApplicationRequest request, grpc::CallOptions options)
       {
@@ -314,6 +343,7 @@ namespace Viam.App.V1 {
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The call object.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.RegisterAuthApplicationResponse> RegisterAuthApplicationAsync(global::Viam.App.V1.RegisterAuthApplicationRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -325,6 +355,7 @@ namespace Viam.App.V1 {
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The call object.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.RegisterAuthApplicationResponse> RegisterAuthApplicationAsync(global::Viam.App.V1.RegisterAuthApplicationRequest request, grpc::CallOptions options)
       {
@@ -338,6 +369,7 @@ namespace Viam.App.V1 {
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The response received from the server.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::Viam.App.V1.UpdateAuthApplicationResponse UpdateAuthApplication(global::Viam.App.V1.UpdateAuthApplicationRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -349,6 +381,7 @@ namespace Viam.App.V1 {
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The response received from the server.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::Viam.App.V1.UpdateAuthApplicationResponse UpdateAuthApplication(global::Viam.App.V1.UpdateAuthApplicationRequest request, grpc::CallOptions options)
       {
@@ -362,6 +395,7 @@ namespace Viam.App.V1 {
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
       /// <param name="cancellationToken">An optional token for canceling the call.</param>
       /// <returns>The call object.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateAuthApplicationResponse> UpdateAuthApplicationAsync(global::Viam.App.V1.UpdateAuthApplicationRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
@@ -373,10 +407,63 @@ namespace Viam.App.V1 {
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
       /// <returns>The call object.</returns>
+      [global::System.ObsoleteAttribute]
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.UpdateAuthApplicationResponse> UpdateAuthApplicationAsync(global::Viam.App.V1.UpdateAuthApplicationRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_UpdateAuthApplication, null, options, request);
+      }
+      /// <summary>
+      /// Allows users to get the config for their third party auth applications
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.ObsoleteAttribute]
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetAuthApplicationResponse GetAuthApplication(global::Viam.App.V1.GetAuthApplicationRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAuthApplication(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Allows users to get the config for their third party auth applications
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.ObsoleteAttribute]
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.App.V1.GetAuthApplicationResponse GetAuthApplication(global::Viam.App.V1.GetAuthApplicationRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetAuthApplication, null, options, request);
+      }
+      /// <summary>
+      /// Allows users to get the config for their third party auth applications
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.ObsoleteAttribute]
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetAuthApplicationResponse> GetAuthApplicationAsync(global::Viam.App.V1.GetAuthApplicationRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetAuthApplicationAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Allows users to get the config for their third party auth applications
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.ObsoleteAttribute]
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.App.V1.GetAuthApplicationResponse> GetAuthApplicationAsync(global::Viam.App.V1.GetAuthApplicationRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetAuthApplication, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -395,7 +482,8 @@ namespace Viam.App.V1 {
           .AddMethod(__Method_IsLegalAccepted, serviceImpl.IsLegalAccepted)
           .AddMethod(__Method_AcceptLegal, serviceImpl.AcceptLegal)
           .AddMethod(__Method_RegisterAuthApplication, serviceImpl.RegisterAuthApplication)
-          .AddMethod(__Method_UpdateAuthApplication, serviceImpl.UpdateAuthApplication).Build();
+          .AddMethod(__Method_UpdateAuthApplication, serviceImpl.UpdateAuthApplication)
+          .AddMethod(__Method_GetAuthApplication, serviceImpl.GetAuthApplication).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -409,6 +497,7 @@ namespace Viam.App.V1 {
       serviceBinder.AddMethod(__Method_AcceptLegal, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.AcceptLegalRequest, global::Viam.App.V1.AcceptLegalResponse>(serviceImpl.AcceptLegal));
       serviceBinder.AddMethod(__Method_RegisterAuthApplication, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.RegisterAuthApplicationRequest, global::Viam.App.V1.RegisterAuthApplicationResponse>(serviceImpl.RegisterAuthApplication));
       serviceBinder.AddMethod(__Method_UpdateAuthApplication, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.UpdateAuthApplicationRequest, global::Viam.App.V1.UpdateAuthApplicationResponse>(serviceImpl.UpdateAuthApplication));
+      serviceBinder.AddMethod(__Method_GetAuthApplication, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.App.V1.GetAuthApplicationRequest, global::Viam.App.V1.GetAuthApplicationResponse>(serviceImpl.GetAuthApplication));
     }
 
   }

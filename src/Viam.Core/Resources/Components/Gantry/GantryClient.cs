@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Gantry.V1;
 using Viam.Core.Clients;
@@ -13,7 +13,8 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.Gantry
 {
     public class GantryClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
-        ComponentBase<GantryClient, Component.Gantry.V1.GantryService.GantryServiceClient>(resourceName, new Component.Gantry.V1.GantryService.GantryServiceClient(channel)),
+        ComponentBase<GantryClient, Component.Gantry.V1.GantryService.GantryServiceClient>(resourceName,
+            new Component.Gantry.V1.GantryService.GantryServiceClient(channel)),
         IGantry
     {
         public static SubType SubType = SubType.FromRdkComponent("gantry");
@@ -36,11 +37,11 @@ namespace Viam.Core.Resources.Components.Gantry
             {
                 logger.LogMethodInvocationStart(parameters: command);
                 var res = await Client
-                                .DoCommandAsync(
-                                    new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
-                                    deadline: timeout.ToDeadline(),
-                                    cancellationToken: cancellationToken)
-                                .ConfigureAwait(false);
+                    .DoCommandAsync(
+                        new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
                 logger.LogMethodInvocationSuccess(results: response);
@@ -55,16 +56,17 @@ namespace Viam.Core.Resources.Components.Gantry
 
 
         public async ValueTask<double[]> GetPosition(IDictionary<string, object?>? extra = null,
-                                                     TimeSpan? timeout = null,
-                                                     CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart();
-                var res = await Client.GetPositionAsync(new GetPositionRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                                        deadline: timeout.ToDeadline(),
-                                                        cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                var res = await Client.GetPositionAsync(
+                        new GetPositionRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
                 var positions = res.PositionsMm.ToArray();
                 logger.LogMethodInvocationSuccess(results: positions);
@@ -79,24 +81,24 @@ namespace Viam.Core.Resources.Components.Gantry
 
 
         public async ValueTask MoveToPosition(double[] positions,
-                                              double[] speeds,
-                                              IDictionary<string, object?>? extra = null,
-                                              TimeSpan? timeout = null,
-                                              CancellationToken cancellationToken = default)
+            double[] speeds,
+            IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, positions, speeds]);
                 await Client.MoveToPositionAsync(new MoveToPositionRequest()
-                {
-                    Name = Name,
-                    PositionsMm = { positions },
-                    SpeedsMmPerSec = { speeds },
-                    Extra = extra?.ToStruct()
-                },
-                                                 deadline: timeout.ToDeadline(),
-                                                 cancellationToken: cancellationToken)
-                            .ConfigureAwait(false);
+                        {
+                            Name = Name,
+                            PositionsMm = { positions },
+                            SpeedsMmPerSec = { speeds },
+                            Extra = extra?.ToStruct()
+                        },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
@@ -108,16 +110,16 @@ namespace Viam.Core.Resources.Components.Gantry
 
 
         public async ValueTask Home(IDictionary<string, object?>? extra = null,
-                                    TimeSpan? timeout = null,
-                                    CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: Name);
                 await Client.HomeAsync(new HomeRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                       deadline: timeout.ToDeadline(),
-                                       cancellationToken: cancellationToken)
-                            .ConfigureAwait(false);
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
@@ -129,16 +131,17 @@ namespace Viam.Core.Resources.Components.Gantry
 
 
         public async ValueTask<double[]> GetLengths(IDictionary<string, object?>? extra = null,
-                                                    TimeSpan? timeout = null,
-                                                    CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: Name);
-                var res = await Client.GetLengthsAsync(new GetLengthsRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                                       deadline: timeout.ToDeadline(),
-                                                       cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                var res = await Client.GetLengthsAsync(
+                        new GetLengthsRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
                 var lengths = res.LengthsMm.ToArray();
                 logger.LogMethodInvocationSuccess(results: lengths);
@@ -153,16 +156,16 @@ namespace Viam.Core.Resources.Components.Gantry
 
 
         public async ValueTask Stop(IDictionary<string, object?>? extra = null,
-                                    TimeSpan? timeout = null,
-                                    CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: Name);
                 await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                       deadline: timeout.ToDeadline(),
-                                       cancellationToken: cancellationToken)
-                            .ConfigureAwait(false);
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
@@ -174,15 +177,15 @@ namespace Viam.Core.Resources.Components.Gantry
 
 
         public async ValueTask<bool> IsMoving(TimeSpan? timeout = null,
-                                              CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: Name);
                 var res = await Client.IsMovingAsync(new IsMovingRequest() { Name = Name },
-                                                     deadline: timeout.ToDeadline(),
-                                                     cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
                 logger.LogMethodInvocationSuccess(results: res.IsMoving);
                 return res.IsMoving;
             }
@@ -195,16 +198,17 @@ namespace Viam.Core.Resources.Components.Gantry
 
 
         public async ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
-                                                         TimeSpan? timeout = null,
-                                                         CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: Name);
-                var res = await Client.GetGeometriesAsync(new GetGeometriesRequest() { Name = Name, Extra = extra?.ToStruct() },
-                                                          deadline: timeout.ToDeadline(),
-                                                          cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                var res = await Client.GetGeometriesAsync(
+                        new GetGeometriesRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
                 var geometries = res.Geometries.ToArray();
                 logger.LogMethodInvocationSuccess(results: geometries);

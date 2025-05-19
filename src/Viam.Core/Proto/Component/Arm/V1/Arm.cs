@@ -43,49 +43,67 @@ namespace Viam.Component.Arm.V1 {
             "EgoEbmFtZRgBIAEoCVIEbmFtZRJDCglwb3NpdGlvbnMYAiABKAsyJS52aWFt",
             "LmNvbXBvbmVudC5hcm0udjEuSm9pbnRQb3NpdGlvbnNSCXBvc2l0aW9ucxIt",
             "CgVleHRyYRhjIAEoCzIXLmdvb2dsZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4dHJh",
-            "Ih4KHE1vdmVUb0pvaW50UG9zaXRpb25zUmVzcG9uc2UiUAoLU3RvcFJlcXVl",
-            "c3QSEgoEbmFtZRgBIAEoCVIEbmFtZRItCgVleHRyYRhjIAEoCzIXLmdvb2ds",
-            "ZS5wcm90b2J1Zi5TdHJ1Y3RSBWV4dHJhIg4KDFN0b3BSZXNwb25zZSKuAQoG",
-            "U3RhdHVzEjcKDGVuZF9wb3NpdGlvbhgBIAEoCzIULnZpYW0uY29tbW9uLnYx",
-            "LlBvc2VSC2VuZFBvc2l0aW9uEk4KD2pvaW50X3Bvc2l0aW9ucxgCIAEoCzIl",
-            "LnZpYW0uY29tcG9uZW50LmFybS52MS5Kb2ludFBvc2l0aW9uc1IOam9pbnRQ",
-            "b3NpdGlvbnMSGwoJaXNfbW92aW5nGAMgASgIUghpc01vdmluZyIlCg9Jc01v",
-            "dmluZ1JlcXVlc3QSEgoEbmFtZRgBIAEoCVIEbmFtZSIvChBJc01vdmluZ1Jl",
-            "c3BvbnNlEhsKCWlzX21vdmluZxgBIAEoCFIIaXNNb3ZpbmcylAsKCkFybVNl",
-            "cnZpY2USoQEKDkdldEVuZFBvc2l0aW9uEiwudmlhbS5jb21wb25lbnQuYXJt",
-            "LnYxLkdldEVuZFBvc2l0aW9uUmVxdWVzdBotLnZpYW0uY29tcG9uZW50LmFy",
-            "bS52MS5HZXRFbmRQb3NpdGlvblJlc3BvbnNlIjKC0+STAiwSKi92aWFtL2Fw",
-            "aS92MS9jb21wb25lbnQvYXJtL3tuYW1lfS9wb3NpdGlvbhKlAQoOTW92ZVRv",
-            "UG9zaXRpb24SLC52aWFtLmNvbXBvbmVudC5hcm0udjEuTW92ZVRvUG9zaXRp",
-            "b25SZXF1ZXN0Gi0udmlhbS5jb21wb25lbnQuYXJtLnYxLk1vdmVUb1Bvc2l0",
-            "aW9uUmVzcG9uc2UiNqCSKQGC0+STAiwaKi92aWFtL2FwaS92MS9jb21wb25l",
-            "bnQvYXJtL3tuYW1lfS9wb3NpdGlvbhKxAQoRR2V0Sm9pbnRQb3NpdGlvbnMS",
-            "Ly52aWFtLmNvbXBvbmVudC5hcm0udjEuR2V0Sm9pbnRQb3NpdGlvbnNSZXF1",
-            "ZXN0GjAudmlhbS5jb21wb25lbnQuYXJtLnYxLkdldEpvaW50UG9zaXRpb25z",
-            "UmVzcG9uc2UiOYLT5JMCMxIxL3ZpYW0vYXBpL3YxL2NvbXBvbmVudC9hcm0v",
-            "e25hbWV9L2pvaW50X3Bvc2l0aW9ucxK+AQoUTW92ZVRvSm9pbnRQb3NpdGlv",
-            "bnMSMi52aWFtLmNvbXBvbmVudC5hcm0udjEuTW92ZVRvSm9pbnRQb3NpdGlv",
-            "bnNSZXF1ZXN0GjMudmlhbS5jb21wb25lbnQuYXJtLnYxLk1vdmVUb0pvaW50",
-            "UG9zaXRpb25zUmVzcG9uc2UiPaCSKQGC0+STAjMaMS92aWFtL2FwaS92MS9j",
-            "b21wb25lbnQvYXJtL3tuYW1lfS9qb2ludF9wb3NpdGlvbnMSfwoEU3RvcBIi",
-            "LnZpYW0uY29tcG9uZW50LmFybS52MS5TdG9wUmVxdWVzdBojLnZpYW0uY29t",
-            "cG9uZW50LmFybS52MS5TdG9wUmVzcG9uc2UiLoLT5JMCKCImL3ZpYW0vYXBp",
-            "L3YxL2NvbXBvbmVudC9hcm0ve25hbWV9L3N0b3ASkAEKCElzTW92aW5nEiYu",
-            "dmlhbS5jb21wb25lbnQuYXJtLnYxLklzTW92aW5nUmVxdWVzdBonLnZpYW0u",
-            "Y29tcG9uZW50LmFybS52MS5Jc01vdmluZ1Jlc3BvbnNlIjOC0+STAi0SKy92",
-            "aWFtL2FwaS92MS9jb21wb25lbnQvYXJtL3tuYW1lfS9pc19tb3ZpbmcShgEK",
-            "CURvQ29tbWFuZBIgLnZpYW0uY29tbW9uLnYxLkRvQ29tbWFuZFJlcXVlc3Qa",
-            "IS52aWFtLmNvbW1vbi52MS5Eb0NvbW1hbmRSZXNwb25zZSI0gtPkkwIuIiwv",
-            "dmlhbS9hcGkvdjEvY29tcG9uZW50L2FybS97bmFtZX0vZG9fY29tbWFuZBKS",
-            "AQoNR2V0S2luZW1hdGljcxIkLnZpYW0uY29tbW9uLnYxLkdldEtpbmVtYXRp",
-            "Y3NSZXF1ZXN0GiUudmlhbS5jb21tb24udjEuR2V0S2luZW1hdGljc1Jlc3Bv",
-            "bnNlIjSC0+STAi4SLC92aWFtL2FwaS92MS9jb21wb25lbnQvYXJtL3tuYW1l",
-            "fS9raW5lbWF0aWNzEpIBCg1HZXRHZW9tZXRyaWVzEiQudmlhbS5jb21tb24u",
-            "djEuR2V0R2VvbWV0cmllc1JlcXVlc3QaJS52aWFtLmNvbW1vbi52MS5HZXRH",
-            "ZW9tZXRyaWVzUmVzcG9uc2UiNILT5JMCLhIsL3ZpYW0vYXBpL3YxL2NvbXBv",
-            "bmVudC9hcm0ve25hbWV9L2dlb21ldHJpZXNCPQoZY29tLnZpYW0uY29tcG9u",
-            "ZW50LmFybS52MVogZ28udmlhbS5jb20vYXBpL2NvbXBvbmVudC9hcm0vdjFi",
-            "BnByb3RvMw=="));
+            "Ih4KHE1vdmVUb0pvaW50UG9zaXRpb25zUmVzcG9uc2Ui+QEKIE1vdmVUaHJv",
+            "dWdoSm9pbnRQb3NpdGlvbnNSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUS",
+            "QwoJcG9zaXRpb25zGAIgAygLMiUudmlhbS5jb21wb25lbnQuYXJtLnYxLkpv",
+            "aW50UG9zaXRpb25zUglwb3NpdGlvbnMSQQoHb3B0aW9ucxgDIAEoCzIiLnZp",
+            "YW0uY29tcG9uZW50LmFybS52MS5Nb3ZlT3B0aW9uc0gAUgdvcHRpb25ziAEB",
+            "Ei0KBWV4dHJhGGMgASgLMhcuZ29vZ2xlLnByb3RvYnVmLlN0cnVjdFIFZXh0",
+            "cmFCCgoIX29wdGlvbnMiIwohTW92ZVRocm91Z2hKb2ludFBvc2l0aW9uc1Jl",
+            "c3BvbnNlIlAKC1N0b3BSZXF1ZXN0EhIKBG5hbWUYASABKAlSBG5hbWUSLQoF",
+            "ZXh0cmEYYyABKAsyFy5nb29nbGUucHJvdG9idWYuU3RydWN0UgVleHRyYSIO",
+            "CgxTdG9wUmVzcG9uc2UirgEKBlN0YXR1cxI3CgxlbmRfcG9zaXRpb24YASAB",
+            "KAsyFC52aWFtLmNvbW1vbi52MS5Qb3NlUgtlbmRQb3NpdGlvbhJOCg9qb2lu",
+            "dF9wb3NpdGlvbnMYAiABKAsyJS52aWFtLmNvbXBvbmVudC5hcm0udjEuSm9p",
+            "bnRQb3NpdGlvbnNSDmpvaW50UG9zaXRpb25zEhsKCWlzX21vdmluZxgDIAEo",
+            "CFIIaXNNb3ZpbmciJQoPSXNNb3ZpbmdSZXF1ZXN0EhIKBG5hbWUYASABKAlS",
+            "BG5hbWUiLwoQSXNNb3ZpbmdSZXNwb25zZRIbCglpc19tb3ZpbmcYASABKAhS",
+            "CGlzTW92aW5nIqwBCgtNb3ZlT3B0aW9ucxIzChRtYXhfdmVsX2RlZ3NfcGVy",
+            "X3NlYxgBIAEoAUgAUhBtYXhWZWxEZWdzUGVyU2VjiAEBEjUKFW1heF9hY2Nf",
+            "ZGVnc19wZXJfc2VjMhgCIAEoAUgBUhFtYXhBY2NEZWdzUGVyU2VjMogBAUIX",
+            "ChVfbWF4X3ZlbF9kZWdzX3Blcl9zZWNCGAoWX21heF9hY2NfZGVnc19wZXJf",
+            "c2VjMjLxDAoKQXJtU2VydmljZRKhAQoOR2V0RW5kUG9zaXRpb24SLC52aWFt",
+            "LmNvbXBvbmVudC5hcm0udjEuR2V0RW5kUG9zaXRpb25SZXF1ZXN0Gi0udmlh",
+            "bS5jb21wb25lbnQuYXJtLnYxLkdldEVuZFBvc2l0aW9uUmVzcG9uc2UiMoLT",
+            "5JMCLBIqL3ZpYW0vYXBpL3YxL2NvbXBvbmVudC9hcm0ve25hbWV9L3Bvc2l0",
+            "aW9uEqUBCg5Nb3ZlVG9Qb3NpdGlvbhIsLnZpYW0uY29tcG9uZW50LmFybS52",
+            "MS5Nb3ZlVG9Qb3NpdGlvblJlcXVlc3QaLS52aWFtLmNvbXBvbmVudC5hcm0u",
+            "djEuTW92ZVRvUG9zaXRpb25SZXNwb25zZSI2oJIpAYLT5JMCLBoqL3ZpYW0v",
+            "YXBpL3YxL2NvbXBvbmVudC9hcm0ve25hbWV9L3Bvc2l0aW9uErEBChFHZXRK",
+            "b2ludFBvc2l0aW9ucxIvLnZpYW0uY29tcG9uZW50LmFybS52MS5HZXRKb2lu",
+            "dFBvc2l0aW9uc1JlcXVlc3QaMC52aWFtLmNvbXBvbmVudC5hcm0udjEuR2V0",
+            "Sm9pbnRQb3NpdGlvbnNSZXNwb25zZSI5gtPkkwIzEjEvdmlhbS9hcGkvdjEv",
+            "Y29tcG9uZW50L2FybS97bmFtZX0vam9pbnRfcG9zaXRpb25zEr4BChRNb3Zl",
+            "VG9Kb2ludFBvc2l0aW9ucxIyLnZpYW0uY29tcG9uZW50LmFybS52MS5Nb3Zl",
+            "VG9Kb2ludFBvc2l0aW9uc1JlcXVlc3QaMy52aWFtLmNvbXBvbmVudC5hcm0u",
+            "djEuTW92ZVRvSm9pbnRQb3NpdGlvbnNSZXNwb25zZSI9oJIpAYLT5JMCMxox",
+            "L3ZpYW0vYXBpL3YxL2NvbXBvbmVudC9hcm0ve25hbWV9L2pvaW50X3Bvc2l0",
+            "aW9ucxLaAQoZTW92ZVRocm91Z2hKb2ludFBvc2l0aW9ucxI3LnZpYW0uY29t",
+            "cG9uZW50LmFybS52MS5Nb3ZlVGhyb3VnaEpvaW50UG9zaXRpb25zUmVxdWVz",
+            "dBo4LnZpYW0uY29tcG9uZW50LmFybS52MS5Nb3ZlVGhyb3VnaEpvaW50UG9z",
+            "aXRpb25zUmVzcG9uc2UiSqCSKQGC0+STAkAiPi92aWFtL2FwaS92MS9jb21w",
+            "b25lbnQvYXJtL3tuYW1lfS9tb3ZlX3Rocm91Z2hfam9pbnRfcG9zaXRpb25z",
+            "En8KBFN0b3ASIi52aWFtLmNvbXBvbmVudC5hcm0udjEuU3RvcFJlcXVlc3Qa",
+            "Iy52aWFtLmNvbXBvbmVudC5hcm0udjEuU3RvcFJlc3BvbnNlIi6C0+STAigi",
+            "Ji92aWFtL2FwaS92MS9jb21wb25lbnQvYXJtL3tuYW1lfS9zdG9wEpABCghJ",
+            "c01vdmluZxImLnZpYW0uY29tcG9uZW50LmFybS52MS5Jc01vdmluZ1JlcXVl",
+            "c3QaJy52aWFtLmNvbXBvbmVudC5hcm0udjEuSXNNb3ZpbmdSZXNwb25zZSIz",
+            "gtPkkwItEisvdmlhbS9hcGkvdjEvY29tcG9uZW50L2FybS97bmFtZX0vaXNf",
+            "bW92aW5nEoYBCglEb0NvbW1hbmQSIC52aWFtLmNvbW1vbi52MS5Eb0NvbW1h",
+            "bmRSZXF1ZXN0GiEudmlhbS5jb21tb24udjEuRG9Db21tYW5kUmVzcG9uc2Ui",
+            "NILT5JMCLiIsL3ZpYW0vYXBpL3YxL2NvbXBvbmVudC9hcm0ve25hbWV9L2Rv",
+            "X2NvbW1hbmQSkgEKDUdldEtpbmVtYXRpY3MSJC52aWFtLmNvbW1vbi52MS5H",
+            "ZXRLaW5lbWF0aWNzUmVxdWVzdBolLnZpYW0uY29tbW9uLnYxLkdldEtpbmVt",
+            "YXRpY3NSZXNwb25zZSI0gtPkkwIuEiwvdmlhbS9hcGkvdjEvY29tcG9uZW50",
+            "L2FybS97bmFtZX0va2luZW1hdGljcxKSAQoNR2V0R2VvbWV0cmllcxIkLnZp",
+            "YW0uY29tbW9uLnYxLkdldEdlb21ldHJpZXNSZXF1ZXN0GiUudmlhbS5jb21t",
+            "b24udjEuR2V0R2VvbWV0cmllc1Jlc3BvbnNlIjSC0+STAi4SLC92aWFtL2Fw",
+            "aS92MS9jb21wb25lbnQvYXJtL3tuYW1lfS9nZW9tZXRyaWVzQr4BChljb20u",
+            "dmlhbS5jb21wb25lbnQuYXJtLnYxQghBcm1Qcm90b1ABWiBnby52aWFtLmNv",
+            "bS9hcGkvY29tcG9uZW50L2FybS92MaICA1ZDQaoCFVZpYW0uQ29tcG9uZW50",
+            "LkFybS5WMcoCFVZpYW1cQ29tcG9uZW50XEFybVxWMeICIVZpYW1cQ29tcG9u",
+            "ZW50XEFybVxWMVxHUEJNZXRhZGF0YeoCGFZpYW06OkNvbXBvbmVudDo6QXJt",
+            "OjpWMWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Viam.Common.V1.CommonReflection.Descriptor, global::Google.Api.AnnotationsReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -98,11 +116,14 @@ namespace Viam.Component.Arm.V1 {
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Arm.V1.MoveToPositionResponse), global::Viam.Component.Arm.V1.MoveToPositionResponse.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Arm.V1.MoveToJointPositionsRequest), global::Viam.Component.Arm.V1.MoveToJointPositionsRequest.Parser, new[]{ "Name", "Positions", "Extra" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Arm.V1.MoveToJointPositionsResponse), global::Viam.Component.Arm.V1.MoveToJointPositionsResponse.Parser, null, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Arm.V1.MoveThroughJointPositionsRequest), global::Viam.Component.Arm.V1.MoveThroughJointPositionsRequest.Parser, new[]{ "Name", "Positions", "Options", "Extra" }, new[]{ "Options" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Arm.V1.MoveThroughJointPositionsResponse), global::Viam.Component.Arm.V1.MoveThroughJointPositionsResponse.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Arm.V1.StopRequest), global::Viam.Component.Arm.V1.StopRequest.Parser, new[]{ "Name", "Extra" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Arm.V1.StopResponse), global::Viam.Component.Arm.V1.StopResponse.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Arm.V1.Status), global::Viam.Component.Arm.V1.Status.Parser, new[]{ "EndPosition", "JointPositions", "IsMoving" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Arm.V1.IsMovingRequest), global::Viam.Component.Arm.V1.IsMovingRequest.Parser, new[]{ "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Arm.V1.IsMovingResponse), global::Viam.Component.Arm.V1.IsMovingResponse.Parser, new[]{ "IsMoving" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Arm.V1.IsMovingResponse), global::Viam.Component.Arm.V1.IsMovingResponse.Parser, new[]{ "IsMoving" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.Component.Arm.V1.MoveOptions), global::Viam.Component.Arm.V1.MoveOptions.Parser, new[]{ "MaxVelDegsPerSec", "MaxAccDegsPerSec2" }, new[]{ "MaxVelDegsPerSec", "MaxAccDegsPerSec2" }, null, null, null)
           }));
     }
     #endregion
@@ -303,7 +324,11 @@ namespace Viam.Component.Arm.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -329,7 +354,11 @@ namespace Viam.Component.Arm.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -514,7 +543,11 @@ namespace Viam.Component.Arm.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -536,7 +569,11 @@ namespace Viam.Component.Arm.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -606,8 +643,7 @@ namespace Viam.Component.Arm.V1 {
     private readonly pbc::RepeatedField<double> values_ = new pbc::RepeatedField<double>();
     /// <summary>
     /// A list of joint positions. Rotations values are in degrees, translational values in mm.
-    /// The numbers are ordered spatially from the base toward the end effector
-    /// This is used in GetJointPositionsResponse and MoveToJointPositionsRequest
+    /// There should be 1 entry in the list per joint DOF, ordered spatially from the base toward the end effector of the arm
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -704,7 +740,11 @@ namespace Viam.Component.Arm.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -724,7 +764,11 @@ namespace Viam.Component.Arm.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -934,7 +978,11 @@ namespace Viam.Component.Arm.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -960,7 +1008,11 @@ namespace Viam.Component.Arm.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1144,7 +1196,11 @@ namespace Viam.Component.Arm.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1166,7 +1222,11 @@ namespace Viam.Component.Arm.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1418,7 +1478,11 @@ namespace Viam.Component.Arm.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1451,7 +1515,11 @@ namespace Viam.Component.Arm.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1607,7 +1675,11 @@ namespace Viam.Component.Arm.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1622,7 +1694,11 @@ namespace Viam.Component.Arm.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -1863,7 +1939,11 @@ namespace Viam.Component.Arm.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -1896,7 +1976,11 @@ namespace Viam.Component.Arm.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2052,7 +2136,11 @@ namespace Viam.Component.Arm.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2067,7 +2155,500 @@ namespace Viam.Component.Arm.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class MoveThroughJointPositionsRequest : pb::IMessage<MoveThroughJointPositionsRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MoveThroughJointPositionsRequest> _parser = new pb::MessageParser<MoveThroughJointPositionsRequest>(() => new MoveThroughJointPositionsRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<MoveThroughJointPositionsRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Viam.Component.Arm.V1.ArmReflection.Descriptor.MessageTypes[9]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MoveThroughJointPositionsRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MoveThroughJointPositionsRequest(MoveThroughJointPositionsRequest other) : this() {
+      name_ = other.name_;
+      positions_ = other.positions_.Clone();
+      options_ = other.options_ != null ? other.options_.Clone() : null;
+      extra_ = other.extra_ != null ? other.extra_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MoveThroughJointPositionsRequest Clone() {
+      return new MoveThroughJointPositionsRequest(this);
+    }
+
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
+    /// <summary>
+    /// Name of an arm
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Name {
+      get { return name_; }
+      set {
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "positions" field.</summary>
+    public const int PositionsFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::Viam.Component.Arm.V1.JointPositions> _repeated_positions_codec
+        = pb::FieldCodec.ForMessage(18, global::Viam.Component.Arm.V1.JointPositions.Parser);
+    private readonly pbc::RepeatedField<global::Viam.Component.Arm.V1.JointPositions> positions_ = new pbc::RepeatedField<global::Viam.Component.Arm.V1.JointPositions>();
+    /// <summary>
+    /// A list of joint positions which will be moved to in the order they are specified
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::Viam.Component.Arm.V1.JointPositions> Positions {
+      get { return positions_; }
+    }
+
+    /// <summary>Field number for the "options" field.</summary>
+    public const int OptionsFieldNumber = 3;
+    private global::Viam.Component.Arm.V1.MoveOptions options_;
+    /// <summary>
+    /// optional specifications to be obeyed during the motion
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Viam.Component.Arm.V1.MoveOptions Options {
+      get { return options_; }
+      set {
+        options_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "extra" field.</summary>
+    public const int ExtraFieldNumber = 99;
+    private global::Google.Protobuf.WellKnownTypes.Struct extra_;
+    /// <summary>
+    /// Additional arguments to the method
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::Google.Protobuf.WellKnownTypes.Struct Extra {
+      get { return extra_; }
+      set {
+        extra_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as MoveThroughJointPositionsRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(MoveThroughJointPositionsRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Name != other.Name) return false;
+      if(!positions_.Equals(other.positions_)) return false;
+      if (!object.Equals(Options, other.Options)) return false;
+      if (!object.Equals(Extra, other.Extra)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
+      hash ^= positions_.GetHashCode();
+      if (options_ != null) hash ^= Options.GetHashCode();
+      if (extra_ != null) hash ^= Extra.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      positions_.WriteTo(output, _repeated_positions_codec);
+      if (options_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Options);
+      }
+      if (extra_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Extra);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Name.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Name);
+      }
+      positions_.WriteTo(ref output, _repeated_positions_codec);
+      if (options_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Options);
+      }
+      if (extra_ != null) {
+        output.WriteRawTag(154, 6);
+        output.WriteMessage(Extra);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
+      }
+      size += positions_.CalculateSize(_repeated_positions_codec);
+      if (options_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Options);
+      }
+      if (extra_ != null) {
+        size += 2 + pb::CodedOutputStream.ComputeMessageSize(Extra);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(MoveThroughJointPositionsRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Name.Length != 0) {
+        Name = other.Name;
+      }
+      positions_.Add(other.positions_);
+      if (other.options_ != null) {
+        if (options_ == null) {
+          Options = new global::Viam.Component.Arm.V1.MoveOptions();
+        }
+        Options.MergeFrom(other.Options);
+      }
+      if (other.extra_ != null) {
+        if (extra_ == null) {
+          Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
+        }
+        Extra.MergeFrom(other.Extra);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            positions_.AddEntriesFrom(input, _repeated_positions_codec);
+            break;
+          }
+          case 26: {
+            if (options_ == null) {
+              Options = new global::Viam.Component.Arm.V1.MoveOptions();
+            }
+            input.ReadMessage(Options);
+            break;
+          }
+          case 794: {
+            if (extra_ == null) {
+              Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(Extra);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            Name = input.ReadString();
+            break;
+          }
+          case 18: {
+            positions_.AddEntriesFrom(ref input, _repeated_positions_codec);
+            break;
+          }
+          case 26: {
+            if (options_ == null) {
+              Options = new global::Viam.Component.Arm.V1.MoveOptions();
+            }
+            input.ReadMessage(Options);
+            break;
+          }
+          case 794: {
+            if (extra_ == null) {
+              Extra = new global::Google.Protobuf.WellKnownTypes.Struct();
+            }
+            input.ReadMessage(Extra);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class MoveThroughJointPositionsResponse : pb::IMessage<MoveThroughJointPositionsResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MoveThroughJointPositionsResponse> _parser = new pb::MessageParser<MoveThroughJointPositionsResponse>(() => new MoveThroughJointPositionsResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<MoveThroughJointPositionsResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Viam.Component.Arm.V1.ArmReflection.Descriptor.MessageTypes[10]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MoveThroughJointPositionsResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MoveThroughJointPositionsResponse(MoveThroughJointPositionsResponse other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MoveThroughJointPositionsResponse Clone() {
+      return new MoveThroughJointPositionsResponse(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as MoveThroughJointPositionsResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(MoveThroughJointPositionsResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(MoveThroughJointPositionsResponse other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2093,7 +2674,7 @@ namespace Viam.Component.Arm.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Component.Arm.V1.ArmReflection.Descriptor.MessageTypes[9]; }
+      get { return global::Viam.Component.Arm.V1.ArmReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2272,7 +2853,11 @@ namespace Viam.Component.Arm.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2298,7 +2883,11 @@ namespace Viam.Component.Arm.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2335,7 +2924,7 @@ namespace Viam.Component.Arm.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Component.Arm.V1.ArmReflection.Descriptor.MessageTypes[10]; }
+      get { return global::Viam.Component.Arm.V1.ArmReflection.Descriptor.MessageTypes[12]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2447,7 +3036,11 @@ namespace Viam.Component.Arm.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2462,7 +3055,11 @@ namespace Viam.Component.Arm.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2488,7 +3085,7 @@ namespace Viam.Component.Arm.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Component.Arm.V1.ArmReflection.Descriptor.MessageTypes[11]; }
+      get { return global::Viam.Component.Arm.V1.ArmReflection.Descriptor.MessageTypes[13]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2693,7 +3290,11 @@ namespace Viam.Component.Arm.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2726,7 +3327,11 @@ namespace Viam.Component.Arm.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2770,7 +3375,7 @@ namespace Viam.Component.Arm.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Component.Arm.V1.ArmReflection.Descriptor.MessageTypes[12]; }
+      get { return global::Viam.Component.Arm.V1.ArmReflection.Descriptor.MessageTypes[14]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2911,7 +3516,11 @@ namespace Viam.Component.Arm.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -2930,7 +3539,11 @@ namespace Viam.Component.Arm.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -2960,7 +3573,7 @@ namespace Viam.Component.Arm.V1 {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Viam.Component.Arm.V1.ArmReflection.Descriptor.MessageTypes[13]; }
+      get { return global::Viam.Component.Arm.V1.ArmReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3101,7 +3714,11 @@ namespace Viam.Component.Arm.V1 {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -3120,12 +3737,289 @@ namespace Viam.Component.Arm.V1 {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 8: {
             IsMoving = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class MoveOptions : pb::IMessage<MoveOptions>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MoveOptions> _parser = new pb::MessageParser<MoveOptions>(() => new MoveOptions());
+    private pb::UnknownFieldSet _unknownFields;
+    private int _hasBits0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<MoveOptions> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Viam.Component.Arm.V1.ArmReflection.Descriptor.MessageTypes[16]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MoveOptions() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MoveOptions(MoveOptions other) : this() {
+      _hasBits0 = other._hasBits0;
+      maxVelDegsPerSec_ = other.maxVelDegsPerSec_;
+      maxAccDegsPerSec2_ = other.maxAccDegsPerSec2_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MoveOptions Clone() {
+      return new MoveOptions(this);
+    }
+
+    /// <summary>Field number for the "max_vel_degs_per_sec" field.</summary>
+    public const int MaxVelDegsPerSecFieldNumber = 1;
+    private readonly static double MaxVelDegsPerSecDefaultValue = 0D;
+
+    private double maxVelDegsPerSec_;
+    /// <summary>
+    /// Maximum allowable velocity of an arm joint, in degrees per second
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double MaxVelDegsPerSec {
+      get { if ((_hasBits0 & 1) != 0) { return maxVelDegsPerSec_; } else { return MaxVelDegsPerSecDefaultValue; } }
+      set {
+        _hasBits0 |= 1;
+        maxVelDegsPerSec_ = value;
+      }
+    }
+    /// <summary>Gets whether the "max_vel_degs_per_sec" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasMaxVelDegsPerSec {
+      get { return (_hasBits0 & 1) != 0; }
+    }
+    /// <summary>Clears the value of the "max_vel_degs_per_sec" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearMaxVelDegsPerSec() {
+      _hasBits0 &= ~1;
+    }
+
+    /// <summary>Field number for the "max_acc_degs_per_sec2" field.</summary>
+    public const int MaxAccDegsPerSec2FieldNumber = 2;
+    private readonly static double MaxAccDegsPerSec2DefaultValue = 0D;
+
+    private double maxAccDegsPerSec2_;
+    /// <summary>
+    /// Maximum allowable acceleration of an arm joint, in degrees per second squared
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double MaxAccDegsPerSec2 {
+      get { if ((_hasBits0 & 2) != 0) { return maxAccDegsPerSec2_; } else { return MaxAccDegsPerSec2DefaultValue; } }
+      set {
+        _hasBits0 |= 2;
+        maxAccDegsPerSec2_ = value;
+      }
+    }
+    /// <summary>Gets whether the "max_acc_degs_per_sec2" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasMaxAccDegsPerSec2 {
+      get { return (_hasBits0 & 2) != 0; }
+    }
+    /// <summary>Clears the value of the "max_acc_degs_per_sec2" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearMaxAccDegsPerSec2() {
+      _hasBits0 &= ~2;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as MoveOptions);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(MoveOptions other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MaxVelDegsPerSec, other.MaxVelDegsPerSec)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MaxAccDegsPerSec2, other.MaxAccDegsPerSec2)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (HasMaxVelDegsPerSec) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MaxVelDegsPerSec);
+      if (HasMaxAccDegsPerSec2) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MaxAccDegsPerSec2);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (HasMaxVelDegsPerSec) {
+        output.WriteRawTag(9);
+        output.WriteDouble(MaxVelDegsPerSec);
+      }
+      if (HasMaxAccDegsPerSec2) {
+        output.WriteRawTag(17);
+        output.WriteDouble(MaxAccDegsPerSec2);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (HasMaxVelDegsPerSec) {
+        output.WriteRawTag(9);
+        output.WriteDouble(MaxVelDegsPerSec);
+      }
+      if (HasMaxAccDegsPerSec2) {
+        output.WriteRawTag(17);
+        output.WriteDouble(MaxAccDegsPerSec2);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (HasMaxVelDegsPerSec) {
+        size += 1 + 8;
+      }
+      if (HasMaxAccDegsPerSec2) {
+        size += 1 + 8;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(MoveOptions other) {
+      if (other == null) {
+        return;
+      }
+      if (other.HasMaxVelDegsPerSec) {
+        MaxVelDegsPerSec = other.MaxVelDegsPerSec;
+      }
+      if (other.HasMaxAccDegsPerSec2) {
+        MaxAccDegsPerSec2 = other.MaxAccDegsPerSec2;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 9: {
+            MaxVelDegsPerSec = input.ReadDouble();
+            break;
+          }
+          case 17: {
+            MaxAccDegsPerSec2 = input.ReadDouble();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 9: {
+            MaxVelDegsPerSec = input.ReadDouble();
+            break;
+          }
+          case 17: {
+            MaxAccDegsPerSec2 = input.ReadDouble();
             break;
           }
         }

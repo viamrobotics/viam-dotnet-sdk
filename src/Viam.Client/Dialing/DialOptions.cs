@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
-
 using Viam.Client.WebRTC;
 using Viam.Core.Grpc;
 
@@ -45,11 +44,11 @@ namespace Viam.Client.Dialing
         public static DialOptions FromAddress(string machineAddress) =>
             new(machineAddress);
 
-        public static DialOptions FromCloud() => new DialOptions("https://app.viam.com").WithPort(443).SetDisableWebRtc();
+        public static DialOptions FromCloud() =>
+            new DialOptions("https://app.viam.com").WithPort(443).SetDisableWebRtc();
 
         public DialOptions WithApiCredentials(string apiKey, string apiKeyId)
         {
-
             Credentials = new ApiCredentials(apiKey, apiKeyId);
             return this;
         }

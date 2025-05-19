@@ -1,12 +1,9 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Google.Protobuf.WellKnownTypes;
-
-using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Component.Inputcontroller.V1;
 using Viam.Core.Clients;
@@ -16,10 +13,11 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.InputController
 {
     public class InputControllerClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
-        : ComponentBase<InputControllerClient, Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient>(
-            resourceName, 
-            new Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient(channel)),
-          IInputController
+        : ComponentBase<InputControllerClient,
+                Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient>(
+                resourceName,
+                new Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient(channel)),
+            IInputController
     {
         public static SubType SubType = SubType.FromRdkComponent("input_controller");
 
@@ -42,11 +40,11 @@ namespace Viam.Core.Resources.Components.InputController
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client
-                                .DoCommandAsync(
-                                    new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
-                                    deadline: timeout.ToDeadline(),
-                                    cancellationToken: cancellationToken)
-                                .ConfigureAwait(false);
+                    .DoCommandAsync(
+                        new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
                 logger.LogMethodInvocationSuccess(results: response);
@@ -61,17 +59,17 @@ namespace Viam.Core.Resources.Components.InputController
 
 
         public async ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
-                                                         TimeSpan? timeout = null,
-                                                         CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetGeometriesAsync(
-                                          new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra?.ToStruct() },
-                                          deadline: timeout.ToDeadline(),
-                                          cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                        new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
                 var geometry = res.Geometries.ToArray();
                 logger.LogMethodInvocationSuccess(results: geometry);
@@ -86,19 +84,20 @@ namespace Viam.Core.Resources.Components.InputController
 
 
         public async ValueTask<Control[]> GetControls(IDictionary<string, object?>? extra = null,
-                                                      TimeSpan? timeout = null,
-                                                      CancellationToken cancellationToken = default)
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetControlsAsync(new GetControlsRequest() { Controller = Name, Extra = extra?.ToStruct() },
-                                                        deadline: timeout.ToDeadline(),
-                                                        cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                var res = await Client.GetControlsAsync(
+                        new GetControlsRequest() { Controller = Name, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
                 var response = res.Controls.Select(Control.FromName)
-                                  .ToArray();
+                    .ToArray();
 
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
@@ -112,17 +111,18 @@ namespace Viam.Core.Resources.Components.InputController
 
 
         public async ValueTask<IDictionary<Control, Event>> GetEvents(Control control,
-                                                                      IDictionary<string, object?>? extra = null,
-                                                                      TimeSpan? timeout = null,
-                                                                      CancellationToken cancellationToken = default)
+            IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetEventsAsync(new GetEventsRequest() { Controller = Name, Extra = extra?.ToStruct() },
-                                                      deadline: timeout.ToDeadline(),
-                                                      cancellationToken: cancellationToken)
-                                      .ConfigureAwait(false);
+                var res = await Client.GetEventsAsync(
+                        new GetEventsRequest() { Controller = Name, Extra = extra?.ToStruct() },
+                        deadline: timeout.ToDeadline(),
+                        cancellationToken: cancellationToken)
+                    .ConfigureAwait(false);
 
                 var response = res.Events.ToDictionary(x => Control.FromName(x.Control), Event.FromProto);
                 logger.LogMethodInvocationSuccess(results: response);
@@ -137,9 +137,9 @@ namespace Viam.Core.Resources.Components.InputController
 
 
         public ValueTask RegisterControlCallback(Control control,
-                                                 IDictionary<string, object?>? extra = null,
-                                                 TimeSpan? timeout = null,
-                                                 CancellationToken cancellationToken = default)
+            IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
@@ -156,9 +156,9 @@ namespace Viam.Core.Resources.Components.InputController
 
 
         public ValueTask TriggerEvent(Event @event,
-                                      IDictionary<string, object?>? extra = null,
-                                      TimeSpan? timeout = null,
-                                      CancellationToken cancellationToken = default)
+            IDictionary<string, object?>? extra = null,
+            TimeSpan? timeout = null,
+            CancellationToken cancellationToken = default)
         {
             try
             {
@@ -187,18 +187,18 @@ namespace Viam.Core.Resources.Components.InputController
             public static EventType FromName(string name)
             {
                 return name switch
-                       {
-                           nameof(AllEvents) => AllEvents,
-                           nameof(Connect) => Connect,
-                           nameof(Disconnect) => Disconnect,
-                           nameof(ButtonPress) => ButtonPress,
-                           nameof(ButtonRelease) => ButtonRelease,
-                           nameof(ButtonHold) => ButtonHold,
-                           nameof(ButtonChange) => ButtonChange,
-                           nameof(PositionChangeAbs) => PositionChangeAbs,
-                           nameof(PositionChangeRel) => PositionChangeRel,
-                           _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown event type")
-                       };
+                {
+                    nameof(AllEvents) => AllEvents,
+                    nameof(Connect) => Connect,
+                    nameof(Disconnect) => Disconnect,
+                    nameof(ButtonPress) => ButtonPress,
+                    nameof(ButtonRelease) => ButtonRelease,
+                    nameof(ButtonHold) => ButtonHold,
+                    nameof(ButtonChange) => ButtonChange,
+                    nameof(PositionChangeAbs) => PositionChangeAbs,
+                    nameof(PositionChangeRel) => PositionChangeRel,
+                    _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown event type")
+                };
             }
 
             public static EventType AllEvents = new(nameof(AllEvents));
@@ -217,35 +217,35 @@ namespace Viam.Core.Resources.Components.InputController
             public static Control FromName(string name)
             {
                 return name switch
-                       {
-                           nameof(AbsoluteX) => AbsoluteX,
-                           nameof(AbsoluteY) => AbsoluteY,
-                           nameof(AbsoluteZ) => AbsoluteZ,
-                           nameof(AbsoluteRX) => AbsoluteRX,
-                           nameof(AbsoluteRY) => AbsoluteRY,
-                           nameof(AbsoluteRZ) => AbsoluteRZ,
-                           nameof(AbsoluteHat0X) => AbsoluteHat0X,
-                           nameof(AbsoluteHat0Y) => AbsoluteHat0Y,
-                           nameof(ButtonSouth) => ButtonSouth,
-                           nameof(ButtonEast) => ButtonEast,
-                           nameof(ButtonWest) => ButtonWest,
-                           nameof(ButtonNorth) => ButtonNorth,
-                           nameof(ButtonLT) => ButtonLT,
-                           nameof(ButtonRT) => ButtonRT,
-                           nameof(ButtonLT2) => ButtonLT2,
-                           nameof(ButtonRT2) => ButtonRT2,
-                           nameof(ButtonLThumb) => ButtonLThumb,
-                           nameof(ButtonRThumb) => ButtonRThumb,
-                           nameof(ButtonSelect) => ButtonSelect,
-                           nameof(ButtonStart) => ButtonStart,
-                           nameof(ButtonMenu) => ButtonMenu,
-                           nameof(ButtonRecord) => ButtonRecord,
-                           nameof(ButtonEStop) => ButtonEStop,
-                           nameof(AbsolutePedalAccelerator) => AbsolutePedalAccelerator,
-                           nameof(AbsolutePedalBrake) => AbsolutePedalBrake,
-                           nameof(AbsolutePedalClutch) => AbsolutePedalClutch,
-                           _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown control type")
-                       };
+                {
+                    nameof(AbsoluteX) => AbsoluteX,
+                    nameof(AbsoluteY) => AbsoluteY,
+                    nameof(AbsoluteZ) => AbsoluteZ,
+                    nameof(AbsoluteRX) => AbsoluteRX,
+                    nameof(AbsoluteRY) => AbsoluteRY,
+                    nameof(AbsoluteRZ) => AbsoluteRZ,
+                    nameof(AbsoluteHat0X) => AbsoluteHat0X,
+                    nameof(AbsoluteHat0Y) => AbsoluteHat0Y,
+                    nameof(ButtonSouth) => ButtonSouth,
+                    nameof(ButtonEast) => ButtonEast,
+                    nameof(ButtonWest) => ButtonWest,
+                    nameof(ButtonNorth) => ButtonNorth,
+                    nameof(ButtonLT) => ButtonLT,
+                    nameof(ButtonRT) => ButtonRT,
+                    nameof(ButtonLT2) => ButtonLT2,
+                    nameof(ButtonRT2) => ButtonRT2,
+                    nameof(ButtonLThumb) => ButtonLThumb,
+                    nameof(ButtonRThumb) => ButtonRThumb,
+                    nameof(ButtonSelect) => ButtonSelect,
+                    nameof(ButtonStart) => ButtonStart,
+                    nameof(ButtonMenu) => ButtonMenu,
+                    nameof(ButtonRecord) => ButtonRecord,
+                    nameof(ButtonEStop) => ButtonEStop,
+                    nameof(AbsolutePedalAccelerator) => AbsolutePedalAccelerator,
+                    nameof(AbsolutePedalBrake) => AbsolutePedalBrake,
+                    nameof(AbsolutePedalClutch) => AbsolutePedalClutch,
+                    _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown control type")
+                };
             }
 
             public static Control AbsoluteX = new(nameof(AbsoluteX));
