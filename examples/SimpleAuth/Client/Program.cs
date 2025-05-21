@@ -15,7 +15,7 @@ var loggerFactory = LoggerFactory.Create(builder => builder.AddSimpleConsole(opt
     options.SingleLine = true;
     options.ColorBehavior = LoggerColorBehavior.Enabled;
     options.TimestampFormat = "yyyy-MM-ddTHH:mm:ss.fffZ ";
-}).SetMinimumLevel(LogLevel.Debug));
+}).SetMinimumLevel(LogLevel.Trace));
 var logger = loggerFactory.CreateLogger<Program>();
 var dialOpts = DialOptions.FromAddress(grpcAddress)
     .WithLogging(loggerFactory)

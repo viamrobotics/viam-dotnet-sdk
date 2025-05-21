@@ -32,7 +32,7 @@ namespace Viam.Core.Resources.Components.InputController
 
         public override ValueTask StopResource() => new ValueTask();
 
-        public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public override async ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -110,7 +110,7 @@ namespace Viam.Core.Resources.Components.InputController
         }
 
 
-        public async ValueTask<IDictionary<Control, Event>> GetEvents(Control control,
+        public async ValueTask<Dictionary<Control, Event>> GetEvents(Control control,
             IDictionary<string, object?>? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)

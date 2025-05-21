@@ -209,6 +209,10 @@ namespace Viam.Serialization.Analyzer
                     { IsDictionary: true } => new DictionaryTypePropertyInfo(property),
                     { IsEnumerable: true } => new ListTypePropertyInfo(property),
                     { IsArray: true } => new ArrayTypePropertyInfo(property),
+                    { IsBuiltInValueType: true, IsNullable: false, Type.SpecialType: SpecialType.System_Decimal } => new ValueTypeAsStringPropertyInfo(property),
+                    { IsBuiltInValueType: true, IsNullable: true, Type.SpecialType: SpecialType.System_Decimal } => new NullableValueTypeAsStringPropertyInfo(property),
+                    { IsBuiltInValueType: true, IsNullable: false, Type.SpecialType: SpecialType.System_DateTime } => new ValueTypeAsStringPropertyInfo(property),
+                    { IsBuiltInValueType: true, IsNullable: true, Type.SpecialType: SpecialType.System_DateTime } => new NullableValueTypeAsStringPropertyInfo(property),
                     { IsBuiltInValueType: true, IsNullable: false } => new ValueTypePropertyInfo(property),
                     { IsBuiltInValueType: true, IsNullable: true } => new NullableValueTypePropertyInfo(property),
                     { IsUserDefinedStruct: true } => new StructTypePropertyInfo(property),
@@ -241,10 +245,58 @@ namespace Viam.Serialization.Analyzer
                                            : {(IsNullable ? "null" : "\"\"")},
                        """;
 
-            public override string Serializer() => $"""            dictionary["{Name}"] = {Name} != null ? {Name} : null;""";
+            public override string Serializer() => $"""            dictionary["{Name}"] = {Name};""";
         }
 
         private class ValueTypePropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
+        {
+            private protected override string SerializedType => AnnotatedActualType.Name;
+            public override string Deserializer() =>
+                IsRequired
+                    ? $"""
+                                       // ValueTypePropertyInfo Required !Nullable {TypeInfo}
+                                       {Name} = dictionary.ContainsKey("{Name}")
+                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value)
+                                               ? ({AnnotatedActualType})(Convert.ChangeType({Name.ToLower()}Value ?? throw new Exception("{Name}was not convertible to {AnnotatedActualType.Name}"), typeof({AnnotatedActualType})))
+                                               : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
+                                           : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
+                       """
+                    : $"""
+                                       // ValueTypePropertyInfo !Required Nullable {TypeInfo}
+                                       {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value)
+                                           ? ({AnnotatedActualType})(Convert.ChangeType({Name.ToLower()}Value ?? throw new Exception("{Name}was not convertible to {AnnotatedActualType.Name}"), typeof({AnnotatedActualType})))
+                                           : {(IsNullable ? "null" : "default")},
+                       """;
+            public override string Serializer() => $"""            dictionary["{Name}"] = {Name};""";
+        }
+
+        private class NullableValueTypePropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
+        {
+            private protected override string SerializedType => AnnotatedActualType.Name;
+            public override string Deserializer() =>
+                IsRequired
+                    ? $"""
+                                       // NullableValueTypePropertyInfo Required !Nullable {TypeInfo}
+                                       {Name} = dictionary.ContainsKey("{Name}")
+                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value)
+                                               ? {Name.ToLower()}Value != null
+                                                   ? ({AnnotatedActualType})(Convert.ChangeType({Name.ToLower()}Value, typeof({AnnotatedActualType})))
+                                                   : null
+                                               : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
+                                           : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
+                       """
+                    : $"""
+                                        // NullableValueTypePropertyInfo !Required Nullable {TypeInfo}
+                                        {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value)
+                                            ? {Name.ToLower()}Value != null
+                                                ? ({AnnotatedActualType})(Convert.ChangeType({Name.ToLower()}Value, typeof({AnnotatedActualType})))
+                                                : null
+                                            : {(IsNullable ? "null" : "default")},
+                        """;
+            public override string Serializer() => $"""            dictionary["{Name}"] = {Name};""";
+        }
+
+        private class ValueTypeAsStringPropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
         {
             private protected override string SerializedType => "string";
             public override string Deserializer() =>
@@ -253,17 +305,39 @@ namespace Viam.Serialization.Analyzer
                                        // ValueTypePropertyInfo Required !Nullable {TypeInfo}
                                        {Name} = dictionary.ContainsKey("{Name}")
                                            ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
-                                               ? {AnnotatedActualType}.Parse({Name.ToLower()}Raw)
+                                               ? ({AnnotatedActualType})Convert.ChangeType({Name.ToLower()}Raw, typeof({AnnotatedActualType}))
                                                : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
                                            : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
                        """
                     : $"""
                                        // ValueTypePropertyInfo !Required Nullable {TypeInfo}
                                        {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
-                                           ? {AnnotatedActualType}.Parse({Name.ToLower()}Raw)
+                                           ? ({AnnotatedActualType})Convert.ChangeType({Name.ToLower()}Raw, typeof({AnnotatedActualType}))
                                            : {(IsNullable ? "null" : "default")},
                        """;
-            public override string Serializer() => $"""            dictionary["{Name}"] = {Name}.ToString();""";
+            public override string Serializer() => $"""            dictionary["{Name}"] = {Name}{(IsNullable?"?":"")}.ToString();""";
+        }
+
+        private class NullableValueTypeAsStringPropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
+        {
+            private protected override string SerializedType => "string";
+            public override string Deserializer() =>
+                IsRequired
+                    ? $"""
+                                       // NullableValueTypePropertyInfo Required !Nullable {TypeInfo}
+                                       {Name} = dictionary.ContainsKey("{Name}")
+                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                               ? ({AnnotatedActualType})Convert.ChangeType({Name.ToLower()}Raw, typeof({AnnotatedActualType}))
+                                               : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
+                                           : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
+                       """
+                    : $"""
+                                       // NullableValueTypePropertyInfo !Required Nullable {TypeInfo}
+                                       {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                           ? ({AnnotatedActualType})Convert.ChangeType({Name.ToLower()}Raw, typeof({AnnotatedActualType}))
+                                           : {(IsNullable ? "null" : "default")},
+                       """;
+            public override string Serializer() => $"""            dictionary["{Name}"] = {Name};""";
         }
 
         private class StructTypePropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
@@ -288,27 +362,6 @@ namespace Viam.Serialization.Analyzer
             public override string Serializer() => $"""            dictionary["{Name}"] = {Name}{(IsNullable ? "?" : "")}.ToDictionary();""";
         }
 
-        private class NullableValueTypePropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
-        {
-            private protected override string SerializedType => "string";
-            public override string Deserializer() =>
-                IsRequired
-                    ? $"""
-                                       // NullableValueTypePropertyInfo Required !Nullable {TypeInfo}
-                                       {Name} = dictionary.ContainsKey("{Name}")
-                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
-                                               ? {AnnotatedActualType}.Parse({Name.ToLower()}Raw)
-                                               : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
-                                           : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
-                       """
-                    : $"""
-                                       // NullableValueTypePropertyInfo !Required Nullable {TypeInfo}
-                                       {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
-                                           ? {AnnotatedActualType}.Parse({Name.ToLower()}Raw)
-                                           : {(IsNullable ? "null" : "default")},
-                       """;
-            public override string Serializer() => $"""            dictionary["{Name}"] = {Name} != null ? {Name} : null;""";
-        }
 
         private class NullableStructValueTypePropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
         {
@@ -330,7 +383,7 @@ namespace Viam.Serialization.Analyzer
                                            ? {AnnotatedActualType}.FromDictionary({Name.ToLower()}Raw)
                                            : {(IsNullable ? "null" : "default")},
                        """;
-            public override string Serializer() => $"""            dictionary["{Name}"] = {Name} != null ? {Name} : null;""";
+            public override string Serializer() => $"""            dictionary["{Name}"] = {Name};""";
         }
 
         private class EnumTypePropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)

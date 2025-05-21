@@ -23,7 +23,7 @@ namespace Viam.ModularResources
 
         public virtual ResourceStatus GetStatus() => throw new NotImplementedException();
 
-        public ValueTask<IDictionary<string, object?>> DoCommand(
+        public ValueTask<Dictionary<string, object?>> DoCommand(
             IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
@@ -34,7 +34,7 @@ namespace Viam.ModularResources
                 Logger.LogDebug("Command: {Command}", cmd);
             }
 
-            return new ValueTask<IDictionary<string, object?>>(new Dictionary<string, object?>());
+            return new ValueTask<Dictionary<string, object?>>(new Dictionary<string, object?>());
         }
     }
 }

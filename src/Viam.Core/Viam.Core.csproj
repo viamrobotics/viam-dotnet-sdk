@@ -35,7 +35,6 @@
     </PackageReference>
     <PackageReference Include="IndexRange" Version="1.0.3" />
     <PackageReference Include="MethodBoundaryAspect.Fody" Version="2.0.150" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.14.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.5" />
     <PackageReference Include="System.Net.Security" Version="4.3.2" />
     <PackageReference Include="System.Text.Json" Version="9.0.5" />

@@ -20,7 +20,7 @@ namespace Viam.Core.Resources
     {
         public TClient Client = client;
 
-        public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public override async ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             try
@@ -32,11 +32,10 @@ namespace Viam.Core.Resources
                 }
 
                 var result = cmd.Invoke(Client,
-                    new object?[]
-                    {
-                        new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() }, null,
+                [
+                    new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() }, null,
                         timeout.ToDeadline(), cancellationToken
-                    });
+                ]);
                 if (result is not AsyncUnaryCall<DoCommandResponse> r)
                 {
                     throw new Exception("Invalid response");

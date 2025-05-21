@@ -16,25 +16,39 @@ namespace Viam.Client.WebRTC
 
         private static IntPtr DllImportResolver(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
         {
-            if (libraryName == "libviam_rust_utils")
+            // Use the default resolver if not our library.
+            if (libraryName != LibraryName) return IntPtr.Zero;
+            
+            var assemblyPath = Path.GetDirectoryName(assembly.Location);
+            if (assemblyPath == null)
             {
-                var assemblyPath = Path.GetDirectoryName(assembly.Location);
-                if (assemblyPath == null)
-                {
-                    throw new InvalidOperationException("Unable to get assembly path");
-                }
-
-                var libPath = Path.Combine(assemblyPath, "runtimes", RuntimeInformation.RuntimeIdentifier, "native");
-                if (!Path.Exists(libPath))
-                {
-                    throw new FileNotFoundException($"Expected library path does not exist: {libPath}");
-                }
-
-                return NativeLibrary.Load(Path.Combine(libPath, libraryName));
+                throw new InvalidOperationException("Unable to get assembly path");
             }
 
-            // Otherwise, fallback to default import resolver.
-            return IntPtr.Zero;
+            var libPath = Path.Combine(assemblyPath, "runtimes", RuntimeInformation.RuntimeIdentifier, "native");
+            if (!Path.Exists(libPath))
+            {
+                throw new FileNotFoundException($"Expected library path does not exist: {libPath}");
+            }
+
+            if (OperatingSystem.IsLinux())
+            {
+                libraryName += ".so";
+            } else if (OperatingSystem.IsMacOS())
+            {
+                libraryName += ".dylib";
+            }
+            else if (OperatingSystem.IsWindows())
+            {
+                libraryName += ".dll";
+            }
+            else
+            {
+                throw new PlatformNotSupportedException(
+                    $"Unsupported platform: {RuntimeInformation.OSDescription}");
+            }
+
+            return NativeLibrary.Load(Path.Combine(libPath, libraryName));
         }
 
         private const string LibraryName = "libviam_rust_utils";

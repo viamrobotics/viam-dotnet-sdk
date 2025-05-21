@@ -17,7 +17,7 @@ namespace Viam.Core.Resources.Components.Generic
     {
         public override DateTime? LastReconfigured { get; }
 
-        public override async ValueTask<IDictionary<string, object?>> DoCommand(
+        public override async ValueTask<Dictionary<string, object?>> DoCommand(
             IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)

@@ -13,7 +13,7 @@ namespace Viam.Core.Resources
         public virtual ResourceStatus GetStatus() => ResourceStatus.DefaultCreator(this);
         public abstract ValueTask StopResource();
 
-        public abstract ValueTask<IDictionary<string, object?>> DoCommand(
+        public abstract ValueTask<Dictionary<string, object?>> DoCommand(
             IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
@@ -27,7 +27,7 @@ namespace Viam.Core.Resources
     {
         public ViamResourceName ResourceName { get; }
 
-        public ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 

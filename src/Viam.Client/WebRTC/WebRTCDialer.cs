@@ -2,6 +2,8 @@
 using Grpc.Core;
 using Grpc.Net.Client;
 using Microsoft.Extensions.Logging;
+using System.Net.Sockets;
+
 using Viam.Core;
 using Viam.Core.Grpc;
 using Viam.Core.Logging;
@@ -9,19 +11,18 @@ using Viam.Core.Logging;
 namespace Viam.Client.WebRTC
 {
     public record WebRtcDialOptions(
-        Uri signalingAddress,
-        string machineAddress,
-        GrpcDialOptions signalingOptions,
-        bool insecureSignaling = false,
-        bool allowInsecureDowngrade = false,
-        Credentials? credentials = null,
-        float timeout = 30);
+        Uri SignalingAddress,
+        string MachineAddress,
+        GrpcDialOptions SignalingOptions,
+        bool InsecureSignaling = false,
+        bool AllowInsecureDowngrade = false,
+        Credentials? Credentials = null,
+        float Timeout = 30);
 
     /// <summary>
     /// A Dialer that uses WebRTC to connect to the Smart Machine
     /// </summary>
     /// <param name="logger">The <see cref="ILogger{WebRtcDialer}"/> to use for state logging</param>
-    /// <param name="grpcDialer">The <see cref="GrpcDialer"/> to use for signaling</param>
     [ConfigureAwait(false)]
     internal class WebRtcDialer(ILogger<WebRtcDialer> logger, ILoggerFactory loggerFactory)
     {
@@ -40,43 +41,56 @@ namespace Viam.Client.WebRTC
             CancellationToken cancellationToken = default)
         {
             logger.LogDebug("Dialing WebRTC to {address} with signaling server {signalingServer}",
-                dialOptions.machineAddress, dialOptions.signalingAddress);
-            var allowInsecure = dialOptions.insecureSignaling || dialOptions.signalingOptions.Insecure ||
-                                (dialOptions.credentials?.Type == null || dialOptions.credentials?.Payload == null &&
-                                    dialOptions.allowInsecureDowngrade);
+                dialOptions.MachineAddress, dialOptions.SignalingAddress);
+            var allowInsecure = dialOptions.InsecureSignaling
+                                || dialOptions.SignalingOptions.Insecure
+                                || (dialOptions.Credentials?.Type == null
+                                    || dialOptions.Credentials?.Payload == null
+                                    && dialOptions.AllowInsecureDowngrade);
             logger.LogTrace("Initializing Rust runtime");
             var runtimePointer = ViamRustUtils.InitRustRuntime();
             try
             {
                 logger.LogTrace("Rust runtime initialized");
-                var proxyPath = ViamRustUtils.Dial(dialOptions.machineAddress, dialOptions.credentials?.AuthEntity,
-                    dialOptions.credentials?.Type, dialOptions.credentials?.Payload, allowInsecure, dialOptions.timeout,
+                var proxyPath = ViamRustUtils.Dial(dialOptions.MachineAddress, dialOptions.Credentials?.AuthEntity,
+                    dialOptions.Credentials?.Type, dialOptions.Credentials?.Payload, allowInsecure, dialOptions.Timeout,
                     runtimePointer);
                 logger.LogTrace("Dialed successfully, got proxy pointer");
                 try
                 {
                     logger.LogTrace("Parsed proxy address: {path}", proxyPath);
-                    var uri = new Uri($"http://{proxyPath}");
-                    if (proxyPath.StartsWith("tcp://"))
-                    {
-                        var proxyAddress = proxyPath.Replace("tcp://", "");
-                        uri = new Uri($"http://{proxyAddress}");
-                    }
-
-                    if (proxyPath.StartsWith("unix://"))
-                    {
-                        //var proxyAddress = path.Replace("unix://", "");
-                        //uri = new Uri($"http://{proxyAddress}");
-                        throw new Exception("Unix domain sockets are not supported yet");
-                    }
-
                     var channelOptions = new GrpcChannelOptions()
                     {
                         LoggerFactory = loggerFactory
                     };
+                    Uri uri;
+                    if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
+                    {
+                        var endpoint = new UnixDomainSocketEndPoint(proxyPath);
+                        var factory = new UnixDomainSocketsConnectionFactory(endpoint, logger);
+                        var handler = new SocketsHttpHandler()
+                        {
+                            ConnectCallback = factory.ConnectAsync,
+                            UseProxy = false,
+                            AllowAutoRedirect = false
+                        };
+                        channelOptions.HttpHandler = handler;
+                        uri = new Uri($"http://localhost:9090");
+                    }
+                    else if (OperatingSystem.IsWindows())
+                    {
+                        uri = new Uri($"http://{proxyPath}");
+                    }
+                    else
+                    {
+                        throw new Exception("Unknown OS, not sure how to support it.");
+                    }
+
+                    logger.LogTrace("Using proxy URI: {uri}", uri);
+                    
                     var channel = new WebRTCViamChannel(runtimePointer,
                         global::Grpc.Net.Client.GrpcChannel.ForAddress(uri, channelOptions),
-                        dialOptions.machineAddress);
+                        dialOptions.MachineAddress);
                     logger.LogDialComplete();
                     return new ValueTask<ViamChannel>(channel);
                 }

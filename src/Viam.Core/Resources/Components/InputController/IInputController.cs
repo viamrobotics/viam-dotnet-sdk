@@ -12,7 +12,7 @@ namespace Viam.Core.Resources.Components.InputController
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
-        ValueTask<IDictionary<InputControllerClient.Control, InputControllerClient.Event>> GetEvents(
+        ValueTask<Dictionary<InputControllerClient.Control, InputControllerClient.Event>> GetEvents(
             InputControllerClient.Control control,
             IDictionary<string, object?>? extra = null,
             TimeSpan? timeout = null,

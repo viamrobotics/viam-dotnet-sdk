@@ -43,13 +43,13 @@ namespace Viam.ModularResources.Test
         {
         }
 
-        public ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<IDictionary<string, object?>> GetReadings(IDictionary<string, object?>? extra = null,
+        public ValueTask<Dictionary<string, object?>> GetReadings(IDictionary<string, object?>? extra = null,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();

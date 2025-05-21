@@ -29,7 +29,7 @@ namespace Viam.Core.Resources.Components.Encoder
 
         public override ValueTask StopResource() => new ValueTask();
 
-        public override async ValueTask<IDictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public override async ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
