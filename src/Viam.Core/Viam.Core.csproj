@@ -8,8 +8,10 @@
 
     <PackageId>Viam.Core</PackageId>
     <Version>0.0.0-dev</Version>
-    <Authors>TheGreatCO</Authors>
+    <Authors>Viam</Authors>
     <Description>Viam Core Library</Description>
+    <ProjectUrl>https://github.com/viamrobotics/viam-dotnet-sdk</ProjectUrl>
+    <PackageTags>viam</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>

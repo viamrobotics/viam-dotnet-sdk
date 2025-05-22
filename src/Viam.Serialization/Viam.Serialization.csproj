@@ -7,9 +7,11 @@
     <Nullable>enable</Nullable>
 
     <PackageId>Viam.Serialization</PackageId>
-    <Version>0.0.0-dev</Version>
-    <Authors>TheGreatCO</Authors>
+    <PackageVersion>0.0.0-dev</PackageVersion>
+    <Authors>Viam</Authors>
     <Description>The Viam Serialization Library contains source generators and attributes for generating compile time serializers for types</Description>
+    <ProjectUrl>https://github.com/viamrobotics/viam-dotnet-sdk</ProjectUrl>
+    <PackageTags>viam serialization</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Tags>analyzer;source-generator;attributes;serialization</Tags>
     <MetalamaDebugTransformedCode>True</MetalamaDebugTransformedCode>
