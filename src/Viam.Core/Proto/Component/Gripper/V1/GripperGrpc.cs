@@ -72,6 +72,10 @@ namespace Viam.Component.Gripper.V1 {
     static readonly grpc::Marshaller<global::Viam.Common.V1.GetGeometriesRequest> __Marshaller_viam_common_v1_GetGeometriesRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Common.V1.GetGeometriesRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Viam.Common.V1.GetGeometriesResponse> __Marshaller_viam_common_v1_GetGeometriesResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Common.V1.GetGeometriesResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Common.V1.GetKinematicsRequest> __Marshaller_viam_common_v1_GetKinematicsRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Common.V1.GetKinematicsRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Viam.Common.V1.GetKinematicsResponse> __Marshaller_viam_common_v1_GetKinematicsResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Viam.Common.V1.GetKinematicsResponse.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Viam.Component.Gripper.V1.OpenRequest, global::Viam.Component.Gripper.V1.OpenResponse> __Method_Open = new grpc::Method<global::Viam.Component.Gripper.V1.OpenRequest, global::Viam.Component.Gripper.V1.OpenResponse>(
@@ -120,6 +124,14 @@ namespace Viam.Component.Gripper.V1 {
         "GetGeometries",
         __Marshaller_viam_common_v1_GetGeometriesRequest,
         __Marshaller_viam_common_v1_GetGeometriesResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Viam.Common.V1.GetKinematicsRequest, global::Viam.Common.V1.GetKinematicsResponse> __Method_GetKinematics = new grpc::Method<global::Viam.Common.V1.GetKinematicsRequest, global::Viam.Common.V1.GetKinematicsResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "GetKinematics",
+        __Marshaller_viam_common_v1_GetKinematicsRequest,
+        __Marshaller_viam_common_v1_GetKinematicsResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -199,6 +211,18 @@ namespace Viam.Component.Gripper.V1 {
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Viam.Common.V1.GetGeometriesResponse> GetGeometries(global::Viam.Common.V1.GetGeometriesRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// GetKinematics returns the kinematics file for the component
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::Viam.Common.V1.GetKinematicsResponse> GetKinematics(global::Viam.Common.V1.GetKinematicsRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -520,6 +544,54 @@ namespace Viam.Component.Gripper.V1 {
       {
         return CallInvoker.AsyncUnaryCall(__Method_GetGeometries, null, options, request);
       }
+      /// <summary>
+      /// GetKinematics returns the kinematics file for the component
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Common.V1.GetKinematicsResponse GetKinematics(global::Viam.Common.V1.GetKinematicsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetKinematics(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// GetKinematics returns the kinematics file for the component
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::Viam.Common.V1.GetKinematicsResponse GetKinematics(global::Viam.Common.V1.GetKinematicsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_GetKinematics, null, options, request);
+      }
+      /// <summary>
+      /// GetKinematics returns the kinematics file for the component
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Common.V1.GetKinematicsResponse> GetKinematicsAsync(global::Viam.Common.V1.GetKinematicsRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return GetKinematicsAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// GetKinematics returns the kinematics file for the component
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncUnaryCall<global::Viam.Common.V1.GetKinematicsResponse> GetKinematicsAsync(global::Viam.Common.V1.GetKinematicsRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_GetKinematics, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override GripperServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -539,7 +611,8 @@ namespace Viam.Component.Gripper.V1 {
           .AddMethod(__Method_Stop, serviceImpl.Stop)
           .AddMethod(__Method_IsMoving, serviceImpl.IsMoving)
           .AddMethod(__Method_DoCommand, serviceImpl.DoCommand)
-          .AddMethod(__Method_GetGeometries, serviceImpl.GetGeometries).Build();
+          .AddMethod(__Method_GetGeometries, serviceImpl.GetGeometries)
+          .AddMethod(__Method_GetKinematics, serviceImpl.GetKinematics).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -555,6 +628,7 @@ namespace Viam.Component.Gripper.V1 {
       serviceBinder.AddMethod(__Method_IsMoving, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Component.Gripper.V1.IsMovingRequest, global::Viam.Component.Gripper.V1.IsMovingResponse>(serviceImpl.IsMoving));
       serviceBinder.AddMethod(__Method_DoCommand, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Common.V1.DoCommandRequest, global::Viam.Common.V1.DoCommandResponse>(serviceImpl.DoCommand));
       serviceBinder.AddMethod(__Method_GetGeometries, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Common.V1.GetGeometriesRequest, global::Viam.Common.V1.GetGeometriesResponse>(serviceImpl.GetGeometries));
+      serviceBinder.AddMethod(__Method_GetKinematics, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Viam.Common.V1.GetKinematicsRequest, global::Viam.Common.V1.GetKinematicsResponse>(serviceImpl.GetKinematics));
     }
 
   }

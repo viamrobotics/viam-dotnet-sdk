@@ -68,7 +68,7 @@ namespace Viam.App.Mltraining.V1 {
             "c3RhdHVzGAIgASgOMiYudmlhbS5hcHAubWx0cmFpbmluZy52MS5UcmFpbmlu",
             "Z1N0YXR1c1IGc3RhdHVzIlsKGExpc3RUcmFpbmluZ0pvYnNSZXNwb25zZRI/",
             "CgRqb2JzGAEgAygLMisudmlhbS5hcHAubWx0cmFpbmluZy52MS5UcmFpbmlu",
-            "Z0pvYk1ldGFkYXRhUgRqb2JzIuYNChNUcmFpbmluZ0pvYk1ldGFkYXRhEjMK",
+            "Z0pvYk1ldGFkYXRhUgRqb2JzIqcPChNUcmFpbmluZ0pvYk1ldGFkYXRhEjMK",
             "AmlkGAcgASgJQiOahJ4DHmJzb246Il9pZCIganNvbjoiaWQsb21pdGVtcHR5",
             "IlICaWQSRwoKZGF0YXNldF9pZBgLIAEoCUIomoSeAyNic29uOiJkYXRhc2V0",
             "X2lkIiBqc29uOiJkYXRhc2V0X2lkIlIJZGF0YXNldElkElsKD29yZ2FuaXph",
@@ -106,57 +106,62 @@ namespace Viam.App.Mltraining.V1 {
             "IGpzb246InRyYWluaW5nX2VuZGVkIlINdHJhaW5pbmdFbmRlZBJaCg9zeW5j",
             "ZWRfbW9kZWxfaWQYBSABKAlCMpqEngMtYnNvbjoic3luY2VkX21vZGVsX2lk",
             "IiBqc29uOiJzeW5jZWRfbW9kZWxfaWQiUg1zeW5jZWRNb2RlbElkEjAKBHRh",
-            "Z3MYECADKAlCHJqEngMXYnNvbjoidGFncyIganNvbjoidGFncyJSBHRhZ3NK",
-            "BAgBEAJKBAgGEAdSB3JlcXVlc3RSCnVzZXJfZW1haWwiKgoYQ2FuY2VsVHJh",
-            "aW5pbmdKb2JSZXF1ZXN0Eg4KAmlkGAEgASgJUgJpZCIbChlDYW5jZWxUcmFp",
-            "bmluZ0pvYlJlc3BvbnNlIjMKIURlbGV0ZUNvbXBsZXRlZFRyYWluaW5nSm9i",
-            "UmVxdWVzdBIOCgJpZBgBIAEoCVICaWQiJAoiRGVsZXRlQ29tcGxldGVkVHJh",
-            "aW5pbmdKb2JSZXNwb25zZSJ1ChNUcmFpbmluZ0pvYkxvZ0VudHJ5EhQKBWxl",
-            "dmVsGAEgASgJUgVsZXZlbBIuCgR0aW1lGAIgASgLMhouZ29vZ2xlLnByb3Rv",
-            "YnVmLlRpbWVzdGFtcFIEdGltZRIYCgdtZXNzYWdlGAMgASgJUgdtZXNzYWdl",
-            "Il4KGUdldFRyYWluaW5nSm9iTG9nc1JlcXVlc3QSDgoCaWQYASABKAlSAmlk",
-            "EiIKCnBhZ2VfdG9rZW4YAiABKAlIAFIJcGFnZVRva2VuiAEBQg0KC19wYWdl",
-            "X3Rva2VuIoUBChpHZXRUcmFpbmluZ0pvYkxvZ3NSZXNwb25zZRI/CgRsb2dz",
-            "GAEgAygLMisudmlhbS5hcHAubWx0cmFpbmluZy52MS5UcmFpbmluZ0pvYkxv",
-            "Z0VudHJ5UgRsb2dzEiYKD25leHRfcGFnZV90b2tlbhgCIAEoCVINbmV4dFBh",
-            "Z2VUb2tlbiqfAQoJTW9kZWxUeXBlEhoKFk1PREVMX1RZUEVfVU5TUEVDSUZJ",
-            "RUQQABIqCiZNT0RFTF9UWVBFX1NJTkdMRV9MQUJFTF9DTEFTU0lGSUNBVElP",
-            "ThABEikKJU1PREVMX1RZUEVfTVVMVElfTEFCRUxfQ0xBU1NJRklDQVRJT04Q",
-            "AhIfChtNT0RFTF9UWVBFX09CSkVDVF9ERVRFQ1RJT04QAyqkAQoOTW9kZWxG",
-            "cmFtZXdvcmsSHwobTU9ERUxfRlJBTUVXT1JLX1VOU1BFQ0lGSUVEEAASGgoW",
-            "TU9ERUxfRlJBTUVXT1JLX1RGTElURRABEh4KGk1PREVMX0ZSQU1FV09SS19U",
-            "RU5TT1JGTE9XEAISGwoXTU9ERUxfRlJBTUVXT1JLX1BZVE9SQ0gQAxIYChRN",
-            "T0RFTF9GUkFNRVdPUktfT05OWBAEKucBCg5UcmFpbmluZ1N0YXR1cxIfChtU",
-            "UkFJTklOR19TVEFUVVNfVU5TUEVDSUZJRUQQABIbChdUUkFJTklOR19TVEFU",
-            "VVNfUEVORElORxABEh8KG1RSQUlOSU5HX1NUQVRVU19JTl9QUk9HUkVTUxAC",
-            "Eh0KGVRSQUlOSU5HX1NUQVRVU19DT01QTEVURUQQAxIaChZUUkFJTklOR19T",
-            "VEFUVVNfRkFJTEVEEAQSHAoYVFJBSU5JTkdfU1RBVFVTX0NBTkNFTEVEEAUS",
-            "HQoZVFJBSU5JTkdfU1RBVFVTX0NBTkNFTElORxAGMo8HChFNTFRyYWluaW5n",
-            "U2VydmljZRJ4ChFTdWJtaXRUcmFpbmluZ0pvYhIwLnZpYW0uYXBwLm1sdHJh",
-            "aW5pbmcudjEuU3VibWl0VHJhaW5pbmdKb2JSZXF1ZXN0GjEudmlhbS5hcHAu",
-            "bWx0cmFpbmluZy52MS5TdWJtaXRUcmFpbmluZ0pvYlJlc3BvbnNlEooBChdT",
-            "dWJtaXRDdXN0b21UcmFpbmluZ0pvYhI2LnZpYW0uYXBwLm1sdHJhaW5pbmcu",
-            "djEuU3VibWl0Q3VzdG9tVHJhaW5pbmdKb2JSZXF1ZXN0GjcudmlhbS5hcHAu",
-            "bWx0cmFpbmluZy52MS5TdWJtaXRDdXN0b21UcmFpbmluZ0pvYlJlc3BvbnNl",
-            "Em8KDkdldFRyYWluaW5nSm9iEi0udmlhbS5hcHAubWx0cmFpbmluZy52MS5H",
-            "ZXRUcmFpbmluZ0pvYlJlcXVlc3QaLi52aWFtLmFwcC5tbHRyYWluaW5nLnYx",
-            "LkdldFRyYWluaW5nSm9iUmVzcG9uc2USdQoQTGlzdFRyYWluaW5nSm9icxIv",
-            "LnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuTGlzdFRyYWluaW5nSm9ic1JlcXVl",
-            "c3QaMC52aWFtLmFwcC5tbHRyYWluaW5nLnYxLkxpc3RUcmFpbmluZ0pvYnNS",
-            "ZXNwb25zZRJ4ChFDYW5jZWxUcmFpbmluZ0pvYhIwLnZpYW0uYXBwLm1sdHJh",
-            "aW5pbmcudjEuQ2FuY2VsVHJhaW5pbmdKb2JSZXF1ZXN0GjEudmlhbS5hcHAu",
-            "bWx0cmFpbmluZy52MS5DYW5jZWxUcmFpbmluZ0pvYlJlc3BvbnNlEpMBChpE",
-            "ZWxldGVDb21wbGV0ZWRUcmFpbmluZ0pvYhI5LnZpYW0uYXBwLm1sdHJhaW5p",
-            "bmcudjEuRGVsZXRlQ29tcGxldGVkVHJhaW5pbmdKb2JSZXF1ZXN0Gjoudmlh",
-            "bS5hcHAubWx0cmFpbmluZy52MS5EZWxldGVDb21wbGV0ZWRUcmFpbmluZ0pv",
-            "YlJlc3BvbnNlEnsKEkdldFRyYWluaW5nSm9iTG9ncxIxLnZpYW0uYXBwLm1s",
-            "dHJhaW5pbmcudjEuR2V0VHJhaW5pbmdKb2JMb2dzUmVxdWVzdBoyLnZpYW0u",
-            "YXBwLm1sdHJhaW5pbmcudjEuR2V0VHJhaW5pbmdKb2JMb2dzUmVzcG9uc2VC",
-            "ywEKGmNvbS52aWFtLmFwcC5tbHRyYWluaW5nLnYxQg9NbFRyYWluaW5nUHJv",
-            "dG9QAVohZ28udmlhbS5jb20vYXBpL2FwcC9tbHRyYWluaW5nL3YxogIDVkFN",
-            "qgIWVmlhbS5BcHAuTWx0cmFpbmluZy5WMcoCFlZpYW1cQXBwXE1sdHJhaW5p",
-            "bmdcVjHiAiJWaWFtXEFwcFxNbHRyYWluaW5nXFYxXEdQQk1ldGFkYXRh6gIZ",
-            "VmlhbTo6QXBwOjpNbHRyYWluaW5nOjpWMWIGcHJvdG8z"));
+            "Z3MYECADKAlCHJqEngMXYnNvbjoidGFncyIganNvbjoidGFncyJSBHRhZ3MS",
+            "gAEKCWFyZ3VtZW50cxgVIAMoCzI6LnZpYW0uYXBwLm1sdHJhaW5pbmcudjEu",
+            "VHJhaW5pbmdKb2JNZXRhZGF0YS5Bcmd1bWVudHNFbnRyeUImmoSeAyFic29u",
+            "OiJhcmd1bWVudHMiIGpzb246ImFyZ3VtZW50cyJSCWFyZ3VtZW50cxo8Cg5B",
+            "cmd1bWVudHNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEo",
+            "CVIFdmFsdWU6AjgBSgQIARACSgQIBhAHUgdyZXF1ZXN0Ugp1c2VyX2VtYWls",
+            "IioKGENhbmNlbFRyYWluaW5nSm9iUmVxdWVzdBIOCgJpZBgBIAEoCVICaWQi",
+            "GwoZQ2FuY2VsVHJhaW5pbmdKb2JSZXNwb25zZSIzCiFEZWxldGVDb21wbGV0",
+            "ZWRUcmFpbmluZ0pvYlJlcXVlc3QSDgoCaWQYASABKAlSAmlkIiQKIkRlbGV0",
+            "ZUNvbXBsZXRlZFRyYWluaW5nSm9iUmVzcG9uc2UidQoTVHJhaW5pbmdKb2JM",
+            "b2dFbnRyeRIUCgVsZXZlbBgBIAEoCVIFbGV2ZWwSLgoEdGltZRgCIAEoCzIa",
+            "Lmdvb2dsZS5wcm90b2J1Zi5UaW1lc3RhbXBSBHRpbWUSGAoHbWVzc2FnZRgD",
+            "IAEoCVIHbWVzc2FnZSJeChlHZXRUcmFpbmluZ0pvYkxvZ3NSZXF1ZXN0Eg4K",
+            "AmlkGAEgASgJUgJpZBIiCgpwYWdlX3Rva2VuGAIgASgJSABSCXBhZ2VUb2tl",
+            "bogBAUINCgtfcGFnZV90b2tlbiKFAQoaR2V0VHJhaW5pbmdKb2JMb2dzUmVz",
+            "cG9uc2USPwoEbG9ncxgBIAMoCzIrLnZpYW0uYXBwLm1sdHJhaW5pbmcudjEu",
+            "VHJhaW5pbmdKb2JMb2dFbnRyeVIEbG9ncxImCg9uZXh0X3BhZ2VfdG9rZW4Y",
+            "AiABKAlSDW5leHRQYWdlVG9rZW4qnwEKCU1vZGVsVHlwZRIaChZNT0RFTF9U",
+            "WVBFX1VOU1BFQ0lGSUVEEAASKgomTU9ERUxfVFlQRV9TSU5HTEVfTEFCRUxf",
+            "Q0xBU1NJRklDQVRJT04QARIpCiVNT0RFTF9UWVBFX01VTFRJX0xBQkVMX0NM",
+            "QVNTSUZJQ0FUSU9OEAISHwobTU9ERUxfVFlQRV9PQkpFQ1RfREVURUNUSU9O",
+            "EAMqpAEKDk1vZGVsRnJhbWV3b3JrEh8KG01PREVMX0ZSQU1FV09SS19VTlNQ",
+            "RUNJRklFRBAAEhoKFk1PREVMX0ZSQU1FV09SS19URkxJVEUQARIeChpNT0RF",
+            "TF9GUkFNRVdPUktfVEVOU09SRkxPVxACEhsKF01PREVMX0ZSQU1FV09SS19Q",
+            "WVRPUkNIEAMSGAoUTU9ERUxfRlJBTUVXT1JLX09OTlgQBCrnAQoOVHJhaW5p",
+            "bmdTdGF0dXMSHwobVFJBSU5JTkdfU1RBVFVTX1VOU1BFQ0lGSUVEEAASGwoX",
+            "VFJBSU5JTkdfU1RBVFVTX1BFTkRJTkcQARIfChtUUkFJTklOR19TVEFUVVNf",
+            "SU5fUFJPR1JFU1MQAhIdChlUUkFJTklOR19TVEFUVVNfQ09NUExFVEVEEAMS",
+            "GgoWVFJBSU5JTkdfU1RBVFVTX0ZBSUxFRBAEEhwKGFRSQUlOSU5HX1NUQVRV",
+            "U19DQU5DRUxFRBAFEh0KGVRSQUlOSU5HX1NUQVRVU19DQU5DRUxJTkcQBjKP",
+            "BwoRTUxUcmFpbmluZ1NlcnZpY2USeAoRU3VibWl0VHJhaW5pbmdKb2ISMC52",
+            "aWFtLmFwcC5tbHRyYWluaW5nLnYxLlN1Ym1pdFRyYWluaW5nSm9iUmVxdWVz",
+            "dBoxLnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuU3VibWl0VHJhaW5pbmdKb2JS",
+            "ZXNwb25zZRKKAQoXU3VibWl0Q3VzdG9tVHJhaW5pbmdKb2ISNi52aWFtLmFw",
+            "cC5tbHRyYWluaW5nLnYxLlN1Ym1pdEN1c3RvbVRyYWluaW5nSm9iUmVxdWVz",
+            "dBo3LnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuU3VibWl0Q3VzdG9tVHJhaW5p",
+            "bmdKb2JSZXNwb25zZRJvCg5HZXRUcmFpbmluZ0pvYhItLnZpYW0uYXBwLm1s",
+            "dHJhaW5pbmcudjEuR2V0VHJhaW5pbmdKb2JSZXF1ZXN0Gi4udmlhbS5hcHAu",
+            "bWx0cmFpbmluZy52MS5HZXRUcmFpbmluZ0pvYlJlc3BvbnNlEnUKEExpc3RU",
+            "cmFpbmluZ0pvYnMSLy52aWFtLmFwcC5tbHRyYWluaW5nLnYxLkxpc3RUcmFp",
+            "bmluZ0pvYnNSZXF1ZXN0GjAudmlhbS5hcHAubWx0cmFpbmluZy52MS5MaXN0",
+            "VHJhaW5pbmdKb2JzUmVzcG9uc2USeAoRQ2FuY2VsVHJhaW5pbmdKb2ISMC52",
+            "aWFtLmFwcC5tbHRyYWluaW5nLnYxLkNhbmNlbFRyYWluaW5nSm9iUmVxdWVz",
+            "dBoxLnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuQ2FuY2VsVHJhaW5pbmdKb2JS",
+            "ZXNwb25zZRKTAQoaRGVsZXRlQ29tcGxldGVkVHJhaW5pbmdKb2ISOS52aWFt",
+            "LmFwcC5tbHRyYWluaW5nLnYxLkRlbGV0ZUNvbXBsZXRlZFRyYWluaW5nSm9i",
+            "UmVxdWVzdBo6LnZpYW0uYXBwLm1sdHJhaW5pbmcudjEuRGVsZXRlQ29tcGxl",
+            "dGVkVHJhaW5pbmdKb2JSZXNwb25zZRJ7ChJHZXRUcmFpbmluZ0pvYkxvZ3MS",
+            "MS52aWFtLmFwcC5tbHRyYWluaW5nLnYxLkdldFRyYWluaW5nSm9iTG9nc1Jl",
+            "cXVlc3QaMi52aWFtLmFwcC5tbHRyYWluaW5nLnYxLkdldFRyYWluaW5nSm9i",
+            "TG9nc1Jlc3BvbnNlQssBChpjb20udmlhbS5hcHAubWx0cmFpbmluZy52MUIP",
+            "TWxUcmFpbmluZ1Byb3RvUAFaIWdvLnZpYW0uY29tL2FwaS9hcHAvbWx0cmFp",
+            "bmluZy92MaICA1ZBTaoCFlZpYW0uQXBwLk1sdHJhaW5pbmcuVjHKAhZWaWFt",
+            "XEFwcFxNbHRyYWluaW5nXFYx4gIiVmlhbVxBcHBcTWx0cmFpbmluZ1xWMVxH",
+            "UEJNZXRhZGF0YeoCGVZpYW06OkFwcDo6TWx0cmFpbmluZzo6VjFiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Rpc.StatusReflection.Descriptor, global::Viam.Core.Proto.TaggerReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Viam.App.Mltraining.V1.ModelType), typeof(global::Viam.App.Mltraining.V1.ModelFramework), typeof(global::Viam.App.Mltraining.V1.TrainingStatus), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -168,7 +173,7 @@ namespace Viam.App.Mltraining.V1 {
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.GetTrainingJobResponse), global::Viam.App.Mltraining.V1.GetTrainingJobResponse.Parser, new[]{ "Metadata" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.ListTrainingJobsRequest), global::Viam.App.Mltraining.V1.ListTrainingJobsRequest.Parser, new[]{ "OrganizationId", "Status" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.ListTrainingJobsResponse), global::Viam.App.Mltraining.V1.ListTrainingJobsResponse.Parser, new[]{ "Jobs" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.TrainingJobMetadata), global::Viam.App.Mltraining.V1.TrainingJobMetadata.Parser, new[]{ "Id", "DatasetId", "OrganizationId", "ModelName", "ModelVersion", "ModelType", "ModelFramework", "IsCustomJob", "RegistryItemId", "RegistryItemVersion", "Status", "ErrorStatus", "CreatedOn", "LastModified", "TrainingStarted", "TrainingEnded", "SyncedModelId", "Tags" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.TrainingJobMetadata), global::Viam.App.Mltraining.V1.TrainingJobMetadata.Parser, new[]{ "Id", "DatasetId", "OrganizationId", "ModelName", "ModelVersion", "ModelType", "ModelFramework", "IsCustomJob", "RegistryItemId", "RegistryItemVersion", "Status", "ErrorStatus", "CreatedOn", "LastModified", "TrainingStarted", "TrainingEnded", "SyncedModelId", "Tags", "Arguments" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.CancelTrainingJobRequest), global::Viam.App.Mltraining.V1.CancelTrainingJobRequest.Parser, new[]{ "Id" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.CancelTrainingJobResponse), global::Viam.App.Mltraining.V1.CancelTrainingJobResponse.Parser, null, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobRequest), global::Viam.App.Mltraining.V1.DeleteCompletedTrainingJobRequest.Parser, new[]{ "Id" }, null, null, null, null),
@@ -2304,6 +2309,7 @@ namespace Viam.App.Mltraining.V1 {
       trainingEnded_ = other.trainingEnded_ != null ? other.trainingEnded_.Clone() : null;
       syncedModelId_ = other.syncedModelId_;
       tags_ = other.tags_.Clone();
+      arguments_ = other.arguments_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2528,6 +2534,17 @@ namespace Viam.App.Mltraining.V1 {
       get { return tags_; }
     }
 
+    /// <summary>Field number for the "arguments" field.</summary>
+    public const int ArgumentsFieldNumber = 21;
+    private static readonly pbc::MapField<string, string>.Codec _map_arguments_codec
+        = new pbc::MapField<string, string>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForString(18, ""), 170);
+    private readonly pbc::MapField<string, string> arguments_ = new pbc::MapField<string, string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, string> Arguments {
+      get { return arguments_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -2561,6 +2578,7 @@ namespace Viam.App.Mltraining.V1 {
       if (!object.Equals(TrainingEnded, other.TrainingEnded)) return false;
       if (SyncedModelId != other.SyncedModelId) return false;
       if(!tags_.Equals(other.tags_)) return false;
+      if (!Arguments.Equals(other.Arguments)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2586,6 +2604,7 @@ namespace Viam.App.Mltraining.V1 {
       if (trainingEnded_ != null) hash ^= TrainingEnded.GetHashCode();
       if (SyncedModelId.Length != 0) hash ^= SyncedModelId.GetHashCode();
       hash ^= tags_.GetHashCode();
+      hash ^= Arguments.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2673,6 +2692,7 @@ namespace Viam.App.Mltraining.V1 {
         output.WriteRawTag(162, 1);
         output.WriteString(RegistryItemVersion);
       }
+      arguments_.WriteTo(output, _map_arguments_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -2752,6 +2772,7 @@ namespace Viam.App.Mltraining.V1 {
         output.WriteRawTag(162, 1);
         output.WriteString(RegistryItemVersion);
       }
+      arguments_.WriteTo(ref output, _map_arguments_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -2814,6 +2835,7 @@ namespace Viam.App.Mltraining.V1 {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(SyncedModelId);
       }
       size += tags_.CalculateSize(_repeated_tags_codec);
+      size += arguments_.CalculateSize(_map_arguments_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -2893,6 +2915,7 @@ namespace Viam.App.Mltraining.V1 {
         SyncedModelId = other.SyncedModelId;
       }
       tags_.Add(other.tags_);
+      arguments_.MergeFrom(other.arguments_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -2999,6 +3022,10 @@ namespace Viam.App.Mltraining.V1 {
             RegistryItemVersion = input.ReadString();
             break;
           }
+          case 170: {
+            arguments_.AddEntriesFrom(input, _map_arguments_codec);
+            break;
+          }
         }
       }
     #endif
@@ -3103,6 +3130,10 @@ namespace Viam.App.Mltraining.V1 {
           }
           case 162: {
             RegistryItemVersion = input.ReadString();
+            break;
+          }
+          case 170: {
+            arguments_.AddEntriesFrom(ref input, _map_arguments_codec);
             break;
           }
         }
