@@ -7,14 +7,15 @@
 		<LangVersion>latest</LangVersion>
 		<TrimmerSingleWarn>false</TrimmerSingleWarn>
 		<Platforms>AnyCPU</Platforms>
+    <VersionPrefix>0.0.0-dev</VersionPrefix>
 
     <PackageId>Viam.Client</PackageId>
-    <Version>0.0.0-dev</Version>
     <Authors>Viam</Authors>
     <Description>Viam Client Library</Description>
     <ProjectUrl>https://github.com/viamrobotics/viam-dotnet-sdk</ProjectUrl>
     <PackageTags>viam</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 

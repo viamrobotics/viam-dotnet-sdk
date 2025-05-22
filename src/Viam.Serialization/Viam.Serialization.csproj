@@ -5,16 +5,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
+    <VersionPrefix>0.0.0-dev</VersionPrefix>
 
     <PackageId>Viam.Serialization</PackageId>
-    <PackageVersion>0.0.0-dev</PackageVersion>
     <Authors>Viam</Authors>
     <Description>The Viam Serialization Library contains source generators and attributes for generating compile time serializers for types</Description>
     <ProjectUrl>https://github.com/viamrobotics/viam-dotnet-sdk</ProjectUrl>
     <PackageTags>viam serialization</PackageTags>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Tags>analyzer;source-generator;attributes;serialization</Tags>
-    <MetalamaDebugTransformedCode>True</MetalamaDebugTransformedCode>
   </PropertyGroup>
 
   <ItemGroup>
