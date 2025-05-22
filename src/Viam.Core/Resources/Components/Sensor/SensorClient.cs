@@ -45,7 +45,6 @@ namespace Viam.Core.Resources.Components.Sensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
-            Console.WriteLine("Class DoCommand");
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, command]);
