@@ -465,9 +465,10 @@ namespace Viam.Serialization.Analyzer
             }
         }
 
+        // TODO: Need to handle simple types, not just complex types
         private class ListTypePropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
-        {
-            private protected override string SerializedType => "object[]";
+        {   
+            private protected override string SerializedType => "IEnumerable<object>";
             private ITypeSymbol AnnotatedElementType => ((INamedTypeSymbol)Type).TypeArguments[0];
             private ITypeSymbol ElementType => AnnotatedElementType.WithNullableAnnotation(NullableAnnotation.None);
             private bool IsElementTypeNullable => AnnotatedElementType.NullableAnnotation == NullableAnnotation.Annotated;
@@ -539,7 +540,7 @@ namespace Viam.Serialization.Analyzer
 
         private class ArrayTypePropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
         {
-            private protected override string SerializedType => "object[]";
+            private protected override string SerializedType => "IEnumerable<object>";
             private ITypeSymbol AnnotatedElementType => ((IArrayTypeSymbol)Type).ElementType;
             private ITypeSymbol ElementType => AnnotatedElementType.WithNullableAnnotation(NullableAnnotation.None);
             private bool IsElementTypeNullable => AnnotatedElementType.NullableAnnotation == NullableAnnotation.Annotated;
