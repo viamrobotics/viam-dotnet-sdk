@@ -187,6 +187,11 @@ namespace Viam.Serialization.Analyzer
             private protected virtual bool IsNullable => Type.NullableAnnotation == NullableAnnotation.Annotated;
             private protected virtual bool IsRequired => Property.IsRequired;
             private protected abstract string SerializedType { get; }
+            protected string DictionaryKeyName =>
+                Property.GetAttributes()
+                    .FirstOrDefault(attr =>
+                        attr.AttributeClass?.ToDisplayString() == "System.Text.Json.Serialization.JsonPropertyNameAttribute")
+                    ?.ConstructorArguments.FirstOrDefault().Value as string ?? Name;
 
             private protected virtual ITypeSymbol AnnotatedActualType => Type switch
             {
@@ -232,20 +237,20 @@ namespace Viam.Serialization.Analyzer
                 IsRequired
                     ? $"""
                                        // StringTypePropertyInfo Required !Nullable {TypeInfo}
-                                       {Name} = dictionary.ContainsKey("{Name}")
-                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.ContainsKey("{DictionaryKeyName}")
+                                           ? dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                                ? {Name.ToLower()}Raw
                                                : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
                                            : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
                        """
                     : $"""
                                        // StringTypePropertyInfo !Required Nullable {TypeInfo}
-                                       {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                            ? {Name.ToLower()}Raw
                                            : {(IsNullable ? "null" : "\"\"")},
                        """;
 
-            public override string Serializer() => $"""            dictionary["{Name}"] = {Name};""";
+            public override string Serializer() => $"""            dictionary["{DictionaryKeyName}"] = {Name};""";
         }
 
         private class ValueTypePropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
@@ -255,19 +260,19 @@ namespace Viam.Serialization.Analyzer
                 IsRequired
                     ? $"""
                                        // ValueTypePropertyInfo Required !Nullable {TypeInfo}
-                                       {Name} = dictionary.ContainsKey("{Name}")
-                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value)
+                                       {Name} = dictionary.ContainsKey("{DictionaryKeyName}")
+                                           ? dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value)
                                                ? ({AnnotatedActualType})(Convert.ChangeType({Name.ToLower()}Value ?? throw new Exception("{Name}was not convertible to {AnnotatedActualType.Name}"), typeof({AnnotatedActualType})))
                                                : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
                                            : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
                        """
                     : $"""
                                        // ValueTypePropertyInfo !Required Nullable {TypeInfo}
-                                       {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value)
+                                       {Name} = dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value)
                                            ? ({AnnotatedActualType})(Convert.ChangeType({Name.ToLower()}Value ?? throw new Exception("{Name}was not convertible to {AnnotatedActualType.Name}"), typeof({AnnotatedActualType})))
                                            : {(IsNullable ? "null" : "default")},
                        """;
-            public override string Serializer() => $"""            dictionary["{Name}"] = {Name};""";
+            public override string Serializer() => $"""            dictionary["{DictionaryKeyName}"] = {Name};""";
         }
 
         private class NullableValueTypePropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
@@ -277,8 +282,8 @@ namespace Viam.Serialization.Analyzer
                 IsRequired
                     ? $"""
                                        // NullableValueTypePropertyInfo Required !Nullable {TypeInfo}
-                                       {Name} = dictionary.ContainsKey("{Name}")
-                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value)
+                                       {Name} = dictionary.ContainsKey("{DictionaryKeyName}")
+                                           ? dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value)
                                                ? {Name.ToLower()}Value != null
                                                    ? ({AnnotatedActualType})(Convert.ChangeType({Name.ToLower()}Value, typeof({AnnotatedActualType})))
                                                    : null
@@ -287,13 +292,13 @@ namespace Viam.Serialization.Analyzer
                        """
                     : $"""
                                         // NullableValueTypePropertyInfo !Required Nullable {TypeInfo}
-                                        {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value)
+                                        {Name} = dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value)
                                             ? {Name.ToLower()}Value != null
                                                 ? ({AnnotatedActualType})(Convert.ChangeType({Name.ToLower()}Value, typeof({AnnotatedActualType})))
                                                 : null
                                             : {(IsNullable ? "null" : "default")},
                         """;
-            public override string Serializer() => $"""            dictionary["{Name}"] = {Name};""";
+            public override string Serializer() => $"""            dictionary["{DictionaryKeyName}"] = {Name};""";
         }
 
         private class ValueTypeAsStringPropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
@@ -303,19 +308,19 @@ namespace Viam.Serialization.Analyzer
                 IsRequired
                     ? $"""
                                        // ValueTypePropertyInfo Required !Nullable {TypeInfo}
-                                       {Name} = dictionary.ContainsKey("{Name}")
-                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.ContainsKey("{DictionaryKeyName}")
+                                           ? dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                                ? ({AnnotatedActualType})Convert.ChangeType({Name.ToLower()}Raw, typeof({AnnotatedActualType}))
                                                : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
                                            : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
                        """
                     : $"""
                                        // ValueTypePropertyInfo !Required Nullable {TypeInfo}
-                                       {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                            ? ({AnnotatedActualType})Convert.ChangeType({Name.ToLower()}Raw, typeof({AnnotatedActualType}))
                                            : {(IsNullable ? "null" : "default")},
                        """;
-            public override string Serializer() => $"""            dictionary["{Name}"] = {Name}{(IsNullable?"?":"")}.ToString();""";
+            public override string Serializer() => $"""            dictionary["{DictionaryKeyName}"] = {Name}{(IsNullable?"?":"")}.ToString();""";
         }
 
         private class NullableValueTypeAsStringPropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
@@ -325,19 +330,19 @@ namespace Viam.Serialization.Analyzer
                 IsRequired
                     ? $"""
                                        // NullableValueTypePropertyInfo Required !Nullable {TypeInfo}
-                                       {Name} = dictionary.ContainsKey("{Name}")
-                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.ContainsKey("{DictionaryKeyName}")
+                                           ? dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                                ? ({AnnotatedActualType})Convert.ChangeType({Name.ToLower()}Raw, typeof({AnnotatedActualType}))
                                                : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
                                            : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
                        """
                     : $"""
                                        // NullableValueTypePropertyInfo !Required Nullable {TypeInfo}
-                                       {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                            ? ({AnnotatedActualType})Convert.ChangeType({Name.ToLower()}Raw, typeof({AnnotatedActualType}))
                                            : {(IsNullable ? "null" : "default")},
                        """;
-            public override string Serializer() => $"""            dictionary["{Name}"] = {Name};""";
+            public override string Serializer() => $"""            dictionary["{DictionaryKeyName}"] = {Name};""";
         }
 
         private class StructTypePropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
@@ -347,19 +352,19 @@ namespace Viam.Serialization.Analyzer
                 IsRequired
                     ? $"""
                                        // StructTypePropertyInfo Required !Nullable {TypeInfo}
-                                       {Name} = dictionary.ContainsKey("{Name}")
-                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.ContainsKey("{DictionaryKeyName}")
+                                           ? dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                                ? {AnnotatedActualType}.FromDictionary({Name.ToLower()}Raw)
                                                : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
                                            : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
                        """
                     : $"""
                                        // StructTypePropertyInfo !Required Nullable {TypeInfo}
-                                       {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                            ? {AnnotatedActualType}.FromDictionary({Name.ToLower()}Raw)
                                            : {(IsNullable ? "null" : "default")},
                        """;
-            public override string Serializer() => $"""            dictionary["{Name}"] = {Name}{(IsNullable ? "?" : "")}.ToDictionary();""";
+            public override string Serializer() => $"""            dictionary["{DictionaryKeyName}"] = {Name}{(IsNullable ? "?" : "")}.ToDictionary();""";
         }
 
 
@@ -371,19 +376,19 @@ namespace Viam.Serialization.Analyzer
                 IsRequired
                     ? $"""
                                        // NullableStructValueTypePropertyInfo Required !Nullable {TypeInfo}
-                                       {Name} = dictionary.ContainsKey("{Name}")
-                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.ContainsKey("{DictionaryKeyName}")
+                                           ? dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                                ? {AnnotatedActualType}.FromDictionary({Name.ToLower()}Raw)
                                                : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
                                            : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
                        """
                     : $"""
                                        // NullableStructValueTypePropertyInfo !Required Nullable {TypeInfo}
-                                       {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                            ? {AnnotatedActualType}.FromDictionary({Name.ToLower()}Raw)
                                            : {(IsNullable ? "null" : "default")},
                        """;
-            public override string Serializer() => $"""            dictionary["{Name}"] = {Name};""";
+            public override string Serializer() => $"""            dictionary["{DictionaryKeyName}"] = {Name};""";
         }
 
         private class EnumTypePropertyInfo(IPropertySymbol property) : PropertyInfoBase(property)
@@ -394,15 +399,15 @@ namespace Viam.Serialization.Analyzer
                 IsRequired
                     ? $"""
                                        // EnumTypePropertyInfo Required !Nullable {TypeInfo}
-                                       {Name} = dictionary.ContainsKey("{Name}")
-                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.ContainsKey("{DictionaryKeyName}")
+                                           ? dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                                ? ({AnnotatedActualType})Enum.Parse(typeof({ActualType}), {Name.ToLower()}Raw)
                                                : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
                                            : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
                        """
                     : $"""
                                        // EnumTypePropertyInfo !Required Nullable {TypeInfo}
-                                       {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                            ? ({AnnotatedActualType})Enum.Parse(typeof({ActualType}), {Name.ToLower()}Raw)
                                            : {(IsNullable ? "null" : "default")},
                        """;
@@ -412,18 +417,18 @@ namespace Viam.Serialization.Analyzer
                 if (IsRequired)
                     return IsNullable
                         ? $"""
-                                       if ({Name} == null) dictionary["{Name}"] = null;
-                                       else dictionary["{Name}"] = Enum.GetName(typeof({ActualType}), {Name});
+                                       if ({Name} == null) dictionary["{DictionaryKeyName}"] = null;
+                                       else dictionary["{DictionaryKeyName}"] = Enum.GetName(typeof({ActualType}), {Name});
                            """
                         : $"""
                                        if ({Name} == null) throw new InvalidOperationException("{Name} is non-nullable but has null value.");
-                                       else dictionary["{Name}"] = Enum.GetName(typeof({ActualType}), {Name});
+                                       else dictionary["{DictionaryKeyName}"] = Enum.GetName(typeof({ActualType}), {Name});
                            """;
                 return IsNullable
-                    ? $"""            dictionary["{Name}"] = {Name} == null ? null : Enum.GetName(typeof({ActualType}), {Name});"""
+                    ? $"""            dictionary["{DictionaryKeyName}"] = {Name} == null ? null : Enum.GetName(typeof({ActualType}), {Name});"""
                     : $"""
                                    if ({Name} == null) throw new InvalidOperationException("{Name} is non-nullable but has null value.");
-                                   else dictionary["{Name}"] = Enum.GetName(typeof({ActualType}), {Name});
+                                   else dictionary["{DictionaryKeyName}"] = Enum.GetName(typeof({ActualType}), {Name});
                        """;
             }
         }
@@ -436,15 +441,15 @@ namespace Viam.Serialization.Analyzer
                 return IsRequired
                     ? $"""
                                        // ReferenceTypePropertyInfo Required !Nullable {TypeInfo}
-                                       {Name} = dictionary.ContainsKey("{Name}")
-                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.ContainsKey("{DictionaryKeyName}")
+                                           ? dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                                ? {AnnotatedActualType}.FromDictionary({Name.ToLower()}Raw)
                                                : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
                                            : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),    
                        """
                     : $"""
                                        // ReferenceTypePropertyInfo !Required Nullable {TypeInfo}
-                                       {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                            ? {AnnotatedActualType}.FromDictionary({Name.ToLower()}Raw)
                                            : {(IsNullable ? "null" : "default")},
                        """;
@@ -453,7 +458,7 @@ namespace Viam.Serialization.Analyzer
             public override string Serializer()
             {
                 return $"""
-                                    dictionary["{Name}"] = {Name} == null 
+                                    dictionary["{DictionaryKeyName}"] = {Name} == null 
                                         ? {(IsNullable ? "null" : $"throw new InvalidOperationException(\"{Name} is non-nullable but has null value.\")")}
                                         : {Name}{(IsNullable ? "?" : "")}.ToDictionary();
                         """;
@@ -472,15 +477,15 @@ namespace Viam.Serialization.Analyzer
                 return IsRequired
                     ? $"""
                                        // ListTypePropertyInfo Required !Nullable {TypeInfo}
-                                       {Name} = dictionary.ContainsKey("{Name}")
-                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.ContainsKey("{DictionaryKeyName}")
+                                           ? dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                                ? {(IsInterface ? "" : $"new {AnnotatedActualType}(")}{Name.ToLower()}Raw.Select(x => {(IsElementTypeNullable ? $"({AnnotatedElementType})" : "")}{ElementType}.FromDictionary((IDictionary<string, object?>)x)).ToArray(){(IsInterface ? "" : ")")}
                                                : {(IsNullable ? "null" : "[]")}
                                            : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
                        """
                     : $"""
                                        // ListTypePropertyInfo !Required Nullable {TypeInfo}
-                                       {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                            ? {(IsInterface ? "" : $"new {AnnotatedActualType}(")}{Name.ToLower()}Raw.Select(x => {(IsElementTypeNullable ? $"({AnnotatedElementType})" : "")}{ElementType}.FromDictionary((IDictionary<string, object?>)x)).ToArray(){(IsInterface ? "" : ")")}
                                            : {(IsNullable ? "null" : "[]")},
                        """;
@@ -489,7 +494,7 @@ namespace Viam.Serialization.Analyzer
             public override string Serializer()
             {
                 return $"""
-                                    dictionary["{Name}"] = {Name} == null 
+                                    dictionary["{DictionaryKeyName}"] = {Name} == null 
                                         ? {(IsNullable ? "null" : $"throw new InvalidOperationException(\"{Name} is non-nullable but has null value.\")")}
                                         : {Name}.Select(x => x{(IsElementTypeNullable ? "?" : "")}.ToDictionary()).ToArray();
                         """;
@@ -508,15 +513,15 @@ namespace Viam.Serialization.Analyzer
                 return IsRequired
                     ? $"""
                                        // DictionaryTypePropertyInfo Required !Nullable {TypeInfo}
-                                       {Name} = dictionary.ContainsKey("{Name}")
-                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.ContainsKey("{DictionaryKeyName}")
+                                           ? dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                                ? {Name.ToLower()}Raw.ToDictionary(x => x.Key, x => x.Value as IDictionary<string, object?>).ToDictionary(x => x.Key, x => {(IsValueTypeNullable ? $"({AnnotatedValueType})" : "")}{ValueType}.FromDictionary((IDictionary<string, object?>)x.Value))
                                                : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
                                            : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
                        """
                     : $"""
                                        // DictionaryTypePropertyInfo !Required Nullable {TypeInfo}
-                                       {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                            ? {Name.ToLower()}Raw.ToDictionary(x => x.Key, x => x.Value as IDictionary<string, object?>).Where(x => x.Value != null).ToDictionary(x => x.Key, x => {(IsValueTypeNullable ? $"({AnnotatedValueType})" : "")}{ValueType}.FromDictionary((IDictionary<string, object?>)x.Value))
                                            : {(IsNullable ? "null" : "[]")},
                        """;
@@ -525,7 +530,7 @@ namespace Viam.Serialization.Analyzer
             public override string Serializer()
             {
                 return $"""
-                                    dictionary["{Name}"] = {Name} == null 
+                                    dictionary["{DictionaryKeyName}"] = {Name} == null 
                                         ? {(IsNullable ? "null" : $"throw new InvalidOperationException(\"{Name} is non-nullable but has null value.\")")}
                                         : {Name}.ToDictionary(x => x.Key, x => x.Value{(IsValueTypeNullable ? "?" : "")}.ToDictionary());
                         """;
@@ -544,15 +549,15 @@ namespace Viam.Serialization.Analyzer
                 return IsRequired
                     ? $"""
                                        // ArrayTypePropertyInfo Required !Nullable {TypeInfo}
-                                       {Name} = dictionary.ContainsKey("{Name}")
-                                           ? dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                       {Name} = dictionary.ContainsKey("{DictionaryKeyName}")
+                                           ? dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                                ? {Name.ToLower()}Raw.Select(x => {ElementType}.FromDictionary((IDictionary<string, object?>)x)).ToArray()
                                                : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
                                            : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
                        """
                     : $"""
                                         // ArrayTypePropertyInfo !Required Nullable {TypeInfo}
-                                        {Name} = dictionary.TryGetValue("{Name}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
+                                        {Name} = dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                             ? {Name.ToLower()}Raw.Select(x => {ElementType}.FromDictionary((IDictionary<string, object?>)x)).ToArray()
                                             : {(IsNullable ? "null" : "[]")},
                         """;
@@ -561,7 +566,7 @@ namespace Viam.Serialization.Analyzer
             public override string Serializer()
             {
                 return $"""
-                                    dictionary["{Name}"] = {Name} == null 
+                                    dictionary["{DictionaryKeyName}"] = {Name} == null 
                                         ? {(IsNullable ? "null" : $"throw new InvalidOperationException(\"{Name} is non-nullable but has null value.\")")}
                                         : {Name}.Select(x => x{(IsElementTypeNullable ? "?" : "")}.ToDictionary()).ToArray();
                         """;
