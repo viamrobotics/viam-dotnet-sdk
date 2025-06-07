@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+
 using Viam.Component.Camera.V1;
 
 namespace Viam.Core.Resources
@@ -61,17 +62,60 @@ namespace Viam.Core.Resources
 
     public enum MimeType
     {
-        [Description("unsupported")] Unsupported,
-        [Description("unspecified")] Unspecified,
-        [Description("image/vnd.viam.rgba")] ViamRgba,
-        [Description("image/vnd.viam.dep")] ViamRawDepth,
-        [Description("image/jpeg")] Jpeg,
-        [Description("image/png")] Png,
-        [Description("pointcloud/pcd")] Pcd
+        [Description("unsupported")]
+        Unsupported,
+
+        [Description("unspecified")]
+        Unspecified,
+
+        [Description("image/vnd.viam.rgba")]
+        ViamRgba,
+
+        [Description("image/vnd.viam.dep")]
+        ViamRawDepth,
+
+        [Description("image/jpeg")]
+        Jpeg,
+
+        [Description("image/png")]
+        Png,
+
+        [Description("pointcloud/pcd")]
+        Pcd
     }
 
     public static class MimeTypeExtensions
     {
+        public static string AsString(this MimeType mimeType)
+        {
+            return mimeType switch
+            {
+                MimeType.Unsupported => "Unsupported",
+                MimeType.Unspecified => "Unspecified",
+                MimeType.ViamRgba => "image/vnd.viam.rgba",
+                MimeType.ViamRawDepth => "image/vnd.viam.dep",
+                MimeType.Jpeg => "image/jpeg",
+                MimeType.Png => "image/png",
+                MimeType.Pcd => "pointcloud/pcd",
+                _ => throw new ArgumentOutOfRangeException(nameof(mimeType), mimeType, "Unknown MimeType")
+            };
+        }
+
+        public static MimeType MimeTypeFromString(string mimeType)
+        {
+            return mimeType switch
+            {
+                "Unsupported" => MimeType.Unsupported,
+                "Unspecified" => MimeType.Unspecified,
+                "image/vnd.viam.rgba" => MimeType.ViamRgba,
+                "image/vnd.viam.dep" => MimeType.ViamRawDepth,
+                "image/jpeg" => MimeType.Jpeg,
+                "image/png" => MimeType.Png,
+                "pointcloud/pcd" => MimeType.Pcd,
+                _ => throw new ArgumentOutOfRangeException(nameof(mimeType), mimeType, "Unknown MimeType")
+            };
+        }
+
         public static MimeType FromGrpc(string name) =>
             name switch
             {
@@ -84,13 +128,13 @@ namespace Viam.Core.Resources
                 _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown MimeType")
             };
 
-        public static MimeType FromGrpc(Viam.Component.Camera.V1.Format mimeType) => mimeType switch
+        public static MimeType FromGrpc(Format mimeType) => mimeType switch
         {
-            Viam.Component.Camera.V1.Format.Unspecified => MimeType.Unspecified,
-            Viam.Component.Camera.V1.Format.Png => MimeType.Png,
-            Viam.Component.Camera.V1.Format.Jpeg => MimeType.Jpeg,
-            Viam.Component.Camera.V1.Format.RawDepth => MimeType.ViamRawDepth,
-            Viam.Component.Camera.V1.Format.RawRgba => MimeType.ViamRgba,
+            Format.Unspecified => MimeType.Unspecified,
+            Format.Png => MimeType.Png,
+            Format.Jpeg => MimeType.Jpeg,
+            Format.RawDepth => MimeType.ViamRawDepth,
+            Format.RawRgba => MimeType.ViamRgba,
             _ => throw new ArgumentOutOfRangeException(nameof(mimeType), mimeType, "Unknown MimeType")
         };
 
