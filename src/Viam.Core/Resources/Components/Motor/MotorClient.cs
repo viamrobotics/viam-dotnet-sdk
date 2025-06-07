@@ -12,7 +12,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.Motor
 {
-    public class MotorClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
+    public class MotorClient(ViamResourceName resourceName, ViamChannel channel, ILogger<MotorClient> logger) :
         ComponentBase<MotorClient, Component.Motor.V1.MotorService.MotorServiceClient>(resourceName,
             new Component.Motor.V1.MotorService.MotorServiceClient(channel)),
         IMotor

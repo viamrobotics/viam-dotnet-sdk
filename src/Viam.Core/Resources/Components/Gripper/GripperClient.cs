@@ -11,7 +11,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.Gripper
 {
-    public class GripperClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
+    public class GripperClient(ViamResourceName resourceName, ViamChannel channel, ILogger<GripperClient> logger) :
         ComponentBase<GripperClient, Component.Gripper.V1.GripperService.GripperServiceClient>(resourceName,
             new Component.Gripper.V1.GripperService.GripperServiceClient(channel)),
         IGripper

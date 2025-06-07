@@ -17,7 +17,7 @@ namespace Viam.Core.Resources.Components.Board
     /// </summary>
     /// <param name="channel">The <see cref="ViamChannel"/> to use for communication with the component</param>
     /// <param name="logger">A logger</param>
-    public class BoardClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
+    public class BoardClient(ViamResourceName resourceName, ViamChannel channel, ILogger<BoardClient> logger)
         : ComponentBase<BoardClient, Component.Board.V1.BoardService.BoardServiceClient>(resourceName,
                 new Component.Board.V1.BoardService.BoardServiceClient(channel)),
             IBoard

@@ -12,7 +12,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.Encoder
 {
-    public class EncoderClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
+    public class EncoderClient(ViamResourceName resourceName, ViamChannel channel, ILogger<EncoderClient> logger) :
         ComponentBase<EncoderClient, Component.Encoder.V1.EncoderService.EncoderServiceClient>(resourceName,
             new Component.Encoder.V1.EncoderService.EncoderServiceClient(channel)),
         IEncoder

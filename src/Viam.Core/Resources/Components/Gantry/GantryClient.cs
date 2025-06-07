@@ -12,7 +12,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.Gantry
 {
-    public class GantryClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
+    public class GantryClient(ViamResourceName resourceName, ViamChannel channel, ILogger<GantryClient> logger) :
         ComponentBase<GantryClient, Component.Gantry.V1.GantryService.GantryServiceClient>(resourceName,
             new Component.Gantry.V1.GantryService.GantryServiceClient(channel)),
         IGantry

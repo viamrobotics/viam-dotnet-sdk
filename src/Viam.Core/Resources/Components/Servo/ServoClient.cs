@@ -13,7 +13,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.Servo
 {
-    public class ServoClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
+    public class ServoClient(ViamResourceName resourceName, ViamChannel channel, ILogger<ServoClient> logger)
         : ComponentBase<ServoClient, Component.Servo.V1.ServoService.ServoServiceClient>(resourceName,
                 new Component.Servo.V1.ServoService.ServoServiceClient(channel)),
             IServo

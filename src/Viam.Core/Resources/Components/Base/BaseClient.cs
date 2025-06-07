@@ -12,7 +12,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.Base
 {
-    public class BaseClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
+    public class BaseClient(ViamResourceName resourceName, ViamChannel channel, ILogger<BaseClient> logger)
         : ComponentBase<BaseClient, Component.Base.V1.BaseService.BaseServiceClient>(resourceName,
                 new Component.Base.V1.BaseService.BaseServiceClient(channel)),
             IBase

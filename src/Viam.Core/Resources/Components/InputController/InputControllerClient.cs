@@ -12,7 +12,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.InputController
 {
-    public class InputControllerClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
+    public class InputControllerClient(ViamResourceName resourceName, ViamChannel channel, ILogger<InputControllerClient> logger)
         : ComponentBase<InputControllerClient,
                 Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient>(
                 resourceName,

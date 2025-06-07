@@ -13,7 +13,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.Camera
 {
-    public class CameraClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
+    public class CameraClient(ViamResourceName resourceName, ViamChannel channel, ILogger<CameraClient> logger)
         : ComponentBase<CameraClient, Component.Camera.V1.CameraService.CameraServiceClient>(resourceName,
                 new Component.Camera.V1.CameraService.CameraServiceClient(channel)),
             ICamera

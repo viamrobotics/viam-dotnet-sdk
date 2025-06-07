@@ -13,7 +13,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.Arm
 {
-    public class ArmClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger)
+    public class ArmClient(ViamResourceName resourceName, ViamChannel channel, ILogger<ArmClient> logger)
         : ComponentBase<ArmClient, Component.Arm.V1.ArmService.ArmServiceClient>(resourceName,
                 new Component.Arm.V1.ArmService.ArmServiceClient(channel)),
             IArm

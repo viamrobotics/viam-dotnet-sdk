@@ -10,7 +10,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.Generic
 {
-    public class GenericClient(ViamResourceName resourceName, ViamChannel channel, ILogger logger) :
+    public class GenericClient(ViamResourceName resourceName, ViamChannel channel, ILogger<GenericClient> logger) :
         ComponentBase<GenericClient, Component.Generic.V1.GenericService.GenericServiceClient>(resourceName,
             new Component.Generic.V1.GenericService.GenericServiceClient(channel)),
         IGeneric
