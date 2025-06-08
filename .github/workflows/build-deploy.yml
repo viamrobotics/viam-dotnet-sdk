@@ -57,7 +57,7 @@ jobs:
             echo "base=$ARTIFACT_BASE" >> "$GITHUB_OUTPUT"
 
       - name: Build & Pack
-        run: dotnet pack -c Release /p:Version=${{ steps.set_version.outputs.version }} /p:PackageVersion=${{ steps.set_version.outputs.version }} /p:SymbolPackageFormat=snupkg /p:IncludeSymbols=true -o "${{ github.workspace }}/artifacts" ${{ matrix.project }}
+        run: dotnet pack -c Debug /p:Version=${{ steps.set_version.outputs.version }} /p:PackageVersion=${{ steps.set_version.outputs.version }} /p:SymbolPackageFormat=snupkg /p:IncludeSymbols=true -o "${{ github.workspace }}/artifacts" ${{ matrix.project }}
 
       - name: Upload NuGet package
         uses: actions/upload-artifact@v4
