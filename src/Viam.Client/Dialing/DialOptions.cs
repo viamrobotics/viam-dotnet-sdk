@@ -14,6 +14,10 @@ namespace Viam.Client.Dialing
         public bool DisableWebRtc { get; private set; }
         public bool Insecure { get; private set; }
         public int Port { get; private set; } = 8080;
+        public TimeSpan ConnectTimeout { get; private set; } = TimeSpan.FromSeconds(30);
+        public HttpKeepAlivePingPolicy? KeepAlivePingPolicy { get; private set; }
+        public TimeSpan? KeepAlivePingDelay { get; private set; }
+        public TimeSpan? KeepAlivePingTimeout { get; private set; }
 
         private DialOptions(string machineAddress)
         {
@@ -36,10 +40,14 @@ namespace Viam.Client.Dialing
         internal WebRtcDialOptions ToWebRtcDialOptions() =>
             new(SignalingAddress ?? new Uri("https://app.viam.com"),
                 MachineAddress,
-                new(SignalingAddress ?? new Uri("https://app.viam.com"), Insecure, Credentials, 443),
+                new GrpcDialOptions(SignalingAddress ?? new Uri("https://app.viam.com"), Insecure, Credentials, 443),
                 Insecure,
                 false,
-                Credentials);
+                Credentials,
+                ConnectTimeout, 
+                KeepAlivePingPolicy, 
+                KeepAlivePingDelay, 
+                KeepAlivePingTimeout);
 
         public static DialOptions FromAddress(string machineAddress) =>
             new(machineAddress);
@@ -83,6 +91,22 @@ namespace Viam.Client.Dialing
         public DialOptions WithLogging(ILoggerFactory loggerFactory)
         {
             LoggerFactory = loggerFactory;
+            return this;
+        }
+
+        public DialOptions WithKeepAlive(HttpKeepAlivePingPolicy keepAlivePingPolicy, TimeSpan keepAlivePingDelay, TimeSpan keepAlivePingTimeout)
+        {
+            if (DisableWebRtc)
+                throw new InvalidOperationException("KeepAlive options can only be set for WebRTC connections.");
+            KeepAlivePingPolicy = keepAlivePingPolicy;
+            KeepAlivePingDelay = keepAlivePingDelay;
+            KeepAlivePingTimeout = keepAlivePingTimeout;
+            return this;
+        }
+
+        public DialOptions WithConnectTimeout(TimeSpan timeout)
+        {
+            ConnectTimeout = timeout;
             return this;
         }
     }

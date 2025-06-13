@@ -17,13 +17,13 @@ namespace Viam.Client.WebRTC
         Uri SignalingAddress,
         string MachineAddress,
         GrpcDialOptions SignalingOptions,
-        bool InsecureSignaling = false,
-        bool AllowInsecureDowngrade = false,
-        Credentials? Credentials = null,
-        float Timeout = 30,
-        HttpKeepAlivePingPolicy? KeepAlivePingPolicy = null,
-        TimeSpan? KeepAlivePingDelay = null,
-        TimeSpan? KeepAlivePingTimeout = null);
+        bool InsecureSignaling,
+        bool AllowInsecureDowngrade,
+        Credentials? Credentials,
+        TimeSpan Timeout,
+        HttpKeepAlivePingPolicy? KeepAlivePingPolicy,
+        TimeSpan? KeepAlivePingDelay,
+        TimeSpan? KeepAlivePingTimeout);
 
     /// <summary>
     /// A Dialer that uses WebRTC to connect to the Smart Machine
@@ -59,7 +59,7 @@ namespace Viam.Client.WebRTC
             {
                 logger.LogTrace("Rust runtime initialized");
                 var proxyPath = ViamRustUtils.Dial(dialOptions.MachineAddress, dialOptions.Credentials?.AuthEntity,
-                    dialOptions.Credentials?.Type, dialOptions.Credentials?.Payload, allowInsecure, dialOptions.Timeout,
+                    dialOptions.Credentials?.Type, dialOptions.Credentials?.Payload, allowInsecure, (float)dialOptions.Timeout.TotalSeconds,
                     runtimePointer);
                 logger.LogTrace("Dialed successfully, got proxy pointer");
                 try
