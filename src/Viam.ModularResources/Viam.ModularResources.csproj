@@ -8,7 +8,7 @@
 		<OutputType>Library</OutputType>
 		<Platforms>AnyCPU</Platforms>
 		<IsPackable>true</IsPackable>
-    <VersionPrefix>0.0.13-dev</VersionPrefix>
+    <VersionPrefix>0.0.0-dev</VersionPrefix>
 
     <PackageId>Viam.ModularResources</PackageId>
     <Authors>Viam</Authors>
@@ -17,7 +17,6 @@
     <PackageTags>viam</PackageTags>
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeSource>true</IncludeSource>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Grpc.AspNetCore.Server" Version="2.71.0" />

@@ -5,7 +5,7 @@
     <LangVersion>latest</LangVersion>
     <TrimmerSingleWarn>false</TrimmerSingleWarn>
     <Platforms>AnyCPU</Platforms>
-    <VersionPrefix>0.0.13-dev</VersionPrefix>
+    <VersionPrefix>0.0.0-dev</VersionPrefix>
 
     <PackageId>Viam.Core</PackageId>
     <Authors>Viam</Authors>
@@ -14,7 +14,6 @@
     <PackageTags>viam</PackageTags>
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeSource>true</IncludeSource>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
   <ItemGroup>
     <Compile Remove="Protos\**" />

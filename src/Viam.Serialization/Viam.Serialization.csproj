@@ -5,7 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <VersionPrefix>0.0.13-dev</VersionPrefix>
+    <VersionPrefix>0.0.0-dev</VersionPrefix>
 
     <PackageId>Viam.Serialization</PackageId>
     <Authors>Viam</Authors>
@@ -15,7 +15,6 @@
     <Tags>analyzer;source-generator;attributes;serialization</Tags>
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeSource>true</IncludeSource>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
