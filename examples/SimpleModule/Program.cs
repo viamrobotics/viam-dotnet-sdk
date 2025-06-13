@@ -68,9 +68,11 @@ public partial struct CfgStruct
 [GenerateDictionaryMapper]
 public partial class MyReadings
 {
+    [JsonPropertyName("then")]
     public string? Now { get; set; }
     public string? Name { get; set; }
     public string? Foo { get; set; }
+    public A[] Foos { get; set; }
 }
 
 

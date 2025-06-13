@@ -15,7 +15,7 @@ namespace Viam.Client.Clients
         {
         }
 
-        public static async ValueTask<RobotClient> AtAddressAsync(DialOptions options)
+        public static async ValueTask<RobotClient> CreateFromDialOptions(DialOptions options)
         {
             var dialer = new Dialer(options.LoggerFactory);
             var channel = options.DisableWebRtc

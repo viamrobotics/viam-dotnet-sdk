@@ -8,13 +8,16 @@
 		<OutputType>Library</OutputType>
 		<Platforms>AnyCPU</Platforms>
 		<IsPackable>true</IsPackable>
-    <VersionPrefix>0.0.0-dev</VersionPrefix>
+    <VersionPrefix>0.0.13-dev</VersionPrefix>
 
     <PackageId>Viam.ModularResources</PackageId>
     <Authors>Viam</Authors>
     <Description>Viam ModularResources Library</Description>
     <ProjectUrl>https://github.com/viamrobotics/viam-dotnet-sdk</ProjectUrl>
     <PackageTags>viam</PackageTags>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Grpc.AspNetCore.Server" Version="2.71.0" />

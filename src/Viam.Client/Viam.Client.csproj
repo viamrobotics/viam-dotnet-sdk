@@ -7,7 +7,7 @@
 		<LangVersion>latest</LangVersion>
 		<TrimmerSingleWarn>false</TrimmerSingleWarn>
 		<Platforms>AnyCPU</Platforms>
-    <VersionPrefix>0.0.0-dev</VersionPrefix>
+    <VersionPrefix>0.0.13-dev</VersionPrefix>
 
     <PackageId>Viam.Client</PackageId>
     <Authors>Viam</Authors>
@@ -16,8 +16,10 @@
     <PackageTags>viam</PackageTags>
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeSource>true</IncludeSource>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-	</PropertyGroup>
+
+  </PropertyGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\Viam.Core\Viam.Core.csproj" />

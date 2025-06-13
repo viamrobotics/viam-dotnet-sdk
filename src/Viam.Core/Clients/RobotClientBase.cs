@@ -62,8 +62,8 @@ namespace Viam.Core.Clients
 
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddSingleton(this);
-            serviceCollection.AddSingleton<ViamChannel>(channel);
-            serviceCollection.AddSingleton<ILoggerFactory>(loggerFactory);
+            serviceCollection.AddSingleton(channel);
+            serviceCollection.AddSingleton(loggerFactory);
             serviceCollection.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
 
             // Register the built-in component types

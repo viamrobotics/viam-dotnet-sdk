@@ -30,7 +30,7 @@ namespace Viam.Core.Test.Components
                 .WithApiCredentials(apiKey, apiKeyId)
                 .SetDisableWebRtc();
 
-            _robotClient = await RobotClient.AtAddressAsync(robotClientOptions);
+            _robotClient = await RobotClient.CreateFromDialOptions(robotClientOptions);
         }
 
         [Test]

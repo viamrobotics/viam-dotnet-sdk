@@ -1,7 +1,10 @@
 ﻿using Fody;
+
 using Grpc.Core;
 using Grpc.Net.Client;
+
 using Microsoft.Extensions.Logging;
+
 using System.Net.Sockets;
 
 using Viam.Core;
@@ -17,7 +20,10 @@ namespace Viam.Client.WebRTC
         bool InsecureSignaling = false,
         bool AllowInsecureDowngrade = false,
         Credentials? Credentials = null,
-        float Timeout = 30);
+        float Timeout = 30,
+        HttpKeepAlivePingPolicy? KeepAlivePingPolicy = null,
+        TimeSpan? KeepAlivePingDelay = null,
+        TimeSpan? KeepAlivePingTimeout = null);
 
     /// <summary>
     /// A Dialer that uses WebRTC to connect to the Smart Machine
@@ -61,7 +67,7 @@ namespace Viam.Client.WebRTC
                     logger.LogTrace("Parsed proxy address: {path}", proxyPath);
                     var channelOptions = new GrpcChannelOptions()
                     {
-                        LoggerFactory = loggerFactory
+                        LoggerFactory = loggerFactory,
                     };
                     Uri uri;
                     if (OperatingSystem.IsLinux() || OperatingSystem.IsMacOS())
@@ -74,6 +80,22 @@ namespace Viam.Client.WebRTC
                             UseProxy = false,
                             AllowAutoRedirect = false
                         };
+
+                        if (dialOptions.KeepAlivePingPolicy.HasValue)
+                        {
+                            handler.KeepAlivePingPolicy = dialOptions.KeepAlivePingPolicy.Value;
+                        }
+
+                        if (dialOptions.KeepAlivePingDelay.HasValue)
+                        {
+                            handler.KeepAlivePingDelay = dialOptions.KeepAlivePingDelay.Value;
+                        }
+
+                        if (dialOptions.KeepAlivePingTimeout.HasValue)
+                        {
+                            handler.KeepAlivePingTimeout = dialOptions.KeepAlivePingTimeout.Value;
+                        }
+
                         channelOptions.HttpHandler = handler;
                         uri = new Uri($"http://localhost:9090");
                     }
@@ -87,7 +109,6 @@ namespace Viam.Client.WebRTC
                     }
 
                     logger.LogTrace("Using proxy URI: {uri}", uri);
-                    
                     var channel = new WebRTCViamChannel(runtimePointer,
                         global::Grpc.Net.Client.GrpcChannel.ForAddress(uri, channelOptions),
                         dialOptions.MachineAddress);
