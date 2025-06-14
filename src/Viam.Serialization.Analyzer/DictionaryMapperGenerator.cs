@@ -262,14 +262,14 @@ namespace Viam.Serialization.Analyzer
                                        // ValueTypePropertyInfo Required !Nullable {TypeInfo}
                                        {Name} = dictionary.ContainsKey("{DictionaryKeyName}")
                                            ? dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value)
-                                               ? ({AnnotatedActualType})(Convert.ChangeType({Name.ToLower()}Value ?? throw new Exception("{Name}was not convertible to {AnnotatedActualType.Name}"), typeof({AnnotatedActualType})))
+                                               ? ({AnnotatedActualType})((Convert.ChangeType({Name.ToLower()}Value, typeof({AnnotatedActualType}))) ?? throw new Exception("'{Name}' was not convertible to {AnnotatedActualType.Name}"))
                                                : {(IsNullable ? "null" : $"throw new KeyNotFoundException(\"The required property '{Name}' is missing or invalid.\")")}
                                            : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
                        """
                     : $"""
                                        // ValueTypePropertyInfo !Required Nullable {TypeInfo}
                                        {Name} = dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value)
-                                           ? ({AnnotatedActualType})(Convert.ChangeType({Name.ToLower()}Value ?? throw new Exception("{Name}was not convertible to {AnnotatedActualType.Name}"), typeof({AnnotatedActualType})))
+                                           ? ({AnnotatedActualType})((Convert.ChangeType({Name.ToLower()}Value, typeof({AnnotatedActualType}))) ?? throw new Exception("'{Name}' was not convertible to {AnnotatedActualType.Name}"))
                                            : {(IsNullable ? "null" : "default")},
                        """;
             public override string Serializer() => $"""            dictionary["{DictionaryKeyName}"] = {Name};""";
@@ -406,7 +406,7 @@ namespace Viam.Serialization.Analyzer
                                            : throw new KeyNotFoundException("The required property '{Name}' is missing or invalid."),
                        """
                     : $"""
-                                       // EnumTypePropertyInfo !Required Nullable {TypeInfo}
+                                       // EnumTypePropertyInfo !Required !Nullable {TypeInfo}
                                        {Name} = dictionary.TryGetValue("{DictionaryKeyName}", out var {Name.ToLower()}Value) && {Name.ToLower()}Value is {SerializedType} {Name.ToLower()}Raw
                                            ? ({AnnotatedActualType})Enum.Parse(typeof({ActualType}), {Name.ToLower()}Raw)
                                            : {(IsNullable ? "null" : "default")},
@@ -414,21 +414,12 @@ namespace Viam.Serialization.Analyzer
 
             public override string Serializer()
             {
-                if (IsRequired)
-                    return IsNullable
-                        ? $"""
-                                       if ({Name} == null) dictionary["{DictionaryKeyName}"] = null;
-                                       else dictionary["{DictionaryKeyName}"] = Enum.GetName(typeof({ActualType}), {Name});
-                           """
-                        : $"""
-                                       if ({Name} == null) throw new InvalidOperationException("{Name} is non-nullable but has null value.");
-                                       else dictionary["{DictionaryKeyName}"] = Enum.GetName(typeof({ActualType}), {Name});
-                           """;
                 return IsNullable
-                    ? $"""            dictionary["{DictionaryKeyName}"] = {Name} == null ? null : Enum.GetName(typeof({ActualType}), {Name});"""
+                    ? $"""
+                                   dictionary["{DictionaryKeyName}"] = {Name} == null ? null : Enum.GetName(typeof({ActualType}), {Name});
+                       """
                     : $"""
-                                   if ({Name} == null) throw new InvalidOperationException("{Name} is non-nullable but has null value.");
-                                   else dictionary["{DictionaryKeyName}"] = Enum.GetName(typeof({ActualType}), {Name});
+                                   dictionary["{DictionaryKeyName}"] = Enum.GetName(typeof({ActualType}), {Name});
                        """;
             }
         }

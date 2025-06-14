@@ -15,7 +15,9 @@ namespace Viam.Serialization.Test
                 MyEnum = MyEnum.Foo,
                 NullableMyEnum = null,
                 Short = 1,
+                RequiredUShort = 3,
                 UShort = 2,
+                RequiredNullableUShort = 4,
                 Int = 3,
                 UInt = 4,
                 Long = 5,
@@ -80,7 +82,9 @@ namespace Viam.Serialization.Test
         public short Short { get; init; }
         public short? NullableShort { get; init; }
         public ushort UShort { get; init; }
+        public required ushort RequiredUShort { get; init; }
         public ushort? NullableUShort { get; init; }
+        public required ushort? RequiredNullableUShort { get; init; }
         public int Int { get; init; }
         public int? NullableInt { get; init; }
         public uint UInt { get; init; }
