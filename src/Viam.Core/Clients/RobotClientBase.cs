@@ -28,15 +28,16 @@ using Viam.Core.Resources.Components.Sensor;
 using Viam.Core.Resources.Components.Servo;
 using Viam.Core.Utils;
 using Viam.Robot.V1;
-using Status = Viam.Robot.V1.Status;
 
 namespace Viam.Core.Clients
 {
-    public class RobotClientBase : IDisposable
+    public class RobotClientBase : IAsyncDisposable
     {
         protected readonly ILogger<RobotClientBase> Logger;
         private readonly RobotService.RobotServiceClient _robotServiceClient;
         private readonly IServiceProvider _services;
+        private readonly SemaphoreSlim _disposeLock = new(1, 1);
+        private bool _isDisposed;
 
         private RobotClientBase(ILogger<RobotClientBase> logger, ViamChannel channel)
         {
@@ -96,31 +97,53 @@ namespace Viam.Core.Clients
         protected async Task RefreshAsync([CallerMemberName] string? caller = null)
         {
             Logger.LogManagerRefreshStart(caller);
+            ThrowIfDisposed();
+
             var resourceNames = await ResourceNamesAsync();
             Logger.LogDebug("Filtering {ResourceCount} resources", resourceNames.Length);
             var filteredResourceName = resourceNames.Where(x => x.SubType.ResourceType is "component" or "service")
                 .Where(x => x.SubType.ResourceSubType != "remote")
                 .Where(x => x.SubType.ResourceSubType != SensorClient.SubType.ResourceSubType
-                            || !resourceNames.Contains(new ViamResourceName(MovementSensorClient.SubType, x.Name)));
-            Logger.LogDebug("Refreshing client for {ResourceCount} resources", filteredResourceName.Count());
+                            || !resourceNames.Contains(new ViamResourceName(MovementSensorClient.SubType, x.Name)))
+                .ToArray();
+            Logger.LogDebug("Refreshing client for {ResourceCount} resources", filteredResourceName.Length);
             foreach (var resourceName in filteredResourceName)
             {
+                Logger.LogDebug("Found {resourceName}", resourceName);
             }
 
             Logger.LogManagerRefreshFinish(caller);
         }
 
-        public void Dispose()
+        public async ValueTask DisposeAsync()
         {
-            if (_services is IDisposable disposable)
+            await _disposeLock.WaitAsync();
+            try
             {
-                disposable.Dispose();
+                if (_isDisposed) return;
+                _isDisposed = true;
+                if (_services is IDisposable disposable)
+                {
+                    disposable.Dispose();
+                }
+
+                GC.SuppressFinalize(this);
             }
+            finally
+            {
+                _disposeLock.Release();
+            }
+        }
+
+        private void ThrowIfDisposed()
+        {
+            ObjectDisposedException.ThrowIf(_isDisposed, nameof(RobotClientBase));
         }
 
         public T GetComponent<T>(ViamResourceName resourceName) where T : IResourceBase
         {
             Logger.LogMethodInvocationStart();
+            ThrowIfDisposed();
             try
             {
                 var resource = ActivatorUtilities.CreateInstance<T>(_services, resourceName);
@@ -138,6 +161,7 @@ namespace Viam.Core.Clients
             CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart();
+            ThrowIfDisposed();
             try
             {
                 var result = await _robotServiceClient.GetOperationsAsync(new GetOperationsRequest(),
@@ -159,6 +183,7 @@ namespace Viam.Core.Clients
             CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart();
+            ThrowIfDisposed();
             try
             {
                 var result = await _robotServiceClient.GetSessionsAsync(new GetSessionsRequest(),
@@ -180,6 +205,7 @@ namespace Viam.Core.Clients
             CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart();
+            ThrowIfDisposed();
             try
             {
                 var result = await _robotServiceClient.ResourceNamesAsync(new ResourceNamesRequest(),
@@ -202,6 +228,7 @@ namespace Viam.Core.Clients
             CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart();
+            ThrowIfDisposed();
             try
             {
                 var result = await _robotServiceClient.ResourceRPCSubtypesAsync(new ResourceRPCSubtypesRequest(),
@@ -223,6 +250,7 @@ namespace Viam.Core.Clients
             CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: operationId);
+            ThrowIfDisposed();
             try
             {
                 await _robotServiceClient.CancelOperationAsync(new CancelOperationRequest() { Id = operationId },
@@ -243,6 +271,7 @@ namespace Viam.Core.Clients
             CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: operationId);
+            ThrowIfDisposed();
             try
             {
                 await _robotServiceClient
@@ -264,6 +293,7 @@ namespace Viam.Core.Clients
             TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: supplementalTransforms);
+            ThrowIfDisposed();
             try
             {
                 var request = new FrameSystemConfigRequest();
@@ -291,6 +321,7 @@ namespace Viam.Core.Clients
             Transform[] supplementalTransforms, TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: [destination, source, supplementalTransforms]);
+            ThrowIfDisposed();
             try
             {
                 var request = new TransformPoseRequest() { Destination = destination, Source = source };
@@ -314,6 +345,7 @@ namespace Viam.Core.Clients
             TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: [source, destination]);
+            ThrowIfDisposed();
             try
             {
                 var request = new TransformPCDRequest()
@@ -338,10 +370,11 @@ namespace Viam.Core.Clients
             }
         }
 
-        public async Task<Status[]> GetStatusAsync(ViamResourceName[]? resourceNames = null, TimeSpan? timeout = null,
+        public async Task<Robot.V1.Status[]> GetStatusAsync(ViamResourceName[]? resourceNames = null, TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: resourceNames);
+            ThrowIfDisposed();
             try
             {
                 var request = new GetStatusRequest();
@@ -370,6 +403,7 @@ namespace Viam.Core.Clients
             CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: [every, resourceNames]);
+            ThrowIfDisposed();
             try
             {
                 var request = new StreamStatusRequest() { Every = every };
@@ -395,6 +429,7 @@ namespace Viam.Core.Clients
             CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: [extraParameters]);
+            ThrowIfDisposed();
             try
             {
                 var request = new StopAllRequest();
@@ -421,6 +456,7 @@ namespace Viam.Core.Clients
             TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: resumeToken);
+            ThrowIfDisposed();
             try
             {
                 var result = await _robotServiceClient.StartSessionAsync(
@@ -443,6 +479,7 @@ namespace Viam.Core.Clients
             CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart(parameters: sessionId);
+            ThrowIfDisposed();
             try
             {
                 var request = new SendSessionHeartbeatRequest() { Id = sessionId };
@@ -463,6 +500,7 @@ namespace Viam.Core.Clients
         public async Task LogAsync(IEnumerable<LogEntry> logs)
         {
             Logger.LogMethodInvocationStart();
+            ThrowIfDisposed();
             try
             {
                 var request = new LogRequest();
@@ -481,6 +519,7 @@ namespace Viam.Core.Clients
             CancellationToken cancellationToken = default)
         {
             Logger.LogMethodInvocationStart();
+            ThrowIfDisposed();
             try
             {
                 var result = await _robotServiceClient.GetCloudMetadataAsync(new GetCloudMetadataRequest(),
