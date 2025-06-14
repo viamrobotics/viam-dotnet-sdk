@@ -13,10 +13,9 @@ namespace Viam.Core.Resources
     {
     }
 
-    public abstract class ComponentBase<T,
-        [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicMethods)] TClient>(
-        ViamResourceName resourceName,
-        TClient client) : ComponentBase(resourceName) where T : ComponentBase where TClient : ClientBase<TClient>
+    public abstract class ComponentBase<T, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicMethods)] TClient>(
+        ViamResourceName resourceName, TClient client) 
+        : ComponentBase(resourceName) where T : ComponentBase where TClient : ClientBase<TClient>
     {
         public TClient Client = client;
 

@@ -18,12 +18,14 @@ namespace Viam.Core.Resources
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
-        public void Dispose()
+        public virtual ValueTask DisposeAsync()
         {
+            GC.SuppressFinalize(this);
+            return ValueTask.CompletedTask;
         }
     }
 
-    public interface IResourceBase : IDisposable
+    public interface IResourceBase : IAsyncDisposable
     {
         public ViamResourceName ResourceName { get; }
 
