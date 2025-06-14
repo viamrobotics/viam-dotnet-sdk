@@ -18,6 +18,7 @@ namespace Viam.ModularResources.Services
             return Task.FromResult(resp);
         }
 
+        [Obsolete("Pending removal from the API")]
         public override Task<GetStatusResponse> GetStatus(GetStatusRequest request, ServerCallContext context)
         {
             //try
@@ -47,9 +48,12 @@ namespace Viam.ModularResources.Services
             return Task.FromResult(new GetStatusResponse());
         }
 
+        [Obsolete("Pending removal from the API")]
         public override async Task StreamStatus(StreamStatusRequest request,
             IServerStreamWriter<StreamStatusResponse> responseStream, ServerCallContext context)
         {
+            await Task.Yield();
+            throw new NotImplementedException();
             //while (true)
             //{
             //    var resp = new StreamStatusResponse();
@@ -70,6 +74,8 @@ namespace Viam.ModularResources.Services
 
         public override async Task<StopAllResponse> StopAll(StopAllRequest request, ServerCallContext context)
         {
+            await Task.Yield();
+            throw new NotImplementedException();
             //await Manager.GetResources()
             //             .Select(r => r.StopResource())
             //             .WhenAll();

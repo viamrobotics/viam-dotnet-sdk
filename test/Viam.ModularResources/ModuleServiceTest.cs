@@ -34,13 +34,12 @@ namespace Viam.ModularResources.Test
     internal class SampleSensor : ISensor, IModularResource
     {
         public Model Model { get; } = new("test", "sensor", "mySensor");
-        public ViamResourceName ResourceName { get; }
-        public string? Name { get; set; }
-        public string ServiceName { get; }
-        public SubType SubType { get; }
+        public ViamResourceName ResourceName { get; } = new ViamResourceName(SubType, "mySensor");
+        public static SubType SubType { get; } = SensorClient.SubType;
 
-        public void Dispose()
+        public ValueTask DisposeAsync()
         {
+            return ValueTask.CompletedTask;
         }
 
         public ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,

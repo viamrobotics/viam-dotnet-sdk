@@ -7,9 +7,10 @@ namespace Viam.ModularResources
     {
         protected readonly ILogger<T> Logger;
 
-        protected SimpleModularComponent(ILogger<T> logger)
+        protected SimpleModularComponent(ILogger<T> logger, ViamResourceName resourceName)
         {
             Logger = logger;
+            ResourceName = resourceName;
         }
 
         public ViamResourceName ResourceName { get; }
@@ -17,7 +18,11 @@ namespace Viam.ModularResources
         public virtual ValueTask Reconfigure(ComponentConfig config,
             IDictionary<ViamResourceName, IResourceBase> dependencies) => ValueTask.CompletedTask;
 
-        public virtual ValueTask DisposeAsync() => ValueTask.CompletedTask;
+        public virtual ValueTask DisposeAsync()
+        {
+            GC.SuppressFinalize(this);
+            return ValueTask.CompletedTask;
+        }
 
         public virtual ValueTask StopResource() => ValueTask.CompletedTask;
 
@@ -28,7 +33,6 @@ namespace Viam.ModularResources
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
-            //pmic_temp
             if (command.TryGetValue("command", out var cmd))
             {
                 Logger.LogDebug("Command: {Command}", cmd);

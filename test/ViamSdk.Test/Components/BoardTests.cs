@@ -32,25 +32,5 @@ namespace Viam.Core.Test.Components
 
             _robotClient = await RobotClient.CreateFromDialOptions(robotClientOptions);
         }
-
-        [Test]
-        public async Task Test_GetPin()
-        {
-            //var board = BoardClient.FromRobot(_robotClient!, "board");
-            //var pin = await board.GetGpioPinByName("37");
-            //try
-            //{
-            //    Assert.IsNotNull(pin);
-            //    Assert.IsFalse(await pin.GetAsync());
-            //    await pin.SetAsync(false);
-            //    Assert.IsFalse(await pin.GetAsync());
-            //    await pin.SetAsync(true);
-            //    Assert.IsTrue(await pin.GetAsync());
-            //}
-            //finally
-            //{
-            //    await pin.SetAsync(false);
-            //}
-        }
     }
 }

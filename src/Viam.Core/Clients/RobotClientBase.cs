@@ -370,6 +370,7 @@ namespace Viam.Core.Clients
             }
         }
 
+        [Obsolete("Pending removal from the API")]
         public async Task<Robot.V1.Status[]> GetStatusAsync(ViamResourceName[]? resourceNames = null, TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -398,6 +399,7 @@ namespace Viam.Core.Clients
             }
         }
 
+        [Obsolete("Pending removal from the API")]
         public IAsyncStreamReader<StreamStatusResponse> StreamStatus(Duration every,
             ViamResourceName[]? resourceNames = null, TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)

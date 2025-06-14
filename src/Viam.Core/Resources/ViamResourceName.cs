@@ -2,20 +2,11 @@
 
 namespace Viam.Core.Resources
 {
-    public record ViamResourceName
+    public record ViamResourceName(SubType SubType, string Name)
     {
-        public SubType SubType { get; init; }
-        public string Name { get; init; }
-
         public ViamResourceName(ResourceName resourceName)
             : this(new SubType(resourceName.Namespace, resourceName.Type, resourceName.Subtype), resourceName.Name)
         {
-        }
-
-        public ViamResourceName(SubType subtype, string name)
-        {
-            SubType = subtype;
-            Name = name;
         }
 
         public ResourceName ToResourceName() =>

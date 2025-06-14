@@ -4,7 +4,7 @@ using Viam.Core.Resources.Components;
 
 namespace Viam.ModularResources
 {
-    public interface IModularResource : IResourceBase, IDisposable
+    public interface IModularResource : IResourceBase, IAsyncDisposable
     {
         public string Name => ResourceName.Name;
         public string[] ValidateConfig(App.V1.ComponentConfig config);
@@ -34,8 +34,9 @@ namespace Viam.ModularResources
         public virtual ValueTask StopResource() => ValueTask.CompletedTask;
         public virtual ResourceStatus GetStatus() => throw new NotImplementedException();
 
-        public virtual void Dispose()
+        public virtual ValueTask DisposeAsync()
         {
+            return ValueTask.CompletedTask;
         }
     }
 }
