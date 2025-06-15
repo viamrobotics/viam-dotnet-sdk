@@ -19,7 +19,7 @@ namespace Viam.Core.Resources.Components.Gantry
     {
         public static SubType SubType = SubType.FromRdkComponent("gantry");
 
-        public static IGantry FromRobot(RobotClientBase client, string name)
+        public static IGantry FromRobot(ViamMachineClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<GantryClient>(resourceName);

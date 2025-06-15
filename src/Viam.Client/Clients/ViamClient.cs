@@ -17,7 +17,7 @@ namespace Viam.Client.Clients
         /// </summary>
         /// <param name="options">The <see cref="DialOptions"/> to use when creating the client</param>
         /// <returns>An instance of a <see cref="ViamClient"/></returns>
-        public static async ValueTask<ViamClient> CreateFromDialOptions(DialOptions options)
+        public static async ValueTask<IViamClient> CreateFromDialOptions(DialOptions options)
         {
             var dialer = new Dialer(options.LoggerFactory);
             var channel = options.DisableWebRtc

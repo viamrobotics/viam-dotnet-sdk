@@ -14,6 +14,6 @@ var dialOpts = DialOptions.FromAddress(grpcAddress)
     .WithLogging(loggerFactory)
     .SetInsecure();
 
-var robotClient = await RobotClient.CreateFromDialOptions(dialOpts);
+var robotClient = await ViamMachineClient.CreateFromDialOptions(dialOpts);
 var resourceNames = await robotClient.ResourceNamesAsync();
 logger.LogInformation("Resource Names: {ResourceName}", string.Join(",", resourceNames.Select(x => x.Name)));

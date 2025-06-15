@@ -1,12 +1,13 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
+using System.Threading.Tasks;
 using Viam.App.V1;
 using Viam.Core.App;
 using Viam.Provisioning.V1;
 
 namespace Viam.Core.Clients
 {
-    public class ViamClientBase
+    public class ViamClientBase : IViamClient
     {
         private readonly ILoggerFactory _loggerFactory;
         protected readonly ILogger<ViamClientBase> Logger;
@@ -33,5 +34,22 @@ namespace Viam.Core.Clients
 
         public ProvisioningClient CreateProvisioningClient() => new(_loggerFactory.CreateLogger<ProvisioningClient>(),
             new ProvisioningService.ProvisioningServiceClient(_channel));
+
+        public async ValueTask DisposeAsync()
+        {
+            await CastAndDispose(_loggerFactory);
+            await CastAndDispose(_channel);
+
+            GC.SuppressFinalize(this);
+            return;
+
+            static async ValueTask CastAndDispose(IDisposable resource)
+            {
+                if (resource is IAsyncDisposable resourceAsyncDisposable)
+                    await resourceAsyncDisposable.DisposeAsync();
+                else
+                    resource.Dispose();
+            }
+        }
     }
 }

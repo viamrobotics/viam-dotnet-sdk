@@ -19,7 +19,7 @@ namespace Viam.Core.Resources.Components.Encoder
     {
         public static SubType SubType = SubType.FromRdkComponent("encoder");
 
-        public static IEncoder FromRobot(RobotClientBase client, string name)
+        public static IEncoder FromRobot(ViamMachineClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<EncoderClient>(resourceName);

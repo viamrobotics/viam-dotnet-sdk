@@ -25,12 +25,12 @@ namespace Viam.Core.Resources.Components.Board
         public static SubType SubType = SubType.FromRdkComponent("board");
 
         /// <summary>
-        /// Get a <see cref="BoardClient"/> by <paramref name="name"/> from the supplied <see cref="RobotClientBase"/>
+        /// Get a <see cref="BoardClient"/> by <paramref name="name"/> from the supplied <see cref="ViamMachineClientBase"/>
         /// </summary>
-        /// <param name="client">The <see cref="RobotClientBase"/></param>
+        /// <param name="client">The <see cref="ViamMachineClientBase"/></param>
         /// <param name="name">The name of the component</param>
         /// <returns>A <see cref="BoardClient"/> component</returns>
-        public static IBoard FromRobot(RobotClientBase client, string name)
+        public static IBoard FromRobot(ViamMachineClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<BoardClient>(resourceName);

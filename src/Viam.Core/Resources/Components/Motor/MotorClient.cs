@@ -19,7 +19,7 @@ namespace Viam.Core.Resources.Components.Motor
     {
         public static SubType SubType = SubType.FromRdkComponent("motor");
 
-        public static IMotor FromRobot(RobotClientBase client, string name)
+        public static IMotor FromRobot(ViamMachineClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<MotorClient>(resourceName);

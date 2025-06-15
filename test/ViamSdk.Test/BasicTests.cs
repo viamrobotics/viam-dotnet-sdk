@@ -68,7 +68,7 @@ namespace Viam.Core.Test
         [Test]
         public async Task TestTalkGrpcToARobot()
         {
-            var client = await RobotClient.CreateFromDialOptions(_robotClientOptions!);
+            var client = await ViamMachineClient.CreateFromDialOptions(_robotClientOptions!);
             var resourceNames = await client.ResourceNamesAsync();
             Assert.That(resourceNames, Is.Not.Null);
             var status = await client.GetStatusAsync();
@@ -80,7 +80,7 @@ namespace Viam.Core.Test
         [Test]
         public async Task TestTalkWebRtcToARobot()
         {
-            var client = await RobotClient.CreateFromDialOptions(_robotClientOptions!);
+            var client = await ViamMachineClient.CreateFromDialOptions(_robotClientOptions!);
 
             var resources = await client.ResourceNamesAsync();
             Assert.That(resources, Is.Not.Null);

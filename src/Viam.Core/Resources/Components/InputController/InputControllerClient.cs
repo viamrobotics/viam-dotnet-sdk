@@ -22,7 +22,7 @@ namespace Viam.Core.Resources.Components.InputController
         public static SubType SubType = SubType.FromRdkComponent("input_controller");
 
 
-        public static IInputController FromRobot(RobotClientBase client, string name)
+        public static IInputController FromRobot(ViamMachineClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<InputControllerClient>(resourceName);
