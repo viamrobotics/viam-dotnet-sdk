@@ -1,12 +1,13 @@
 ﻿using Microsoft.Extensions.Logging;
 using Viam.Client.Clients;
 using Viam.Client.Dialing;
+using Viam.Core.Clients;
 
 namespace Viam.Core.Test.Components
 {
     internal class BoardClientTests
     {
-        private MachineClient? _robotClient;
+        private IMachineClient? _robotClient;
 
         [SetUp]
         public async Task Setup()

@@ -18,7 +18,7 @@ namespace Viam.Core.Resources.Components.Gripper
     {
         public static SubType SubType = SubType.FromRdkComponent("gripper");
 
-        public static IGripper FromRobot(MachineClientBase client, string name)
+        public static IGripper FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<GripperClient>(resourceName);

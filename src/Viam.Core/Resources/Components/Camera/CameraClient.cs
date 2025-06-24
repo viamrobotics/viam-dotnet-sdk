@@ -20,7 +20,7 @@ namespace Viam.Core.Resources.Components.Camera
     {
         public static SubType SubType = SubType.FromRdkComponent("camera");
 
-        public static ICamera FromRobot(MachineClientBase client, string name)
+        public static ICamera FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<CameraClient>(resourceName);

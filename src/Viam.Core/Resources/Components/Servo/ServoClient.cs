@@ -20,7 +20,7 @@ namespace Viam.Core.Resources.Components.Servo
     {
         public static SubType SubType = SubType.FromRdkComponent("servo");
 
-        public static IServo FromRobot(MachineClientBase client, string name)
+        public static IServo FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<ServoClient>(resourceName);

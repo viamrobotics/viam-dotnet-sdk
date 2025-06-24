@@ -31,7 +31,7 @@ namespace Viam.Core.Resources.Components.Sensor
             return new ViamResourceName(SubType, name);
         }
 
-        public static ISensor FromRobot(MachineClientBase client, string name)
+        public static ISensor FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<SensorClient>(resourceName);

@@ -20,7 +20,7 @@ namespace Viam.Core.Resources.Components.Arm
     {
         public static SubType SubType = SubType.FromRdkComponent("arm");
 
-        public static IArm FromRobot(MachineClientBase client, string name)
+        public static IArm FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<ArmClient>(resourceName);

@@ -1,13 +1,14 @@
 ﻿using Microsoft.Extensions.Logging;
 using Viam.Client.Clients;
 using Viam.Client.Dialing;
+using Viam.Core.Clients;
 using Viam.Core.Resources.Components.Sensor;
 
 namespace Viam.Core.Test.Components
 {
     internal class SensorClientTests
     {
-        private MachineClient? _robotClient;
+        private IMachineClient? _robotClient;
 
         [SetUp]
         public async Task Setup()

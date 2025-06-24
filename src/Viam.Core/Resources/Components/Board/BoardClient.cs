@@ -30,7 +30,7 @@ namespace Viam.Core.Resources.Components.Board
         /// <param name="client">The <see cref="MachineClientBase"/></param>
         /// <param name="name">The name of the component</param>
         /// <returns>A <see cref="BoardClient"/> component</returns>
-        public static IBoard FromRobot(MachineClientBase client, string name)
+        public static IBoard FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<BoardClient>(resourceName);
