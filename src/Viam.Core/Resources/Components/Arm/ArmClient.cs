@@ -23,7 +23,7 @@ namespace Viam.Core.Resources.Components.Arm
         public static IArm FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<ArmClient>(resourceName);
+            return client.GetComponent<IArm>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

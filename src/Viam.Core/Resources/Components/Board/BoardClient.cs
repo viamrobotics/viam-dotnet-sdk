@@ -33,7 +33,7 @@ namespace Viam.Core.Resources.Components.Board
         public static IBoard FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<BoardClient>(resourceName);
+            return client.GetComponent<IBoard>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

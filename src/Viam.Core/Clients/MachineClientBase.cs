@@ -1,8 +1,11 @@
 ﻿using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
+
 using Grpc.Core;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -10,6 +13,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Viam.Common.V1;
 using Viam.Core.Logging;
 using Viam.Core.Resources;
@@ -68,29 +72,30 @@ namespace Viam.Core.Clients
             serviceCollection.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
 
             // Register the built-in component types
-            RegisterComponent<ArmClient>(serviceCollection);
-            RegisterComponent<BaseClient>(serviceCollection);
-            RegisterComponent<BoardClient>(serviceCollection);
-            RegisterComponent<CameraClient>(serviceCollection);
-            RegisterComponent<EncoderClient>(serviceCollection);
-            RegisterComponent<GantryClient>(serviceCollection);
-            RegisterComponent<GripperClient>(serviceCollection);
-            RegisterComponent<InputControllerClient>(serviceCollection);
-            RegisterComponent<MotorClient>(serviceCollection);
-            RegisterComponent<MovementSensorClient>(serviceCollection);
-            RegisterComponent<PowerSensorClient>(serviceCollection);
-            RegisterComponent<SensorClient>(serviceCollection);
-            RegisterComponent<ServoClient>(serviceCollection);
+            RegisterComponent<IArm, ArmClient>(serviceCollection);
+            RegisterComponent<IBase, BaseClient>(serviceCollection);
+            RegisterComponent<IBoard, BoardClient>(serviceCollection);
+            RegisterComponent<ICamera, CameraClient>(serviceCollection);
+            RegisterComponent<IEncoder, EncoderClient>(serviceCollection);
+            RegisterComponent<IGantry, GantryClient>(serviceCollection);
+            RegisterComponent<IGripper, GripperClient>(serviceCollection);
+            RegisterComponent<IInputController, InputControllerClient>(serviceCollection);
+            RegisterComponent<IMotor, MotorClient>(serviceCollection);
+            RegisterComponent<IMovementSensor, MovementSensorClient>(serviceCollection);
+            RegisterComponent<IPowerSensor, PowerSensorClient>(serviceCollection);
+            RegisterComponent<ISensor, SensorClient>(serviceCollection);
+            RegisterComponent<IServo, ServoClient>(serviceCollection);
 
             // Now we can build the provider
             _services = serviceCollection.BuildServiceProvider();
         }
 
-        private static void RegisterComponent<
+        private static void RegisterComponent<TService,
             [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TImpl>(
-            IServiceCollection services) where TImpl : class, IResourceBase
+            IServiceCollection services) where TImpl : class, TService, IResourceBase where TService : class, IResourceBase
         {
             services.AddTransient<IResourceBase, TImpl>();
+            services.AddTransient<TService, TImpl>();
             services.AddTransient<TImpl>();
         }
 

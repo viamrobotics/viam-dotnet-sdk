@@ -23,7 +23,7 @@ namespace Viam.Core.Resources.Components.Camera
         public static ICamera FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<CameraClient>(resourceName);
+            return client.GetComponent<ICamera>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

@@ -22,7 +22,7 @@ namespace Viam.Core.Resources.Components.Base
         public static IBase FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<BaseClient>(resourceName);
+            return client.GetComponent<IBase>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

@@ -25,7 +25,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
         public static IMovementSensor FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<MovementSensorClient>(resourceName);
+            return client.GetComponent<IMovementSensor>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

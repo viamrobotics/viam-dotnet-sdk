@@ -25,7 +25,7 @@ namespace Viam.Core.Resources.Components.InputController
         public static IInputController FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<InputControllerClient>(resourceName);
+            return client.GetComponent<IInputController>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;
