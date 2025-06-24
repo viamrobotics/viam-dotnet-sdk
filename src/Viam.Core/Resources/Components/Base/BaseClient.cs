@@ -19,7 +19,7 @@ namespace Viam.Core.Resources.Components.Base
     {
         public static SubType SubType = SubType.FromRdkComponent("base");
 
-        public static IBase FromRobot(ViamMachineClientBase client, string name)
+        public static IBase FromRobot(MachineClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<BaseClient>(resourceName);

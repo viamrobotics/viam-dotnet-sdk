@@ -11,7 +11,7 @@ using Viam.Robot.V1;
 
 namespace Viam.Core.Clients
 {
-    public interface IViamMachineClient : IAsyncDisposable
+    public interface IMachineClient : IAsyncDisposable
     {
         public T GetComponent<T>(ViamResourceName resourceName) where T : IResourceBase;
 

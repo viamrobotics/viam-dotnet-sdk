@@ -42,7 +42,7 @@ namespace Viam.ModularResources.Services
                 _logger.LogDebug("Dialed parent, preparing resources...");
 
                 // Try to load the resources from the parent
-                var client = new ViamMachineClientBase(loggerFactory, channel);
+                var client = new MachineClientBase(loggerFactory, channel);
                 var remoteResourceNames = await client.ResourceNamesAsync();
                 foreach (var name in remoteResourceNames)
                 {

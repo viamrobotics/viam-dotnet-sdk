@@ -7,7 +7,7 @@ namespace Viam.Core.Test.Components
 {
     internal class SensorClientTests
     {
-        private ViamMachineClient? _robotClient;
+        private MachineClient? _robotClient;
 
         [SetUp]
         public async Task Setup()
@@ -31,7 +31,7 @@ namespace Viam.Core.Test.Components
                 .WithApiCredentials(apiKey, apiKeyId)
                 .SetDisableWebRtc();
 
-            _robotClient = await ViamMachineClient.CreateFromDialOptions(robotClientOptions);
+            _robotClient = await MachineClient.CreateFromDialOptions(robotClientOptions);
         }
 
         [Test]

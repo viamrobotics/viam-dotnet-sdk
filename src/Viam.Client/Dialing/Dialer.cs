@@ -8,7 +8,7 @@ namespace Viam.Client.Dialing
     /// <summary>
     /// A dialer for connecting to a Viam server
     ///
-    /// Note: You probably don't need to use this class directly. Instead, use the `ViamMachineClient` and `ViamClient` classes instead. This is exposed for advanced use cases.
+    /// Note: You probably don't need to use this class directly. Instead, use the `MachineClient` and `ViamClient` classes instead. This is exposed for advanced use cases.
     /// </summary>
     public class Dialer
     {

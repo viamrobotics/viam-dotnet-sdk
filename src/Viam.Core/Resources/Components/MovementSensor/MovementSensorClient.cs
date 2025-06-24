@@ -22,7 +22,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
         public static SubType SubType = SubType.FromRdkComponent("movement_sensor");
 
 
-        public static IMovementSensor FromRobot(ViamMachineClientBase client, string name)
+        public static IMovementSensor FromRobot(MachineClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<MovementSensorClient>(resourceName);

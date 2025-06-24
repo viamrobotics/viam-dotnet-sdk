@@ -31,15 +31,15 @@ using Viam.Robot.V1;
 
 namespace Viam.Core.Clients
 {
-    public class ViamMachineClientBase : IViamMachineClient
+    public class MachineClientBase : IMachineClient
     {
-        protected readonly ILogger<ViamMachineClientBase> Logger;
+        protected readonly ILogger<MachineClientBase> Logger;
         private readonly RobotService.RobotServiceClient _robotServiceClient;
         private readonly IServiceProvider _services;
         private readonly SemaphoreSlim _disposeLock = new(1, 1);
         private bool _isDisposed;
 
-        private ViamMachineClientBase(ILogger<ViamMachineClientBase> logger, ViamChannel channel)
+        private MachineClientBase(ILogger<MachineClientBase> logger, ViamChannel channel)
         {
             Logger = logger;
             _robotServiceClient = new RobotService.RobotServiceClient(channel);
@@ -48,17 +48,17 @@ namespace Viam.Core.Clients
             _services = new ServiceCollection().BuildServiceProvider();
         }
 
-        protected internal ViamMachineClientBase(ILogger<ViamMachineClientBase> logger, ViamChannel channel,
+        protected internal MachineClientBase(ILogger<MachineClientBase> logger, ViamChannel channel,
             IServiceProvider services)
             : this(logger, channel)
         {
             _services = services;
         }
 
-        protected internal ViamMachineClientBase(ILoggerFactory loggerFactory, ViamChannel channel)
-            : this(loggerFactory.CreateLogger<ViamMachineClientBase>(), channel)
+        protected internal MachineClientBase(ILoggerFactory loggerFactory, ViamChannel channel)
+            : this(loggerFactory.CreateLogger<MachineClientBase>(), channel)
         {
-            Logger = loggerFactory.CreateLogger<ViamMachineClientBase>();
+            Logger = loggerFactory.CreateLogger<MachineClientBase>();
             _robotServiceClient = new RobotService.RobotServiceClient(channel);
 
             var serviceCollection = new ServiceCollection();
@@ -137,7 +137,7 @@ namespace Viam.Core.Clients
 
         private void ThrowIfDisposed()
         {
-            ObjectDisposedException.ThrowIf(_isDisposed, nameof(ViamMachineClientBase));
+            ObjectDisposedException.ThrowIf(_isDisposed, nameof(MachineClientBase));
         }
 
         public T GetComponent<T>(ViamResourceName resourceName) where T : IResourceBase
@@ -545,6 +545,6 @@ namespace Viam.Core.Clients
             }
         }
 
-        public override string ToString() => $"ViamMachineClientBase+{_services.GetRequiredService<ViamChannel>()}";
+        public override string ToString() => $"MachineClientBase+{_services.GetRequiredService<ViamChannel>()}";
     }
 }

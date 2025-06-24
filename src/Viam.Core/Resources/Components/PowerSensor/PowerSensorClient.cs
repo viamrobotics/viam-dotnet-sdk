@@ -19,7 +19,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
     {
         public static SubType SubType = SubType.FromRdkComponent("power_sensor");
 
-        public static IPowerSensor FromRobot(ViamMachineClientBase client, string name)
+        public static IPowerSensor FromRobot(MachineClientBase client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return client.GetComponent<PowerSensorClient>(resourceName);
