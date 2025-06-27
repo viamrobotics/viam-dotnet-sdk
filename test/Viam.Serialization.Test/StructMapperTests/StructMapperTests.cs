@@ -4,6 +4,13 @@ namespace Viam.Serialization.Test.StructMapperTests
 {
     public class StructMapperTests
     {
+        private void foo(Google.Protobuf.WellKnownTypes.Struct s)
+        {
+            if (s.Fields.TryGetValue("StringArray", out var StringArray_val))
+            {
+                StringArray_val.ListValue.Values.Select(x => x.StringValue);
+            }
+        }
         [Fact]
         public void RoundTrip()
         {
@@ -73,6 +80,7 @@ namespace Viam.Serialization.Test.StructMapperTests
     [StructMappable]
     public partial class MyClass
     {
+        public string[] StringArray { get; set; } = [];
         public MyEnum RequiredMyEnum { get; set; }
         public MyEnum? NullableRequiredMyEnum { get; set; }
         public MyEnum MyEnum { get; set; }

@@ -109,27 +109,22 @@ namespace Viam.Serialization.Analyzer
                         var elementType = arrayType.ElementType;
                         if (elementType.SpecialType == SpecialType.System_String)
                         {
-                            sb.AppendLine($"{indent}            result.{propName} = {propName}_val.StringValues.ToArray();");
+                            sb.AppendLine($"{indent}            result.{propName} = {propName}_val.ListValue.Values.Select(value => value.StringValue).ToArray();");
                         }
                         else if (elementType.SpecialType == SpecialType.System_Boolean)
                         {
-                            sb.AppendLine($"{indent}            result.{propName} = {propName}_val.BoolValues.ToArray();");
+                            sb.AppendLine($"{indent}            result.{propName} = {propName}_val.ListValue.Values.Select(value => value.BoolValue).ToArray();");
                         }
-                        else if (elementType.SpecialType == SpecialType.System_Byte ||
-                                 elementType.SpecialType == SpecialType.System_SByte ||
-                                 elementType.SpecialType == SpecialType.System_Int16 ||
-                                 elementType.SpecialType == SpecialType.System_UInt16 ||
-                                 elementType.SpecialType == SpecialType.System_Int32 ||
-                                 elementType.SpecialType == SpecialType.System_UInt32 ||
-                                 elementType.SpecialType == SpecialType.System_Int64 ||
-                                 elementType.SpecialType == SpecialType.System_UInt64 ||
-                                 elementType.SpecialType == SpecialType.System_Single ||
-                                 elementType.SpecialType == SpecialType.System_Double ||
-                                 elementType.SpecialType == SpecialType.System_Decimal)
+                        else if (elementType.SpecialType is SpecialType.System_Byte or SpecialType.System_SByte
+                                 or SpecialType.System_Int16 or SpecialType.System_UInt16 or SpecialType.System_Int32
+                                 or SpecialType.System_UInt32 or SpecialType.System_Int64 or SpecialType.System_UInt64
+                                 or SpecialType.System_Single or SpecialType.System_Double
+                                 or SpecialType.System_Decimal)
                         {
-                            sb.AppendLine($"{indent}            result.{propName} = {propName}_val.NumberValues.ToArray();");
+                            sb.AppendLine(
+                                $"{indent}            result.{propName} = {propName}_val.ListValue.Values.Select(value => ({typeShape.Type.WithNullableAnnotation(NullableAnnotation.None)})value.NumberValue).ToArray();");
                         }
-                        else if (elementType.TypeKind == TypeKind.Class || elementType.TypeKind == TypeKind.Struct)
+                        else if (elementType.TypeKind is TypeKind.Class or TypeKind.Struct)
                         {
                             sb.AppendLine($"{indent}            result.{propName} = {propName}_val.StructValues.Select(v => {elementType.Name}.FromStruct(v)).ToArray();");
                         }
