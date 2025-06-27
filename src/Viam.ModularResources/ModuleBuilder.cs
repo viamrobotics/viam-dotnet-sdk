@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Server.Kestrel.Core;
+
 using System.Diagnostics.CodeAnalysis;
+
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components;
 using Viam.Core.Resources.Components.Arm;
@@ -34,6 +36,10 @@ namespace Viam.ModularResources
             if (args.Length != 1)
                 throw new ArgumentException("You must provide a Unix socket path");
             _hostBuilder = Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) => config
+                    .AddEnvironmentVariables()
+                        .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                        .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true))
                 .ConfigureServices((c, s) =>
                 {
                     if (loggerFactory != null)
@@ -83,13 +89,25 @@ namespace Viam.ModularResources
             RegisterService<ServoService>();
         }
 
-        public void ConfigureServices(Action<HostBuilderContext, IServiceCollection> configureDelegate) =>
-            _hostBuilder.ConfigureServices(configureDelegate);
+        public ModuleBuilder ConfigureAppConfiguration(Action<HostBuilderContext, IConfigurationBuilder> configureDelegate)
+        {
+            _hostBuilder.ConfigureAppConfiguration(configureDelegate);
+            return this;
+        }
 
-        public void ConfigureServices(Action<IServiceCollection> configureDelegate) =>
+        public ModuleBuilder ConfigureServices(Action<HostBuilderContext, IServiceCollection> configureDelegate)
+        {
             _hostBuilder.ConfigureServices(configureDelegate);
+            return this;
+        }
 
-        public void RegisterService<
+        public ModuleBuilder ConfigureServices(Action<IServiceCollection> configureDelegate)
+        {
+            _hostBuilder.ConfigureServices(configureDelegate);
+            return this;
+        }
+
+        public ModuleBuilder RegisterService<
             [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TService>()
             where TService : class, IServiceBase
         {
@@ -98,20 +116,22 @@ namespace Viam.ModularResources
                 s.AddSingleton<TService>();
                 //s.AddSingleton<IServiceBase, TService>(s => s.GetRequiredService<TService>());
             });
+            return this;
         }
 
-        public void RegisterComponent<TComponentInterface,
+        public ModuleBuilder RegisterComponent<TComponentInterface,
             [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors |
                                         DynamicallyAccessedMemberTypes.PublicProperties)]
-            TComponent>()
+        TComponent>()
             where TComponentInterface : class, IComponentBase
             where TComponent : class, IResourceBase, TComponentInterface, IModularResourceService
         {
             _hostBuilder.ConfigureServices(s =>
             {
                 s.AddKeyedTransient<IModularResource, TComponent>(TComponent.SubType);
-                _postConfigureActions.Add(s => RegisterTypeHelper<TComponentInterface, TComponent>(s));
+                _postConfigureActions.Add(RegisterTypeHelper<TComponentInterface, TComponent>);
             });
+            return this;
         }
 
         public Module Build()
@@ -128,7 +148,7 @@ namespace Viam.ModularResources
         private static void RegisterTypeHelper<TComponentInterface,
             [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors |
                                         DynamicallyAccessedMemberTypes.PublicProperties)]
-            TComponent>(IServiceProvider services)
+        TComponent>(IServiceProvider services)
             where TComponentInterface : class, IComponentBase
             where TComponent : class, IResourceBase, TComponentInterface, IModularResourceService
         {

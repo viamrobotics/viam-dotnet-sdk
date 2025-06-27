@@ -209,7 +209,7 @@ namespace Viam.ModularResources.Services
                     throw;
                 }
 
-                _logger.LogDebug("Reconfigured {ReourceName}", resource.Name);
+                _logger.LogDebug("Reconfigured {ResourceName}", resource.Name);
             }
             else if (resource is IReconfigurable reconfigurable)
             {
@@ -224,7 +224,7 @@ namespace Viam.ModularResources.Services
                     throw;
                 }
 
-                _logger.LogDebug("Reconfigured {ReourceName}", resource.Name);
+                _logger.LogDebug("Reconfigured {ResourceName}", resource.Name);
             }
             else
             {
