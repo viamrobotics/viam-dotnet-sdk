@@ -71,7 +71,7 @@ namespace Viam.Serialization.Analyzer
                     case { IsString: true }:
                         sb.AppendLine($"{indent}            result.{propName} = {propName}_val.StringValue;");
                         break;
-                    case {IsBoolean: true}:
+                    case { IsBoolean: true }:
                         sb.AppendLine($"{indent}            result.{propName} = {propName}_val.BoolValue;");
                         break;
                     case { IsNumeric: true, IsNullable: true }:
@@ -85,13 +85,67 @@ namespace Viam.Serialization.Analyzer
                     case { IsNumeric: true, IsNullable: false }:
                         sb.AppendLine($"{indent}            result.{propName} = ({typeShape.Type.WithNullableAnnotation(NullableAnnotation.None)}){propName}_val.NumberValue;");
                         break;
-                    default:
-                    {
-                        sb.AppendLine(prop.Type.TypeKind is TypeKind.Class or TypeKind.Struct
-                            ? $"{indent}            result.{propName} = {typeShape.Type.Name}.FromStruct({propName}_val.StructValue);"
-                            : $"{indent}            // Unsupported type: {typeShape.Type.Name}");
+                    case { IsEnum: true, IsNullable: true }:
+                        sb.AppendLine($"{indent}            result.{propName} = {propName}_val.KindCase switch");
+                        sb.AppendLine($"{indent}            {{");
+                        sb.AppendLine($"{indent}                Google.Protobuf.WellKnownTypes.Value.KindOneofCase.NullValue => ({typeShape.Type.WithNullableAnnotation(NullableAnnotation.Annotated)}?)null,");
+                        sb.AppendLine($"{indent}                Google.Protobuf.WellKnownTypes.Value.KindOneofCase.NumberValue => ({typeShape.Type.WithNullableAnnotation(NullableAnnotation.None)}){propName}_val.NumberValue,");
+                        sb.AppendLine($"{indent}                Google.Protobuf.WellKnownTypes.Value.KindOneofCase.StringValue => ({typeShape.Type.WithNullableAnnotation(NullableAnnotation.None)})Enum.Parse<{typeShape.Type.WithNullableAnnotation(NullableAnnotation.None)}>({propName}_val.StringValue),");
+                        sb.AppendLine($"{indent}                _ => throw new InvalidOperationException(\"Unexpected kind for NullableShort\")");
+                        sb.AppendLine($"{indent}            }};");
                         break;
-                    }
+                    case { IsEnum: true, IsNullable: false }:
+                        sb.AppendLine($"{indent}            result.{propName} = {propName}_val.KindCase switch");
+                        sb.AppendLine($"{indent}            {{");
+                        sb.AppendLine($"{indent}                Google.Protobuf.WellKnownTypes.Value.KindOneofCase.NumberValue => ({typeShape.Type.WithNullableAnnotation(NullableAnnotation.None)}){propName}_val.NumberValue,");
+                        sb.AppendLine($"{indent}                Google.Protobuf.WellKnownTypes.Value.KindOneofCase.StringValue => ({typeShape.Type.WithNullableAnnotation(NullableAnnotation.None)})Enum.Parse<{typeShape.Type.WithNullableAnnotation(NullableAnnotation.None)}>({propName}_val.StringValue),");
+                        sb.AppendLine($"{indent}                _ => throw new InvalidOperationException(\"Unexpected kind for NullableShort\")");
+                        sb.AppendLine($"{indent}            }};");
+                        break;
+
+                    // Handle arrays (IsArray is true)
+                    case { IsArray: true, Type: IArrayTypeSymbol arrayType }:
+                        // Check element type
+                        var elementType = arrayType.ElementType;
+                        if (elementType.SpecialType == SpecialType.System_String)
+                        {
+                            sb.AppendLine($"{indent}            result.{propName} = {propName}_val.StringValues.ToArray();");
+                        }
+                        else if (elementType.SpecialType == SpecialType.System_Boolean)
+                        {
+                            sb.AppendLine($"{indent}            result.{propName} = {propName}_val.BoolValues.ToArray();");
+                        }
+                        else if (elementType.SpecialType == SpecialType.System_Byte ||
+                                 elementType.SpecialType == SpecialType.System_SByte ||
+                                 elementType.SpecialType == SpecialType.System_Int16 ||
+                                 elementType.SpecialType == SpecialType.System_UInt16 ||
+                                 elementType.SpecialType == SpecialType.System_Int32 ||
+                                 elementType.SpecialType == SpecialType.System_UInt32 ||
+                                 elementType.SpecialType == SpecialType.System_Int64 ||
+                                 elementType.SpecialType == SpecialType.System_UInt64 ||
+                                 elementType.SpecialType == SpecialType.System_Single ||
+                                 elementType.SpecialType == SpecialType.System_Double ||
+                                 elementType.SpecialType == SpecialType.System_Decimal)
+                        {
+                            sb.AppendLine($"{indent}            result.{propName} = {propName}_val.NumberValues.ToArray();");
+                        }
+                        else if (elementType.TypeKind == TypeKind.Class || elementType.TypeKind == TypeKind.Struct)
+                        {
+                            sb.AppendLine($"{indent}            result.{propName} = {propName}_val.StructValues.Select(v => {elementType.Name}.FromStruct(v)).ToArray();");
+                        }
+                        else
+                        {
+                            sb.AppendLine($"{indent}            // Unsupported array element type: {elementType.Name}");
+                        }
+                        break;
+
+                    default:
+                        {
+                            sb.AppendLine(prop.Type.TypeKind is TypeKind.Class or TypeKind.Struct
+                                ? $"{indent}            result.{propName} = {typeShape.Type.Name}.FromStruct({propName}_val.StructValue);"
+                                : $"{indent}            // Unsupported type: {typeShape.Type.Name}");
+                            break;
+                        }
                 }
 
                 sb.AppendLine($"{indent}        }}");

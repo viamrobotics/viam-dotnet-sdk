@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
-using Viam.Core.Utils;
 
-namespace Viam.Serialization.Test
+namespace Viam.Serialization.Test.DictionaryMapperTests
 {
     public class DictionaryMapperTests
     {
@@ -51,7 +50,7 @@ namespace Viam.Serialization.Test
             Assert.IsType<string>(sourceDict["String"]);
             Assert.IsType<bool>(sourceDict["Bool"]);
             Assert.IsType<Dictionary<string, object?>>(sourceDict["SubClass"]);
-            var sourceStruct = sourceDict.ToStruct();
+            var sourceStruct = sourceDict.ToDictionary();
             var destDict = sourceStruct.ToDictionary();
             var destClass = MyClass.FromDictionary(destDict);
             CheckProperties(sourceClass, destClass);
@@ -70,7 +69,6 @@ namespace Viam.Serialization.Test
             }
         }
     }
-
 
     [GenerateDictionaryMapper]
     public partial class MyClass
