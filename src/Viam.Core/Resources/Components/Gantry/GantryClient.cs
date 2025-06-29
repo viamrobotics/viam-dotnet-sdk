@@ -22,7 +22,7 @@ namespace Viam.Core.Resources.Components.Gantry
         public static IGantry FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IGantry>(resourceName);
+            return client.GetComponent<GantryClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

@@ -6,6 +6,9 @@
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <VersionPrefix>0.0.0-dev</VersionPrefix>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <CopyDebugSymbolFilesFromPackages>true</CopyDebugSymbolFilesFromPackages>
+    <CopyDocumentationFilesFromPackages>true</CopyDocumentationFilesFromPackages>
 
     <PackageId>Viam.Serialization</PackageId>
     <Authors>Viam</Authors>

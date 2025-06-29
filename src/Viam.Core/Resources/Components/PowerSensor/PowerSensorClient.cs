@@ -22,7 +22,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
         public static IPowerSensor FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IPowerSensor>(resourceName);
+            return client.GetComponent<PowerSensorClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

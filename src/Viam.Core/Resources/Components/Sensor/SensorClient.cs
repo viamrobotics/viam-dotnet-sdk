@@ -34,7 +34,7 @@ namespace Viam.Core.Resources.Components.Sensor
         public static ISensor FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<ISensor>(resourceName);
+            return client.GetComponent<SensorClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

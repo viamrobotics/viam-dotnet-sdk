@@ -8,6 +8,10 @@
 		<TrimmerSingleWarn>false</TrimmerSingleWarn>
 		<Platforms>AnyCPU</Platforms>
     <VersionPrefix>0.0.0-dev</VersionPrefix>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <CopyDebugSymbolFilesFromPackages>true</CopyDebugSymbolFilesFromPackages>
+    <CopyDocumentationFilesFromPackages>true</CopyDocumentationFilesFromPackages>
+
 
     <PackageId>Viam.Client</PackageId>
     <Authors>Viam</Authors>

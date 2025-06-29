@@ -22,7 +22,7 @@ namespace Viam.Core.Resources.Components.Motor
         public static IMotor FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IMotor>(resourceName);
+            return client.GetComponent<MotorClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

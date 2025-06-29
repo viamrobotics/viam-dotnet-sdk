@@ -22,7 +22,7 @@ namespace Viam.Core.Resources.Components.Encoder
         public static IEncoder FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IEncoder>(resourceName);
+            return client.GetComponent<EncoderClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

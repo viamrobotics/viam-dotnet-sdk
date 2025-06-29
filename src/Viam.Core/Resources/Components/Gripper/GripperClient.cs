@@ -21,7 +21,7 @@ namespace Viam.Core.Resources.Components.Gripper
         public static IGripper FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IGripper>(resourceName);
+            return client.GetComponent<GripperClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;
