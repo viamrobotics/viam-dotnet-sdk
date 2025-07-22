@@ -28,4 +28,6 @@ namespace Viam.Core.Resources.Components.Camera
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }
+
+    public interface ICameraClient : ICamera;
 }

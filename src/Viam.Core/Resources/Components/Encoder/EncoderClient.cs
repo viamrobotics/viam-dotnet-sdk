@@ -15,14 +15,14 @@ namespace Viam.Core.Resources.Components.Encoder
     public class EncoderClient(ViamResourceName resourceName, ViamChannel channel, ILogger<EncoderClient> logger) :
         ComponentBase<EncoderClient, Component.Encoder.V1.EncoderService.EncoderServiceClient>(resourceName,
             new Component.Encoder.V1.EncoderService.EncoderServiceClient(channel)),
-        IEncoder
+        IEncoderClient
     {
         public static SubType SubType = SubType.FromRdkComponent("encoder");
 
-        public static IEncoder FromRobot(IMachineClient client, string name)
+        public static IEncoderClient FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<EncoderClient>(resourceName);
+            return client.GetComponent<IEncoderClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

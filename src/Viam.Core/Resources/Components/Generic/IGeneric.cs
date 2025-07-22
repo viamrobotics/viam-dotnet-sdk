@@ -12,4 +12,6 @@ namespace Viam.Core.Resources.Components.Generic
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }
+
+    public interface IGenericClient : IGeneric;
 }

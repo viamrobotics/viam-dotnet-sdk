@@ -34,4 +34,6 @@ namespace Viam.Core.Resources.Components.Servo
             CancellationToken cancellationToken = default,
             [CallerMemberName] string? caller = null);
     }
+
+    public interface IServoClient : IServo;
 }

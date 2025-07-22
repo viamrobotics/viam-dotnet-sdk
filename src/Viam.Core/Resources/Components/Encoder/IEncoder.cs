@@ -26,4 +26,6 @@ namespace Viam.Core.Resources.Components.Encoder
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }
+
+    public interface IEncoderClient : IEncoder;
 }

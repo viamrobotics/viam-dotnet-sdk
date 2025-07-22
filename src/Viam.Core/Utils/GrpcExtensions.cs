@@ -1,8 +1,10 @@
 ﻿using Google.Protobuf.Collections;
 using Google.Protobuf.WellKnownTypes;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Viam.Core.Resources;
 
 namespace Viam.Core.Utils
@@ -92,6 +94,9 @@ namespace Viam.Core.Utils
             timeSpan.HasValue
                 ? DateTime.UtcNow.Add(timeSpan.Value)
                 : null;
+
+        public static DateTime? ToDeadline(this TimeSpan timeSpan) =>
+            DateTime.UtcNow.Add(timeSpan);
 
         public static TimeSpan? ToTimeout(this DateTime? dateTime) =>
             dateTime.HasValue

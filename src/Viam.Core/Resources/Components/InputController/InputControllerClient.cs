@@ -17,15 +17,15 @@ namespace Viam.Core.Resources.Components.InputController
                 Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient>(
                 resourceName,
                 new Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient(channel)),
-            IInputController
+            IInputControllerClient
     {
         public static SubType SubType = SubType.FromRdkComponent("input_controller");
 
 
-        public static IInputController FromRobot(IMachineClient client, string name)
+        public static IInputControllerClient FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<InputControllerClient>(resourceName);
+            return client.GetComponent<IInputControllerClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

@@ -37,4 +37,6 @@ namespace Viam.Core.Resources.Components.Gantry
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }
+
+    public interface IGantryClient : IGantry;
 }

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+
+using System;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,6 +14,7 @@ namespace Viam.Core.Resources
         public string Name => ResourceName.Name;
         public abstract DateTime? LastReconfigured { get; }
         public virtual ResourceStatus GetStatus() => ResourceStatus.DefaultCreator(this);
+
         public abstract ValueTask StopResource();
 
         public abstract ValueTask<Dictionary<string, object?>> DoCommand(

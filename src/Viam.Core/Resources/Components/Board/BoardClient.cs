@@ -20,7 +20,7 @@ namespace Viam.Core.Resources.Components.Board
     public class BoardClient(ViamResourceName resourceName, ViamChannel channel, ILogger<BoardClient> logger)
         : ComponentBase<BoardClient, Component.Board.V1.BoardService.BoardServiceClient>(resourceName,
                 new Component.Board.V1.BoardService.BoardServiceClient(channel)),
-            IBoard
+            IBoardClient
     {
         public static SubType SubType = SubType.FromRdkComponent("board");
 
@@ -30,10 +30,10 @@ namespace Viam.Core.Resources.Components.Board
         /// <param name="client">The <see cref="MachineClientBase"/></param>
         /// <param name="name">The name of the component</param>
         /// <returns>A <see cref="BoardClient"/> component</returns>
-        public static IBoard FromRobot(IMachineClient client, string name)
+        public static IBoardClient FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<BoardClient>(resourceName);
+            return client.GetComponent<IBoardClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

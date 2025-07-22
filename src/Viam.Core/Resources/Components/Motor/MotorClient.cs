@@ -15,14 +15,14 @@ namespace Viam.Core.Resources.Components.Motor
     public class MotorClient(ViamResourceName resourceName, ViamChannel channel, ILogger<MotorClient> logger) :
         ComponentBase<MotorClient, Component.Motor.V1.MotorService.MotorServiceClient>(resourceName,
             new Component.Motor.V1.MotorService.MotorServiceClient(channel)),
-        IMotor
+        IMotorClient
     {
         public static SubType SubType = SubType.FromRdkComponent("motor");
 
-        public static IMotor FromRobot(IMachineClient client, string name)
+        public static IMotorClient FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<MotorClient>(resourceName);
+            return client.GetComponent<IMotorClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

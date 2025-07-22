@@ -42,4 +42,6 @@ namespace Viam.Core.Resources.Components.Arm
         ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null, TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }
+
+    public interface IArmClient : IArm;
 }

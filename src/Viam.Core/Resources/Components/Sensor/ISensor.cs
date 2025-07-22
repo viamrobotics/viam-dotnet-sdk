@@ -11,4 +11,6 @@ namespace Viam.Core.Resources.Components.Sensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }
+
+    public interface ISensorClient : ISensor;
 }

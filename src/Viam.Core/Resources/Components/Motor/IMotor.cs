@@ -53,4 +53,6 @@ namespace Viam.Core.Resources.Components.Motor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }
+
+    public interface IMotorClient : IMotor;
 }

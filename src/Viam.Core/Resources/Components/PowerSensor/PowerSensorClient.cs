@@ -15,14 +15,14 @@ namespace Viam.Core.Resources.Components.PowerSensor
         ComponentBase<PowerSensorClient, Component.Powersensor.V1.PowerSensorService.PowerSensorServiceClient>(
             resourceName,
             new Component.Powersensor.V1.PowerSensorService.PowerSensorServiceClient(channel)),
-        IPowerSensor
+        IPowerSensorClient
     {
         public static SubType SubType = SubType.FromRdkComponent("power_sensor");
 
-        public static IPowerSensor FromRobot(IMachineClient client, string name)
+        public static IPowerSensorClient FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<PowerSensorClient>(resourceName);
+            return client.GetComponent<IPowerSensorClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

@@ -20,4 +20,6 @@ namespace Viam.Core.Resources.Components.PowerSensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }
+
+    public interface IPowerSensorClient : IPowerSensor;
 }

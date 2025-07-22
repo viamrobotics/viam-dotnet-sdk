@@ -14,14 +14,14 @@ namespace Viam.Core.Resources.Components.Gripper
     public class GripperClient(ViamResourceName resourceName, ViamChannel channel, ILogger<GripperClient> logger) :
         ComponentBase<GripperClient, Component.Gripper.V1.GripperService.GripperServiceClient>(resourceName,
             new Component.Gripper.V1.GripperService.GripperServiceClient(channel)),
-        IGripper
+        IGripperClient
     {
         public static SubType SubType = SubType.FromRdkComponent("gripper");
 
-        public static IGripper FromRobot(IMachineClient client, string name)
+        public static IGripperClient FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<GripperClient>(resourceName);
+            return client.GetComponent<IGripperClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

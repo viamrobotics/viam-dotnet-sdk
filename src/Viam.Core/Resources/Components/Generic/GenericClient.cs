@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Viam.Common.V1;
+using Viam.Core.Clients;
 using Viam.Core.Logging;
 using Viam.Core.Utils;
 
@@ -13,8 +14,17 @@ namespace Viam.Core.Resources.Components.Generic
     public class GenericClient(ViamResourceName resourceName, ViamChannel channel, ILogger<GenericClient> logger) :
         ComponentBase<GenericClient, Component.Generic.V1.GenericService.GenericServiceClient>(resourceName,
             new Component.Generic.V1.GenericService.GenericServiceClient(channel)),
-        IGeneric
+        IGenericClient
     {
+
+        public static SubType SubType = SubType.FromRdkComponent("generic");
+
+        public static IGenericClient FromRobot(IMachineClient client, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            return client.GetComponent<IGenericClient>(resourceName);
+        }
+
         public override DateTime? LastReconfigured { get; }
 
         public override async ValueTask<Dictionary<string, object?>> DoCommand(

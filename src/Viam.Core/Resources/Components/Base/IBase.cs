@@ -74,4 +74,6 @@ namespace Viam.Core.Resources.Components.Base
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }
+
+    public interface IBaseClient : IBase;
 }

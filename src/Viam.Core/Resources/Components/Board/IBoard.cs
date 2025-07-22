@@ -66,4 +66,6 @@ namespace Viam.Core.Resources.Components.Board
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }
+
+    public interface IBoardClient : IBoard;
 }

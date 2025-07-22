@@ -22,4 +22,6 @@ namespace Viam.Core.Resources.Components.Gripper
         ValueTask<bool> IsMoving(TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }
+
+    public interface IGripperClient : IGripper;
 }

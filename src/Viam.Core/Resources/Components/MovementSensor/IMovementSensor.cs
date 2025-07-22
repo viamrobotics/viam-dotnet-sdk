@@ -45,4 +45,6 @@ namespace Viam.Core.Resources.Components.MovementSensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }
+
+    public interface IMovementSensorClient : IMovementSensor;
 }

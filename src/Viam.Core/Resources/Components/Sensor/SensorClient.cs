@@ -20,7 +20,7 @@ namespace Viam.Core.Resources.Components.Sensor
         : ComponentBase<SensorClient, Component.Sensor.V1.SensorService.SensorServiceClient>(
                 resourceName,
                 new Component.Sensor.V1.SensorService.SensorServiceClient(channel)),
-            ISensor
+            ISensorClient
     {
         public static SubType SubType = SubType.FromRdkComponent("sensor");
 
@@ -31,10 +31,10 @@ namespace Viam.Core.Resources.Components.Sensor
             return new ViamResourceName(SubType, name);
         }
 
-        public static ISensor FromRobot(IMachineClient client, string name)
+        public static ISensorClient FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<SensorClient>(resourceName);
+            return client.GetComponent<ISensorClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

@@ -1,4 +1,5 @@
-﻿using Google.Protobuf;
+﻿using Google.Api;
+using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 
 using Grpc.Core;
@@ -13,6 +14,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 
 using Viam.Common.V1;
 using Viam.Core.Logging;
@@ -70,33 +72,62 @@ namespace Viam.Core.Clients
             serviceCollection.AddSingleton(channel);
             serviceCollection.AddSingleton(loggerFactory);
             serviceCollection.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
+            var resourceNames = _robotServiceClient.ResourceNames(new ResourceNamesRequest(),
+                deadline: TimeSpan.FromSeconds(5).ToDeadline()); // Preload the resource names to ensure the channel is ready
 
             // Register the built-in component types
-            RegisterComponent<IArm, ArmClient>(serviceCollection);
-            RegisterComponent<IBase, BaseClient>(serviceCollection);
-            RegisterComponent<IBoard, BoardClient>(serviceCollection);
-            RegisterComponent<ICamera, CameraClient>(serviceCollection);
-            RegisterComponent<IEncoder, EncoderClient>(serviceCollection);
-            RegisterComponent<IGantry, GantryClient>(serviceCollection);
-            RegisterComponent<IGripper, GripperClient>(serviceCollection);
-            RegisterComponent<IInputController, InputControllerClient>(serviceCollection);
-            RegisterComponent<IMotor, MotorClient>(serviceCollection);
-            RegisterComponent<IMovementSensor, MovementSensorClient>(serviceCollection);
-            RegisterComponent<IPowerSensor, PowerSensorClient>(serviceCollection);
-            RegisterComponent<ISensor, SensorClient>(serviceCollection);
-            RegisterComponent<IServo, ServoClient>(serviceCollection);
+            foreach (var resourceName in resourceNames.Resources.Where(x => x.Type is "component"))
+            {
+                switch (resourceName.Subtype)
+                {
+                    case "arm":
+                        serviceCollection.AddKeyedTransient<IArmClient, ArmClient>(resourceName, (_, _) => new ArmClient(resourceName, channel, loggerFactory.CreateLogger<ArmClient>()));
+                        break;
+                    case "base":
+                        serviceCollection.AddKeyedTransient<IBaseClient, BaseClient>(resourceName, (_, _) => new BaseClient(resourceName, channel, loggerFactory.CreateLogger<BaseClient>()));
+                        break;
+                    case "board":
+                        serviceCollection.AddKeyedTransient<IBoardClient, BoardClient>(resourceName, (_, _) => new BoardClient(resourceName, channel, loggerFactory.CreateLogger<BoardClient>()));
+                        break;
+                    case "camera":
+                        serviceCollection.AddKeyedTransient<ICameraClient, CameraClient>(resourceName, (_, _) => new CameraClient(resourceName, channel, loggerFactory.CreateLogger<CameraClient>()));
+                        break;
+                    case "encoder":
+                        serviceCollection.AddKeyedTransient<IEncoderClient, EncoderClient>(resourceName, (_, _) => new EncoderClient(resourceName, channel, loggerFactory.CreateLogger<EncoderClient>()));
+                        break;
+                    case "gantry":
+                        serviceCollection.AddKeyedTransient<IGantryClient, GantryClient>(resourceName, (_, _) => new GantryClient(resourceName, channel, loggerFactory.CreateLogger<GantryClient>()));
+                        break;
+                    case "gripper":
+                        serviceCollection.AddKeyedTransient<IGripperClient, GripperClient>(resourceName, (_, _) => new GripperClient(resourceName, channel, loggerFactory.CreateLogger<GripperClient>()));
+                        break;
+                    case "input_controller":
+                        serviceCollection.AddKeyedTransient<IInputControllerClient, InputControllerClient>(resourceName, (_, _) => new InputControllerClient(resourceName, channel, loggerFactory.CreateLogger<InputControllerClient>()));
+                        break;
+                    case "motor":
+                        serviceCollection.AddKeyedTransient<IMotorClient, MotorClient>(resourceName, (_, _) => new MotorClient(resourceName, channel, loggerFactory.CreateLogger<MotorClient>()));
+                        break;
+                    case "movement_sensor":
+                        serviceCollection.AddKeyedTransient<IMovementSensorClient, MovementSensorClient>(resourceName, (_, _) => new MovementSensorClient(resourceName, channel, loggerFactory.CreateLogger<MovementSensorClient>()));
+                        break;
+                    case "power_sensor":
+                        serviceCollection.AddKeyedTransient<IPowerSensorClient, PowerSensorClient>(resourceName, (_, _) => new PowerSensorClient(resourceName, channel, loggerFactory.CreateLogger<PowerSensorClient>()));
+                        break;
+                    case "sensor":
+                        serviceCollection.AddKeyedTransient<ISensorClient, SensorClient>(resourceName, (_, _) => new SensorClient(resourceName, channel, loggerFactory.CreateLogger<SensorClient>()));
+                        break;
+                    case "servo":
+                        serviceCollection.AddKeyedTransient<IServoClient, ServoClient>(resourceName, (_, _) => new ServoClient(resourceName, channel, loggerFactory.CreateLogger<ServoClient>()));
+                        break;
+                    default:
+                        Logger.LogWarning("Unknown resource {Resource}", resourceName);
+                        break;
+                }
+                
+            }
 
             // Now we can build the provider
             _services = serviceCollection.BuildServiceProvider();
-        }
-
-        private static void RegisterComponent<TService,
-            [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TImpl>(
-            IServiceCollection services) where TImpl : class, TService, IResourceBase where TService : class, IResourceBase
-        {
-            services.AddTransient<IResourceBase, TImpl>();
-            services.AddTransient<TService, TImpl>();
-            services.AddTransient<TImpl>();
         }
 
         protected async Task RefreshAsync([CallerMemberName] string? caller = null)
@@ -151,7 +182,7 @@ namespace Viam.Core.Clients
             ThrowIfDisposed();
             try
             {
-                var resource = ActivatorUtilities.CreateInstance<T>(_services, resourceName);
+                var resource = _services.GetRequiredKeyedService<T>(resourceName.ToResourceName());
                 Logger.LogMethodInvocationSuccess();
                 return resource;
             }

@@ -32,4 +32,6 @@ namespace Viam.Core.Resources.Components.InputController
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }
+
+    public interface IInputControllerClient : IInputController;
 }

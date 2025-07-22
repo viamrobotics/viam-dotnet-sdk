@@ -15,14 +15,14 @@ namespace Viam.Core.Resources.Components.Gantry
     public class GantryClient(ViamResourceName resourceName, ViamChannel channel, ILogger<GantryClient> logger) :
         ComponentBase<GantryClient, Component.Gantry.V1.GantryService.GantryServiceClient>(resourceName,
             new Component.Gantry.V1.GantryService.GantryServiceClient(channel)),
-        IGantry
+        IGantryClient
     {
         public static SubType SubType = SubType.FromRdkComponent("gantry");
 
-        public static IGantry FromRobot(IMachineClient client, string name)
+        public static IGantryClient FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<GantryClient>(resourceName);
+            return client.GetComponent<IGantryClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;
