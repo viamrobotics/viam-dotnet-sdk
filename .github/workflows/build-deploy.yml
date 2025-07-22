@@ -56,7 +56,10 @@ jobs:
             echo "name=$PACKAGE_ID" >> "$GITHUB_OUTPUT"
             echo "base=$ARTIFACT_BASE" >> "$GITHUB_OUTPUT"
 
-      - name: Build & Pack
+      - name: Build
+        run: dotnet build -c Debug /p:Version=${{ steps.set_version.outputs.version }} /p:PackageVersion=${{ steps.set_version.outputs.version }} /p:SymbolPackageFormat=snupkg /p:IncludeSymbols=true ${{ matrix.project }}
+
+      - name: Pack
         run: dotnet pack -c Debug /p:Version=${{ steps.set_version.outputs.version }} /p:PackageVersion=${{ steps.set_version.outputs.version }} /p:SymbolPackageFormat=snupkg /p:IncludeSymbols=true -o "${{ github.workspace }}/artifacts" ${{ matrix.project }}
 
       - name: Upload NuGet package
