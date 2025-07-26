@@ -19,10 +19,10 @@ namespace Viam.Core.Resources.Components.Generic
 
         public static SubType SubType = SubType.FromRdkComponent("generic");
 
-        public static IGenericClient FromRobot(IMachineClient client, string name)
+        public static async Task<IGenericClient> FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IGenericClient>(resourceName);
+            return await client.GetComponent<IGenericClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured { get; }

@@ -26,6 +26,6 @@ var robotClient = await MachineClient.CreateFromDialOptions(dialOpts);
 var resourceNames = await robotClient.ResourceNamesAsync();
 logger.LogInformation("Resource Names: {ResourceName}", string.Join(",", resourceNames.Select(x => x.Name)));
 
-await using var client = SensorClient.FromRobot(robotClient, "clocks");
+await using var client = await SensorClient.FromRobot(robotClient, "clocks");
 var readings = await client.GetReadings();
 logger.LogInformation("Readings: {Readings}", string.Join(",", readings.Select(x => $"{x.Key}: {x.Value}")));

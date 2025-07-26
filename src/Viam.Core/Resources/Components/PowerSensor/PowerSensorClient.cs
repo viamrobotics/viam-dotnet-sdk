@@ -19,10 +19,10 @@ namespace Viam.Core.Resources.Components.PowerSensor
     {
         public static SubType SubType = SubType.FromRdkComponent("power_sensor");
 
-        public static IPowerSensorClient FromRobot(IMachineClient client, string name)
+        public static async Task<IPowerSensorClient> FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IPowerSensorClient>(resourceName);
+            return await client.GetComponent<IPowerSensorClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

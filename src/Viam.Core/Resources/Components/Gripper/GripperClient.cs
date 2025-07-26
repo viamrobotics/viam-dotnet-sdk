@@ -18,10 +18,10 @@ namespace Viam.Core.Resources.Components.Gripper
     {
         public static SubType SubType = SubType.FromRdkComponent("gripper");
 
-        public static IGripperClient FromRobot(IMachineClient client, string name)
+        public static async Task<IGripperClient> FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IGripperClient>(resourceName);
+            return await client.GetComponent<IGripperClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

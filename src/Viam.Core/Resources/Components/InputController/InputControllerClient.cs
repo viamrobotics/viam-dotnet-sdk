@@ -22,10 +22,10 @@ namespace Viam.Core.Resources.Components.InputController
         public static SubType SubType = SubType.FromRdkComponent("input_controller");
 
 
-        public static IInputControllerClient FromRobot(IMachineClient client, string name)
+        public static async Task<IInputControllerClient> FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IInputControllerClient>(resourceName);
+            return await client.GetComponent<IInputControllerClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

@@ -13,7 +13,7 @@ namespace Viam.Core.Clients
 {
     public interface IMachineClient : IAsyncDisposable
     {
-        public T GetComponent<T>(ViamResourceName resourceName) where T : IResourceBase;
+        public Task<T> GetComponent<T>(ViamResourceName resourceName) where T : IResourceBase;
 
         public Task<Operation[]> GetOperationsAsync(TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);

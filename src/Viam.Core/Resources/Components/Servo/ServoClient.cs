@@ -20,10 +20,10 @@ namespace Viam.Core.Resources.Components.Servo
     {
         public static SubType SubType = SubType.FromRdkComponent("servo");
 
-        public static IServoClient FromRobot(IMachineClient client, string name)
+        public static async Task<IServoClient> FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IServoClient>(resourceName);
+            return await client.GetComponent<IServoClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

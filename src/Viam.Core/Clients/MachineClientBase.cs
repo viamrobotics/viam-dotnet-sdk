@@ -13,6 +13,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 using System.Timers;
 
@@ -40,94 +41,39 @@ namespace Viam.Core.Clients
     public class MachineClientBase : IMachineClient
     {
         protected readonly ILogger<MachineClientBase> Logger;
+        
+        private readonly ViamChannel _channel;
+        private readonly ILoggerFactory _loggerFactory;
         private readonly RobotService.RobotServiceClient _robotServiceClient;
-        private readonly ServiceProvider _services;
+        private readonly ServiceCollection _serviceCollection = new ServiceCollection();
         private readonly SemaphoreSlim _disposeLock = new(1, 1);
         private bool _isDisposed;
 
-        private MachineClientBase(ILogger<MachineClientBase> logger, ViamChannel channel)
-        {
-            Logger = logger;
-            _robotServiceClient = new RobotService.RobotServiceClient(channel);
-
-            // This is overwritten in the other constructors, the nullability checks suck sometimes
-            _services = new ServiceCollection().BuildServiceProvider();
-        }
-
-        protected internal MachineClientBase(ILogger<MachineClientBase> logger, ViamChannel channel,
-            ServiceProvider services)
-            : this(logger, channel)
-        {
-            _services = services;
-        }
+        private ServiceProvider Services => _serviceCollection.BuildServiceProvider();
 
         protected internal MachineClientBase(ILoggerFactory loggerFactory, ViamChannel channel)
-            : this(loggerFactory.CreateLogger<MachineClientBase>(), channel)
         {
+            _loggerFactory = loggerFactory ?? throw new ArgumentNullException(nameof(loggerFactory));
+            _channel = channel ?? throw new ArgumentNullException(nameof(channel));
+
             Logger = loggerFactory.CreateLogger<MachineClientBase>();
             _robotServiceClient = new RobotService.RobotServiceClient(channel);
 
-            var serviceCollection = new ServiceCollection();
-            serviceCollection.AddSingleton(this);
-            serviceCollection.AddSingleton(channel);
-            serviceCollection.AddSingleton(loggerFactory);
-            serviceCollection.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
-            var resourceNames = _robotServiceClient.ResourceNames(new ResourceNamesRequest(),
+            _serviceCollection.AddSingleton(this);
+            _serviceCollection.AddSingleton(channel);
+            _serviceCollection.AddSingleton(loggerFactory);
+            _serviceCollection.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
+            var resourcesResponse = _robotServiceClient.ResourceNames(new ResourceNamesRequest(),
                 deadline: TimeSpan.FromSeconds(5).ToDeadline()); // Preload the resource names to ensure the channel is ready
+            var resourceNames = resourcesResponse.Resources.Select(x => new ViamResourceName(x)).ToArray();
 
-            // Register the built-in component types
-            foreach (var resourceName in resourceNames.Resources.Where(x => x.Type is "component"))
-            {
-                switch (resourceName.Subtype)
-                {
-                    case "arm":
-                        serviceCollection.AddKeyedTransient<IArmClient, ArmClient>(resourceName, (_, _) => new ArmClient(resourceName, channel, loggerFactory.CreateLogger<ArmClient>()));
-                        break;
-                    case "base":
-                        serviceCollection.AddKeyedTransient<IBaseClient, BaseClient>(resourceName, (_, _) => new BaseClient(resourceName, channel, loggerFactory.CreateLogger<BaseClient>()));
-                        break;
-                    case "board":
-                        serviceCollection.AddKeyedTransient<IBoardClient, BoardClient>(resourceName, (_, _) => new BoardClient(resourceName, channel, loggerFactory.CreateLogger<BoardClient>()));
-                        break;
-                    case "camera":
-                        serviceCollection.AddKeyedTransient<ICameraClient, CameraClient>(resourceName, (_, _) => new CameraClient(resourceName, channel, loggerFactory.CreateLogger<CameraClient>()));
-                        break;
-                    case "encoder":
-                        serviceCollection.AddKeyedTransient<IEncoderClient, EncoderClient>(resourceName, (_, _) => new EncoderClient(resourceName, channel, loggerFactory.CreateLogger<EncoderClient>()));
-                        break;
-                    case "gantry":
-                        serviceCollection.AddKeyedTransient<IGantryClient, GantryClient>(resourceName, (_, _) => new GantryClient(resourceName, channel, loggerFactory.CreateLogger<GantryClient>()));
-                        break;
-                    case "gripper":
-                        serviceCollection.AddKeyedTransient<IGripperClient, GripperClient>(resourceName, (_, _) => new GripperClient(resourceName, channel, loggerFactory.CreateLogger<GripperClient>()));
-                        break;
-                    case "input_controller":
-                        serviceCollection.AddKeyedTransient<IInputControllerClient, InputControllerClient>(resourceName, (_, _) => new InputControllerClient(resourceName, channel, loggerFactory.CreateLogger<InputControllerClient>()));
-                        break;
-                    case "motor":
-                        serviceCollection.AddKeyedTransient<IMotorClient, MotorClient>(resourceName, (_, _) => new MotorClient(resourceName, channel, loggerFactory.CreateLogger<MotorClient>()));
-                        break;
-                    case "movement_sensor":
-                        serviceCollection.AddKeyedTransient<IMovementSensorClient, MovementSensorClient>(resourceName, (_, _) => new MovementSensorClient(resourceName, channel, loggerFactory.CreateLogger<MovementSensorClient>()));
-                        break;
-                    case "power_sensor":
-                        serviceCollection.AddKeyedTransient<IPowerSensorClient, PowerSensorClient>(resourceName, (_, _) => new PowerSensorClient(resourceName, channel, loggerFactory.CreateLogger<PowerSensorClient>()));
-                        break;
-                    case "sensor":
-                        serviceCollection.AddKeyedTransient<ISensorClient, SensorClient>(resourceName, (_, _) => new SensorClient(resourceName, channel, loggerFactory.CreateLogger<SensorClient>()));
-                        break;
-                    case "servo":
-                        serviceCollection.AddKeyedTransient<IServoClient, ServoClient>(resourceName, (_, _) => new ServoClient(resourceName, channel, loggerFactory.CreateLogger<ServoClient>()));
-                        break;
-                    default:
-                        Logger.LogWarning("Unknown resource {Resource}", resourceName);
-                        break;
-                }
-
-            }
-
-            // Now we can build the provider
-            _services = serviceCollection.BuildServiceProvider();
+            var filteredResourceName = resourceNames
+                .Where(x => x.SubType.ResourceType is "component" or "service")
+                .Where(x => x.SubType.ResourceSubType != "remote")
+                .Where(x => x.SubType.ResourceSubType != SensorClient.SubType.ResourceSubType
+                            || !resourceNames.Contains(new ViamResourceName(MovementSensorClient.SubType, x.Name)))
+                .ToArray();
+            RegisterResources(filteredResourceName);
         }
 
         protected async Task RefreshAsync([CallerMemberName] string? caller = null)
@@ -143,10 +89,7 @@ namespace Viam.Core.Clients
                             || !resourceNames.Contains(new ViamResourceName(MovementSensorClient.SubType, x.Name)))
                 .ToArray();
             Logger.LogDebug("Refreshing client for {ResourceCount} resources", filteredResourceName.Length);
-            foreach (var resourceName in filteredResourceName)
-            {
-                Logger.LogDebug("Found {resourceName}", resourceName);
-            }
+            RegisterResources(filteredResourceName);
 
             Logger.LogManagerRefreshFinish(caller);
         }
@@ -158,7 +101,7 @@ namespace Viam.Core.Clients
             {
                 if (_isDisposed) return;
                 Logger.LogInformation("Disposing of client");
-                await _services.DisposeAsync();
+                await Services.DisposeAsync();
 
                 GC.SuppressFinalize(this);
                 _isDisposed = true;
@@ -179,13 +122,14 @@ namespace Viam.Core.Clients
             ObjectDisposedException.ThrowIf(_isDisposed, nameof(MachineClientBase));
         }
 
-        public T GetComponent<T>(ViamResourceName resourceName) where T : IResourceBase
+        public async Task<T> GetComponent<T>(ViamResourceName resourceName) where T : IResourceBase
         {
             Logger.LogMethodInvocationStart();
             ThrowIfDisposed();
             try
             {
-                var resource = _services.GetRequiredKeyedService<T>(resourceName.ToResourceName());
+                await RefreshAsync().ConfigureAwait(false);
+                var resource = Services.GetRequiredKeyedService<T>(resourceName.ToResourceName());
                 Logger.LogMethodInvocationSuccess();
                 return resource;
             }
@@ -589,6 +533,59 @@ namespace Viam.Core.Clients
             }
         }
 
-        public override string ToString() => $"MachineClientBase+{_services.GetRequiredService<ViamChannel>()}";
+        public override string ToString() => $"MachineClientBase+{Services.GetRequiredService<ViamChannel>()}";
+
+        private void RegisterResources(ViamResourceName[] resourceNames)
+        {
+            // Register the built-in component types
+            foreach (var resourceName in resourceNames)
+            {
+                switch (resourceName.SubType.ResourceSubType)
+                {
+                    case "arm":
+                        _serviceCollection.AddKeyedTransient<IArmClient, ArmClient>(resourceName, (_, _) => new ArmClient(resourceName, _channel, _loggerFactory.CreateLogger<ArmClient>()));
+                        break;
+                    case "base":
+                        _serviceCollection.AddKeyedTransient<IBaseClient, BaseClient>(resourceName, (_, _) => new BaseClient(resourceName, _channel, _loggerFactory.CreateLogger<BaseClient>()));
+                        break;
+                    case "board":
+                        _serviceCollection.AddKeyedTransient<IBoardClient, BoardClient>(resourceName, (_, _) => new BoardClient(resourceName, _channel, _loggerFactory.CreateLogger<BoardClient>()));
+                        break;
+                    case "camera":
+                        _serviceCollection.AddKeyedTransient<ICameraClient, CameraClient>(resourceName, (_, _) => new CameraClient(resourceName, _channel, _loggerFactory.CreateLogger<CameraClient>()));
+                        break;
+                    case "encoder":
+                        _serviceCollection.AddKeyedTransient<IEncoderClient, EncoderClient>(resourceName, (_, _) => new EncoderClient(resourceName, _channel, _loggerFactory.CreateLogger<EncoderClient>()));
+                        break;
+                    case "gantry":
+                        _serviceCollection.AddKeyedTransient<IGantryClient, GantryClient>(resourceName, (_, _) => new GantryClient(resourceName, _channel, _loggerFactory.CreateLogger<GantryClient>()));
+                        break;
+                    case "gripper":
+                        _serviceCollection.AddKeyedTransient<IGripperClient, GripperClient>(resourceName, (_, _) => new GripperClient(resourceName, _channel, _loggerFactory.CreateLogger<GripperClient>()));
+                        break;
+                    case "input_controller":
+                        _serviceCollection.AddKeyedTransient<IInputControllerClient, InputControllerClient>(resourceName, (_, _) => new InputControllerClient(resourceName, _channel, _loggerFactory.CreateLogger<InputControllerClient>()));
+                        break;
+                    case "motor":
+                        _serviceCollection.AddKeyedTransient<IMotorClient, MotorClient>(resourceName, (_, _) => new MotorClient(resourceName, _channel, _loggerFactory.CreateLogger<MotorClient>()));
+                        break;
+                    case "movement_sensor":
+                        _serviceCollection.AddKeyedTransient<IMovementSensorClient, MovementSensorClient>(resourceName, (_, _) => new MovementSensorClient(resourceName, _channel, _loggerFactory.CreateLogger<MovementSensorClient>()));
+                        break;
+                    case "power_sensor":
+                        _serviceCollection.AddKeyedTransient<IPowerSensorClient, PowerSensorClient>(resourceName, (_, _) => new PowerSensorClient(resourceName, _channel, _loggerFactory.CreateLogger<PowerSensorClient>()));
+                        break;
+                    case "sensor":
+                        _serviceCollection.AddKeyedTransient<ISensorClient, SensorClient>(resourceName, (_, _) => new SensorClient(resourceName, _channel, _loggerFactory.CreateLogger<SensorClient>()));
+                        break;
+                    case "servo":
+                        _serviceCollection.AddKeyedTransient<IServoClient, ServoClient>(resourceName, (_, _) => new ServoClient(resourceName, _channel, _loggerFactory.CreateLogger<ServoClient>()));
+                        break;
+                    default:
+                        Logger.LogWarning("Unknown resource {Resource}", resourceName);
+                        break;
+                }
+            }
+        }
     }
 }

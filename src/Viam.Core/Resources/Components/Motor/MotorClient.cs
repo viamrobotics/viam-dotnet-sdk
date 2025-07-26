@@ -19,10 +19,10 @@ namespace Viam.Core.Resources.Components.Motor
     {
         public static SubType SubType = SubType.FromRdkComponent("motor");
 
-        public static IMotorClient FromRobot(IMachineClient client, string name)
+        public static async Task<IMotorClient> FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IMotorClient>(resourceName);
+            return await client.GetComponent<IMotorClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

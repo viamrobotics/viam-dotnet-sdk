@@ -30,10 +30,10 @@ namespace Viam.Core.Resources.Components.Board
         /// <param name="client">The <see cref="MachineClientBase"/></param>
         /// <param name="name">The name of the component</param>
         /// <returns>A <see cref="BoardClient"/> component</returns>
-        public static IBoardClient FromRobot(IMachineClient client, string name)
+        public static async Task<IBoardClient> FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IBoardClient>(resourceName);
+            return await client.GetComponent<IBoardClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

@@ -20,10 +20,10 @@ namespace Viam.Core.Resources.Components.Arm
     {
         public static SubType SubType = SubType.FromRdkComponent("arm");
 
-        public static IArmClient FromRobot(IMachineClient client, string name)
+        public static async Task<IArmClient> FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IArmClient>(resourceName);
+            return await client.GetComponent<IArmClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

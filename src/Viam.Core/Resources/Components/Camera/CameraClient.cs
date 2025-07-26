@@ -20,10 +20,10 @@ namespace Viam.Core.Resources.Components.Camera
     {
         public static SubType SubType = SubType.FromRdkComponent("camera");
 
-        public static ICameraClient FromRobot(IMachineClient client, string name)
+        public static async Task<ICameraClient> FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<ICameraClient>(resourceName);
+            return await client.GetComponent<ICameraClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

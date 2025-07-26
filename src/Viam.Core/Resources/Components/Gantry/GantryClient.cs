@@ -19,10 +19,10 @@ namespace Viam.Core.Resources.Components.Gantry
     {
         public static SubType SubType = SubType.FromRdkComponent("gantry");
 
-        public static IGantryClient FromRobot(IMachineClient client, string name)
+        public static async Task<IGantryClient> FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IGantryClient>(resourceName);
+            return await client.GetComponent<IGantryClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;

@@ -19,10 +19,10 @@ namespace Viam.Core.Resources.Components.Encoder
     {
         public static SubType SubType = SubType.FromRdkComponent("encoder");
 
-        public static IEncoderClient FromRobot(IMachineClient client, string name)
+        public static async Task<IEncoderClient> FromRobot(IMachineClient client, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return client.GetComponent<IEncoderClient>(resourceName);
+            return await client.GetComponent<IEncoderClient>(resourceName);
         }
 
         public override DateTime? LastReconfigured => null;
