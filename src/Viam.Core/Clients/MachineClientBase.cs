@@ -111,7 +111,7 @@ namespace Viam.Core.Clients
             try
             {
                 await RefreshAsync().ConfigureAwait(false);
-                var resource = Services.GetRequiredKeyedService<T>(resourceName.ToResourceName());
+                var resource = Services.GetRequiredKeyedService<T>(resourceName);
                 Logger.LogMethodInvocationSuccess();
                 return resource;
             }
