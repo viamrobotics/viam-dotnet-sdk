@@ -138,6 +138,7 @@ namespace Viam.Client.WebRTC
         {
             channel.Dispose();
             ViamRustUtils.FreeRustRuntime(rustRuntime);
+            GC.SuppressFinalize(this);
         }
 
         protected override CallInvoker GetCallInvoker() => channel.CreateCallInvoker();

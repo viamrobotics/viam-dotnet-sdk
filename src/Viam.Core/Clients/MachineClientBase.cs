@@ -41,7 +41,7 @@ namespace Viam.Core.Clients
     {
         protected readonly ILogger<MachineClientBase> Logger;
         private readonly RobotService.RobotServiceClient _robotServiceClient;
-        private readonly IServiceProvider _services;
+        private readonly ServiceProvider _services;
         private readonly SemaphoreSlim _disposeLock = new(1, 1);
         private bool _isDisposed;
 
@@ -55,7 +55,7 @@ namespace Viam.Core.Clients
         }
 
         protected internal MachineClientBase(ILogger<MachineClientBase> logger, ViamChannel channel,
-            IServiceProvider services)
+            ServiceProvider services)
             : this(logger, channel)
         {
             _services = services;
@@ -123,7 +123,7 @@ namespace Viam.Core.Clients
                         Logger.LogWarning("Unknown resource {Resource}", resourceName);
                         break;
                 }
-                
+
             }
 
             // Now we can build the provider
@@ -157,16 +157,19 @@ namespace Viam.Core.Clients
             try
             {
                 if (_isDisposed) return;
-                _isDisposed = true;
-                if (_services is IDisposable disposable)
-                {
-                    disposable.Dispose();
-                }
+                Logger.LogInformation("Disposing of client");
+                await _services.DisposeAsync();
 
                 GC.SuppressFinalize(this);
+                _isDisposed = true;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "Failed to properly dispose of client");
             }
             finally
             {
+                Logger.LogInformation("Client disposed");
                 _disposeLock.Release();
             }
         }
