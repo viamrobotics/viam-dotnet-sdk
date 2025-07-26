@@ -189,6 +189,11 @@ namespace Viam.Core.Clients
                 Logger.LogMethodInvocationSuccess();
                 return resource;
             }
+            catch (InvalidOperationException)
+            {
+                Logger.LogDebug("Component not found: {ResourceName}", resourceName);
+                throw new ComponentNotFoundException(resourceName);
+            }
             catch (Exception ex)
             {
                 Logger.LogMethodInvocationFailure(ex);
