@@ -57,7 +57,7 @@ namespace Viam.ModularResources.Services
                 _logger.LogDebug("Got resource {Name}", resource.Name);
 
                 var dependencies = request.Dependencies.Select(GrpcExtensions.ToResourceName)
-                    .ToDictionary(x => x, x => (IResourceBase)resourceManager.ResolveService(x.Name, x.SubType));
+                    .ToDictionary(x => x, IResourceBase (x) => resourceManager.ResolveService(x.Name, x.SubType));
                 _logger.LogDebug("Got dependencies {Dependencies}",
                     string.Join(",", dependencies.Select(x => x.ToString())));
 
@@ -139,12 +139,12 @@ namespace Viam.ModularResources.Services
             return new ReconfigureResourceResponse();
         }
 
-        public override Task<RemoveResourceResponse> RemoveResource(RemoveResourceRequest request,
+        public override async Task<RemoveResourceResponse> RemoveResource(RemoveResourceRequest request,
             ServerCallContext context)
         {
             var resourceManager = services.GetRequiredService<ResourceManager>();
-            resourceManager.RemoveResource(request.Name);
-            return Task.FromResult(new RemoveResourceResponse());
+            await resourceManager.RemoveResource(request.Name);
+            return new RemoveResourceResponse();
         }
 
         public override Task<ValidateConfigResponse> ValidateConfig(ValidateConfigRequest request,

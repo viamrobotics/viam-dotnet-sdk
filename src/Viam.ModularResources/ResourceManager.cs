@@ -29,15 +29,15 @@ namespace Viam.ModularResources
 
             if (_resources.TryGetValue(name, out var resource))
             {
-                _logger.LogTrace("Found service: {ServiceName}", resource.Name);
+                _logger.LogTrace("Found resource: {ResourceName}", resource.Name);
                 return resource;
             }
 
             throw new ResourceNotFoundException(
-                $"Resource {name} not found, resources: {_resources.Select(x => x.Key)}");
+                $"Resource {name} not found, resources: {_resources.Select(x => x.Value.Name)}");
         }
 
-        public void RemoveResource(string name)
+        public async Task RemoveResource(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -46,22 +46,22 @@ namespace Viam.ModularResources
 
             if (_resources.TryRemove(name, out var resource))
             {
-                if (resource is IDisposable syncDisposable)
+                if (resource is IAsyncDisposable asyncDisposable)
                 {
-                    syncDisposable.Dispose();
+                    await asyncDisposable.DisposeAsync();
                 }
                 else
                 {
                     _logger.LogWarning(
-                        "Service {ServiceName} not disposed, does not implement IDisposable, how did it get injected to start with?",
+                        "Resource {ResourceName} not disposed, does not implement IAsyncDisposable, how did it get injected to start with?",
                         name);
                 }
 
-                _logger.LogInformation("Removed service: {ServiceName}", resource.Name);
+                _logger.LogInformation("Removed service: {ResourceName}", resource.Name);
             }
             else
             {
-                _logger.LogWarning("Failed to remove service: {ServiceName}", name);
+                _logger.LogWarning("Failed to remove service: {ResourceName}", name);
             }
         }
 
@@ -72,11 +72,14 @@ namespace Viam.ModularResources
                 throw new ArgumentException("Name cannot be null or empty", nameof(name));
             }
 
+            _logger.LogInformation("Getting {ResourceName}", name);
             return _resources.GetOrAdd(name, (s) =>
             {
+                var resourceName = new ViamResourceName(subType, name);
+                _logger.LogInformation("Creating new instance of {ResourceName}", resourceName);
                 var resource = (IModularResource)ActivatorUtilities.CreateInstance(_services,
-                    RegisteredResources[subType].Type, new ViamResourceName(subType, name));
-                _logger.LogInformation("Constructed service: {ServiceName}", resource.Name);
+                    RegisteredResources[subType].Type, resourceName);
+                _logger.LogInformation("Created new instance of {ResourceName}", resourceName);
                 return resource;
             });
         }
@@ -100,9 +103,9 @@ namespace Viam.ModularResources
                 {
                     await disposable.DisposeAsync();
                 }
-                else if (resource is IDisposable syncDisposable)
+                else
                 {
-                    syncDisposable.Dispose();
+                    _logger.LogWarning("Resource does not implement IAsyncDisposable");
                 }
             }
         }
