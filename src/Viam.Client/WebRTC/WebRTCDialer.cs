@@ -108,9 +108,9 @@ namespace Viam.Client.WebRTC
                         throw new Exception("Unknown OS, not sure how to support it.");
                     }
 
-                    logger.LogTrace("Using proxy URI: {uri}", uri);
-                    var channel = new WebRTCViamChannel(runtimePointer,
-                        global::Grpc.Net.Client.GrpcChannel.ForAddress(uri, channelOptions),
+                    logger.LogDebug("Using proxy URI: {uri}", uri);
+                    var channel = new WebRTCViamChannel(logger, runtimePointer,
+                        Grpc.Net.Client.GrpcChannel.ForAddress(uri, channelOptions),
                         dialOptions.MachineAddress);
                     logger.LogDialComplete();
                     return new ValueTask<ViamChannel>(channel);
@@ -124,20 +124,24 @@ namespace Viam.Client.WebRTC
             catch (Exception ex)
             {
                 logger.LogError(ex, "Failed to dial WebRTC");
+                logger.LogTrace("Freeing rust runtime");
                 ViamRustUtils.FreeRustRuntime(runtimePointer);
+                logger.LogDebug("Rust runtime freed");
+                throw new AggregateException(new Exception("Failed to dial WebRTC"), ex);
             }
-
-            throw new Exception("Failed to dial WebRTC");
         }
     }
 
-    public class WebRTCViamChannel(IntPtr rustRuntime, global::Grpc.Net.Client.GrpcChannel channel, string remote)
+    internal class WebRTCViamChannel(ILogger<WebRtcDialer> logger, IntPtr rustRuntime, global::Grpc.Net.Client.GrpcChannel channel, string remote)
         : ViamChannel(remote)
     {
         public override void Dispose()
         {
+            logger.LogDebug("Disposing of channel");
             channel.Dispose();
+            logger.LogDebug("Disposed of channel, freeing Rust runtime");
             ViamRustUtils.FreeRustRuntime(rustRuntime);
+            logger.LogDebug("Rust runtime freed");
             GC.SuppressFinalize(this);
         }
 
