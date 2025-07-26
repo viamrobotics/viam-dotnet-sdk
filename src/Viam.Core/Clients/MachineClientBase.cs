@@ -63,17 +63,6 @@ namespace Viam.Core.Clients
             _serviceCollection.AddSingleton(channel);
             _serviceCollection.AddSingleton(loggerFactory);
             _serviceCollection.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
-            var resourcesResponse = _robotServiceClient.ResourceNames(new ResourceNamesRequest(),
-                deadline: TimeSpan.FromSeconds(5).ToDeadline()); // Preload the resource names to ensure the channel is ready
-            var resourceNames = resourcesResponse.Resources.Select(x => new ViamResourceName(x)).ToArray();
-
-            var filteredResourceName = resourceNames
-                .Where(x => x.SubType.ResourceType is "component" or "service")
-                .Where(x => x.SubType.ResourceSubType != "remote")
-                .Where(x => x.SubType.ResourceSubType != SensorClient.SubType.ResourceSubType
-                            || !resourceNames.Contains(new ViamResourceName(MovementSensorClient.SubType, x.Name)))
-                .ToArray();
-            RegisterResources(filteredResourceName);
         }
 
         protected async Task RefreshAsync([CallerMemberName] string? caller = null)
@@ -82,14 +71,7 @@ namespace Viam.Core.Clients
             ThrowIfDisposed();
 
             var resourceNames = await ResourceNamesAsync();
-            Logger.LogDebug("Filtering {ResourceCount} resources", resourceNames.Length);
-            var filteredResourceName = resourceNames.Where(x => x.SubType.ResourceType is "component" or "service")
-                .Where(x => x.SubType.ResourceSubType != "remote")
-                .Where(x => x.SubType.ResourceSubType != SensorClient.SubType.ResourceSubType
-                            || !resourceNames.Contains(new ViamResourceName(MovementSensorClient.SubType, x.Name)))
-                .ToArray();
-            Logger.LogDebug("Refreshing client for {ResourceCount} resources", filteredResourceName.Length);
-            RegisterResources(filteredResourceName);
+            RegisterResources(resourceNames);
 
             Logger.LogManagerRefreshFinish(caller);
         }
@@ -537,9 +519,13 @@ namespace Viam.Core.Clients
 
         private void RegisterResources(ViamResourceName[] resourceNames)
         {
+            Logger.LogInformation("Registering resources: {ResourceCount}", resourceNames.Length);
+            var filteredResourceName = resourceNames.Where(x => x.SubType.ResourceType is "component" or "service")
+                .Where(x => x.SubType.ResourceSubType != "remote");
             // Register the built-in component types
-            foreach (var resourceName in resourceNames)
+            foreach (var resourceName in filteredResourceName)
             {
+                Logger.LogInformation("Registering resource: {ResourceName}", resourceName);
                 switch (resourceName.SubType.ResourceSubType)
                 {
                     case "arm":
