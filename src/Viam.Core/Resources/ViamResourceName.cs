@@ -31,6 +31,6 @@ namespace Viam.Core.Resources
         public static implicit operator ViamResourceName(ResourceName resourceName) => new(resourceName);
 
         public override string ToString() =>
-            $"{SubType.Namespace}:{SubType.ResourceType}:{SubType.ResourceSubType}:{Name}";
+            $"{SubType.Namespace}:{SubType.ResourceType}:{SubType.ResourceSubType}/{Name}";
     }
 }
