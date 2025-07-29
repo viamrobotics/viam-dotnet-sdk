@@ -520,7 +520,8 @@ namespace Viam.Core.Clients
         private void RegisterResources(ViamResourceName[] resourceNames)
         {
             Logger.LogInformation("Registering resources: {ResourceCount}", resourceNames.Length);
-            var filteredResourceName = resourceNames.Where(x => x.SubType.ResourceType is "component" or "service")
+            // TODO: Add support for services, for now we only register components
+            var filteredResourceName = resourceNames.Where(x => x.SubType.ResourceType is "component")// or "service")
                 .Where(x => x.SubType.ResourceSubType != "remote");
             // Register the built-in component types
             foreach (var resourceName in filteredResourceName)
