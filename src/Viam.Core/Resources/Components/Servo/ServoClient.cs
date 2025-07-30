@@ -16,14 +16,14 @@ namespace Viam.Core.Resources.Components.Servo
     public class ServoClient(ViamResourceName resourceName, ViamChannel channel, ILogger<ServoClient> logger)
         : ComponentBase<ServoClient, Component.Servo.V1.ServoService.ServoServiceClient>(resourceName,
                 new Component.Servo.V1.ServoService.ServoServiceClient(channel)),
-            IServoClient
+            IServoClient, IComponentClient<IServoClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("servo");
 
-        public static async Task<IServoClient> FromRobot(IMachineClient client, string name)
+        public static async Task<IServoClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null, CancellationToken token = default)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return await client.GetComponent<IServoClient>(resourceName);
+            return await client.GetComponent<IServoClient>(resourceName, timeout, token);
         }
 
         public override DateTime? LastReconfigured => null;

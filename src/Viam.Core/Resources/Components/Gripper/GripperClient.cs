@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
+
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Viam.Common.V1;
 using Viam.Component.Gripper.V1;
 using Viam.Core.Clients;
@@ -14,14 +16,14 @@ namespace Viam.Core.Resources.Components.Gripper
     public class GripperClient(ViamResourceName resourceName, ViamChannel channel, ILogger<GripperClient> logger) :
         ComponentBase<GripperClient, Component.Gripper.V1.GripperService.GripperServiceClient>(resourceName,
             new Component.Gripper.V1.GripperService.GripperServiceClient(channel)),
-        IGripperClient
+        IGripperClient, IComponentClient<IGripperClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("gripper");
 
-        public static async Task<IGripperClient> FromRobot(IMachineClient client, string name)
+        public static async Task<IGripperClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null, CancellationToken token = default)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return await client.GetComponent<IGripperClient>(resourceName);
+            return await client.GetComponent<IGripperClient>(resourceName, timeout, token);
         }
 
         public override DateTime? LastReconfigured => null;
@@ -36,10 +38,10 @@ namespace Viam.Core.Resources.Components.Gripper
             {
                 logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client.DoCommandAsync(new DoCommandRequest()
-                        {
-                            Name = ResourceName.Name,
-                            Command = command.ToStruct()
-                        },
+                {
+                    Name = ResourceName.Name,
+                    Command = command.ToStruct()
+                },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);

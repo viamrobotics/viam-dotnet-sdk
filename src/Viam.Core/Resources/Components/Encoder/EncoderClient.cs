@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Viam.Common.V1;
 using Viam.Component.Encoder.V1;
 using Viam.Core.Clients;
@@ -15,14 +17,14 @@ namespace Viam.Core.Resources.Components.Encoder
     public class EncoderClient(ViamResourceName resourceName, ViamChannel channel, ILogger<EncoderClient> logger) :
         ComponentBase<EncoderClient, Component.Encoder.V1.EncoderService.EncoderServiceClient>(resourceName,
             new Component.Encoder.V1.EncoderService.EncoderServiceClient(channel)),
-        IEncoderClient
+        IEncoderClient, IComponentClient<IEncoderClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("encoder");
 
-        public static async Task<IEncoderClient> FromRobot(IMachineClient client, string name)
+        public static async Task<IEncoderClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null, CancellationToken token = default)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return await client.GetComponent<IEncoderClient>(resourceName);
+            return await client.GetComponent<IEncoderClient>(resourceName, timeout, token);
         }
 
         public override DateTime? LastReconfigured => null;
@@ -85,13 +87,13 @@ namespace Viam.Core.Resources.Components.Encoder
             {
                 logger.LogMethodInvocationStart(parameters: [Name, positionType]);
                 var res = await Client.GetPositionAsync(new GetPositionRequest()
-                        {
-                            Name = Name,
-                            PositionType =
+                {
+                    Name = Name,
+                    PositionType =
                                 positionType.GetValueOrDefault(
                                     PositionType.Unspecified),
-                            Extra = extra?.ToStruct()
-                        },
+                    Extra = extra?.ToStruct()
+                },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);

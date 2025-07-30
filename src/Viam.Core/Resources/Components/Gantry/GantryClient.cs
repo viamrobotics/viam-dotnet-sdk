@@ -15,14 +15,14 @@ namespace Viam.Core.Resources.Components.Gantry
     public class GantryClient(ViamResourceName resourceName, ViamChannel channel, ILogger<GantryClient> logger) :
         ComponentBase<GantryClient, Component.Gantry.V1.GantryService.GantryServiceClient>(resourceName,
             new Component.Gantry.V1.GantryService.GantryServiceClient(channel)),
-        IGantryClient
+        IGantryClient, IComponentClient<IGantryClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("gantry");
 
-        public static async Task<IGantryClient> FromRobot(IMachineClient client, string name)
+        public static async Task<IGantryClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null, CancellationToken token = default)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return await client.GetComponent<IGantryClient>(resourceName);
+            return await client.GetComponent<IGantryClient>(resourceName, timeout, token);
         }
 
         public override DateTime? LastReconfigured => null;

@@ -6,7 +6,7 @@ using Viam.Common.V1;
 
 namespace Viam.Core.Resources.Components.Motor
 {
-    public interface IMotor : IResourceBase
+    public interface IMotor : IComponentBase
     {
         ValueTask SetPower(double power,
             IDictionary<string, object?>? extra = null,

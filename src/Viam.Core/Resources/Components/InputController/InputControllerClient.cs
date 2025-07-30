@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Viam.Common.V1;
 using Viam.Component.Inputcontroller.V1;
 using Viam.Core.Clients;
@@ -17,15 +19,15 @@ namespace Viam.Core.Resources.Components.InputController
                 Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient>(
                 resourceName,
                 new Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient(channel)),
-            IInputControllerClient
+            IInputControllerClient, IComponentClient<IInputControllerClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("input_controller");
 
 
-        public static async Task<IInputControllerClient> FromRobot(IMachineClient client, string name)
+        public static async Task<IInputControllerClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null, CancellationToken token = default)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return await client.GetComponent<IInputControllerClient>(resourceName);
+            return await client.GetComponent<IInputControllerClient>(resourceName, timeout, token);
         }
 
         public override DateTime? LastReconfigured => null;

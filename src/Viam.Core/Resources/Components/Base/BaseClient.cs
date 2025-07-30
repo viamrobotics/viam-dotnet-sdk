@@ -15,14 +15,14 @@ namespace Viam.Core.Resources.Components.Base
     public class BaseClient(ViamResourceName resourceName, ViamChannel channel, ILogger<BaseClient> logger)
         : ComponentBase<BaseClient, Component.Base.V1.BaseService.BaseServiceClient>(resourceName,
                 new Component.Base.V1.BaseService.BaseServiceClient(channel)),
-            IBaseClient
+            IBaseClient, IComponentClient<IBaseClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("base");
 
-        public static async Task<IBaseClient> FromRobot(IMachineClient client, string name)
+        public static async Task<IBaseClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null, CancellationToken token = default)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return await client.GetComponent<IBaseClient>(resourceName);
+            return await client.GetComponent<IBaseClient>(resourceName, timeout, token);
         }
 
         public override DateTime? LastReconfigured => null;

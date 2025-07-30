@@ -20,7 +20,7 @@ namespace Viam.Core.Resources.Components.Sensor
         : ComponentBase<SensorClient, Component.Sensor.V1.SensorService.SensorServiceClient>(
                 resourceName,
                 new Component.Sensor.V1.SensorService.SensorServiceClient(channel)),
-            ISensorClient
+            ISensorClient, IComponentClient<ISensorClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("sensor");
 
@@ -31,10 +31,10 @@ namespace Viam.Core.Resources.Components.Sensor
             return new ViamResourceName(SubType, name);
         }
 
-        public static async Task<ISensorClient> FromRobot(IMachineClient client, string name)
+        public static async Task<ISensorClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null, CancellationToken token = default)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return await client.GetComponent<ISensorClient>(resourceName);
+            return await client.GetComponent<ISensorClient>(resourceName, timeout, token);
         }
 
         public override DateTime? LastReconfigured => null;

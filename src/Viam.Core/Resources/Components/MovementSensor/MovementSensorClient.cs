@@ -17,15 +17,15 @@ namespace Viam.Core.Resources.Components.MovementSensor
                 Component.Movementsensor.V1.MovementSensorService.MovementSensorServiceClient>(
                 resourceName,
                 new Component.Movementsensor.V1.MovementSensorService.MovementSensorServiceClient(channel)),
-            IMovementSensorClient
+            IMovementSensorClient, IComponentClient<IMovementSensorClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("movement_sensor");
 
 
-        public static async Task<IMovementSensorClient> FromRobot(IMachineClient client, string name)
+        public static async Task<IMovementSensorClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null, CancellationToken token = default)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return await client.GetComponent<IMovementSensorClient>(resourceName);
+            return await client.GetComponent<IMovementSensorClient>(resourceName, timeout, token);
         }
 
         public override DateTime? LastReconfigured => null;

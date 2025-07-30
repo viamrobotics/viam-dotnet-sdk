@@ -16,14 +16,14 @@ namespace Viam.Core.Resources.Components.Arm
     public class ArmClient(ViamResourceName resourceName, ViamChannel channel, ILogger<ArmClient> logger)
         : ComponentBase<ArmClient, Component.Arm.V1.ArmService.ArmServiceClient>(resourceName,
                 new Component.Arm.V1.ArmService.ArmServiceClient(channel)),
-            IArmClient
+            IArmClient, IComponentClient<IArmClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("arm");
 
-        public static async Task<IArmClient> FromRobot(IMachineClient client, string name)
+        public static async Task<IArmClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null, CancellationToken token = default)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return await client.GetComponent<IArmClient>(resourceName);
+            return await client.GetComponent<IArmClient>(resourceName, timeout, token);
         }
 
         public override DateTime? LastReconfigured => null;

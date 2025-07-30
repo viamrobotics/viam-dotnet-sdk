@@ -41,7 +41,7 @@ namespace Viam.Core.Clients
     public class MachineClientBase : IMachineClient
     {
         protected readonly ILogger<MachineClientBase> Logger;
-        
+
         private readonly ViamChannel _channel;
         private readonly ILoggerFactory _loggerFactory;
         private readonly RobotService.RobotServiceClient _robotServiceClient;
@@ -65,12 +65,12 @@ namespace Viam.Core.Clients
             _serviceCollection.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
         }
 
-        protected async Task RefreshAsync([CallerMemberName] string? caller = null)
+        protected async Task RefreshAsync(TimeSpan? timeout = null, CancellationToken token = default, [CallerMemberName] string? caller = null)
         {
             Logger.LogManagerRefreshStart(caller);
             ThrowIfDisposed();
 
-            var resourceNames = await ResourceNamesAsync();
+            var resourceNames = await ResourceNamesAsync(timeout, token);
             RegisterResources(resourceNames);
 
             Logger.LogManagerRefreshFinish(caller);
@@ -104,13 +104,13 @@ namespace Viam.Core.Clients
             ObjectDisposedException.ThrowIf(_isDisposed, nameof(MachineClientBase));
         }
 
-        public async Task<T> GetComponent<T>(ViamResourceName resourceName) where T : IResourceBase
+        public async Task<T> GetComponent<T>(ViamResourceName resourceName, TimeSpan? timeout = null, CancellationToken token = default) where T : IResourceBase
         {
             Logger.LogMethodInvocationStart();
             ThrowIfDisposed();
             try
             {
-                await RefreshAsync().ConfigureAwait(false);
+                await RefreshAsync(timeout ?? TimeSpan.FromSeconds(30), token).ConfigureAwait(false);
                 var resource = Services.GetRequiredKeyedService<T>(resourceName);
                 Logger.LogMethodInvocationSuccess();
                 return resource;

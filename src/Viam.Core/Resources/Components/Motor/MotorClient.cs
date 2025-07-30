@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Viam.Common.V1;
 using Viam.Component.Motor.V1;
 using Viam.Core.Clients;
@@ -15,14 +17,14 @@ namespace Viam.Core.Resources.Components.Motor
     public class MotorClient(ViamResourceName resourceName, ViamChannel channel, ILogger<MotorClient> logger) :
         ComponentBase<MotorClient, Component.Motor.V1.MotorService.MotorServiceClient>(resourceName,
             new Component.Motor.V1.MotorService.MotorServiceClient(channel)),
-        IMotorClient
+        IMotorClient, IComponentClient<IMotorClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("motor");
 
-        public static async Task<IMotorClient> FromRobot(IMachineClient client, string name)
+        public static async Task<IMotorClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null, CancellationToken token = default)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return await client.GetComponent<IMotorClient>(resourceName);
+            return await client.GetComponent<IMotorClient>(resourceName, timeout, token);
         }
 
         public override DateTime? LastReconfigured => null;
@@ -89,7 +91,7 @@ namespace Viam.Core.Resources.Components.Motor
                 logger.LogMethodInvocationStart(parameters: [Name, rpm, revolutions]);
                 await Client.GoForAsync(
                         new GoForRequest()
-                            { Name = Name, Revolutions = revolutions, Rpm = rpm, Extra = extra?.ToStruct() },
+                        { Name = Name, Revolutions = revolutions, Rpm = rpm, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -113,12 +115,12 @@ namespace Viam.Core.Resources.Components.Motor
             {
                 logger.LogMethodInvocationStart(parameters: [Name, rpm, positionRevolutions]);
                 await Client.GoToAsync(new GoToRequest()
-                        {
-                            Name = Name,
-                            Rpm = rpm,
-                            PositionRevolutions = positionRevolutions,
-                            Extra = extra?.ToStruct()
-                        },
+                {
+                    Name = Name,
+                    Rpm = rpm,
+                    PositionRevolutions = positionRevolutions,
+                    Extra = extra?.ToStruct()
+                },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);

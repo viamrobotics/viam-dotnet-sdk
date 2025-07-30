@@ -22,14 +22,15 @@ namespace Viam.Client.Clients
                 ? await dialer.DialGrpcDirectAsync(options.ToGrpcDialOptions())
                 : await dialer.DialWebRtcDirectAsync(options.ToWebRtcDialOptions());
             var client = new MachineClient(options.LoggerFactory, channel);
-            await client.RefreshAsync();
+            using var cts = new CancellationTokenSource(options.ConnectTimeout);
+            await client.RefreshAsync(options.ConnectTimeout, cts.Token);
             return client;
         }
 
-        public static async ValueTask<IMachineClient> WithChannel(ILoggerFactory loggerFactory, ViamChannel channel)
+        public static async ValueTask<IMachineClient> WithChannel(ILoggerFactory loggerFactory, ViamChannel channel, CancellationToken ct = default)
         {
             var client = new MachineClient(loggerFactory, channel);
-            await client.RefreshAsync();
+            await client.RefreshAsync(token: ct);
             return client;
         }
     }

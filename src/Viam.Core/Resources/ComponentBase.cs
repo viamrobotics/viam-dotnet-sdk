@@ -1,5 +1,4 @@
 ﻿using Grpc.Core;
-using Microsoft.Extensions.Logging;
 
 using System;
 using System.Collections.Generic;
@@ -7,6 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
 using Viam.Common.V1;
+using Viam.Core.Clients;
 using Viam.Core.Utils;
 
 namespace Viam.Core.Resources
@@ -15,8 +15,10 @@ namespace Viam.Core.Resources
     {
     }
 
-    public abstract class ComponentBase<T, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicMethods)] TClient>(
-        ViamResourceName resourceName, TClient client) 
+    public abstract class ComponentBase<T,
+        [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicMethods)] TClient>(
+        ViamResourceName resourceName,
+        TClient client)
         : ComponentBase(resourceName) where T : ComponentBase where TClient : ClientBase<TClient>
     {
         public TClient Client = client;
@@ -35,7 +37,7 @@ namespace Viam.Core.Resources
                 var result = cmd.Invoke(Client,
                 [
                     new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() }, null,
-                        timeout.ToDeadline(), cancellationToken
+                    timeout.ToDeadline(), cancellationToken
                 ]);
                 if (result is not AsyncUnaryCall<DoCommandResponse> r)
                 {
@@ -56,4 +58,11 @@ namespace Viam.Core.Resources
     }
 
     public abstract class ComponentBase(ViamResourceName resourceName) : ResourceBase(resourceName);
+
+    public interface IComponentClient<TClient>
+        where TClient : IComponentBase
+    {
+        static abstract Task<TClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null,
+            CancellationToken token = default);
+    }
 }

@@ -38,7 +38,7 @@ namespace Viam.Core.Test.Components
         [Test]
         public async Task Test_GetSensor()
         {
-            await using var sensor = await SensorClient.FromRobot(_robotClient!, "temp");
+            await using var sensor = await SensorClient.FromMachine(_robotClient!, "temp");
             var readings = await sensor.GetReadings();
             Assert.That(readings, Is.Not.Null);
         }

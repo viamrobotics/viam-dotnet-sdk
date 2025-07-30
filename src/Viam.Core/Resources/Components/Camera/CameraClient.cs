@@ -16,14 +16,14 @@ namespace Viam.Core.Resources.Components.Camera
     public class CameraClient(ViamResourceName resourceName, ViamChannel channel, ILogger<CameraClient> logger)
         : ComponentBase<CameraClient, Component.Camera.V1.CameraService.CameraServiceClient>(resourceName,
                 new Component.Camera.V1.CameraService.CameraServiceClient(channel)),
-            ICameraClient
+            ICameraClient, IComponentClient<ICameraClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("camera");
 
-        public static async Task<ICameraClient> FromRobot(IMachineClient client, string name)
+        public static async Task<ICameraClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null, CancellationToken token = default)
         {
             var resourceName = new ViamResourceName(SubType, name);
-            return await client.GetComponent<ICameraClient>(resourceName);
+            return await client.GetComponent<ICameraClient>(resourceName, timeout, token);
         }
 
         public override DateTime? LastReconfigured => null;
