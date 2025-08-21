@@ -70,7 +70,7 @@ namespace Viam.Core.Clients
             try
             {
                 if (_isDisposed) return;
-                Logger.LogInformation("Disposing of MachineClient");
+                Logger.LogDebug("Disposing of MachineClient");
                 _channel.Dispose();
 
                 GC.SuppressFinalize(this);
@@ -82,7 +82,7 @@ namespace Viam.Core.Clients
             }
             finally
             {
-                Logger.LogInformation("Client disposed");
+                Logger.LogDebug("Client disposed");
                 _disposeLock.Release();
             }
         }
@@ -510,14 +510,19 @@ namespace Viam.Core.Clients
 
         private void RegisterResources(ViamResourceName[] resourceNames)
         {
-            Logger.LogInformation("Registering resources: {ResourceCount}", resourceNames.Length);
+            Logger.LogDebug("Registering resources: {ResourceCount}", resourceNames.Length);
             // TODO: Add support for services, for now we only register components
             var filteredResourceName = resourceNames.Where(x => x.SubType.ResourceType is "component")// or "service")
                 .Where(x => x.SubType.ResourceSubType != "remote");
             // Register the built-in component types
             foreach (var resourceName in filteredResourceName)
             {
-                Logger.LogInformation("Registering resource: {ResourceName}", resourceName);
+                if (_resources.ContainsKey(resourceName))
+                {
+                    Logger.LogTrace("Resource {ResourceName} already registered", resourceName);
+                    continue;
+                }
+                Logger.LogDebug("Registering resource: {ResourceName}", resourceName);
                 switch (resourceName.SubType.ResourceSubType)
                 {
                     case "arm":
