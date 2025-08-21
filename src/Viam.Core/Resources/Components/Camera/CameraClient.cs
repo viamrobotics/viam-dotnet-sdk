@@ -15,7 +15,7 @@ namespace Viam.Core.Resources.Components.Camera
 {
     public class CameraClient(ViamResourceName resourceName, ViamChannel channel, ILogger<CameraClient> logger)
         : ComponentBase<CameraClient, Component.Camera.V1.CameraService.CameraServiceClient>(resourceName,
-                new Component.Camera.V1.CameraService.CameraServiceClient(channel)),
+                new Component.Camera.V1.CameraService.CameraServiceClient(channel), logger),
             ICameraClient, IComponentClient<ICameraClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("camera");
@@ -37,7 +37,7 @@ namespace Viam.Core.Resources.Components.Camera
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, command]);
+                Logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client.DoCommandAsync(
                         new DoCommandRequest() { Name = Name, Command = command.ToStruct() },
                         deadline: timeout.ToDeadline(),
@@ -45,12 +45,12 @@ namespace Viam.Core.Resources.Components.Camera
                     .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
-                logger.LogMethodInvocationSuccess(results: response);
+                Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -64,7 +64,7 @@ namespace Viam.Core.Resources.Components.Camera
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart();
+                Logger.LogMethodInvocationStart();
                 var res = await Client
                     .GetImageAsync(
                         new GetImageRequest()
@@ -80,12 +80,12 @@ namespace Viam.Core.Resources.Components.Camera
                     Utils.GetImageDimensions(
                         res.Image.Memory.Span, MimeTypeExtensions.FromGrpc(res.MimeType));
                 var image = new ViamImage(res.Image.Memory, MimeTypeExtensions.FromGrpc(res.MimeType), width, height);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
                 return image;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -97,7 +97,7 @@ namespace Viam.Core.Resources.Components.Camera
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart();
+                Logger.LogMethodInvocationStart();
                 var res = await Client
                     .GetImagesAsync(
                         new GetImagesRequest() { Name = Name },
@@ -118,12 +118,12 @@ namespace Viam.Core.Resources.Components.Camera
                     i++;
                 }
 
-                logger.LogMethodInvocationSuccess(results: response.Length);
+                Logger.LogMethodInvocationSuccess(results: response.Length);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -137,7 +137,7 @@ namespace Viam.Core.Resources.Components.Camera
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart();
+                Logger.LogMethodInvocationStart();
                 var result = await Client
                     .GetPointCloudAsync(
                         new GetPointCloudRequest()
@@ -152,12 +152,12 @@ namespace Viam.Core.Resources.Components.Camera
 
                 var response = new ViamImage(result.PointCloud.Memory, MimeTypeExtensions.FromGrpc(result.MimeType), 0,
                     0);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -169,7 +169,7 @@ namespace Viam.Core.Resources.Components.Camera
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart();
+                Logger.LogMethodInvocationStart();
                 Debug.Assert(Client != null);
                 var result = await Client.GetPropertiesAsync(new GetPropertiesRequest() { Name = Name },
                         deadline: timeout.ToDeadline(),
@@ -187,12 +187,12 @@ namespace Viam.Core.Resources.Components.Camera
                     result.MimeTypes.Select(MimeTypeExtensions.FromGrpc)
                         .ToArray(),
                     result.SupportsPcd);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -205,19 +205,19 @@ namespace Viam.Core.Resources.Components.Camera
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart();
+                Logger.LogMethodInvocationStart();
                 var result = await Client.GetGeometriesAsync(
                         new GetGeometriesRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
                 var response = result.Geometries.ToArray();
-                logger.LogMethodInvocationSuccess(results: response.Length);
+                Logger.LogMethodInvocationSuccess(results: response.Length);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }

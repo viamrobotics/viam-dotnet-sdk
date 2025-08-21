@@ -19,7 +19,7 @@ namespace Viam.Core.Resources.Components.Board
     /// <param name="logger">A logger</param>
     public class BoardClient(ViamResourceName resourceName, ViamChannel channel, ILogger<BoardClient> logger)
         : ComponentBase<BoardClient, Component.Board.V1.BoardService.BoardServiceClient>(resourceName,
-                new Component.Board.V1.BoardService.BoardServiceClient(channel)),
+                new Component.Board.V1.BoardService.BoardServiceClient(channel), logger),
             IBoardClient, IComponentClient<IBoardClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("board");
@@ -47,19 +47,19 @@ namespace Viam.Core.Resources.Components.Board
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, command]);
+                Logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client.DoCommandAsync(
                         new DoCommandRequest() { Name = Name, Command = command.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
                 var response = res.Result.ToDictionary();
-                logger.LogMethodInvocationSuccess(results: response);
+                Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -87,7 +87,7 @@ namespace Viam.Core.Resources.Components.Board
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, mode, Duration.FromTimeSpan(duration)]);
+                Logger.LogMethodInvocationStart(parameters: [Name, mode, Duration.FromTimeSpan(duration)]);
                 await Client.SetPowerModeAsync(new SetPowerModeRequest()
                         {
                             Name = Name,
@@ -98,11 +98,11 @@ namespace Viam.Core.Resources.Components.Board
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -117,18 +117,18 @@ namespace Viam.Core.Resources.Components.Board
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, pin, value]);
+                Logger.LogMethodInvocationStart(parameters: [Name, pin, value]);
                 await Client
                     .WriteAnalogAsync(
                         new WriteAnalogRequest() { Name = Name, Pin = pin, Value = value, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }

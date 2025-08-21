@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Core.Clients;
 using Viam.Core.Utils;
@@ -13,11 +14,8 @@ namespace Viam.Core.Resources
 {
     public interface IComponentBase : IResourceBase;
 
-    public abstract class ComponentBase<T,
-        [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicMethods)] TClient>(
-        ViamResourceName resourceName,
-        TClient client)
-        : ComponentBase(resourceName) where T : ComponentBase where TClient : ClientBase<TClient>
+    public abstract class ComponentBase<T, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicMethods)] TClient>(ViamResourceName resourceName, TClient client, ILogger<T> logger)
+        : ComponentBase(resourceName, logger) where T : ComponentBase where TClient : ClientBase<TClient>
     {
         
         public TClient Client = client;
@@ -56,7 +54,7 @@ namespace Viam.Core.Resources
         }
     }
 
-    public abstract class ComponentBase(ViamResourceName resourceName) : ResourceBase(resourceName);
+    public abstract class ComponentBase(ViamResourceName resourceName, ILogger logger) : ResourceBase(resourceName, logger);
 
     public interface IComponentClient<TClient>
         where TClient : IComponentBase

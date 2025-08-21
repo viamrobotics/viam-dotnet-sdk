@@ -15,7 +15,7 @@ namespace Viam.Core.Resources.Components.Gripper
 {
     public class GripperClient(ViamResourceName resourceName, ViamChannel channel, ILogger<GripperClient> logger) :
         ComponentBase<GripperClient, Component.Gripper.V1.GripperService.GripperServiceClient>(resourceName,
-            new Component.Gripper.V1.GripperService.GripperServiceClient(channel)),
+            new Component.Gripper.V1.GripperService.GripperServiceClient(channel), logger),
         IGripperClient, IComponentClient<IGripperClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("gripper");
@@ -37,7 +37,7 @@ namespace Viam.Core.Resources.Components.Gripper
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, command]);
+                Logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client.DoCommandAsync(new DoCommandRequest()
                 {
                     Name = ResourceName.Name,
@@ -48,12 +48,12 @@ namespace Viam.Core.Resources.Components.Gripper
                     .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
-                logger.LogMethodInvocationSuccess(results: response);
+                Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -66,16 +66,16 @@ namespace Viam.Core.Resources.Components.Gripper
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 await Client.OpenAsync(new OpenRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -88,16 +88,16 @@ namespace Viam.Core.Resources.Components.Gripper
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 await Client.GrabAsync(new GrabRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -110,16 +110,16 @@ namespace Viam.Core.Resources.Components.Gripper
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -131,17 +131,17 @@ namespace Viam.Core.Resources.Components.Gripper
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.IsMovingAsync(new IsMovingRequest() { Name = Name },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.IsMoving);
+                Logger.LogMethodInvocationSuccess(results: res.IsMoving);
                 return res.IsMoving;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }

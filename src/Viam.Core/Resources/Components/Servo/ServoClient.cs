@@ -1,10 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Viam.Common.V1;
 using Viam.Component.Servo.V1;
 using Viam.Core.Clients;
@@ -15,7 +17,8 @@ namespace Viam.Core.Resources.Components.Servo
 {
     public class ServoClient(ViamResourceName resourceName, ViamChannel channel, ILogger<ServoClient> logger)
         : ComponentBase<ServoClient, Component.Servo.V1.ServoService.ServoServiceClient>(resourceName,
-                new Component.Servo.V1.ServoService.ServoServiceClient(channel)),
+                new Component.Servo.V1.ServoService.ServoServiceClient(channel),
+                logger),
             IServoClient, IComponentClient<IServoClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("servo");
@@ -37,7 +40,7 @@ namespace Viam.Core.Resources.Components.Servo
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, command]);
+                Logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client
                     .DoCommandAsync(
                         new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
@@ -46,12 +49,12 @@ namespace Viam.Core.Resources.Components.Servo
                     .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
-                logger.LogMethodInvocationSuccess(results: response);
+                Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -66,16 +69,16 @@ namespace Viam.Core.Resources.Components.Servo
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, angle]);
+                Logger.LogMethodInvocationStart(parameters: [Name, angle]);
                 await Client.MoveAsync(new MoveRequest() { Name = Name, AngleDeg = angle, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -89,18 +92,18 @@ namespace Viam.Core.Resources.Components.Servo
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetPositionAsync(
                         new GetPositionRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.PositionDeg);
+                Logger.LogMethodInvocationSuccess(results: res.PositionDeg);
                 return res.PositionDeg;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -113,17 +116,17 @@ namespace Viam.Core.Resources.Components.Servo
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.IsMovingAsync(new IsMovingRequest() { Name = ResourceName.Name },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.IsMoving);
+                Logger.LogMethodInvocationSuccess(results: res.IsMoving);
                 return res.IsMoving;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -137,16 +140,16 @@ namespace Viam.Core.Resources.Components.Servo
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -160,7 +163,7 @@ namespace Viam.Core.Resources.Components.Servo
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetGeometriesAsync(
                         new GetGeometriesRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
@@ -168,12 +171,12 @@ namespace Viam.Core.Resources.Components.Servo
                     .ConfigureAwait(false);
 
                 var geometries = res.Geometries.ToArray();
-                logger.LogMethodInvocationSuccess(results: geometries);
+                Logger.LogMethodInvocationSuccess(results: geometries);
                 return geometries;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }

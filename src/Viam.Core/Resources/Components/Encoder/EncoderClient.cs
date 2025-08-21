@@ -16,7 +16,7 @@ namespace Viam.Core.Resources.Components.Encoder
 {
     public class EncoderClient(ViamResourceName resourceName, ViamChannel channel, ILogger<EncoderClient> logger) :
         ComponentBase<EncoderClient, Component.Encoder.V1.EncoderService.EncoderServiceClient>(resourceName,
-            new Component.Encoder.V1.EncoderService.EncoderServiceClient(channel)),
+            new Component.Encoder.V1.EncoderService.EncoderServiceClient(channel), logger),
         IEncoderClient, IComponentClient<IEncoderClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("encoder");
@@ -38,7 +38,7 @@ namespace Viam.Core.Resources.Components.Encoder
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, command]);
+                Logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client
                     .DoCommandAsync(
                         new DoCommandRequest() { Name = Name, Command = command.ToStruct() },
@@ -47,12 +47,12 @@ namespace Viam.Core.Resources.Components.Encoder
                     .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
-                logger.LogMethodInvocationSuccess(results: response);
+                Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -65,16 +65,16 @@ namespace Viam.Core.Resources.Components.Encoder
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 await Client.ResetPositionAsync(new ResetPositionRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -88,7 +88,7 @@ namespace Viam.Core.Resources.Components.Encoder
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, positionType]);
+                Logger.LogMethodInvocationStart(parameters: [Name, positionType]);
                 var res = await Client.GetPositionAsync(new GetPositionRequest()
                 {
                     Name = Name,
@@ -100,12 +100,12 @@ namespace Viam.Core.Resources.Components.Encoder
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: [res.Value, res.PositionType]);
+                Logger.LogMethodInvocationSuccess(results: [res.Value, res.PositionType]);
                 return (res.Value, res.PositionType);
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -118,7 +118,7 @@ namespace Viam.Core.Resources.Components.Encoder
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetPropertiesAsync(
                         new GetPropertiesRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
@@ -126,12 +126,12 @@ namespace Viam.Core.Resources.Components.Encoder
                     .ConfigureAwait(false);
 
                 var properties = new EncoderProperties(res.AngleDegreesSupported, res.TicksCountSupported);
-                logger.LogMethodInvocationSuccess(results: properties);
+                Logger.LogMethodInvocationSuccess(results: properties);
                 return properties;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -144,7 +144,7 @@ namespace Viam.Core.Resources.Components.Encoder
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: Name);
+                Logger.LogMethodInvocationStart(parameters: Name);
                 var res = await Client.GetGeometriesAsync(
                         new GetGeometriesRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
@@ -152,12 +152,12 @@ namespace Viam.Core.Resources.Components.Encoder
                     .ConfigureAwait(false);
 
                 var geometry = res.Geometries.ToArray();
-                logger.LogMethodInvocationSuccess(results: geometry);
+                Logger.LogMethodInvocationSuccess(results: geometry);
                 return geometry;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }

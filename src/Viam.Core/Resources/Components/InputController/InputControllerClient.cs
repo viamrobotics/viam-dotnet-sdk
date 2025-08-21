@@ -18,7 +18,7 @@ namespace Viam.Core.Resources.Components.InputController
         : ComponentBase<InputControllerClient,
                 Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient>(
                 resourceName,
-                new Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient(channel)),
+                new Component.Inputcontroller.V1.InputControllerService.InputControllerServiceClient(channel), logger),
             IInputControllerClient, IComponentClient<IInputControllerClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("input_controller");
@@ -41,7 +41,7 @@ namespace Viam.Core.Resources.Components.InputController
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client
                     .DoCommandAsync(
                         new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
@@ -50,12 +50,12 @@ namespace Viam.Core.Resources.Components.InputController
                     .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
-                logger.LogMethodInvocationSuccess(results: response);
+                Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -68,7 +68,7 @@ namespace Viam.Core.Resources.Components.InputController
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetGeometriesAsync(
                         new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
@@ -76,12 +76,12 @@ namespace Viam.Core.Resources.Components.InputController
                     .ConfigureAwait(false);
 
                 var geometry = res.Geometries.ToArray();
-                logger.LogMethodInvocationSuccess(results: geometry);
+                Logger.LogMethodInvocationSuccess(results: geometry);
                 return geometry;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -94,7 +94,7 @@ namespace Viam.Core.Resources.Components.InputController
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetControlsAsync(
                         new GetControlsRequest() { Controller = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
@@ -104,12 +104,12 @@ namespace Viam.Core.Resources.Components.InputController
                 var response = res.Controls.Select(Control.FromName)
                     .ToArray();
 
-                logger.LogMethodInvocationSuccess(results: response);
+                Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -123,7 +123,7 @@ namespace Viam.Core.Resources.Components.InputController
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetEventsAsync(
                         new GetEventsRequest() { Controller = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
@@ -131,12 +131,12 @@ namespace Viam.Core.Resources.Components.InputController
                     .ConfigureAwait(false);
 
                 var response = res.Events.ToDictionary(x => Control.FromName(x.Control), Event.FromProto);
-                logger.LogMethodInvocationSuccess(results: response);
+                Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -150,13 +150,13 @@ namespace Viam.Core.Resources.Components.InputController
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 throw new NotImplementedException();
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -170,13 +170,13 @@ namespace Viam.Core.Resources.Components.InputController
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 throw new NotImplementedException();
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }

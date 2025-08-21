@@ -1,9 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Viam.Common.V1;
 using Viam.Component.Movementsensor.V1;
 using Viam.Core.Clients;
@@ -16,7 +18,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
         : ComponentBase<MovementSensorClient,
                 Component.Movementsensor.V1.MovementSensorService.MovementSensorServiceClient>(
                 resourceName,
-                new Component.Movementsensor.V1.MovementSensorService.MovementSensorServiceClient(channel)),
+                new Component.Movementsensor.V1.MovementSensorService.MovementSensorServiceClient(channel), logger),
             IMovementSensorClient, IComponentClient<IMovementSensorClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("movement_sensor");
@@ -40,7 +42,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, command]);
+                Logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client
                     .DoCommandAsync(
                         new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
@@ -49,12 +51,12 @@ namespace Viam.Core.Resources.Components.MovementSensor
                     .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
-                logger.LogMethodInvocationSuccess(results: response);
+                Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -67,18 +69,18 @@ namespace Viam.Core.Resources.Components.MovementSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetPositionAsync(
                         new GetPositionRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: [res.Coordinate, res.AltitudeM]);
+                Logger.LogMethodInvocationSuccess(results: [res.Coordinate, res.AltitudeM]);
                 return (res.Coordinate, res.AltitudeM);
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -91,18 +93,18 @@ namespace Viam.Core.Resources.Components.MovementSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetLinearVelocityAsync(
                         new GetLinearVelocityRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.LinearVelocity);
+                Logger.LogMethodInvocationSuccess(results: res.LinearVelocity);
                 return res.LinearVelocity;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -115,18 +117,18 @@ namespace Viam.Core.Resources.Components.MovementSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetAngularVelocityAsync(
                         new GetAngularVelocityRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.AngularVelocity);
+                Logger.LogMethodInvocationSuccess(results: res.AngularVelocity);
                 return res.AngularVelocity;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -139,18 +141,18 @@ namespace Viam.Core.Resources.Components.MovementSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetLinearAccelerationAsync(
                         new GetLinearAccelerationRequest() { Name = Name, Extra = extra?.ToStruct(), },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.LinearAcceleration);
+                Logger.LogMethodInvocationSuccess(results: res.LinearAcceleration);
                 return res.LinearAcceleration;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -163,18 +165,18 @@ namespace Viam.Core.Resources.Components.MovementSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetCompassHeadingAsync(
                         new GetCompassHeadingRequest() { Name = Name, Extra = extra?.ToStruct(), },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.Value);
+                Logger.LogMethodInvocationSuccess(results: res.Value);
                 return res.Value;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -187,18 +189,18 @@ namespace Viam.Core.Resources.Components.MovementSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetOrientationAsync(
                         new GetOrientationRequest() { Name = Name, Extra = extra?.ToStruct(), },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.Orientation);
+                Logger.LogMethodInvocationSuccess(results: res.Orientation);
                 return res.Orientation;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -211,7 +213,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetPropertiesAsync(
                         new GetPropertiesRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
@@ -224,12 +226,12 @@ namespace Viam.Core.Resources.Components.MovementSensor
                     res.CompassHeadingSupported,
                     res.OrientationSupported,
                     res.PositionSupported);
-                logger.LogMethodInvocationSuccess(results: props);
+                Logger.LogMethodInvocationSuccess(results: props);
                 return props;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -242,7 +244,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetAccuracyAsync(
                         new GetAccuracyRequest() { Name = Name, Extra = extra?.ToStruct(), },
                         deadline: timeout.ToDeadline(),
@@ -258,12 +260,12 @@ namespace Viam.Core.Resources.Components.MovementSensor
                     res.PositionNmeaGgaFix,
                     res.HasPositionVdop,
                     res.PositionVdop);
-                logger.LogMethodInvocationSuccess(results: accuracy);
+                Logger.LogMethodInvocationSuccess(results: accuracy);
                 return accuracy;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -276,7 +278,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetGeometriesAsync(
                         new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
@@ -284,12 +286,12 @@ namespace Viam.Core.Resources.Components.MovementSensor
                     .ConfigureAwait(false);
 
                 var geometry = res.Geometries.ToArray();
-                logger.LogMethodInvocationSuccess(results: geometry);
+                Logger.LogMethodInvocationSuccess(results: geometry);
                 return geometry;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -302,7 +304,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetReadingsAsync(
                         new GetReadingsRequest() { Name = Name, Extra = extra?.ToStruct(), },
                         deadline: timeout.ToDeadline(),
@@ -310,12 +312,12 @@ namespace Viam.Core.Resources.Components.MovementSensor
                     .ConfigureAwait(false);
 
                 var readings = res.Readings.ToDictionary();
-                logger.LogMethodInvocationSuccess(results: readings);
+                Logger.LogMethodInvocationSuccess(results: readings);
                 return readings;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }

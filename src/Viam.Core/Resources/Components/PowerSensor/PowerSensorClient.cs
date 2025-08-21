@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
+
 using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Viam.Common.V1;
 using Viam.Component.Powersensor.V1;
 using Viam.Core.Clients;
@@ -14,7 +16,8 @@ namespace Viam.Core.Resources.Components.PowerSensor
     public class PowerSensorClient(ViamResourceName resourceName, ViamChannel channel, ILogger<PowerSensorClient> logger) :
         ComponentBase<PowerSensorClient, Component.Powersensor.V1.PowerSensorService.PowerSensorServiceClient>(
             resourceName,
-            new Component.Powersensor.V1.PowerSensorService.PowerSensorServiceClient(channel)),
+            new Component.Powersensor.V1.PowerSensorService.PowerSensorServiceClient(channel),
+            logger),
         IPowerSensorClient, IComponentClient<IPowerSensorClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("power_sensor");
@@ -36,7 +39,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, command]);
+                Logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client
                     .DoCommandAsync(
                         new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
@@ -45,12 +48,12 @@ namespace Viam.Core.Resources.Components.PowerSensor
                     .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
-                logger.LogMethodInvocationSuccess(results: response);
+                Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -63,18 +66,18 @@ namespace Viam.Core.Resources.Components.PowerSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetVoltageAsync(
                         new GetVoltageRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: [res.Volts, res.IsAc]);
+                Logger.LogMethodInvocationSuccess(results: [res.Volts, res.IsAc]);
                 return (res.Volts, res.IsAc);
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -87,18 +90,18 @@ namespace Viam.Core.Resources.Components.PowerSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetCurrentAsync(
                         new GetCurrentRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: [res.Amperes, res.IsAc]);
+                Logger.LogMethodInvocationSuccess(results: [res.Amperes, res.IsAc]);
                 return (res.Amperes, res.IsAc);
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -111,17 +114,17 @@ namespace Viam.Core.Resources.Components.PowerSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetPowerAsync(new GetPowerRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.Watts);
+                Logger.LogMethodInvocationSuccess(results: res.Watts);
                 return res.Watts;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -134,7 +137,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetReadingsAsync(
                         new GetReadingsRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
@@ -142,12 +145,12 @@ namespace Viam.Core.Resources.Components.PowerSensor
                     .ConfigureAwait(false);
 
                 var readings = res.Readings.ToDictionary();
-                logger.LogMethodInvocationSuccess(results: readings);
+                Logger.LogMethodInvocationSuccess(results: readings);
                 return readings;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }

@@ -15,7 +15,7 @@ namespace Viam.Core.Resources.Components.Generic
 {
     public class GenericClient(ViamResourceName resourceName, ViamChannel channel, ILogger<GenericClient> logger) :
         ComponentBase<GenericClient, Component.Generic.V1.GenericService.GenericServiceClient>(resourceName,
-            new Component.Generic.V1.GenericService.GenericServiceClient(channel)),
+            new Component.Generic.V1.GenericService.GenericServiceClient(channel), logger),
         IGenericClient, IComponentClient<IGenericClient>
     {
 
@@ -35,7 +35,7 @@ namespace Viam.Core.Resources.Components.Generic
             CancellationToken cancellationToken = default)
         {
             ThrowIfDisposed();
-            logger.LogMethodInvocationStart(parameters: [Name, command]);
+            Logger.LogMethodInvocationStart(parameters: [Name, command]);
             try
             {
                 var res = await Client
@@ -46,12 +46,12 @@ namespace Viam.Core.Resources.Components.Generic
                     .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
-                logger.LogMethodInvocationSuccess(results: response);
+                Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -64,7 +64,7 @@ namespace Viam.Core.Resources.Components.Generic
             CancellationToken cancellationToken = default)
         {
             ThrowIfDisposed();
-            logger.LogMethodInvocationStart(parameters: [Name]);
+            Logger.LogMethodInvocationStart(parameters: [Name]);
             try
             {
                 var res = await Client.GetGeometriesAsync(
@@ -74,12 +74,12 @@ namespace Viam.Core.Resources.Components.Generic
                     .ConfigureAwait(false);
 
                 var geometry = res.Geometries.ToArray();
-                logger.LogMethodInvocationSuccess(results: geometry);
+                Logger.LogMethodInvocationSuccess(results: geometry);
                 return geometry;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }

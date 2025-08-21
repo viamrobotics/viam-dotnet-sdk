@@ -16,7 +16,7 @@ namespace Viam.Core.Resources.Components.Motor
 {
     public class MotorClient(ViamResourceName resourceName, ViamChannel channel, ILogger<MotorClient> logger) :
         ComponentBase<MotorClient, Component.Motor.V1.MotorService.MotorServiceClient>(resourceName,
-            new Component.Motor.V1.MotorService.MotorServiceClient(channel)),
+            new Component.Motor.V1.MotorService.MotorServiceClient(channel), logger),
         IMotorClient, IComponentClient<IMotorClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("motor");
@@ -38,7 +38,7 @@ namespace Viam.Core.Resources.Components.Motor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, command]);
+                Logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client
                     .DoCommandAsync(
                         new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
@@ -47,12 +47,12 @@ namespace Viam.Core.Resources.Components.Motor
                     .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
-                logger.LogMethodInvocationSuccess(results: response);
+                Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -66,17 +66,17 @@ namespace Viam.Core.Resources.Components.Motor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, power]);
+                Logger.LogMethodInvocationStart(parameters: [Name, power]);
                 await Client.SetPowerAsync(
                         new SetPowerRequest() { Name = Name, PowerPct = power, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -91,18 +91,18 @@ namespace Viam.Core.Resources.Components.Motor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, rpm, revolutions]);
+                Logger.LogMethodInvocationStart(parameters: [Name, rpm, revolutions]);
                 await Client.GoForAsync(
                         new GoForRequest()
                         { Name = Name, Revolutions = revolutions, Rpm = rpm, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -117,7 +117,7 @@ namespace Viam.Core.Resources.Components.Motor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, rpm, positionRevolutions]);
+                Logger.LogMethodInvocationStart(parameters: [Name, rpm, positionRevolutions]);
                 await Client.GoToAsync(new GoToRequest()
                 {
                     Name = Name,
@@ -128,11 +128,11 @@ namespace Viam.Core.Resources.Components.Motor
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -146,17 +146,17 @@ namespace Viam.Core.Resources.Components.Motor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, offset]);
+                Logger.LogMethodInvocationStart(parameters: [Name, offset]);
                 await Client.ResetZeroPositionAsync(
                         new ResetZeroPositionRequest() { Name = Name, Offset = offset, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -169,18 +169,18 @@ namespace Viam.Core.Resources.Components.Motor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetPositionAsync(
                         new GetPositionRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.Position);
+                Logger.LogMethodInvocationSuccess(results: res.Position);
                 return res.Position;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -193,7 +193,7 @@ namespace Viam.Core.Resources.Components.Motor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetPropertiesAsync(
                         new GetPropertiesRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
@@ -201,12 +201,12 @@ namespace Viam.Core.Resources.Components.Motor
                     .ConfigureAwait(false);
 
                 var props = new Properties(res.PositionReporting);
-                logger.LogMethodInvocationSuccess(results: props);
+                Logger.LogMethodInvocationSuccess(results: props);
                 return props;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -219,16 +219,16 @@ namespace Viam.Core.Resources.Components.Motor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess();
+                Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -241,17 +241,17 @@ namespace Viam.Core.Resources.Components.Motor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.IsPoweredAsync(new IsPoweredRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: [res.IsOn, res.PowerPct]);
+                Logger.LogMethodInvocationSuccess(results: [res.IsOn, res.PowerPct]);
                 return (res.IsOn, res.PowerPct);
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -263,17 +263,17 @@ namespace Viam.Core.Resources.Components.Motor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.IsMovingAsync(new IsMovingRequest() { Name = Name },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
-                logger.LogMethodInvocationSuccess(results: res.IsMoving);
+                Logger.LogMethodInvocationSuccess(results: res.IsMoving);
                 return res.IsMoving;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -286,7 +286,7 @@ namespace Viam.Core.Resources.Components.Motor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetGeometriesAsync(
                         new GetGeometriesRequest() { Name = Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
@@ -294,12 +294,12 @@ namespace Viam.Core.Resources.Components.Motor
                     .ConfigureAwait(false);
 
                 var geometries = res.Geometries.ToArray();
-                logger.LogMethodInvocationSuccess(results: geometries);
+                Logger.LogMethodInvocationSuccess(results: geometries);
                 return geometries;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }

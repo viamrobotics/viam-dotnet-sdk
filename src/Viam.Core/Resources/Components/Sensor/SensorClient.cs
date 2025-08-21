@@ -19,7 +19,8 @@ namespace Viam.Core.Resources.Components.Sensor
     public class SensorClient(ViamResourceName resourceName, ViamChannel channel, ILogger<SensorClient> logger)
         : ComponentBase<SensorClient, Component.Sensor.V1.SensorService.SensorServiceClient>(
                 resourceName,
-                new Component.Sensor.V1.SensorService.SensorServiceClient(channel)),
+                new Component.Sensor.V1.SensorService.SensorServiceClient(channel),
+                logger),
             ISensorClient, IComponentClient<ISensorClient>
     {
         public static SubType SubType = SubType.FromRdkComponent("sensor");
@@ -48,7 +49,7 @@ namespace Viam.Core.Resources.Components.Sensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name, command]);
+                Logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client.DoCommandAsync(
                         new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
                         deadline: timeout.ToDeadline(),
@@ -56,12 +57,12 @@ namespace Viam.Core.Resources.Components.Sensor
                     .ConfigureAwait(false);
 
                 var response = res.Result.ToDictionary();
-                logger.LogMethodInvocationSuccess(results: response);
+                Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
@@ -74,7 +75,7 @@ namespace Viam.Core.Resources.Components.Sensor
             ThrowIfDisposed();
             try
             {
-                logger.LogMethodInvocationStart(parameters: [Name]);
+                Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client
                     .GetReadingsAsync(new GetReadingsRequest() { Name = ResourceName.Name, Extra = extra?.ToStruct() },
                         deadline: timeout.ToDeadline(),
@@ -82,12 +83,12 @@ namespace Viam.Core.Resources.Components.Sensor
                     .ConfigureAwait(false);
 
                 var response = res.Readings.ToDictionary();
-                logger.LogMethodInvocationSuccess(results: response);
+                Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
             catch (Exception ex)
             {
-                logger.LogMethodInvocationFailure(ex);
+                Logger.LogMethodInvocationFailure(ex);
                 throw;
             }
         }
