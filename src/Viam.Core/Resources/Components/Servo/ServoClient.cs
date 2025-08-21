@@ -34,6 +34,7 @@ namespace Viam.Core.Resources.Components.Servo
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, command]);
@@ -62,6 +63,7 @@ namespace Viam.Core.Resources.Components.Servo
             CancellationToken cancellationToken = default,
             [CallerMemberName] string? caller = null)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, angle]);
@@ -84,6 +86,7 @@ namespace Viam.Core.Resources.Components.Servo
             CancellationToken cancellationToken = default,
             [CallerMemberName] string? caller = null)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -107,6 +110,7 @@ namespace Viam.Core.Resources.Components.Servo
             CancellationToken cancellationToken = default,
             [CallerMemberName] string? caller = null)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -130,6 +134,7 @@ namespace Viam.Core.Resources.Components.Servo
             CancellationToken cancellationToken = default,
             [CallerMemberName] string? caller = null)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -152,6 +157,7 @@ namespace Viam.Core.Resources.Components.Servo
             CancellationToken cancellationToken = default,
             [CallerMemberName] string? caller = null)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);

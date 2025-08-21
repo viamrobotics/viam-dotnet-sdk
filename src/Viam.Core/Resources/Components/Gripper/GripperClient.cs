@@ -34,6 +34,7 @@ namespace Viam.Core.Resources.Components.Gripper
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, command]);
@@ -62,6 +63,7 @@ namespace Viam.Core.Resources.Components.Gripper
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -83,6 +85,7 @@ namespace Viam.Core.Resources.Components.Gripper
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -104,6 +107,7 @@ namespace Viam.Core.Resources.Components.Gripper
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -124,6 +128,7 @@ namespace Viam.Core.Resources.Components.Gripper
         public async ValueTask<bool> IsMoving(TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);

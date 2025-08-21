@@ -34,6 +34,7 @@ namespace Viam.Core.Resources.Components.Generic
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             logger.LogMethodInvocationStart(parameters: [Name, command]);
             try
             {
@@ -62,6 +63,7 @@ namespace Viam.Core.Resources.Components.Generic
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             logger.LogMethodInvocationStart(parameters: [Name]);
             try
             {

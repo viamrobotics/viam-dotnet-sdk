@@ -7,6 +7,8 @@ namespace Viam.Core.Resources
 {
     public abstract class ResourceBase(ViamResourceName resourceName) : IResourceBase
     {
+        private bool _disposed;
+        private int _disposedGuard;
         public ViamResourceName ResourceName { get; } = resourceName;
         public string Name => ResourceName.Name;
         public abstract DateTime? LastReconfigured { get; }
@@ -21,8 +23,16 @@ namespace Viam.Core.Resources
 
         public virtual ValueTask DisposeAsync()
         {
+            if (Interlocked.CompareExchange(ref _disposedGuard, 1, 0) == 1)
+                return ValueTask.CompletedTask;
+            _disposed = true;
             GC.SuppressFinalize(this);
             return ValueTask.CompletedTask;
+        }
+
+        private protected void ThrowIfDisposed()
+        {
+            ObjectDisposedException.ThrowIf(_disposed, this);
         }
     }
 

@@ -34,6 +34,7 @@ namespace Viam.Core.Resources.Components.Arm
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, command]);
@@ -58,6 +59,7 @@ namespace Viam.Core.Resources.Components.Arm
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -84,6 +86,7 @@ namespace Viam.Core.Resources.Components.Arm
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, pose]);
@@ -108,6 +111,7 @@ namespace Viam.Core.Resources.Components.Arm
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, jointPositions]);
@@ -135,6 +139,7 @@ namespace Viam.Core.Resources.Components.Arm
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -159,6 +164,7 @@ namespace Viam.Core.Resources.Components.Arm
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -179,6 +185,7 @@ namespace Viam.Core.Resources.Components.Arm
         public async ValueTask<bool> IsMoving(TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -202,6 +209,7 @@ namespace Viam.Core.Resources.Components.Arm
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -225,6 +233,7 @@ namespace Viam.Core.Resources.Components.Arm
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);

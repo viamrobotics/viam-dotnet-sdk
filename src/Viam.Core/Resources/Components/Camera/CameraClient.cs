@@ -34,6 +34,7 @@ namespace Viam.Core.Resources.Components.Camera
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, command]);
@@ -60,6 +61,7 @@ namespace Viam.Core.Resources.Components.Camera
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart();
@@ -92,6 +94,7 @@ namespace Viam.Core.Resources.Components.Camera
         public async ValueTask<ViamImage[]> GetImages(TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart();
@@ -131,6 +134,7 @@ namespace Viam.Core.Resources.Components.Camera
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart();
@@ -162,6 +166,7 @@ namespace Viam.Core.Resources.Components.Camera
         public async ValueTask<CameraProperties> GetProperties(TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart();
@@ -197,6 +202,7 @@ namespace Viam.Core.Resources.Components.Camera
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart();

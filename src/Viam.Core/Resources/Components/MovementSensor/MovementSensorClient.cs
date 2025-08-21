@@ -37,6 +37,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, command]);
@@ -63,6 +64,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -86,6 +88,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -109,6 +112,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -132,6 +136,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -155,6 +160,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -178,6 +184,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -201,6 +208,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -231,6 +239,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -264,6 +273,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -289,6 +299,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);

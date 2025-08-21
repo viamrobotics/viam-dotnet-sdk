@@ -35,6 +35,7 @@ namespace Viam.Core.Resources.Components.Motor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, command]);
@@ -62,6 +63,7 @@ namespace Viam.Core.Resources.Components.Motor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, power]);
@@ -86,6 +88,7 @@ namespace Viam.Core.Resources.Components.Motor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, rpm, revolutions]);
@@ -111,6 +114,7 @@ namespace Viam.Core.Resources.Components.Motor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, rpm, positionRevolutions]);
@@ -139,6 +143,7 @@ namespace Viam.Core.Resources.Components.Motor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name, offset]);
@@ -161,6 +166,7 @@ namespace Viam.Core.Resources.Components.Motor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -184,6 +190,7 @@ namespace Viam.Core.Resources.Components.Motor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -209,6 +216,7 @@ namespace Viam.Core.Resources.Components.Motor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -230,6 +238,7 @@ namespace Viam.Core.Resources.Components.Motor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -251,6 +260,7 @@ namespace Viam.Core.Resources.Components.Motor
         public async ValueTask<bool> IsMoving(TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);
@@ -273,6 +283,7 @@ namespace Viam.Core.Resources.Components.Motor
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
+            ThrowIfDisposed();
             try
             {
                 logger.LogMethodInvocationStart(parameters: [Name]);

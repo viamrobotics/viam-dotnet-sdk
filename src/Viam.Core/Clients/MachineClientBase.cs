@@ -3,7 +3,6 @@ using Google.Protobuf.WellKnownTypes;
 
 using Grpc.Core;
 
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
 using System;
@@ -41,7 +40,7 @@ namespace Viam.Core.Clients
         private readonly ViamChannel _channel;
         private readonly ILoggerFactory _loggerFactory;
         private readonly RobotService.RobotServiceClient _robotServiceClient;
-        private readonly Dictionary<ViamResourceName, Lazy<IResourceBase>> _resources = new();
+        private readonly Dictionary<ViamResourceName, Func<IResourceBase>> _resources = new();
         private readonly SemaphoreSlim _disposeLock = new(1, 1);
         private bool _isDisposed;
 
@@ -72,13 +71,6 @@ namespace Viam.Core.Clients
             {
                 if (_isDisposed) return;
                 Logger.LogInformation("Disposing of MachineClient");
-                foreach (var s in _resources)
-                {
-                    if (s.Value.IsValueCreated)
-                        await s.Value.Value.DisposeAsync().ConfigureAwait(false);
-                    else
-                        Logger.LogTrace("Resource {ResourceName} was not created, skipping disposal", s.Key);
-                }
                 _channel.Dispose();
 
                 GC.SuppressFinalize(this);
@@ -107,11 +99,11 @@ namespace Viam.Core.Clients
             try
             {
                 await RefreshAsync(timeout ?? TimeSpan.FromSeconds(30), token).ConfigureAwait(false);
-                if (_resources.TryGetValue(resourceName, out var resource) == false)
+                if (_resources.TryGetValue(resourceName, out var ctor) == false)
                     throw new ComponentNotFoundException(resourceName);
 
-                Logger.LogMethodInvocationSuccess(results: resource);
-                return (T)resource.Value;
+                Logger.LogMethodInvocationSuccess(results: ctor);
+                return (T)ctor();
 
             }
             catch (InvalidOperationException)
@@ -529,43 +521,43 @@ namespace Viam.Core.Clients
                 switch (resourceName.SubType.ResourceSubType)
                 {
                     case "arm":
-                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new ArmClient(resourceName, _channel, _loggerFactory.CreateLogger<ArmClient>())));
+                        _resources.TryAdd(resourceName, () => new ArmClient(resourceName, _channel, _loggerFactory.CreateLogger<ArmClient>()));
                         break;
                     case "base":
-                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new BaseClient(resourceName, _channel, _loggerFactory.CreateLogger<BaseClient>())));
+                        _resources.TryAdd(resourceName, () => new BaseClient(resourceName, _channel, _loggerFactory.CreateLogger<BaseClient>()));
                         break;
                     case "board":
-                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new BoardClient(resourceName, _channel, _loggerFactory.CreateLogger<BoardClient>())));
+                        _resources.TryAdd(resourceName, () => new BoardClient(resourceName, _channel, _loggerFactory.CreateLogger<BoardClient>()));
                         break;
                     case "camera":
-                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new CameraClient(resourceName, _channel, _loggerFactory.CreateLogger<CameraClient>())));
+                        _resources.TryAdd(resourceName, () => new CameraClient(resourceName, _channel, _loggerFactory.CreateLogger<CameraClient>()));
                         break;
                     case "encoder":
-                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new EncoderClient(resourceName, _channel, _loggerFactory.CreateLogger<EncoderClient>())));
+                        _resources.TryAdd(resourceName, () => new EncoderClient(resourceName, _channel, _loggerFactory.CreateLogger<EncoderClient>()));
                         break;
                     case "gantry":
-                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new GantryClient(resourceName, _channel, _loggerFactory.CreateLogger<GantryClient>())));
+                        _resources.TryAdd(resourceName, () => new GantryClient(resourceName, _channel, _loggerFactory.CreateLogger<GantryClient>()));
                         break;
                     case "gripper":
-                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new GripperClient(resourceName, _channel, _loggerFactory.CreateLogger<GripperClient>())));
+                        _resources.TryAdd(resourceName, () => new GripperClient(resourceName, _channel, _loggerFactory.CreateLogger<GripperClient>()));
                         break;
                     case "input_controller":
-                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new InputControllerClient(resourceName, _channel, _loggerFactory.CreateLogger<InputControllerClient>())));
+                        _resources.TryAdd(resourceName, () => new InputControllerClient(resourceName, _channel, _loggerFactory.CreateLogger<InputControllerClient>()));
                         break;
-                    case "motor":
-                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new MotorClient(resourceName, _channel, _loggerFactory.CreateLogger<MotorClient>())));
+                    case "motor":   
+                        _resources.TryAdd(resourceName, () => new MotorClient(resourceName, _channel, _loggerFactory.CreateLogger<MotorClient>()));
                         break;
                     case "movement_sensor":
-                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new MovementSensorClient(resourceName, _channel, _loggerFactory.CreateLogger<MovementSensorClient>())));
+                        _resources.TryAdd(resourceName, () => new MovementSensorClient(resourceName, _channel, _loggerFactory.CreateLogger<MovementSensorClient>()));
                         break;
                     case "power_sensor":
-                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new PowerSensorClient(resourceName, _channel, _loggerFactory.CreateLogger<PowerSensorClient>())));
+                        _resources.TryAdd(resourceName, () => new PowerSensorClient(resourceName, _channel, _loggerFactory.CreateLogger<PowerSensorClient>()));
                         break;
                     case "sensor":
-                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new SensorClient(resourceName, _channel, _loggerFactory.CreateLogger<SensorClient>())));
+                        _resources.TryAdd(resourceName, () => new SensorClient(resourceName, _channel, _loggerFactory.CreateLogger<SensorClient>()));
                         break;
                     case "servo":
-                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new ServoClient(resourceName, _channel, _loggerFactory.CreateLogger<ServoClient>())));
+                        _resources.TryAdd(resourceName, () => new ServoClient(resourceName, _channel, _loggerFactory.CreateLogger<ServoClient>()));
                         break;
                     default:
                         Logger.LogWarning("Unknown resource {Resource}", resourceName);

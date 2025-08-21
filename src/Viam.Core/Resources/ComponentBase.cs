@@ -11,9 +11,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources
 {
-    public interface IComponentBase : IResourceBase
-    {
-    }
+    public interface IComponentBase : IResourceBase;
 
     public abstract class ComponentBase<T,
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicMethods)] TClient>(
@@ -21,6 +19,7 @@ namespace Viam.Core.Resources
         TClient client)
         : ComponentBase(resourceName) where T : ComponentBase where TClient : ClientBase<TClient>
     {
+        
         public TClient Client = client;
 
         public override async ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
