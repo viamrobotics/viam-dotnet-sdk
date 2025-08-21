@@ -1,5 +1,4 @@
-﻿using Google.Api;
-using Google.Protobuf;
+﻿using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 
 using Grpc.Core;
@@ -9,13 +8,10 @@ using Microsoft.Extensions.Logging;
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
-using System.Threading.Channels;
 using System.Threading.Tasks;
-using System.Timers;
 
 using Viam.Common.V1;
 using Viam.Core.Logging;
@@ -45,11 +41,9 @@ namespace Viam.Core.Clients
         private readonly ViamChannel _channel;
         private readonly ILoggerFactory _loggerFactory;
         private readonly RobotService.RobotServiceClient _robotServiceClient;
-        private readonly ServiceCollection _serviceCollection = new ServiceCollection();
+        private readonly Dictionary<ViamResourceName, Lazy<IResourceBase>> _resources = new();
         private readonly SemaphoreSlim _disposeLock = new(1, 1);
         private bool _isDisposed;
-
-        private ServiceProvider Services => _serviceCollection.BuildServiceProvider();
 
         protected internal MachineClientBase(ILoggerFactory loggerFactory, ViamChannel channel)
         {
@@ -58,11 +52,6 @@ namespace Viam.Core.Clients
 
             Logger = loggerFactory.CreateLogger<MachineClientBase>();
             _robotServiceClient = new RobotService.RobotServiceClient(channel);
-
-            _serviceCollection.AddSingleton(this);
-            _serviceCollection.AddSingleton(channel);
-            _serviceCollection.AddSingleton(loggerFactory);
-            _serviceCollection.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
         }
 
         protected async Task RefreshAsync(TimeSpan? timeout = null, CancellationToken token = default, [CallerMemberName] string? caller = null)
@@ -82,8 +71,15 @@ namespace Viam.Core.Clients
             try
             {
                 if (_isDisposed) return;
-                Logger.LogInformation("Disposing of client");
-                await Services.DisposeAsync();
+                Logger.LogInformation("Disposing of MachineClient");
+                foreach (var s in _resources)
+                {
+                    if (s.Value.IsValueCreated)
+                        await s.Value.Value.DisposeAsync().ConfigureAwait(false);
+                    else
+                        Logger.LogTrace("Resource {ResourceName} was not created, skipping disposal", s.Key);
+                }
+                _channel.Dispose();
 
                 GC.SuppressFinalize(this);
                 _isDisposed = true;
@@ -111,9 +107,12 @@ namespace Viam.Core.Clients
             try
             {
                 await RefreshAsync(timeout ?? TimeSpan.FromSeconds(30), token).ConfigureAwait(false);
-                var resource = Services.GetRequiredKeyedService<T>(resourceName);
-                Logger.LogMethodInvocationSuccess();
-                return resource;
+                if (_resources.TryGetValue(resourceName, out var resource) == false)
+                    throw new ComponentNotFoundException(resourceName);
+
+                Logger.LogMethodInvocationSuccess(results: resource);
+                return (T)resource.Value;
+
             }
             catch (InvalidOperationException)
             {
@@ -515,7 +514,7 @@ namespace Viam.Core.Clients
             }
         }
 
-        public override string ToString() => $"MachineClientBase+{Services.GetRequiredService<ViamChannel>()}";
+        public override string ToString() => $"MachineClientBase+{_channel}";
 
         private void RegisterResources(ViamResourceName[] resourceNames)
         {
@@ -530,43 +529,43 @@ namespace Viam.Core.Clients
                 switch (resourceName.SubType.ResourceSubType)
                 {
                     case "arm":
-                        _serviceCollection.AddKeyedTransient<IArmClient, ArmClient>(resourceName, (_, _) => new ArmClient(resourceName, _channel, _loggerFactory.CreateLogger<ArmClient>()));
+                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new ArmClient(resourceName, _channel, _loggerFactory.CreateLogger<ArmClient>())));
                         break;
                     case "base":
-                        _serviceCollection.AddKeyedTransient<IBaseClient, BaseClient>(resourceName, (_, _) => new BaseClient(resourceName, _channel, _loggerFactory.CreateLogger<BaseClient>()));
+                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new BaseClient(resourceName, _channel, _loggerFactory.CreateLogger<BaseClient>())));
                         break;
                     case "board":
-                        _serviceCollection.AddKeyedTransient<IBoardClient, BoardClient>(resourceName, (_, _) => new BoardClient(resourceName, _channel, _loggerFactory.CreateLogger<BoardClient>()));
+                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new BoardClient(resourceName, _channel, _loggerFactory.CreateLogger<BoardClient>())));
                         break;
                     case "camera":
-                        _serviceCollection.AddKeyedTransient<ICameraClient, CameraClient>(resourceName, (_, _) => new CameraClient(resourceName, _channel, _loggerFactory.CreateLogger<CameraClient>()));
+                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new CameraClient(resourceName, _channel, _loggerFactory.CreateLogger<CameraClient>())));
                         break;
                     case "encoder":
-                        _serviceCollection.AddKeyedTransient<IEncoderClient, EncoderClient>(resourceName, (_, _) => new EncoderClient(resourceName, _channel, _loggerFactory.CreateLogger<EncoderClient>()));
+                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new EncoderClient(resourceName, _channel, _loggerFactory.CreateLogger<EncoderClient>())));
                         break;
                     case "gantry":
-                        _serviceCollection.AddKeyedTransient<IGantryClient, GantryClient>(resourceName, (_, _) => new GantryClient(resourceName, _channel, _loggerFactory.CreateLogger<GantryClient>()));
+                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new GantryClient(resourceName, _channel, _loggerFactory.CreateLogger<GantryClient>())));
                         break;
                     case "gripper":
-                        _serviceCollection.AddKeyedTransient<IGripperClient, GripperClient>(resourceName, (_, _) => new GripperClient(resourceName, _channel, _loggerFactory.CreateLogger<GripperClient>()));
+                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new GripperClient(resourceName, _channel, _loggerFactory.CreateLogger<GripperClient>())));
                         break;
                     case "input_controller":
-                        _serviceCollection.AddKeyedTransient<IInputControllerClient, InputControllerClient>(resourceName, (_, _) => new InputControllerClient(resourceName, _channel, _loggerFactory.CreateLogger<InputControllerClient>()));
+                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new InputControllerClient(resourceName, _channel, _loggerFactory.CreateLogger<InputControllerClient>())));
                         break;
                     case "motor":
-                        _serviceCollection.AddKeyedTransient<IMotorClient, MotorClient>(resourceName, (_, _) => new MotorClient(resourceName, _channel, _loggerFactory.CreateLogger<MotorClient>()));
+                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new MotorClient(resourceName, _channel, _loggerFactory.CreateLogger<MotorClient>())));
                         break;
                     case "movement_sensor":
-                        _serviceCollection.AddKeyedTransient<IMovementSensorClient, MovementSensorClient>(resourceName, (_, _) => new MovementSensorClient(resourceName, _channel, _loggerFactory.CreateLogger<MovementSensorClient>()));
+                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new MovementSensorClient(resourceName, _channel, _loggerFactory.CreateLogger<MovementSensorClient>())));
                         break;
                     case "power_sensor":
-                        _serviceCollection.AddKeyedTransient<IPowerSensorClient, PowerSensorClient>(resourceName, (_, _) => new PowerSensorClient(resourceName, _channel, _loggerFactory.CreateLogger<PowerSensorClient>()));
+                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new PowerSensorClient(resourceName, _channel, _loggerFactory.CreateLogger<PowerSensorClient>())));
                         break;
                     case "sensor":
-                        _serviceCollection.AddKeyedTransient<ISensorClient, SensorClient>(resourceName, (_, _) => new SensorClient(resourceName, _channel, _loggerFactory.CreateLogger<SensorClient>()));
+                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new SensorClient(resourceName, _channel, _loggerFactory.CreateLogger<SensorClient>())));
                         break;
                     case "servo":
-                        _serviceCollection.AddKeyedTransient<IServoClient, ServoClient>(resourceName, (_, _) => new ServoClient(resourceName, _channel, _loggerFactory.CreateLogger<ServoClient>()));
+                        _resources.TryAdd(resourceName, new Lazy<IResourceBase>(() => new ServoClient(resourceName, _channel, _loggerFactory.CreateLogger<ServoClient>())));
                         break;
                     default:
                         Logger.LogWarning("Unknown resource {Resource}", resourceName);
