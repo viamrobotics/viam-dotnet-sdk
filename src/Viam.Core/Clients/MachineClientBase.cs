@@ -28,6 +28,7 @@ using Viam.Core.Resources.Components.MovementSensor;
 using Viam.Core.Resources.Components.PowerSensor;
 using Viam.Core.Resources.Components.Sensor;
 using Viam.Core.Resources.Components.Servo;
+using Viam.Core.Resources.Services.VisionService;
 using Viam.Core.Utils;
 using Viam.Robot.V1;
 
@@ -538,7 +539,7 @@ namespace Viam.Core.Clients
         {
             Logger.LogDebug("Registering resources: {ResourceCount}", resourceNames.Length);
             // TODO: Add support for services, for now we only register components
-            var filteredResourceName = resourceNames.Where(x => x.SubType.ResourceType is "component")// or "service")
+            var filteredResourceName = resourceNames.Where(x => x.SubType.ResourceType is "component" or "service")
                 .Where(x => x.SubType.ResourceSubType != "remote");
             // Register the built-in component types
             foreach (var resourceName in filteredResourceName)
@@ -575,7 +576,7 @@ namespace Viam.Core.Clients
                     case "input_controller":
                         _resources.TryAdd(resourceName, () => new InputControllerClient(resourceName, _channel, _loggerFactory.CreateLogger<InputControllerClient>()));
                         break;
-                    case "motor":   
+                    case "motor":
                         _resources.TryAdd(resourceName, () => new MotorClient(resourceName, _channel, _loggerFactory.CreateLogger<MotorClient>()));
                         break;
                     case "movement_sensor":
@@ -589,6 +590,9 @@ namespace Viam.Core.Clients
                         break;
                     case "servo":
                         _resources.TryAdd(resourceName, () => new ServoClient(resourceName, _channel, _loggerFactory.CreateLogger<ServoClient>()));
+                        break;
+                    case "vision":
+                        _resources.TryAdd(resourceName, () => new VisionServiceClient(resourceName, _channel, _loggerFactory.CreateLogger<VisionServiceClient>()));
                         break;
                     default:
                         Logger.LogWarning("Unknown resource {Resource}", resourceName);

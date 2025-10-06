@@ -10,7 +10,7 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.Gripper
 {
     internal class GripperService(ILogger<GripperService> logger)
-        : Component.Gripper.V1.GripperService.GripperServiceBase, IServiceBase
+        : Component.Gripper.V1.GripperService.GripperServiceBase, IComponentServiceBase
     {
         public static Service ServiceName => Service.GripperService;
         public static SubType SubType { get; } = SubType.Gripper;

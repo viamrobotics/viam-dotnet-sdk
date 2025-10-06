@@ -9,7 +9,7 @@ namespace Viam.ModularResources
             Message = "Unable to find service for {SubType}. Available Services {AvailableServices}",
             Level = LogLevel.Information)]
         internal static partial void LogModularServiceMissingService(this ILogger logger, SubType subType,
-            IServiceBase[] availableServices);
+            IComponentServiceBase[] availableServices);
 
         [LoggerMessage(EventId = 3001, Message = "Loading resource creator for {SubType} {Model}",
             Level = LogLevel.Debug)]

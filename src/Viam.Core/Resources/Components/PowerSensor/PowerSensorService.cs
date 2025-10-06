@@ -10,7 +10,7 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.PowerSensor
 {
     internal class PowerSensorService(ILogger<PowerSensorService> logger)
-        : Component.Powersensor.V1.PowerSensorService.PowerSensorServiceBase, IServiceBase
+        : Component.Powersensor.V1.PowerSensorService.PowerSensorServiceBase, IComponentServiceBase
     {
         public static Service ServiceName => Service.PowerSensorService;
         public static SubType SubType { get; } = SubType.PowerSensor;

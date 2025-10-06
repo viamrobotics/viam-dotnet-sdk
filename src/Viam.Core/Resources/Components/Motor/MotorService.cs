@@ -10,7 +10,7 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.Motor
 {
     internal class MotorService(ILogger<MotorService> logger)
-        : Component.Motor.V1.MotorService.MotorServiceBase, IServiceBase
+        : Component.Motor.V1.MotorService.MotorServiceBase, IComponentServiceBase
     {
         public static Service ServiceName => Service.MotorService;
         public static SubType SubType { get; } = SubType.Motor;

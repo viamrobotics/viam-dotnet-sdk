@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Viam.Component.Board.V1;
 
 namespace Viam.Core.Resources.Components.Board

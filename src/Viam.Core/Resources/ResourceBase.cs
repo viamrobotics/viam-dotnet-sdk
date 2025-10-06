@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
@@ -13,19 +12,12 @@ namespace Viam.Core.Resources
         private protected ILogger Logger = logger;
         public ViamResourceName ResourceName { get; } = resourceName;
 
-        public abstract ValueTask StopResource();
-
         public abstract DateTime? LastReconfigured { get; }
 
-        public abstract ValueTask<Dictionary<string, object?>> DoCommand(
-            IDictionary<string, object?> command,
-            TimeSpan? timeout = null,
-            CancellationToken cancellationToken = default);
-
         public virtual ResourceStatus GetStatus() => ResourceStatus.DefaultCreator(this);
-
         
         public string Name => ResourceName.Name;
+
         public virtual ValueTask DisposeAsync()
         {
             Logger.LogTrace("Resource is disposing");
@@ -47,11 +39,6 @@ namespace Viam.Core.Resources
     {
         public ViamResourceName ResourceName { get; }
 
-        public ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
-            TimeSpan? timeout = null,
-            CancellationToken cancellationToken = default);
-
-        public ValueTask StopResource();
         public ResourceStatus GetStatus();
     }
 }

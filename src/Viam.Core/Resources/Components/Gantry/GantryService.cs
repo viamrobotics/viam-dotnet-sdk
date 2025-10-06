@@ -11,7 +11,7 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.Gantry
 {
     internal class GantryService(ILogger<GantryService> logger)
-        : Component.Gantry.V1.GantryService.GantryServiceBase, IServiceBase
+        : Component.Gantry.V1.GantryService.GantryServiceBase, IComponentServiceBase
     {
         public static Service ServiceName => Service.GantryService;
         public static SubType SubType { get; } = SubType.Gantry;

@@ -10,7 +10,7 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.Servo
 {
     internal class ServoService(ILogger<ServoService> logger)
-        : Component.Servo.V1.ServoService.ServoServiceBase, IServiceBase
+        : Component.Servo.V1.ServoService.ServoServiceBase, IComponentServiceBase
     {
         public static Service ServiceName => Service.ServoService;
         public static SubType SubType { get; } = SubType.Servo;

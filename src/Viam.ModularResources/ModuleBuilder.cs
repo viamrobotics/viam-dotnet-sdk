@@ -108,12 +108,12 @@ namespace Viam.ModularResources
         }
 
         public ModuleBuilder RegisterService<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TService>()
-            where TService : class, IServiceBase
+            where TService : class, IComponentServiceBase
         {
             _hostBuilder.ConfigureServices(s =>
             {
                 s.AddSingleton<TService>();
-                //s.AddSingleton<IServiceBase, TService>(s => s.GetRequiredService<TService>());
+                //s.AddSingleton<IComponentServiceBase, TService>(s => s.GetRequiredService<TService>());
             });
             return this;
         }

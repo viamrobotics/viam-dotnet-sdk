@@ -9,7 +9,7 @@ using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.Arm
 {
-    internal class ArmService(ILogger<ArmService> logger) : Component.Arm.V1.ArmService.ArmServiceBase, IServiceBase
+    internal class ArmService(ILogger<ArmService> logger) : Component.Arm.V1.ArmService.ArmServiceBase, IComponentServiceBase
     {
         public static Service ServiceName => Service.ArmService;
         public static SubType SubType { get; } = SubType.Arm;

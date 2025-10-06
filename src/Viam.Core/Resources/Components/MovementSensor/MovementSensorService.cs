@@ -10,7 +10,7 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.MovementSensor
 {
     internal class MovementSensorService(ILogger<MovementSensorService> logger)
-        : Component.Movementsensor.V1.MovementSensorService.MovementSensorServiceBase, IServiceBase
+        : Component.Movementsensor.V1.MovementSensorService.MovementSensorServiceBase, IComponentServiceBase
     {
         public static Service ServiceName => Service.MovementSensorService;
         public static SubType SubType { get; } = SubType.MovementSensor;

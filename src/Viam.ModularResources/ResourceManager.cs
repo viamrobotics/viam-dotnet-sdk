@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Security.Principal;
 using Viam.Core;
 using Viam.Core.Resources;
+using Viam.Core.Resources.Components;
 
 namespace Viam.ModularResources
 {

@@ -10,7 +10,7 @@ namespace Viam.ModularResources
         public string[] ValidateConfig(App.V1.ComponentConfig config);
     }
 
-    public interface IModularResourceService : IModularResource, IServiceBase
+    public interface IModularResourceService : IModularResource, IComponentServiceBase
     {
         public static abstract Core.Resources.Model Model { get; }
     }

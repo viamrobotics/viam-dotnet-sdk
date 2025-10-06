@@ -9,7 +9,7 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.Generic
 {
     internal class GenericService(ILogger<GenericService> logger)
-        : Component.Generic.V1.GenericService.GenericServiceBase, IServiceBase
+        : Component.Generic.V1.GenericService.GenericServiceBase, IComponentServiceBase
     {
         public static Service ServiceName => Service.GenericService;
         public static SubType SubType { get; } = SubType.Generic;

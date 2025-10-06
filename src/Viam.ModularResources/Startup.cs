@@ -8,6 +8,7 @@ using Viam.Core.Resources.Components.MovementSensor;
 using Viam.Core.Resources.Components.PowerSensor;
 using Viam.Core.Resources.Components.Sensor;
 using Viam.Core.Resources.Components.Servo;
+using Viam.Core.Resources.Services.VisionService;
 using Viam.ModularResources.Services;
 using ArmService = Viam.Core.Resources.Components.Arm.ArmService;
 using BaseService = Viam.Core.Resources.Components.Base.BaseService;
@@ -36,8 +37,15 @@ namespace Viam.ModularResources
                 e.MapGrpcService<RobotService>();
                 e.MapGrpcService<ModuleService>();
                 MapComponentGrpcServices(e);
+                MapServiceGrpcServices(e);
                 e.MapGrpcReflectionService();
             });
+        }
+
+        private void MapServiceGrpcServices(IEndpointRouteBuilder e)
+        {
+            if (e.ServiceProvider.GetService<IVisionService> != null)
+                e.MapGrpcService<IVisionService>();
         }
 
         private void MapComponentGrpcServices(IEndpointRouteBuilder e)

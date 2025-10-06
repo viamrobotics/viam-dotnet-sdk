@@ -10,17 +10,23 @@ using Viam.Common.V1;
 using Viam.Core.Clients;
 using Viam.Core.Utils;
 
-namespace Viam.Core.Resources
+
+namespace Viam.Core.Resources.Components
 {
-    public interface IComponentBase : IResourceBase;
+    public interface IComponentBase : IResourceBase
+    {
+        public ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+            TimeSpan? timeout = null, CancellationToken cancellationToken = default);
+    }
 
     public abstract class ComponentBase<T, [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicMethods)] TClient>(ViamResourceName resourceName, TClient client, ILogger<T> logger)
         : ComponentBase(resourceName, logger) where T : ComponentBase where TClient : ClientBase<TClient>
     {
-        
         public TClient Client = client;
 
-        public override async ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public abstract ValueTask StopResource();
+
+        public virtual async ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             try

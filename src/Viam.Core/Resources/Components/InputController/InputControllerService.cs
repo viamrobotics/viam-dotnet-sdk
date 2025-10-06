@@ -12,7 +12,7 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.InputController
 {
     internal class InputControllerService(ILogger<InputControllerService> logger)
-        : Component.Inputcontroller.V1.InputControllerService.InputControllerServiceBase, IServiceBase
+        : Component.Inputcontroller.V1.InputControllerService.InputControllerServiceBase, IComponentServiceBase
     {
         public static Service ServiceName => Service.InputControllerService;
         public static SubType SubType { get; } = SubType.InputController;

@@ -1,10 +1,13 @@
 ﻿using Google.Protobuf;
+
 using Microsoft.Extensions.Logging;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Viam.Common.V1;
 using Viam.Component.Arm.V1;
 using Viam.Core.Clients;
@@ -79,7 +82,6 @@ namespace Viam.Core.Resources.Components.Arm
             }
         }
 
-
         public async ValueTask MoveToPosition(Pose pose,
             IDictionary<string, object?>? extra = null,
             TimeSpan? timeout = null,
@@ -103,7 +105,6 @@ namespace Viam.Core.Resources.Components.Arm
                 throw;
             }
         }
-
 
         public async ValueTask MoveToJoinPositions(JointPositions jointPositions,
             IDictionary<string, object?>? extra = null,
@@ -133,7 +134,6 @@ namespace Viam.Core.Resources.Components.Arm
             }
         }
 
-
         public async ValueTask<JointPositions> GetJointPositions(IDictionary<string, object?>? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
@@ -158,7 +158,6 @@ namespace Viam.Core.Resources.Components.Arm
             }
         }
 
-
         public async ValueTask Stop(IDictionary<string, object?>? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
@@ -180,7 +179,6 @@ namespace Viam.Core.Resources.Components.Arm
             }
         }
 
-
         public async ValueTask<bool> IsMoving(TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -201,7 +199,6 @@ namespace Viam.Core.Resources.Components.Arm
                 throw;
             }
         }
-
 
         public async ValueTask<(KinematicsFileFormat, ByteString)> GetKinematics(
             IDictionary<string, object?>? extra = null,
@@ -226,7 +223,6 @@ namespace Viam.Core.Resources.Components.Arm
                 throw;
             }
         }
-
 
         public async ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
             TimeSpan? timeout = null,

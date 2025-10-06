@@ -10,7 +10,7 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.Encoder
 {
     internal class EncoderService(ILogger<EncoderService> logger)
-        : Component.Encoder.V1.EncoderService.EncoderServiceBase, IServiceBase
+        : Component.Encoder.V1.EncoderService.EncoderServiceBase, IComponentServiceBase
     {
         public static Service ServiceName => Service.EncoderService;
         public static SubType SubType { get; } = SubType.Encoder;

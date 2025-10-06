@@ -9,7 +9,7 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.Sensor
 {
     internal class SensorService(ILogger<SensorService> logger)
-        : Component.Sensor.V1.SensorService.SensorServiceBase, IServiceBase
+        : Component.Sensor.V1.SensorService.SensorServiceBase, IComponentServiceBase
     {
         public static Service ServiceName => Service.SensorService;
         public static SubType SubType { get; } = SubType.Sensor;

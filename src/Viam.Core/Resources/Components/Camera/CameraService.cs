@@ -13,7 +13,7 @@ using Viam.Core.Utils;
 namespace Viam.Core.Resources.Components.Camera
 {
     internal class CameraService(ILogger<CameraService> logger)
-        : Component.Camera.V1.CameraService.CameraServiceBase, IServiceBase
+        : Component.Camera.V1.CameraService.CameraServiceBase, IComponentServiceBase
     {
         public static Service ServiceName => Service.CameraService;
         public static SubType SubType { get; } = SubType.Camera;
