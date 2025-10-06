@@ -15,8 +15,7 @@ namespace Viam.ModularResources
 
         public ViamResourceName ResourceName { get; }
 
-        public virtual ValueTask Reconfigure(ComponentConfig config,
-            IDictionary<ViamResourceName, IResourceBase> dependencies) => ValueTask.CompletedTask;
+        public virtual ValueTask Reconfigure(ComponentConfig config, Dependencies dependencies) => ValueTask.CompletedTask;
 
         public virtual ValueTask DisposeAsync()
         {

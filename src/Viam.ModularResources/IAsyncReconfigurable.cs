@@ -5,11 +5,11 @@ namespace Viam.ModularResources
 {
     public interface IAsyncReconfigurable
     {
-        public ValueTask Reconfigure(ComponentConfig config, IDictionary<ViamResourceName, IResourceBase> dependencies);
+        public ValueTask Reconfigure(ComponentConfig config, Dependencies dependencies);
     }
 
     public interface IReconfigurable
     {
-        public void Reconfigure(ComponentConfig config, IDictionary<ViamResourceName, IResourceBase> dependencies);
+        public void Reconfigure(ComponentConfig config, Dependencies dependencies);
     }
 }

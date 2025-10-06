@@ -7,6 +7,9 @@ namespace Viam.Core.Resources
     public class Dependencies(IDictionary<ViamResourceName, IResourceBase> dependencies)
         : IDictionary<ViamResourceName, IResourceBase>
     {
+
+        public Dependencies() : this(new Dictionary<ViamResourceName, IResourceBase>()){}
+
         public IEnumerator<KeyValuePair<ViamResourceName, IResourceBase>> GetEnumerator()
         {
             return dependencies.GetEnumerator();

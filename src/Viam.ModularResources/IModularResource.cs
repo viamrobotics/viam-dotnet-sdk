@@ -24,8 +24,7 @@ namespace Viam.ModularResources
 
         public virtual string[] ValidateConfig(App.V1.ComponentConfig config) => [];
 
-        public virtual ValueTask Reconfigure(ComponentConfig config,
-            IDictionary<ViamResourceName, IResourceBase> dependencies) => ValueTask.CompletedTask;
+        public virtual ValueTask Reconfigure(ComponentConfig config, Dependencies dependencies) => ValueTask.CompletedTask;
 
         public virtual ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default) =>

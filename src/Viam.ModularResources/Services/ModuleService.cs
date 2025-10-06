@@ -51,7 +51,7 @@ namespace Viam.ModularResources.Services
                                ?? throw new Exception($"Unable to find resource {config.Name} {subType} {model}");
                 _logger.LogDebug("Got resource {Name}", resource.Name);
 
-                Dictionary<ViamResourceName, IResourceBase> dependencies = new();
+                Dependencies dependencies = new();
                 foreach (var dep in request.Dependencies.Select(GrpcExtensions.ToResourceName))
                 {
                     _logger.LogDebug("Loading dependency {ResourceName}", dep);
@@ -138,7 +138,7 @@ namespace Viam.ModularResources.Services
                 _logger.LogDebug("Found remote resource {ResourceName}", name);
             }
 
-            Dictionary<ViamResourceName, IResourceBase> dependencies = new();
+            Dependencies dependencies = new();
             foreach (var dep in request.Dependencies.Select(GrpcExtensions.ToResourceName))
             {
                 _logger.LogDebug("Loading dependency {ResourceName}", dep);
@@ -216,7 +216,7 @@ namespace Viam.ModularResources.Services
         }
 
         private async ValueTask ReconfigureResource(IModularResource resource, App.V1.ComponentConfig config,
-            Dictionary<ViamResourceName, IResourceBase> dependencies)
+            Dependencies dependencies)
         {
             if (resource is IAsyncReconfigurable asyncReconfigurable)
             {

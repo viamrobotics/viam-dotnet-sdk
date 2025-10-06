@@ -19,7 +19,7 @@ using GetPropertiesRequest = Viam.Service.Vision.V1.GetPropertiesRequest;
 
 namespace Viam.Core.Resources.Services.VisionService
 {
-    internal class VisionServiceClient(ViamResourceName resourceName, ViamChannel channel, ILogger<VisionServiceClient> logger) :
+    public class VisionServiceClient(ViamResourceName resourceName, ViamChannel channel, ILogger<VisionServiceClient> logger) :
         ServiceBase<VisionServiceClient, Viam.Service.Vision.V1.VisionService.VisionServiceClient>(resourceName, new Viam.Service.Vision.V1.VisionService.VisionServiceClient(channel), logger),
         IVisionServiceClient, IServiceClient<IVisionServiceClient>
     {

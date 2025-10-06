@@ -41,8 +41,7 @@ public sealed class ModularSensor(ILogger<ModularSensor> logger, ViamResourceNam
         return command;
     }
 
-    public override ValueTask Reconfigure(ComponentConfig config,
-        IDictionary<ViamResourceName, IResourceBase> dependencies)
+    public override ValueTask Reconfigure(ComponentConfig config, Dependencies dependencies)
     {
         _config = Config.FromStruct(config.Attributes);
         return ValueTask.CompletedTask;
