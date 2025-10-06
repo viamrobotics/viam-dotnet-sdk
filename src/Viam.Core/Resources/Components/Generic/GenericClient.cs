@@ -27,6 +27,20 @@ namespace Viam.Core.Resources.Components.Generic
             return await client.GetComponent<IGenericClient>(resourceName, timeout, token);
         }
 
+        public static IGenericClient FromDependencies(Dependencies dependencies, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            if (!dependencies.TryGetValue(resourceName, out var resource))
+            {
+                throw new ArgumentException($"Dependency {resourceName} not found");
+            }
+            if (resource is not IGenericClient client)
+            {
+                throw new ArgumentException($"Dependency {resourceName} is not a {nameof(IGenericClient)}");
+            }
+            return client;
+        }
+
         public override DateTime? LastReconfigured { get; }
 
         public override async ValueTask<Dictionary<string, object?>> DoCommand(

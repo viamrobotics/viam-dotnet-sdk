@@ -67,5 +67,7 @@ namespace Viam.Core.Resources.Components
     {
         static abstract Task<TClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null,
             CancellationToken token = default);
+
+        static abstract TClient FromDependencies(Dependencies dependencies, string name);
     }
 }

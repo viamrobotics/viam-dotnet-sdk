@@ -39,6 +39,20 @@ namespace Viam.Core.Resources.Components.Board
             return await client.GetComponent<IBoardClient>(resourceName, timeout, token);
         }
 
+        public static IBoardClient FromDependencies(Dependencies dependencies, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            if (!dependencies.TryGetValue(resourceName, out var resource))
+            {
+                throw new ArgumentException($"Dependency {resourceName} not found");
+            }
+            if (resource is not IBoardClient client)
+            {
+                throw new ArgumentException($"Dependency {resourceName} is not a {nameof(IBoardClient)}");
+            }
+            return client;
+        }
+
         public override DateTime? LastReconfigured => null;
 
         public override ValueTask StopResource() => new ValueTask();

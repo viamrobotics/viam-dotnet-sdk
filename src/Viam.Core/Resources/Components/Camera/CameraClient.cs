@@ -28,18 +28,18 @@ namespace Viam.Core.Resources.Components.Camera
             return await client.GetComponent<ICameraClient>(resourceName, timeout, token);
         }
 
-        public static ICameraClient FromDependencies(IDictionary<ViamResourceName, IResourceBase> dependencies, string name)
+        public static ICameraClient FromDependencies(Dependencies dependencies, string name)
         {
             var resourceName = new ViamResourceName(SubType, name);
             if (!dependencies.TryGetValue(resourceName, out var resource))
             {
                 throw new ArgumentException($"Dependency {resourceName} not found");
             }
-            if (resource is not ICameraClient camera)
+            if (resource is not ICameraClient client)
             {
-                throw new ArgumentException($"Dependency {resourceName} is not a camera");
+                throw new ArgumentException($"Dependency {resourceName} is not a {nameof(ICameraClient)}");
             }
-            return camera;
+            return client;
         }
 
         public override DateTime? LastReconfigured => null;

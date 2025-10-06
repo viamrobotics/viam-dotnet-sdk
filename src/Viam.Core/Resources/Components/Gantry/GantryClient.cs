@@ -27,6 +27,20 @@ namespace Viam.Core.Resources.Components.Gantry
             return await client.GetComponent<IGantryClient>(resourceName, timeout, token);
         }
 
+        public static IGantryClient FromDependencies(Dependencies dependencies, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            if (!dependencies.TryGetValue(resourceName, out var resource))
+            {
+                throw new ArgumentException($"Dependency {resourceName} not found");
+            }
+            if (resource is not IGantryClient client)
+            {
+                throw new ArgumentException($"Dependency {resourceName} is not a {nameof(IGantryClient)}");
+            }
+            return client;
+        }
+
         public override DateTime? LastReconfigured => null;
 
         public override ValueTask StopResource() => Stop();

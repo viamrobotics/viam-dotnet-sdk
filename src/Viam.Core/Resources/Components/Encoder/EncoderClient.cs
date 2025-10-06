@@ -27,6 +27,20 @@ namespace Viam.Core.Resources.Components.Encoder
             return await client.GetComponent<IEncoderClient>(resourceName, timeout, token);
         }
 
+        public static IEncoderClient FromDependencies(Dependencies dependencies, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            if (!dependencies.TryGetValue(resourceName, out var resource))
+            {
+                throw new ArgumentException($"Dependency {resourceName} not found");
+            }
+            if (resource is not IEncoderClient client)
+            {
+                throw new ArgumentException($"Dependency {resourceName} is not a {nameof(IEncoderClient)}");
+            }
+            return client;
+        }
+
         public override DateTime? LastReconfigured => null;
 
         public override ValueTask StopResource() => new ValueTask();

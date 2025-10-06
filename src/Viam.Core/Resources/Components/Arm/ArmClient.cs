@@ -28,6 +28,20 @@ namespace Viam.Core.Resources.Components.Arm
             return await client.GetComponent<IArmClient>(resourceName, timeout, token);
         }
 
+        public static IArmClient FromDependencies(Dependencies dependencies, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            if (!dependencies.TryGetValue(resourceName, out var resource))
+            {
+                throw new ArgumentException($"Dependency {resourceName} not found");
+            }
+            if (resource is not IArmClient client)
+            {
+                throw new ArgumentException($"Dependency {resourceName} is not a {nameof(IArmClient)}");
+            }
+            return client;
+        }
+
         public override DateTime? LastReconfigured => null;
 
         public override ValueTask StopResource() => Stop();

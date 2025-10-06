@@ -32,6 +32,20 @@ namespace Viam.Core.Resources.Components.Sensor
             return new ViamResourceName(SubType, name);
         }
 
+        public static ISensorClient FromDependencies(Dependencies dependencies, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            if (!dependencies.TryGetValue(resourceName, out var resource))
+            {
+                throw new ArgumentException($"Dependency {resourceName} not found");
+            }
+            if (resource is not ISensorClient client)
+            {
+                throw new ArgumentException($"Dependency {resourceName} is not a {nameof(ISensorClient)}");
+            }
+            return client;
+        }
+
         public static async Task<ISensorClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null, CancellationToken token = default)
         {
             var resourceName = new ViamResourceName(SubType, name);

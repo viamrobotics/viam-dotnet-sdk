@@ -28,6 +28,20 @@ namespace Viam.Core.Resources.Components.PowerSensor
             return await client.GetComponent<IPowerSensorClient>(resourceName, timeout, token);
         }
 
+        public static IPowerSensorClient FromDependencies(Dependencies dependencies, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            if (!dependencies.TryGetValue(resourceName, out var resource))
+            {
+                throw new ArgumentException($"Dependency {resourceName} not found");
+            }
+            if (resource is not IPowerSensorClient client)
+            {
+                throw new ArgumentException($"Dependency {resourceName} is not a {nameof(IPowerSensorClient)}");
+            }
+            return client;
+        }
+
         public override DateTime? LastReconfigured => null;
 
         public override ValueTask StopResource() => new ValueTask();

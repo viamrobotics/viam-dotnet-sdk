@@ -29,6 +29,20 @@ namespace Viam.Core.Resources.Components.Servo
             return await client.GetComponent<IServoClient>(resourceName, timeout, token);
         }
 
+        public static IServoClient FromDependencies(Dependencies dependencies, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            if (!dependencies.TryGetValue(resourceName, out var resource))
+            {
+                throw new ArgumentException($"Dependency {resourceName} not found");
+            }
+            if (resource is not IServoClient client)
+            {
+                throw new ArgumentException($"Dependency {resourceName} is not a {nameof(IServoClient)}");
+            }
+            return client;
+        }
+
         public override DateTime? LastReconfigured => null;
 
         public override ValueTask StopResource() => Stop();

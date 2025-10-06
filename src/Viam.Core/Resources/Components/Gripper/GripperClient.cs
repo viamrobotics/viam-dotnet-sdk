@@ -26,6 +26,20 @@ namespace Viam.Core.Resources.Components.Gripper
             return await client.GetComponent<IGripperClient>(resourceName, timeout, token);
         }
 
+        public static IGripperClient FromDependencies(Dependencies dependencies, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            if (!dependencies.TryGetValue(resourceName, out var resource))
+            {
+                throw new ArgumentException($"Dependency {resourceName} not found");
+            }
+            if (resource is not IGripperClient client)
+            {
+                throw new ArgumentException($"Dependency {resourceName} is not a {nameof(IGripperClient)}");
+            }
+            return client;
+        }
+
         public override DateTime? LastReconfigured => null;
 
         public override ValueTask StopResource() => Stop();

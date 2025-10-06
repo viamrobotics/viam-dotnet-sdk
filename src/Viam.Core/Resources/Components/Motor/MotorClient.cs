@@ -27,6 +27,20 @@ namespace Viam.Core.Resources.Components.Motor
             return await client.GetComponent<IMotorClient>(resourceName, timeout, token);
         }
 
+        public static IMotorClient FromDependencies(Dependencies dependencies, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            if (!dependencies.TryGetValue(resourceName, out var resource))
+            {
+                throw new ArgumentException($"Dependency {resourceName} not found");
+            }
+            if (resource is not IMotorClient client)
+            {
+                throw new ArgumentException($"Dependency {resourceName} is not a {nameof(IMotorClient)}");
+            }
+            return client;
+        }
+
         public override DateTime? LastReconfigured => null;
 
         public override ValueTask StopResource() => Stop();

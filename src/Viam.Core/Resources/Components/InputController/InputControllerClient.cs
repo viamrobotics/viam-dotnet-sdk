@@ -30,6 +30,20 @@ namespace Viam.Core.Resources.Components.InputController
             return await client.GetComponent<IInputControllerClient>(resourceName, timeout, token);
         }
 
+        public static IInputControllerClient FromDependencies(Dependencies dependencies, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            if (!dependencies.TryGetValue(resourceName, out var resource))
+            {
+                throw new ArgumentException($"Dependency {resourceName} not found");
+            }
+            if (resource is not IInputControllerClient client)
+            {
+                throw new ArgumentException($"Dependency {resourceName} is not a {nameof(IInputControllerClient)}");
+            }
+            return client;
+        }
+
         public override DateTime? LastReconfigured => null;
 
         public override ValueTask StopResource() => new ValueTask();

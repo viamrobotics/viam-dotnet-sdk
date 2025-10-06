@@ -23,11 +23,24 @@ namespace Viam.Core.Resources.Components.MovementSensor
     {
         public static SubType SubType = SubType.FromRdkComponent("movement_sensor");
 
-
         public static async Task<IMovementSensorClient> FromMachine(IMachineClient client, string name, TimeSpan? timeout = null, CancellationToken token = default)
         {
             var resourceName = new ViamResourceName(SubType, name);
             return await client.GetComponent<IMovementSensorClient>(resourceName, timeout, token);
+        }
+
+        public static IMovementSensorClient FromDependencies(Dependencies dependencies, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            if (!dependencies.TryGetValue(resourceName, out var resource))
+            {
+                throw new ArgumentException($"Dependency {resourceName} not found");
+            }
+            if (resource is not IMovementSensorClient client)
+            {
+                throw new ArgumentException($"Dependency {resourceName} is not a {nameof(IMovementSensorClient)}");
+            }
+            return client;
         }
 
         public override DateTime? LastReconfigured => null;
