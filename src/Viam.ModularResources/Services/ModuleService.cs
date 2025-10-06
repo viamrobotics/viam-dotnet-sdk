@@ -1,5 +1,7 @@
 ﻿using Grpc.Core;
+
 using System.Data;
+
 using Viam.Core;
 using Viam.Core.Clients;
 using Viam.Core.Grpc;
@@ -7,6 +9,7 @@ using Viam.Core.Resources;
 using Viam.Core.Utils;
 using Viam.Module.V1;
 using Viam.Robot.V1;
+
 using grpcRobotService = Viam.Module.V1.ModuleService;
 
 namespace Viam.ModularResources.Services
@@ -17,6 +20,7 @@ namespace Viam.ModularResources.Services
         private static readonly SemaphoreSlim ParentAddressLock = new(1);
         private static Uri? _parentAddress;
         private readonly ILogger<ModuleService> _logger = loggerFactory.CreateLogger<ModuleService>();
+        private MachineClientBase? _client;
 
         public override async Task<AddResourceResponse> AddResource(AddResourceRequest request,
             ServerCallContext context)
@@ -33,31 +37,27 @@ namespace Viam.ModularResources.Services
 
             try
             {
-                var channel = await DialParent();
-                if (channel == null)
-                {
-                    throw new Exception("Unable to dial parent");
-                }
+                var client = await GetMachineClient();
 
-                _logger.LogDebug("Dialed parent, preparing resources...");
-
-                // Try to load the resources from the parent
-                var client = new MachineClientBase(loggerFactory, channel);
                 var remoteResourceNames = await client.ResourceNamesAsync();
                 foreach (var name in remoteResourceNames)
                 {
                     _logger.LogDebug("Found remote resource {ResourceName}", name);
                 }
 
-                _logger.LogDebug("Want to add resource {ResourceName} {ResourceSubType} {ResourceModel}", config.Name,
-                    subType, model);
+                _logger.LogDebug("Want to add resource {ResourceName} {ResourceSubType} {ResourceModel}", config.Name, subType, model);
                 var resourceManager = services.GetRequiredService<ResourceManager>();
-                var resource = resourceManager.ResolveService(config.Name, subType, model) ??
-                               throw new Exception($"Unable to find resource {config.Name} {subType} {model}");
+                var resource = resourceManager.ResolveService(config.Name, subType, model)
+                               ?? throw new Exception($"Unable to find resource {config.Name} {subType} {model}");
                 _logger.LogDebug("Got resource {Name}", resource.Name);
 
-                var dependencies = request.Dependencies.Select(GrpcExtensions.ToResourceName)
-                    .ToDictionary(x => x, IResourceBase (x) => resourceManager.ResolveService(x.Name, x.SubType, model));
+                Dictionary<ViamResourceName, IResourceBase> dependencies = new();
+                foreach (var dep in request.Dependencies.Select(GrpcExtensions.ToResourceName))
+                {
+                    _logger.LogDebug("Loading dependency {ResourceName}", dep);
+                    var depClient = await GetRemoteResource(dep, client);
+                    dependencies.Add(dep, depClient);
+                }
                 _logger.LogDebug("Got dependencies {Dependencies}",
                     string.Join(",", dependencies.Select(x => x.ToString())));
 
@@ -99,7 +99,7 @@ namespace Viam.ModularResources.Services
             {
                 _logger.LogTrace("Preparing handler for {Service}", serviceName);
                 var rpcSubtype = new ResourceRPCSubtype()
-                    { Subtype = new ViamResourceName(subType, string.Empty), ProtoService = serviceName };
+                { Subtype = new ViamResourceName(subType, string.Empty), ProtoService = serviceName };
                 var handler = new HandlerDefinition() { Subtype = rpcSubtype };
                 handler.Models.AddRange(models.Select(x => x.ToString()));
                 handlers.Handlers.Add(handler);
@@ -129,8 +129,24 @@ namespace Viam.ModularResources.Services
             var resourceManager = services.GetRequiredService<ResourceManager>();
             var resource = resourceManager.ResolveService(config.Name, subType, model) ??
                            throw new Exception($"Unable to find resource {config.Name} {subType} {model}");
-            var dependencies = request.Dependencies.Select(GrpcExtensions.ToResourceName)
-                .ToDictionary(x => x, x => (IResourceBase)resourceManager.ResolveService(x.Name, x.SubType, model));
+
+            var client = await GetMachineClient();
+
+            var remoteResourceNames = await client.ResourceNamesAsync();
+            foreach (var name in remoteResourceNames)
+            {
+                _logger.LogDebug("Found remote resource {ResourceName}", name);
+            }
+
+            Dictionary<ViamResourceName, IResourceBase> dependencies = new();
+            foreach (var dep in request.Dependencies.Select(GrpcExtensions.ToResourceName))
+            {
+                _logger.LogDebug("Loading dependency {ResourceName}", dep);
+                var depClient = await GetRemoteResource(dep, client);
+                dependencies.Add(dep, depClient);
+            }
+            _logger.LogDebug("Got dependencies {Dependencies}",
+                string.Join(",", dependencies.Select(x => x.ToString())));
 
             await ReconfigureResource(resource, config, dependencies);
 
@@ -175,17 +191,23 @@ namespace Viam.ModularResources.Services
             }
         }
 
-        private async ValueTask<ViamChannel?> DialParent()
+        private async ValueTask<MachineClientBase> GetMachineClient()
         {
             await ParentAddressLock.WaitAsync();
             try
             {
+                if (_client != null)
+                    return _client;
                 if (_parentAddress == null)
-                    return null;
+                    throw new Exception("Parent address is null");
                 var dialer = new GrpcDialer(loggerFactory.CreateLogger<GrpcDialer>(), loggerFactory);
                 var options = new GrpcDialOptions(_parentAddress, true);
                 var channel = await dialer.DialDirectAsync(options);
-                return channel;
+                _logger.LogDebug("Dialed parent, preparing resources...");
+
+                // Try to load the resources from the parent
+                _client = new MachineClientBase(loggerFactory, channel);
+                return _client;
             }
             finally
             {
@@ -231,6 +253,11 @@ namespace Viam.ModularResources.Services
                 throw new Exception($"Resource {resource.Name} does not support reconfiguration");
                 //_logger.LogDebug("Resource {ResourceName} does not support reconfiguration", resource.Name);
             }
+        }
+
+        private async Task<IResourceBase> GetRemoteResource(ViamResourceName name, MachineClientBase machine)
+        {
+            return await machine.GetComponent(name);
         }
     }
 }

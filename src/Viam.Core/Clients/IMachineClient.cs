@@ -21,7 +21,11 @@ namespace Viam.Core.Clients
         /// <param name="timeout">The timeout to use while constructing the component</param>
         /// <param name="token">The <see cref="CancellationToken"/> to use for the async operation</param>
         /// <returns>The <typeparamref name="T"/> component</returns>
-        public Task<T> GetComponent<T>(ViamResourceName resourceName, TimeSpan? timeout = null, CancellationToken token = default) where T : IResourceBase;
+        public Task<T> GetComponent<T>(ViamResourceName resourceName, TimeSpan? timeout = null,
+            CancellationToken token = default) where T : IResourceBase;
+
+        public Task<IResourceBase> GetComponent(ViamResourceName resourceName, TimeSpan? timeout = null,
+            CancellationToken token = default);
 
         public Task<Operation[]> GetOperationsAsync(TimeSpan? timeout = null,
             CancellationToken token = default);

@@ -118,6 +118,32 @@ namespace Viam.Core.Clients
             }
         }
 
+        public async Task<IResourceBase> GetComponent(ViamResourceName resourceName, TimeSpan? timeout = null, CancellationToken token = default)
+        {
+            Logger.LogMethodInvocationStart();
+            ThrowIfDisposed();
+            try
+            {
+                await RefreshAsync(timeout ?? TimeSpan.FromSeconds(30), token).ConfigureAwait(false);
+                if (_resources.TryGetValue(resourceName, out var ctor) == false)
+                    throw new ComponentNotFoundException(resourceName);
+
+                Logger.LogMethodInvocationSuccess(results: ctor);
+                return ctor();
+
+            }
+            catch (InvalidOperationException)
+            {
+                Logger.LogDebug("Component not found: {ResourceName}", resourceName);
+                throw new ComponentNotFoundException(resourceName);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogMethodInvocationFailure(ex);
+                throw;
+            }
+        }
+
         public async Task<Operation[]> GetOperationsAsync(TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
