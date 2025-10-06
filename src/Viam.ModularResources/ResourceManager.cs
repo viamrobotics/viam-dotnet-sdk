@@ -83,7 +83,7 @@ namespace Viam.ModularResources
                 var resource =
                     (IModularResource)ActivatorUtilities.CreateInstance(_services, registeredResource.Type,
                         resourceName);
-                _logger.LogInformation("Created new instance of {ResourceName}", resourceName);
+                _logger.LogInformation("Created new instance of {ResourceName} with RuntimeType {ResourceType}", resourceName, resource.GetType());
                 return resource;
             });
         }
