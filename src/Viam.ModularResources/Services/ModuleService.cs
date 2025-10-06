@@ -25,11 +25,11 @@ namespace Viam.ModularResources.Services
             var config = request.Config;
             var subType = SubType.FromString(config.Api);
             var model = Model.FromString(config.Model);
-            _logger.LogDebug("Adding resource {Name} {SubType} {Model} with dependencies {Dependencies}",
+            _logger.LogDebug("Adding resource {Name} {SubType} {Model} with dependencies: {Dependencies}.",
                 config.Name,
                 subType,
                 model,
-                string.Join(",", request.Dependencies.Select(x => x)));
+                request.Dependencies.Count == 0 ? "n/a" : string.Join(",", request.Dependencies.Select(x => x)));
 
             try
             {
