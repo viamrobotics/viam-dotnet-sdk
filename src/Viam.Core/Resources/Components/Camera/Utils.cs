@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Buffers.Binary;
+using System.Text;
 
 namespace Viam.Core.Resources.Components.Camera
 {
@@ -10,6 +12,7 @@ namespace Viam.Core.Resources.Components.Camera
                 MimeType.Jpeg => GetJpegImageDimensions(bytes),
                 MimeType.Png => GetPngImageDimensions(bytes),
                 MimeType.ViamRgba => GetViamRgbaImageDimensions(bytes),
+                MimeType.ViamRawDepth => GetViamRawDepthImageDimensions(bytes),
                 _ => throw new ArgumentOutOfRangeException(nameof(mimeType), mimeType, "Unsupported image format")
             };
 
@@ -75,6 +78,29 @@ namespace Viam.Core.Resources.Components.Camera
             }
 
             throw new ArgumentException("Not a valid JPEG image.");
+        }
+
+        public static (int width, int height) GetViamRawDepthImageDimensions(ReadOnlySpan<byte> data)
+        {
+            const string magic = "DEPTHMAP";
+            if (data.Length < 8 + 8 + 8) throw new ArgumentException("Buffer too small for RAW_DEPTH header");
+
+            if (!data.Slice(0, 8).SequenceEqual(Encoding.ASCII.GetBytes(magic)))
+                throw new InvalidOperationException("Not a Viam RAW_DEPTH image (missing DEPTHMAP header)");
+
+            ulong w = BinaryPrimitives.ReadUInt64BigEndian(data.Slice(8, 8));
+            ulong h = BinaryPrimitives.ReadUInt64BigEndian(data.Slice(16, 8));
+
+            if (w == 0 || h == 0 || w > int.MaxValue || h > int.MaxValue)
+                throw new InvalidOperationException($"Invalid dimensions {w}x{h}");
+
+            // Optional sanity check: ensure payload size matches width*height * 2 bytes
+            int header = 8 + 8 + 8;
+            long expectedBytes = (long)w * (long)h * 2L;
+            if (data.Length < header + expectedBytes)
+                throw new InvalidOperationException("Depth payload smaller than expected for reported dimensions");
+
+            return ((int)w, (int)h);
         }
     }
 }

@@ -26,6 +26,20 @@ namespace Viam.Core.Resources.Components.Camera
             return await client.GetComponent<ICameraClient>(resourceName, timeout, token);
         }
 
+        public static ICameraClient FromDependencies(IDictionary<ViamResourceName, IResourceBase> dependencies, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            if (!dependencies.TryGetValue(resourceName, out var resource))
+            {
+                throw new ArgumentException($"Dependency {resourceName} not found");
+            }
+            if (resource is not ICameraClient camera)
+            {
+                throw new ArgumentException($"Dependency {resourceName} is not a camera");
+            }
+            return camera;
+        }
+
         public override DateTime? LastReconfigured => null;
 
         public override ValueTask StopResource() => new ValueTask();
@@ -77,8 +91,7 @@ namespace Viam.Core.Resources.Components.Camera
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
                 var (width, height) =
-                    Utils.GetImageDimensions(
-                        res.Image.Memory.Span, MimeTypeExtensions.FromGrpc(res.MimeType));
+                    Utils.GetImageDimensions(res.Image.Memory.Span, MimeTypeExtensions.FromGrpc(res.MimeType));
                 var image = new ViamImage(res.Image.Memory, MimeTypeExtensions.FromGrpc(res.MimeType), width, height);
                 Logger.LogMethodInvocationSuccess();
                 return image;
