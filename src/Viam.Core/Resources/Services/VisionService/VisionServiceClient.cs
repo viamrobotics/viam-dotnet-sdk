@@ -37,6 +37,20 @@ namespace Viam.Core.Resources.Services.VisionService
             return await client.GetComponent<IVisionServiceClient>(resourceName, timeout, token);
         }
 
+        public static IVisionServiceClient FromDependencies(Dependencies dependencies, string name)
+        {
+            var resourceName = new ViamResourceName(SubType, name);
+            if (!dependencies.TryGetValue(resourceName, out var resource))
+            {
+                throw new ArgumentException($"Dependency {resourceName} not found");
+            }
+            if (resource is not IVisionServiceClient client)
+            {
+                throw new ArgumentException($"Dependency {resourceName} is not a {nameof(IVisionServiceClient)}");
+            }
+            return client;
+        }
+
         public async Task<(Image Image, Classification[] Classifications, Detection[] Detections, PointCloudObject[] Objects)> CaptureAllFromCamera(string cameraName,
             bool returnImage,
             bool returnClassifications,
