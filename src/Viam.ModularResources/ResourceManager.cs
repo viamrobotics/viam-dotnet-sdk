@@ -1,5 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
+using System.Security.Principal;
 using Viam.Core;
 using Viam.Core.Resources;
 
@@ -77,13 +78,13 @@ namespace Viam.ModularResources
             {
                 var resourceName = new ViamResourceName(subType, name);
                 var registeredResource = RegisteredResources[model];
-                _logger.LogInformation(
+                _logger.LogDebug(
                     "Creating new instance of {ResourceName} with {ResourceType} {ResourceSubType} {ResourceModel}",
                     resourceName, registeredResource.Type, registeredResource.SubType, registeredResource.Model);
                 var resource =
                     (IModularResource)ActivatorUtilities.CreateInstance(_services, registeredResource.Type,
                         resourceName);
-                _logger.LogInformation("Created new instance of {ResourceName} with RuntimeType {ResourceType}", resourceName, resource.GetType());
+                _logger.LogDebug("Created new instance of {ResourceName} with RuntimeType {ResourceType}", resourceName, resource.GetType());
                 return resource;
             });
         }
@@ -93,7 +94,10 @@ namespace Viam.ModularResources
             where TInterface : IComponentBase
             where TImpl : IModularResourceService
         {
-            RegisteredResources.Add(TImpl.Model, new ResourceInfo(TImpl.SubType, TImpl.Model, Viam.Core.Resources.Service.Lookup<TInterface>(), typeof(TImpl)));
+            var resourceInfo = new ResourceInfo(TImpl.SubType, TImpl.Model,
+                Viam.Core.Resources.Service.Lookup<TInterface>(), typeof(TImpl));
+            _logger.LogDebug("Registering resource {ResourceInfo}", resourceInfo);
+            RegisteredResources.Add(TImpl.Model, resourceInfo);
         }
 
         public async ValueTask DisposeAsync()
