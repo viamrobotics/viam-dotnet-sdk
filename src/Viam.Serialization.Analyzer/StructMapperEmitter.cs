@@ -122,7 +122,7 @@ namespace Viam.Serialization.Analyzer
                                  or SpecialType.System_Decimal)
                         {
                             sb.AppendLine(
-                                $"{indent}            result.{propName} = {propName}_val.ListValue.Values.Select(value => ({typeShape.Type.WithNullableAnnotation(NullableAnnotation.None)})value.NumberValue).ToArray();");
+                                $"{indent}            result.{propName} = {propName}_val.ListValue.Values.Select(value => ({typeShape.Type.WithNullableAnnotation(NullableAnnotation.None).ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat)})value.NumberValue).ToArray();");
                         }
                         else if (elementType.TypeKind is TypeKind.Class or TypeKind.Struct)
                         {
@@ -137,7 +137,7 @@ namespace Viam.Serialization.Analyzer
                     default:
                         {
                             sb.AppendLine(prop.Type.TypeKind is TypeKind.Class or TypeKind.Struct
-                                ? $"{indent}            result.{propName} = {typeShape.Type.Name}.FromStruct({propName}_val.StructValue);"
+                                ? $"{indent}            result.{propName} = {typeShape.Type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat)}.FromStruct({propName}_val.StructValue);"
                                 : $"{indent}            // Unsupported type: {typeShape.Type.Name}");
                             break;
                         }
