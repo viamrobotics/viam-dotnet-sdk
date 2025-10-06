@@ -2,6 +2,6 @@
 {
     public interface IServiceBase
     {
-        public abstract static SubType SubType { get; }
+        public static abstract SubType SubType { get; }
     }
 }

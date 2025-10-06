@@ -107,8 +107,7 @@ namespace Viam.ModularResources
             return this;
         }
 
-        public ModuleBuilder RegisterService<
-            [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TService>()
+        public ModuleBuilder RegisterService<[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TService>()
             where TService : class, IServiceBase
         {
             _hostBuilder.ConfigureServices(s =>
@@ -119,16 +118,14 @@ namespace Viam.ModularResources
             return this;
         }
 
-        public ModuleBuilder RegisterComponent<TComponentInterface,
-            [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors |
-                                        DynamicallyAccessedMemberTypes.PublicProperties)]
-        TComponent>()
+        public ModuleBuilder RegisterComponent<TComponentInterface, 
+            [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors | DynamicallyAccessedMemberTypes.PublicProperties)] TComponent>()
             where TComponentInterface : class, IComponentBase
             where TComponent : class, IResourceBase, TComponentInterface, IModularResourceService
         {
             _hostBuilder.ConfigureServices(s =>
             {
-                s.AddKeyedTransient<IModularResource, TComponent>(TComponent.SubType);
+                //s.AddKeyedTransient<IModularResource, TComponent>(TComponent.SubType);
                 _postConfigureActions.Add(RegisterTypeHelper<TComponentInterface, TComponent>);
             });
             return this;
