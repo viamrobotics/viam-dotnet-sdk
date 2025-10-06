@@ -118,8 +118,10 @@ namespace Viam.ModularResources
             return this;
         }
 
-        public ModuleBuilder RegisterComponent<TComponentInterface, 
-            [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors | DynamicallyAccessedMemberTypes.PublicProperties)] TComponent>()
+        public ModuleBuilder RegisterComponent<
+            TComponentInterface,
+            [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors | DynamicallyAccessedMemberTypes.PublicProperties)]
+            TComponent>()
             where TComponentInterface : class, IComponentBase
             where TComponent : class, IResourceBase, TComponentInterface, IModularResourceService
         {
@@ -142,10 +144,11 @@ namespace Viam.ModularResources
             return new Module(host);
         }
 
-        private static void RegisterTypeHelper<TComponentInterface,
-            [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors |
-                                        DynamicallyAccessedMemberTypes.PublicProperties)]
-        TComponent>(IServiceProvider services)
+        private static void RegisterTypeHelper<
+                TComponentInterface,
+                [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors | DynamicallyAccessedMemberTypes.PublicProperties)]
+                TComponent>
+            (IServiceProvider services)
             where TComponentInterface : class, IComponentBase
             where TComponent : class, IResourceBase, TComponentInterface, IModularResourceService
         {

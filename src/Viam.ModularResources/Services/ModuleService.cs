@@ -52,12 +52,12 @@ namespace Viam.ModularResources.Services
                 _logger.LogDebug("Want to add resource {ResourceName} {ResourceSubType} {ResourceModel}", config.Name,
                     subType, model);
                 var resourceManager = services.GetRequiredService<ResourceManager>();
-                var resource = resourceManager.ResolveService(config.Name, subType) ??
+                var resource = resourceManager.ResolveService(config.Name, subType, model) ??
                                throw new Exception($"Unable to find resource {config.Name} {subType} {model}");
                 _logger.LogDebug("Got resource {Name}", resource.Name);
 
                 var dependencies = request.Dependencies.Select(GrpcExtensions.ToResourceName)
-                    .ToDictionary(x => x, IResourceBase (x) => resourceManager.ResolveService(x.Name, x.SubType));
+                    .ToDictionary(x => x, IResourceBase (x) => resourceManager.ResolveService(x.Name, x.SubType, model));
                 _logger.LogDebug("Got dependencies {Dependencies}",
                     string.Join(",", dependencies.Select(x => x.ToString())));
 
@@ -127,10 +127,10 @@ namespace Viam.ModularResources.Services
                 model,
                 string.Join(",", request.Dependencies.Select(x => x)));
             var resourceManager = services.GetRequiredService<ResourceManager>();
-            var resource = resourceManager.ResolveService(config.Name, subType) ??
+            var resource = resourceManager.ResolveService(config.Name, subType, model) ??
                            throw new Exception($"Unable to find resource {config.Name} {subType} {model}");
             var dependencies = request.Dependencies.Select(GrpcExtensions.ToResourceName)
-                .ToDictionary(x => x, x => (IResourceBase)resourceManager.ResolveService(x.Name, x.SubType));
+                .ToDictionary(x => x, x => (IResourceBase)resourceManager.ResolveService(x.Name, x.SubType, model));
 
             await ReconfigureResource(resource, config, dependencies);
 
@@ -154,7 +154,7 @@ namespace Viam.ModularResources.Services
             var subType = SubType.FromString(config.Api);
             var model = Model.FromString(config.Model);
             var resourceManager = services.GetRequiredService<ResourceManager>();
-            var resource = resourceManager.ResolveService(config.Name, subType) ??
+            var resource = resourceManager.ResolveService(config.Name, subType, model) ??
                            throw new Exception($"Unable to find resource {config.Name} {subType} {model}");
             var deps = resource.ValidateConfig(config);
             var resp = new ValidateConfigResponse();

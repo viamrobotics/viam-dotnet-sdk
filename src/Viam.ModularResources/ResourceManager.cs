@@ -11,8 +11,8 @@ namespace Viam.ModularResources
         private readonly IServiceProvider _services;
         private readonly ConcurrentDictionary<string, IModularResource> _resources = new();
 
-        public readonly IDictionary<SubType, ResourceInfo>
-            RegisteredResources = new Dictionary<SubType, ResourceInfo>();
+        public readonly IDictionary<Model, ResourceInfo>
+            RegisteredResources = new Dictionary<Model, ResourceInfo>();
 
         public ResourceManager(ILogger<ResourceManager> logger, IServiceProvider services)
         {
@@ -65,34 +65,31 @@ namespace Viam.ModularResources
             }
         }
 
-        public IModularResource ResolveService(string name, SubType subType)
+        public IModularResource ResolveService(string name, SubType subType, Model model)
         {
             if (string.IsNullOrEmpty(name))
             {
                 throw new ArgumentException("Name cannot be null or empty", nameof(name));
             }
 
-            _logger.LogInformation("Getting {ResourceName}", name);
+            _logger.LogInformation("Getting {SubType} {Model} {ResourceName}", subType, model, name);
             return _resources.GetOrAdd(name, (s) =>
             {
                 var resourceName = new ViamResourceName(subType, name);
                 _logger.LogInformation("Creating new instance of {ResourceName}", resourceName);
                 var resource = (IModularResource)ActivatorUtilities.CreateInstance(_services,
-                    RegisteredResources[subType].Type, resourceName);
+                    RegisteredResources[model].Type, resourceName);
                 _logger.LogInformation("Created new instance of {ResourceName}", resourceName);
                 return resource;
             });
         }
 
         public void RegisterType<TInterface,
-            [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties |
-                                        DynamicallyAccessedMemberTypes.PublicConstructors)]
-            TImpl>()
+            [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicProperties | DynamicallyAccessedMemberTypes.PublicConstructors)] TImpl>()
             where TInterface : IComponentBase
             where TImpl : IModularResourceService
         {
-            RegisteredResources.Add(TImpl.SubType,
-                new(TImpl.SubType, TImpl.Model, Viam.Core.Resources.Service.Lookup<TInterface>(), typeof(TImpl)));
+            RegisteredResources.Add(TImpl.Model, new ResourceInfo(TImpl.SubType, TImpl.Model, Viam.Core.Resources.Service.Lookup<TInterface>(), typeof(TImpl)));
         }
 
         public async ValueTask DisposeAsync()
@@ -108,6 +105,7 @@ namespace Viam.ModularResources
                     _logger.LogWarning("Resource does not implement IAsyncDisposable");
                 }
             }
+            GC.SuppressFinalize(this);
         }
 
         public readonly record struct ResourceInfo(
