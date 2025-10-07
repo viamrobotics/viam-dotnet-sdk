@@ -112,7 +112,7 @@ namespace Viam.Client.Utils
 
         public static string GetMachineConfigPath()
         {
-            if (File.Exists("/etc/viam.json"))
+            if (!File.Exists("/etc/viam.json"))
                 throw new FileNotFoundException("No config file found at /etc/viam.json");
             var viamJsonConfig =
                 System.Text.Json.JsonSerializer.Deserialize<ViamJson>(File.ReadAllText(DefaultConfigPath));
