@@ -9,10 +9,8 @@ namespace Viam.Core.Clients
 
         public DataClient CreateDataClient();
 
+        public DataSyncClient CreateDataSyncClient();
+
         public BillingClient CreateBillingClient();
-
-        public MlTrainingClient CreateMlTrainingClient();
-
-        public ProvisioningClient CreateProvisioningClient();
     }
 }

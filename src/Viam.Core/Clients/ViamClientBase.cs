@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
+using Viam.App.Data.V1;
+using Viam.App.Datasync.V1;
 using Viam.App.V1;
 using Viam.Core.App;
-using Viam.Provisioning.V1;
 
 namespace Viam.Core.Clients
 {
@@ -24,16 +25,13 @@ namespace Viam.Core.Clients
             new AppService.AppServiceClient(_channel));
 
         public DataClient CreateDataClient() =>
-            throw new NotImplementedException(); // new(_loggerFactory.CreateLogger<DataClient>(), new DataService.DataServiceClient(_channel));
+            new(_loggerFactory.CreateLogger<DataClient>(), new DataService.DataServiceClient(_channel));
+
+        public DataSyncClient CreateDataSyncClient() =>
+            new(_loggerFactory.CreateLogger<DataSyncClient>(), new DataSyncService.DataSyncServiceClient(_channel));
 
         public BillingClient CreateBillingClient() => new(_loggerFactory.CreateLogger<BillingClient>(),
             new BillingService.BillingServiceClient(_channel));
-
-        public MlTrainingClient CreateMlTrainingClient() =>
-            throw new NotImplementedException(); // new(_loggerFactory.CreateLogger<MlTrainingClient>(), new MLModelService.MLModelServiceClient(_channel));
-
-        public ProvisioningClient CreateProvisioningClient() => new(_loggerFactory.CreateLogger<ProvisioningClient>(),
-            new ProvisioningService.ProvisioningServiceClient(_channel));
 
         public async ValueTask DisposeAsync()
         {

@@ -5,5 +5,6 @@ namespace Viam.Core.App
 {
     public class DataClient(ILogger<DataClient> logger, DataService.DataServiceClient client)
     {
+
     }
 }
