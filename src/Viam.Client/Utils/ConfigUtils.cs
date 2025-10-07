@@ -45,6 +45,61 @@ namespace Viam.Client.Utils
             return (keyId, key);
         }
 
+        public static string GetMachineId()
+        {
+            var config = GetMachineConfig();
+            if (config["cloud"] is null) throw new InvalidDataException("No cloud field found in config");
+            var cloud = config["cloud"]!;
+            if (cloud["machine_id"] is null) throw new InvalidDataException("No cloud.machine_id field found in config");
+            var id = cloud["machine_id"]!.GetValue<string>();
+            if (string.IsNullOrWhiteSpace(id)) throw new InvalidDataException("cloud.machine_id field in config is empty");
+            return id;
+        }
+
+        public static string GetMachinePartId()
+        {
+            var config = GetMachineConfig();
+            if (config["cloud"] is null) throw new InvalidDataException("No cloud field found in config");
+            var cloud = config["cloud"]!;
+            if (cloud["id"] is null) throw new InvalidDataException("No cloud.id field found in config");
+            var id = cloud["id"]!.GetValue<string>();
+            if (string.IsNullOrWhiteSpace(id)) throw new InvalidDataException("cloud.id field in config is empty");
+            return id;
+        }
+
+        public static string GetMachineFqdn()
+        {
+            var config = GetMachineConfig();
+            if (config["cloud"] is null) throw new InvalidDataException("No cloud field found in config");
+            var cloud = config["cloud"]!;
+            if (cloud["fqdn"] is null) throw new InvalidDataException("No cloud.fqdn field found in config");
+            var fqdn = cloud["fqdn"]!.GetValue<string>();
+            if (string.IsNullOrWhiteSpace(fqdn)) throw new InvalidDataException("cloud.fqdn field in config is empty");
+            return fqdn;
+        }
+
+        public static string GetMachineLocalFqdn()
+        {
+            var config = GetMachineConfig();
+            if (config["cloud"] is null) throw new InvalidDataException("No cloud field found in config");
+            var cloud = config["cloud"]!;
+            if (cloud["local_fqdn"] is null) throw new InvalidDataException("No cloud.local_fqdn field found in config");
+            var localFqdn = cloud["local_fqdn"]!.GetValue<string>();
+            if (string.IsNullOrWhiteSpace(localFqdn)) throw new InvalidDataException("cloud.local_fqdn field in config is empty");
+            return localFqdn;
+        }
+
+        public static string GetMachineSignalingAddress()
+        {
+            var config = GetMachineConfig();
+            if (config["cloud"] is null) throw new InvalidDataException("No cloud field found in config");
+            var cloud = config["cloud"]!;
+            if (cloud["signaling_address"] is null) throw new InvalidDataException("No cloud.signaling_address field found in config");
+            var signalingAddress = cloud["signaling_address"]!.GetValue<string>();
+            if (string.IsNullOrWhiteSpace(signalingAddress)) throw new InvalidDataException("cloud.signaling_address field in config is empty");
+            return signalingAddress;
+        }
+
         public static JsonNode GetMachineConfig()
         {
             var cfgFilePath = GetMachineConfigPath();
