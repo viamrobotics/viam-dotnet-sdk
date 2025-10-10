@@ -104,14 +104,29 @@ namespace Viam.ModularResources
             ServerCallContext context,
             ServerStreamingServerMethod<TRequest, TResponse> continuation)
         {
-            var resourceName = GetResourceName(request);
-            if (resourceName != null)
+            var name = GetResourceName(request);
+            if (name != null)
             {
-                logger.LogTrace("Found resource name field.");
-                logger.LogDebug("Adding {ResourceName} to UserState", resourceName);
-                var resource = resourceManager.GetService(resourceName.Name);
-                logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
-                context.UserState.Add(nameof(resource), resource);
+                logger.LogDebug("Adding {ResourceName} to UserState", name);
+                var resource = resourceManager.GetService(name);
+                if (resource != null)
+                {
+                    logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
+                    context.UserState.Add(nameof(resource), resource);
+                }
+                else
+                {
+                    resource = resourceManager.GetService(name);
+                    if (resource != null)
+                    {
+                        logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
+                        context.UserState.Add(nameof(resource), resource);
+                    }
+                    else
+                    {
+                        logger.LogDebug("Unable to locate resource with name {ResourceName}", name);
+                    }
+                }
             }
 
             var boardName = GetBoardName(request);
@@ -130,14 +145,29 @@ namespace Viam.ModularResources
             ServerCallContext context,
             UnaryServerMethod<TRequest, TResponse> continuation)
         {
-            var resourceName = GetResourceName(request);
-            if (resourceName != null)
+            var name = GetResourceName(request);
+            if (name != null)
             {
-                logger.LogTrace("Found resource name field.");
-                logger.LogDebug("Adding {ResourceName} to UserState", resourceName);
-                var resource = resourceManager.GetService(resourceName.Name);
-                logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
-                context.UserState.Add(nameof(resource), resource);
+                logger.LogDebug("Adding {ResourceName} to UserState", name);
+                var resource = resourceManager.GetService(name);
+                if (resource != null)
+                {
+                    logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
+                    context.UserState.Add(nameof(resource), resource);
+                }
+                else
+                {
+                    resource = resourceManager.GetService(name);
+                    if (resource != null)
+                    {
+                        logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
+                        context.UserState.Add(nameof(resource), resource);
+                    }
+                    else
+                    {
+                        logger.LogDebug("Unable to locate resource with name {ResourceName}", name);
+                    }
+                }
             }
 
             var boardName = GetBoardName(request);
@@ -152,7 +182,7 @@ namespace Viam.ModularResources
             return await continuation(request, context);
         }
 
-        private ViamResourceName? GetResourceName<TRequest>(TRequest request)
+        private string? GetResourceName<TRequest>(TRequest request)
         {
             var property = typeof(TRequest).GetProperty("Name");
             if (property == null)
@@ -168,13 +198,7 @@ namespace Viam.ModularResources
             }
 
             logger.LogTrace("Found {ResourceName} in 'Name' property in request", name);
-            if (ViamResourceName.TryParse(name, out var resourceName))
-            {
-                logger.LogTrace("Parsed {ResourceName} into ViamResourceName", resourceName);
-                return resourceName;
-            }
-            logger.LogTrace("Unable to parse {ResourceName} into a ViamResourceName", name);
-            return null;
+            return name;
         }
 
         private string? GetBoardName<TRequest>(TRequest request)

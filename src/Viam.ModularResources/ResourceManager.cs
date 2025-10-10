@@ -1,9 +1,12 @@
 ﻿using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Principal;
+
 using Viam.Core;
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components;
+
+using static Google.Rpc.Context.AttributeContext.Types;
 
 namespace Viam.ModularResources
 {
@@ -22,7 +25,24 @@ namespace Viam.ModularResources
             _services = services;
         }
 
-        public IModularResource GetService(string name)
+        public IModularResource? GetService(string name)
+        {
+            if (string.IsNullOrEmpty(name))
+            {
+                throw new ArgumentException("Name cannot be null or empty", nameof(name));
+            }
+
+            if (_resources.TryGetValue(name, out var resource))
+            {
+                _logger.LogTrace("Found resource: {ResourceName}", resource.Name);
+                return resource;
+            }
+
+            _logger.LogTrace("Resource {ResourceName} not found, resources: {@AvailableResources}", name, _resources.Select(x => x.Value.ResourceName).ToArray());
+            return null;
+        }
+
+        public IModularResource GetRequiredService(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
@@ -77,14 +97,11 @@ namespace Viam.ModularResources
             _logger.LogInformation("Getting {SubType} {Model} {ResourceName}", subType, model, name);
             return _resources.GetOrAdd(name, (s) =>
             {
-                var resourceName = new ViamResourceName(subType, name);
+                var resourceName = new ViamResourceName(subType, s);
                 var registeredResource = RegisteredResources[model];
-                _logger.LogDebug(
-                    "Creating new instance of {ResourceName} with {ResourceType} {ResourceSubType} {ResourceModel}",
+                _logger.LogDebug("Creating new instance of {ResourceName} with {ResourceType} {ResourceSubType} {ResourceModel}",
                     resourceName, registeredResource.Type, registeredResource.SubType, registeredResource.Model);
-                var resource =
-                    (IModularResource)ActivatorUtilities.CreateInstance(_services, registeredResource.Type,
-                        resourceName);
+                var resource = (IModularResource)ActivatorUtilities.CreateInstance(_services, registeredResource.Type, resourceName);
                 _logger.LogDebug("Created new instance of {ResourceName} with RuntimeType {ResourceType}", resourceName, resource.GetType());
                 return resource;
             });
