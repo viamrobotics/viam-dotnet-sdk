@@ -66,6 +66,11 @@ namespace Viam.ModularResources
                 throw new ArgumentException("Name cannot be null or empty", nameof(name));
             }
 
+            if (ViamResourceName.TryParse(name, out var resourceName))
+            {
+                await RemoveResource(resourceName);
+            }
+
             if (_resources.TryRemove(name, out var resource))
             {
                 if (resource is IAsyncDisposable asyncDisposable)
@@ -74,8 +79,7 @@ namespace Viam.ModularResources
                 }
                 else
                 {
-                    _logger.LogWarning(
-                        "Resource {ResourceName} not disposed, does not implement IAsyncDisposable, how did it get injected to start with?",
+                    _logger.LogWarning("Resource {ResourceName} not disposed, does not implement IAsyncDisposable, how did it get injected to start with?",
                         name);
                 }
 
@@ -85,6 +89,11 @@ namespace Viam.ModularResources
             {
                 _logger.LogWarning("Failed to remove service: {ResourceName}", name);
             }
+        }
+
+        private async Task RemoveResource(ViamResourceName resourceName)
+        {
+            await RemoveResource(resourceName.Name);
         }
 
         public IModularResource ResolveService(string name, SubType subType, Model model)

@@ -35,7 +35,7 @@ namespace Viam.Core.Resources
         public override string ToString() =>
             $"{SubType.Namespace}:{SubType.ResourceType}:{SubType.ResourceSubType}/{Name}";
 
-        public static bool TryParse(string s, [MaybeNullWhen(false)] out ViamResourceName resourceName)
+        public static bool TryParse(string s, out ViamResourceName resourceName)
         {
             resourceName = default;
             // If the string is null or empty, throw an exception
