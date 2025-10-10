@@ -116,15 +116,22 @@ namespace Viam.ModularResources
                 }
                 else
                 {
-                    resource = resourceManager.GetService(name);
-                    if (resource != null)
+                    if (ViamResourceName.TryParse(name, out var resourceName))
                     {
-                        logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
-                        context.UserState.Add(nameof(resource), resource);
+                        resource = resourceManager.GetService(resourceName.Name);
+                        if (resource != null)
+                        {
+                            logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
+                            context.UserState.Add(nameof(resource), resource);
+                        }
+                        else
+                        {
+                            logger.LogDebug("Unable to locate resource with name {ResourceName}", name);
+                        }
                     }
                     else
                     {
-                        logger.LogDebug("Unable to locate resource with name {ResourceName}", name);
+                        logger.LogTrace("{ResourceName} is not a ViamResourceName, unable to locate resource", name);
                     }
                 }
             }
@@ -157,15 +164,22 @@ namespace Viam.ModularResources
                 }
                 else
                 {
-                    resource = resourceManager.GetService(name);
-                    if (resource != null)
+                    if (ViamResourceName.TryParse(name, out var resourceName))
                     {
-                        logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
-                        context.UserState.Add(nameof(resource), resource);
+                        resource = resourceManager.GetService(resourceName.Name);
+                        if (resource != null)
+                        {
+                            logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
+                            context.UserState.Add(nameof(resource), resource);
+                        }
+                        else
+                        {
+                            logger.LogDebug("Unable to locate resource with name {ResourceName}", name);
+                        }
                     }
                     else
                     {
-                        logger.LogDebug("Unable to locate resource with name {ResourceName}", name);
+                        logger.LogTrace("{ResourceName} is not a ViamResourceName, unable to locate resource", name);
                     }
                 }
             }

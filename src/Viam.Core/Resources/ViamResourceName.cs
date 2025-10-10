@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+
 using Viam.Common.V1;
 
 namespace Viam.Core.Resources
 {
-    public record ViamResourceName(SubType SubType, string Name)
+    public record struct ViamResourceName(SubType SubType, string Name)
     {
         public ViamResourceName(ResourceName resourceName)
             : this(new SubType(resourceName.Namespace, resourceName.Type, resourceName.Subtype), resourceName.Name)
@@ -33,11 +35,9 @@ namespace Viam.Core.Resources
         public override string ToString() =>
             $"{SubType.Namespace}:{SubType.ResourceType}:{SubType.ResourceSubType}/{Name}";
 
-        public static bool TryParse(string s, out ViamResourceName? resourceName)
+        public static bool TryParse(string s, [MaybeNullWhen(false)] out ViamResourceName resourceName)
         {
-            // Initialize out parameter
-            resourceName = null;
-            
+            resourceName = default;
             // If the string is null or empty, throw an exception
             if (string.IsNullOrEmpty(s)) return false;
 
