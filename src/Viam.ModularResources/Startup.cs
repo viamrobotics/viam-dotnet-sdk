@@ -168,7 +168,13 @@ namespace Viam.ModularResources
             }
 
             logger.LogTrace("Found {ResourceName} in 'Name' property in request", name);
-            return ViamResourceName.Parse(name);
+            if (ViamResourceName.TryParse(name, out var resourceName))
+            {
+                logger.LogTrace("Parsed {ResourceName} into ViamResourceName", resourceName);
+                return resourceName;
+            }
+            logger.LogTrace("Unable to parse {ResourceName} into a ViamResourceName", name);
+            return null;
         }
 
         private string? GetBoardName<TRequest>(TRequest request)
