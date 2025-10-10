@@ -159,7 +159,14 @@ namespace Viam.ModularResources.Services
             ServerCallContext context)
         {
             var resourceManager = services.GetRequiredService<ResourceManager>();
-            await resourceManager.RemoveResource(request.Name);
+            _logger.LogDebug("Removing resource {ResourceName}", request.Name);
+
+            // If the name contains a colon, try to parse it as a ViamResourceName
+            var removeOp = request.Name.Contains(':') && ViamResourceName.TryParse(request.Name, out var name)
+                ? resourceManager.RemoveResource(name.Name)
+                : resourceManager.RemoveResource(request.Name);
+            await removeOp;
+
             return new RemoveResourceResponse();
         }
 

@@ -1,5 +1,6 @@
 ﻿using Grpc.Core;
 using Grpc.Core.Interceptors;
+
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components.Generic;
 using Viam.Core.Resources.Components.Gripper;
@@ -43,13 +44,13 @@ namespace Viam.ModularResources
             });
         }
 
-        private void MapServiceGrpcServices(IEndpointRouteBuilder e)
+        private static void MapServiceGrpcServices(IEndpointRouteBuilder e)
         {
             if (e.ServiceProvider.GetService<IVisionService> != null)
                 e.MapGrpcService<IVisionService>();
         }
 
-        private void MapComponentGrpcServices(IEndpointRouteBuilder e)
+        private static void MapComponentGrpcServices(IEndpointRouteBuilder e)
         {
             if (e.ServiceProvider.GetService<ArmService>() != null)
                 e.MapGrpcService<ArmService>();
@@ -108,7 +109,7 @@ namespace Viam.ModularResources
             if (name != null)
             {
                 logger.LogDebug("Adding {ResourceName} to UserState", name);
-                var resource = resourceManager.GetService(name);
+                var resource = name.Contains(':') && ViamResourceName.TryParse(name, out var resourceName) ? resourceManager.GetService(resourceName.Name) : resourceManager.GetService(name);
                 if (resource != null)
                 {
                     logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
@@ -116,23 +117,7 @@ namespace Viam.ModularResources
                 }
                 else
                 {
-                    if (ViamResourceName.TryParse(name, out var resourceName))
-                    {
-                        resource = resourceManager.GetService(resourceName.Name);
-                        if (resource != null)
-                        {
-                            logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
-                            context.UserState.Add(nameof(resource), resource);
-                        }
-                        else
-                        {
-                            logger.LogDebug("Unable to locate resource with name {ResourceName}", name);
-                        }
-                    }
-                    else
-                    {
-                        logger.LogTrace("{ResourceName} is not a ViamResourceName, unable to locate resource", name);
-                    }
+                    logger.LogDebug("Unable to locate resource with name {ResourceName}", name);
                 }
             }
 
@@ -156,7 +141,8 @@ namespace Viam.ModularResources
             if (name != null)
             {
                 logger.LogDebug("Adding {ResourceName} to UserState", name);
-                var resource = resourceManager.GetService(name);
+                // If the name contains a colon, try to parse it as a full resource name
+                var resource = name.Contains(':') && ViamResourceName.TryParse(name, out var resourceName) ? resourceManager.GetService(resourceName.Name) : resourceManager.GetService(name);
                 if (resource != null)
                 {
                     logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
@@ -164,23 +150,7 @@ namespace Viam.ModularResources
                 }
                 else
                 {
-                    if (ViamResourceName.TryParse(name, out var resourceName))
-                    {
-                        resource = resourceManager.GetService(resourceName.Name);
-                        if (resource != null)
-                        {
-                            logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
-                            context.UserState.Add(nameof(resource), resource);
-                        }
-                        else
-                        {
-                            logger.LogDebug("Unable to locate resource with name {ResourceName}", name);
-                        }
-                    }
-                    else
-                    {
-                        logger.LogTrace("{ResourceName} is not a ViamResourceName, unable to locate resource", name);
-                    }
+                    logger.LogDebug("Unable to locate resource with name {ResourceName}", name);
                 }
             }
 

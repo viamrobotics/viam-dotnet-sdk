@@ -42,6 +42,11 @@ namespace Viam.ModularResources
             return null;
         }
 
+        public IModularResource? GetService(ViamResourceName resourceName)
+        {
+            return GetService(resourceName.Name);
+        }
+
         public IModularResource GetRequiredService(string name)
         {
             if (string.IsNullOrEmpty(name))
@@ -59,16 +64,16 @@ namespace Viam.ModularResources
                 $"Resource {name} not found, resources: {string.Join(",", _resources.Select(x => x.Value.ResourceName))}");
         }
 
+        public IModularResource GetRequiredService(ViamResourceName resourceName)
+        {
+            return GetRequiredService(resourceName.Name);
+        }
+
         public async Task RemoveResource(string name)
         {
             if (string.IsNullOrEmpty(name))
             {
                 throw new ArgumentException("Name cannot be null or empty", nameof(name));
-            }
-
-            if (ViamResourceName.TryParse(name, out var resourceName))
-            {
-                await RemoveResource(resourceName);
             }
 
             if (_resources.TryRemove(name, out var resource))
@@ -91,7 +96,7 @@ namespace Viam.ModularResources
             }
         }
 
-        private async Task RemoveResource(ViamResourceName resourceName)
+        public async Task RemoveResource(ViamResourceName resourceName)
         {
             await RemoveResource(resourceName.Name);
         }
