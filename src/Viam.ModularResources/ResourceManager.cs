@@ -36,7 +36,7 @@ namespace Viam.ModularResources
             }
 
             throw new ResourceNotFoundException(
-                $"Resource {name} not found, resources: {_resources.Select(x => x.Value.Name)}");
+                $"Resource {name} not found, resources: {string.Join(",", _resources.Select(x => x.Value.ResourceName))}");
         }
 
         public async Task RemoveResource(string name)

@@ -1,4 +1,5 @@
-﻿using Viam.Common.V1;
+﻿using System;
+using Viam.Common.V1;
 
 namespace Viam.Core.Resources
 {
@@ -9,8 +10,7 @@ namespace Viam.Core.Resources
         {
         }
 
-        public ResourceName ToResourceName() =>
-            new()
+        public ResourceName ToResourceName() => new()
             {
                 Name = Name,
                 Namespace = SubType.Namespace,
@@ -32,5 +32,20 @@ namespace Viam.Core.Resources
 
         public override string ToString() =>
             $"{SubType.Namespace}:{SubType.ResourceType}:{SubType.ResourceSubType}/{Name}";
+
+        public static ViamResourceName Parse(string fullName)
+        {
+            var parts = fullName.Split('/');
+            if (parts.Length != 2)
+            {
+                throw new ArgumentException($"Invalid resource name: {fullName}");
+            }
+            var subTypeParts = parts[0].Split(':');
+            if (subTypeParts.Length != 3)
+            {
+                throw new ArgumentException($"Invalid resource subtype: {parts[0]}");
+            }
+            return new ViamResourceName(new SubType(subTypeParts[0], subTypeParts[1], subTypeParts[2]), parts[1]);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Grpc.Core;
 using Grpc.Core.Interceptors;
+using Viam.Core.Resources;
 using Viam.Core.Resources.Components.Generic;
 using Viam.Core.Resources.Components.Gripper;
 using Viam.Core.Resources.Components.InputController;
@@ -103,12 +104,12 @@ namespace Viam.ModularResources
             ServerCallContext context,
             ServerStreamingServerMethod<TRequest, TResponse> continuation)
         {
-            var name = GetResourceName(request);
-            if (name != null)
+            var resourceName = GetResourceName(request);
+            if (resourceName != null)
             {
                 logger.LogTrace("Found resource name field.");
-                logger.LogDebug("Adding {ResourceName} to UserState", name);
-                var resource = resourceManager.GetService(name);
+                logger.LogDebug("Adding {ResourceName} to UserState", resourceName);
+                var resource = resourceManager.GetService(resourceName.Name);
                 logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
                 context.UserState.Add(nameof(resource), resource);
             }
@@ -129,12 +130,12 @@ namespace Viam.ModularResources
             ServerCallContext context,
             UnaryServerMethod<TRequest, TResponse> continuation)
         {
-            var name = GetResourceName(request);
-            if (name != null)
+            var resourceName = GetResourceName(request);
+            if (resourceName != null)
             {
                 logger.LogTrace("Found resource name field.");
-                logger.LogDebug("Adding {ResourceName} to UserState", name);
-                var resource = resourceManager.GetService(name);
+                logger.LogDebug("Adding {ResourceName} to UserState", resourceName);
+                var resource = resourceManager.GetService(resourceName.Name);
                 logger.LogTrace("Added {ResourceName} to UserState", resource.Name);
                 context.UserState.Add(nameof(resource), resource);
             }
@@ -151,36 +152,42 @@ namespace Viam.ModularResources
             return await continuation(request, context);
         }
 
-        private static string? GetResourceName<TRequest>(TRequest request)
+        private ViamResourceName? GetResourceName<TRequest>(TRequest request)
         {
             var property = typeof(TRequest).GetProperty("Name");
             if (property == null)
             {
+                logger.LogTrace("'Name' property not found in request");
                 return null;
             }
 
             if (property.GetValue(request) is not string name)
             {
+                logger.LogTrace("Name property is not a string");
                 return null;
             }
 
-            return property.GetValue(request) as string;
+            logger.LogTrace("Found {ResourceName} in 'Name' property in request", name);
+            return ViamResourceName.Parse(name);
         }
 
-        private static string? GetBoardName<TRequest>(TRequest request)
+        private string? GetBoardName<TRequest>(TRequest request)
         {
             var property = typeof(TRequest).GetProperty("BoardName");
             if (property == null)
             {
+                logger.LogTrace("'BoardName' property not found in request");
                 return null;
             }
 
             if (property.GetValue(request) is not string name)
             {
+                logger.LogTrace("'BoardName' property is not a string");
                 return null;
             }
 
-            return property.GetValue(request) as string;
+            logger.LogTrace("Found {BoardName} in 'BoardName' property in request", name);
+            return name;
         }
     }
 }
