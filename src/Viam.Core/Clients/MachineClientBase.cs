@@ -590,8 +590,38 @@ namespace Viam.Core.Clients
                     case "servo":
                         _resources.TryAdd(resourceName, () => new ServoClient(resourceName, _channel, _loggerFactory.CreateLogger<ServoClient>()));
                         break;
+                    case "base_remote_control":
+                        Logger.LogDebug("BaseRemoteControl services are not yet supported by this client");
+                        break;
+                    case "data_manager":
+                        Logger.LogDebug("DataManager services are not yet supported by this client");
+                        break;
+                    case "discovery":
+                        Logger.LogDebug("Discovery services are not yet supported by this client");
+                        break;
+                    case "generic":
+                        Logger.LogDebug("Generic services are not yet supported by this client");
+                        break;
+                    case "mlmodel":
+                        Logger.LogDebug("MLModel services are not yet supported by this client");
+                        break;
+                    case "motion":
+                        Logger.LogDebug("Motion services are not yet supported by this client");
+                        break;
+                    case "navigation":
+                        Logger.LogDebug("Navigation services are not yet supported by this client");
+                        break;
+                    case "shell":
+                        Logger.LogDebug("Shell services are not yet supported by this client");
+                        break;
+                    case "slam":
+                        Logger.LogDebug("SLAM services are not yet supported by this client");
+                        break;
                     case "vision":
                         _resources.TryAdd(resourceName, () => new VisionServiceClient(resourceName, _channel, _loggerFactory.CreateLogger<VisionServiceClient>()));
+                        break;
+                    case "world_state_store":
+                        Logger.LogDebug("WorldStateStore services are not yet supported by this client");
                         break;
                     default:
                         Logger.LogWarning("Unknown resource {Resource}", resourceName);
