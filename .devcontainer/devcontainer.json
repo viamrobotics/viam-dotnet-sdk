@@ -1,0 +1,19 @@
+{
+    "name": "Viam SDK Build Environment",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": []
+        }
+    },
+    "mounts": [
+        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+        "source=${env:HOME}/.viam,target=/home/user/.viam,type=bind"
+    ],
+    "workspaceFolder": "/workspace",
+    "runArgs": [
+        "--add-host=host.docker.internal:host-gateway"
+    ]
+}
