@@ -4,6 +4,8 @@ using System;
 using System.Threading.Tasks;
 using Viam.Common.V1;
 using Viam.Component.Encoder.V1;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 using Viam.Core.Logging;
 using Viam.Core.Utils;
 
@@ -21,11 +23,11 @@ namespace Viam.Core.Resources.Components.Encoder
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IEncoder)context.UserState["resource"];
-                var res = await resource.DoCommand(request.Command.ToDictionary(),
+                var res = await resource.DoCommand(request.Command,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
-                var response = new DoCommandResponse() { Result = res.ToStruct() };
+                var response = new DoCommandResponse() { Result = res };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -43,7 +45,7 @@ namespace Viam.Core.Resources.Components.Encoder
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IEncoder)context.UserState["resource"];
-                var res = await resource.GetGeometries(request.Extra?.ToDictionary(),
+                var res = await resource.GetGeometries(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -65,7 +67,7 @@ namespace Viam.Core.Resources.Components.Encoder
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IEncoder)context.UserState["resource"];
-                var res = await resource.GetProperties(request.Extra?.ToDictionary(),
+                var res = await resource.GetProperties(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -93,7 +95,7 @@ namespace Viam.Core.Resources.Components.Encoder
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IEncoder)context.UserState["resource"];
                 var res = await resource.GetPosition(request.PositionType,
-                    request.Extra?.ToDictionary(),
+                    request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -115,7 +117,7 @@ namespace Viam.Core.Resources.Components.Encoder
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IEncoder)context.UserState["resource"];
-                await resource.ResetPosition(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(),
+                await resource.ResetPosition(request.Extra, context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
                 var response = new ResetPositionResponse();
                 logger.LogMethodInvocationSuccess(results: response);

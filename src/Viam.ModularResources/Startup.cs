@@ -1,6 +1,6 @@
 ﻿using Grpc.Core;
 using Grpc.Core.Interceptors;
-
+using Viam.Contracts.Resources;
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components.Generic;
 using Viam.Core.Resources.Components.Gripper;

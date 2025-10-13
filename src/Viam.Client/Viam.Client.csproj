@@ -28,24 +28,9 @@
 		<ProjectReference Include="..\Viam.Core\Viam.Core.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="ConfigureAwait.Fody" Version="3.3.2">
-			<PrivateAssets>all</PrivateAssets>
-		</PackageReference>
-		<PackageReference Include="Fody" Version="6.9.2">
-			<PrivateAssets>all</PrivateAssets>
-			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>
 		<PackageReference Include="System.Memory" Version="4.6.3" />
 		<PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
 	</ItemGroup>
-	<PropertyGroup>
-		<WeaverConfiguration>
-			<Weavers>
-				<ConfigureAwait />
-				<MethodBoundaryAspect />
-			</Weavers>
-		</WeaverConfiguration>
-	</PropertyGroup>
 	<ItemGroup>
     <None Include="runtimes\win-x64\native\libviam_rust_utils.dll">
 			<Pack>true</Pack>

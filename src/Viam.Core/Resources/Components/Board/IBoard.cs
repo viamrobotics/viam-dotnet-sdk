@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-
+using Google.Protobuf.WellKnownTypes;
 using Viam.Component.Board.V1;
+using Viam.Contracts;
 
 namespace Viam.Core.Resources.Components.Board
 {
@@ -48,7 +48,7 @@ namespace Viam.Core.Resources.Components.Board
         /// <returns>A <see cref="ValueTask"/> that completes when the request completes</returns>
         ValueTask SetPowerModeAsync(PowerMode mode,
             TimeSpan duration,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
@@ -63,7 +63,7 @@ namespace Viam.Core.Resources.Components.Board
         /// <returns>A <see cref="ValueTask"/> that completes when the request completes</returns>
         ValueTask WriteAnalogAsync(string pin,
             int value,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }

@@ -1,7 +1,7 @@
 ﻿using Grpc.Core;
-
-using System.Data;
-
+using Viam.Common.V1;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 using Viam.Core;
 using Viam.Core.Clients;
 using Viam.Core.Grpc;
@@ -83,7 +83,7 @@ namespace Viam.ModularResources.Services
             var resourceManager = services.GetRequiredService<ResourceManager>();
 
             _logger.LogDebug("Getting modular resources...");
-            foreach (var (subType, resource) in resourceManager.RegisteredResources)
+            foreach (var (_, resource) in resourceManager.RegisteredResources)
             {
                 _logger.LogInformation("Found modular service {ServiceName} {SubType}", resource.ServiceName,
                     resource.SubType);
@@ -179,13 +179,21 @@ namespace Viam.ModularResources.Services
             var resourceManager = services.GetRequiredService<ResourceManager>();
             var resource = resourceManager.ResolveService(config.Name, subType, model) ??
                            throw new Exception($"Unable to find resource {config.Name} {subType} {model}");
-            var deps = resource.ValidateConfig(config);
+            var dependencies = resource.ValidateConfig(config);
             var resp = new ValidateConfigResponse();
-            resp.Dependencies.AddRange(deps);
+            resp.Dependencies.AddRange(dependencies);
             return Task.FromResult(resp);
         }
 
-        private async ValueTask SetParentAddress(Uri parentAddress)
+        public async Task LogAsync(IReadOnlyList<LogEntry> logs, CancellationToken ct)
+        {
+            if (_client != null)
+            {
+                await _client.LogAsync(logs, ct);
+            }
+        }
+
+        private static async ValueTask SetParentAddress(Uri parentAddress)
         {
             await ParentAddressLock.WaitAsync();
             try
@@ -225,44 +233,44 @@ namespace Viam.ModularResources.Services
         private async ValueTask ReconfigureResource(IModularResource resource, App.V1.ComponentConfig config,
             Dependencies dependencies)
         {
-            if (resource is IAsyncReconfigurable asyncReconfigurable)
+            switch (resource)
             {
-                _logger.LogDebug("Resource {ResourceName} supports reconfiguration", resource.Name);
-                try
-                {
-                    await asyncReconfigurable.Reconfigure(config, dependencies);
-                }
-                catch (Exception e)
-                {
-                    _logger.LogError(e, "Failed to reconfigure resource {ResourceName}", resource.Name);
-                    throw;
-                }
+                case IAsyncReconfigurable asyncReconfigurable:
+                    _logger.LogDebug("Resource {ResourceName} supports reconfiguration", resource.Name);
+                    try
+                    {
+                        await asyncReconfigurable.Reconfigure(config, dependencies);
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogError(e, "Failed to reconfigure resource {ResourceName}", resource.Name);
+                        throw;
+                    }
 
-                _logger.LogDebug("Reconfigured {ResourceName}", resource.Name);
-            }
-            else if (resource is IReconfigurable reconfigurable)
-            {
-                _logger.LogDebug("Resource {ResourceName} supports reconfiguration", resource.Name);
-                try
-                {
-                    reconfigurable.Reconfigure(config, dependencies);
-                }
-                catch (Exception e)
-                {
-                    _logger.LogError(e, "Failed to reconfigure resource {ResourceName}", resource.Name);
-                    throw;
-                }
+                    break;
+                // ReSharper disable once SuspiciousTypeConversion.Global
+                case IReconfigurable reconfigurable:
+                    _logger.LogDebug("Resource {ResourceName} supports reconfiguration", resource.Name);
+                    try
+                    {
+                        reconfigurable.Reconfigure(config, dependencies);
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogError(e, "Failed to reconfigure resource {ResourceName}", resource.Name);
+                        throw;
+                    }
 
-                _logger.LogDebug("Reconfigured {ResourceName}", resource.Name);
+                    break;
+                default:
+                    throw new Exception($"Resource {resource.Name} does not support reconfiguration");
+                    //_logger.LogDebug("Resource {ResourceName} does not support reconfiguration", resource.Name);
             }
-            else
-            {
-                throw new Exception($"Resource {resource.Name} does not support reconfiguration");
-                //_logger.LogDebug("Resource {ResourceName} does not support reconfiguration", resource.Name);
-            }
+
+            _logger.LogDebug("Reconfigured {ResourceName}", resource.Name);
         }
 
-        private async Task<IResourceBase> GetRemoteResource(ViamResourceName name, MachineClientBase machine)
+        private static async Task<IResourceBase> GetRemoteResource(ViamResourceName name, MachineClientBase machine)
         {
             return await machine.GetComponent(name);
         }

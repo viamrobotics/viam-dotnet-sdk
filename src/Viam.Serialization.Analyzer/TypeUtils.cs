@@ -53,6 +53,8 @@ namespace Viam.Serialization.Analyzer
                 IsDictionary: isDictionary,
                 IsEnumerable: isEnumerable,
                 IsArray: type is IArrayTypeSymbol,
+                IsClass: type.TypeKind == TypeKind.Class,
+                IsStruct: isStruct,
                 TypeKind: type.TypeKind,
                 Type: type
             );
@@ -70,6 +72,8 @@ namespace Viam.Serialization.Analyzer
             bool IsDictionary,
             bool IsEnumerable,
             bool IsArray,
+            bool IsClass,
+            bool IsStruct,
             TypeKind TypeKind,
             ITypeSymbol Type
         );

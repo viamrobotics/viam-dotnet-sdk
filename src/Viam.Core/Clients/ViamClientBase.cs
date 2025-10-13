@@ -21,17 +21,17 @@ namespace Viam.Core.Clients
             Logger = loggerFactory.CreateLogger<ViamClientBase>();
         }
 
-        public AppClient CreateAppClient() => new(_loggerFactory.CreateLogger<AppClient>(),
-            new AppService.AppServiceClient(_channel));
+        //public AppClient CreateAppClient() => new(_loggerFactory.CreateLogger<AppClient>(),
+        //    new AppService.AppServiceClient(_channel));
 
-        public DataClient CreateDataClient() =>
-            new(_loggerFactory.CreateLogger<DataClient>(), new DataService.DataServiceClient(_channel));
+        //public DataClient CreateDataClient() =>
+        //    new(_loggerFactory.CreateLogger<DataClient>(), new DataService.DataServiceClient(_channel));
 
         public DataSyncClient CreateDataSyncClient() =>
             new(_loggerFactory.CreateLogger<DataSyncClient>(), new DataSyncService.DataSyncServiceClient(_channel));
 
-        public BillingClient CreateBillingClient() => new(_loggerFactory.CreateLogger<BillingClient>(),
-            new BillingService.BillingServiceClient(_channel));
+        //public BillingClient CreateBillingClient() => new(_loggerFactory.CreateLogger<BillingClient>(),
+        //    new BillingService.BillingServiceClient(_channel));
 
         public async ValueTask DisposeAsync()
         {

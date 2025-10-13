@@ -1,11 +1,14 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Text.Json.Serialization;
+using Google.Protobuf.Collections;
+using Google.Protobuf.WellKnownTypes;
 using Viam.App.V1;
+using Viam.Contracts.Resources;
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components.Sensor;
 using Viam.ModularResources;
 using Viam.Serialization;
-using Model = Viam.Core.Resources.Model;
+using Model = Viam.Contracts.Resources.Model;
 
 var builder = ModuleBuilder.FromArgs(args);
 builder.RegisterComponent<ISensor, ModularSensor>();
@@ -20,8 +23,7 @@ public sealed class ModularSensor(ILogger<ModularSensor> logger, ViamResourceNam
 
     private Config? _config;
 
-    public async ValueTask<Dictionary<string, object?>> GetReadings(IDictionary<string, object?>? extra = null,
-        TimeSpan? timeout = null,
+    public async ValueTask<MapField<string, Value>> GetReadings(Struct? extra = null, TimeSpan? timeout = null,
         CancellationToken cancellationToken = default)
     {
         await Task.Yield();
@@ -43,7 +45,7 @@ public sealed class ModularSensor(ILogger<ModularSensor> logger, ViamResourceNam
 
     public override ValueTask Reconfigure(ComponentConfig config, Dependencies dependencies)
     {
-        _config = Config.FromStruct(config.Attributes);
+        _config = Config.FromProto(config.Attributes);
         return ValueTask.CompletedTask;
     }
 }
@@ -64,7 +66,7 @@ public partial struct CfgStruct
     public short? NullableShort { get; set; }
 }
 
-[GenerateDictionaryMapper]
+[StructMappable]
 public partial class MyReadings
 {
     [JsonPropertyName("then")]
@@ -75,12 +77,12 @@ public partial class MyReadings
 }
 
 
-[GenerateDictionaryMapper]
+[StructMappable]
 public abstract partial class Command
 {
 }
 
-[GenerateDictionaryMapper]
+[StructMappable]
 public partial class CreateCommand : Command
 {
     public required string Foo { get; init; }
@@ -97,7 +99,7 @@ public partial class CreateCommand : Command
     public required IDictionary<string, A>? NullableADict { get; init; } = new Dictionary<string, A>();
 }
 
-[GenerateDictionaryMapper]
+[StructMappable]
 public partial class DeleteCommand : Command
 {
     public required string Bar { get; init; }
@@ -109,7 +111,7 @@ public enum MyEnum
     Bar
 }
 
-[GenerateDictionaryMapper]
+[StructMappable]
 public partial class A
 {
     public string? Name { get; set; }

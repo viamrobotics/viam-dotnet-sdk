@@ -1,6 +1,9 @@
-﻿using Viam.App.V1;
+﻿using Google.Protobuf.WellKnownTypes;
+using Viam.App.V1;
+using Viam.Contracts.Resources;
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components;
+using Model = Viam.Contracts.Resources.Model;
 
 namespace Viam.ModularResources
 {
@@ -12,7 +15,7 @@ namespace Viam.ModularResources
 
     public interface IModularResourceService : IModularResource, IComponentServiceBase
     {
-        public static abstract Core.Resources.Model Model { get; }
+        public static abstract Model Model { get; }
     }
 
     public abstract class ModularResource<T>(ILogger<T> logger, ViamResourceName resourceName)
@@ -26,9 +29,9 @@ namespace Viam.ModularResources
 
         public virtual ValueTask Reconfigure(ComponentConfig config, Dependencies dependencies) => ValueTask.CompletedTask;
 
-        public virtual ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public virtual ValueTask<Struct> DoCommand(Struct command,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default) =>
-            ValueTask.FromResult<Dictionary<string, object?>>(new Dictionary<string, object?>());
+            ValueTask.FromResult(new Struct());
 
         public virtual ValueTask StopResource() => ValueTask.CompletedTask;
         public virtual ResourceStatus GetStatus() => throw new NotImplementedException();

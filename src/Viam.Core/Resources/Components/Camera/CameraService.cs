@@ -1,14 +1,17 @@
-﻿using Google.Api;
-using Google.Protobuf;
-using Grpc.Core;
+﻿using Grpc.Core;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Google.Protobuf;
 using Viam.Common.V1;
 using Viam.Component.Camera.V1;
 using Viam.Core.Logging;
 using Viam.Core.Utils;
+using Google.Api;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
+
 
 namespace Viam.Core.Resources.Components.Camera
 {
@@ -24,11 +27,11 @@ namespace Viam.Core.Resources.Components.Camera
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ICamera)context.UserState["resource"];
-                var resp = await resource.DoCommand(request.Command.ToDictionary(),
+                var resp = await resource.DoCommand(request.Command,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
-                var response = new DoCommandResponse() { Result = resp.ToStruct() };
+                var response = new DoCommandResponse() { Result = resp };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -46,7 +49,7 @@ namespace Viam.Core.Resources.Components.Camera
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ICamera)context.UserState["resource"];
-                var resp = await resource.GetGeometries(request.Extra?.ToDictionary(),
+                var resp = await resource.GetGeometries(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -95,7 +98,7 @@ namespace Viam.Core.Resources.Components.Camera
                 var resource = (ICamera)context.UserState["resource"];
                 var resp = await resource.GetImage(
                     MimeTypeExtensions.FromGrpc(request.MimeType),
-                    request.Extra?.ToDictionary(),
+                    request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -147,7 +150,7 @@ namespace Viam.Core.Resources.Components.Camera
                 var resource = (ICamera)context.UserState["resource"];
                 var resp = await resource.GetPointCloud(
                         MimeTypeExtensions.FromGrpc(request.MimeType),
-                        request.Extra?.ToDictionary(),
+                        request.Extra,
                         context.Deadline.ToTimeout(),
                         context.CancellationToken)
                     .ConfigureAwait(false);

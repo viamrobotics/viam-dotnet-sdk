@@ -5,12 +5,12 @@ namespace Viam.Core.Clients
 {
     public interface IViamClient : IAsyncDisposable
     {
-        public AppClient CreateAppClient();
+        //public AppClient CreateAppClient();
 
-        public DataClient CreateDataClient();
+        //public DataClient CreateDataClient();
 
         public DataSyncClient CreateDataSyncClient();
 
-        public BillingClient CreateBillingClient();
+        //public BillingClient CreateBillingClient();
     }
 }

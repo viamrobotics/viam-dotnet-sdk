@@ -4,7 +4,8 @@ using System;
 using System.Threading.Tasks;
 using Viam.Common.V1;
 using Viam.Core.Logging;
-using Viam.Core.Utils;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 
 namespace Viam.Core.Resources.Components.Sensor
 {
@@ -20,12 +21,12 @@ namespace Viam.Core.Resources.Components.Sensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ISensor)context.UserState["resource"];
-                var res = await resource.DoCommand(request.Command.ToDictionary(),
+                var res = await resource.DoCommand(request.Command,
                         context.Deadline.ToTimeout(),
                         context.CancellationToken)
                     .ConfigureAwait(false);
 
-                var response = new DoCommandResponse() { Result = res.ToStruct() };
+                var response = new DoCommandResponse() { Result = res };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -44,7 +45,7 @@ namespace Viam.Core.Resources.Components.Sensor
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ISensor)context.UserState["resource"];
                 var res = await resource
-                    .GetReadings(request.Extra.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken)
+                    .GetReadings(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken)
                     .ConfigureAwait(false);
 
                 var response = new GetReadingsResponse();

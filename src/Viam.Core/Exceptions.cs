@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Viam.Component.Camera.V1;
+using Viam.Contracts.Resources;
 using Viam.Core.Resources;
 
 namespace Viam.Core

@@ -1,4 +1,7 @@
+using Google.Protobuf.Collections;
+using Google.Protobuf.WellKnownTypes;
 using Microsoft.Extensions.DependencyInjection;
+using Viam.Contracts.Resources;
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components.Sensor;
 using Viam.Module.V1;
@@ -42,13 +45,13 @@ namespace Viam.ModularResources.Test
             return ValueTask.CompletedTask;
         }
 
-        public ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public ValueTask<Struct> DoCommand(Struct command,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
         }
 
-        public ValueTask<Dictionary<string, object?>> GetReadings(IDictionary<string, object?>? extra = null,
+        public ValueTask<MapField<string, Value>> GetReadings(Struct? extra = null,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();

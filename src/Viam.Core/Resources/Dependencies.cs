@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using Viam.Contracts.Resources;
 
 namespace Viam.Core.Resources
 {

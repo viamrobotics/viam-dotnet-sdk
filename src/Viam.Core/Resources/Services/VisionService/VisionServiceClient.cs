@@ -7,12 +7,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-
+using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Component.Camera.V1;
 using Viam.Core.Clients;
 using Viam.Core.Logging;
 using Viam.Core.Utils;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 using Viam.Service.Vision.V1;
 
 using GetPropertiesRequest = Viam.Service.Vision.V1.GetPropertiesRequest;
@@ -56,7 +58,7 @@ namespace Viam.Core.Resources.Services.VisionService
             bool returnClassifications,
             bool returnDetections,
             bool returnObjectPointClouds,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -73,7 +75,7 @@ namespace Viam.Core.Resources.Services.VisionService
                         ReturnClassifications = returnClassifications,
                         ReturnDetections = returnDetections,
                         ReturnObjectPointClouds = returnObjectPointClouds,
-                        Extra = extra.ToStruct()
+                        Extra = extra
                     },
                     deadline: timeout.ToDeadline(),
                     cancellationToken: cancellationToken).ConfigureAwait(false);
@@ -92,7 +94,7 @@ namespace Viam.Core.Resources.Services.VisionService
 
         public async Task<Classification[]> GetClassificationsFromCamera(string cameraName,
             int count,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -101,7 +103,7 @@ namespace Viam.Core.Resources.Services.VisionService
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetClassificationsFromCameraAsync(
-                        new GetClassificationsFromCameraRequest() { Name = Name, CameraName = cameraName, N = count, Extra = extra.ToStruct() },
+                        new GetClassificationsFromCameraRequest() { Name = Name, CameraName = cameraName, N = count, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -116,7 +118,7 @@ namespace Viam.Core.Resources.Services.VisionService
         }
 
         public async Task<Detection[]> GetDetectionsFromCamera(string cameraName,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -125,7 +127,7 @@ namespace Viam.Core.Resources.Services.VisionService
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetDetectionsFromCameraAsync(
-                        new GetDetectionsFromCameraRequest() { Name = Name, CameraName = cameraName, Extra = extra.ToStruct() },
+                        new GetDetectionsFromCameraRequest() { Name = Name, CameraName = cameraName, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -144,7 +146,7 @@ namespace Viam.Core.Resources.Services.VisionService
             int height,
             MimeType mimeType,
             int count,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -153,7 +155,7 @@ namespace Viam.Core.Resources.Services.VisionService
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetClassificationsAsync(
-                        new GetClassificationsRequest { Name = Name, Image = ByteString.CopyFrom(image.bytes.Span), Width = width, Height = height, MimeType = mimeType.ToGrpc(), N = count, Extra = extra.ToStruct() },
+                        new GetClassificationsRequest { Name = Name, Image = ByteString.CopyFrom(image.bytes.Span), Width = width, Height = height, MimeType = mimeType.ToGrpc(), N = count, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -167,7 +169,7 @@ namespace Viam.Core.Resources.Services.VisionService
             }
         }
 
-        public async Task<Detection[]> GetDetections(ViamImage image, int width, int height, MimeType mimeType, IDictionary<string, object?>? extra = null,
+        public async Task<Detection[]> GetDetections(ViamImage image, int width, int height, MimeType mimeType, Struct? extra = null,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             ThrowIfDisposed();
@@ -175,7 +177,7 @@ namespace Viam.Core.Resources.Services.VisionService
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetDetectionsAsync(
-                        new GetDetectionsRequest { Name = Name, Image = ByteString.CopyFrom(image.bytes.Span), Width = width, Height = height, MimeType = mimeType.ToGrpc(), Extra = extra.ToStruct() },
+                        new GetDetectionsRequest { Name = Name, Image = ByteString.CopyFrom(image.bytes.Span), Width = width, Height = height, MimeType = mimeType.ToGrpc(), Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -192,7 +194,7 @@ namespace Viam.Core.Resources.Services.VisionService
         public async Task<PointCloudObject[]> GetObjectPointClouds(
             string cameraName,
             MimeType mimeType, 
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -201,7 +203,7 @@ namespace Viam.Core.Resources.Services.VisionService
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetObjectPointCloudsAsync(
-                        new GetObjectPointCloudsRequest { Name = Name, CameraName = cameraName, MimeType = mimeType.ToGrpc(), Extra = extra.ToStruct() },
+                        new GetObjectPointCloudsRequest { Name = Name, CameraName = cameraName, MimeType = mimeType.ToGrpc(), Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -215,7 +217,7 @@ namespace Viam.Core.Resources.Services.VisionService
             }
         }
 
-        public async Task<(bool ClassificationsSupported, bool DetectionsSupported, bool ObjectPointCloudsSupported)> GetProperties(IDictionary<string, object?>? extra = null,
+        public async Task<(bool ClassificationsSupported, bool DetectionsSupported, bool ObjectPointCloudsSupported)> GetProperties(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -224,7 +226,7 @@ namespace Viam.Core.Resources.Services.VisionService
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetPropertiesAsync(
-                        new GetPropertiesRequest { Name = Name, Extra = extra.ToStruct() },
+                        new GetPropertiesRequest { Name = Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);

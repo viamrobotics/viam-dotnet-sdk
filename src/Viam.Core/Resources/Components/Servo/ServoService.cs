@@ -4,6 +4,8 @@ using System;
 using System.Threading.Tasks;
 using Viam.Common.V1;
 using Viam.Component.Servo.V1;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 using Viam.Core.Logging;
 using Viam.Core.Utils;
 
@@ -21,11 +23,11 @@ namespace Viam.Core.Resources.Components.Servo
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
-                var res = await resource.DoCommand(request.Command.ToDictionary(),
+                var res = await resource.DoCommand(request.Command,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
-                var response = new DoCommandResponse() { Result = res.ToStruct() };
+                var response = new DoCommandResponse() { Result = res };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -43,7 +45,7 @@ namespace Viam.Core.Resources.Components.Servo
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
-                var res = await resource.GetGeometries(request.Extra?.ToDictionary(),
+                var res = await resource.GetGeometries(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -65,7 +67,7 @@ namespace Viam.Core.Resources.Components.Servo
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
                 await resource
-                    .Stop(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken)
+                    .Stop(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken)
                     .ConfigureAwait(false);
                 var response = new StopResponse();
                 logger.LogMethodInvocationSuccess(results: response);
@@ -104,7 +106,7 @@ namespace Viam.Core.Resources.Components.Servo
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
-                var res = await resource.GetPosition(request.Extra?.ToDictionary(),
+                var res = await resource.GetPosition(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -126,7 +128,7 @@ namespace Viam.Core.Resources.Components.Servo
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IServo)context.UserState["resource"];
                 await resource.Move(request.AngleDeg,
-                    request.Extra?.ToDictionary(),
+                    request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 

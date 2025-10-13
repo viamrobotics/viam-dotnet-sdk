@@ -87,21 +87,21 @@ namespace Viam.Core.Test
             Console.WriteLine(resources);
         }
 
-        [Test]
-        public async Task TestTalkToAppViam()
-        {
-            using var loggerFactory = LoggerFactory.Create(builder =>
-            {
-                builder.AddConsole();
-                builder.SetMinimumLevel(LogLevel.Trace);
-            });
+        //[Test]
+        //public async Task TestTalkToAppViam()
+        //{
+        //    using var loggerFactory = LoggerFactory.Create(builder =>
+        //    {
+        //        builder.AddConsole();
+        //        builder.SetMinimumLevel(LogLevel.Trace);
+        //    });
 
-            var client = await ViamClient.CreateFromDialOptions(_cloudClientOptions!);
-            var appClient = client.CreateAppClient();
-            var parts = await appClient.GetRobotParts("659c14cd-a8f5-4d16-93be-7ab7e9ad3a7a");
+        //    var client = await ViamClient.CreateFromDialOptions(_cloudClientOptions!);
+        //    var appClient = client.CreateAppClient();
+        //    var parts = await appClient.GetRobotParts("659c14cd-a8f5-4d16-93be-7ab7e9ad3a7a");
 
-            Assert.That(parts, Is.Not.Null);
-            Console.WriteLine(parts);
-        }
+        //    Assert.That(parts, Is.Not.Null);
+        //    Console.WriteLine(parts);
+        //}
     }
 }

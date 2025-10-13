@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Runtime.CompilerServices;
+using Viam.Contracts.Resources;
 using Viam.Core.Grpc;
 using Viam.Core.Resources;
 using Viam.Core.Utils;

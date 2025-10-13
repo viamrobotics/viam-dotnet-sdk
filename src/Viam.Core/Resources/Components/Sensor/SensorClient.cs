@@ -1,21 +1,18 @@
-﻿using Fody;
-
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-
+using Google.Protobuf.Collections;
+using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Core.Clients;
 using Viam.Core.Logging;
-using Viam.Core.Utils;
-using Viam.Serialization;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 
 namespace Viam.Core.Resources.Components.Sensor
 {
-    [ConfigureAwait(false)]
     public class SensorClient(ViamResourceName resourceName, ViamChannel channel, ILogger<SensorClient> logger)
         : ComponentBase<SensorClient, Component.Sensor.V1.SensorService.SensorServiceClient>(
                 resourceName,
@@ -56,7 +53,7 @@ namespace Viam.Core.Resources.Components.Sensor
 
         public override ValueTask StopResource() => new ValueTask();
 
-        public override async ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public override async ValueTask<Struct> DoCommand(Struct command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -65,12 +62,12 @@ namespace Viam.Core.Resources.Components.Sensor
             {
                 Logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client.DoCommandAsync(
-                        new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
+                        new DoCommandRequest() { Name = ResourceName.Name, Command = command },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
 
-                var response = res.Result.ToDictionary();
+                var response = res.Result;
                 Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -82,7 +79,7 @@ namespace Viam.Core.Resources.Components.Sensor
         }
 
 
-        public async ValueTask<Dictionary<string, object?>> GetReadings(IDictionary<string, object?>? extra = null,
+        public async ValueTask<MapField<string, Value>> GetReadings(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -91,12 +88,12 @@ namespace Viam.Core.Resources.Components.Sensor
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client
-                    .GetReadingsAsync(new GetReadingsRequest() { Name = ResourceName.Name, Extra = extra?.ToStruct() },
+                    .GetReadingsAsync(new GetReadingsRequest() { Name = ResourceName.Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
 
-                var response = res.Readings.ToDictionary();
+                var response = res.Readings;
                 Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }

@@ -1,17 +1,18 @@
 ﻿using Microsoft.Extensions.Logging;
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-
+using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Component.Camera.V1;
 using Viam.Core.Clients;
 using Viam.Core.Logging;
 using Viam.Core.Utils;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 
 namespace Viam.Core.Resources.Components.Camera
 {
@@ -46,7 +47,7 @@ namespace Viam.Core.Resources.Components.Camera
 
         public override ValueTask StopResource() => new ValueTask();
 
-        public override async ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public override async ValueTask<Struct> DoCommand(Struct command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -55,12 +56,12 @@ namespace Viam.Core.Resources.Components.Camera
             {
                 Logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client.DoCommandAsync(
-                        new DoCommandRequest() { Name = Name, Command = command.ToStruct() },
+                        new DoCommandRequest() { Name = Name, Command = command },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
 
-                var response = res.Result.ToDictionary();
+                var response = res.Result;
                 Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -73,7 +74,7 @@ namespace Viam.Core.Resources.Components.Camera
 
 
         public async ValueTask<ViamImage> GetImage(MimeType? mimeType = null,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -87,7 +88,7 @@ namespace Viam.Core.Resources.Components.Camera
                         {
                             Name = Name,
                             MimeType = mimeType?.ToGrpc() ?? string.Empty,
-                            Extra = extra?.ToStruct()
+                            Extra = extra
                         },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
@@ -145,7 +146,7 @@ namespace Viam.Core.Resources.Components.Camera
 
 
         public async ValueTask<ViamImage> GetPointCloud(MimeType mimeType,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -159,7 +160,7 @@ namespace Viam.Core.Resources.Components.Camera
                         {
                             Name = Name,
                             MimeType = mimeType.ToGrpc(),
-                            Extra = extra?.ToStruct()
+                            Extra = extra
                         },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
@@ -213,7 +214,7 @@ namespace Viam.Core.Resources.Components.Camera
         }
 
 
-        public async ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
+        public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -222,7 +223,7 @@ namespace Viam.Core.Resources.Components.Camera
             {
                 Logger.LogMethodInvocationStart();
                 var result = await Client.GetGeometriesAsync(
-                        new GetGeometriesRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        new GetGeometriesRequest() { Name = Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);

@@ -19,6 +19,7 @@ jobs:
           - src/Viam.Core/Viam.Core.csproj
           - src/Viam.ModularResources/Viam.ModularResources.csproj
           - src/Viam.Serialization/Viam.Serialization.csproj
+          - src/Viam.Contracts/Viam.Contracts.csproj
 
     steps:
       - uses: actions/checkout@v4
@@ -28,6 +29,10 @@ jobs:
           dotnet-version: |
             8.0
             9.0
+      - name: Install buf
+        run: |
+          curl -sSL https://github.com/bufbuild/buf/releases/latest/download/buf-Linux-x86_64 -o /usr/local/bin/buf
+          chmod +x /usr/local/bin/buf
 
       - name: Determine version
         id: set_version

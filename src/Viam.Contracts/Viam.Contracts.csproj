@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<TrimmerSingleWarn>false</TrimmerSingleWarn>
+		<Platforms>AnyCPU</Platforms>
+		<VersionPrefix>0.0.25-dev</VersionPrefix>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<CopyDebugSymbolFilesFromPackages>true</CopyDebugSymbolFilesFromPackages>
+		<CopyDocumentationFilesFromPackages>true</CopyDocumentationFilesFromPackages>
+
+		<PackageId>Viam.Proto</PackageId>
+		<Authors>Viam</Authors>
+		<Description>Viam ProtoBuf Library</Description>
+		<ProjectUrl>https://github.com/viamrobotics/viam-dotnet-sdk</ProjectUrl>
+		<PackageTags>viam</PackageTags>
+		<IncludeSymbols>true</IncludeSymbols>
+		<IncludeSource>true</IncludeSource>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Google.Api.CommonProtos" Version="2.17.0" />
+		<PackageReference Include="Google.Protobuf" Version="3.32.1" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.71.0" />
+		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.71.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.72.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="IndexRange" Version="1.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.5" />
+		<PackageReference Include="System.Net.Security" Version="4.3.2" />
+		<PackageReference Include="System.Text.Json" Version="9.0.5" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Viam.Serialization.Analyzer\Viam.Serialization.Analyzer.csproj" OutputItemType="Analyzer" />
+	  <ProjectReference Include="..\Viam.Serialization\Viam.Serialization.csproj" />
+	</ItemGroup>
+
+	<!-- Protobuf Stuff -->
+	<ItemGroup>
+		<Compile Remove="protos\**" />
+		<EmbeddedResource Remove="protos\**" />
+		<None Remove="protos\**" />
+		<InternalsVisibleTo Include="Viam.Core" />
+	</ItemGroup>
+	<PropertyGroup>
+		<!-- Where vendor'ed protos land -->
+		<ProtoVendorDir>$(ProjectDir)protos\_vendor\</ProtoVendorDir>
+
+		<!-- Tell protoc where to search for imports like "common/v1/common.proto" -->
+		<Protobuf_AdditionalImportDirs>
+			$(ProtoVendorDir)viamrobotics\api;
+			$(ProtoVendorDir)viamrobotics\goutils
+			$(NuGetPackageRoot)google.api.commonprotos\2.17.0\content
+		</Protobuf_AdditionalImportDirs>
+	</PropertyGroup>
+	<Target Name="ExportRemoteProtos" BeforeTargets="PrepareForBuild">
+		<Exec Command="buf export buf.build/viamrobotics/api --output &quot;protos/_vendor/viamrobotics/api&quot;" />
+		<Exec Command="buf export buf.build/viamrobotics/goutils --output &quot;protos/_vendor/viamrobotics/goutils&quot;" />
+	</Target>
+
+	<ItemGroup>
+		<Protobuf Include="$(ProtoVendorDir)viamrobotics\api\**\*.proto" GrpcServices="Both" ProtoRoot="$(ProtoVendorDir)viamrobotics\api" />
+		<Protobuf Include="$(ProtoVendorDir)viamrobotics\goutils\**\*.proto" GrpcServices="Both" ProtoRoot="$(ProtoVendorDir)viamrobotics\goutils" />
+		<Protobuf Remove="$(ProtoVendorDir)**\google\**\*.proto" />
+	</ItemGroup>
+
+</Project>

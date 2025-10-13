@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using Viam.Common.V1;
 using Viam.Component.Powersensor.V1;
 using Viam.Core.Logging;
-using Viam.Core.Utils;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 
 namespace Viam.Core.Resources.Components.PowerSensor
 {
@@ -21,9 +22,9 @@ namespace Viam.Core.Resources.Components.PowerSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IPowerSensor)context.UserState["resource"];
-                var res = await resource.DoCommand(request.Command.ToDictionary(), context.Deadline.ToTimeout(),
+                var res = await resource.DoCommand(request.Command, context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
-                var response = new DoCommandResponse() { Result = res.ToStruct() };
+                var response = new DoCommandResponse() { Result = res };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -41,7 +42,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IPowerSensor)context.UserState["resource"];
-                var res = await resource.GetReadings(request.Extra?.ToDictionary(), context.Deadline - DateTime.UtcNow,
+                var res = await resource.GetReadings(request.Extra, context.Deadline - DateTime.UtcNow,
                     context.CancellationToken).ConfigureAwait(false);
 
                 var response = new GetReadingsResponse();
@@ -62,7 +63,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IPowerSensor)context.UserState["resource"];
-                var res = await resource.GetCurrent(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(),
+                var res = await resource.GetCurrent(request.Extra, context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
                 var response = new GetCurrentResponse() { Amperes = res.Item1, IsAc = res.Item2 };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -82,7 +83,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IPowerSensor)context.UserState["resource"];
                 var res = await resource
-                    .GetPower(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken)
+                    .GetPower(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken)
                     .ConfigureAwait(false);
                 var response = new GetPowerResponse() { Watts = res };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -101,7 +102,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IPowerSensor)context.UserState["resource"];
-                var res = await resource.GetVoltage(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(),
+                var res = await resource.GetVoltage(request.Extra, context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
                 var response = new GetVoltageResponse() { Volts = res.Item1, IsAc = res.Item2 };
                 logger.LogMethodInvocationSuccess(results: response);

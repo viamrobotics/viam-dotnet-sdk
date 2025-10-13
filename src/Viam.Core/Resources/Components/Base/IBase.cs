@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-
+using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
+using Viam.Contracts;
 
 namespace Viam.Core.Resources.Components.Base
 {
@@ -20,7 +20,7 @@ namespace Viam.Core.Resources.Components.Base
         /// <returns></returns>
         ValueTask MoveStraight(long distance,
             double velocity,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
@@ -35,7 +35,7 @@ namespace Viam.Core.Resources.Components.Base
         /// <returns></returns>
         ValueTask Spin(double angle,
             double velocity,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
@@ -50,28 +50,28 @@ namespace Viam.Core.Resources.Components.Base
         /// <returns></returns>
         ValueTask SetPower(Vector3 linear,
             Vector3 angular,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
         ValueTask SetVelocity(Vector3 linear,
             Vector3 angular,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
-        ValueTask Stop(IDictionary<string, object?>? extra = null,
+        ValueTask Stop(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
         ValueTask<bool> IsMoving(TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
-        ValueTask<BaseProperties> GetProperties(IDictionary<string, object?>? extra = null,
+        ValueTask<BaseProperties> GetProperties(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
-        ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
+        ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }

@@ -1,56 +1,56 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-
+using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
+using Viam.Contracts;
 
 namespace Viam.Core.Resources.Components.Motor
 {
     public interface IMotor : IComponentBase
     {
         ValueTask SetPower(double power,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
         ValueTask GoFor(double rpm,
             double revolutions,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
         ValueTask GoTo(double rpm,
             double positionRevolutions,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
         ValueTask ResetZeroPosition(double offset,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
-        ValueTask<double> GetPosition(IDictionary<string, object?>? extra = null,
+        ValueTask<double> GetPosition(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
-        ValueTask Stop(IDictionary<string, object?>? extra = null,
+        ValueTask Stop(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
-        ValueTask<(bool IsOn, double PowerPct)> IsPowered(IDictionary<string, object?>? extra = null,
+        ValueTask<(bool IsOn, double PowerPct)> IsPowered(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
         ValueTask<bool> IsMoving(TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
-        ValueTask<MotorClient.Properties> GetProperties(IDictionary<string, object?>? extra = null,
+        ValueTask<MotorClient.Properties> GetProperties(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
-        ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
+        ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
     }

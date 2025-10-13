@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Viam.Provisioning.V1;
@@ -7,9 +6,7 @@ using CloudConfig = Viam.Provisioning.V1.CloudConfig;
 
 namespace Viam.Core.App
 {
-    public class ProvisioningClient(
-        ILogger<ProvisioningClient> logger,
-        ProvisioningService.ProvisioningServiceClient client)
+    public class ProvisioningClient(ProvisioningService.ProvisioningServiceClient client)
     {
         public async ValueTask<NetworkInfo[]> GetNetworkList(CancellationToken cancellationToken = default)
         {

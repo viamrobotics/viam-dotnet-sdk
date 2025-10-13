@@ -4,6 +4,8 @@ using System;
 using System.Threading.Tasks;
 using Viam.Common.V1;
 using Viam.Component.Gripper.V1;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 using Viam.Core.Logging;
 using Viam.Core.Utils;
 
@@ -21,11 +23,11 @@ namespace Viam.Core.Resources.Components.Gripper
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGripper)context.UserState["resource"];
-                var res = await resource.DoCommand(request.Command.ToDictionary(),
+                var res = await resource.DoCommand(request.Command,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
-                var response = new DoCommandResponse() { Result = res.ToStruct() };
+                var response = new DoCommandResponse() { Result = res };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -43,7 +45,7 @@ namespace Viam.Core.Resources.Components.Gripper
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGripper)context.UserState["resource"];
                 await resource
-                    .Stop(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken)
+                    .Stop(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken)
                     .ConfigureAwait(false);
                 var response = new StopResponse();
                 logger.LogMethodInvocationSuccess(results: response);
@@ -98,7 +100,7 @@ namespace Viam.Core.Resources.Components.Gripper
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGripper)context.UserState["resource"];
                 await resource
-                    .Grab(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken)
+                    .Grab(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken)
                     .ConfigureAwait(false);
                 var response = new GrabResponse();
                 logger.LogMethodInvocationSuccess(results: response);
@@ -118,7 +120,7 @@ namespace Viam.Core.Resources.Components.Gripper
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IGripper)context.UserState["resource"];
                 await resource
-                    .Open(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken)
+                    .Open(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken)
                     .ConfigureAwait(false);
                 var response = new OpenResponse();
                 logger.LogMethodInvocationSuccess(results: response);

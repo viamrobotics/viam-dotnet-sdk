@@ -1,4 +1,5 @@
-﻿using Viam.Core.Resources;
+﻿using Viam.Contracts.Resources;
+using Viam.Core.Resources;
 using Viam.Core.Resources.Components;
 
 namespace Viam.ModularResources

@@ -13,6 +13,8 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Viam.Common.V1;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 using Viam.Core.Logging;
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components.Arm;
@@ -487,7 +489,7 @@ namespace Viam.Core.Clients
             }
         }
 
-        public async Task LogAsync(IEnumerable<LogEntry> logs)
+        public async Task LogAsync(IEnumerable<LogEntry> logs, CancellationToken ct)
         {
             Logger.LogMethodInvocationStart();
             ThrowIfDisposed();
@@ -495,7 +497,7 @@ namespace Viam.Core.Clients
             {
                 var request = new LogRequest();
                 request.Logs.AddRange(logs);
-                await _robotServiceClient.LogAsync(request);
+                await _robotServiceClient.LogAsync(request, cancellationToken: ct);
                 Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
@@ -521,7 +523,9 @@ namespace Viam.Core.Clients
                     result.LocationId,
                     result.MachineId,
                     result.MachinePartId,
+#pragma warning disable CS0612 // Type or member is obsolete
                     result.RobotPartId);
+#pragma warning restore CS0612 // Type or member is obsolete
 
                 Logger.LogMethodInvocationSuccess(results: metadata);
                 return metadata;

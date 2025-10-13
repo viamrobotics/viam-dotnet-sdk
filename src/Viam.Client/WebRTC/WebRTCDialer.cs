@@ -1,6 +1,4 @@
-﻿using Fody;
-
-using Grpc.Core;
+﻿using Grpc.Core;
 using Grpc.Net.Client;
 
 using Microsoft.Extensions.Logging;
@@ -29,7 +27,6 @@ namespace Viam.Client.WebRTC
     /// A Dialer that uses WebRTC to connect to the Smart Machine
     /// </summary>
     /// <param name="logger">The <see cref="ILogger{WebRtcDialer}"/> to use for state logging</param>
-    [ConfigureAwait(false)]
     internal class WebRtcDialer(ILogger<WebRtcDialer> logger, ILoggerFactory loggerFactory)
     {
         internal class DialState(string uuid)

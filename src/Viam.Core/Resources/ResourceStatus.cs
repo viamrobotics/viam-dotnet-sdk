@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Viam.Contracts.Resources;
 
 namespace Viam.Core.Resources
 {

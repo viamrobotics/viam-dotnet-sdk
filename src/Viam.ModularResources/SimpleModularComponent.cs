@@ -1,4 +1,5 @@
 ﻿using Viam.App.V1;
+using Viam.Contracts.Resources;
 using Viam.Core.Resources;
 
 namespace Viam.ModularResources

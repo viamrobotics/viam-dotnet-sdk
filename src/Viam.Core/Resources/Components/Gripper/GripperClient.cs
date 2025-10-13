@@ -1,15 +1,16 @@
 ﻿using Microsoft.Extensions.Logging;
 
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-
+using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Component.Gripper.V1;
 using Viam.Core.Clients;
 using Viam.Core.Logging;
 using Viam.Core.Utils;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 
 namespace Viam.Core.Resources.Components.Gripper
 {
@@ -44,7 +45,7 @@ namespace Viam.Core.Resources.Components.Gripper
 
         public override ValueTask StopResource() => Stop();
 
-        public override async ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public override async ValueTask<Struct> DoCommand(Struct command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -55,13 +56,13 @@ namespace Viam.Core.Resources.Components.Gripper
                 var res = await Client.DoCommandAsync(new DoCommandRequest()
                 {
                     Name = ResourceName.Name,
-                    Command = command.ToStruct()
+                    Command = command
                 },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
 
-                var response = res.Result.ToDictionary();
+                var response = res.Result;
                 Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -73,7 +74,7 @@ namespace Viam.Core.Resources.Components.Gripper
         }
 
 
-        public async ValueTask Open(IDictionary<string, object?>? extra = null,
+        public async ValueTask Open(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -81,7 +82,7 @@ namespace Viam.Core.Resources.Components.Gripper
             try
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
-                await Client.OpenAsync(new OpenRequest() { Name = Name, Extra = extra?.ToStruct() },
+                await Client.OpenAsync(new OpenRequest() { Name = Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -95,7 +96,7 @@ namespace Viam.Core.Resources.Components.Gripper
         }
 
 
-        public async ValueTask Grab(IDictionary<string, object?>? extra = null,
+        public async ValueTask Grab(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -103,7 +104,7 @@ namespace Viam.Core.Resources.Components.Gripper
             try
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
-                await Client.GrabAsync(new GrabRequest() { Name = Name, Extra = extra?.ToStruct() },
+                await Client.GrabAsync(new GrabRequest() { Name = Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -117,7 +118,7 @@ namespace Viam.Core.Resources.Components.Gripper
         }
 
 
-        public async ValueTask Stop(IDictionary<string, object?>? extra = null,
+        public async ValueTask Stop(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -125,7 +126,7 @@ namespace Viam.Core.Resources.Components.Gripper
             try
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
-                await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra?.ToStruct() },
+                await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);

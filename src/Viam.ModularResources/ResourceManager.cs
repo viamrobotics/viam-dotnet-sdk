@@ -1,7 +1,7 @@
 ﻿using System.Collections.Concurrent;
 using System.Diagnostics.CodeAnalysis;
 using System.Security.Principal;
-
+using Viam.Contracts.Resources;
 using Viam.Core;
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components;

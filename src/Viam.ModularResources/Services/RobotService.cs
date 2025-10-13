@@ -1,5 +1,5 @@
 ﻿using Grpc.Core;
-
+using Viam.Core.Resources.Components;
 using Viam.Robot.V1;
 
 using grpcRobotService = Viam.Robot.V1.RobotService;

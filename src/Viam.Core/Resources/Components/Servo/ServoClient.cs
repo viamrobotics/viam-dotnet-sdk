@@ -6,12 +6,14 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
-
+using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Component.Servo.V1;
 using Viam.Core.Clients;
 using Viam.Core.Logging;
 using Viam.Core.Utils;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 
 namespace Viam.Core.Resources.Components.Servo
 {
@@ -47,7 +49,7 @@ namespace Viam.Core.Resources.Components.Servo
 
         public override ValueTask StopResource() => Stop();
 
-        public override async ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public override async ValueTask<Struct> DoCommand(Struct command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -57,12 +59,12 @@ namespace Viam.Core.Resources.Components.Servo
                 Logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client
                     .DoCommandAsync(
-                        new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
+                        new DoCommandRequest() { Name = ResourceName.Name, Command = command },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
 
-                var response = res.Result.ToDictionary();
+                var response = res.Result;
                 Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -75,7 +77,7 @@ namespace Viam.Core.Resources.Components.Servo
 
 
         public async ValueTask Move(uint angle,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default,
             [CallerMemberName] string? caller = null)
@@ -84,7 +86,7 @@ namespace Viam.Core.Resources.Components.Servo
             try
             {
                 Logger.LogMethodInvocationStart(parameters: [Name, angle]);
-                await Client.MoveAsync(new MoveRequest() { Name = Name, AngleDeg = angle, Extra = extra?.ToStruct() },
+                await Client.MoveAsync(new MoveRequest() { Name = Name, AngleDeg = angle, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -98,7 +100,7 @@ namespace Viam.Core.Resources.Components.Servo
         }
 
 
-        public async ValueTask<uint> GetPosition(IDictionary<string, object?>? extra = null,
+        public async ValueTask<uint> GetPosition(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default,
             [CallerMemberName] string? caller = null)
@@ -108,7 +110,7 @@ namespace Viam.Core.Resources.Components.Servo
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetPositionAsync(
-                        new GetPositionRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        new GetPositionRequest() { Name = Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -146,7 +148,7 @@ namespace Viam.Core.Resources.Components.Servo
         }
 
 
-        public async ValueTask Stop(IDictionary<string, object?>? extra = null,
+        public async ValueTask Stop(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default,
             [CallerMemberName] string? caller = null)
@@ -155,7 +157,7 @@ namespace Viam.Core.Resources.Components.Servo
             try
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
-                await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra?.ToStruct() },
+                await Client.StopAsync(new StopRequest() { Name = Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -169,7 +171,7 @@ namespace Viam.Core.Resources.Components.Servo
         }
 
 
-        public async ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
+        public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default,
             [CallerMemberName] string? caller = null)
@@ -179,7 +181,7 @@ namespace Viam.Core.Resources.Components.Servo
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetGeometriesAsync(
-                        new GetGeometriesRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        new GetGeometriesRequest() { Name = Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);

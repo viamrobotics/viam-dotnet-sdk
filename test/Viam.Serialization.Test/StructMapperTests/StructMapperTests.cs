@@ -1,8 +1,12 @@
 ﻿using System.Reflection;
+using Google.Protobuf.Collections;
+using Google.Protobuf.WellKnownTypes;
+using Viam.Core.Utils;
+using Xunit.Abstractions;
 
 namespace Viam.Serialization.Test.StructMapperTests
 {
-    public class StructMapperTests
+    public class StructMapperTests(ITestOutputHelper output)
     {
         private void foo(Google.Protobuf.WellKnownTypes.Struct s)
         {
@@ -40,27 +44,25 @@ namespace Viam.Serialization.Test.StructMapperTests
                 RequiredMyStruct = default,
                 RequiredMyStructNullable = null
             };
-            //var sourceDict = sourceClass.ToStruct();
-            //Assert.IsType<string>(sourceDict["RequiredMyEnum"]);
-            //Assert.IsType<string>(sourceDict["NullableRequiredMyEnum"]);
-            //Assert.IsType<string>(sourceDict["MyEnum"]);
-            //Assert.Null(sourceDict["NullableMyEnum"]);
-            //Assert.IsType<short>(sourceDict["Short"]);
-            //Assert.IsType<ushort>(sourceDict["UShort"]);
-            //Assert.IsType<int>(sourceDict["Int"]);
-            //Assert.IsType<uint>(sourceDict["UInt"]);
-            //Assert.IsType<long>(sourceDict["Long"]);
-            //Assert.IsType<ulong>(sourceDict["ULong"]);
-            //Assert.IsType<float>(sourceDict["Float"]);
-            //Assert.IsType<double>(sourceDict["Double"]);
-            //Assert.IsType<string>(sourceDict["Decimal"]);
-            //Assert.IsType<string>(sourceDict["String"]);
-            //Assert.IsType<bool>(sourceDict["Bool"]);
-            //Assert.IsType<Dictionary<string, object?>>(sourceDict["SubClass"]);
-            //var sourceStruct = sourceDict.ToStruct();
-            //var destDict = sourceStruct.ToDictionary();
-            //var destClass = MyClass.FromDictionary(destDict);
-            //CheckProperties(sourceClass, destClass);
+            var s = sourceClass.ToStruct();
+            //Assert.IsType<string>(s.Fields["RequiredMyEnum"]);
+            //Assert.IsType<string>(s.Fields["NullableRequiredMyEnum"]);
+            //Assert.IsType<string>(s.Fields["MyEnum"]);
+            //Assert.Null(s.Fields["NullableMyEnum"]);
+            //Assert.IsType<short>(s.Fields["Short"]);
+            //Assert.IsType<ushort>(s.Fields["UShort"]);
+            //Assert.IsType<int>(s.Fields["Int"]);
+            //Assert.IsType<uint>(s.Fields["UInt"]);
+            //Assert.IsType<long>(s.Fields["Long"]);
+            //Assert.IsType<ulong>(s.Fields["ULong"]);
+            //Assert.IsType<float>(s.Fields["Float"]);
+            //Assert.IsType<double>(s.Fields["Double"]);
+            //Assert.IsType<string>(s.Fields["Decimal"]);
+            //Assert.IsType<string>(s.Fields["String"]);
+            //Assert.IsType<bool>(s.Fields["Bool"]);
+            //Assert.IsType<Dictionary<string, object?>>(s.Fields["SubClass"]);
+            var sourceStruct = MyClass.FromProto(s);
+            CheckProperties(sourceClass, sourceStruct);
         }
 
         private void CheckProperties<T>(T sourceClass, T destClass)
@@ -69,10 +71,13 @@ namespace Viam.Serialization.Test.StructMapperTests
                 throw new ArgumentNullException("Source or destination class is null");
             foreach (var prop in sourceClass.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
             {
-                if (prop.PropertyType is { IsClass: true, Namespace: "Viam.Serialization.Test" })
+                if (prop.PropertyType is { IsClass: true, Namespace: "Viam.Serialization.Test.StructMapperTests" })
                     CheckProperties(prop.GetValue(sourceClass), prop.GetValue(destClass));
                 else
+                {
+                    output.WriteLine("Comparing {0}, expect: {1}, have: {2}", prop.Name, prop.GetValue(sourceClass) ?? "null", prop.GetValue(destClass) ?? "null");
                     Assert.Equal(prop.GetValue(sourceClass), prop.GetValue(destClass));
+                }
             }
         }
     }

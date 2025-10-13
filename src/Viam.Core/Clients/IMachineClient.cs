@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Viam.Common.V1;
+using Viam.Contracts.Resources;
 using Viam.Core.Resources;
 using Viam.Robot.V1;
 
@@ -74,7 +75,7 @@ namespace Viam.Core.Clients
         public Task SendSessionHeartbeatAsync(string sessionId, TimeSpan? timeout = null,
             CancellationToken token = default);
 
-        public Task LogAsync(IEnumerable<LogEntry> logs);
+        public Task LogAsync(IEnumerable<LogEntry> logs, CancellationToken ct = default);
 
         public Task<CloudMetadata> GetCloudMetadataAsync(TimeSpan? timeout = null,
             CancellationToken token = default);

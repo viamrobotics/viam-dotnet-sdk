@@ -1,15 +1,16 @@
 ﻿using Microsoft.Extensions.Logging;
 
 using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-
+using Google.Protobuf.Collections;
+using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Component.Powersensor.V1;
 using Viam.Core.Clients;
 using Viam.Core.Logging;
-using Viam.Core.Utils;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 
 namespace Viam.Core.Resources.Components.PowerSensor
 {
@@ -46,7 +47,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
 
         public override ValueTask StopResource() => new ValueTask();
 
-        public override async ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public override async ValueTask<Struct> DoCommand(Struct command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -56,12 +57,12 @@ namespace Viam.Core.Resources.Components.PowerSensor
                 Logger.LogMethodInvocationStart(parameters: [Name, command]);
                 var res = await Client
                     .DoCommandAsync(
-                        new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
+                        new DoCommandRequest() { Name = ResourceName.Name, Command = command },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
 
-                var response = res.Result.ToDictionary();
+                var response = res.Result;
                 Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -73,7 +74,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
         }
 
 
-        public async ValueTask<(double, bool)> GetVoltage(IDictionary<string, object?>? extra = null,
+        public async ValueTask<(double, bool)> GetVoltage(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -82,7 +83,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetVoltageAsync(
-                        new GetVoltageRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        new GetVoltageRequest() { Name = Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -97,7 +98,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
         }
 
 
-        public async ValueTask<(double, bool)> GetCurrent(IDictionary<string, object?>? extra = null,
+        public async ValueTask<(double, bool)> GetCurrent(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -106,7 +107,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetCurrentAsync(
-                        new GetCurrentRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        new GetCurrentRequest() { Name = Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -121,7 +122,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
         }
 
 
-        public async ValueTask<double> GetPower(IDictionary<string, object?>? extra = null,
+        public async ValueTask<double> GetPower(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -129,7 +130,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
             try
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
-                var res = await Client.GetPowerAsync(new GetPowerRequest() { Name = Name, Extra = extra?.ToStruct() },
+                var res = await Client.GetPowerAsync(new GetPowerRequest() { Name = Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -144,7 +145,7 @@ namespace Viam.Core.Resources.Components.PowerSensor
         }
 
 
-        public async ValueTask<Dictionary<string, object?>> GetReadings(IDictionary<string, object?>? extra = null,
+        public async ValueTask<MapField<string, Value>> GetReadings(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -153,12 +154,12 @@ namespace Viam.Core.Resources.Components.PowerSensor
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetReadingsAsync(
-                        new GetReadingsRequest() { Name = Name, Extra = extra?.ToStruct() },
+                        new GetReadingsRequest() { Name = Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
 
-                var readings = res.Readings.ToDictionary();
+                var readings = res.Readings;
                 Logger.LogMethodInvocationSuccess(results: readings);
                 return readings;
             }

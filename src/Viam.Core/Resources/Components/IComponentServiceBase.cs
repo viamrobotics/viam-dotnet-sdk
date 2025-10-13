@@ -1,4 +1,6 @@
-﻿namespace Viam.Core.Resources.Components
+﻿using Viam.Contracts.Resources;
+
+namespace Viam.Core.Resources.Components
 {
     public interface IComponentServiceBase
     {

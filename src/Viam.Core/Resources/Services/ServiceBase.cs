@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
-
+using Viam.Contracts.Resources;
 using Viam.Core.Clients;
 
 namespace Viam.Core.Resources.Services

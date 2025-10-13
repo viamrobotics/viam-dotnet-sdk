@@ -4,8 +4,10 @@ using System;
 using System.Threading.Tasks;
 using Viam.Common.V1;
 using Viam.Component.Base.V1;
+using Viam.Contracts;
 using Viam.Core.Logging;
-using Viam.Core.Utils;
+using Google.Protobuf.WellKnownTypes;
+using Viam.Contracts.Resources;
 
 namespace Viam.Core.Resources.Components.Base
 {
@@ -22,7 +24,7 @@ namespace Viam.Core.Resources.Components.Base
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IBase)context.UserState["resource"];
                 await resource
-                    .Stop(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(), context.CancellationToken)
+                    .Stop(request.Extra, context.Deadline.ToTimeout(), context.CancellationToken)
                     .ConfigureAwait(false);
                 var response = new StopResponse();
                 logger.LogMethodInvocationSuccess(results: response);
@@ -41,11 +43,11 @@ namespace Viam.Core.Resources.Components.Base
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IBase)context.UserState["resource"];
-                var res = await resource.DoCommand(request.Command.ToDictionary(),
+                var res = await resource.DoCommand(request.Command,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
-                var response = new DoCommandResponse() { Result = res.ToStruct() };
+                var response = new DoCommandResponse() { Result = res };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -82,7 +84,7 @@ namespace Viam.Core.Resources.Components.Base
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IBase)context.UserState["resource"];
-                var res = await resource.GetGeometries(request.Extra?.ToDictionary(),
+                var res = await resource.GetGeometries(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -104,7 +106,7 @@ namespace Viam.Core.Resources.Components.Base
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IBase)context.UserState["resource"];
-                var res = await resource.GetProperties(request.Extra?.ToDictionary(),
+                var res = await resource.GetProperties(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -133,7 +135,7 @@ namespace Viam.Core.Resources.Components.Base
                 var resource = (IBase)context.UserState["resource"];
                 await resource.MoveStraight(request.DistanceMm,
                     request.MmPerSec,
-                    request.Extra?.ToDictionary(),
+                    request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -156,7 +158,7 @@ namespace Viam.Core.Resources.Components.Base
                 var resource = (IBase)context.UserState["resource"];
                 await resource.SetPower(request.Linear,
                     request.Angular,
-                    request.Extra?.ToDictionary(),
+                    request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
                 var response = new SetPowerResponse();
@@ -179,7 +181,7 @@ namespace Viam.Core.Resources.Components.Base
                 var resource = (IBase)context.UserState["resource"];
                 await resource.SetVelocity(request.Linear,
                     request.Angular,
-                    request.Extra?.ToDictionary(),
+                    request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
                 var response = new SetVelocityResponse();
@@ -201,7 +203,7 @@ namespace Viam.Core.Resources.Components.Base
                 var resource = (IBase)context.UserState["resource"];
                 await resource.Spin(request.AngleDeg,
                     request.DegsPerSec,
-                    request.Extra?.ToDictionary(),
+                    request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 

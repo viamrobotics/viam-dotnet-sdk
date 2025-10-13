@@ -1,21 +1,22 @@
 ﻿using Grpc.Core;
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using System.Threading.Tasks;
+using Google.Protobuf.WellKnownTypes;
 using Microsoft.Extensions.Logging;
 using Viam.Common.V1;
 using Viam.Core.Clients;
-using Viam.Core.Utils;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 
 
 namespace Viam.Core.Resources.Components
 {
     public interface IComponentBase : IResourceBase
     {
-        public ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public ValueTask<Struct> DoCommand(Struct command,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default);
     }
 
@@ -26,7 +27,7 @@ namespace Viam.Core.Resources.Components
 
         public abstract ValueTask StopResource();
 
-        public virtual async ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public virtual async ValueTask<Struct> DoCommand(Struct command,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             try
@@ -39,7 +40,7 @@ namespace Viam.Core.Resources.Components
 
                 var result = cmd.Invoke(Client,
                 [
-                    new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() }, null,
+                    new DoCommandRequest() { Name = ResourceName.Name, Command = command }, null,
                     timeout.ToDeadline(), cancellationToken
                 ]);
                 if (result is not AsyncUnaryCall<DoCommandResponse> r)
@@ -49,7 +50,7 @@ namespace Viam.Core.Resources.Components
 
                 var res = await r;
 
-                var response = res.Result.ToDictionary();
+                var response = res.Result;
                 return response;
             }
             catch (Exception)

@@ -6,8 +6,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Viam.Common.V1;
 using Viam.Component.Inputcontroller.V1;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 using Viam.Core.Logging;
-using Viam.Core.Utils;
 
 namespace Viam.Core.Resources.Components.InputController
 {
@@ -23,11 +24,11 @@ namespace Viam.Core.Resources.Components.InputController
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IInputController)context.UserState["resource"];
-                var res = await resource.DoCommand(request.Command.ToDictionary(),
+                var res = await resource.DoCommand(request.Command,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
-                var response = new DoCommandResponse() { Result = res.ToStruct() };
+                var response = new DoCommandResponse() { Result = res };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -45,7 +46,7 @@ namespace Viam.Core.Resources.Components.InputController
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IInputController)context.UserState["resource"];
-                var res = await resource.GetGeometries(request.Extra?.ToDictionary(),
+                var res = await resource.GetGeometries(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -67,7 +68,7 @@ namespace Viam.Core.Resources.Components.InputController
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IInputController)context.UserState["resource"];
-                var res = await resource.GetControls(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(),
+                var res = await resource.GetControls(request.Extra, context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
                 var response = new GetControlsResponse() { Controls = { res.Select(x => x.Name) } };
                 logger.LogMethodInvocationSuccess(results: response);
@@ -87,7 +88,7 @@ namespace Viam.Core.Resources.Components.InputController
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IInputController)context.UserState["resource"];
                 var res = await resource.GetEvents(InputControllerClient.Control.FromName(request.Controller),
-                    request.Extra?.ToDictionary(),
+                    request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -143,7 +144,7 @@ namespace Viam.Core.Resources.Components.InputController
                         InputControllerClient.EventType.FromName(request.Event.Event_),
                         request.Event.Time.ToDateTime(),
                         request.Event.Value),
-                    request.Extra?.ToDictionary(),
+                    request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 

@@ -5,11 +5,12 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using Viam.App.V1;
+using Viam.Contracts;
 using Viam.Core.Utils;
 
 namespace Viam.Core.App
 {
-    public class BillingClient(ILogger<BillingClient> logger, BillingService.BillingServiceClient client)
+    public class BillingClient(BillingService.BillingServiceClient client)
     {
         public async ValueTask<GetCurrentMonthUsageResponse> GetCurrentMonthUsageAsync(string orgId,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default)

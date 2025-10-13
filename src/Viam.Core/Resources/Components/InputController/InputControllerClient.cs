@@ -5,12 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-
+using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Component.Inputcontroller.V1;
 using Viam.Core.Clients;
 using Viam.Core.Logging;
 using Viam.Core.Utils;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 
 namespace Viam.Core.Resources.Components.InputController
 {
@@ -48,7 +50,7 @@ namespace Viam.Core.Resources.Components.InputController
 
         public override ValueTask StopResource() => new ValueTask();
 
-        public override async ValueTask<Dictionary<string, object?>> DoCommand(IDictionary<string, object?> command,
+        public override async ValueTask<Struct> DoCommand(Struct command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -58,12 +60,12 @@ namespace Viam.Core.Resources.Components.InputController
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client
                     .DoCommandAsync(
-                        new DoCommandRequest() { Name = ResourceName.Name, Command = command.ToStruct() },
+                        new DoCommandRequest() { Name = ResourceName.Name, Command = command },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
 
-                var response = res.Result.ToDictionary();
+                var response = res.Result;
                 Logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -75,7 +77,7 @@ namespace Viam.Core.Resources.Components.InputController
         }
 
 
-        public async ValueTask<Geometry[]> GetGeometries(IDictionary<string, object?>? extra = null,
+        public async ValueTask<Geometry[]> GetGeometries(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -84,7 +86,7 @@ namespace Viam.Core.Resources.Components.InputController
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetGeometriesAsync(
-                        new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra?.ToStruct() },
+                        new GetGeometriesRequest() { Name = ResourceName.Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -101,7 +103,7 @@ namespace Viam.Core.Resources.Components.InputController
         }
 
 
-        public async ValueTask<Control[]> GetControls(IDictionary<string, object?>? extra = null,
+        public async ValueTask<Control[]> GetControls(Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -110,7 +112,7 @@ namespace Viam.Core.Resources.Components.InputController
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetControlsAsync(
-                        new GetControlsRequest() { Controller = Name, Extra = extra?.ToStruct() },
+                        new GetControlsRequest() { Controller = Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -130,7 +132,7 @@ namespace Viam.Core.Resources.Components.InputController
 
 
         public async ValueTask<Dictionary<Control, Event>> GetEvents(Control control,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -139,7 +141,7 @@ namespace Viam.Core.Resources.Components.InputController
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 var res = await Client.GetEventsAsync(
-                        new GetEventsRequest() { Controller = Name, Extra = extra?.ToStruct() },
+                        new GetEventsRequest() { Controller = Name, Extra = extra },
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -157,7 +159,7 @@ namespace Viam.Core.Resources.Components.InputController
 
 
         public ValueTask RegisterControlCallback(Control control,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -166,7 +168,7 @@ namespace Viam.Core.Resources.Components.InputController
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 throw new NotImplementedException();
-                Logger.LogMethodInvocationSuccess();
+                //Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {
@@ -177,7 +179,7 @@ namespace Viam.Core.Resources.Components.InputController
 
 
         public ValueTask TriggerEvent(Event @event,
-            IDictionary<string, object?>? extra = null,
+            Struct? extra = null,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -186,7 +188,7 @@ namespace Viam.Core.Resources.Components.InputController
             {
                 Logger.LogMethodInvocationStart(parameters: [Name]);
                 throw new NotImplementedException();
-                Logger.LogMethodInvocationSuccess();
+                //Logger.LogMethodInvocationSuccess();
             }
             catch (Exception ex)
             {

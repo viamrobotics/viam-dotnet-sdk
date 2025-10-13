@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 using System.Diagnostics.CodeAnalysis;
-
+using Microsoft.Extensions.Options;
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components;
 using Viam.Core.Resources.Components.Arm;
@@ -18,6 +18,7 @@ using Viam.Core.Resources.Components.MovementSensor;
 using Viam.Core.Resources.Components.PowerSensor;
 using Viam.Core.Resources.Components.Sensor;
 using Viam.Core.Resources.Components.Servo;
+using Viam.ModularResources.Logging;
 
 namespace Viam.ModularResources
 {
@@ -26,12 +27,12 @@ namespace Viam.ModularResources
         private readonly IHostBuilder _hostBuilder;
         private readonly IList<Action<IServiceProvider>> _postConfigureActions = [];
 
-        public static ModuleBuilder FromArgs(string[] args, ILoggerFactory? loggerFactory = null)
+        public static ModuleBuilder FromArgs(string[] args)
         {
-            return new ModuleBuilder(args, loggerFactory);
+            return new ModuleBuilder(args);
         }
 
-        public ModuleBuilder(string[] args, ILoggerFactory? loggerFactory = null)
+        public ModuleBuilder(string[] args)
         {
             if (args.Length != 1)
                 throw new ArgumentException("You must provide a Unix socket path");
@@ -42,27 +43,15 @@ namespace Viam.ModularResources
                         .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true))
                 .ConfigureServices((c, s) =>
                 {
-                    if (loggerFactory != null)
-                    {
-                        s.AddSingleton<ILoggerFactory>(loggerFactory);
-                        s.AddSingleton(typeof(ILogger<>), typeof(Logger<>));
-                    }
+                    
                 })
                 .ConfigureLogging(c =>
                 {
-                    if (loggerFactory == null)
-                    {
-                        c.AddSimpleConsole(o =>
-                        {
-                            o.SingleLine = true;
-                            o.IncludeScopes = true;
-                            o.UseUtcTimestamp = true;
-                        });
-                    }
-                    else
-                    {
-                        c.ClearProviders();
-                    }
+                    c.ClearProviders();
+                    c.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<ViamLoggerProviderOptions>>().Value);
+                    c.Services.AddSingleton<ViamLoggerProvider>();
+                    c.Services.AddSingleton<ILoggerProvider>(sp => sp.GetRequiredService<ViamLoggerProvider>());
+                    c.Services.AddHostedService<ViamLoggerSinkWorker>();
                 })
                 .ConfigureWebHostDefaults(b => { b.UseStartup<Startup>(); })
                 .ConfigureWebHost(webBuilder =>

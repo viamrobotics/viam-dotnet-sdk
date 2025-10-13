@@ -46,6 +46,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub Workflows", "GitHub 
 		.github\workflows\license-finder.yml = .github\workflows\license-finder.yml
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viam.Contracts", "src\Viam.Contracts\Viam.Contracts.csproj", "{8E7FAF26-1453-4EE0-9429-21F3319BB1C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +98,10 @@ Global
 		{3B976BA2-6132-404D-8BD5-1176DAA4EC96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B976BA2-6132-404D-8BD5-1176DAA4EC96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B976BA2-6132-404D-8BD5-1176DAA4EC96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E7FAF26-1453-4EE0-9429-21F3319BB1C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E7FAF26-1453-4EE0-9429-21F3319BB1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E7FAF26-1453-4EE0-9429-21F3319BB1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E7FAF26-1453-4EE0-9429-21F3319BB1C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

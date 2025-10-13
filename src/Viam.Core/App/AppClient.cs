@@ -6,11 +6,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using Viam.App.V1;
 using Viam.Common.V1;
+using Viam.Contracts;
 using Viam.Core.Utils;
 
 namespace Viam.Core.App
 {
-    public sealed class AppClient(ILogger<AppClient> logger, AppService.AppServiceClient client)
+    public sealed class AppClient(AppService.AppServiceClient client)
     {
         private string? _orgId;
 
@@ -465,7 +466,7 @@ namespace Viam.Core.App
                     {
                         Id = robotPartId,
                         Name = name,
-                        RobotConfig = robotConfig.ToStruct(),
+                        RobotConfig = robotConfig.ToProto(),
                     },
                     cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
@@ -598,7 +599,7 @@ namespace Viam.Core.App
         {
             var result = await client
                 .CreateFragmentAsync(
-                    new CreateFragmentRequest() { Name = name, Config = config.ToStruct() },
+                    new CreateFragmentRequest() { Name = name, Config = config.ToProto() },
                     cancellationToken: cancellationToken)
                 .ConfigureAwait(false);
 
@@ -616,7 +617,7 @@ namespace Viam.Core.App
                     {
                         Id = fragmentId,
                         Name = name,
-                        Config = config.ToStruct()
+                        Config = config.ToProto()
                     },
                     cancellationToken: cancellationToken)
                 .ConfigureAwait(false);

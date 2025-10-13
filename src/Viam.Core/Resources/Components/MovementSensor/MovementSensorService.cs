@@ -2,8 +2,11 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
+using Google.Protobuf.WellKnownTypes;
 using Viam.Common.V1;
 using Viam.Component.Movementsensor.V1;
+using Viam.Contracts;
+using Viam.Contracts.Resources;
 using Viam.Core.Logging;
 using Viam.Core.Utils;
 
@@ -22,7 +25,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetProperties(request.Extra?.ToDictionary(),
+                var res = await resource.GetProperties(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -51,11 +54,11 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.DoCommand(request.Command.ToDictionary(),
+                var res = await resource.DoCommand(request.Command,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
-                var response = new DoCommandResponse() { Result = res.ToStruct() };
+                var response = new DoCommandResponse() { Result = res };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;
             }
@@ -73,7 +76,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetGeometries(request.Extra?.ToDictionary(),
+                var res = await resource.GetGeometries(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -95,7 +98,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetPosition(request.Extra?.ToDictionary(),
+                var res = await resource.GetPosition(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -117,7 +120,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetReadings(request.Extra?.ToDictionary(),
+                var res = await resource.GetReadings(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -140,7 +143,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetAccuracy(request.Extra?.ToDictionary(), context.Deadline.ToTimeout(),
+                var res = await resource.GetAccuracy(request.Extra, context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
                 var response = new GetAccuracyResponse()
                 {
@@ -167,7 +170,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetAngularVelocity(request.Extra?.ToDictionary(),
+                var res = await resource.GetAngularVelocity(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -189,7 +192,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetCompassHeading(request.Extra?.ToDictionary(),
+                var res = await resource.GetCompassHeading(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -211,7 +214,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetLinearAcceleration(request.Extra?.ToDictionary(),
+                var res = await resource.GetLinearAcceleration(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -233,7 +236,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetLinearVelocity(request.Extra?.ToDictionary(),
+                var res = await resource.GetLinearVelocity(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
@@ -255,7 +258,7 @@ namespace Viam.Core.Resources.Components.MovementSensor
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (IMovementSensor)context.UserState["resource"];
-                var res = await resource.GetOrientation(request.Extra?.ToDictionary(),
+                var res = await resource.GetOrientation(request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
 
