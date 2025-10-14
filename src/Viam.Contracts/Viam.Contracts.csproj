@@ -36,36 +36,68 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Viam.Serialization.Analyzer\Viam.Serialization.Analyzer.csproj" OutputItemType="Analyzer" />
-	  <ProjectReference Include="..\Viam.Serialization\Viam.Serialization.csproj" />
+		<ProjectReference Include="..\Viam.Serialization\Viam.Serialization.csproj" />
 	</ItemGroup>
 
 	<!-- Protobuf Stuff -->
 	<ItemGroup>
-		<Compile Remove="protos\**" />
-		<EmbeddedResource Remove="protos\**" />
-		<None Remove="protos\**" />
-		<InternalsVisibleTo Include="Viam.Core" />
+		<!-- pin versions for reproducibility -->
+		<BufModule Include="viamrobotics/api"     Ref="buf.build/viamrobotics/api:5e9057122703e5890f82a5774864cccb5f4664a4" />
+		<BufModule Include="viamrobotics/goutils" Ref="buf.build/viamrobotics/goutils:ff252c58e01448947153af5e52a2d5c0e803c559" />
 	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Remove the proto files from compilation -->
+		<Compile Remove="protos/**" />
+
+		<!-- Don't let them be embedded resources -->
+		<EmbeddedResource Remove="protos/**" />
+		
+		<!-- Don't copy them to the output directory -->
+		<None Remove="protos/**" />
+	</ItemGroup>
+
+	<!-- Manual step: ONLY runs when you call -t:ExportProtos on *this project* -->
+	<Target Name="ExportProtos"
+          Inputs="@(BufModule -> '%(Ref)')"
+          Outputs="@(BufModule -> '$(ProtoVendorDir)%(Identity)/_stamp.txt')">
+		<Message Importance="High" Text="Exporting protos to $(ProtoVendorDir) ..." />
+		<Exec Command='buf export %(BufModule.Ref) --output "$(ProtoVendorDir)%(Identity)"' />
+		<WriteLinesToFile File='$(ProtoVendorDir)%(BufModule.Identity)/_stamp.txt'
+                      Lines='%(BufModule.Ref)'
+                      Overwrite='true' />
+	</Target>
+
+	<!-- Optional: clean the exported protos for a fresh re-export -->
+	<Target Name="CleanProtos">
+		<RemoveDir Directories="$(ProtoVendorDir)" />
+	</Target>
+
+	<!-- Guard: fail fast if someone builds Viam.Contracts before exporting once -->
+	<Target Name="EnsureProtosExported"
+          BeforeTargets="PrepareForBuild">
+		<ItemGroup>
+			<_Missing Include="@(BufModule -> '$(ProtoVendorDir)%(Identity)/_stamp.txt')"
+                Condition="!Exists('$(ProtoVendorDir)%(BufModule.Identity)/_stamp.txt')" />
+		</ItemGroup>
+		<Error Condition="@(_Missing) != ''"
+           Text="Missing exported protos. Run: dotnet build src/Viam.Contracts/Viam.Contracts.csproj -t:ExportProtos" />
+	</Target>
 	<PropertyGroup>
 		<!-- Where vendor'ed protos land -->
-		<ProtoVendorDir>$(ProjectDir)protos\_vendor\</ProtoVendorDir>
+		<ProtoVendorDir>$(ProjectDir)protos/_vendor/</ProtoVendorDir>
 
 		<!-- Tell protoc where to search for imports like "common/v1/common.proto" -->
 		<Protobuf_AdditionalImportDirs>
-			$(ProtoVendorDir)viamrobotics\api;
-			$(ProtoVendorDir)viamrobotics\goutils
-			$(NuGetPackageRoot)google.api.commonprotos\2.17.0\content
+			$(ProtoVendorDir)viamrobotics/api;
+			$(ProtoVendorDir)viamrobotics/goutils
+			$(NuGetPackageRoot)google.api.commonprotos/2.17.0/content
 		</Protobuf_AdditionalImportDirs>
 	</PropertyGroup>
-	<Target Name="ExportRemoteProtos" BeforeTargets="PrepareForBuild">
-		<Exec Command="buf export buf.build/viamrobotics/api --output &quot;protos/_vendor/viamrobotics/api&quot;" />
-		<Exec Command="buf export buf.build/viamrobotics/goutils --output &quot;protos/_vendor/viamrobotics/goutils&quot;" />
-	</Target>
-
 	<ItemGroup>
-		<Protobuf Include="$(ProtoVendorDir)viamrobotics\api\**\*.proto" GrpcServices="Both" ProtoRoot="$(ProtoVendorDir)viamrobotics\api" />
-		<Protobuf Include="$(ProtoVendorDir)viamrobotics\goutils\**\*.proto" GrpcServices="Both" ProtoRoot="$(ProtoVendorDir)viamrobotics\goutils" />
-		<Protobuf Remove="$(ProtoVendorDir)**\google\**\*.proto" />
+		<Protobuf Include="$(ProtoVendorDir)viamrobotics/api/**/*.proto" GrpcServices="Both" ProtoRoot="$(ProtoVendorDir)viamrobotics/api" />
+		<Protobuf Include="$(ProtoVendorDir)viamrobotics/goutils/**/*.proto" GrpcServices="Both" ProtoRoot="$(ProtoVendorDir)viamrobotics/goutils" />
+		<Protobuf Remove="$(ProtoVendorDir)**/google/**/*.proto" />
 	</ItemGroup>
 
 </Project>
