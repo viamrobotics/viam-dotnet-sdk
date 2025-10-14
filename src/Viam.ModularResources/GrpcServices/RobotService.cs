@@ -1,11 +1,9 @@
 ﻿using Grpc.Core;
-using Viam.Core.Resources.Components;
 using Viam.Robot.V1;
-
 using grpcRobotService = Viam.Robot.V1.RobotService;
 using Status = Grpc.Core.Status;
 
-namespace Viam.ModularResources.Services
+namespace Viam.ModularResources.GrpcServices
 {
     public class RobotService(IServiceProvider services, ILogger<RobotService> logger)
         : grpcRobotService.RobotServiceBase

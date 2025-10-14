@@ -1,20 +1,17 @@
 ﻿using Grpc.Core;
-using Viam.Common.V1;
 using Viam.Contracts;
 using Viam.Contracts.Resources;
 using Viam.Core;
 using Viam.Core.Clients;
 using Viam.Core.Grpc;
 using Viam.Core.Resources;
-using Viam.Core.Utils;
 using Viam.Module.V1;
 using Viam.Robot.V1;
-
 using grpcRobotService = Viam.Module.V1.ModuleService;
 
-namespace Viam.ModularResources.Services
+namespace Viam.ModularResources.GrpcServices
 {
-    public class ModuleService(IServiceProvider services, ILoggerFactory loggerFactory)
+    public class ModuleService(IServiceProvider services, ILoggerFactory loggerFactory, IMachineClientAccessor machineClientAccessor)
         : grpcRobotService.ModuleServiceBase
     {
         private static readonly SemaphoreSlim ParentAddressLock = new(1);
@@ -185,14 +182,6 @@ namespace Viam.ModularResources.Services
             return Task.FromResult(resp);
         }
 
-        public async Task LogAsync(IReadOnlyList<LogEntry> logs, CancellationToken ct)
-        {
-            if (_client != null)
-            {
-                await _client.LogAsync(logs, ct);
-            }
-        }
-
         private static async ValueTask SetParentAddress(Uri parentAddress)
         {
             await ParentAddressLock.WaitAsync();
@@ -222,6 +211,7 @@ namespace Viam.ModularResources.Services
 
                 // Try to load the resources from the parent
                 _client = new MachineClientBase(loggerFactory, channel);
+                machineClientAccessor.TrySet(_client);
                 return _client;
             }
             finally

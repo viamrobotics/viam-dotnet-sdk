@@ -5,6 +5,7 @@ using Viam.Contracts.Resources;
 using Viam.Core.Resources;
 using Viam.Core.Resources.Components.Sensor;
 using Viam.Module.V1;
+using ModuleService = Viam.ModularResources.GrpcServices.ModuleService;
 
 namespace Viam.ModularResources.Test
 {
@@ -19,9 +20,9 @@ namespace Viam.ModularResources.Test
             servicesBuilder.AddTransient<IResourceBase, SampleSensor>();
             servicesBuilder.BuildServiceProvider();
             servicesBuilder.AddLogging();
-            servicesBuilder.AddSingleton<Viam.ModularResources.Services.ModuleService>();
+            servicesBuilder.AddSingleton<ModuleService>();
             var serviceProvider = servicesBuilder.BuildServiceProvider();
-            var service = serviceProvider.GetRequiredService<Viam.ModularResources.Services.ModuleService>();
+            var service = serviceProvider.GetRequiredService<ModuleService>();
             Assert.That(service, Is.Not.Null);
             await service.Ready(new ReadyRequest() { ParentAddress = "pete-orinnano-1-main.vwib729pdp.viam.cloud" },
                 null);

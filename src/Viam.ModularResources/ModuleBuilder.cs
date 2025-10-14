@@ -43,7 +43,7 @@ namespace Viam.ModularResources
                         .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", optional: true, reloadOnChange: true))
                 .ConfigureServices((c, s) =>
                 {
-                    
+                    s.AddSingleton<IMachineClientAccessor, MachineClientAccessor>();
                 })
                 .ConfigureLogging(c =>
                 {

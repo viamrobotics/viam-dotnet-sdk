@@ -1,7 +1,6 @@
 ﻿using Grpc.Core;
 using Grpc.Core.Interceptors;
 using Viam.Contracts.Resources;
-using Viam.Core.Resources;
 using Viam.Core.Resources.Components.Generic;
 using Viam.Core.Resources.Components.Gripper;
 using Viam.Core.Resources.Components.InputController;
@@ -11,7 +10,7 @@ using Viam.Core.Resources.Components.PowerSensor;
 using Viam.Core.Resources.Components.Sensor;
 using Viam.Core.Resources.Components.Servo;
 using Viam.Core.Resources.Services.VisionService;
-using Viam.ModularResources.Services;
+using Viam.ModularResources.GrpcServices;
 using ArmService = Viam.Core.Resources.Components.Arm.ArmService;
 using BaseService = Viam.Core.Resources.Components.Base.BaseService;
 using BoardService = Viam.Core.Resources.Components.Board.BoardService;

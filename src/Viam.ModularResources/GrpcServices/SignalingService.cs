@@ -1,7 +1,7 @@
 ﻿using Grpc.Core;
 using grpcSignalingService = Proto.Rpc.Webrtc.V1.SignalingService;
 
-namespace Viam.ModularResources.Services
+namespace Viam.ModularResources.GrpcServices
 {
     public class SignalingService : grpcSignalingService.SignalingServiceBase
     {

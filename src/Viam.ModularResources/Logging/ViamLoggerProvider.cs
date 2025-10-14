@@ -1,5 +1,7 @@
 ﻿using System.Threading.Channels;
+
 using Google.Protobuf.WellKnownTypes;
+
 using Viam.Common.V1;
 
 namespace Viam.ModularResources.Logging
@@ -22,7 +24,7 @@ namespace Viam.ModularResources.Logging
             new ViamLogger(categoryName, options, _scopeProvider, Writer);
 
         public void SetScopeProvider(IExternalScopeProvider scopeProvider) =>
-            _scopeProvider = scopeProvider ?? NullExternalScopeProvider.Instance;
+            _scopeProvider = scopeProvider;
 
         private sealed class ViamLogger(
             string category,
@@ -38,6 +40,7 @@ namespace Viam.ModularResources.Logging
             public void Log<TState>(LogLevel logLevel, EventId eventId, TState state,
                 Exception? exception, Func<TState, Exception?, string> formatter)
             {
+
                 if (!IsEnabled(logLevel)) return;
 
                 // Capture state and scope as dictionaries (keep allocations modest)
@@ -53,7 +56,8 @@ namespace Viam.ModularResources.Logging
                     scopes.ForEachScope((scopeObj, acc) =>
                     {
                         if (scopeObj is IEnumerable<KeyValuePair<string, object?>> s)
-                            foreach (var kv in s) acc[kv.Key] = kv.Value;
+                            foreach (var kv in s)
+                                acc[kv.Key] = kv.Value;
                         else
                             acc[$"scope:{scopeObj?.GetType().Name}"] = scopeObj;
                     }, flat);
@@ -65,7 +69,7 @@ namespace Viam.ModularResources.Logging
                     LoggerName = category,
                     Time = Timestamp.FromDateTimeOffset(DateTimeOffset.UtcNow),
                     Host = Environment.MachineName,
-                    Level = "",
+                    Level = ToViamLogLevel(logLevel),
                     Message = formatter(state, exception),
                     Caller = null,
                     Fields = { },
@@ -73,6 +77,20 @@ namespace Viam.ModularResources.Logging
                 };
 
                 _ = writer.TryWrite(item); // non-blocking; drop if full (configurable)
+            }
+
+            private static string ToViamLogLevel(LogLevel logLevel)
+            {
+                return logLevel switch
+                {
+                    LogLevel.Trace => "DEBUG",
+                    LogLevel.Debug => "DEBUG",
+                    LogLevel.Information => "INFO",
+                    LogLevel.Warning => "WARN",
+                    LogLevel.Error => "ERROR",
+                    LogLevel.Critical => "ERROR",
+                    _ => "UNKNOWN"
+                };
             }
         }
 
