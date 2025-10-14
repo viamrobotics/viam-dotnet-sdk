@@ -145,7 +145,7 @@ namespace Viam.Serialization.Analyzer
             sb.AppendLine("using System;");
             sb.AppendLine("using System.Collections;");
             sb.AppendLine("using System.Collections.Generic;");
-            sb.AppendLine("using Viam.Contracts;");
+            sb.AppendLine("using Viam.Serialization;");
             sb.AppendLine();
             if (namespaceName != null)
             {
@@ -154,9 +154,9 @@ namespace Viam.Serialization.Analyzer
             }
 
             sb.AppendLine($"    // {symbol.TypeKind}");
-            sb.AppendLine($"    {accessModifier} partial {symbolType} {symbolName}");
+            sb.AppendLine($"    {accessModifier} partial {symbolType} {symbolName} : IDictionaryMappable<{symbolName}>");
             sb.AppendLine($"    {{");
-            sb.AppendLine($"        public static {(hasAbstractBaseType ? "new " : "")}{symbolName} FromDictionary(Struct dictionary)");
+            sb.AppendLine($"        public static {(hasAbstractBaseType ? "new " : "")}{symbolName} FromDictionary(IDictionary<string, object?> dictionary)");
             sb.AppendLine($"        {{");
             sb.AppendLine($"            if (dictionary == null) throw new ArgumentNullException(nameof(dictionary));");
             sb.AppendLine($"            return new {symbolName}");
@@ -595,7 +595,7 @@ namespace Viam.Serialization.Analyzer
             }
             sb.AppendLine($"    public partial class {baseName}");
             sb.AppendLine($"    {{");
-            sb.AppendLine($"        public static {baseName} FromDictionary(Struct dictionary)");
+            sb.AppendLine($"        public static {baseName} FromDictionary(IDictionary<string, object?> dictionary)");
             sb.AppendLine($"        {{");
             sb.AppendLine($"            if (!dictionary.TryGetValue(\"__type__\", out var typeObj) || typeObj is not string typeName)");
             sb.AppendLine($"                throw new ArgumentException(\"Missing or invalid __type__ discriminator\", nameof(dictionary));");
