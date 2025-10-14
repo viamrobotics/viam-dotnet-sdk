@@ -11,7 +11,7 @@ namespace Viam.Core.App
 {
     public class DataSyncClient(ILogger<DataSyncClient> logger, DataSyncService.DataSyncServiceClient client)
     {
-        public const int ChunkSize = 2 ^ 16; // 64 KiB
+        public const int ChunkSize = (1 << 16) - 1; // 64 KiB
         public async Task<string> UploadFile(ReadOnlyMemory<byte> data, string componentName, string componentType, string fileName, string fileExtension, string methodName, string partId, string[] tags)
         {
             logger.LogDebug("Preparing file upload");
