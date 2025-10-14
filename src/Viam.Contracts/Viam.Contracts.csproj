@@ -34,15 +34,10 @@
 		<PackageReference Include="System.Text.Json" Version="9.0.5" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\Viam.Serialization.Analyzer\Viam.Serialization.Analyzer.csproj" OutputItemType="Analyzer" />
-		<ProjectReference Include="..\Viam.Serialization\Viam.Serialization.csproj" />
-	</ItemGroup>
-
 	<!-- Protobuf Stuff -->
 	<ItemGroup>
 		<!-- pin versions for reproducibility -->
-		<BufModule Include="viamrobotics/api"     Ref="buf.build/viamrobotics/api:5e9057122703e5890f82a5774864cccb5f4664a4" />
+		<BufModule Include="viamrobotics/api" Ref="buf.build/viamrobotics/api:5e9057122703e5890f82a5774864cccb5f4664a4" />
 		<BufModule Include="viamrobotics/goutils" Ref="buf.build/viamrobotics/goutils:ff252c58e01448947153af5e52a2d5c0e803c559" />
 	</ItemGroup>
 
@@ -58,14 +53,10 @@
 	</ItemGroup>
 
 	<!-- Manual step: ONLY runs when you call -t:ExportProtos on *this project* -->
-	<Target Name="ExportProtos"
-          Inputs="@(BufModule -> '%(Ref)')"
-          Outputs="@(BufModule -> '$(ProtoVendorDir)%(Identity)/_stamp.txt')">
+	<Target Name="ExportProtos" Inputs="@(BufModule -> '%(Ref)')" Outputs="@(BufModule -> '$(ProtoVendorDir)%(Identity)/_stamp.txt')">
 		<Message Importance="High" Text="Exporting protos to $(ProtoVendorDir) ..." />
-		<Exec Command='buf export %(BufModule.Ref) --output "$(ProtoVendorDir)%(Identity)"' />
-		<WriteLinesToFile File='$(ProtoVendorDir)%(BufModule.Identity)/_stamp.txt'
-                      Lines='%(BufModule.Ref)'
-                      Overwrite='true' />
+		<Exec Command="buf export %(BufModule.Ref) --output &quot;$(ProtoVendorDir)%(Identity)&quot;" />
+		<WriteLinesToFile File="$(ProtoVendorDir)%(BufModule.Identity)/_stamp.txt" Lines="%(BufModule.Ref)" Overwrite="true" />
 	</Target>
 
 	<!-- Optional: clean the exported protos for a fresh re-export -->
@@ -74,15 +65,18 @@
 	</Target>
 
 	<!-- Guard: fail fast if someone builds Viam.Contracts before exporting once -->
-	<Target Name="EnsureProtosExported"
-          BeforeTargets="PrepareForBuild">
-		<ItemGroup>
-			<_Missing Include="@(BufModule -> '$(ProtoVendorDir)%(Identity)/_stamp.txt')"
-                Condition="!Exists('$(ProtoVendorDir)%(BufModule.Identity)/_stamp.txt')" />
-		</ItemGroup>
-		<Error Condition="@(_Missing) != ''"
-           Text="Missing exported protos. Run: dotnet build src/Viam.Contracts/Viam.Contracts.csproj -t:ExportProtos" />
-	</Target>
+	<Target Name="AutoExportProtos" BeforeTargets="PrepareForBuild" Condition="'$(DesignTimeBuild)' != 'true'">
+  <!-- What stamps should exist -->
+  <ItemGroup>
+    <_Missing Include="@(BufModule -> '$(ProtoVendorDir)%(Identity)/_stamp.txt')" Condition="!Exists('$(ProtoVendorDir)%(BufModule.Identity)/_stamp.txt')" />
+  </ItemGroup>
+
+  <!-- Optional log -->
+  <Message Importance="High" Condition="@(_Missing) != ''" Text="Proto exports missing. Running ExportProtos..." />
+
+  <!-- Run the actual export if anything is missing -->
+  <CallTarget Targets="ExportProtos" Condition="@(_Missing) != ''" />
+</Target>
 	<PropertyGroup>
 		<!-- Where vendor'ed protos land -->
 		<ProtoVendorDir>$(ProjectDir)protos/_vendor/</ProtoVendorDir>
