@@ -31,9 +31,11 @@ namespace Viam.Core.App
             var fileData = new FileData() { Data = ByteString.CopyFrom(data.Span) };
 
             var uploadRequest = client.FileUpload();
-            logger.LogDebug("Opened upload request");
-            await uploadRequest.RequestStream.WriteAsync(new FileUploadRequest(){Metadata = uploadMetadata, FileContents = fileData});
-            logger.LogDebug("Wrote file data to upload request");
+            logger.LogTrace("Created upload request");
+            await uploadRequest.RequestStream.WriteAsync(new FileUploadRequest() { Metadata = uploadMetadata });
+            logger.LogTrace("Sent metadata");
+            await uploadRequest.RequestStream.WriteAsync(new FileUploadRequest() { FileContents = fileData });
+            logger.LogTrace("Wrote file data to upload request");
             var uploadResponse = await uploadRequest;
             logger.LogDebug("Received upload response with BinaryDataId {BinaryDataId}", uploadResponse.BinaryDataId);
             return uploadResponse.BinaryDataId;
