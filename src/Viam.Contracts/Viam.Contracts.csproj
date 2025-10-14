@@ -10,9 +10,9 @@
 		<CopyDebugSymbolFilesFromPackages>true</CopyDebugSymbolFilesFromPackages>
 		<CopyDocumentationFilesFromPackages>true</CopyDocumentationFilesFromPackages>
 
-		<PackageId>Viam.Proto</PackageId>
+		<PackageId>Viam.Contracts</PackageId>
 		<Authors>Viam</Authors>
-		<Description>Viam ProtoBuf Library</Description>
+		<Description>Viam Contracts Library</Description>
 		<ProjectUrl>https://github.com/viamrobotics/viam-dotnet-sdk</ProjectUrl>
 		<PackageTags>viam</PackageTags>
 		<IncludeSymbols>true</IncludeSymbols>
