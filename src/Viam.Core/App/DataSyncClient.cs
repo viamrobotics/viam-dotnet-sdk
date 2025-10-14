@@ -14,6 +14,7 @@ namespace Viam.Core.App
         public const int ChunkSize = 2 ^ 16; // 64 KiB
         public async Task<string> UploadFile(ReadOnlyMemory<byte> data, string componentName, string componentType, string fileName, string fileExtension, string methodName, string partId, string[] tags)
         {
+            logger.LogDebug("Preparing file upload");
             var uploadMetadata = new UploadMetadata()
             {
                 ComponentName = componentName,
@@ -37,7 +38,7 @@ namespace Viam.Core.App
             {
                 var end = Math.Min(i + ChunkSize, data.Length);
                 var chunk = data[i..end];
-
+                logger.LogTrace("Uploading file chunk {Start}..{End}", i, end);
                 var fileData = new FileData { Data = ByteString.CopyFrom(chunk.Span) };
                 await uploadRequest.RequestStream.WriteAsync(new FileUploadRequest { FileContents = fileData });
             }
