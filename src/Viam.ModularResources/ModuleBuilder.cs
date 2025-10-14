@@ -48,6 +48,8 @@ namespace Viam.ModularResources
                 .ConfigureLogging(c =>
                 {
                     c.ClearProviders();
+                    c.Services.AddOptions<ViamLoggerProviderOptions>().BindConfiguration("Logging:Viam")
+                        .ValidateDataAnnotations();
                     c.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<ViamLoggerProviderOptions>>().Value);
                     c.Services.AddSingleton<ViamLoggerProvider>();
                     c.Services.AddSingleton<ILoggerProvider>(sp => sp.GetRequiredService<ViamLoggerProvider>());

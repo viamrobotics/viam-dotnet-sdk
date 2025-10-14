@@ -1,12 +1,13 @@
 ﻿using System.Threading.Channels;
 
 using Google.Protobuf.WellKnownTypes;
-
+using Microsoft.Extensions.Options;
 using Viam.Common.V1;
 
 namespace Viam.ModularResources.Logging
 {
-    internal sealed class ViamLoggerProvider(ViamLoggerProviderOptions options) : ILoggerProvider, ISupportExternalScope
+    internal sealed class ViamLoggerProvider(ViamLoggerProviderOptions options)
+        : ILoggerProvider, ISupportExternalScope
     {
         private IExternalScopeProvider _scopeProvider = NullExternalScopeProvider.Instance;
 
@@ -35,12 +36,11 @@ namespace Viam.ModularResources.Logging
         {
             public IDisposable BeginScope<TState>(TState state) where TState : notnull => scopes.Push(state);
 
-            public bool IsEnabled(LogLevel logLevel) => logLevel >= opts.MinimumLevel;
+            public bool IsEnabled(LogLevel logLevel) => true;
 
             public void Log<TState>(LogLevel logLevel, EventId eventId, TState state,
                 Exception? exception, Func<TState, Exception?, string> formatter)
             {
-
                 if (!IsEnabled(logLevel)) return;
 
                 // Capture state and scope as dictionaries (keep allocations modest)
