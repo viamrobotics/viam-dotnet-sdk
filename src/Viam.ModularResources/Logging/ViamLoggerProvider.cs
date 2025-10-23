@@ -1,7 +1,9 @@
 ﻿using System.Threading.Channels;
 
 using Google.Protobuf.WellKnownTypes;
+
 using Microsoft.Extensions.Options;
+
 using Viam.Common.V1;
 
 namespace Viam.ModularResources.Logging
@@ -64,16 +66,22 @@ namespace Viam.ModularResources.Logging
                     if (flat.Count > 0) scopeDict = flat;
                 }
 
+                var msg = formatter(state, exception);
+                if (exception is not null)
+                {
+                    msg = $"{msg}{Environment.NewLine}{exception}";
+                }
+
                 var item = new LogEntry()
                 {
                     LoggerName = category,
                     Time = Timestamp.FromDateTimeOffset(DateTimeOffset.UtcNow),
                     Host = Environment.MachineName,
                     Level = ToViamLogLevel(logLevel),
-                    Message = formatter(state, exception),
+                    Message = msg,
                     Caller = null,
                     Fields = { },
-                    Stack = exception == null ? "" : exception.ToString()
+                    Stack = exception?.ToString() ?? string.Empty
                 };
 
                 _ = writer.TryWrite(item); // non-blocking; drop if full (configurable)
