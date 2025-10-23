@@ -73,12 +73,13 @@ namespace Viam.Core.Resources.Components.Camera
                 var resource = (ICamera)context.UserState["resource"];
                 var resp = await resource.GetProperties(context.Deadline.ToTimeout(), context.CancellationToken)
                     .ConfigureAwait(false);
+
                 var response = new GetPropertiesResponse()
                 {
-                    DistortionParameters = resp.DistortionParameters.ToGrpc(),
-                    IntrinsicParameters = resp.IntrinsicParameters.ToGrpc(),
-                    MimeTypes = { resp.MimeTypes.Select(x => x.ToString()) },
-                    SupportsPcd = resp.SupportsPcd
+                    DistortionParameters = resp?.DistortionParameters?.ToGrpc(),
+                    IntrinsicParameters = resp?.IntrinsicParameters?.ToGrpc(),
+                    MimeTypes = { resp?.MimeTypes.Select(x => x.ToString()) },
+                    SupportsPcd = resp?.SupportsPcd ?? false
                 };
                 logger.LogMethodInvocationSuccess(results: response);
                 return response;

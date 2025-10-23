@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Xml.Linq;
 
 using Viam.Component.Camera.V1;
 
@@ -112,6 +113,7 @@ namespace Viam.Core.Resources
                 "image/jpeg" => MimeType.Jpeg,
                 "image/png" => MimeType.Png,
                 "pointcloud/pcd" => MimeType.Pcd,
+                null => throw new ArgumentNullException(nameof(mimeType)),
                 _ => throw new ArgumentOutOfRangeException(nameof(mimeType), mimeType, "Unknown MimeType")
             };
         }
@@ -125,6 +127,7 @@ namespace Viam.Core.Resources
                 "image/jpeg" => MimeType.Jpeg,
                 "image/png" => MimeType.Png,
                 "pointcloud/pcd" => MimeType.Pcd,
+                null => throw new ArgumentNullException(nameof(name)),
                 _ => throw new ArgumentOutOfRangeException(nameof(name), name, "Unknown MimeType")
             };
 
