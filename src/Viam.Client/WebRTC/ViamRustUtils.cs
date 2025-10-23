@@ -19,7 +19,7 @@ namespace Viam.Client.WebRTC
             // Use the default resolver if not our library.
             if (libraryName != LibraryName) return IntPtr.Zero;
             
-            var assemblyPath = Path.GetDirectoryName(assembly.Location);
+            var assemblyPath = Path.GetDirectoryName(System.AppContext.BaseDirectory);
             if (assemblyPath == null)
             {
                 throw new InvalidOperationException("Unable to get assembly path");
@@ -89,7 +89,7 @@ namespace Viam.Client.WebRTC
             var result = DialInternal(uri, entity, type, payload, allowInsecure, timeout, rtPtr);
             if (result == IntPtr.Zero)
             {
-                throw new InvalidOperationException("Failed to dial");
+                throw new InvalidOperationException("Failed to dial, check address and credentials");
             }
 
             var resultString = Marshal.PtrToStringUTF8(result);

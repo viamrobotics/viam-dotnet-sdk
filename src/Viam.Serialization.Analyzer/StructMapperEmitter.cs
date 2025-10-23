@@ -59,6 +59,7 @@ namespace Viam.Serialization.Analyzer
 
             foreach (var type in containingTypes)
             {
+                // TODO: handle access modifiers, not all are public.
                 sb.AppendLine($"{indent}public partial class {type.Name}");
                 sb.AppendLine($"{indent}{{");
                 indent += "    ";
