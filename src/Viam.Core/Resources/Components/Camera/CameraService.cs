@@ -11,6 +11,7 @@ using Viam.Core.Utils;
 using Google.Api;
 using Viam.Contracts;
 using Viam.Contracts.Resources;
+using Google.Protobuf.WellKnownTypes;
 
 
 namespace Viam.Core.Resources.Components.Camera
@@ -137,12 +138,18 @@ namespace Viam.Core.Resources.Components.Camera
                     logger.LogMethodInvocationSuccess(results: null);
                     return null;
                 }
-                var response = new GetImagesResponse();
+                var response = new GetImagesResponse
+                {
+                    ResponseMetadata = new ResponseMetadata
+                    {
+                        CapturedAt = Timestamp.FromDateTimeOffset(DateTimeOffset.UtcNow),
+                    }
+                };
                 response.Images.AddRange(resp.Select(image => new Image()
                 {
                     Image_ = ByteString.CopyFrom(image.bytes.Span),
                     Format = image.mimeType.ToGrpcFormat(),
-                    SourceName = image.sourceName
+                    SourceName = image.sourceName,
                 }));
                 return response;
             }
