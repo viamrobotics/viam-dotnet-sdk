@@ -56,8 +56,8 @@ namespace Viam.Core.Resources
     }
 
     public record CameraProperties(
-        DistortionParameters DistortionParameters,
-        IntrinsicParameters IntrinsicParameters,
+        DistortionParameters? DistortionParameters,
+        IntrinsicParameters? IntrinsicParameters,
         MimeType[] MimeTypes,
         bool SupportsPcd);
 

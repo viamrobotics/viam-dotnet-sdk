@@ -91,7 +91,7 @@ namespace Viam.Core.Resources.Components.Camera
             }
         }
 
-        public override async Task<GetImageResponse> GetImage(GetImageRequest request, ServerCallContext context)
+        public override async Task<GetImageResponse?> GetImage(GetImageRequest request, ServerCallContext context)
         {
             try
             {
@@ -102,6 +102,12 @@ namespace Viam.Core.Resources.Components.Camera
                     request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
+                
+                if (resp is null)
+                {
+                    logger.LogMethodInvocationSuccess(results: null);
+                    return null;
+                }
 
                 var response = new GetImageResponse()
                 {
@@ -118,7 +124,7 @@ namespace Viam.Core.Resources.Components.Camera
             }
         }
 
-        public override async Task<GetImagesResponse> GetImages(GetImagesRequest request, ServerCallContext context)
+        public override async Task<GetImagesResponse?> GetImages(GetImagesRequest request, ServerCallContext context)
         {
             try
             {
@@ -126,6 +132,11 @@ namespace Viam.Core.Resources.Components.Camera
                 var resource = (ICamera)context.UserState["resource"];
                 var resp = await resource.GetImages(context.Deadline.ToTimeout(), context.CancellationToken)
                     .ConfigureAwait(false);
+                if (resp is null)
+                {
+                    logger.LogMethodInvocationSuccess(results: null);
+                    return null;
+                }
                 var response = new GetImagesResponse();
                 response.Images.AddRange(resp.Select(image => new Image()
                 {
@@ -142,7 +153,7 @@ namespace Viam.Core.Resources.Components.Camera
             }
         }
 
-        public override async Task<GetPointCloudResponse> GetPointCloud(GetPointCloudRequest request,
+        public override async Task<GetPointCloudResponse?> GetPointCloud(GetPointCloudRequest request,
             ServerCallContext context)
         {
             try
@@ -155,6 +166,12 @@ namespace Viam.Core.Resources.Components.Camera
                         context.Deadline.ToTimeout(),
                         context.CancellationToken)
                     .ConfigureAwait(false);
+
+                if (resp is null)
+                {
+                    logger.LogMethodInvocationSuccess(results: null);
+                    return null;
+                }
 
                 var response = new GetPointCloudResponse()
                 {

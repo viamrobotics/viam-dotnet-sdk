@@ -29,15 +29,16 @@ namespace Viam.ModularResources
 
         public virtual ValueTask Reconfigure(ComponentConfig config, Dependencies dependencies) => ValueTask.CompletedTask;
 
-        public virtual ValueTask<Struct> DoCommand(Struct command,
+        public virtual ValueTask<Struct?> DoCommand(Struct command,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default) =>
-            ValueTask.FromResult(new Struct());
+            ValueTask.FromResult<Struct?>(new Struct());
 
         public virtual ValueTask StopResource() => ValueTask.CompletedTask;
         public virtual ResourceStatus GetStatus() => throw new NotImplementedException();
 
         public virtual ValueTask DisposeAsync()
         {
+            GC.SuppressFinalize(this);
             return ValueTask.CompletedTask;
         }
     }

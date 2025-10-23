@@ -16,7 +16,7 @@ namespace Viam.Core.Resources.Components
 {
     public interface IComponentBase : IResourceBase
     {
-        public ValueTask<Struct> DoCommand(Struct command,
+        public ValueTask<Struct?> DoCommand(Struct command,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default);
     }
 
@@ -27,7 +27,7 @@ namespace Viam.Core.Resources.Components
 
         public abstract ValueTask StopResource();
 
-        public virtual async ValueTask<Struct> DoCommand(Struct command,
+        public virtual async ValueTask<Struct?> DoCommand(Struct command,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             try
@@ -50,8 +50,12 @@ namespace Viam.Core.Resources.Components
 
                 var res = await r;
 
-                var response = res.Result;
-                return response;
+                if (res is not null)
+                {
+                    var response = res.Result;
+                    return response;
+                }
+                return null;
             }
             catch (Exception)
             {

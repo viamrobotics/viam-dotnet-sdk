@@ -56,7 +56,7 @@ namespace Viam.Core.Resources.Components.Board
 
         public override ValueTask StopResource() => new ValueTask();
 
-        public override async ValueTask<Struct> DoCommand(Struct command,
+        public override async ValueTask<Struct?> DoCommand(Struct command,
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
@@ -69,6 +69,13 @@ namespace Viam.Core.Resources.Components.Board
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
+
+                if (res is null)
+                {
+                    Logger.LogMethodInvocationSuccess(results: null);
+                    return null;
+                }
+
                 var response = res.Result;
                 Logger.LogMethodInvocationSuccess(results: response);
                 return response;

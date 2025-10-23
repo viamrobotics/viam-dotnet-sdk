@@ -53,7 +53,7 @@ namespace Viam.Core.Test
             {
                 get
                 {
-                    if (_disposed) throw new ObjectDisposedException(nameof(Array));
+                    ObjectDisposedException.ThrowIf(_disposed, nameof(Array));
                     return _array;
                 }
             }
@@ -62,6 +62,7 @@ namespace Viam.Core.Test
             {
                 _disposed = true;
                 ArrayPool<T>.Shared.Return(_array);
+                GC.SuppressFinalize(this);
             }
         }
 

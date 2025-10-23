@@ -46,7 +46,7 @@ namespace Viam.ModularResources.Test
             return ValueTask.CompletedTask;
         }
 
-        public ValueTask<Struct> DoCommand(Struct command,
+        public ValueTask<Struct?> DoCommand(Struct command,
             TimeSpan? timeout = null, CancellationToken cancellationToken = default)
         {
             throw new NotImplementedException();
