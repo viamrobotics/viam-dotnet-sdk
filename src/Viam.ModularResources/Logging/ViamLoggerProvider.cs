@@ -70,8 +70,9 @@ namespace Viam.ModularResources.Logging
                 if (exception is not null)
                 {
                     msg = $"{msg}{Environment.NewLine}{exception}";
-                    Console.WriteLine(msg);
                 }
+                Console.WriteLine($"Exception has value? {exception is not null}");
+                Console.WriteLine(msg);
 
                 var item = new LogEntry()
                 {

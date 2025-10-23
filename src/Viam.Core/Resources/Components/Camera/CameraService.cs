@@ -112,6 +112,7 @@ namespace Viam.Core.Resources.Components.Camera
             }
             catch (Exception ex)
             {
+                logger.LogError(ex, "Error executing GetImage");
                 logger.LogMethodInvocationFailure(ex);
                 throw;
             }
