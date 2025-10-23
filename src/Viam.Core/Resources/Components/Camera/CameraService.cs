@@ -97,7 +97,7 @@ namespace Viam.Core.Resources.Components.Camera
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ICamera)context.UserState["resource"];
                 var resp = await resource.GetImage(
-                    MimeTypeExtensions.FromGrpc(request.MimeType),
+                    string.IsNullOrWhiteSpace(request.MimeType) ? null : MimeTypeExtensions.FromGrpc(request.MimeType),
                     request.Extra,
                     context.Deadline.ToTimeout(),
                     context.CancellationToken).ConfigureAwait(false);
