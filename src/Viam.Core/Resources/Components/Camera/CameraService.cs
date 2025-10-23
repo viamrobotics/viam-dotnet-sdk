@@ -78,7 +78,7 @@ namespace Viam.Core.Resources.Components.Camera
                 {
                     DistortionParameters = resp?.DistortionParameters?.ToGrpc(),
                     IntrinsicParameters = resp?.IntrinsicParameters?.ToGrpc(),
-                    MimeTypes = { resp?.MimeTypes.Select(x => x.ToString()) },
+                    MimeTypes = { resp?.MimeTypes.Select(x => x.ToString()) ?? [] },
                     SupportsPcd = resp?.SupportsPcd ?? false
                 };
                 logger.LogMethodInvocationSuccess(results: response);
