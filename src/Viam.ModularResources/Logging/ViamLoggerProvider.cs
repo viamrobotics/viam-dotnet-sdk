@@ -73,7 +73,7 @@ namespace Viam.ModularResources.Logging
                     Message = formatter(state, exception),
                     Caller = null,
                     Fields = { },
-                    Stack = exception != null ? "" : $"{exception?.Message}{Environment.NewLine}{exception?.StackTrace}"
+                    Stack = exception == null ? "" : $"{exception?.Message}{Environment.NewLine}{exception?.StackTrace}"
                 };
 
                 _ = writer.TryWrite(item); // non-blocking; drop if full (configurable)

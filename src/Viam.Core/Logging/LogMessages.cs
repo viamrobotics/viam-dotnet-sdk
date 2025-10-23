@@ -70,7 +70,7 @@ namespace Viam.Core.Logging
         }
 
         [LoggerMessage(EventId = 1002, Message = "An exception occurred while executing {Method}",
-            Level = LogLevel.Debug)]
+            Level = LogLevel.Warning)]
         internal static partial void LogMethodInvocationFailure(this ILogger logger, Exception? exception = null,
             [CallerMemberName] string method = "unknown");
 
