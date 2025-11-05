@@ -107,7 +107,7 @@ namespace Viam.ModularResources
             var name = GetResourceName(request);
             if (name != null)
             {
-                logger.LogDebug("Adding {ResourceName} to UserState", name);
+                logger.LogTrace("Adding {ResourceName} to UserState", name);
                 var resource = name.Contains(':') && ViamResourceName.TryParse(name, out var resourceName) ? resourceManager.GetService(resourceName.Name) : resourceManager.GetService(name);
                 if (resource != null)
                 {
@@ -116,7 +116,7 @@ namespace Viam.ModularResources
                 }
                 else
                 {
-                    logger.LogDebug("Unable to locate resource with name {ResourceName}", name);
+                    logger.LogWarning("Unable to locate resource with name {ResourceName}", name);
                 }
             }
 
@@ -139,7 +139,7 @@ namespace Viam.ModularResources
             var name = GetResourceName(request);
             if (name != null)
             {
-                logger.LogDebug("Adding {ResourceName} to UserState", name);
+                logger.LogTrace("Adding {ResourceName} to UserState", name);
                 // If the name contains a colon, try to parse it as a full resource name
                 var resource = name.Contains(':') && ViamResourceName.TryParse(name, out var resourceName) ? resourceManager.GetService(resourceName.Name) : resourceManager.GetService(name);
                 if (resource != null)
@@ -149,7 +149,7 @@ namespace Viam.ModularResources
                 }
                 else
                 {
-                    logger.LogDebug("Unable to locate resource with name {ResourceName}", name);
+                    logger.LogWarning("Unable to locate resource with name {ResourceName}", name);
                 }
             }
 
