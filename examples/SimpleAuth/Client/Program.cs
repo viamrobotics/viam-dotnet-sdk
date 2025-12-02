@@ -1,26 +1,31 @@
-﻿using Proto.Api.Robot.V1;
-using Viam.Net.Sdk.Core;
-using Proto.Rpc.V1;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 
-if (args.Length < 1)
+using Viam.Client.Clients;
+using Viam.Client.Dialing;
+using Viam.Core.Resources.Components.Sensor;
+
+if (args.Length < 3)
 {
-    throw new ArgumentException("must supply grpc address");
+    throw new ArgumentException("must supply machine address, api-key, and api-key-id");
 }
+
 var grpcAddress = args[0];
-
-var logger = NLog.LogManager.GetCurrentClassLogger();
-using (var dialer = new Dialer(logger))
+var loggerFactory = LoggerFactory.Create(builder => builder.AddSimpleConsole(options =>
 {
-    var dialOpts = new DialOptions
-    {
-        Insecure = true,
-        AuthEntity = "something-unique",
-        Credentials = new Credentials { Type = "api-key", Payload = "sosecret" }
-    };
+    options.SingleLine = true;
+    options.ColorBehavior = LoggerColorBehavior.Enabled;
+    options.TimestampFormat = "yyyy-MM-ddTHH:mm:ss.fffZ ";
+}).SetMinimumLevel(LogLevel.Trace));
+var logger = loggerFactory.CreateLogger<Program>();
+var dialOpts = DialOptions.FromAddress(grpcAddress)
+    .WithLogging(loggerFactory)
+    .WithApiCredentials(args[1], args[2]);
 
-    using (var chan = await dialer.DialDirectGRPCAsync(grpcAddress, dialOpts))
-    {
-        var robotClient = new RobotService.RobotServiceClient(chan);
-        logger.Info(await robotClient.ResourceNamesAsync(new ResourceNamesRequest()));
-    }
-}
+var robotClient = await MachineClient.CreateFromDialOptions(dialOpts);
+var resourceNames = await robotClient.ResourceNamesAsync();
+logger.LogInformation("Resource Names: {ResourceName}", string.Join(",", resourceNames.Select(x => x.Name)));
+
+await using var client = await SensorClient.FromMachine(robotClient, "clocks");
+var readings = await client.GetReadings();
+logger.LogInformation("Readings: {Readings}", string.Join(",", readings.Select(x => $"{x.Key}: {x.Value}")));

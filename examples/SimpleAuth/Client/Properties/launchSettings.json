@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SimpleAuth": {
+      "commandName": "Project",
+      "commandLineArgs": ""
+    }
+  }
+}

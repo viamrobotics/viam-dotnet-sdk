@@ -1,8 +1,10 @@
-version: v1
+version: v2
+managed:
+  enabled: true
 plugins:
-  - plugin: buf.build/protocolbuffers/csharp
-    out: src/Viam.Net.Sdk.Core/Proto
+  - remote: buf.build/protocolbuffers/csharp
+    out: src/Viam.Core/Proto
     opt: base_namespace=Proto
-  - plugin: buf.build/grpc/csharp:v1.59.3
-    out: src/Viam.Net.Sdk.Core/Proto
+  - remote: buf.build/grpc/csharp
+    out: src/Viam.Core/Proto
     opt: base_namespace=Proto

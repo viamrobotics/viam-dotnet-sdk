@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<TrimmerSingleWarn>false</TrimmerSingleWarn>
+		<Platforms>AnyCPU</Platforms>
+    <VersionPrefix>0.0.0-dev</VersionPrefix>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <CopyDebugSymbolFilesFromPackages>true</CopyDebugSymbolFilesFromPackages>
+    <CopyDocumentationFilesFromPackages>true</CopyDocumentationFilesFromPackages>
+
+
+    <PackageId>Viam.Client</PackageId>
+    <Authors>Viam</Authors>
+    <Description>Viam Client Library</Description>
+    <ProjectUrl>https://github.com/viamrobotics/viam-dotnet-sdk</ProjectUrl>
+    <PackageTags>viam</PackageTags>
+    <IncludeSymbols>true</IncludeSymbols>
+    <IncludeSource>true</IncludeSource>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<IsAotCompatible>true</IsAotCompatible>
+
+  </PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Viam.Core\Viam.Core.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="System.Memory" Version="4.6.3" />
+		<PackageReference Include="System.Runtime.InteropServices" Version="4.3.0" />
+		<PackageReference Include="System.Text.Json" Version="9.0.5" />
+	</ItemGroup>
+	<ItemGroup>
+    <None Include="runtimes\win-x64\native\libviam_rust_utils.dll">
+			<Pack>true</Pack>
+			<PackagePath>runtimes\win-x64\native\</PackagePath>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+
+		<None Include="runtimes\linux-x64\native\libviam_rust_utils.so">
+			<Pack>true</Pack>
+			<PackagePath>runtimes\linux-x64\native\</PackagePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+
+		<None Include="runtimes\linux-arm64\native\libviam_rust_utils.so">
+			<Pack>true</Pack>
+			<PackagePath>runtimes\linux-arm64\native\</PackagePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+
+		<None Include="runtimes\linux-musl-x64\native\libviam_rust_utils.so">
+			<Pack>true</Pack>
+			<PackagePath>runtimes\linux-musl-x64\native\</PackagePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+
+		<None Include="runtimes\linux-musl-arm64\native\libviam_rust_utils.so">
+			<Pack>true</Pack>
+			<PackagePath>runtimes\linux-musl-arm64\native\</PackagePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+
+		<None Include="runtimes\osx-arm64\native\libviam_rust_utils.dylib">
+			<Pack>true</Pack>
+			<PackagePath>runtimes\osx-arm64\native\</PackagePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+
+		<None Include="runtimes\osx-x64\native\libviam_rust_utils.dylib">
+			<Pack>true</Pack>
+			<PackagePath>runtimes\osx-x64\native\</PackagePath>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+</Project>

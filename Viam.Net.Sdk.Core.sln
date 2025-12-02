@@ -1,0 +1,121 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34707.107
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viam.Core", "src\Viam.Core\Viam.Core.csproj", "{6EDC3E55-B9CE-487C-AEC1-C5B5B5D9D273}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viam.Core.Test", "test\ViamSdk.Test\Viam.Core.Test.csproj", "{E6130E89-6B7E-4829-AB0F-3DCAFB2103F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viam.ModularResources", "src\Viam.ModularResources\Viam.ModularResources.csproj", "{8308C8EE-388F-4C3A-8BCF-679D85BE0386}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{B466695F-9DB2-4A3C-9FA6-6DF4197FC61E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{5B622FC1-136F-4C40-B653-9E9D478AAD34}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleModule", "examples\SimpleModule\SimpleModule.csproj", "{75F60DCC-E7F0-48D5-A462-727C72E138EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Viam.Client", "src\Viam.Client\Viam.Client.csproj", "{B37B8115-9262-472E-A75E-1565A6C6E8CC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7EE912FF-E147-4E69-9E0A-082A5EF3A995}"
+	ProjectSection(SolutionItems) = preProject
+		buf.gen.rpc.yaml = buf.gen.rpc.yaml
+		buf.gen.yaml = buf.gen.yaml
+		buf.yaml = buf.yaml
+		.config\dotnet-tools.json = .config\dotnet-tools.json
+		.github\workflows\license-finder.yml = .github\workflows\license-finder.yml
+		Makefile = Makefile
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleWeb", "examples\SimpleWeb\Client\SimpleWeb.csproj", "{F5FF19C6-6B91-4B33-9E9C-9323196E77FB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleAuth", "examples\SimpleAuth\Client\SimpleAuth.csproj", "{BA811175-8162-4957-A0FD-3E8B08B22F38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viam.Serialization.Analyzer", "src\Viam.Serialization.Analyzer\Viam.Serialization.Analyzer.csproj", "{D57D9532-3912-471A-9914-9519DD305318}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viam.ModularResources.Test", "test\Viam.ModularResources\Viam.ModularResources.Test.csproj", "{1177B290-59D2-4E0C-8E0B-F76AD11190E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viam.Serialization", "src\Viam.Serialization\Viam.Serialization.csproj", "{312337F0-BBE3-427A-BFFA-2FB9E915ED62}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viam.Serialization.Test", "test\Viam.Serialization.Test\Viam.Serialization.Test.csproj", "{3B976BA2-6132-404D-8BD5-1176DAA4EC96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub Workflows", "GitHub Workflows", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-deploy.yml = .github\workflows\build-deploy.yml
+		.github\workflows\license-finder.yml = .github\workflows\license-finder.yml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Viam.Contracts", "src\Viam.Contracts\Viam.Contracts.csproj", "{8E7FAF26-1453-4EE0-9429-21F3319BB1C8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6EDC3E55-B9CE-487C-AEC1-C5B5B5D9D273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EDC3E55-B9CE-487C-AEC1-C5B5B5D9D273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EDC3E55-B9CE-487C-AEC1-C5B5B5D9D273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EDC3E55-B9CE-487C-AEC1-C5B5B5D9D273}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6130E89-6B7E-4829-AB0F-3DCAFB2103F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6130E89-6B7E-4829-AB0F-3DCAFB2103F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6130E89-6B7E-4829-AB0F-3DCAFB2103F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6130E89-6B7E-4829-AB0F-3DCAFB2103F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8308C8EE-388F-4C3A-8BCF-679D85BE0386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8308C8EE-388F-4C3A-8BCF-679D85BE0386}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8308C8EE-388F-4C3A-8BCF-679D85BE0386}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8308C8EE-388F-4C3A-8BCF-679D85BE0386}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75F60DCC-E7F0-48D5-A462-727C72E138EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F60DCC-E7F0-48D5-A462-727C72E138EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F60DCC-E7F0-48D5-A462-727C72E138EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F60DCC-E7F0-48D5-A462-727C72E138EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B37B8115-9262-472E-A75E-1565A6C6E8CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B37B8115-9262-472E-A75E-1565A6C6E8CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B37B8115-9262-472E-A75E-1565A6C6E8CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B37B8115-9262-472E-A75E-1565A6C6E8CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5FF19C6-6B91-4B33-9E9C-9323196E77FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5FF19C6-6B91-4B33-9E9C-9323196E77FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5FF19C6-6B91-4B33-9E9C-9323196E77FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5FF19C6-6B91-4B33-9E9C-9323196E77FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA811175-8162-4957-A0FD-3E8B08B22F38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA811175-8162-4957-A0FD-3E8B08B22F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA811175-8162-4957-A0FD-3E8B08B22F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA811175-8162-4957-A0FD-3E8B08B22F38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D57D9532-3912-471A-9914-9519DD305318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D57D9532-3912-471A-9914-9519DD305318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D57D9532-3912-471A-9914-9519DD305318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D57D9532-3912-471A-9914-9519DD305318}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1177B290-59D2-4E0C-8E0B-F76AD11190E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1177B290-59D2-4E0C-8E0B-F76AD11190E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1177B290-59D2-4E0C-8E0B-F76AD11190E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1177B290-59D2-4E0C-8E0B-F76AD11190E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{312337F0-BBE3-427A-BFFA-2FB9E915ED62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{312337F0-BBE3-427A-BFFA-2FB9E915ED62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{312337F0-BBE3-427A-BFFA-2FB9E915ED62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{312337F0-BBE3-427A-BFFA-2FB9E915ED62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B976BA2-6132-404D-8BD5-1176DAA4EC96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B976BA2-6132-404D-8BD5-1176DAA4EC96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B976BA2-6132-404D-8BD5-1176DAA4EC96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B976BA2-6132-404D-8BD5-1176DAA4EC96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E7FAF26-1453-4EE0-9429-21F3319BB1C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E7FAF26-1453-4EE0-9429-21F3319BB1C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E7FAF26-1453-4EE0-9429-21F3319BB1C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E7FAF26-1453-4EE0-9429-21F3319BB1C8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E6130E89-6B7E-4829-AB0F-3DCAFB2103F3} = {B466695F-9DB2-4A3C-9FA6-6DF4197FC61E}
+		{75F60DCC-E7F0-48D5-A462-727C72E138EA} = {5B622FC1-136F-4C40-B653-9E9D478AAD34}
+		{F5FF19C6-6B91-4B33-9E9C-9323196E77FB} = {5B622FC1-136F-4C40-B653-9E9D478AAD34}
+		{BA811175-8162-4957-A0FD-3E8B08B22F38} = {5B622FC1-136F-4C40-B653-9E9D478AAD34}
+		{1177B290-59D2-4E0C-8E0B-F76AD11190E6} = {B466695F-9DB2-4A3C-9FA6-6DF4197FC61E}
+		{3B976BA2-6132-404D-8BD5-1176DAA4EC96} = {B466695F-9DB2-4A3C-9FA6-6DF4197FC61E}
+		{02EA681E-C7D8-13C7-8484-4AC65E1B71E8} = {7EE912FF-E147-4E69-9E0A-082A5EF3A995}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {835625CE-9D82-41F0-AFD1-17FDFABA1917}
+	EndGlobalSection
+EndGlobal
