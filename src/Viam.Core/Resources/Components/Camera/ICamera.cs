@@ -8,11 +8,6 @@ namespace Viam.Core.Resources.Components.Camera
 {
     public interface ICamera : IComponentBase
     {
-        ValueTask<ViamImage?> GetImage(MimeType? mimeType = null,
-            Struct? extra = null,
-            TimeSpan? timeout = null,
-            CancellationToken cancellationToken = default);
-
         ValueTask<ViamImage[]?> GetImages(string[]? filterSourceNames = null,
             Struct? extra = null,
             TimeSpan? timeout = null,

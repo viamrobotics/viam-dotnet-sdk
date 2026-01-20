@@ -81,42 +81,7 @@ namespace Viam.Core.Resources.Components.Camera
         }
 
 
-        public async ValueTask<ViamImage?> GetImage(MimeType? mimeType = null,
-            Struct? extra = null,
-            TimeSpan? timeout = null,
-            CancellationToken cancellationToken = default)
-        {
-            ThrowIfDisposed();
-            try
-            {
-                Logger.LogMethodInvocationStart();
-                var res = await Client.GetImageAsync(
-                        new GetImageRequest()
-                        {
-                            Name = Name,
-                            MimeType = mimeType?.ToGrpc() ?? string.Empty,
-                            Extra = extra
-                        },
-                        deadline: timeout.ToDeadline(),
-                        cancellationToken: cancellationToken)
-                    .ConfigureAwait(false);
-                if (res is not null)
-                {
-                    var (width, height) =
-                        Utils.GetImageDimensions(res.Image.Memory.Span, MimeTypeExtensions.FromGrpc(res.MimeType));
-                    var image = new ViamImage(res.Image.Memory, MimeTypeExtensions.FromGrpc(res.MimeType), width, height);
-                    Logger.LogMethodInvocationSuccess();
-                    return image;
-                }
-                Logger.LogMethodInvocationSuccess();
-                return null;
-            }
-            catch (Exception ex)
-            {
-                Logger.LogMethodInvocationFailure(ex);
-                throw;
-            }
-        }
+
 
 
         public async ValueTask<ViamImage[]?> GetImages(string[]? filterSourceNames = null,
@@ -151,9 +116,7 @@ namespace Viam.Core.Resources.Components.Camera
                     var i = 0;
                     foreach (var protoImage in res.Images)
                     {
-                        var mimeType = !string.IsNullOrEmpty(protoImage.MimeType)
-                            ? MimeTypeExtensions.FromGrpc(protoImage.MimeType)
-                            : MimeTypeExtensions.FromGrpc(protoImage.Format);
+                        var mimeType = MimeTypeExtensions.FromGrpc(protoImage.MimeType);
 
                         var (width, height) =
                             Utils.GetImageDimensions(
