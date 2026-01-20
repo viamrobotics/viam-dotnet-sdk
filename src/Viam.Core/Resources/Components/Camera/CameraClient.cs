@@ -119,15 +119,28 @@ namespace Viam.Core.Resources.Components.Camera
         }
 
 
-        public async ValueTask<ViamImage[]?> GetImages(TimeSpan? timeout = null,
+        public async ValueTask<ViamImage[]?> GetImages(string[]? filterSourceNames = null,
+            Struct? extra = null,
+            TimeSpan? timeout = null,
             CancellationToken cancellationToken = default)
         {
             ThrowIfDisposed();
             try
             {
                 Logger.LogMethodInvocationStart();
+                var request = new GetImagesRequest() { Name = Name };
+                if (filterSourceNames != null)
+                {
+                    request.FilterSourceNames.AddRange(filterSourceNames);
+                }
+
+                if (extra != null)
+                {
+                    request.Extra = extra;
+                }
+
                 var res = await Client.GetImagesAsync(
-                        new GetImagesRequest() { Name = Name },
+                        request,
                         deadline: timeout.ToDeadline(),
                         cancellationToken: cancellationToken)
                     .ConfigureAwait(false);
@@ -138,11 +151,15 @@ namespace Viam.Core.Resources.Components.Camera
                     var i = 0;
                     foreach (var protoImage in res.Images)
                     {
+                        var mimeType = !string.IsNullOrEmpty(protoImage.MimeType)
+                            ? MimeTypeExtensions.FromGrpc(protoImage.MimeType)
+                            : MimeTypeExtensions.FromGrpc(protoImage.Format);
+
                         var (width, height) =
                             Utils.GetImageDimensions(
-                                protoImage.Image_.Memory.Span, MimeTypeExtensions.FromGrpc(protoImage.Format));
-                        var image = new ViamImage(protoImage.Image_.Memory, MimeTypeExtensions.FromGrpc(protoImage.Format),
-                            width, height);
+                                protoImage.Image_.Memory.Span, mimeType);
+                        var image = new ViamImage(protoImage.Image_.Memory, mimeType,
+                            width, height, protoImage.SourceName);
                         response[i] = image;
                         i++;
                     }

@@ -131,7 +131,11 @@ namespace Viam.Core.Resources.Components.Camera
             {
                 logger.LogMethodInvocationStart(parameters: [request]);
                 var resource = (ICamera)context.UserState["resource"];
-                var resp = await resource.GetImages(context.Deadline.ToTimeout(), context.CancellationToken)
+                var resp = await resource.GetImages(
+                        request.FilterSourceNames.ToArray(),
+                        request.Extra,
+                        context.Deadline.ToTimeout(),
+                        context.CancellationToken)
                     .ConfigureAwait(false);
                 if (resp is null)
                 {
@@ -149,6 +153,7 @@ namespace Viam.Core.Resources.Components.Camera
                 {
                     Image_ = ByteString.CopyFrom(image.bytes.Span),
                     Format = image.mimeType.ToGrpcFormat(),
+                    MimeType = image.mimeType.ToGrpc(),
                     SourceName = image.sourceName,
                 }));
                 return response;
