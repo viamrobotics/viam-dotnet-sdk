@@ -81,9 +81,6 @@ namespace Viam.Core.Resources.Components.Camera
         }
 
 
-
-
-
         public async ValueTask<ViamImage[]?> GetImages(string[]? filterSourceNames = null,
             Struct? extra = null,
             TimeSpan? timeout = null,
