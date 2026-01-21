@@ -13,7 +13,9 @@ namespace Viam.Core.Resources.Components.Camera
             TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
-        ValueTask<ViamImage[]?> GetImages(TimeSpan? timeout = null,
+        ValueTask<ViamImage[]?> GetImages(string[]? filterSourceNames = null,
+            Struct? extra = null,
+            TimeSpan? timeout = null,
             CancellationToken cancellationToken = default);
 
         ValueTask<ViamImage?> GetPointCloud(MimeType mimeType,
