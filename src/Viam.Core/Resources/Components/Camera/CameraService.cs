@@ -92,38 +92,7 @@ namespace Viam.Core.Resources.Components.Camera
             }
         }
 
-        public override async Task<GetImageResponse?> GetImage(GetImageRequest request, ServerCallContext context)
-        {
-            try
-            {
-                logger.LogMethodInvocationStart(parameters: [request]);
-                var resource = (ICamera)context.UserState["resource"];
-                var resp = await resource.GetImage(
-                    string.IsNullOrWhiteSpace(request.MimeType) ? null : MimeTypeExtensions.FromGrpc(request.MimeType),
-                    request.Extra,
-                    context.Deadline.ToTimeout(),
-                    context.CancellationToken).ConfigureAwait(false);
-                
-                if (resp is null)
-                {
-                    logger.LogMethodInvocationSuccess(results: null);
-                    return null;
-                }
 
-                var response = new GetImageResponse()
-                {
-                    MimeType = request.MimeType,
-                    Image = ByteString.CopyFrom(resp.bytes.Span)
-                };
-                logger.LogMethodInvocationSuccess();
-                return response;
-            }
-            catch (Exception ex)
-            {
-                logger.LogMethodInvocationFailure(ex);
-                throw;
-            }
-        }
 
         public override async Task<GetImagesResponse?> GetImages(GetImagesRequest request, ServerCallContext context)
         {
@@ -152,7 +121,6 @@ namespace Viam.Core.Resources.Components.Camera
                 response.Images.AddRange(resp.Select(image => new Image()
                 {
                     Image_ = ByteString.CopyFrom(image.bytes.Span),
-                    Format = image.mimeType.ToGrpcFormat(),
                     MimeType = image.mimeType.ToGrpc(),
                     SourceName = image.sourceName,
                 }));
@@ -200,20 +168,6 @@ namespace Viam.Core.Resources.Components.Camera
             }
         }
 
-        public override async Task<HttpBody> RenderFrame(RenderFrameRequest request, ServerCallContext context)
-        {
-            try
-            {
-                logger.LogMethodInvocationStart(parameters: [request]);
-                var resource = (ICamera)context.UserState["resource"];
-                await Task.Yield();
-                throw new NotImplementedException();
-            }
-            catch (Exception ex)
-            {
-                logger.LogMethodInvocationFailure(ex);
-                throw;
-            }
-        }
+
     }
 }
