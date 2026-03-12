@@ -416,3 +416,7 @@ FodyWeavers.xsd
 ##############################
 **.proto
 _stamp.txt
+
+# Claude Code
+.claude/worktrees
+.claude/settings.local.json
