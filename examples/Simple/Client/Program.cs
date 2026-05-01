@@ -1,4 +1,4 @@
-﻿using Proto.Api.Robot.V1;
+﻿using Viam.Robot.V1;
 using Viam.Net.Sdk.Core;
 
 if (args.Length < 1)

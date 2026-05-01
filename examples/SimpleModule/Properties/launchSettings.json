@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SimpleModule": {
+      "commandName": "Project",
+      "commandLineArgs": "/tmp/foo.sock"
+    }
+  }
+}

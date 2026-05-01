@@ -1,0 +1,58 @@
+[*.cs]
+# Public properties should be PascalCase
+dotnet_naming_rule.public_properties_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.public_properties_should_be_pascal_case.symbols = public_properties
+dotnet_naming_rule.public_properties_should_be_pascal_case.style = pascal_case_style
+
+# Private properties and fields should be _camelCase
+dotnet_naming_rule.private_members_should_be_camel_case.severity = suggestion
+dotnet_naming_rule.private_members_should_be_camel_case.symbols = private_members
+dotnet_naming_rule.private_members_should_be_camel_case.style = camel_case_with_underscore_style
+
+# Protected properties and fields should be PascalCase
+dotnet_naming_rule.protected_members_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.protected_members_should_be_pascal_case.symbols = protected_members
+dotnet_naming_rule.protected_members_should_be_pascal_case.style = pascal_case_style
+
+# Define symbols for public properties
+dotnet_naming_symbols.public_properties.applicable_kinds = property
+dotnet_naming_symbols.public_properties.applicable_accessibilities = public
+dotnet_naming_symbols.public_properties.required_modifiers = none
+
+# Define symbols for private members (fields and properties)
+dotnet_naming_symbols.private_members.applicable_kinds = field, property
+dotnet_naming_symbols.private_members.applicable_accessibilities = private
+dotnet_naming_symbols.private_members.required_modifiers = none
+
+# Define symbols for protected members (fields and properties)
+dotnet_naming_symbols.protected_members.applicable_kinds = field, property
+dotnet_naming_symbols.protected_members.applicable_accessibilities = protected
+dotnet_naming_symbols.protected_members.required_modifiers = none
+
+# Define PascalCase style
+dotnet_naming_style.pascal_case_style.capitalization = pascal_case
+
+# Define _camelCase style
+dotnet_naming_style.camel_case_with_underscore_style.capitalization = camel_case
+dotnet_naming_style.camel_case_with_underscore_style.required_prefix = _
+
+# Primary Constructor Arguemtns should be PascalCase
+dotnet_naming_rule.primary_constructor_arguments_should_be_pascal_case.severity = suggestion
+dotnet_naming_rule.primary_constructor_arguments_should_be_pascal_case.symbols = primary_constructor_arguments
+dotnet_naming_rule.primary_constructor_arguments_should_be_pascal_case.style = pascal_case_style
+
+dotnet_naming_symbols.primary_constructor_arguments.applicable_kinds = parameter
+dotnet_naming_symbols.primary_constructor_arguments.applicable_accessibilities = *
+dotnet_naming_symbols.primary_constructor_arguments.required_modifiers = none
+
+dotnet_naming_style.pascal_case_style.capitalization = pascal_case
+
+# Method parameters should be camelCase
+dotnet_naming_rule.method_parameters_should_be_camel_case.severity = suggestion
+dotnet_naming_rule.method_parameters_should_be_camel_case.symbols = method_parameters
+dotnet_naming_rule.method_parameters_should_be_camel_case.style = camel_case_style
+
+dotnet_naming_symbols.method_parameters.applicable_kinds = parameter
+dotnet_naming_symbols.method_parameters.applicable_accessibilities = *
+
+dotnet_naming_style.camel_case_style.capitalization = camel_case

@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<TrimmerSingleWarn>false</TrimmerSingleWarn>
+		<Platforms>AnyCPU</Platforms>
+		<VersionPrefix>0.0.25-dev</VersionPrefix>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<CopyDebugSymbolFilesFromPackages>true</CopyDebugSymbolFilesFromPackages>
+		<CopyDocumentationFilesFromPackages>true</CopyDocumentationFilesFromPackages>
+
+		<PackageId>Viam.Contracts</PackageId>
+		<Authors>Viam</Authors>
+		<Description>Viam Contracts Library</Description>
+		<ProjectUrl>https://github.com/viamrobotics/viam-dotnet-sdk</ProjectUrl>
+		<PackageTags>viam</PackageTags>
+		<IncludeSymbols>true</IncludeSymbols>
+		<IncludeSource>true</IncludeSource>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Google.Api.CommonProtos" Version="2.17.0" />
+		<PackageReference Include="Google.Protobuf" Version="3.32.1" />
+		<PackageReference Include="Grpc.Net.Client" Version="2.71.0" />
+		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.71.0" />
+		<PackageReference Include="Grpc.Tools" Version="2.72.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="IndexRange" Version="1.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.5" />
+		<PackageReference Include="System.Net.Security" Version="4.3.2" />
+		<PackageReference Include="System.Text.Json" Version="9.0.5" />
+	</ItemGroup>
+
+	<!-- Protobuf Stuff -->
+	<ItemGroup>
+		<!-- pin versions for reproducibility -->
+		<BufModule Include="viamrobotics/api" Ref="buf.build/viamrobotics/api:5e9057122703e5890f82a5774864cccb5f4664a4" />
+		<BufModule Include="viamrobotics/goutils" Ref="buf.build/viamrobotics/goutils:ff252c58e01448947153af5e52a2d5c0e803c559" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Remove the proto files from compilation -->
+		<Compile Remove="protos/**" />
+
+		<!-- Don't let them be embedded resources -->
+		<EmbeddedResource Remove="protos/**" />
+		
+		<!-- Don't copy them to the output directory -->
+		<None Remove="protos/**" />
+	</ItemGroup>
+
+	<!-- Manual step: ONLY runs when you call -t:ExportProtos on *this project* -->
+	<Target Name="ExportProtos" Inputs="@(BufModule -> '%(Ref)')" Outputs="@(BufModule -> '$(ProtoVendorDir)%(Identity)/_stamp.txt')">
+		<Message Importance="High" Text="Exporting protos to $(ProtoVendorDir) ..." />
+		<Exec Command="buf export %(BufModule.Ref) --output &quot;$(ProtoVendorDir)%(Identity)&quot;" />
+		<WriteLinesToFile File="$(ProtoVendorDir)%(BufModule.Identity)/_stamp.txt" Lines="%(BufModule.Ref)" Overwrite="true" />
+	</Target>
+
+	<!-- Optional: clean the exported protos for a fresh re-export -->
+	<Target Name="CleanProtos">
+		<RemoveDir Directories="$(ProtoVendorDir)" />
+	</Target>
+
+	<!-- Guard: fail fast if someone builds Viam.Contracts before exporting once -->
+	<Target Name="AutoExportProtos" BeforeTargets="PrepareForBuild" Condition="'$(DesignTimeBuild)' != 'true'">
+  <!-- What stamps should exist -->
+  <ItemGroup>
+    <_Missing Include="@(BufModule -> '$(ProtoVendorDir)%(Identity)/_stamp.txt')" Condition="!Exists('$(ProtoVendorDir)%(BufModule.Identity)/_stamp.txt')" />
+  </ItemGroup>
+
+  <!-- Optional log -->
+  <Message Importance="High" Condition="@(_Missing) != ''" Text="Proto exports missing. Running ExportProtos..." />
+
+  <!-- Run the actual export if anything is missing -->
+  <CallTarget Targets="ExportProtos" Condition="@(_Missing) != ''" />
+</Target>
+	<PropertyGroup>
+		<!-- Where vendor'ed protos land -->
+		<ProtoVendorDir>$(ProjectDir)protos/_vendor/</ProtoVendorDir>
+
+		<!-- Tell protoc where to search for imports like "common/v1/common.proto" -->
+		<Protobuf_AdditionalImportDirs>
+			$(ProtoVendorDir)viamrobotics/api;
+			$(ProtoVendorDir)viamrobotics/goutils
+			$(NuGetPackageRoot)google.api.commonprotos/2.17.0/content
+		</Protobuf_AdditionalImportDirs>
+	</PropertyGroup>
+	<ItemGroup>
+		<Protobuf Include="$(ProtoVendorDir)viamrobotics/api/**/*.proto" GrpcServices="Both" ProtoRoot="$(ProtoVendorDir)viamrobotics/api" />
+		<Protobuf Include="$(ProtoVendorDir)viamrobotics/goutils/**/*.proto" GrpcServices="Both" ProtoRoot="$(ProtoVendorDir)viamrobotics/goutils" />
+		<Protobuf Remove="$(ProtoVendorDir)**/google/**/*.proto" />
+	</ItemGroup>
+
+</Project>

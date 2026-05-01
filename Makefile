@@ -1,8 +1,7 @@
 buf:
-	rm -rf gen
-	buf generate buf.build/viamrobotics/rdk
-	buf generate buf.build/viamrobotics/goutils
-	buf generate buf.build/erdaniels/gostream
+	rm -rf src/Viam.Core/Proto
+	buf generate buf.build/viamrobotics/api --path app,common,component,module,provisioning,robot,service
+	buf generate buf.build/viamrobotics/goutils --template buf.gen.rpc.yaml
 
 run_core_client:
 	dotnet run --project examples/Simple/Client http://localhost:8080

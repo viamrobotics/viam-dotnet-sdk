@@ -1,29 +1,19 @@
-﻿using Proto.Api.Robot.V1;
-using Viam.Net.Sdk.Core;
-using Grpc.Net.Client;
-using Grpc.Net.Client.Web;
+﻿using Microsoft.Extensions.Logging;
+using Viam.Client.Clients;
+using Viam.Client.Dialing;
 
 if (args.Length < 1)
 {
     throw new ArgumentException("must supply grpc address");
 }
+
 var grpcAddress = args[0];
+var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+var logger = loggerFactory.CreateLogger<Program>();
+var dialOpts = DialOptions.FromAddress(grpcAddress)
+    .WithLogging(loggerFactory)
+    .SetInsecure();
 
-var logger = NLog.LogManager.GetCurrentClassLogger();
-using (var dialer = new Dialer(logger))
-{
-    var dialOpts = new DialOptions
-    {
-        Insecure = true,
-        ChannelOptions = new GrpcChannelOptions
-        {
-            HttpHandler = new GrpcWebHandler(new HttpClientHandler())
-        }
-    };
-
-    using (var chan = await dialer.DialDirectGRPCAsync(grpcAddress, dialOpts))
-    {
-        var robotClient = new RobotService.RobotServiceClient(chan);
-        logger.Info(await robotClient.ResourceNamesAsync(new ResourceNamesRequest()));
-    }
-}
+var robotClient = await MachineClient.CreateFromDialOptions(dialOpts);
+var resourceNames = await robotClient.ResourceNamesAsync();
+logger.LogInformation("Resource Names: {ResourceName}", string.Join(",", resourceNames.Select(x => x.Name)));

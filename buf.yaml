@@ -1,4 +1,4 @@
-version: v1
+version: v2
 breaking:
   use:
     - FILE
@@ -7,4 +7,4 @@ lint:
     - DEFAULT
 deps:
   - buf.build/viamrobotics/goutils
-  - buf.build/viamrobotics/rdk
+  - buf.build/viamrobotics/api
